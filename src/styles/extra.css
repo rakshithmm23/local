@@ -1,0 +1,36 @@
+.notification-message {
+  background-color: #006FB9;
+  width: 100%;
+}
+
+.notification-desc {
+  text-align: center;
+  padding: 15px;
+}
+
+.notification-desc p {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: OxyLight;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.notification-desc .fa-times {
+  float: right;
+  margin-right: 30px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .notification-desc p {
+    width: 80%;
+  }
+  .notification-desc .fa-times {
+      margin-right: 0px;
+      margin-top: 10px;
+  }
+}
+

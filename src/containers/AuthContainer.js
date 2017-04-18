@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../actions/';
 
-export default function DashboardContainer(ComposedComponent) {
-  class DashboardContainer extends Component {
+export default function AuthContainer(ComposedComponent) {
+  class AuthContainer extends Component {
     constructor(props) {
       super(props);
     }
@@ -23,9 +23,9 @@ export default function DashboardContainer(ComposedComponent) {
       actions: bindActionCreators(ActionCreators, dispatch)
     };
   }
-  return connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
 }
 
-DashboardContainer.contextTypes = {
+AuthContainer.contextTypes = {
   router: React.PropTypes.object
 };

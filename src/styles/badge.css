@@ -1,0 +1,33 @@
+.status-label{
+    border-radius: 20px;
+    width: 140px;
+    height: 34px;
+    background: #A5A5A5;
+    padding: 8px 5px;
+    color: #fff;
+    font-family: OxyReg;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+}
+.warning{
+    background: #FFBE2C;
+}
+.inActive{
+    background: #7294FE;
+}
+.accepted{
+    background: #9553B5;
+}
+.inProgress{
+    background: #1EC1DC;
+}
+.finished{
+    background: #195E8D;
+}
+.cancelled{
+    background: #FF8A78;
+}
+.expired{
+    background: #A5A5A5;
+}

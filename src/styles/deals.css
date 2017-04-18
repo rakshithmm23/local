@@ -1,0 +1,37 @@
+.deals-section {
+  margin: 70px 0px;
+  ;
+}
+
+.deals-heading h5 {
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  font-family: OxyBold;
+}
+
+.deals-heading p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #4C4C4C;
+  font-family: OxyReg;
+}
+
+.Deals-layout {
+  padding: 0px;
+  margin-top: 30px;
+}
+
+.deal-img img {
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .deals-heading p{
+    padding: 0px 10px;
+  }
+  .deal-img {
+    margin-bottom: 15px;
+  }
+}
+

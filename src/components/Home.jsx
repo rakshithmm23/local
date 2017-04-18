@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Dashboard from './Dashboard';
+import Auth from './Auth';
 
 export default class Home extends Component {
   constructor(props, context) {
@@ -7,6 +7,10 @@ export default class Home extends Component {
   }
 
   render() {
-    return (<Dashboard/>);
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    );
   }
 }

@@ -1,0 +1,57 @@
+    body {
+        background: rgb(236, 243, 245);
+    }
+    /*Font Bold*/
+    @font-face {
+        font-family: OxyBold;
+        src: url('../fonts/Oxygen-Bold.ttf')
+    }
+    /*Font Bold*/
+
+    @font-face {
+        font-family: OxyLight;
+        src: url('../fonts/Oxygen-Light.ttf')
+    }
+    /*Font Bold*/
+
+    @font-face {
+        font-family: OxyReg;
+        src: url('../fonts/Oxygen-Regular.ttf')
+    }
+
+    ul,
+    li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .container,
+    .container-fluid {
+        padding: 0;
+    }
+
+    .pad0 {
+        padding: 0;
+    }
+    /*commom wrapper*/
+
+    .main-wrapper {
+        margin-top: 90px;
+        padding-left: 120px;
+        overflow: hidden;
+    }
+    /*responsive*/
+
+    @media screen and (max-width: 991px) {
+        .main-wrapper {
+            padding-left: 0px;
+            padding-bottom: 75px;
+            margin-top: 70px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .mpad-0 {
+            padding: 0;
+        }
+    }

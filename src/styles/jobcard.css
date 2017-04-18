@@ -1,0 +1,266 @@
+    .job-updates {
+        margin: 15px !important;
+        clear: both;
+        background: #fff;
+    }
+    
+    .job-card {
+        padding: 15px;
+    }
+    
+    .card-img {
+        width: 150px;
+        height: 110px;
+        border-radius: 5px;
+        overflow: hidden;
+        display: inline-block;
+    }
+    
+    .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    /*job info*/
+    
+    .jr-body {
+        padding: 20px 55px;
+    }
+    
+    .jobInfo {
+        background-color: #F8FCFF;
+        border: 1px dashed #006FB9;
+        position: relative;
+    }
+    
+    .jobInfo p {
+        color: #4C4C4C;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: OxyReg;
+        padding: 20px 50px;
+    }
+    
+    .jobInfo img {
+        position: absolute;
+        left: -35px;
+        top: 14px;
+    }
+    
+    .InfoFinished {
+        border: 1px dashed #23AE49;
+        background-color: #F8FFF7;
+    }
+    
+    .infoCanceled {
+        border: 1px dashed #FF8A78;
+        background-color: #FFF7F5;
+    }
+    
+    .infoExpired {
+        border: 1px dashed #91A3AF;
+        background-color: #F9F7F7;
+    }
+    
+    .card-info {
+        margin-left: 15px;
+        line-height: 28px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .card-info .job-name {
+        color: #55595B;
+        font-size: 15px;
+        text-transform: capitalize;
+        font-family: OxyBold;
+    }
+    
+    .card-info .job-id {
+        color: #55595B;
+        font-family: OxyReg;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    
+    .card-info .job-title {
+        font-family: OxyReg;
+        font-size: 22px;
+        color: #006FB9;
+        text-transform: capitalize;
+    }
+    
+    .card-time li {
+        font-family: OxyReg;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    .card-time li label {
+        width: 165px;
+        color: #91A3AF;
+    }
+    
+    .card-time li span {
+        color: #4C4C4C;
+    }
+    /*Job Right Header*/
+    
+    .job-right-header {
+        padding: 15px 10px;
+    }
+    
+    .job-icon {
+        float: right;
+        cursor: pointer;
+        margin: 0 15px;
+        margin-top: 6px;
+    }
+    
+    .job-icon .iconView {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(../images/icons.png);
+    }
+    
+    .job-label .iconView {
+        display: none;
+    }
+    
+    .job-label .commentLabel {
+        color: #006FB9;
+        font-family: OxyReg;
+        font-size: 14px;
+    }
+    
+    .job-icon.phone .iconView {
+        background-position: 0 0;
+    }
+    
+    .job-icon.message .iconView {
+        background-position: 0 -31px;
+    }
+    
+    .job-icon.document .iconView {
+        background-position: 0 -66px;
+    }
+    
+    .job-icon .notifyTag {
+        background: #23AE49;
+        color: #fff;
+        font-family: OxyReg;
+        font-size: 11px;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 50%;
+        display: none;
+        margin-left: -10px;
+        height: 25px;
+        min-width: 25px;
+    }
+    
+    .job-icon.notification .notifyTag {
+        display: inline-block;
+    }
+    /*vendor quotes*/
+    
+    .vendor-quote ul li:first-child {
+        border-right: 1px solid #eef2f5;
+    }
+    
+    .vendor-quote ul li {
+        display: inline-block;
+        width: 49%;
+        padding: 15px 25px;
+        vertical-align: top;
+    }
+    
+    .vendor-quote ul li label {
+        color: #91A3AF;
+        font-size: 12px;
+        line-height: 15px;
+        display: block;
+        font-family: OxyReg;
+    }
+    
+    .vendor-quote ul li span {
+        font-size: 14px;
+        line-height: 17px;
+        color: #006FB9;
+        font-family: OxyBold;
+    }
+    
+    .job-right {
+        border-left: 1px solid #eef2f5;
+    }
+    
+    .vendor-quote {
+        border-top: 1px solid #eef2f5;
+        border-bottom: 1px solid #eef2f5;
+    }
+    
+    @media screen and (max-width: 1100px) {
+        .card-info {
+            margin-left: 10px;
+        }
+        .card-info .job-title {
+            font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        .card-img {
+            width: 100%;
+            height: 200px;
+            border-radius: 0;
+        }
+        .card-info {
+            margin-left: 0;
+            margin-top: 10px;
+        }
+        .card-time {
+            margin-top: 25px;
+        }
+        .card-time li label {
+            width: 140px;
+        }
+        .job-updates {
+            margin: 0px !important;
+        }
+    }
+    
+    @media screen and (max-width: 640px) {
+        .status-label {
+            width: 100px;
+            padding: 8px 5px;
+            font-size: 12px !important;
+        }
+        .job-icon {
+            margin: 5px 8px;
+        }
+        .job-icon .iconView {
+            width: 20px;
+            height: 20px;
+            background-size: 100%
+        }
+        .jr-body {
+            padding: 20px 35px;
+            padding-right: 20px;
+        }
+        .deals-section {
+            margin: 30px 0px;
+        }
+        .job-icon.message .iconView {
+            background-position: 0 -26px;
+        }
+        .job-icon.document .iconView {
+            background-position: 0 -56px;
+        }
+        .job-icon .notifyTag {
+            font-size: 9px;
+            padding: 4px 0;
+            height: 20px;
+            min-width: 20px;
+        }
+    }

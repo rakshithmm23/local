@@ -1,0 +1,15 @@
+.note-text{
+    color: #3E4244;
+    font-size: 13px;
+    font-family: OxyReg;
+    margin-top: 20px;
+}
+.green-text,
+.green-text:hover,
+.green-text:focus{
+    color: #23AE49;
+    font-size: 13px;
+    font-family: OxyReg;
+    text-decoration: none;
+    outline: none;
+}

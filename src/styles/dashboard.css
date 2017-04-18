@@ -1,0 +1,91 @@
+.padwrapper{
+  padding: 0px 40px;
+}
+.emergency,
+.repair,
+.servicing,
+.wash {
+  max-width: 100%;
+  background-size: 100%;
+  background-image: url('../images/service.png');
+  height: 86px;
+  width: 122px;
+  display: block;
+  margin: 0 auto;
+}
+
+.emergency {
+  background-position: 0 0%;
+  background-size: 100%;
+}
+
+.repair {
+  background-position: 0 33.333333%;
+  background-size: 100%;
+}
+
+.servicing {
+  background-position: 0 66.666667%;
+  background-size: 100%;
+}
+
+.wash {
+  background-position: 0 100%;
+  background-size: 100%;
+}
+
+.service-list {
+  margin: 30px 0px;
+}
+
+.service-list h5 {
+  font-size: 26px;
+  line-height: 33px;
+  font-family: OxyReg;
+  margin-bottom: 35px;
+}
+
+.service-list h5 span {
+  font-family: OxyBold;
+}
+
+.service-data {
+  box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.06);
+  background-color: #FFFFFF;
+  border-radius: 3px;
+  border: 1px solid #EEF2F5;
+  padding: 20px 0px;
+  cursor: pointer;
+}
+.service-data:hover {
+  box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.15);
+}
+.service-data label {
+  font-family: OxyReg;
+  font-size: 16px;
+  text-align: center;
+  color: #4C4C4C;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  .service-list h5 {
+      font-size: 18px;
+      padding: 0px 10px;
+  }
+}
+
+ @media screen and (max-width: 640px){
+   .emergency, .repair, .servicing, .wash {
+    width: 100px;
+   }
+   .service-data label{
+     font-size: 13px;
+   }
+ }
+ @media screen and (max-width: 767px){
+   .service-data{
+     margin: 5px;
+   }
+ }
+

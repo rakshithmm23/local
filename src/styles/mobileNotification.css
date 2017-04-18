@@ -1,0 +1,58 @@
+.mobileNotification {
+    z-index: 99999;
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    top: 0;
+}
+
+.notificationHead {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 15px 0;
+}
+
+.notificationHead h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: inline-block;
+    margin-left: 15px;
+    font-family: OxyBold;
+    color: rgba(0,0,0,0.8);
+    font-size: 16px;
+}
+
+.notificationHead .back-option {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.notificationList li{
+    padding: 10px 15px;
+    position: relative;
+}
+.notificationList li.active{
+    background: #e8e8e8;
+}
+.notificationList li h5{
+    font-family: OxyBold;
+    font-size: 15px;
+    color: rgba(0,0,0,0.8)
+}
+.notificationList li p{
+    font-family: OxyReg;
+    font-size: 14px;
+    color: rgba(0,0,0,0.6)
+}
+
+.delete-notification{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.delete-notification img{
+    width: 10px;
+}

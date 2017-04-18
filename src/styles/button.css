@@ -1,0 +1,32 @@
+.btn-theme{
+    font-family: OxyReg;
+    font-size: 15px;
+    border-radius: 3px;
+    height: 45px;
+    text-align: center;
+    color: #fff !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    margin: 5px;
+}
+.btn-theme.lg{
+    width: 220px;
+}
+.btn-theme.sm{
+    width: 130px;
+}
+.btn-theme.facebook{
+    background: #3D5AA6;
+}
+.btn-theme.gmail{
+    background: #DE4E44;
+}
+.btn-theme.submit{
+    background: #23AE49;
+}
+
+@media screen and (max-width: 767px) {
+    .btn-theme{
+        height: 35px;
+    }
+}

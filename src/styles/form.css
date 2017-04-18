@@ -1,0 +1,135 @@
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+    font-family: OxyReg;
+}
+
+.form-group label {
+    display: block;
+    color: rgba(0, 0, 0, 0.39);
+    font-weight: normal;
+}
+
+.form-input {
+    border: 0;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    padding: 0;
+    font-size: 14px;
+    height: 48px;
+    margin: 10px 0;
+}
+
+.form-group.error .form-input {
+    border-color: red;
+}
+
+.form-group .error-text {
+    color: red;
+    font-size: 13px;
+    font-family: OxyLight;
+    display: block;
+    margin: 5px 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: -28px;
+}
+
+.form-group.error .error-text {
+    visibility: visible;
+}
+
+.input-icon {
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 999;
+    top: 5px;
+    cursor: pointer;
+}
+
+.or-text {
+    border-bottom: 1px solid #ddd;
+    height: 11px;
+    color: #8F9397;
+    text-align: center;
+    width: 40%;
+    margin: 30px auto;
+}
+
+.or-text span {
+    font-size: 13px;
+    background: #fff;
+    padding: 10px 15px;
+}
+
+.otp-input {
+    width: 300px;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.otp-input input {
+    font-size: 18px;
+}
+
+form {
+    box-sizing: border-box;
+  width: 260px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  border-radius: 3px;
+}
+input::-webkit-input-placeholder{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+input {
+  margin: 40px 25px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px ;
+  -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #1abc9c;
+  font-size: 11px;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  visibility: visible !important;
+}
+
+
+@media screen and (max-width: 767px) {
+    .input-icon {
+        right: 10px;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .or-text, 
+    .otp-input {
+        width: 100%;
+    }
+}

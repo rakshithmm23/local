@@ -1,0 +1,337 @@
+.bs-wizard {
+    margin: 0 auto;
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+
+/*Form Wizard*/
+
+.bs-wizard>.bs-wizard-step {
+    padding: 0;
+    position: relative;
+    margin-left: -5px;
+    display: table-cell;
+}
+
+.bs-wizard-stepnum {
+    visibility: hidden;
+}
+
+.bs-wizard>.bs-wizard-step+.bs-wizard-step {}
+
+.bs-wizard>.bs-wizard-step .bs-wizard-stepnum {
+    color: #595959;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.bs-wizard>.bs-wizard-step .bs-wizard-info {
+    color: #999;
+    font-size: 14px;
+}
+
+.bs-wizard>.bs-wizard-step>.bs-wizard-dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    /*background: #fbe8aa;*/
+    top: 44px;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+}
+
+.bs-wizard>.bs-wizard-step>.bs-wizard-dot:after {
+    content: ' ';
+    width: 14px;
+    height: 14px;
+    background-color: #1EC1DC;
+    border-radius: 50px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+.bs-wizard>.bs-wizard-step>.progress {
+    position: relative;
+    border-radius: 0px;
+    height: 5px;
+    box-shadow: none;
+    margin: 20px 0;
+}
+
+.bs-wizard>.bs-wizard-step>.progress>.progress-bar {
+    width: 0px;
+    box-shadow: none;
+    background: #1EC1DC;
+}
+
+.bs-wizard>.bs-wizard-step.complete>.progress>.progress-bar {
+    width: 100%;
+}
+
+.bs-wizard>.bs-wizard-step.active>.progress>.progress-bar {
+    width: 50%;
+}
+
+.bs-wizard>.bs-wizard-step:first-child.active>.progress>.progress-bar {
+    width: 0%;
+}
+
+.bs-wizard>.bs-wizard-step:last-child.active>.progress>.progress-bar {
+    width: 100%;
+}
+
+.bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot {
+    background-color: #F7F7F8;
+    visibility: hidden;
+}
+
+.bs-wizard>.bs-wizard-step.active>.bs-wizard-dot {
+    background: rgba(30, 193, 220, 0.3);
+}
+
+.bs-wizard>.bs-wizard-step.disabled>.bs-wizard-dot:after {
+    background-color: #F7F7F8;
+    visibility: visible;
+}
+
+.bs-wizard>.bs-wizard-step:first-child>.progress {
+    left: 50%;
+    width: 50%;
+}
+
+.bs-wizard>.bs-wizard-step:last-child>.progress {
+    width: 50%;
+}
+
+.bs-wizard>.bs-wizard-step.disabled a.bs-wizard-dot {
+    pointer-events: none;
+}
+
+
+/*Status Popup icon */
+
+.status-popup {
+    background: #F2F5F7;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.status-popup:before {
+    content: '';
+    position: absolute;
+    left: 59%;
+    border-top: 15px solid #f2f5f7;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    bottom: -15px;
+    margin: 0 auto;
+}
+
+.iconHolder {
+    display: inline-block;
+    background: #949494;
+    padding: 10px 19px;
+    text-align: center;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 3px 0 #F7F7F8;
+    vertical-align: middle;
+}
+
+.statusDescribtion {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.statusIcon {
+    width: 40px;
+    height: 35px;
+    background: url(../images/statusIcon.png);
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+.acduct .statusIcon {
+    background-position: 0 0%;
+}
+
+.acheating .statusIcon {
+    background-position: 0 3.571429%;
+}
+
+.annualpackage .statusIcon {
+    background-position: 0 7.142857%;
+}
+
+.audio .statusIcon {
+    background-position: 0 10.714286%;
+}
+
+.awesomedetail .statusIcon {
+    background-position: 0 14.285714%;
+}
+
+.basicwash .statusIcon {
+    background-position: 0 17.857143%;
+}
+
+.batteries .statusIcon {
+    background-position: 0 21.428571%;
+}
+
+.brakes .statusIcon {
+    background-position: 0 25%;
+}
+
+.callcenter .statusIcon {
+    background-position: 0 28.571429%;
+}
+
+.clutch .statusIcon {
+    background-position: 0 32.142857%;
+}
+
+.dents .statusIcon {
+    background-position: 0 35.714286%;
+}
+
+.engine .statusIcon {
+    background-position: 0 39.285714%;
+}
+
+.fluids .statusIcon {
+    background-position: 0 42.857143%;
+}
+
+.fueleconomy .statusIcon {
+    background-position: 0 46.428571%;
+}
+
+.fuelservice .statusIcon {
+    background-position: 0 50%;
+}
+
+.germprotect .statusIcon {
+    background-position: 0 53.571429%;
+}
+
+.insurance .statusIcon {
+    background-position: 0 57.142857%;
+}
+
+.interiorclean .statusIcon {
+    background-position: 0 60.714286%;
+}
+
+.monthlypackage .statusIcon {
+    background-position: 0 64.285714%;
+}
+
+.otherservices .statusIcon {
+    background-position: 0 67.857143%;
+}
+
+.regularservice .statusIcon {
+    background-position: 0 71.428571%;
+}
+
+.security .statusIcon {
+    background-position: 0 75%;
+}
+
+.sensors .statusIcon {
+    background-position: 0 78.571429%;
+}
+
+.steering .statusIcon {
+    background-position: 0 82.142857%;
+}
+
+.transmission .statusIcon {
+    background-position: 0 85.714286%;
+}
+
+.tyres .statusIcon {
+    background-position: 0 89.285714%;
+}
+
+.washdetail .statusIcon {
+    background-position: 0 92.857143%;
+}
+
+.washshine .statusIcon {
+    background-position: 0 96.428571%;
+}
+
+.windows .statusIcon {
+    background-position: 0 100%;
+}
+
+.statusDescribtion h4{
+    color: #006FB9;
+    font-size: 14px;
+    font-family: OxyReg;
+    line-height: 15px;
+    letter-spacing: 0.5px;
+}
+.statusDescribtion span{
+    color: #3E4244;
+    font-size: 12px;
+    font-family: OxyReg;
+    letter-spacing: 0.7px;
+}
+.status-process{
+    color: #23AE49;
+    font-size: 12px;
+    font-family: OxyReg;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.status-text{
+    color: #4C4C4C;	
+    font-family: OxyReg;	
+    font-size: 14px;	
+    line-height: 24px;
+    margin-top: 15px;
+}
+@media screen and (max-width: 767px){
+    .bs-wizard{
+        display: none;
+    }
+    .status-popup{
+        margin-left: -15px;
+    }
+    .status-popup:before{
+        display: none;
+    }
+    .statusDescribtion{
+        width: 70%;
+    }
+    .statusDescribtion h4{
+        font-size: 12px;
+        line-height: 15px;
+    }    
+    .statusDescribtion span{
+        font-size: 11px;
+    }
+    .status-process{
+        top: 5px;
+        font-size: 10px;
+        right: 10px;
+    }
+
+}

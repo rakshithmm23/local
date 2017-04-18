@@ -1,0 +1,45 @@
+.profile-header .btn-default{
+    box-shadow: none !important;
+    border: 0;
+    background: none !important;
+    width: 130px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.profile-header .btn-default span{
+    position: absolute;
+    top: 48%;
+    right: 0;
+}
+.profile-header .dropdown-menu{
+    left: auto;
+    right: 0;
+    padding: 0;
+    border-radius: 0;
+}
+.profile-header .dropdown-menu li{
+    padding: 10px 20px;
+    display: block;
+}
+.profile-header .dropdown-menu li:hover{
+    background: rgba(0, 111, 185, 0.84);
+}
+.profile-header .dropdown-menu li:hover a{
+    color: #fff;    
+}
+.profile-header .dropdown-menu li a{
+    background: none !important;
+    display: block;
+    padding: 0;
+    font-family: OxyReg;
+    cursor: pointer;
+    outline: 0 !important;
+}
+
+@media screen and (max-width: 767px){
+    .profile-header .btn-default{
+        width: 115px;
+    }
+}
