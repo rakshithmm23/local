@@ -24,22 +24,26 @@ export class SignUpForm extends Component {
                         </div>
                         <div className="login-panel-body">
                             <div className="form-group">
-                                <input type="text" className="form-control form-input" placeholder="Name" required />
+                                <input type="text" className="form-control form-input" required/>
                                 <span className="error-text">Error text goes here</span>
+                                <label>Name</label>                                
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control form-input" placeholder="Email" required />
+                                <input type="text" className="form-control form-input" required/>
                                 <span className="error-text">Error text goes here</span>
+                                <label>Email</label>                                
                             </div>
                             <div className="form-group">
-                                <input type="password" className="form-control form-input" placeholder="Password" required />
+                                <input type="password" className="form-control form-input" />
                                 <span className="input-icon">
                                     <img src="../images/eye.png" alt="" />
                                 </span>
+                                <label>Password</label> 
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control form-input" placeholder="Mobile Number" required />
+                                <input type="text" className="form-control form-input" />
                                 <span className="error-text">Error text goes here</span>
+                                <label>Mobile Number</label> 
                             </div>
                             <p className="note-text">
                                 By signing up, you agree to the
@@ -76,14 +80,16 @@ export class SignInForm extends Component {
                     </div>
                     <div className="login-panel-body">
                         <div className="form-group">
-                            <input type="text" className="form-control form-input" placeholder="Name" />
+                            <input type="text" className="form-control form-input" required/>
                             <span className="error-text">Error text goes here</span>
+                            <label>Name</label>
                         </div>
                         <div className="form-group">
-                            <input type="password" className="form-control form-input" placeholder="Password" />
+                            <input type="password" className="form-control form-input" required/>
                             <span className="input-icon">
                                 <img src="../images/eye.png" alt="" />
                             </span>
+                            <label>Password</label>
                         </div>
                         <a href="" className="green-text">Forget Password ?</a>
                     </div>
@@ -113,9 +119,9 @@ export class OtpForm extends Component {
 
                     <div className="login-panel-body">
                         <div className="form-group otp-input">
-                            <label>Enter the OTP code below to continue</label>
-                            <input type="text" className="form-control form-input" placeholder="" />
+                            <input type="text" className="form-control form-input" />
                             <span className="error-text">Error text goes here</span>
+                            <label>Enter the OTP code below to continue</label>
                         </div>
                         <Button btnType="submit" btnSize="sm" fontSize={16}>
                             Proceed
@@ -141,9 +147,9 @@ export class GetOtp extends Component {
 
                     <div className="login-panel-body">
                         <div className="form-group otp-input">
-                            <label>Enter your phone number to receive an OTP</label>
-                            <input type="text" className="form-control form-input" placeholder="" />
+                            <input type="text" className="form-control form-input"  />
                             <span className="error-text">Error text goes here</span>
+                            <label>Enter your phone number to receive an OTP</label>
                         </div>
                         <Button btnType="submit" btnSize="sm" fontSize={16}>
                             Get OTP

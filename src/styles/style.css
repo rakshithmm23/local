@@ -1,5 +1,5 @@
     body {
-        background: rgb(236, 243, 245);
+        /*background: rgb(236, 243, 245);*/
     }
     /*Font Bold*/
     @font-face {
@@ -53,5 +53,12 @@
     @media screen and (max-width: 767px) {
         .mpad-0 {
             padding: 0;
+        }
+    }
+
+
+    @media screen and (min-width: 1441px) {
+        .padwrapper{
+            max-width: 1366px;
         }
     }
