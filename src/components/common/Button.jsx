@@ -5,15 +5,15 @@ export default class Button extends Component {
         super(props, context);
     }
     render() {
-        const { btnType, btnSize, children, fontSize } = this.props;
+        const { btnType, btnSize, children, fontSize, label } = this.props;
         let btnClass = 'btn btn-theme ';
-        let customStyle = {}; 
+        let customStyle = {};
         if (fontSize) {
             customStyle.fontSize = Number(fontSize);
         }
         return (
                 <button style={customStyle} className={btnClass + (btnSize ? (btnSize + " ") : '') + (btnType ? btnType : '')}>
-                    {children}
+                    {label}
                 </button>
         );
     }

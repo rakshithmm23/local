@@ -14,7 +14,7 @@ export default class AppLink extends Component {
           </div>
           <div className="col-md-6 col-sm-6 col-xs-12">
             <div className="app-right">
-              <h5>We'll send you a link on your phone or email, open it to download the app.</h5>
+              <h5>{'We\'ll send you a link on your phone or email, open it to download the app.'}</h5>
                <div className="input-group">
                   <input type="text" className="form-control" placeholder="Enter Phone No or Email Id"/>
                   <span className="input-group-btn">

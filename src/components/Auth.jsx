@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Button from './common/Button';
 import {SignUpForm, SignInForm, OtpForm, GetOtp} from './common/Forms';
 import CarouselSlider from './common/CarouselSlider';
 import LoginHeader from './common/LoginHeader';
+
 export default class Authentication extends Component {
 
     render() {
-        const formType = 'signUp';
+        const formType = 'otp';
         let formTitle = '';
         let currentFormView = '';
         switch (formType) {
