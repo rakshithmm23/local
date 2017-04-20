@@ -20,20 +20,19 @@ export default class SignUp extends Component {
     this.formData = {
       ...this.initialFormData
     };
-    this.errors = {};
+    this.errors = {
+      'name': false,
+      'email': false,
+      'password': false,
+      'mobile': false
+    };
     this.onFieldChange = this.onFieldChange.bind(this);
   }
-  onFieldChange(event, name, validationObj) {
-    let value = event.nativeEvent.text ? event.nativeEvent.text.trim() : '';
+  onFieldChange(value, key, name) {
     if (value) {
-      const isValidField = validateField(validationObj, value);
       this.formData[name] = value;
-      this.errors[name] = !isValidField;
-    } else {
-      this.errors[name] = true;
-      this.formData[name] = value;
+      this.errors[name] = false
     }
-    this.setState({'fieldModified': true});
   }
   render() {
     const {router} = this.props;
@@ -52,13 +51,35 @@ export default class SignUp extends Component {
                       <span>OR</span>
                   </div>
                   <div className="login-panel-body">
-                      <TextInput label="Name" errorMessage={'Enter your name'}/>
-                      <TextInput label="Email" errorMessage={'Please enter your email id'}/>
-                      <TextInput label="Password" showPasswordImg={true}/>
-                      <TextInput label="Mobile Number" isNumber={true}/>
+                      <TextInput
+                        type="text"
+                        label="Name"
+                        validationError={'Enter your name'}
+                        showValidationError={this.errors['name']}
+                        validationError="Enter your name"
+                        onChange={this.onFieldChange.bind(this)}/>
+                      <TextInput
+                        type="email"
+                        label="Email"
+                        validationError={'Please enter your email id'}
+                        showValidationError={this.errors['email']}
+                        validationError="Enter a valid email address"
+                        onChange={this.onFieldChange.bind(this)}/>
+                      <TextInput
+                        type="password"
+                        label="Password"
+                        showValidationError={this.errors['password']}
+                        validationError="Password should be greater than six digits"
+                        onChange={this.onFieldChange.bind(this)}/>
+                      <TextInput
+                        type="mobile"
+                        label="Mobile Number"
+                        showValidationError={this.errors['mobile']}
+                        validationError="Enter a valid mobile number"
+                        onChange={this.onFieldChange.bind(this)}/>
                       <p className="note-text">
                           By signing up, you agree to the
-                          <a href="" className="green-text"> terms and conditions </a>, and <a href="" className="green-text">privacy policy</a>.
+                          <a href="" className="green-text"> terms and conditions</a>, and <a href="" className="green-text">privacy policy</a>.
                       </p>
                   </div>
                   <div className="login-panel-footer">
