@@ -8,8 +8,7 @@ export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      submissionError: false,
-      fieldModified: false
+      submissionError: false
     };
     this.initialFormData = {
       'name': '',
@@ -34,6 +33,28 @@ export default class SignUp extends Component {
       this.errors[name] = false
     }
   }
+  sendOTPAction(e) {
+    e.preventDefault();
+    const {router} = this.props;
+    let formData = {
+      ...this.formData
+    }
+    let validForm = true;
+    for (var key in formData) {
+      if (!formData[key]) {
+        this.errors[key] = true
+        validForm = false
+      } else
+        this.errors[key] = false
+    }
+    if (!validForm) {
+      this.setState({submissionError: true})
+      return
+    } else {
+      this.setState({submissionError: false});
+      router.push('verify-otp')
+    }
+  }
   render() {
     const {router} = this.props;
     return (
@@ -54,26 +75,28 @@ export default class SignUp extends Component {
                       <TextInput
                         type="text"
                         label="Name"
-                        validationError={'Enter your name'}
+                        name="name"
                         showValidationError={this.errors['name']}
                         validationError="Enter your name"
                         onChange={this.onFieldChange.bind(this)}/>
                       <TextInput
                         type="email"
                         label="Email"
-                        validationError={'Please enter your email id'}
+                        name="email"
                         showValidationError={this.errors['email']}
                         validationError="Enter a valid email address"
                         onChange={this.onFieldChange.bind(this)}/>
                       <TextInput
                         type="password"
                         label="Password"
+                        name="password"
                         showValidationError={this.errors['password']}
                         validationError="Password should be greater than six digits"
                         onChange={this.onFieldChange.bind(this)}/>
                       <TextInput
                         type="mobile"
                         label="Mobile Number"
+                        name="mobile"
                         showValidationError={this.errors['mobile']}
                         validationError="Enter a valid mobile number"
                         onChange={this.onFieldChange.bind(this)}/>
@@ -83,7 +106,7 @@ export default class SignUp extends Component {
                       </p>
                   </div>
                   <div className="login-panel-footer">
-                      <Button btnCallBack={(e) => {e.preventDefault(); router.push('verify-otp')}} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
+                      <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
                   </div>
               </div>
           </div>
