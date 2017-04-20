@@ -14,7 +14,6 @@ import './styles/dashboard.css';
 import './styles/deals.css';
 import './styles/dropdown.css';
 import './styles/extra.css';
-import './styles/font-awesome.css';
 import './styles/footer.css';
 import './styles/form.css';
 import './styles/header.css';
