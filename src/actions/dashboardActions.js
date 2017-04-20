@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+import * as types from '../actions/actionTypes';
 
 export function test() {
   return function (dispatch) {
