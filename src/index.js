@@ -9,7 +9,7 @@ import configureStore from './store/configureStore';
 import './styles/bootstrap.min.css';
 import './styles/button.css';
 import './styles/badge.css';
-import './styles/font-awesome.css';
+import './styles/materialdesignicons.min.css';
 import './styles/form.css';
 import './styles/style.css';
 import './styles/header.css';

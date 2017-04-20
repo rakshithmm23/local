@@ -6,7 +6,7 @@ import LoginHeader from './common/LoginHeader';
 export default class Authentication extends Component {
 
     render() {
-        const formType = 'otp';
+        const formType = 'signUp';
         let formTitle = '';
         let currentFormView = '';
         switch (formType) {

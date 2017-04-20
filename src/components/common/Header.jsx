@@ -7,14 +7,14 @@ export default class Header extends Component {
     const {notificationCount, profileName, notificationCallBack} = this.props;
     return (
         <div className="header-section navbar-fixed-top">
-            <div className="logo-section col-md-1 col-sm-2 col-xs-3">
+            <div className="logo-section">
                 <img src="../images/logo.png" alt="" className="logo-img"/>
             </div>
-            <div className="header-search col-md-7">
+            <div className="header-search">
                 <div className="form-group">
                     <div className="input-group">
                         <div className="input-group-addon">
-                          <i className="fa fa-search" aria-hidden="true"/>
+                          <i className="mdi mdi-magnify" aria-hidden="true"/>
                         </div>
                         <input
                           type="text"
@@ -23,14 +23,14 @@ export default class Header extends Component {
                     </div>
                 </div>
             </div>
-            <div className="header-right col-md-4 col-sm-10 col-xs-9">
-              <ul className="list-unstyled pull-right">
+            <div className="header-right">
+              <ul className="list-unstyled">
                   <li className="search-mobile">
-                     <i className="fa fa-search" aria-hidden="true"/>
+                     <i className="mdi mdi-magnify" aria-hidden="true"/>
                   </li>
                   <li className="notification-menu" onClick={(e) => {e.preventDefault(); notificationCallBack(true);}}>
                       <label>
-                        <i className="fa fa-bell-o" aria-hidden="true"/>
+                        <i className="mdi mdi-bell-outline" aria-hidden="true"/>
                         <span className="no-notify">{notificationCount}</span>
                       </label>
                   </li>

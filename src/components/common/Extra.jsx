@@ -8,7 +8,7 @@ export default class Header extends Component {
         <div className="notification-message" style={{backgroundColor: bgColor ? bgColor : '#006FB9'}}>
             <div className="notification-desc">
                 <p>{message}</p>
-                <i className="fa fa-times" aria-hidden="true"/>
+                <i className="mdi mdi-close" aria-hidden="true"/>
             </div>
         </div>
     );
