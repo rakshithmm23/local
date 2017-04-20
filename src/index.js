@@ -20,6 +20,7 @@ import './styles/form.css';
 import './styles/header.css';
 import './styles/jobcard.css';
 import './styles/login.css';
+import './styles/materialdesignicons.min.css';
 import './styles/mobileNotification.css';
 import './styles/sidebar.css';
 import './styles/status.css';

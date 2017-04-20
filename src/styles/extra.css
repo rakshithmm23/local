@@ -16,9 +16,9 @@
   display: inline-block;
 }
 
-.notification-desc .fa-times {
+.notification-desc i {
   float: right;
-  margin-right: 30px;
+  margin-right: 40px;
   color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -28,7 +28,7 @@
   .notification-desc p {
     width: 80%;
   }
-  .notification-desc .fa-times {
+  .notification-desc i {
       margin-right: 0px;
       margin-top: 10px;
   }

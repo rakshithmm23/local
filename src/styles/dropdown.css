@@ -1,35 +1,78 @@
-.profile-header .btn-default{
+.profile-header .btn-default {
     box-shadow: none !important;
     border: 0;
     background: none !important;
-    width: 130px;
+    width: 170px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
+    margin-top: 4px;
+    font-family: OxyReg;
 }
-.profile-header .btn-default span{
-    position: absolute;
-    top: 48%;
-    right: 0;
+
+.profile-header .btn-default span img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
 }
-.profile-header .dropdown-menu{
+
+.profile-header .btn-default span .profileName {
+    margin-right: 5px;
+    color: #006FB9;
+}
+
+.profile-header .btn-default .caret {
+    display: none;
+}
+
+.profile-header .btn-default span i {
+    color: #006FB9;
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+.profile-header .dropdown-menu {
     left: auto;
-    right: 0;
-    padding: 0;
+    right: -23px;
+    padding: 10px 0 0;
     border-radius: 0;
+    top: 66px;
+    min-width: 255px;
 }
-.profile-header .dropdown-menu li{
-    padding: 10px 20px;
+
+.profile-header .dropdown-menu i {
+    color: #949DA5;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: -3px;
+    display: inline-block;
+}
+
+.profile-header .dropdown-menu li {
+    padding: 5px 20px;
     display: block;
 }
-.profile-header .dropdown-menu li:hover{
-    background: rgba(0, 111, 185, 0.84);
+
+.profile-header .dropdown-menu li:hover a,
+.profile-header .dropdown-menu li:hover i {
+    color: rgba(0, 111, 185, 0.84);
 }
-.profile-header .dropdown-menu li:hover a{
-    color: #fff;    
+
+.profile-header .dropdown-menu li.active {
+    background: #E7EDEF;
+    margin-top: 10px;
 }
-.profile-header .dropdown-menu li a{
+
+.profile-header .dropdown-menu li.active a,
+.profile-header .dropdown-menu li.active i {
+    color: rgba(0, 111, 185, 0.84);
+}
+
+.profile-header .dropdown-menu li a {
     background: none !important;
     display: block;
     padding: 0;
@@ -38,8 +81,28 @@
     outline: 0 !important;
 }
 
-@media screen and (max-width: 767px){
-    .profile-header .btn-default{
-        width: 115px;
+@media screen and (max-width: 991px) {
+    .profile-header .dropdown-menu {
+        right: 0;
+        top: 57px;
+        min-width: 205px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile-header {
+        margin-left: 20px;
+    }
+    .profile-header .btn-default {
+        width: auto;
+    }
+    .profile-header .dropdown-menu li a {
+        font-size: 12px;
+    }
+    .profile-header .dropdown-menu i {
+        font-size: 20px;
+    }
+    .profile-header .btn-default span .profileName {
+        display: none;
     }
 }
