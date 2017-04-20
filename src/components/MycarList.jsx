@@ -3,7 +3,7 @@ import Header from './common/Header';
 import Sidebar from './common/Sidebar';
 
 
-export default class Dashboard extends Component {
+export default class MyCarList extends Component {
   constructor(props, context) {
     super(props, context);
   }

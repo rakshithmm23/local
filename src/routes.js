@@ -5,17 +5,26 @@ import { Route, IndexRoute } from 'react-router';
 import DashboardContainer from './containers/DashboardContainer';
 import AuthContainer from './containers/AuthContainer';
 
-// Components
+// Auth Components
+import SignIn from './components/Auth/SignIn';
+import SignUp from './components/Auth/SignUp';
+import VerifyOTP from './components/Auth/VerifyOTP';
+import SendOTP from './components/Auth/SendOTP';
+
+// Dashboard Components
+
 import Dashboard from './components/Dashboard';
-import Auth from './components/Auth';
 import Home from './components/Home';
-import MycarList from './components/MycarList';
+import MyCarList from './components/MyCarList';
 
 export default (
   <Route path="/" component={Home}>
-    <IndexRoute component={AuthContainer(Auth)}/>
+    <IndexRoute component={AuthContainer(SignUp)}/>
     <Route path="dashboard" component={DashboardContainer(Dashboard)}/>
-    <Route path="mycar-list" component={DashboardContainer(MycarList)}/>
-    <Route path="auth" component={AuthContainer(Auth)}/>
+    <Route path="mycar-list" component={DashboardContainer(MyCarList)}/>
+    <Route path="sign-up" component={AuthContainer(SignUp)}/>
+    <Route path="sign-in" component={AuthContainer(SignIn)}/>
+    <Route path="send-otp" component={AuthContainer(SendOTP)}/>
+    <Route path="verify-otp" component={AuthContainer(VerifyOTP)}/>
   </Route>
 );
