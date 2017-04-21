@@ -61,7 +61,7 @@
     border-radius: 0px;
     height: 5px;
     box-shadow: none;
-    margin: 20px 0;
+    margin: -7px 0 20px;
 }
 
 .bs-wizard>.bs-wizard-step>.progress>.progress-bar {
@@ -127,7 +127,7 @@
 .status-popup:before {
     content: '';
     position: absolute;
-    left: 59%;
+    left: 72%;
     border-top: 15px solid #f2f5f7;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
@@ -148,7 +148,7 @@
     vertical-align: middle;
 }
 
-.statusDescribtion {
+.statusDescription {
     display: inline-block;
     margin-left: 20px;
     vertical-align: middle;
@@ -278,14 +278,14 @@
     background-position: 0 100%;
 }
 
-.statusDescribtion h4{
+.statusDescription h4{
     color: #006FB9;
     font-size: 14px;
     font-family: OxyReg;
     line-height: 15px;
     letter-spacing: 0.5px;
 }
-.statusDescribtion span{
+.statusDescription span{
     color: #3E4244;
     font-size: 12px;
     font-family: OxyReg;
@@ -318,14 +318,14 @@
     .status-popup:before{
         display: none;
     }
-    .statusDescribtion{
+    .statusDescription{
         width: 70%;
     }
-    .statusDescribtion h4{
+    .statusDescription h4{
         font-size: 12px;
         line-height: 15px;
     }    
-    .statusDescribtion span{
+    .statusDescription span{
         font-size: 11px;
     }
     .status-process{

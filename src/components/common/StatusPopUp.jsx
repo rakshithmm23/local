@@ -10,7 +10,7 @@ export default class StatusPopUp extends Component {
                 <div className="iconHolder">
                     <span className="statusIcon" />
                 </div>
-                <div className="statusDescribtion">
+                <div className="statusDescription">
                     <h4>{statusTitle}</h4>
                     <span>{statusTime}</span>
                 </div>

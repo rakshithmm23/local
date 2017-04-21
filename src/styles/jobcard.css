@@ -1,5 +1,5 @@
     .job-updates {
-        margin: 15px !important;
+        margin: 15px 0!important;
         clear: both;
         background: #fff;
     }
@@ -28,9 +28,34 @@
     }
     
     .jobInfo {
+        position: relative;
+    }
+    
+    .job-update-title {
+        font-family: OxyBold;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    
+    .jobInfo.warning,
+    .jobInfo.active {
         background-color: #F8FCFF;
         border: 1px dashed #006FB9;
-        position: relative;
+    }
+    
+    .jobInfo.finished {
+        border: 1px dashed #23AE49;
+        background-color: #F8FFF7;
+    }
+    
+    .jobInfo.cancelled {
+        border: 1px dashed #FF8A78;
+        background-color: #FFF7F5;
+    }
+    
+    .jobInfo.expired {
+        border: 1px dashed #91A3AF;
+        background-color: #F9F7F7;
     }
     
     .jobInfo p {
@@ -47,19 +72,12 @@
         top: 14px;
     }
     
-    .InfoFinished {
-        border: 1px dashed #23AE49;
-        background-color: #F8FFF7;
-    }
-    
-    .infoCanceled {
-        border: 1px dashed #FF8A78;
-        background-color: #FFF7F5;
-    }
-    
-    .infoExpired {
-        border: 1px dashed #91A3AF;
-        background-color: #F9F7F7;
+    .accepted-info {
+        font-family: OxyReg;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.8);
+        margin-left: -30px;
+        padding-bottom: 30px;
     }
     
     .card-info {
@@ -152,12 +170,12 @@
         font-family: OxyReg;
         font-size: 11px;
         text-align: center;
-        padding: 5px 0;
+        padding: 3px 0;
         border-radius: 50%;
         display: none;
         margin-left: -10px;
-        height: 25px;
-        min-width: 25px;
+        height: 20px;
+        min-width: 20px;
     }
     
     .job-icon.notification .notifyTag {

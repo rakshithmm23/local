@@ -121,6 +121,10 @@ form {
     color: #999;
 }
 
+.auth-footer-text{
+   margin: 30px 0 20px;
+}
+
 @media screen and (max-width: 767px) {
     .input-icon {
         right: 10px;

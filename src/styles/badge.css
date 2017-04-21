@@ -10,24 +10,24 @@
     text-align: center;
     display: inline-block;
 }
-.warning{
+.job-right-header .warning{
     background: #FFBE2C;
 }
-.inActive{
+.job-right-header .active{
     background: #7294FE;
 }
-.accepted{
+.job-right-header .accepted{
     background: #9553B5;
 }
-.inProgress{
+.job-right-header .inProgress{
     background: #1EC1DC;
 }
-.finished{
+.job-right-header .finished{
     background: #195E8D;
 }
-.cancelled{
+.job-right-header .cancelled{
     background: #FF8A78;
 }
-.expired{
+.job-right-header .expired{
     background: #A5A5A5;
 }

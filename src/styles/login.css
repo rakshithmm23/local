@@ -73,7 +73,6 @@
     display: -ms-flexbox;
     display: flex;
     height: 100vh;
-    justify-content: center;
     flex-direction: column;
 }
 
@@ -119,9 +118,38 @@
 
 .login-panel-footer {
     text-align: right;
+    margin-top: 10px;
+}
+.login-panel-footer  a{
+    float: left;
     margin-top: 20px;
 }
+.gm-scroll-view{
+    overflow: auto;
+}
+.gm-scrollbar {
+  visibility: hidden;
+}
 
+.gm-scrollbar.-vertical {
+  width: 0;
+  visibility: hidden;
+}
+
+.gm-scrollbar .thumb {
+  background-color: rgba(0,0,0,0);
+  visibility: hidden;
+}
+
+.gm-scrollbar .thumb:hover,
+.gm-scrollbar .thumb:active {
+  background-color: rgba(0,0,0,0);
+}
+@media screen and (min-height: 701px){
+    .login-panel{
+        justify-content: center;
+    }
+}
 @media screen and (min-width: 1076px) and (max-width: 1280px) {
     .login-panel {
         width: 80%;

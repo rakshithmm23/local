@@ -24,6 +24,9 @@
 .btn-theme.submit{
     background: #23AE49;
 }
+.btn-theme i{
+    margin-right: 10px;
+}
 
 @media screen and (max-width: 767px) {
     .btn-theme{
