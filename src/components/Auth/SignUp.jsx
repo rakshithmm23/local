@@ -9,8 +9,7 @@ export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      submissionError: false,
-      fieldModified: false
+      submissionError: false
     };
     this.initialFormData = {
       'name': '',
@@ -33,6 +32,28 @@ export default class SignUp extends Component {
     if (value) {
       this.formData[name] = value;
       this.errors[name] = false;
+    }
+  }
+  sendOTPAction(e) {
+    e.preventDefault();
+    const {router} = this.props;
+    let formData = {
+      ...this.formData
+    }
+    let validForm = true;
+    for (const key in formData) {
+      if (!formData[key]) {
+        this.errors[key] = true;
+        validForm = false;
+      } else
+        this.errors[key] = false;
+    }
+    if (!validForm) {
+      this.setState({submissionError: true});
+      return;
+    } else {
+      this.setState({submissionError: false});
+      router.push('verify-otp')
     }
   }
   render() {
@@ -63,9 +84,8 @@ export default class SignUp extends Component {
                 <TextInput
                   type="email"
                   label="Email"
-                  validationError={'Please enter your email id'}
+                  validationError="Please enter your email id"
                   showValidationError={this.errors['email']}
-                  validationError="Enter a valid email address"
                   onChange={this.onFieldChange.bind(this)} />
                 <TextInput
                   type="password"

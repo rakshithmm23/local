@@ -6,6 +6,52 @@ import TextInput from '../common/TextInput';
 import GeminiScrollbar from 'react-gemini-scrollbar';
 
 export default class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      submissionError: false
+    };
+    this.initialFormData = {
+      'email': '',
+      'password': '',
+    };
+    this.formData = {
+      ...this.initialFormData
+    };
+    this.errors = {
+      'email': false,
+      'password': false,
+    };
+    this.onFieldChange = this.onFieldChange.bind(this);
+  }
+  onFieldChange(value, key, name) {
+    if (value) {
+      this.formData[name] = value;
+      this.errors[name] = false;
+    }
+  }
+  signInAction(e) {
+    e.preventDefault();
+    const {router} = this.props;
+    let formData = {
+      ...this.formData
+    }
+    let validForm = true;
+    for (const key in formData) {
+      if (!formData[key]) {
+        this.errors[key] = true;
+        validForm = false;
+      } else
+        this.errors[key] = false;
+    }
+    if (!validForm) {
+      this.setState({submissionError: true});
+      return;
+    } else {
+      this.setState({submissionError: false});
+      router.push('dashboard');
+    }
+  }
     render() {
         const { router } = this.props;
         return (
@@ -24,20 +70,33 @@ export default class SignIn extends Component {
                                 <span>OR</span>
                             </div>
                             <div className="login-panel-body">
-                                <TextInput label="Name" errorMessage={'Enter your name'} />
-                                <TextInput label="Password" showPasswordImg={true} />
+                              <TextInput
+                                label="Email"
+                                name="email"
+                                type="email"
+                                showValidationError={this.errors['email']}
+                                validationError="Enter a valid email address"
+                                onChange={this.onFieldChange.bind(this)}/>
+                              <TextInput
+                                label="Password"
+                                name="password"
+                                type="password"
+                                showValidationError={this.errors['password']}
+                                validationError="Password should be greater than six digits"
+                                onChange={this.onFieldChange.bind(this)}/>
                             </div>
+                            
                             <div className="login-panel-footer">
                                 <a href="" className="green-text">Forget Password ?</a>
-                                <Button btnType="submit" btnSize="sm" fontSize={16} label="Sign In" />
+                                <Button btnCallBack={this.signInAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
                             <div className="auth-footer-text text-center">
                                 Dont't have an account? <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-up'); }}>Sign Up</a>
                             </div>
                         </div>
                     </GeminiScrollbar>
-                </div>
-            </div>
+                  </div>
+              </div>
         );
     }
-}
+  }
