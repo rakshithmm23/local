@@ -85,13 +85,13 @@ export default class SignIn extends Component {
                                 validationError="Password should be greater than six digits"
                                 onChange={this.onFieldChange.bind(this)}/>
                             </div>
-                            
+
                             <div className="login-panel-footer">
                                 <a href="" className="green-text">Forget Password ?</a>
                                 <Button btnCallBack={this.signInAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
                             <div className="auth-footer-text text-center">
-                                Dont't have an account? <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-up'); }}>Sign Up</a>
+                                {'Dont\'t have an account?'} <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-up'); }}>Sign Up</a>
                             </div>
                         </div>
                     </GeminiScrollbar>

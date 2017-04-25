@@ -19,7 +19,7 @@ export default class CarouselSlider extends Component {
                         <Carousel.Item>
                             <img src="../images/signIn-banner.png" alt="" />
                             <Carousel.Caption>
-                                Get your car repaired in XX hours
+                                {'Get your car repaired in XX hours'}
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>

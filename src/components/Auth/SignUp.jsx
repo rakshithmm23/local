@@ -39,7 +39,7 @@ export default class SignUp extends Component {
     const {router} = this.props;
     let formData = {
       ...this.formData
-    }
+    };
     let validForm = true;
     for (const key in formData) {
       if (!formData[key]) {
@@ -53,6 +53,15 @@ export default class SignUp extends Component {
       return;
     } else {
       this.setState({submissionError: false});
+      this.props.actions.showSendOTPPage(
+        {
+          'name': this.formData.name,
+          'email': this.formData.email,
+          'password': this.formData.password,
+          'mobile': this.formData.mobile
+
+        }
+      )
       router.push('verify-otp')
     }
   }
@@ -77,6 +86,7 @@ export default class SignUp extends Component {
                 <TextInput
                   type="text"
                   label="Name"
+                  name="name"
                   validationError={'Enter your name'}
                   showValidationError={this.errors['name']}
                   validationError="Enter your name"
@@ -84,17 +94,20 @@ export default class SignUp extends Component {
                 <TextInput
                   type="email"
                   label="Email"
+                  name="email"
                   validationError="Please enter your email id"
                   showValidationError={this.errors['email']}
                   onChange={this.onFieldChange.bind(this)} />
                 <TextInput
                   type="password"
                   label="Password"
+                  name="password"
                   showValidationError={this.errors['password']}
                   validationError="Password should be greater than six digits"
                   onChange={this.onFieldChange.bind(this)} />
                 <TextInput
                   type="mobile"
+                  name="mobile"
                   label="Mobile Number"
                   showValidationError={this.errors['mobile']}
                   validationError="Enter a valid mobile number"
@@ -105,7 +118,7 @@ export default class SignUp extends Component {
                       </p>
               </div>
               <div className="login-panel-footer">
-                <Button btnCallBack={(e) => { e.preventDefault(); router.push('verify-otp'); }} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
+                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
               </div>
               <div className="auth-footer-text text-center">
                 Already having account? <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-in'); }}>Sign In</a>

@@ -7,6 +7,16 @@ export default class Sidebar extends Component {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
+        iconName: 'requests',
+        name: 'My Requests',
+        hyperLink: '#'
+      },
+      {
+        iconName: 'my-cars',
+        name: 'My Cars',
+        hyperLink: '#'
+      },
+      {
         iconName: 'messages',
         name: 'Messages',
         hyperLink: '#'
@@ -16,16 +26,6 @@ export default class Sidebar extends Component {
         name: 'Favourites',
         hyperLink: '#'
       },
-      {
-        iconName: 'requests',
-        name: 'My Requests',
-        hyperLink: '#'
-      },
-      {
-        iconName: 'my-cars',
-        name: 'My Cars',
-        hyperLink: '#'
-      }
     ];
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
