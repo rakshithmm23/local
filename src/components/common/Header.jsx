@@ -8,7 +8,7 @@ export default class Header extends Component {
     return (
         <div className="header-section navbar-fixed-top">
             <div className="logo-section">
-                <img src="./src/images/logo.png" alt="" className="logo-img"/>
+                <img src="../../images/logo.png" alt="" className="logo-img"/>
             </div>
             <div className="header-search">
                 <div className="form-group">

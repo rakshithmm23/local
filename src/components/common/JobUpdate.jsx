@@ -16,7 +16,7 @@ export default class JobUpdate extends Component {
 
     const jobData = [
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -29,7 +29,7 @@ export default class JobUpdate extends Component {
         'currently assessing your application and will get back with their quotes soon.',
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -42,7 +42,7 @@ export default class JobUpdate extends Component {
         'to define the scope of work and negotiate the quotation.',
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -54,7 +54,7 @@ export default class JobUpdate extends Component {
         allotedText: 'The request has been allotted to a vendor.',
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -74,7 +74,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -87,7 +87,7 @@ export default class JobUpdate extends Component {
         'to define the scope of work and negotiate the quotation.',
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -100,7 +100,7 @@ export default class JobUpdate extends Component {
         'to define the scope of work and negotiate the quotation.',
       },
       {
-        carImage: './src/images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         customeId: '12345678',
         serviceTypes: 'Emergency Service',
@@ -196,7 +196,7 @@ export default class JobUpdate extends Component {
                   </div>
                   <div className="jr-body">
                     {item.jobInfoMessage && <div className={infoClass + item.statusIndicator}>
-                      <img src="./src/images/notification.png" alt="" />
+                      <img src="../../images/notification.png" alt="" />
                       <p>
                         {item.jobInfoMessage}
                       </p>
