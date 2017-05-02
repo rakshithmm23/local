@@ -3,7 +3,7 @@
  - [React JS]
  - [Redux]
  - [Axios]
- - [React SlignShot (boilerplater)]
+ - [React Slignshot (boilerplater)]
  - [Webpack]
  - [Editor Config]
 
