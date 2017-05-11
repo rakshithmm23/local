@@ -15,7 +15,7 @@ export default function AuthContainer(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return {dashboardReducer: state.dashboardReducer};
+    return {authReducer: state.authReducer};
   }
 
   function mapDispatchToProps(dispatch) {

@@ -6,7 +6,7 @@ export default class JobCard extends Component {
         return (
             <div className="job-card">
                 <div className="card-img">
-                    <img src="images/car.jpg" alt="Ayaz's Buick" />
+                    <img src="../../images/car.jpg" alt="Ayaz's Buick" />
                 </div>
                 <div className="card-info">
                     <div className="job-name">Sathish</div>

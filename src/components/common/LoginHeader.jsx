@@ -7,7 +7,7 @@ export default class LoginHeader extends Component {
         return (
             <div className="login-title mobile">
                 <a href="index.html">
-                    <img src="../images/back-arrow.png" alt="back" />
+                    <img src="../../images/back-arrow.png" alt="back" />
                 </a>
                 {headerTitle}
             </div>

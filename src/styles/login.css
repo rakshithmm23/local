@@ -117,40 +117,84 @@
     margin-left: 15px;
 }
 
+
+/*Checkbox*/
+
+.note-text label{
+    font-weight: normal;
+    cursor: pointer;
+}
+.note-text input {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    outline: 0 !important;
+    vertical-align: middle;
+    vertical-align: middle;
+    margin-right: 10px !important;
+    margin-top: -4px !important;
+    cursor: pointer;
+}
+
+.note-text input:checked {
+    background-color: #23AE49;
+    border: 1px solid #23AE49;
+    color: #fff;
+}
+
+.note-text input:checked:after {
+    content: '\F12C';
+    font-family: 'Material Design Icons';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #fff;
+}
+
 .login-panel-footer {
     text-align: right;
     margin-top: 10px;
 }
-.login-panel-footer  a{
+
+.login-panel-footer a {
     float: left;
     margin-top: 20px;
 }
-.gm-scroll-view{
+
+.gm-scroll-view {
     overflow: auto;
 }
+
 .gm-scrollbar {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .gm-scrollbar.-vertical {
-  width: 0;
-  visibility: hidden;
+    width: 0;
+    visibility: hidden;
 }
 
 .gm-scrollbar .thumb {
-  background-color: rgba(0,0,0,0);
-  visibility: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    visibility: hidden;
 }
 
 .gm-scrollbar .thumb:hover,
 .gm-scrollbar .thumb:active {
-  background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
-@media screen and (min-height: 701px){
-    .login-panel{
+
+@media screen and (min-height: 701px) {
+    .login-panel {
         justify-content: center;
     }
 }
+
 @media screen and (min-width: 1076px) and (max-width: 1280px) {
     .login-panel {
         width: 80%;

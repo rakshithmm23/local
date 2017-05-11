@@ -54,7 +54,7 @@ export default class JobUpdate extends Component {
     }
     const jobData = [
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -70,7 +70,7 @@ export default class JobUpdate extends Component {
         'currently assessing your application and will get back with their quotes soon.',
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -90,7 +90,7 @@ export default class JobUpdate extends Component {
        'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -122,7 +122,7 @@ export default class JobUpdate extends Component {
         ],
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -154,7 +154,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -186,7 +186,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -202,7 +202,7 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
-        carImage: '../images/car.jpg',
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -320,7 +320,6 @@ export default class JobUpdate extends Component {
                           notifyClass="notification" />);
                       })}
                     </div>
-
                     <div className="vendor-quote">
                       {item.vendorDetails && item.vendorDetails.length > 0 && <ul className="list-unstyled">
                         {vendorDetailsView}

@@ -30,7 +30,7 @@ export default class Sidebar extends Component {
         iconName: 'mdi mdi-heart',
         name: 'Favourites',
         hyperLink: '#'
-      }
+      },
     ];
 
     const sideBarCardList = map(sidebarItems, (item, key) => {

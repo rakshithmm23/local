@@ -11,19 +11,19 @@ export default class CarouselSlider extends Component {
                     <a href="index.html" className="logo absolute" />
                     <Carousel interval={0}>
                         <Carousel.Item>
-                            <img src="../images/signIn-banner.png" alt="" />
+                            <img src="../../images/signIn-banner.png" alt="" />
                             <Carousel.Caption>
                                 Get your car repaired in XX hours
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img src="../images/signIn-banner.png" alt="" />
+                            <img src="../../images/signIn-banner.png" alt="" />
                             <Carousel.Caption>
-                                Get your car repaired in XX hours
+                                {'Get your car repaired in XX hours'}
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img src="../images/signIn-banner.png" alt="" />
+                            <img src="../../images/signIn-banner.png" alt="" />
                             <Carousel.Caption>
                                 Get your car repaired in XX hours
                             </Carousel.Caption>

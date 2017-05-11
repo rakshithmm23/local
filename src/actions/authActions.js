@@ -38,7 +38,51 @@ export function signInAction(signInData) {
         });
       }
     });
-  }
+  };
+}
+
+export function showSendOTPPage(signUpData) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.SIGNUP, JSON.stringify(signUpData), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        const responseData = response.data;
+        responseData.mobile = signUpData.mobile;
+        dispatch({
+          type: responseData.verified ? types.SHOW_WELCOME_PAGE : types.SHOW_SEND_OTP_PAGE,
+          signUpData: responseData
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: "Unknown error occurred please try again"
+        });
+      }
+    })
+    .catch((err) => {
+      if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: err.response.data
+        });
+      } else if (err.response.status === 409) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'User already registered please login'
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'System error, please try later'
+        });
+      }
+    });
+  };
 }
 
 export function showWelcomePage(otp, mobile, userId) {
@@ -76,6 +120,6 @@ export function showWelcomePage(otp, mobile, userId) {
           });
         }
       });
-    }
+    };
   }
 }

@@ -8,7 +8,7 @@ export default class AppLink extends Component {
         <div className="container">
           <div className="col-md-6 col-sm-6 col-xs-12">
             <div className="app-left">
-              <img src="../images/logo.png" alt="carcility-logo"/>
+              <img src="../../images/logo.png" alt="carcility-logo"/>
               <h5>Get car services at your fingertips.<br/> Download the app!</h5>
             </div>
           </div>
@@ -24,12 +24,12 @@ export default class AppLink extends Component {
               <ul className="list-unstyled">
                 <li>
                   <a href="">
-                    <img src="../images/google-store.png" alt=""/>
+                    <img src="../../images/google-store.png" alt=""/>
                   </a>
                 </li>
                 <li>
                   <a href="">
-                    <img src="../images/apple-store.png" alt=""/>
+                    <img src="../../images/apple-store.png" alt=""/>
                   </a>
                 </li>
               </ul>
