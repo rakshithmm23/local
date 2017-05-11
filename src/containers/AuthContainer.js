@@ -9,6 +9,12 @@ export default function AuthContainer(ComposedComponent) {
       super(props);
     }
 
+    componentWillUpdate(nextProps) {
+      if (nextProps.authReducer && nextProps.authReducer.currentComponentKey) {
+        nextProps.router.push(nextProps.authReducer.currentComponentKey);
+      }
+    }
+
     render() {
       return (<ComposedComponent {...this.props}/>);
     }

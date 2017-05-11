@@ -49,7 +49,10 @@ export default class SignIn extends Component {
       return;
     } else {
       this.setState({submissionError: false});
-      router.push('dashboard');
+      this.props.actions.signInAction({
+        'email': this.formData.email,
+        'password': this.formData.password,
+      });
     }
   }
     render() {
