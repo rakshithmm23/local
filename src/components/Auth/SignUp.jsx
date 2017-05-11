@@ -4,7 +4,8 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import GeminiScrollbar from 'react-gemini-scrollbar';
-import { Alert, Checkbox } from 'react-bootstrap';
+import { Checkbox } from 'react-bootstrap';
+import AlertDismissable from '../common/AlertDismissable';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -54,7 +55,13 @@ export default class SignUp extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
-      router.push('verify-otp')
+      this.props.actions.showSendOTPPage({
+        'name': this.formData.name,
+        'email': this.formData.email,
+        'phone': this.formData.phone,
+        'password': this.formData.password,
+        'type': 'customer'
+      })
     }
   }
   render() {
@@ -66,9 +73,9 @@ export default class SignUp extends Component {
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <GeminiScrollbar>
             <div className="login-panel signup">
-              <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss} closeLabel="Close alert">
-                <p> <i className="mdi mdi-block-helper" /> This email id is already in use. Do you already have an account? </p>
-              </Alert>
+              {this.authReducer && this.authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert">
+                <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+              </AlertDismissable>}
               <div className="login-panel-header">
                 <h3 className="login-title">Sign Up</h3>
                 <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); router.push('send-otp') }} btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
