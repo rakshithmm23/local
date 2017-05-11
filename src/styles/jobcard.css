@@ -2,6 +2,48 @@
         margin: 15px 0!important;
         clear: both;
         background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    }
+    
+    .job-updates .row {
+        margin: 0;
+    }
+    /*Job Update Status */
+    
+    .job-updates.warning {
+        border: 1px solid #FFBE2C;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.active {
+        border: 1px solid #7294FE;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.accepted {
+        border: 1px solid #9553B5;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.inProgress {
+        border: 1px solid #1EC1DC;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.finished {
+        border: 1px solid #195E8D;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.cancelled {
+        border: 1px solid #FF8A78;
+        border-left-width: 4px;
+    }
+    
+    .job-updates.expired {
+        border: 1px solid #A5A5A5;
+        border-left-width: 4px;
     }
     
     .job-card {
@@ -9,8 +51,8 @@
     }
     
     .card-img {
-        width: 150px;
-        height: 110px;
+        width: 200px;
+        height: 140px;
         border-radius: 5px;
         overflow: hidden;
         display: inline-block;
@@ -24,7 +66,7 @@
     /*job info*/
     
     .jr-body {
-        padding: 20px 55px;
+        padding: 20px 25px;
     }
     
     .jobInfo {
@@ -32,38 +74,16 @@
     }
     
     .job-update-title {
-        font-family: OxyBold;
+        font-family: CenturyGothic;
         margin-left: 0;
         margin-bottom: 10px;
     }
     
-    .jobInfo.warning,
-    .jobInfo.active {
-        background-color: #F8FCFF;
-        border: 1px dashed #006FB9;
-    }
-    
-    .jobInfo.finished {
-        border: 1px dashed #23AE49;
-        background-color: #F8FFF7;
-    }
-    
-    .jobInfo.cancelled {
-        border: 1px dashed #FF8A78;
-        background-color: #FFF7F5;
-    }
-    
-    .jobInfo.expired {
-        border: 1px dashed #91A3AF;
-        background-color: #F9F7F7;
-    }
-    
     .jobInfo p {
-        color: #4C4C4C;
+        color: #454B51;
         font-size: 14px;
         line-height: 24px;
-        font-family: OxyReg;
-        padding: 20px 50px;
+        font-family: CenturyGothic;
     }
     
     .jobInfo img {
@@ -73,109 +93,120 @@
     }
     
     .accepted-info {
-        font-family: OxyReg;
+        font-family: CenturyGothic;
         font-size: 14px;
         color: rgba(0, 0, 0, 0.8);
-        margin-left: -30px;
-        padding-bottom: 30px;
     }
     
     .card-info {
         margin-left: 15px;
-        line-height: 28px;
+        line-height: 25px;
         display: inline-block;
         vertical-align: top;
     }
     
     .card-info .job-name {
-        color: #55595B;
-        font-size: 15px;
+        color: #717982;
+        font-size: 13px;
         text-transform: capitalize;
-        font-family: OxyBold;
-    }
-    
-    .card-info .job-id {
-        color: #55595B;
-        font-family: OxyReg;
-        font-size: 15px;
-        text-transform: uppercase;
+        font-family: CenturyGothic;
+        font-weight: 900;
     }
     
     .card-info .job-title {
-        font-family: OxyReg;
-        font-size: 22px;
+        font-family: CenturyGothic;
+        font-size: 18px;
         color: #006FB9;
+        text-transform: capitalize;
+        font-weight: 900;
+    }
+    
+    .card-info .job-details {
+        line-height: 2;
+        margin-top: 10px;
+    }
+    
+    .card-info .job-details li {
+        font-family: CenturyGothic;
+        font-size: 13px;
         text-transform: capitalize;
     }
     
-    .card-time li {
-        font-family: OxyReg;
-        font-size: 14px;
-        margin-top: 15px;
+    .card-info .job-details li label {
+        width: 110px;
+        color: #949DA5;
+        margin-bottom: 0;
+        font-weight: 400;
     }
     
-    .card-time li label {
-        width: 165px;
-        color: #91A3AF;
+    .card-info .job-details li span {
+        color: #55595B;
     }
     
-    .card-time li span {
-        color: #4C4C4C;
+    .card-info .job-details li .btn-theme {
+        padding: 0;
+        margin: 0;
+        color: #F48021 !important;
+        font-family: CenturyGothic;
+        text-align: left;
+        height: 30px;
+        margin-top: 5px;
     }
     /*Job Right Header*/
     
+    .job-right {
+        border-left: 1px solid #eef2f5;
+        min-height: 177px;
+        position: relative;
+        overflow: hidden;
+    }
+    
     .job-right-header {
         padding: 15px 10px;
+    }
+    
+    .job-right-header .btn-theme.label {
+        margin: 0;
+        height: auto;
+        margin-left: 10px;
+        color: rgba(0, 0, 0, 0.8) !important;
     }
     
     .job-icon {
         float: right;
         cursor: pointer;
         margin: 0 15px;
-        margin-top: 6px;
     }
     
-    .job-icon .iconView {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: url(../images/icons.png);
-    }
-    
-    .job-label .iconView {
-        display: none;
-    }
-    
-    .job-label .commentLabel {
+    .job-icon .mdi {
+        font-size: 18px;
         color: #006FB9;
-        font-family: OxyReg;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    
+    .job-icon .commentLabel {
+        color: #006FB9;
+        font-family: CenturyGothic;
         font-size: 14px;
-    }
-    
-    .job-icon.phone .iconView {
-        background-position: 0 0;
-    }
-    
-    .job-icon.message .iconView {
-        background-position: 0 -31px;
-    }
-    
-    .job-icon.document .iconView {
-        background-position: 0 -66px;
+        vertical-align: middle;
     }
     
     .job-icon .notifyTag {
-        background: #23AE49;
-        color: #fff;
-        font-family: OxyReg;
-        font-size: 11px;
-        text-align: center;
-        padding: 3px 0;
+        font-family: CenturyGothic;
         border-radius: 50%;
         display: none;
-        margin-left: -10px;
-        height: 20px;
-        min-width: 20px;
+        box-sizing: border-box;
+        height: 10px;
+        width: 10px;
+        border: 2px solid #FFFFFF;
+        background-color: #ED3124;
+        position: relative;
+        top: -3px;
+        vertical-align: bottom;
+        margin-top: -6px;
+        margin-left: -16px;
+        margin-right: 5px;
     }
     
     .job-icon.notification .notifyTag {
@@ -183,8 +214,22 @@
     }
     /*vendor quotes*/
     
+    .vendor-quote {
+        border-top: 1px solid #eef2f5;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .vendor-quote div {
+        height: 100%;
+    }
+    
     .vendor-quote ul li:first-child {
         border-right: 1px solid #eef2f5;
+    }
+    
+    .vendor-quote ul {
+        height: 100%;
     }
     
     .vendor-quote ul li {
@@ -192,31 +237,46 @@
         width: 49%;
         padding: 15px 25px;
         vertical-align: top;
+        height: 100%;
     }
     
     .vendor-quote ul li label {
-        color: #91A3AF;
-        font-size: 12px;
+        color: #9BA1A5;
+        font-size: 14px;
         line-height: 15px;
         display: block;
-        font-family: OxyReg;
+        font-family: CenturyGothic;
+        margin-bottom: 10px;
     }
     
     .vendor-quote ul li span {
-        font-size: 14px;
+        font-size: 15px;
         line-height: 17px;
-        color: #006FB9;
-        font-family: OxyBold;
+        color: #454B51;
+        font-family: CenturyGothic;
+        line-height: 25px;
     }
     
-    .job-right {
-        border-left: 1px solid #eef2f5;
+    .vendor-quote ul li span.vendor-place {
+        color: #006FBA;
+        font-size: 13px;
+        display: block;
     }
     
-    .vendor-quote {
+    .vendor-quote ul li span.vendor-mobile {
+        font-size: 13px;
+    }
+    
+    .job-footer {
         border-top: 1px solid #eef2f5;
-        border-bottom: 1px solid #eef2f5;
+        padding: 0 50px;
     }
+    /*@media screen and (min-width: 1280px) and (max-width: 1380px) {
+        .card-img {
+            width: 37%;
+        }
+    }
+    */
     
     @media screen and (max-width: 1100px) {
         .card-info {
@@ -224,6 +284,15 @@
         }
         .card-info .job-title {
             font-size: 18px;
+        }
+    }
+    
+    @media screen and (max-width: 991px) {
+        .job-update-title {
+            margin-left: 15px;
+        }
+        .job-right-header {
+            padding-left: 0;
         }
     }
     
@@ -246,6 +315,9 @@
         .job-updates {
             margin: 0px !important;
         }
+        .jobInfo p {
+            font-size: 12px;
+        }
     }
     
     @media screen and (max-width: 640px) {
@@ -263,7 +335,7 @@
             background-size: 100%
         }
         .jr-body {
-            padding: 20px 35px;
+            padding: 20px 15px;
             padding-right: 20px;
         }
         .deals-section {

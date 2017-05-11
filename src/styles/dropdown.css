@@ -8,7 +8,7 @@
     white-space: nowrap;
     position: relative;
     margin-top: 4px;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
 }
 
 .profile-header .btn-default span img {
@@ -76,7 +76,7 @@
     background: none !important;
     display: block;
     padding: 0;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
     cursor: pointer;
     outline: 0 !important;
 }

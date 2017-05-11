@@ -1,93 +1,73 @@
 .sidebar {
-  width: 120px;
-  background-color: #181818;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 90px;
-  z-index: 99;
+    width: 110px;
+    background-color: #fff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 90px;
+    z-index: 99;
+    text-align: center;
 }
 
 .sidebar ul li {
-  padding: 30px 0px;
-  cursor: pointer;
-}
-.sidebar ul li:hover{
-  background-color: #101010;
+    padding: 30px 0px;
+    cursor: pointer;
 }
 
 .sidebar ul li a {
-  text-decoration: none !important;
+    text-decoration: none !important;
+    color: #454B51;
+    font-size: 12px;
+    font-family: CenturyGothic;
 }
 
-.sidebar ul li.active {
-  background-color: #006FB9;
+.sidebar ul li a label {
+    font-size: 21px;
+    margin-bottom: 0;
 }
 
 .sidebar ul li span {
-  font-size: 13px;
-  text-align: center;
-  color: #91A3AF;
-  font-family: OxyLight;
-  display: block;
-  margin-top: 7px;
-  cursor: pointer;
+    font-size: 13px;
+    display: block;
+    margin-top: 7px;
 }
 
-.favourites,
-.messages,
-.my-cars,
-.requests {
-  max-width: 100%;
-  background-size: 100%;
-  background-image: url('../images/sidebar_menu.png');
-  width: 17px;
-  height: 21px;
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.favourites {
-  background-position: 0 0%;
-  background-size: 100%;
-}
-
-.messages {
-  background-position: 0 33.606557%;
-  background-size: 100%;
-}
-
-.my-cars {
-  background-position: 0 66.141732%;
-  background-size: 110%;
-}
-
-.requests {
-  background-position: 0 100%;
-  background-size: 122.222222%;
+.sidebar ul li:hover a,
+.sidebar ul li.active a {
+    color: #ED3124;
+    font-weight: 900;
 }
 
 
 /*responsive*/
 
 @media screen and (max-width: 991px) {
-  .sidebar {
-    bottom: 0px;
-    left: initial !important;
-    top: initial !important;
-    width: 100% !important;
-    height: auto !important;
-    box-shadow: 0px 0px 1px #f2f2f2;
-  }
-  .sidebar ul li {
-    padding: 15px 0px !important;
-    display: inline-block;
-    width: 25%;
-    text-align: center;
-  }
-  .sidebar ul li span {
-    font-size: 11px;
-  }
+    .sidebar {
+        bottom: 0px;
+        left: initial !important;
+        top: initial !important;
+        width: 100% !important;
+        height: auto !important;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    }
+    .sidebar ul li {
+        padding: 10px 0px !important;
+        display: inline-block;
+        width: 20%;
+        text-align: center;
+    }
+    .sidebar ul li a {
+        color: #989FA8;
+    }
+    .sidebar ul li:hover a,
+    .sidebar ul li.active a {
+        font-weight: normal;
+    }
+    .sidebar ul li a label {
+        font-size: 15px;
+    }
+    .sidebar ul li a span {
+        font-size: 10px;
+        margin-top: 3px;
+    }
 }
-

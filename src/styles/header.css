@@ -9,7 +9,7 @@
     padding: 15px 0px;
     margin: 0 auto;
     text-align: center;
-    width: 120px;
+    width: 110px;
     border-right: 1px solid #EEF2F5;
     vertical-align: top;
 }
@@ -33,7 +33,7 @@
     border: none;
     outline: 0 !important;
     box-shadow: none !important;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
     font-size: 15px;
 }
 
@@ -45,7 +45,7 @@
 
 .header-search input:focus::-webkit-input-placeholder,
 .header-search input:valid::-webkit-input-placeholder {
-    font-family: OxyReg;
+    font-family: CenturyGothic;
     transform: none;
     color: #949DA5;
     font-size: 16px;
@@ -104,7 +104,7 @@
     border-radius: 100%;
     text-align: center;
     color: #fff;
-    font-family: OxyLight;
+    font-family: CenturyGothic;
     top: 15px;
     right: -6px;
     font-size: 11px;
@@ -134,7 +134,7 @@
 .profile-header .profile-desc span {
     font-size: 14px;
     color: #91A3AF;
-    font-family: OxyLight;
+    font-family: CenturyGothic;
     padding-right: 10px;
 }
 

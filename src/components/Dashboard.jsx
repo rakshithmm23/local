@@ -21,6 +21,7 @@ export default class Dashboard extends Component {
     toggleNotification(isVisible) {
         this.setState({'notificationVisible': isVisible});
     }
+
     render() {
       const serviceTypesView = map(serviceTypes, (service, key) => {
         return (
@@ -56,11 +57,11 @@ export default class Dashboard extends Component {
                         {/*Deals*/}
                         <Deals />
                     </div>
-                    {/*AppLink*/}
-                    <AppLink />
-                    {/*Footer*/}
-                    <Footer />
                 </div>
+                {/*AppLink*/}
+                <AppLink />
+                {/*Footer*/}
+                <Footer />
             </div>
         );
     }

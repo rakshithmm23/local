@@ -35,15 +35,16 @@
     font-size: 18px;
     right: 0;
     left: 0;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
 }
 
 .login-banner .carousel-indicators {
     position: absolute;
     bottom: 6%;
-    left: 10%;
+    left: 0;
     margin-left: 0;
-    text-align: left;
+    width: 100%;
+    text-align: center;
 }
 
 .login-banner .carousel-indicators li {
@@ -78,7 +79,7 @@
 
 .login-title {
     font-size: 28px;
-    font-family: OxyBold;
+    font-family: CenturyGothic;
     color: #3E4244;
     margin-bottom: 30px;
 }

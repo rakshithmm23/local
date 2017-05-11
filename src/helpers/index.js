@@ -56,3 +56,9 @@ export function validateField(validationObj, value){
 export function testSpaces(inputValue){
     return inputValue.replace(/\s/,"").length;
 }
+
+export function windowWidth() {
+    let docElemProp = window.document.documentElement.clientWidth,
+        body = window.document.body;
+    return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
+}

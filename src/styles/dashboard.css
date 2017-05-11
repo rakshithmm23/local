@@ -42,12 +42,12 @@
 .service-list h5 {
     font-size: 26px;
     line-height: 33px;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
     margin-bottom: 35px;
 }
 
 .service-list h5 span {
-    font-family: OxyBold;
+    font-family: CenturyGothic;
 }
 
 .service-data {
@@ -64,7 +64,7 @@
 }
 
 .service-data label {
-    font-family: OxyReg;
+    font-family: CenturyGothic;
     font-size: 16px;
     text-align: center;
     color: #4C4C4C;
@@ -78,10 +78,16 @@
     }
 }
 
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+    .padwrapper {
+        padding: 0px 35px;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .service-list h5 {
         font-size: 18px;
-        padding: 0px 10px;
+        padding: 0px 25px;
     }
 }
 

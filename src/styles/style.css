@@ -19,6 +19,11 @@
         font-family: OxyReg;
         src: url('../fonts/Oxygen-Regular.ttf')
     }
+
+    @font-face {
+        font-family: CenturyGothic;
+        src: url('../fonts/CenturyGothic.ttf')
+    }
     
     ul,
     li {
@@ -39,9 +44,25 @@
     
     .main-wrapper {
         margin-top: 90px;
-        padding-left: 120px;
+        padding-left: 110px;
         overflow: hidden;
         background-color: rgb(236, 243, 245);
+    }
+
+    /*Error Control*/
+    .login-panel .alert{
+        margin-top: 30px;
+        color: #B4312C;
+        background: rgba(237,85,84,0.25);
+        border: 0.5px solid rgba(180,49,44,0.55);
+        font-family: CenturyGothic;
+        font-size: 12px;
+        font-weight: 900;
+    }
+    .login-panel .alert i{
+        margin-right: 10px;
+        font-size: 15px;
+        vertical-align: middle;
     }
     /*responsive*/
     
@@ -50,6 +71,10 @@
             padding-left: 0px;
             padding-bottom: 75px;
             margin-top: 70px;
+        }
+        .login-panel .alert{
+            margin-top: 0;
+            margin-bottom: 20px;
         }
     }
     

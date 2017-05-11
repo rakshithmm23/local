@@ -1,7 +1,7 @@
 .form-group {
     margin-bottom: 35px;
     position: relative;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
 }
 
 .form-group label {
@@ -29,7 +29,7 @@
 .form-group .error-text {
     color: red;
     font-size: 13px;
-    font-family: OxyLight;
+    font-family: CenturyGothic;
     display: block;
     margin: 5px 0;
     visibility: hidden;
@@ -99,7 +99,7 @@ form {
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
-    font-family: OxyReg;
+    font-family: CenturyGothic;
 }
 
 .form-input:focus,

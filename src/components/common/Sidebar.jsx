@@ -7,23 +7,28 @@ export default class Sidebar extends Component {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
-        iconName: 'messages',
+        iconName: 'mdi mdi-view-grid',
+        name: 'Dashboard',
+        hyperLink: '#'
+      },
+      {
+        iconName: 'mdi mdi-pencil',
+        name: 'Requests',
+        hyperLink: '#'
+      },
+      {
+        iconName: 'mdi mdi-car',
+        name: 'My Cars',
+        hyperLink: '#'
+      },
+      {
+        iconName: 'mdi mdi-comment-processing',
         name: 'Messages',
         hyperLink: '#'
       },
       {
-        iconName: 'favourites',
+        iconName: 'mdi mdi-heart',
         name: 'Favourites',
-        hyperLink: '#'
-      },
-      {
-        iconName: 'requests',
-        name: 'My Requests',
-        hyperLink: '#'
-      },
-      {
-        iconName: 'my-cars',
-        name: 'My Cars',
         hyperLink: '#'
       }
     ];
@@ -39,7 +44,7 @@ export default class Sidebar extends Component {
       );
     });
     return (
-      <div className="sidebar" style={{backgroundColor: bgColor ? bgColor : '#181818'}}>
+      <div className="sidebar" style={{backgroundColor: bgColor ? bgColor : '#fff'}}>
           <ul className="list-unstyled">
               {sideBarCardList}
           </ul>

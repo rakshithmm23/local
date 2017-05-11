@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 export default class IconNotification extends Component {
 
     render() {
-        const {iconType, notifyClass, notifyCount, jobLabel,  iconLabel} = this.props;
+        const {iconType, notifyClass, iconLabel} = this.props;
         let iconClass = 'job-icon';
         return (
-            <div className={iconClass + ' ' + (iconType ? iconType : '') + (notifyClass ? ' ' + notifyClass : '') + (jobLabel ? ' ' + jobLabel : '')}>
-                <span className="iconView"/>
-                <span className="notifyTag">{notifyCount}</span>
+            <div className={iconClass + ' ' + (notifyClass ? ' ' + notifyClass : '')}>
+                <span className={'mdi mdi-' + iconType}/>
+                {(iconLabel == "Messages" || iconLabel == "Quotes") && <span className="notifyTag"/>}
                 <span className="commentLabel">{iconLabel}</span>
             </div>
         );

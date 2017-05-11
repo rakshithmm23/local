@@ -11,7 +11,7 @@ export default class Dropdown extends Component {
     render() {
         return (
             <DropdownButton
-                onToggle={()=>{this.setState({'dropDownVisible': !this.state.dropDownVisible})}}
+                onToggle={()=>{this.setState({'dropDownVisible': !this.state.dropDownVisible});}}
                 title={
                     <span>
                         <img src="../images/pic.png" alt="" />

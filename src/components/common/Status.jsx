@@ -32,9 +32,6 @@ export default class Status extends Component {
         <div className="row bs-wizard">
           {statusRangeList}
         </div>
-        <div className={statusText}>
-            The Service provider has completed {taskDone} tasks, while {taskPending} tasks are left.
-        </div>
       </div>
     );
   }

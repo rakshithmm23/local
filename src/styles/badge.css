@@ -1,33 +1,31 @@
 .status-label{
-    border-radius: 20px;
-    width: 140px;
-    height: 34px;
-    background: #A5A5A5;
-    padding: 8px 5px;
-    color: #fff;
-    font-family: OxyReg;
-    text-transform: uppercase;
-    text-align: center;
+    background: #fff;
+    font-family: CenturyGothic;
+    text-transform: capitalize;
     display: inline-block;
+    margin-left: 12px;
+    font-weight: 900;
+    letter-spacing: 0.9px;
+    font-size: 15px;
 }
 .job-right-header .warning{
-    background: #FFBE2C;
+    color: #FFBE2C;
 }
 .job-right-header .active{
-    background: #7294FE;
+    color: #7294FE;
 }
 .job-right-header .accepted{
-    background: #9553B5;
+    color: #9553B5;
 }
 .job-right-header .inProgress{
-    background: #1EC1DC;
+    color: #1EC1DC;
 }
 .job-right-header .finished{
-    background: #195E8D;
+    color: #195E8D;
 }
 .job-right-header .cancelled{
-    background: #FF8A78;
+    color: #FF8A78;
 }
 .job-right-header .expired{
-    background: #A5A5A5;
+    color: #A5A5A5;
 }
