@@ -3,7 +3,8 @@ export function validateEmail(email) {
     return re.test(email);
 }
 export function validateMobile(mobile) {
-  if (/^\d{10}$/.test(mobile)) {
+  const mob = /^[1-9]{1}[0-9]{9,12}$/;
+  if (mob.test(mobile)) {
     return true;
   } else {
       return false;
@@ -56,6 +57,7 @@ export function validateField(validationObj, value){
 export function testSpaces(inputValue){
     return inputValue.replace(/\s/,"").length;
 }
+
 
 export function windowWidth() {
     let docElemProp = window.document.documentElement.clientWidth,

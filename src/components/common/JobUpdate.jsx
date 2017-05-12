@@ -85,7 +85,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Quotes',
           }
         ],
-       jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +  
+       jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
        'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
       {
@@ -197,7 +197,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Help',
           }
         ],
-        jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' + 
+        jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
@@ -217,7 +217,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Rebook',
           }
         ],
-        jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' + 
+        jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
         'Kindly re-book the request and give us a chance to serve you to our best capacity.',
       }
     ];

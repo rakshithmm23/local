@@ -4,6 +4,7 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import GeminiScrollbar from 'react-gemini-scrollbar';
+import AlertDismissable from '../common/AlertDismissable';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ export default class SignIn extends Component {
       this.errors[name] = false;
     }
   }
+  componentWillUnmount() {
+    this.props.actions.hideErrorMessage();
+  }
   signInAction(e) {
     e.preventDefault();
     const {router} = this.props;
@@ -49,11 +53,14 @@ export default class SignIn extends Component {
       return;
     } else {
       this.setState({submissionError: false});
-      router.push('dashboard');
+      this.props.actions.signInAction({
+        'email': this.formData.email,
+        'password': this.formData.password,
+      });
     }
   }
     render() {
-        const { router } = this.props;
+        const { router, authReducer } = this.props;
         return (
             <div className="container-fluid" id="wrapper">
                 <LoginHeader headerTitle='Sign In' />
@@ -70,6 +77,9 @@ export default class SignIn extends Component {
                                 <span>OR</span>
                             </div>
                             <div className="login-panel-body">
+                            {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                              <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                            </AlertDismissable>}
                               <TextInput
                                 label="Email"
                                 name="email"

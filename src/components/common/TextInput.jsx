@@ -35,7 +35,7 @@ export default class TextInput extends Component {
     if (!testSpaces(inputValue)) {
         this.setState({showValidationError: true});
     } else {
-        if ((type == "email" && !validateEmail(inputValue)) || (type == "password" && !validatePassword(inputValue)) || (type == "mobile" && !validateMobile(inputValue))) {
+        if ((type == "email" && !validateEmail(inputValue)) || (type == "password" && !validatePassword(inputValue)) || (type == "phone" && !validateMobile(inputValue))) {
             this.setState({showValidationError: true});
         } else {
           this.setState({showValidationError: false});
