@@ -120,13 +120,13 @@ export default class SignUp extends Component {
                   showValidationError={this.errors['phone']}
                   validationError="Enter a valid mobile number"
                   onChange={this.onFieldChange.bind(this)} />
-                <p className="note-text">
+                <p className={this.errors.terms ? "note-text error" : "note-text"}>
                   <label htmlFor="agreeCheckbox">
                     <input type="checkbox" onChange={(e) => {this.setState({'terms': e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }}/>
                       By signing up, you agree to the
                           <a href="" className="green-text"> terms and conditions</a>, and <a href="" className="green-text">privacy policy</a>.
                   </label>
-                  {this.errors.terms && <span className="error-text">{'Please agree to the terms and condition'}</span>}
+                  <span className="error-text">{'Please agree to the terms and condition'}</span>
                 </p>
 
 
