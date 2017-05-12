@@ -79,9 +79,6 @@ export default class SignUp extends Component {
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <GeminiScrollbar>
             <div className="login-panel signup">
-              {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-              </AlertDismissable>}
               <div className="login-panel-header">
                 <h3 className="login-title">Sign Up</h3>
                 <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); router.push('send-otp') }} btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
@@ -91,6 +88,9 @@ export default class SignUp extends Component {
                 <span>OR</span>
               </div>
               <div className="login-panel-body">
+                {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                </AlertDismissable>}
                 <TextInput
                   type="text"
                   label="Name"

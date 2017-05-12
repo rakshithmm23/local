@@ -1,7 +1,6 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
-import {replace} from 'lodash';
 
 export function signInAction(signInData) {
   return (dispatch) => {
