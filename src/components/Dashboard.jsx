@@ -7,6 +7,7 @@ import Deals from './common/Deals';
 import AppLink from './common/AppLink';
 import Footer from './common/Footer';
 import JobUpdate from './common/JobUpdate';
+import WelcomeText from './common/WelcomeText';
 import MobileNotification from './common/MobileNotification';
 import {serviceTypes} from '../constants/staticData';
 
@@ -42,8 +43,10 @@ export default class Dashboard extends Component {
                     {/*Sidebar*/}
                     <Sidebar />
                     {/*message*/}
-                    <Extra message="Your email account has been verified. We are open for service!" />
+                    {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="padwrapper">
+                        {/*Welcome Text*/}
+                        <WelcomeText />
                         {/*Service List*/}
                         <div className="service-list text-center row">
                             <h5>Need to book a car
@@ -52,6 +55,8 @@ export default class Dashboard extends Component {
                             </h5>
                             {serviceTypesView}
                         </div>
+                    </div>
+                    <div className="padwrapper">
                         {/*Job Updates*/}
                          <JobUpdate />
                         {/*Deals*/}

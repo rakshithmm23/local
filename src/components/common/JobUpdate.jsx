@@ -5,7 +5,6 @@ import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
-import { Dimensions } from 'react-dimensions';
 
 export default class JobUpdate extends Component {
   constructor(...args) {

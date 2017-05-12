@@ -71,6 +71,39 @@
     margin-top: 15px;
 }
 
+
+/*Welcome Text*/
+.welcome-banner{
+    margin: 100px 0;
+}
+.welcome-banner h4 {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 26px;
+}
+
+.welcome-banner h4 span {
+    font-weight: 900;
+    color: #000;
+}
+
+.welcome-banner p {
+    width: 475px;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 20px 0;
+}
+.welcome-banner .btn-theme.label{
+    color: #ED3124 !important;
+    border: 1px solid #ED3124;	
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 14px;	
+    font-weight: bold;	
+}
+
 @media screen and (min-width: 1441px) {
     .padwrapper {
         max-width: 1366px;

@@ -30,22 +30,17 @@ export default class Header extends Component {
                   </li>
                   <li className="notification-menu" onClick={(e) => {e.preventDefault(); notificationCallBack(true);}}>
                       <label>
-                        <i className="mdi mdi-bell-outline" aria-hidden="true"/>
-                        <span className="no-notify">{notificationCount}</span>
+                        <i className="mdi mdi-bell" aria-hidden="true"/>
+                        <span className="no-notify"></span>
+                      </label>
+                  </li>
+                   <li className="notification-menu" onClick={(e) => {e.preventDefault(); notificationCallBack(true);}}>
+                      <label>
+                        <i className="mdi mdi-message-processing" aria-hidden="true"/>
+                        <span className="no-notify"></span>
                       </label>
                   </li>
                   <li className="profile-header">
-                      {/*<div className="dropdown">
-                          <div className="profile-dropdown" data-toggle="dropdown">
-                              <div className="profile-img">
-                                <img src="../images/pic.png" alt="" className="dropdown-toggle"/>
-                              </div>
-                              <div className="profile-desc">
-                                <span>{profileName}</span>
-                                <i className="fa fa-angle-down" aria-hidden="true"/>
-                              </div>
-                          </div>
-                      </div>*/}
                       <Dropdown/>
                   </li>
               </ul>

@@ -1,36 +1,36 @@
 .notification-message {
-  background-color: #006FB9;
-  width: 100%;
+    background-color: #006FB9;
+    width: 100%;
 }
 
 .notification-desc {
-  text-align: center;
-  padding: 15px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 2px;
 }
 
 .notification-desc p {
-  color: #FFFFFF;
-  font-size: 14px;
-  font-family: CenturyGothic;
-  margin-bottom: 0px;
-  display: inline-block;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: CenturyGothic;
+    margin-bottom: 0px;
+    display: inline-block;
 }
 
 .notification-desc i {
-  float: right;
-  margin-right: 40px;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+    float: right;
+    margin-right: 40px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-  .notification-desc p {
-    width: 80%;
-  }
-  .notification-desc i {
-      margin-right: 0px;
-      margin-top: 10px;
-  }
+    .notification-desc p {
+        width: 80%;
+    }
+    .notification-desc i {
+        margin-right: 0px;
+        margin-top: 10px;
+    }
 }
-

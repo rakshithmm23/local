@@ -15,7 +15,6 @@ export default class Dropdown extends Component {
                 title={
                     <span>
                         <img src="../../images/pic.png" alt="" />
-                        <span className="profileName"> John Doe </span>
                         {this.state.dropDownVisible && <i className="mdi mdi-chevron-up" />}
                         {!this.state.dropDownVisible && <i className="mdi mdi-chevron-down" />}
                     </span>

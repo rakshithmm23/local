@@ -2,7 +2,7 @@
     box-shadow: none !important;
     border: 0;
     background: none !important;
-    width: 170px;
+    width: 100px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -12,8 +12,8 @@
 }
 
 .profile-header .btn-default span img {
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: inline-block;
     margin-right: 8px;
@@ -29,8 +29,8 @@
 }
 
 .profile-header .btn-default span i {
-    color: #006FB9;
-    font-size: 22px;
+    color: #454B51;
+    font-size: 26px;
     vertical-align: middle;
 }
 
@@ -39,7 +39,7 @@
     right: -23px;
     padding: 10px 0 0;
     border-radius: 0;
-    top: 66px;
+    top: 72px;
     min-width: 255px;
 }
 
