@@ -26,9 +26,9 @@ export default class Dashboard extends Component {
     render() {
       const serviceTypesView = map(serviceTypes, (service, key) => {
         return (
-          <div className="col-md-3 col-xs-6 mpad-0" key={key}>
+          <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key}>
             <div className="service-data">
-              <span className={service.className}/>
+              <img src={service.serviceImage} alt=""/>
               <label>{service.name}</label>
             </div>
           </div>

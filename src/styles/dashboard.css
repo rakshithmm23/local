@@ -11,38 +11,8 @@
     padding: 0px 40px;
 }
 
-.emergency,
-.repair,
-.servicing,
-.wash {
-    max-width: 100%;
-    background-size: 100%;
-    background-image: url('../images/service.png');
-    height: 255px;
+.service-data img {
     width: 100%;
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
-}
-
-.emergency {
-    background-position: 0 0%;
-    background-size: 100%;
-}
-
-.repair {
-    background-position: 0 33.333333%;
-    background-size: 100%;
-}
-
-.servicing {
-    background-position: 0 66.666667%;
-    background-size: 100%;
-}
-
-.wash {
-    background-position: 0 100%;
-    background-size: 100%;
 }
 
 .service-list {
@@ -92,7 +62,6 @@
 .welcome-banner {
     padding: 70px 0;
     border-bottom: 1px solid rgba(151, 151, 151, 0.1);
-    overflow: hidden;
 }
 
 .welcome-banner h4 {
@@ -144,33 +113,32 @@
     }
 }
 
-@media screen and (max-width: 640px) {
-    .emergency,
-    .repair,
-    .servicing,
-    .wash {
-        width: 100px;
-    }
-    .service-data label {
-        font-size: 13px;
-    }
-}
-
 @media screen and (max-width: 767px) {
     .service-data {
         margin: 5px;
     }
-    .welcome-banner{
+    .welcome-banner {
         padding-bottom: 30px;
     }
-    .welcome-banner h4{
+    .welcome-banner h4 {
         font-size: 18px;
     }
-    .welcome-banner p{
+    .welcome-banner p {
         width: 100%;
         font-size: 12px;
     }
-    .welcome-banner .btn-theme.label{
+    .welcome-banner .btn-theme.label {
         font-size: 13px !important;
+    }
+    .service-list {
+        padding: 10px 50px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .service-data label {
+        font-size: 13px;
+    }
+    .service-list {
+        padding: 10px 15px;
     }
 }
