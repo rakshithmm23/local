@@ -44,29 +44,35 @@ export default class Dashboard extends Component {
                     <Sidebar />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="padwrapper">
-                        {/*Welcome Text*/}
-                        <WelcomeText />
-                        {/*Service List*/}
-                        <div className="service-list text-center row">
-                            <h5>Need to book a car
-                                <span>service? </span>
-                                 Let us help you find it.
-                            </h5>
-                            {serviceTypesView}
+                    <div className="topSection">
+                        <div className="padwrapper">
+                            {/*Welcome Text*/}
+                            <WelcomeText />
+                            {/*Service List*/}
+                            <div className="service-list text-center row">
+                                {serviceTypesView}
+                            </div>
                         </div>
                     </div>
-                    <div className="padwrapper">
-                        {/*Job Updates*/}
-                         <JobUpdate />
-                        {/*Deals*/}
-                        <Deals />
+                    <div className="inSection">
+                        <div className="padwrapper">
+                            {/*Job Updates*/}
+                            <JobUpdate />
+                        </div>
+                    </div>
+                    <div className="bottomSection">
+                        <div className="padwrapper">
+                            {/*Deals*/}
+                            <Deals />
+                        </div>
                     </div>
                 </div>
-                {/*AppLink*/}
-                <AppLink />
-                {/*Footer*/}
-                <Footer />
+                <div className="footerSection">
+                    {/*AppLink*/}
+                    <AppLink />
+                    {/*Footer*/}
+                    <Footer />
+                </div>
             </div>
         );
     }

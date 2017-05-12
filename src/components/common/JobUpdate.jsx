@@ -268,7 +268,7 @@ export default class JobUpdate extends Component {
       }) : '';
       return (
         <div key={key}>
-          {key + 1 == 1 && <h3 className="job-update-title">Job Updates</h3>}
+          {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
           <div className={"job-updates " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">

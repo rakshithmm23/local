@@ -16,8 +16,8 @@ export default class WelcomeText extends Component {
                         <Button btnType="label" btnSize="lg" fontSize={16} label="Create a car profile" />
 
                     </div>
-                    <div className="col-md-4 col-sm-4 col-xs-hidden">
-                        <img src="../../images/img1.png" alt=""/>
+                    <div className="col-md-4 col-sm-4 col-xs-12">
+                        <img src="../../images/welcome.png" alt=""/>
                     </div>
                 </div>
            </div>

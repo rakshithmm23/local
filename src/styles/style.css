@@ -46,8 +46,8 @@
         margin-top: 90px;
         padding-left: 110px;
         overflow: hidden;
-        background-color: rgb(236, 243, 245);
     }
+    
     /*Error Control*/
     
     .login-panel .alert {

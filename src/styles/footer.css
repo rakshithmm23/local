@@ -1,5 +1,104 @@
+.footerSection{
+  background: #363738;
+}
+/*AppLInk*/
+.appLink-section {
+    padding-top: 60px;
+    border-bottom: 1px solid #4A4A4A;
+}
+
+.app-left h5 {
+    padding-top: 10px;
+}
+.app-left h5{
+  display: inline-block;
+  margin-left: 15px;
+}
+.app-left h5,
+.app-right h5 {
+    font-size: 22px;
+    color: #fff;
+    font-family: CenturyGothic;
+    line-height: 35px;
+    vertical-align: middle;
+}
+
+.app-right-content,
+.app-right ul{
+  display: inline-block;
+}
+
+.app-right h5 {
+    font-size: 18px;
+    width: 400px;
+    line-height: 28px;
+    margin-top: 0px;
+}
+
+.app-right ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.app-right .input-group {
+    width: 350px;
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+
+.app-right .form-control {
+    margin: 0px;
+    height: 40px;
+    outline: 0;
+    box-shadow: none;
+}
+
+.app-right .input-group .btn {
+    height: 40px;
+    background-color: #23AE49;
+    border: 1px solid #23AE49;
+    color: #fff;
+    font-family: CenturyGothic;
+    border-radius: 0 3px 3px 0;
+    padding: 0px 15px;
+}
+
+.app-right input:focus::-webkit-input-placeholder,
+.app-right input:valid::-webkit-input-placeholder {
+    font-family: CenturyGothic;
+    transform: none;
+    color: #949DA5;
+    font-size: 13px;
+}
+
+
+/*responsive css*/
+
+@media screen and (max-width: 1100px) {
+    .app-right h5 {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-right .input-group {
+        width: 280px;
+    }
+    .appLink-section {
+        height: auto;
+        padding-bottom: 50px;
+    }
+    .app-left h5,
+    .app-right h5 {
+        font-size: 16px;
+    }
+    .app-right ul li img {
+        width: 120px;
+    }
+}
+
+/*Footer*/
 .footer-section{
-  background-color: #fff;
   padding: 30px 0px;
 }
 .footer-link{
@@ -8,18 +107,18 @@
 .footer-link h5{
     font-size: 17px;
     line-height: 24px;
-     color: #000;
+     color: #fff;
     font-family: CenturyGothic;
 }
 .footer-link ul li{
     font-size: 13px;
     line-height: 24px;
     font-family: CenturyGothic;
-    color: #000;
+    color: #fff;
 }
 .footer-link ul li a{
     font-family: CenturyGothic;
-    color:#000;
+    color:#fff;
     text-decoration: none !important;
 }
 @media screen and (max-width: 767px) {

@@ -26,7 +26,7 @@
     border-color: red;
 }
 
-.form-group .error-text {
+.form-group .error-text{
     color: red;
     font-size: 13px;
     font-family: CenturyGothic;
@@ -36,8 +36,18 @@
     position: absolute;
     bottom: -28px;
 }
+.note-text .error-text{
+    color: red;
+    font-size: 13px;
+    font-family: CenturyGothic;
+    display: block;
+    margin: 5px 0;
+    visibility: hidden;
+    height: 20px;
+}
 
-.form-group.error .error-text {
+.form-group.error .error-text,
+.note-text.error .error-text{
     visibility: visible;
 }
 

@@ -10,44 +10,51 @@
         margin: 0;
     }
     /*Job Update Status */
-    
-    .job-updates.warning {
+    .job-updates{
+        border: 1px solid transparent;
+        border-left-width: 4px;
+    }
+     .job-updates:hover{
+         cursor: pointer;
+
+     }
+    .job-updates.warning:hover {
         border: 1px solid #FFBE2C;
         border-left-width: 4px;
     }
     
-    .job-updates.active {
+    .job-updates.active:hover {
         border: 1px solid #7294FE;
         border-left-width: 4px;
     }
     
-    .job-updates.accepted {
+    .job-updates.accepted:hover {
         border: 1px solid #9553B5;
         border-left-width: 4px;
     }
     
-    .job-updates.inProgress {
+    .job-updates.inProgress:hover {
         border: 1px solid #1EC1DC;
         border-left-width: 4px;
     }
     
-    .job-updates.finished {
+    .job-updates.finished:hover {
         border: 1px solid #195E8D;
         border-left-width: 4px;
     }
     
-    .job-updates.cancelled {
+    .job-updates.cancelled:hover {
         border: 1px solid #FF8A78;
         border-left-width: 4px;
     }
     
-    .job-updates.expired {
+    .job-updates.expired:hover {
         border: 1px solid #A5A5A5;
         border-left-width: 4px;
     }
     
     .job-card {
-        padding: 15px;
+        padding: 15px 15px 8px;
     }
     
     .card-img {
@@ -76,7 +83,10 @@
     .job-update-title {
         font-family: CenturyGothic;
         margin-left: 0;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #454B51;
+        font-weight: 900;
     }
     
     .jobInfo p {
@@ -156,7 +166,7 @@
     
     .job-right {
         border-left: 1px solid #eef2f5;
-        min-height: 177px;
+        min-height: 170px;
         position: relative;
         overflow: hidden;
     }

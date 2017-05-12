@@ -7,7 +7,6 @@ import routes from './routes';
 import configureStore from './store/configureStore';
 
 import './styles/bootstrap.min.css';
-import './styles/applink.css';
 import './styles/badge.css';
 import './styles/button.css';
 import './styles/dashboard.css';

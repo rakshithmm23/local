@@ -1,3 +1,12 @@
+.main-wrapper .topSection {
+    background-color: #fff;
+}
+
+.main-wrapper .inSection {
+    background-color: rgb(249, 252, 251);
+    padding: 50px 0;
+}
+
 .padwrapper {
     padding: 0px 40px;
 }
@@ -9,10 +18,11 @@
     max-width: 100%;
     background-size: 100%;
     background-image: url('../images/service.png');
-    height: 86px;
-    width: 122px;
+    height: 255px;
+    width: 100%;
     display: block;
     margin: 0 auto;
+    border-radius: 5px;
 }
 
 .emergency {
@@ -52,11 +62,8 @@
 
 .service-data {
     box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.06);
-    background-color: #FFFFFF;
-    border-radius: 3px;
-    border: 1px solid #EEF2F5;
-    padding: 20px 0px;
     cursor: pointer;
+    position: relative;
 }
 
 .service-data:hover {
@@ -67,15 +74,27 @@
     font-family: CenturyGothic;
     font-size: 16px;
     text-align: center;
-    color: #4C4C4C;
+    color: #fff;
     margin-top: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #261a9d;
+    left: 0;
+    padding: 8px 0;
+    margin-bottom: 0;
+    border-radius: 0px 0px 5px 5px;
 }
 
 
 /*Welcome Text*/
-.welcome-banner{
-    margin: 100px 0;
+
+.welcome-banner {
+    padding: 70px 0;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
+    overflow: hidden;
 }
+
 .welcome-banner h4 {
     color: #454B51;
     font-family: CenturyGothic;
@@ -95,13 +114,14 @@
     line-height: 26px;
     margin: 20px 0;
 }
-.welcome-banner .btn-theme.label{
+
+.welcome-banner .btn-theme.label {
     color: #ED3124 !important;
-    border: 1px solid #ED3124;	
+    border: 1px solid #ED3124;
     border-radius: 3px;
     text-transform: uppercase;
-    font-size: 14px;	
-    font-weight: bold;	
+    font-size: 14px;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 1441px) {
@@ -139,5 +159,18 @@
 @media screen and (max-width: 767px) {
     .service-data {
         margin: 5px;
+    }
+    .welcome-banner{
+        padding-bottom: 30px;
+    }
+    .welcome-banner h4{
+        font-size: 18px;
+    }
+    .welcome-banner p{
+        width: 100%;
+        font-size: 12px;
+    }
+    .welcome-banner .btn-theme.label{
+        font-size: 13px !important;
     }
 }
