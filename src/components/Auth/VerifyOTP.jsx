@@ -4,6 +4,7 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import GeminiScrollbar from 'react-gemini-scrollbar';
+import AlertDismissable from '../common/AlertDismissable';
 
 export default class VerifyOTP extends Component {
     constructor(props){
@@ -47,16 +48,19 @@ export default class VerifyOTP extends Component {
         return;
       } else {
         this.setState({submissionError: false});
-        // this.props.actions.showWelcomePage(
-        //   {
-        //     'otp': this.formData.otp
-        //   }
-        // );
-        router.push('dashboard')
+        debugger;
+        this.props.actions.showWelcomePage(
+          this.formData.otp,
+          this.props.authReducer && this.props.authReducer.signUpData && this.props.authReducer.signUpData.phone ? this.props.authReducer.signUpData.phone : '',
+          this.props.authReducer && this.props.authReducer.signUpData && this.props.authReducer.signUpData.id ? this.props.authReducer.signUpData.id : ''
+        );
       }
     }
+    componentWillUnmount() {
+      this.props.actions.hideErrorMessage();
+    }
     render() {
-        const { router } = this.props;
+        const { router, authReducer } = this.props;
         return (
             <div className="container-fluid" id="wrapper">
                 <LoginHeader headerTitle='Sign Up' />
@@ -66,9 +70,12 @@ export default class VerifyOTP extends Component {
                         <div className="login-panel otp">
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
+                                {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                                </AlertDismissable>}
                                 <p className="note-text">
                                     A One Time Password has been sent on your registered mobile no.
-                            <strong>99999 99999 <i className="fa fa-pencil" /></strong>
+                                  {authReducer && authReducer.signUpData && authReducer.signUpData.phone && <strong>+{authReducer && authReducer.signUpData && authReducer.signUpData.phone} <i className="fa fa-pencil" /></strong>}
                                 </p>
                             </div>
 

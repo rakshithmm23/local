@@ -10,6 +10,9 @@ export default class AlertDismissable extends Component {
 
   handleAlertDismiss() {
     this.setState({alertVisible: false});
+    if (this.props.closeAction){
+      this.props.closeAction();
+    }
   }
 
   render() {
