@@ -6,10 +6,6 @@
     padding-top: 60px;
     border-bottom: 1px solid #4A4A4A;
 }
-
-.app-left h5 {
-    padding-top: 10px;
-}
 .app-left h5{
   display: inline-block;
   margin-left: 15px;
@@ -21,11 +17,13 @@
     font-family: CenturyGothic;
     line-height: 35px;
     vertical-align: middle;
+    font-weight: normal;
 }
 
 .app-right-content,
 .app-right ul{
   display: inline-block;
+  vertical-align: top;
 }
 
 .app-right h5 {
@@ -36,8 +34,11 @@
 }
 
 .app-right ul li {
-    display: inline-block;
-    margin-right: 15px;
+    display: block;
+    margin: 10px 0;
+}
+.app-right ul li img{
+  width: 70%;
 }
 
 .app-right .input-group {
@@ -81,16 +82,23 @@
 }
 
 @media screen and (max-width: 768px) {
+    .app-left {
+        margin-bottom: 20px;
+    }
     .app-right .input-group {
         width: 280px;
     }
     .appLink-section {
         height: auto;
-        padding-bottom: 50px;
+        padding: 0;
     }
     .app-left h5,
     .app-right h5 {
         font-size: 16px;
+    }
+    .app-right ul li{
+        display: inline-block;
+        margin-right: 10px;
     }
     .app-right ul li img {
         width: 120px;

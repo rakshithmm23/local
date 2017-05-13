@@ -166,7 +166,7 @@
         display: none;
     }
     .padwrapper {
-        padding: 0px !important;
+        padding: 15px !important;
     }
     .service-data {
         margin-bottom: 15px;
@@ -194,5 +194,10 @@
         text-align: left;
         width: auto;
         border: 0;
+    }
+}
+@media screen and (max-width: 767px){
+    .header-right li:nth-child(3){
+        display: none;
     }
 }
