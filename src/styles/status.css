@@ -53,7 +53,7 @@
     background-color: #ED3124;
     border-radius: 50px;
     position: absolute;
-        top: 3px;
+    top: 3px;
     left: 3px;
 }
 
@@ -63,7 +63,7 @@
     height: 2px;
     box-shadow: none;
     margin: -12px 0 20px;
-    background-color: #D9E1E8; 
+    background-color: #D9E1E8;
 }
 
 .bs-wizard>.bs-wizard-step>.progress>.progress-bar {
@@ -101,6 +101,7 @@
     background-color: transparent;
     visibility: hiddden;
 }
+
 .bs-wizard>.bs-wizard-step.disabled:last-child>.bs-wizard-dot:after {
     background-color: #D9E1E8;
     visibility: visible;
@@ -128,7 +129,7 @@
     padding: 10px 15px;
     position: relative;
     margin-top: 15px;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
     border: 1px solid #ddd;
     margin-bottom: 15px;
     min-width: 425px;
@@ -136,7 +137,7 @@
     left: 24.2%;
 }
 
-.statusPopup-arrow{
+.statusPopup-arrow {
     width: 15px;
     height: 15px;
     background: #fff;
@@ -178,7 +179,7 @@
 }
 
 .job-start-point,
-.job-end-point{
+.job-end-point {
     font-family: CenturyGothic;
     font-size: 12px;
     color: #55595B;
@@ -187,7 +188,8 @@
     margin-left: 15px;
     float: left;
 }
-.job-end-point{
+
+.job-end-point {
     float: right;
     margin-right: 15px;
     margin-left: 0;
@@ -308,12 +310,14 @@
 .windows .statusIcon {
     background-position: 0 100%;
 }
-.job-footer-title{
+
+.job-footer-title {
     color: #454B51;
     font-size: 15px;
     font-family: CenturyGothic;
     font-weight: 900;
 }
+
 .statusDescription h4 {
     color: #454B51;
     font-size: 15px;
@@ -346,7 +350,8 @@
     line-height: 24px;
     margin-top: 15px;
 }
-.statusDescription .view-worklog{
+
+.statusDescription .view-worklog {
     color: #006FBA;
     font-size: 12px;
     font-family: CenturyGothic;
@@ -362,24 +367,36 @@
         display: none;
     }
     .status-popup {
-        margin-left: -15px;
+        width: 100%;
+        left: 0;
+        min-width: auto;
+        padding: 10px;
     }
-    .status-popup:before {
+    .statusPopup-arrow {
         display: none;
     }
     .statusDescription {
         width: 70%;
+        margin-left: 10px;
     }
     .statusDescription h4 {
-        font-size: 12px;
+        font-size: 10px;
         line-height: 15px;
     }
     .statusDescription span {
-        font-size: 11px;
+        font-size: 9px;
+        display: block;
+        margin-left: 0;
     }
     .status-process {
         top: 5px;
         font-size: 10px;
         right: 10px;
+    }
+    .statusDescription .view-worklog {
+        float: none !important;
+        display: block;
+        margin-top: 10px;
+        font-size: 10px;
     }
 }

@@ -67,10 +67,9 @@
     }
     /*responsive*/
     
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 1024px) {
         .main-wrapper {
             padding-left: 0px;
-            padding-bottom: 75px;
             margin-top: 70px;
         }
         .login-panel .alert {

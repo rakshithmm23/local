@@ -1,15 +1,20 @@
-.footerSection{
-  background: #363738;
+.footerSection {
+    background: #363738;
 }
+
+
 /*AppLInk*/
+
 .appLink-section {
-    padding-top: 60px;
+    padding: 60px 0;
     border-bottom: 1px solid #4A4A4A;
 }
-.app-left h5{
-  display: inline-block;
-  margin-left: 15px;
+
+.app-left h5 {
+    display: inline-block;
+    margin-left: 15px;
 }
+
 .app-left h5,
 .app-right h5 {
     font-size: 22px;
@@ -21,14 +26,13 @@
 }
 
 .app-right-content,
-.app-right ul{
-  display: inline-block;
-  vertical-align: top;
+.app-right ul {
+    display: inline-block;
+    vertical-align: top;
 }
 
 .app-right h5 {
     font-size: 18px;
-    width: 400px;
     line-height: 28px;
     margin-top: 0px;
 }
@@ -37,13 +41,19 @@
     display: block;
     margin: 10px 0;
 }
-.app-right ul li img{
-  width: 70%;
+
+.app-right ul {
+    width: 125px;
+    margin-left: 20px;
+}
+
+.app-right ul li img {
+    width: 100%;
 }
 
 .app-right .input-group {
     width: 350px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     margin-top: 15px;
 }
 
@@ -73,64 +83,133 @@
 }
 
 
-/*responsive css*/
+/*Footer*/
 
-@media screen and (max-width: 1100px) {
-    .app-right h5 {
-        width: 300px;
+.footerSection {
+    padding-left: 110px;
+}
+
+.quickLink-section {
+    padding: 30px 0px;
+}
+
+.footer-link {
+    margin-bottom: 30px;
+}
+
+.footer-link h5 {
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    font-family: CenturyGothic;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.footer-link ul li a {
+    font-family: CenturyGothic;
+    line-height: 30px;
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none !important;
+}
+
+.footer-link ul li a i {
+    float: left;
+    padding: 2px 5px;
+    padding-left: 0;
+    margin-right: 25px;
+    font-size: 24px;
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1280px) {
+    .app-right h5,
+    .app-right .input-group {
+        width: 320px;
     }
 }
 
-@media screen and (max-width: 768px) {
+
+/*responsive css*/
+
+@media screen and (max-width: 1200px) {
+    .app-right ul {
+        margin-left: 0;
+        width: auto;
+    }
+    .app-right ul li img {
+        width: 70%;
+    }
+    .app-right ul li {
+        display: inline-block;
+    }
+    .app-right ul li:last-child {
+        margin-left: -20px;
+    }
+    .app-left h5,
+    .app-right h5 {
+        font-size: 18px;
+    }
+    .footer-link h5 {
+        font-size: 13px;
+    }
+    .footer-link ul li a {
+        font-size: 12px;
+    }
+    .footer-link ul li a i {
+        font-size: 18px;
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .footerSection {
+        padding-left: 0;
+        padding-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer-section {
+        padding: 30px 0px;
+    }
+    .footerSection .padwrapper {
+        padding: 0 !important;
+    }
+    .app-left img {
+        width: 35px;
+    }
+    .app-left h5,
+    .app-right h5 {
+        font-size: 14px;
+        line-height: 25px;
+    }
+    .footer-link h5 {
+        font-size: 13px;
+    }
+    .app-right ul li{
+        width: 140px;
+    }
+    .app-right ul li:last-child {
+        margin-left: -30px;
+    }
     .app-left {
         margin-bottom: 20px;
     }
     .app-right .input-group {
-        width: 280px;
+        width: 350px;
     }
     .appLink-section {
         height: auto;
-        padding: 0;
+        padding: 20px 0;
     }
-    .app-left h5,
-    .app-right h5 {
-        font-size: 16px;
-    }
-    .app-right ul li{
-        display: inline-block;
-        margin-right: 10px;
-    }
-    .app-right ul li img {
-        width: 120px;
+    .app-right .input-group .btn{
+        font-size: 12px;
     }
 }
 
-/*Footer*/
-.footer-section{
-  padding: 30px 0px;
-}
-.footer-link{
-  margin-bottom: 30px;
-}
-.footer-link h5{
-    font-size: 17px;
-    line-height: 24px;
-     color: #fff;
-    font-family: CenturyGothic;
-}
-.footer-link ul li{
-    font-size: 13px;
-    line-height: 24px;
-    font-family: CenturyGothic;
-    color: #fff;
-}
-.footer-link ul li a{
-    font-family: CenturyGothic;
-    color:#fff;
-    text-decoration: none !important;
-}
-@media screen and (max-width: 767px) {
-  .footer-section{
-    padding: 30px 0px;
-  }
+@media screen and (max-width: 580px) {
+    .app-right .input-group {
+        width: 85%;
+    }
 }

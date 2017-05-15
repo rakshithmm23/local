@@ -25,39 +25,54 @@ export default class Footer extends Component {
         }]
       },
       {
-        footerHeading: 'For Vendor',
+        footerHeading: 'For Vendors',
         sublist: [{
-            title:"Code of Conduct",
-            hyperLink: "#",
-        },
-        {
-            title:"Guidelines",
-            hyperLink: "#",
-        },
-        {
-            title:"Verification Process",
-            hyperLink: "#",
-        },
-        {
-            title:"Business Process",
+            title:"Become a Vendor",
             hyperLink: "#",
         }]
-      },{
-        footerHeading: 'For Customers',
+      },
+       {
+        footerHeading: 'Get In Touch',
         sublist: [{
-            title:"User App",
+            title:"+971-348-457934",
             hyperLink: "#",
         },
         {
-            title:"Community",
+            title:"support@carcility.com",
             hyperLink: "#",
         },
         {
+            title:"9234 Gislason Mews Suite 847",
+            hyperLink: "#",
+        }]
+      },
+      {
+        footerHeading: 'Help',
+        sublist: [{
             title:"FAQs",
             hyperLink: "#",
         },
         {
             title:"Customer Care",
+            hyperLink: "#",
+        }]
+      },
+      {
+        footerHeading: 'Social Media',
+        sublist: [{
+            socialIcon: "facebook",
+            hyperLink: "#",
+        },
+        {
+            socialIcon:"instagram",
+            hyperLink: "#",
+        },
+        {
+            socialIcon:"google-plus",
+            hyperLink: "#",
+        },
+        {
+            socialIcon:'twitter',
             hyperLink: "#",
         }]
       }
@@ -67,12 +82,14 @@ export default class Footer extends Component {
       const subList = map(item.sublist, (subItem, subKey) => {
         return (
           <li key={subKey}>
-            <a href={subItem.hyperLink}> {subItem.title}</a>
+           { subItem.title ? <a href={subItem.hyperLink}> {subItem.title}</a> :
+            <a href={subItem.hyperLink}> <i className ={"mdi mdi-" + subItem.socialIcon} /></a>
+           }
           </li>
-        );
+                  );
       });
       return (
-          <div className="col-md-3 col-sm-6 col-xs-12" key={key}>
+          <div className={((key + 1) == footerItem.length || (key+1) == 3)? "col-md-3 col-sm-3 col-xs-12" : "col-md-2 col-sm-2 col-xs-12"} key={key}>
               <div className="footer-link">
                 <h5>{item.footerHeading}</h5>
                 {item.sublist && <ul className="list-unstyled">
@@ -84,9 +101,11 @@ export default class Footer extends Component {
     });
 
     return (
-      <div className="footer-section">
-        <div className="container">
-          {footerLink}
+      <div className="quickLink-section">
+        <div className="padwrapper">
+          <div className="container-fluid">
+            {footerLink}
+          </div>
         </div>
       </div>
     );
