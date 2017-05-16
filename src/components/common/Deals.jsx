@@ -13,11 +13,11 @@ export default class Deals extends Component {
     };
     const dealUrl = [
       {
-        dealImg: '../../images/img1.png',
+        dealImg: '../../images/deals1.png',
       }, {
-        dealImg: '../../images/img2.png',
+        dealImg: '../../images/deals2.png',
       }, {
-        dealImg: '../../images/img3.png',
+        dealImg: '../../images/deals3.png',
       },{
         dealImg: '../../images/img1.png',
       }, {
@@ -25,11 +25,11 @@ export default class Deals extends Component {
       }, {
         dealImg: '../../images/img3.png',
       },{
-        dealImg: '../../images/img1.png',
+        dealImg: '../../images/deals1.png',
       }, {
         dealImg: '../../images/img2.png',
       }, {
-        dealImg: '../../images/img3.png',
+        dealImg: '../../images/deals3.png',
       }
     ];
     const dealList = map(dealUrl, (item, key) => {

@@ -65,7 +65,9 @@
 .login-banner .carousel-control {
     display: none;
 }
-
+.customScroll{
+    height: 100vh !important;
+}
 .login-panel {
     width: 590px;
     margin: 0 auto;
@@ -262,6 +264,7 @@
 @media screen and (min-width: 581px) and (max-width: 767px) {
     .login-panel-header .btn-theme.lg {
         width: 45%;
+        font-size: 13px !important;
     }
 }
 
@@ -273,5 +276,6 @@
     }
     .login-panel-header .btn-theme.lg {
         width: 43%;
+        font-size: 13px !important;
     }
 }
