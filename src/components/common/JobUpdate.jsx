@@ -319,11 +319,6 @@ export default class JobUpdate extends Component {
                           notifyClass="notification" />);
                       })}
                     </div>
-                    <div className="vendor-quote">
-                      {item.vendorDetails && item.vendorDetails.length > 0 && <ul className="list-unstyled">
-                        {vendorDetailsView}
-                      </ul>}
-                    </div>
                     <div>
                       {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage && <div className="jr-body">
                         <div className={infoClass}>
