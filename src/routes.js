@@ -16,6 +16,7 @@ import SendOTP from './components/Auth/SendOTP';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import MyCarList from './components/MyCarList';
+import MyRequest from './components/MyRequest/MyRequest.jsx';
 
 export default (
   <Route path="/" component={Home}>
@@ -26,5 +27,7 @@ export default (
     <Route path="sign-in" component={AuthContainer(SignIn)}/>
     <Route path="send-otp" component={AuthContainer(SendOTP)}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)}/>
+    <Route path="request" component={AuthContainer(MyRequest)}/>
+    
   </Route>
 );

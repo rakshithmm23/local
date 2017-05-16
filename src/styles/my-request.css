@@ -1,0 +1,53 @@
+.request-summary{
+    border-top: 2px solid #F9FCFB;
+}
+
+.request-summary .request-summary-tab{
+    border-bottom: 2px solid #F9FCFB;
+}
+
+.request-summary .request-summary-tab .title{
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.request-summary .request-summary-tab .title.active{
+    border-bottom: 2px solid #E50000; 
+}
+
+.request-summary .title span{
+    
+	color: #454B51;
+	font-family: 'CenturyGothic';
+	font-size: 18px;
+	line-height: 22px;
+    display: block;
+    text-align: center;
+}
+.request-summary .left{
+    border-right: 2px solid #F9FCFB;
+    padding: 0;
+}
+
+.quotes-section{
+    padding: 0 15px;
+}
+
+.quotes-section .title span{
+    color: #717982;
+    display: inline-block;
+    text-align: left;
+    padding: 25px 0;
+	font-size: 17px;
+	line-height: 17px;
+}
+.quotes-section .title .drop-down{
+    float: right;
+    margin-top: 24px;
+}
+
+.quotes-section .title .drop-down select{
+    margin: 0 20px;
+}
+
+
