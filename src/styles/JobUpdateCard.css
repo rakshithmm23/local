@@ -1,0 +1,70 @@
+.quotes-section .jobcard.box{
+    margin: 0 auto;
+	box-sizing: border-box;
+	height: 160px;
+	width: 449px;
+	border: 1px solid #006FBA;
+    border-radius:3px; 
+}
+.quotes-section .media{
+	box-sizing: border-box;
+	height: 100px;
+	width: 449px;
+    padding: 10px;
+}
+
+.quotes-section .jobcard.box .media-left{
+    height: 70px;
+    width: 100px
+}
+.quotes-section .jobcard.box .media-heading{
+	color: #454B51;
+	font-family: "CenturyGothic";
+	font-size: 17px;
+}
+.quotes-section .jobcard.box .rating span{
+	color: #717982;
+	font-family: "CenturyGothic";
+	font-size: 13px;
+}
+.quotes-section .jobcard.box .distance{
+	color: #25AF49;
+	font-family: "CenturyGothic";
+	font-size: 13px;
+} 
+
+.quotes-section .jobcard.box .box-footer{
+  background-color: #F9FBFB;
+  height: 58px;
+} 
+.quotes-section .jobcard.box .box-footer .id-number{
+	color: #454B51;
+	font-family: "CenturyGothic";
+	font-size: 14px;
+    margin-left: 15px;
+    font-weight: bold;
+    display: inline-block;
+}
+.quotes-section .jobcard.box .box-footer .box-message{
+    float: right;
+}
+.quotes-section .jobcard.box .box-footer .box-message .job-icon{
+    line-height: 35px;
+}
+.quotes-section .jobcard.box .box-footer .box-message span{
+	color: #006FB9;
+	font-family: "CenturyGothic";
+	font-size: 14px;
+	line-height: 17px;
+}
+.quotes-section .jobcard.box .footer-container{
+  padding: 10px;
+}    
+.quotes-section .jobcard.box .footer-container .input-group,
+.quotes-section .jobcard.box .footer-container .input-group-btn
+{
+    display: inline-block;
+}
+.quotes-section .jobcard.box .footer-container button{
+  border-radius: 3px;
+}  

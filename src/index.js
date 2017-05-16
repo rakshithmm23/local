@@ -24,8 +24,10 @@ import './styles/sidebar.css';
 import './styles/status.css';
 import './styles/style.css';
 import './styles/typography.css';
+import './styles/my-request.css';
 import '../node_modules/slick-carousel/slick/slick.css';
 import '../node_modules/slick-carousel/slick/slick-theme.css';
+import './styles/JobUpdateCard.css';
 
 export const store = configureStore();
 
