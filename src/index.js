@@ -24,6 +24,8 @@ import './styles/sidebar.css';
 import './styles/status.css';
 import './styles/style.css';
 import './styles/typography.css';
+import '../node_modules/slick-carousel/slick/slick.css';
+import '../node_modules/slick-carousel/slick/slick-theme.css';
 
 export const store = configureStore();
 
