@@ -4,7 +4,7 @@ import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
-import { Media } from 'react-bootstrap';
+import QuotesCard from './QuotesCard';
 import IconNotification from '../common/IconNotification';
 
 export default class RequestCard extends Component {
@@ -12,11 +12,16 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       open: false,
-      currentWidth: ''
+      jobUpdates:"quotes",
+      currentWidth: '',
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
+  jobDetail(val){
+    this.setState({jobUpdates:val});
+  }
+  
   componentWillMount() {
     this.updateDimensions();
   }
@@ -72,50 +77,6 @@ export default class RequestCard extends Component {
 
     ];
     const jobDataList = map(jobData, (item, key) => {
-      const jobSubList = map(item.statusPopup, (subItem, subKey) => {
-        return (
-          <div className={statusClass + ' ' + (statusType ? statusType : '')} key={subKey}>
-            <span className="statusPopup-arrow" />
-            <div className="iconHolder">
-              <span className={subItem.imgClassName} />
-            </div>
-            <div className="statusDescription">
-              <h4>{subItem.statusDescription}</h4>
-              <span>{subItem.statusTime}</span>
-              <span className="status-process">{subItem.statusMessage}</span>
-              <a href="" className="view-worklog pull-right">View Worklog</a>
-            </div>
-          </div>
-        );
-      });
-      const vendorDetailsView = item.vendorDetails ? item.vendorDetails.map((item, key) => {
-        return (
-          <div key={key}>
-            <li>
-              <label>
-                Vendor
-              </label>
-              <span>
-                {item.vendor}
-              </span>
-              <span className="vendor-place">
-                {item.vendorPlace}
-              </span>
-              <span className="vendor-mobile">
-                {item.vendorMobile}
-              </span>
-            </li>
-            <li>
-              <label>
-                Quote
-              </label>
-              <span>
-                {item.quote}
-              </span>
-            </li>
-          </div>
-        );
-      }) : '';
       return (
         <div key={key}>
           {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
@@ -198,12 +159,13 @@ export default class RequestCard extends Component {
                   <div className="col-md-6 clearfix left">
                     <div className="request-summary-tab clearfix">
                       <div className="col-md-6 clearfix">
-                        <div className="title active">
+                        <div className={this.state.jobUpdates=="details"?"title active":"title"} onClick={()=>{this.jobDetail('details')}}>
                           <span>Job Details</span>
                         </div>
+
                       </div>
                       <div className="col-md-6 clearfix">
-                        <div className="title">
+                        <div className={this.state.jobUpdates=="quotes"?"title active":"title"} onClick={()=>{this.jobDetail('quotes')}}>
                           <span>Quotes</span>
                         </div>
                       </div>
@@ -211,14 +173,27 @@ export default class RequestCard extends Component {
                     <div className="quotes-section">
                       <div className="title">
                         <span>4 Quotes Received</span>
+                        <div className="drop-down">
+                          <select>
+                            <option value="volvo">Filter</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                          <select>
+                            <option value="volvo">Sort By</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                        </div>
                       </div>
                       <div className="wrapper">
-                        {/*css in JobUpdateCard.css*/}
-                        <div className="jobcard box">
+                        {/*<div className="jobcard box">
                           <div className="box-content">
                             <Media>
                               <Media.Left>
-                                <img width={100} height={70} src="../../images/car.jpg" alt="Image" />
+                                <img  src="../../images/car.jpg" alt="Image" />
                               </Media.Left>
                               <Media.Body>
                                 <Media.Heading>1. Shine Works</Media.Heading>
@@ -229,20 +204,27 @@ export default class RequestCard extends Component {
                             <div className="box-footer">
                               <div className="footer-container">
                                 <div className="input-group">
-                                <span className="input-group-btn">
-                                  <button className="btn btn-success" type="button">View Quote</button>
-                                </span>
+                                  <span className="input-group-btn">
+                                    <button className="btn btn-success" type="button">View Quote</button>
+                                  </span>
+                                </div>
+                                <span className="id-number">120EAD</span>
+                                <div className="box-message">
+                                  <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
+                                </div>
                               </div>
-                              <span className="id-number">120EAD</span>
-                              <div className="box-message">
-                                <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification"/>
-                              </div>
-                              </div>
-                              
+
                             </div>
                           </div>
-
+                        </div>*/}
+                        {this.state.jobUpdates == "quotes" && 
+                        <div>
+                          <QuotesCard />
+                          <QuotesCard />
+                          <QuotesCard />
+                          <QuotesCard />
                         </div>
+                        }
                       </div>
                     </div>
 

@@ -1,16 +1,31 @@
 .quotes-section .jobcard.box{
-    margin: 0 auto;
 	box-sizing: border-box;
 	height: 160px;
-	width: 449px;
+	width: 100%;
 	border: 1px solid #006FBA;
     border-radius:3px; 
+	margin: 15px 0;
+}
+.quotes-section .jobcard.box .box-content .media-left img{
+	width: 100px;
+	height: 70px;
 }
 .quotes-section .media{
 	box-sizing: border-box;
 	height: 100px;
-	width: 449px;
     padding: 10px;
+}
+.quotes-section .media-body{
+	position: relative;
+}
+.quotes-section .media-body .mdi-heart,.quotes-section .media-body .mdi-heart-outline{
+	position: absolute;
+	color: red;
+	top: 0;
+    right: 0;
+}
+.quotes-section .media-body .mdi-star{
+	color: #FF7300 !important;
 }
 
 .quotes-section .jobcard.box .media-left{
@@ -21,6 +36,7 @@
 	color: #454B51;
 	font-family: "CenturyGothic";
 	font-size: 17px;
+	display: inline-block;
 }
 .quotes-section .jobcard.box .rating span{
 	color: #717982;
