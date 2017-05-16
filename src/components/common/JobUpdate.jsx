@@ -5,6 +5,7 @@ import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
+import EmptyUpdates from './EmptyUpdates';
 
 export default class JobUpdate extends Component {
   constructor(...args) {
@@ -268,7 +269,6 @@ export default class JobUpdate extends Component {
       }) : '';
       return (
         <div key={key}>
-          {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
           <div className={"job-updates " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">
@@ -358,6 +358,8 @@ export default class JobUpdate extends Component {
     });
     return (
       <div>
+          <h4 className="job-update-title">Job Updates</h4>
+          <EmptyUpdates />
         {jobDataList}
       </div>
     );

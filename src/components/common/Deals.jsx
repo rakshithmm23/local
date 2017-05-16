@@ -5,11 +5,11 @@ export default class Deals extends Component {
   render() {
     const dealUrl = [
       {
-        dealImg: '../../images/img1.png',
+        dealImg: '../../images/deals1.png',
       }, {
-        dealImg: '../../images/img2.png',
+        dealImg: '../../images/deals2.png',
       }, {
-        dealImg: '../../images/img3.png',
+        dealImg: '../../images/deals2.png',
       }
     ];
   const dealList = map(dealUrl, (item, key) => {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Dropdown from '../common/Dropdown';
+import Search from '../common/Search';
 
 
 export default class Header extends Component {
@@ -11,17 +12,7 @@ export default class Header extends Component {
                 <img src="../../images/logo-new.png" alt="" className="logo-img"/>
             </div>
             <div className="header-search">
-                <div className="form-group">
-                    <div className="input-group">
-                        <div className="input-group-addon">
-                          <i className="mdi mdi-magnify" aria-hidden="true"/>
-                        </div>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Search near your location"/>
-                    </div>
-                </div>
+                <Search />
             </div>
             <div className="header-right">
               <ul className="list-unstyled">

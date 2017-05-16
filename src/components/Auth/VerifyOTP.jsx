@@ -3,8 +3,9 @@ import CarouselSlider from '../common/CarouselSlider';
 import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import GeminiScrollbar from 'react-gemini-scrollbar';
 import AlertDismissable from '../common/AlertDismissable';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 export default class VerifyOTP extends Component {
     constructor(props){
@@ -66,7 +67,7 @@ export default class VerifyOTP extends Component {
                 <LoginHeader headerTitle='Sign Up' />
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
-                    <GeminiScrollbar>
+                  <Scrollbars className="customScroll">
                         <div className="login-panel otp">
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
@@ -95,7 +96,7 @@ export default class VerifyOTP extends Component {
                                 </p>
                             </div>
                         </div>
-                    </GeminiScrollbar>
+                    </Scrollbars>
                 </div>
             </div>
         );

@@ -9,6 +9,7 @@ import Footer from './common/Footer';
 import JobUpdate from './common/JobUpdate';
 import WelcomeText from './common/WelcomeText';
 import MobileNotification from './common/MobileNotification';
+// import MobileSearch from './common/MobileSearch';
 import {serviceTypes} from '../constants/staticData';
 
 export default class Dashboard extends Component {

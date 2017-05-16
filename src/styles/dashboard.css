@@ -1,5 +1,7 @@
 .main-wrapper .topSection {
     background-color: #fff;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.11);
+    margin-bottom: 4px;
 }
 
 .main-wrapper .inSection {
@@ -93,6 +95,37 @@
     font-weight: bold;
 }
 
+
+/*Empty Updates*/
+
+.welcome-banner.empty {
+    background: #f9fcfb;
+    border-bottom: 0;
+    padding: 0 0 50px;
+}
+
+.welcome-banner.empty .btn-theme {
+    background: #ED3124;
+    margin: 0;
+}
+
+.welcome-banner.empty h4 {
+    color: #717982;
+    font-size: 20px;
+    font-family: CenturyGothic;
+    font-weight: 900;
+}
+
+.welcome-banner.empty p {
+    color: #717982;
+    font-size: 14px;
+}
+
+.welcome-banner.empty img {
+    margin-top: -80px;
+    max-width: 100%;
+}
+
 @media screen and (min-width: 1441px) {
     .padwrapper {
         max-width: 1366px;
@@ -133,7 +166,15 @@
     .service-list {
         padding: 10px;
     }
+    .welcome-banner.empty img {
+        margin-top: 0px;
+        display: none;
+    }
+    .welcome-banner.empty h4{
+        font-size: 16px;
+    }
 }
+
 @media screen and (max-width: 640px) {
     .service-data label {
         font-size: 13px;
