@@ -1,8 +1,10 @@
+.jobUpdate{
+    cursor: auto;
+}
 .request-summary{
     border-top: 2px solid #F9FCFB;
 }
 select, input[type="color"][list]{
-    border-radius: 3px !important;
     height: 30px;
     width: 100px;
     background-color: #EEF4F6;
@@ -16,6 +18,7 @@ select, input[type="color"][list]{
 .request-summary .request-summary-tab .title{
     padding-top: 22px;
     padding-bottom: 22px;
+    cursor: pointer;
 }
 
 .request-summary .request-summary-tab .title.active{

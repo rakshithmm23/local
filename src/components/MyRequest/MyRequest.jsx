@@ -35,7 +35,7 @@ export default class MyRequest extends Component {
         );
       });
         return (
-            <div>
+            <div className="jobUpdate">
                 {/*Header*/}
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification}/>
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification}/>

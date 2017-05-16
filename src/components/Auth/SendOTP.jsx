@@ -3,7 +3,6 @@ import CarouselSlider from '../common/CarouselSlider';
 import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 
 

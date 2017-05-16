@@ -42,11 +42,9 @@ export default class RequestCard extends Component {
   }
   render() {
     // console.log(this.state.currentWidth)
-    const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
-    let statusClass = 'status-popup';
     if (this.state.currentWidth <= 1155 && this.state.currentWidth >= 992) {
       jobLeftGridValue = "col-md-7";
       jobRightGridValue = "col-md-5";
@@ -130,11 +128,11 @@ export default class RequestCard extends Component {
                           notifyClass="notification" />);
                       })}
                     </div>
-                    // <div className="vendor-quote">
-                    //   {item.vendorDetails && item.vendorDetails.length > 0 && <ul className="list-unstyled">
-                    //     {vendorDetailsView}
-                    //   </ul>}
-                    // </div>
+                    <div className="vendor-quote">
+                      {item.vendorDetails && item.vendorDetails.length > 0 && <ul className="list-unstyled">
+                        {vendorDetailsView}
+                      </ul>}
+                    </div>
                     <div>
                       {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage && <div className="jr-body">
                         <div className={infoClass}>

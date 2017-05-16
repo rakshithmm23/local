@@ -7,12 +7,8 @@ class QuotesCard extends Component {
         super(props);
         this.state = {
             isFavouriteVisible: false,
-            starSelected: true
         };
     }
-    changeStar(){
-        this.setState({starSelected:!this.state.starSelected});
-        }
     render() {
         
         return (
@@ -25,12 +21,12 @@ class QuotesCard extends Component {
                         <Media.Body>
                             <Media.Heading>1. Shine Works <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
                             <div className="rating">
-                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
-                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
-                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
-                                <span>3.2 (23 Reviews)</span></div>
+                                <span className="rating-text">3.2 (23 Reviews)</span></div>
                             <span className="distance">2.5km</span>
                         </Media.Body>
                     </Media>
