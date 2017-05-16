@@ -28,6 +28,5 @@ export default (
     <Route path="send-otp" component={AuthContainer(SendOTP)}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)}/>
     <Route path="request" component={AuthContainer(MyRequest)}/>
-    
   </Route>
 );

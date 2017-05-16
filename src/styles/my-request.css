@@ -1,6 +1,13 @@
 .request-summary{
     border-top: 2px solid #F9FCFB;
 }
+select, input[type="color"][list]{
+    border-radius: 3px !important;
+    height: 30px;
+    width: 100px;
+    background-color: #EEF4F6;
+}
+
 
 .request-summary .request-summary-tab{
     border-bottom: 2px solid #F9FCFB;

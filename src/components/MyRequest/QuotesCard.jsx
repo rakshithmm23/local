@@ -7,10 +7,11 @@ class QuotesCard extends Component {
         super(props);
         this.state = {
             isFavouriteVisible: false,
+            starSelected: true
         };
     }
     changeStar(){
-            console.log('dasds')
+        this.setState({starSelected:!this.state.starSelected});
         }
     render() {
         
@@ -24,9 +25,9 @@ class QuotesCard extends Component {
                         <Media.Body>
                             <Media.Heading>1. Shine Works <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
                             <div className="rating">
-                                <span className="mdi mdi-star" onMouseOver={()=>{this.changeStar()}}/>
-                                <span className="mdi mdi-star"/>
-                                <span className="mdi mdi-star"/>
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} onMouseOver={()=>{this.changeStar()}}/>
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
                                 <span>3.2 (23 Reviews)</span></div>
