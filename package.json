@@ -45,7 +45,8 @@
     "react-router-redux": "4.0.7",
     "react-slick": "0.14.11",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "universal-cookie": "2.0.7"
   },
   "devDependencies": {
     "autoprefixer": "6.5.4",
