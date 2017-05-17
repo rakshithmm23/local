@@ -11,7 +11,7 @@ class QuotesCard extends Component {
         };
     }
     render() {
-        
+        const {index, vendorName, rating, distance, reviews} = this.props;
         return (
             <div className="jobcard box">
                 <div className="box-content">
@@ -20,15 +20,15 @@ class QuotesCard extends Component {
                             <img src="../../images/car.jpg" alt="Image" />
                         </Media.Left>
                         <Media.Body>
-                            <Media.Heading>1. Shine Works <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
+                            <Media.Heading>{index}. {vendorName} <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
                             <div className="rating">
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
-                                <span className="rating-text">3.2 (23 Reviews)</span></div>
-                            <span className="distance">2.5km</span>
+                                <span className="rating-text">{rating}{reviews}</span></div>
+                            <span className="distance">{distance}</span>
                         </Media.Body>
                     </Media>
                     <div className="box-footer">

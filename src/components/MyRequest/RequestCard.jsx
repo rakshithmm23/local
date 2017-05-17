@@ -186,10 +186,10 @@ export default class RequestCard extends Component {
 
                         {this.state.jobUpdates == "quotes" &&
                           <div>
-                            <QuotesCard />
-                            <QuotesCard />
-                            <QuotesCard />
-                            <QuotesCard />
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
                           </div>
                         }
                       </div>
@@ -197,12 +197,21 @@ export default class RequestCard extends Component {
 
                   </div>
                   <div className="col-md-6 clearfix right">
-                    <Gmaps 
-                      center={{lat:12.9952672,lng:77.5905857}}
-                      markers={[{location:{lat:12.9952672,lng:77.5905857}}]}
+                    <Gmaps
+                      center={{ lat: 12.9952672, lng: 77.5905857 }}
+                      markers={
+                        [
+                          {
+                            location:
+                            { lat: 12.9952672, lng: 77.5905857 }
+                          },{
+                            location:
+                            { lat: 12.2958, lng: 76.6394 }
+                          }
+                        ]}
                       zoom={9}
-                      containerElement={<div style={{ height: 100+'vh' }} />}
-                      mapElement={<div style={{ height: 100+'vh' }} />}
+                      containerElement={<div style={{ height: 100 + 'vh' }} />}
+                      mapElement={<div style={{ height: 100 + 'vh' }} />}
 
                     />
                   </div>
