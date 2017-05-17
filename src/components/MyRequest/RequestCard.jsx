@@ -21,7 +21,7 @@ export default class RequestCard extends Component {
   jobDetail(val){
     this.setState({jobUpdates:val});
   }
-  
+
   componentWillMount() {
     this.updateDimensions();
   }
@@ -130,11 +130,6 @@ export default class RequestCard extends Component {
                           notifyClass="notification" />);
                       })}
                     </div>
-                    <div className="vendor-quote">
-                      {item.vendorDetails && item.vendorDetails.length > 0 && <ul className="list-unstyled">
-                        {vendorDetailsView}
-                      </ul>}
-                    </div>
                     <div>
                       {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage && <div className="jr-body">
                         <div className={infoClass}>
@@ -217,7 +212,7 @@ export default class RequestCard extends Component {
                             </div>
                           </div>
                         </div>*/}
-                        {this.state.jobUpdates == "quotes" && 
+                        {this.state.jobUpdates == "quotes" &&
                         <div>
                           <QuotesCard />
                           <QuotesCard />
