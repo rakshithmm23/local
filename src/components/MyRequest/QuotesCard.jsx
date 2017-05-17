@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IconNotification from '../common/IconNotification';
+import Button from '../common/Button';
 import { Media } from 'react-bootstrap';
 
 class QuotesCard extends Component {
@@ -32,12 +33,8 @@ class QuotesCard extends Component {
                     </Media>
                     <div className="box-footer">
                         <div className="footer-container">
-                            <div className="input-group">
-                                <span className="input-group-btn">
-                                    <button className="btn btn-success" type="button">View Quote</button>
-                                </span>
-                            </div>
-                            <span className="id-number">120EAD</span>
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="View Quote" />
+                            <span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
                             </div>

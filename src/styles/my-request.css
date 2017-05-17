@@ -47,17 +47,38 @@ select, input[type="color"][list]{
     color: #717982;
     display: inline-block;
     text-align: left;
-    padding: 25px 0;
+    padding: 33px 0;
 	font-size: 17px;
 	line-height: 17px;
+    vertical-align: middle;
 }
-.quotes-section .title .drop-down{
+.quotes-section .title .filterSection{
     float: right;
     margin-top: 24px;
 }
 
-.quotes-section .title .drop-down select{
-    margin: 0 20px;
+.quotes-section .title .filterSection select{
+    height: 30px;
+    border-radius: 0;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    color: #55595B;
+    -webkit-appearance: none;
+    min-width: 100px;
+    width: auto;
+    margin-left: 20px;
+    padding: 0 5px;
+    vertical-align: middle;
+    display: inline-block;
+    box-shadow: none;
+    outline: 0;
+    position: relative;
+    background: url(http://localhost:3000/arrow-down.png);
+    background-repeat: no-repeat;
+    background-position: 95% 10px;
+    background-color: #EEF4F6;
+    padding-right: 30px;
 }
+  
 
 

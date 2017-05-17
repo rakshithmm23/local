@@ -166,7 +166,7 @@ export default class RequestCard extends Component {
                     <div className="quotes-section">
                       <div className="title">
                         <span>4 Quotes Received</span>
-                        <div className="drop-down">
+                        <div className="filterSection">
                           <select>
                             <option value="volvo">Filter</option>
                             <option value="saab">Saab</option>

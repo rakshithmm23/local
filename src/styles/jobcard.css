@@ -191,7 +191,7 @@
     }
 
     .job-icon .mdi {
-        font-size: 18px;
+        font-size: 18px !important;
         color: #006FB9;
         margin-right: 10px;
         vertical-align: middle;
@@ -382,7 +382,7 @@
             margin: 5px 8px;
         }
         .job-icon .mdi {
-            font-size: 16px;
+            font-size: 16px !important;
         }
         .jr-body {
             padding-right: 20px;

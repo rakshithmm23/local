@@ -3,7 +3,9 @@ export function validateEmail(email) {
     return re.test(email);
 }
 export function validateMobile(mobile) {
-  const mob = /^[1-9]{1}[0-9]{9,12}$/;
+  const mob = /^[+]*[0-9][+0-9]{9,14}$/;
+
+
   if (mob.test(mobile)) {
     return true;
   } else {
