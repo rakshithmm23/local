@@ -5,6 +5,7 @@ import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
 import QuotesCard from './QuotesCard';
+import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 
 export default class RequestCard extends Component {
@@ -12,14 +13,14 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       open: false,
-      jobUpdates:"quotes",
+      jobUpdates: "quotes",
       currentWidth: '',
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
-  jobDetail(val){
-    this.setState({jobUpdates:val});
+  jobDetail(val) {
+    this.setState({ jobUpdates: val });
   }
 
   componentWillMount() {
@@ -152,13 +153,13 @@ export default class RequestCard extends Component {
                   <div className="col-md-6 clearfix left">
                     <div className="request-summary-tab clearfix">
                       <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="details"?"title active":"title"} onClick={()=>{this.jobDetail('details')}}>
+                        <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
                           <span>Job Details</span>
                         </div>
 
                       </div>
                       <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="quotes"?"title active":"title"} onClick={()=>{this.jobDetail('quotes')}}>
+                        <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
                           <span>Quotes</span>
                         </div>
                       </div>
@@ -182,45 +183,28 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                       <div className="wrapper">
-                        {/*<div className="jobcard box">
-                          <div className="box-content">
-                            <Media>
-                              <Media.Left>
-                                <img  src="../../images/car.jpg" alt="Image" />
-                              </Media.Left>
-                              <Media.Body>
-                                <Media.Heading>1. Shine Works</Media.Heading>
-                                <div className="rating"><span>3.2 (23 Reviews)</span></div>
-                                <span className="distance">2.5km</span>
-                              </Media.Body>
-                            </Media>
-                            <div className="box-footer">
-                              <div className="footer-container">
-                                <div className="input-group">
-                                  <span className="input-group-btn">
-                                    <button className="btn btn-success" type="button">View Quote</button>
-                                  </span>
-                                </div>
-                                <span className="id-number">120EAD</span>
-                                <div className="box-message">
-                                  <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
-                                </div>
-                              </div>
 
-                            </div>
-                          </div>
-                        </div>*/}
                         {this.state.jobUpdates == "quotes" &&
-                        <div>
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
-                        </div>
+                          <div>
+                            <QuotesCard />
+                            <QuotesCard />
+                            <QuotesCard />
+                            <QuotesCard />
+                          </div>
                         }
                       </div>
                     </div>
 
+                  </div>
+                  <div className="col-md-6 clearfix right">
+                    <Gmaps 
+                      center={{lat:12.9952672,lng:77.5905857}}
+                      markers={[{location:{lat:12.9952672,lng:77.5905857}}]}
+                      zoom={9}
+                      containerElement={<div style={{ height: 100+'vh' }} />}
+                      mapElement={<div style={{ height: 100+'vh' }} />}
+
+                    />
                   </div>
                 </div>
               </div>
