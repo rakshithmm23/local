@@ -5,6 +5,7 @@ import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
 import QuotesCard from './QuotesCard';
+import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 
 export default class RequestCard extends Component {
@@ -12,14 +13,14 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       open: false,
-      jobUpdates:"quotes",
+      jobUpdates: "quotes",
       currentWidth: '',
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
-  jobDetail(val){
-    this.setState({jobUpdates:val});
+  jobDetail(val) {
+    this.setState({ jobUpdates: val });
   }
 
   componentWillMount() {
@@ -42,11 +43,9 @@ export default class RequestCard extends Component {
   }
   render() {
     // console.log(this.state.currentWidth)
-    const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
-    let statusClass = 'status-popup';
     if (this.state.currentWidth <= 1155 && this.state.currentWidth >= 992) {
       jobLeftGridValue = "col-md-7";
       jobRightGridValue = "col-md-5";
@@ -76,6 +75,29 @@ export default class RequestCard extends Component {
       },
 
     ];
+    const jobCardDetails = [
+      {
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      }
+    ]
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
@@ -154,13 +176,13 @@ export default class RequestCard extends Component {
                   <div className="col-md-6 clearfix left">
                     <div className="request-summary-tab clearfix">
                       <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="details"?"title active":"title"} onClick={()=>{this.jobDetail('details')}}>
+                        <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
                           <span>Job Details</span>
                         </div>
 
                       </div>
                       <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="quotes"?"title active":"title"} onClick={()=>{this.jobDetail('quotes')}}>
+                        <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
                           <span>Quotes</span>
                         </div>
                       </div>
@@ -168,7 +190,7 @@ export default class RequestCard extends Component {
                     <div className="quotes-section">
                       <div className="title">
                         <span>4 Quotes Received</span>
-                        <div className="drop-down">
+                        <div className="filterSection">
                           <select>
                             <option value="volvo">Filter</option>
                             <option value="saab">Saab</option>
@@ -184,45 +206,40 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                       <div className="wrapper">
-                        {/*<div className="jobcard box">
-                          <div className="box-content">
-                            <Media>
-                              <Media.Left>
-                                <img  src="../../images/car.jpg" alt="Image" />
-                              </Media.Left>
-                              <Media.Body>
-                                <Media.Heading>1. Shine Works</Media.Heading>
-                                <div className="rating"><span>3.2 (23 Reviews)</span></div>
-                                <span className="distance">2.5km</span>
-                              </Media.Body>
-                            </Media>
-                            <div className="box-footer">
-                              <div className="footer-container">
-                                <div className="input-group">
-                                  <span className="input-group-btn">
-                                    <button className="btn btn-success" type="button">View Quote</button>
-                                  </span>
-                                </div>
-                                <span className="id-number">120EAD</span>
-                                <div className="box-message">
-                                  <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
-                                </div>
-                              </div>
 
-                            </div>
-                          </div>
-                        </div>*/}
                         {this.state.jobUpdates == "quotes" &&
-                        <div>
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
-                        </div>
+                          <div>
+                            {map(jobCardDetails,(val,key)=>{
+                              <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}/>
+                            })}
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                          </div>
                         }
                       </div>
                     </div>
 
+                  </div>
+                  <div className="col-md-6 clearfix right">
+                    <Gmaps
+                      center={{ lat: 12.9952672, lng: 77.5905857 }}
+                      markers={
+                        [
+                          {
+                            location:
+                            { lat: 12.9952672, lng: 77.5905857 }
+                          },{
+                            location:
+                            { lat: 12.2958, lng: 76.6394 }
+                          }
+                        ]}
+                      zoom={9}
+                      containerElement={<div style={{ height: 100 + 'vh' }} />}
+                      mapElement={<div style={{ height: 100 + 'vh' }} />}
+
+                    />
                   </div>
                 </div>
               </div>

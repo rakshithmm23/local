@@ -28,6 +28,7 @@ import './styles/my-request.css';
 import '../node_modules/slick-carousel/slick/slick.css';
 import '../node_modules/slick-carousel/slick/slick-theme.css';
 import './styles/JobUpdateCard.css';
+import './styles/gmaps.css';
 
 export const store = configureStore();
 

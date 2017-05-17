@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IconNotification from '../common/IconNotification';
+import Button from '../common/Button';
 import { Media } from 'react-bootstrap';
 
 class QuotesCard extends Component {
@@ -9,11 +10,8 @@ class QuotesCard extends Component {
             isFavouriteVisible: false,
         };
     }
-    changeStar(){
-            console.log('dasds')
-        }
     render() {
-        
+        const {index, vendorName, rating, distance, reviews} = this.props;
         return (
             <div className="jobcard box">
                 <div className="box-content">
@@ -22,25 +20,21 @@ class QuotesCard extends Component {
                             <img src="../../images/car.jpg" alt="Image" />
                         </Media.Left>
                         <Media.Body>
-                            <Media.Heading>1. Shine Works <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
+                            <Media.Heading>{index}. {vendorName} <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
                             <div className="rating">
-                                <span className="mdi mdi-star" onMouseOver={()=>{this.changeStar()}}/>
-                                <span className="mdi mdi-star"/>
-                                <span className="mdi mdi-star"/>
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
+                                <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
-                                <span>3.2 (23 Reviews)</span></div>
-                            <span className="distance">2.5km</span>
+                                <span className="rating-text">{rating} ({reviews} reviews)</span></div>
+                            <span className="distance">{distance}</span>
                         </Media.Body>
                     </Media>
                     <div className="box-footer">
                         <div className="footer-container">
-                            <div className="input-group">
-                                <span className="input-group-btn">
-                                    <button className="btn btn-success" type="button">View Quote</button>
-                                </span>
-                            </div>
-                            <span className="id-number">120EAD</span>
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="View Quote" />
+                            <span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
                             </div>
