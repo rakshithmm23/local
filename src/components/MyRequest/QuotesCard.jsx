@@ -27,7 +27,7 @@ class QuotesCard extends Component {
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
-                                <span className="rating-text">{rating}{reviews}</span></div>
+                                <span className="rating-text">{rating} ({reviews} reviews)</span></div>
                             <span className="distance">{distance}</span>
                         </Media.Body>
                     </Media>

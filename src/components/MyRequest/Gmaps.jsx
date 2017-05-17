@@ -14,7 +14,6 @@ class Gmaps extends Component {
         })
         return (
             <div>
-                <h4>this is map component</h4>
                 <GoogleMap
                     defaultZoom={this.props.zoom}
                     defaultCenter={this.props.center}>

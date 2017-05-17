@@ -75,6 +75,29 @@ export default class RequestCard extends Component {
       },
 
     ];
+    const jobCardDetails = [
+      {
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      },{
+        name:"Shine Works",
+        rating:4,
+        distance:3.2,
+        review:23
+      }
+    ]
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
@@ -186,6 +209,9 @@ export default class RequestCard extends Component {
 
                         {this.state.jobUpdates == "quotes" &&
                           <div>
+                            {map(jobCardDetails,(val,key)=>{
+                              <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}/>
+                            })}
                             <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
                             <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
                             <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
