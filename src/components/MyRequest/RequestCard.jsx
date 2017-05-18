@@ -6,20 +6,23 @@ import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
 import QuotesCard from './QuotesCard';
 import IconNotification from '../common/IconNotification';
+import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
+import { StickyContainer, Sticky } from 'react-sticky';
+
 
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
       open: false,
-      jobUpdates:"quotes",
+      jobUpdates: "quotes",
       currentWidth: '',
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
-  jobDetail(val){
-    this.setState({jobUpdates:val});
+  jobDetail(val) {
+    this.setState({ jobUpdates: val });
   }
 
   componentWillMount() {
@@ -80,7 +83,7 @@ export default class RequestCard extends Component {
       return (
         <div key={key}>
           {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
-          <div className={"job-updates " + item.statusIndicator}>
+          <div className={"job-updates myRequest " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                 <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
@@ -143,92 +146,92 @@ export default class RequestCard extends Component {
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                {/*
-                |--------------------------------------------------
-                | job summary
-                |--------------------------------------------------
-                */}
-                <div className="request-summary clearfix">
-                  <div className="col-md-6 clearfix left">
-                    <div className="request-summary-tab clearfix">
-                      <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="details"?"title active":"title"} onClick={()=>{this.jobDetail('details')}}>
-                          <span>Job Details</span>
-                        </div>
+          </div>
+              <div className="requestSection">
+                <div className="row">
+                  <div className="col-md-12 col-sm-12 col-xs-12 pad0">
+                    {/*
+                    |--------------------------------------------------
+                    | job summary
+                    |--------------------------------------------------
+                    */}
+                    <div className="request-summary clearfix">
+                      <div className="col-md-6 clearfix left pad0">
+                        <div className="request-summary-tab clearfix">
+                          <div className="col-md-6 clearfix">
+                            <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
+                              <span>Job Details</span>
+                            </div>
 
-                      </div>
-                      <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates=="quotes"?"title active":"title"} onClick={()=>{this.jobDetail('quotes')}}>
-                          <span>Quotes</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="quotes-section">
-                      <div className="title">
-                        <span>4 Quotes Received</span>
-                        <div className="filterSection">
-                          <select>
-                            <option value="volvo">Filter</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                          </select>
-                          <select>
-                            <option value="volvo">Sort By</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="wrapper">
-                        {/*<div className="jobcard box">
-                          <div className="box-content">
-                            <Media>
-                              <Media.Left>
-                                <img  src="../../images/car.jpg" alt="Image" />
-                              </Media.Left>
-                              <Media.Body>
-                                <Media.Heading>1. Shine Works</Media.Heading>
-                                <div className="rating"><span>3.2 (23 Reviews)</span></div>
-                                <span className="distance">2.5km</span>
-                              </Media.Body>
-                            </Media>
-                            <div className="box-footer">
-                              <div className="footer-container">
-                                <div className="input-group">
-                                  <span className="input-group-btn">
-                                    <button className="btn btn-success" type="button">View Quote</button>
-                                  </span>
-                                </div>
-                                <span className="id-number">120EAD</span>
-                                <div className="box-message">
-                                  <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
-                                </div>
-                              </div>
-
+                          </div>
+                          <div className="col-md-6 clearfix">
+                            <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
+                              <span>Quotes</span>
                             </div>
                           </div>
-                        </div>*/}
-                        {this.state.jobUpdates == "quotes" &&
-                        <div>
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
-                          <QuotesCard />
                         </div>
-                        }
+                        <div className="quotes-section">
+                          <div className="title">
+                            <span>4 Quotes Received</span>
+                            <div className="filterSection">
+                              <select>
+                                <option value="volvo">Filter</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                              </select>
+                              <select>
+                                <option value="volvo">Sort By</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="wrapper">
+                            {this.state.jobUpdates == "quotes" &&
+                              <div>
+                                <QuotesCard />
+                                <QuotesCard />
+                                <QuotesCard />
+                                <QuotesCard />
+                              </div>
+                            }
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6 clearfix right pad0">
+                        <div className="quotes-right-header">
+                          <div className="profile-head">
+                            <span>
+                              <img src="../images/pic.png" alt="" />
+                            </span>
+                            <label> Shine Works </label>
+                          </div>
+                          <div className="quotes-right-tabs">
+                            <ul>
+                              <li className="active">Quote</li>
+                              <li>Message</li>
+                            </ul>
+                            <a href="" className="close-Tab"><i className="mdi mdi-close"/></a>
+                          </div>
+                        </div>
+                        <div className="quotes-right-body"/>
+                        <div className="quotes-right-footer">
+                            <FormGroup>
+                                <InputGroup>
+                                    <FormControl type="text" placeholder="Search"/>
+                                    <InputGroup.Addon>
+                                        <i className="mdi mdi-send" />
+                                    </InputGroup.Addon>
+                                </InputGroup>
+                            </FormGroup>
+                        </div>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
-            </div>
-
-          </div>
         </div>
 
       );
