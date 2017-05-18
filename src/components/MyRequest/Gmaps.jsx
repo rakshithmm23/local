@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 class Gmaps extends Component {
+    location(map){
+        console.log(map.latLng.lat())
+    }
     render() {
         const markers = this.props.markers.map((venue,i)=>{
             const marker = {
@@ -10,7 +13,7 @@ class Gmaps extends Component {
                     lng:venue.location.lng
                 }
             }
-            return <Marker key={i} {...marker} />
+            return <Marker key={i} {...marker} onClick={this.location.bind(this)}/>
         })
         return (
             <div>
