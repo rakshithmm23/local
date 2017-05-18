@@ -1,9 +1,16 @@
-.jobUpdate{
-    cursor: auto;
+.job-updates.myRequest {
+    margin-bottom: 0 !important;
 }
-.request-summary{
+
+.requestSection {
+    background: #fff;
+    padding: 5px 20px;
+}
+
+.request-summary {
     border-top: 2px solid #F9FCFB;
 }
+
 select, input[type="color"][list]{
     height: 30px;
     width: 100px;
@@ -11,53 +18,54 @@ select, input[type="color"][list]{
 }
 
 
-.request-summary .request-summary-tab{
+.request-summary .request-summary-tab {
     border-bottom: 2px solid #F9FCFB;
 }
 
-.request-summary .request-summary-tab .title{
+.request-summary .request-summary-tab .title {
     padding-top: 22px;
     padding-bottom: 22px;
     cursor: pointer;
 }
 
-.request-summary .request-summary-tab .title.active{
-    border-bottom: 2px solid #E50000; 
+.request-summary .request-summary-tab .title.active {
+    border-bottom: 2px solid #E50000;
 }
 
-.request-summary .title span{
-    
-	color: #454B51;
-	font-family: 'CenturyGothic';
-	font-size: 18px;
-	line-height: 22px;
+.request-summary .title span {
+    color: #454B51;
+    font-family: 'CenturyGothic';
+    font-size: 18px;
+    line-height: 22px;
     display: block;
     text-align: center;
 }
-.request-summary .left{
+
+.request-summary .left {
     border-right: 2px solid #F9FCFB;
     padding: 0;
 }
 
-.quotes-section{
+.quotes-section {
     padding: 0 15px;
 }
 
-.quotes-section .title span{
+.quotes-section .title span {
     color: #717982;
     display: inline-block;
     text-align: left;
     padding: 33px 0;
-	font-size: 17px;
-	line-height: 17px;
+    font-size: 17px;
+    line-height: 17px;
     vertical-align: middle;
 }
-.quotes-section .title .filterSection{
+
+.quotes-section .title .filterSection {
     float: right;
     margin-top: 24px;
 }
 
-.quotes-section .title .filterSection select{
+.quotes-section .title .filterSection select {
     height: 30px;
     border-radius: 0;
     font-family: CenturyGothic;
@@ -75,10 +83,122 @@ select, input[type="color"][list]{
     position: relative;
     background: url('../images/arrow-down.png');
     background-repeat: no-repeat;
-    background-position: 95% 10px;
+    background-position: 92% 10px;
     background-color: #EEF4F6;
     padding-right: 30px;
 }
-  
 
 
+/*Quotes right*/
+
+.quotes-right-header {
+    padding: 15px 10px;
+    background: #fff;
+    border-bottom: 1px solid #F9FCFB;
+}
+
+.profile-head {
+    display: inline-block;
+}
+
+.profile-head span img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.profile-head label {
+    font-size: 17px;
+    font-family: CenturyGothic;
+    color: #454B51;
+    margin: 0;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.quotes-right-tabs {
+    float: right;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    color: #454B51;
+}
+
+.quotes-right-tabs ul {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.quotes-right-tabs li {
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    padding: 10px 25px 25px;
+    cursor: pointer;
+}
+
+.quotes-right-tabs li.active {
+    border-bottom-color: #E50000;
+}
+
+.close-Tab {
+    font-size: 20px;
+    color: #717982;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.quotes-right-body{
+    height: 500px;
+}
+
+.quotes-right-footer {
+    height: 64px;
+    width: 100%;
+    border-radius: 0 0 4px 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5);
+    padding: 14px 10px;
+}
+
+.quotes-right-footer .form-group {
+    margin-bottom: 0;
+}
+
+.quotes-right-footer input {
+    margin: 0;
+    outline: 0 !important;
+    box-shadow: none !important;
+    font-family: CenturyGothic;
+    font-size: 15px;
+    border: 0;
+    border: 0;
+    border-radius: 0;
+    border-color: #DAE1E7;
+    color: #9BA1A5;
+}
+
+.quotes-right-footer .input-group-addon {
+    background-color: #fff;
+    padding: 0px 10px 0px;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    color: #9BA1A5;
+}
+
+@media screen and (max-width: 1100px) {
+    .quotes-section .title span {
+        padding-bottom: 20px
+    }
+    .quotes-section .title .filterSection {
+        float: none;
+        margin-top: 0;
+        margin-bottom: 25px
+    }
+    .quotes-section .title .filterSection select {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
