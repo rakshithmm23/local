@@ -18,6 +18,8 @@ export default class RequestCard extends Component {
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
+      latitude:'',
+      longitue:''
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -43,6 +45,9 @@ export default class RequestCard extends Component {
     let docElemProp = window.document.documentElement.clientWidth,
       body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
+  }
+  mapClick(map){
+     this.setState({latitude:map.latLng.lat(),longitude:map.latLng.lng()})
   }
   render() {
     // console.log(this.state.currentWidth)
@@ -85,7 +90,7 @@ export default class RequestCard extends Component {
         distance: 3.2,
         review: 23,
         latitude:12.9952672,
-        longitude:77.5905857
+        longitude:77.5905857,
       }, {
         name: "Shine Works",
         rating: 4,
@@ -109,6 +114,10 @@ export default class RequestCard extends Component {
         longitude:77.8905857
       }
     ]
+    const jobCardLocation=map(jobCardDetails,(val,key)=>{
+      return{ lat: val.latitude, lng: val.longitude }
+    })
+   
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
@@ -218,13 +227,12 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="wrapper">
-
                           {this.state.jobUpdates == "quotes" &&
                             <div>
                               {map(jobCardDetails, (val, key) => {
                                 return(
-                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} 
-                                        reviews={val.review} latitude={val.latitude} longitude={val.longitude} />
+                               <QuotesCard activeClass = {val.isActive} key={key} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} 
+                                        reviews={val.review} latitude={val.latitude} longitude={val.longitude} /> 
                                 )
                               })}
                               
@@ -235,21 +243,12 @@ export default class RequestCard extends Component {
                     </div>
                     <div className="col-md-6 clearfix right pad0">
                       <div className="mapSection ">
+                        
+                            
                         <Gmaps
                           center={{ lat: 12.9952672, lng: 77.5905857 }}
-                          markers={
-                            [
-                              {
-                                location:
-                                { lat: 12.9952672, lng: 77.5905857 }
-                              }, {
-                                location:
-                                { lat: 12.2958, lng: 76.6394 }
-                              }, {
-                                location:
-                                { lat: 12.5958, lng: 76.9394 }
-                              }
-                            ]}
+                          markers={{jobCardLocation}}
+                          markerClick={this.mapClick.bind(this)}
                           zoom={9}
                           containerElement={<div style={{ height: 100 + 'vh' }} />}
                           mapElement={<div style={{ height: 100 + 'vh' }} />}
