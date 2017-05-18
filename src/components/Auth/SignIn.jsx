@@ -71,8 +71,8 @@ export default class SignIn extends Component {
                         <div className="login-panel signin">
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign In</h3>
-                                <Button iconName="facebook" btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
-                                <Button iconName="google" btnType="gmail" btnSize="lg" fontSize={16} label="Google" />
+                                <Button btnCallBack={(e) => { e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/facebook?type=customer"}} iconName="facebook" btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
+                                <Button btnCallBack={(e) => { e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/google?type=customer"}} iconName="google" btnType="gmail" btnSize="lg" fontSize={16} label="Google" />
                             </div>
                             <div className="or-text">
                                 <span>OR</span>

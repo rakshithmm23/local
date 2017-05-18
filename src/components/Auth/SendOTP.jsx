@@ -3,10 +3,25 @@ import CarouselSlider from '../common/CarouselSlider';
 import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class SendOTP extends Component {
+    constructor(props) {
+     super(props);
+    }
+    componentWillMount(){
+      debugger;
+      if (localStorage && localStorage.authData){
+       const authData = JSON.parse(localStorage.authData);
+       if (authData.phone && authData.phoneVerified) {
+         this.props.router.push('dashboard');
+       } else if (authData.phone && !authData.phoneVerified) {
+         this.props.router.push('verify-otp');
+       }
+     } else {
+         this.props.router.push('/');
+     }
+    }
     render() {
         const { router } = this.props;
         return (
