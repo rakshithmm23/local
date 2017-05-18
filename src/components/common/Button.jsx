@@ -19,10 +19,10 @@ export default class Button extends Component {
           btnProperties.onClick = btnCallBack;
         }
         return (
-          <button {...btnProperties}>
+          <button {...btnProperties} onClick={this.props.viewPayment}>
               {iconName && <i className={'mdi mdi-' + iconName}/>}
               {label}
-          </button>
+          </button >
         );
     }
 }
