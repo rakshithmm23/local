@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map,each,includes } from 'lodash';
+import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
@@ -18,43 +18,43 @@ export default class RequestCard extends Component {
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
-      activelatitude:'',
-      activelongitue:'',
-      jobCardDetails : [
-      {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.9952672,
-        longitude:77.59058570000002
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.7952672,
-        longitude:77.29058570000007
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.4952672,
-        longitude:77.59058570000002
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.1952672,
-        longitude:77.89058569999997
-      }
-    ]
+      activelatitude: '',
+      activelongitue: '',
+      jobCardDetails: [
+        {
+          name: "Shine Works",
+          rating: 4,
+          distance: 3.2,
+          review: 23,
+          latitude: 12.9952672,
+          longitude: 77.59058570000002
+        }, {
+          name: "Shine Works",
+          rating: 4,
+          distance: 3.2,
+          review: 23,
+          latitude: 12.7952672,
+          longitude: 77.29058570000007
+        }, {
+          name: "Shine Works",
+          rating: 4,
+          distance: 3.2,
+          review: 23,
+          latitude: 12.4952672,
+          longitude: 77.59058570000002
+        }, {
+          name: "Shine Works",
+          rating: 4,
+          distance: 3.2,
+          review: 23,
+          latitude: 12.1952672,
+          longitude: 77.89058569999997
+        }
+      ],
       quotation: true,
       messages: false,
-      mapView:false,
-      quotationView:true,
+      mapView: true,
+      quotationView: false,
 
     };
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -82,19 +82,28 @@ export default class RequestCard extends Component {
       body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
-  mapClick(map){
-    console.log(map.latLng.lng(),map.latLng.lat())
-     this.setState({latitude:map.latLng.lat(),longitude:map.latLng.lng()})
-     for(let data=0; data<=this.state.jobCardDetails.length-1; data++){
-       if(this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()){
-              this.setState({activelatitude:map.latLng.lat(),activelongitue:map.latLng.lng()})
-          }
-     }
-  viewQuotation(){
-    this.setState({quotation:!this.state.quotation,messages:!this.state.messages})
+  viewPayment() {
+    debugger
+    this.setState({ mapView: false, quotationView: true, quotation: true })
   }
-  viewMessages(){
-    this.setState({quotation:!this.state.quotation,messages:!this.state.messages})
+  mapClick(map) {
+    console.log(map.latLng.lng(), map.latLng.lat())
+    this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
+    for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
+      if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
+        this.setState({ activelatitude: map.latLng.lat(), activelongitue: map.latLng.lng() })
+      }
+    }
+  }
+  closeChat() {
+    debugger
+    this.setState({ mapView: true, quotationView: false })
+  }
+  viewQuotation() {
+    this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
+  }
+  viewMessages() {
+    this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
   render() {
     // console.log(this.state.currentWidth)
@@ -130,11 +139,11 @@ export default class RequestCard extends Component {
       },
 
     ];
-    
-    const jobCardLocation=map(this.state.jobCardDetails,(val,key)=>{
-      return{ lat: val.latitude, lng: val.longitude }
+
+    const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
+      return { lat: val.latitude, lng: val.longitude }
     })
-   
+
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
@@ -247,13 +256,14 @@ export default class RequestCard extends Component {
                       <div className="wrapper">
                         {this.state.jobUpdates == "quotes" &&
                           <div>
-                            {map(jobCardDetails, (val, key) => {
-                              <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} />
+                            {map(this.state.jobCardDetails, (val, key) => {
+                              return (
+                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} 
+                                viewPayment={this.viewPayment.bind(this)} />
+
+                              )
                             })}
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+
                           </div>
                         }
                       </div>
@@ -261,18 +271,18 @@ export default class RequestCard extends Component {
 
                   </div>
                   <div className="col-md-6 clearfix right pad0">
-                    <div className={this.state.mapView == true?"mapSection":"mapSection hide"}>
-                       <Gmaps
-                          center={{ lat: 12.9952672, lng: 77.5905857 }}
-                          markers={{jobCardLocation}}
-                          markerClick={this.mapClick.bind(this)}
-                          zoom={9}
-                          containerElement={<div style={{ height: 100 + 'vh' }} />}
-                          mapElement={<div style={{ height: 100 + 'vh' }} />}
+                    <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
+                      <Gmaps
+                        center={{ lat: 12.9952672, lng: 77.5905857 }}
+                        markers={{ jobCardLocation }}
+                        markerClick={this.mapClick.bind(this)}
+                        zoom={9}
+                        containerElement={<div style={{ height: 100 + 'vh' }} />}
+                        mapElement={<div style={{ height: 100 + 'vh' }} />}
 
                       />
                     </div>
-                    <div className={this.state.quotationView == true?"quotesSection":"quotesSection hide"}>
+                    <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
                       <div className="quotes-right-header">
                         <div className="profile-head">
                           <span>
@@ -282,10 +292,10 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-right-tabs">
                           <ul>
-                            <li className={this.state.quotation == true ? "active" : ""} onClick={()=>this.viewQuotation()}>Quote</li>
-                            <li className={this.state.messages == true ? "active" : ""} onClick={()=>this.viewMessages()}>Message</li>
+                            <li className={this.state.quotation == true ? "active" : ""} onClick={() => this.viewQuotation()}>Quote</li>
+                            <li className={this.state.messages == true ? "active" : ""} onClick={() => this.viewMessages()}>Message</li>
                           </ul>
-                          <a href="" className="close-Tab"><i className="mdi mdi-close" /></a>
+                          <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>
                         </div>
                       </div>
                       <div className="quotes-right-body">

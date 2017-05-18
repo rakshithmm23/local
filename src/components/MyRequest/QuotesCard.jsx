@@ -33,7 +33,7 @@ class QuotesCard extends Component {
                     </Media>
                     <div className="box-footer">
                         <div className="footer-container">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="View Quote" />
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="View Quote" onClick={this.props.viewPayment} />
                             <span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
