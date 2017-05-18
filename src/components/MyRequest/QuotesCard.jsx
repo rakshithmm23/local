@@ -36,7 +36,7 @@ class QuotesCard extends Component {
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="View Quote" viewPayment={this.props.viewPayment} />
                             <span className="quotes-cost">120 AED</span>
                             <div className="box-message">
-                                <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" />
+                                <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" viewMessaging={this.props.viewMessaging}/>
                             </div>
                         </div>
 

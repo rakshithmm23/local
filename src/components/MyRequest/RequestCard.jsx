@@ -84,7 +84,11 @@ export default class RequestCard extends Component {
   }
   viewPayment() {
     debugger
-    this.setState({ mapView: false, quotationView: true, quotation: true })
+    this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
+  }
+  viewMessaging(){
+    debugger
+    this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
     console.log(map.latLng.lng(), map.latLng.lat())
@@ -259,7 +263,7 @@ export default class RequestCard extends Component {
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
                                 <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} 
-                                viewPayment={this.viewPayment.bind(this)} />
+                                viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)}/>
 
                               )
                             })}
