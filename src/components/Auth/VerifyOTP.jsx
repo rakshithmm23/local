@@ -24,6 +24,21 @@ export default class VerifyOTP extends Component {
       };
       this.onFieldChange = this.onFieldChange.bind(this);
     }
+    componentWillMount(){
+      debugger;
+      if (localStorage && localStorage.authData){
+       const authData = JSON.parse(localStorage.authData);
+       if (authData.phone && authData.phoneVerified) {
+         this.props.router.push('dashboard');
+       } else if (!authData.phone) {
+         this.props.router.push('send-otp');
+       } else {
+          this.props.actions.resendOTP();
+       }
+     } else {
+         this.props.router.push('/');
+     }
+    }
     onFieldChange(value, key, name) {
       if (value) {
         this.formData[name] = value;
@@ -52,8 +67,8 @@ export default class VerifyOTP extends Component {
         debugger;
         this.props.actions.showWelcomePage(
           this.formData.otp,
-          this.props.authReducer && this.props.authReducer.signUpData && this.props.authReducer.signUpData.phone ? this.props.authReducer.signUpData.phone : '',
-          this.props.authReducer && this.props.authReducer.signUpData && this.props.authReducer.signUpData.id ? this.props.authReducer.signUpData.id : ''
+          this.props.authReducer && this.props.authReducer.authData && this.props.authReducer.authData.phone ? this.props.authReducer.authData.phone : '',
+          this.props.authReducer && this.props.authReducer.authData && this.props.authReducer.authData.id ? this.props.authReducer.authData.id : ''
         );
       }
     }

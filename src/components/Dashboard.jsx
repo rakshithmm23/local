@@ -11,6 +11,9 @@ import WelcomeText from './common/WelcomeText';
 import MobileNotification from './common/MobileNotification';
 // import MobileSearch from './common/MobileSearch';
 import {serviceTypes} from '../constants/staticData';
+import {decryptCookie} from '../helpers';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class Dashboard extends Component {
     constructor(props, context) {
@@ -19,6 +22,22 @@ export default class Dashboard extends Component {
         this.state = {
             notificationVisible: false
         };
+    }
+    componentWillMount() {
+      debugger;
+      if (this.props.location.hash == '#facebook' || this.props.location.hash == '#google') {
+        this.props.actions.fetchCurrentUserInfo();
+      } else if (localStorage && localStorage.authData) {
+        const authData = JSON.parse(localStorage.authData);
+        if (!authData.phone) {
+          this.props.router.push('send-otp');
+        } else if (!authData.phoneVerified) {
+          this.props.router.push('verify-otp');
+        }
+      }
+        else {
+        this.props.router.push('/');
+      }
     }
     toggleNotification(isVisible) {
         this.setState({'notificationVisible': isVisible});

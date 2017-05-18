@@ -4,22 +4,17 @@
 
 .requestSection {
     background: #fff;
-    padding: 5px 20px;
 }
 
 .request-summary {
     border-top: 2px solid #F9FCFB;
 }
 
-select, input[type="color"][list]{
+select,
+input[type="color"][list] {
     height: 30px;
     width: 100px;
     background-color: #EEF4F6;
-}
-
-
-.request-summary .request-summary-tab {
-    border-bottom: 2px solid #F9FCFB;
 }
 
 .request-summary .request-summary-tab .title {
@@ -91,8 +86,18 @@ select, input[type="color"][list]{
 
 /*Quotes right*/
 
+.request-summary-header {
+    background: #fff;
+    border-bottom: 2px solid #F9FCFB;
+}
+
+.quotes-right-body {
+    position: relative;
+    height: 65vh;
+}
+
 .quotes-right-header {
-    padding: 15px 10px;
+    padding: 15px;
     background: #fff;
     border-bottom: 1px solid #F9FCFB;
 }
@@ -148,24 +153,24 @@ select, input[type="color"][list]{
     vertical-align: middle;
 }
 
-.quotes-right-body{
-    height: 500px;
-}
-
-.quotes-right-footer {
+.quotes-message-footer {
     height: 64px;
     width: 100%;
     border-radius: 0 0 4px 0;
     background-color: #FFFFFF;
     box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5);
     padding: 14px 10px;
+    clear: both;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
-.quotes-right-footer .form-group {
+.quotes-message-footer .form-group {
     margin-bottom: 0;
 }
 
-.quotes-right-footer input {
+.quotes-message-footer input {
     margin: 0;
     outline: 0 !important;
     box-shadow: none !important;
@@ -178,7 +183,7 @@ select, input[type="color"][list]{
     color: #9BA1A5;
 }
 
-.quotes-right-footer .input-group-addon {
+.quotes-message-footer .input-group-addon {
     background-color: #fff;
     padding: 0px 10px 0px;
     border-radius: 0;
@@ -186,6 +191,228 @@ select, input[type="color"][list]{
     cursor: pointer;
     font-size: 24px;
     color: #9BA1A5;
+}
+
+
+/*Message Section*/
+
+.chat-container {
+    margin: 0px;
+}
+
+
+/*chat same user message*/
+
+.message-in.chain-msg {
+    position: relative;
+    left: 34px;
+}
+
+.message-out.chain-msg {
+    position: relative;
+    right: 30px;
+}
+
+.dropdown-menu {
+    overflow: initial !important;
+}
+
+
+/*chat wrapper*/
+
+.quotes-chat-area {
+    position: absolute;
+    bottom: 75px;
+    width: 100%;
+}
+
+.quotes-chat-area .c-message {
+    width: 75%;
+    clear: both;
+    padding: 5px 20px;
+}
+
+.quotes-chat-area .c-message .c-chat {
+    background-color: #f7f7f7;
+    border-radius: 0 5px 5px 5px;
+    padding: 5px;
+    display: inline-block;
+    max-width: 80%;
+    vertical-align: top;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    margin-left: 5px;
+    position: relative;
+}
+
+.quotes-chat-area .c-message.message-in .c-chat:before {
+    content: '';
+    border-top: 10px solid #f7f7f7;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+}
+
+.quotes-chat-area .c-message.message-in.chain-msg .c-chat:before,
+.quotes-chat-area .c-message.message-out.chain-msg .c-chat:after {
+    display: none;
+}
+
+.quotes-chat-area .c-message .c-chat p {
+    font-size: 14px;
+    font-family: CenturyGothic;
+    color: #454B51;
+    margin-bottom: 0px;
+}
+
+.quotes-chat-area .c-message .delivered-details {
+    margin-left: 55px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.quotes-chat-area .c-message.message-in.chain-msg .delivered-details {
+    margin-left: 10px;
+}
+
+.quotes-chat-area .c-message .delivered-details label {
+    font-family: CenturyGothic;
+    color: #838383;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.quotes-chat-area .c-message.message-out {
+    float: right;
+}
+
+.quotes-chat-area .c-message.message-out .profile-head {
+    float: right;
+}
+
+.quotes-chat-area .c-message.message-out .c-chat {
+    border-radius: 5px 0px 5px 5px;
+    background-color: #efefef;
+    float: right;
+    margin-right: 10px;
+    position: relative;
+}
+
+.quotes-chat-area .c-message.message-out .c-chat:after {
+    content: '';
+    border-top: 10px solid #efefef;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0px;
+    right: -10px;
+}
+
+.quotes-chat-area .c-message.message-out .c-chat p {
+    color: #000;
+}
+
+.quotes-chat-area .c-message.message-out .p-img {
+    float: right;
+}
+
+.quotes-chat-area .c-message.message-out .delivered-details {
+    float: right;
+    margin-right: 60px;
+    display: block;
+    clear: both;
+    position: relative;
+}
+
+.quotes-chat-area .c-message.message-out.chain-msg .delivered-details {
+    margin-right: 10px;
+}
+
+.quotes-chat-area .c-message.message-continuation .delivered-details {
+    display: none;
+}
+
+.quotes-chat-area .c-message.message-continuation.seen .delivered-details {
+    display: block;
+}
+
+
+/*Invoice Section*/
+
+.invoice-head {
+    height: 80px;
+    border-radius: 3px;
+    background-color: #F9FBFB;
+    margin: 20px 15px;
+    padding: 18px 15px;
+}
+
+.invoice-head ul li label {
+    min-width: 150px;
+}
+
+.invoice-head ul li {
+    padding: 3px 0;
+}
+
+.invoice-head ul li span,
+.invoice-head ul li label {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.invoice-block {
+    padding: 10px 20px;
+}
+
+.invoice-block h4,
+.invoice-total label {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.invoice-block li {
+    padding: 3px 18px;
+}
+
+.invoice-block li label {
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.invoice-total {
+    margin: 30px 38px;
+    margin-right: 35px;
+    border-top: 1px solid rgba(113, 121, 130, 0.2);
+    border-bottom: 1px solid rgba(113, 121, 130, 0.2);
+    padding: 15px 0 0;
+}
+
+.invoice-total label {
+    color: #454B51;
+    font-weight: 900;
+}
+
+.invoice-block li span,
+.invoice-total span {
+    float: right;
+    color: #717982;
+    font-size: 14px;
+    font-family: CenturyGothic;
+}
+
+.invoice-total span {
+    font-weight: 900;
+    font-size: 16px;
 }
 
 @media screen and (max-width: 1100px) {

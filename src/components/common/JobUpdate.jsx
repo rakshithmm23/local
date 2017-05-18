@@ -59,7 +59,7 @@ export default class JobUpdate extends Component {
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'warning',
+        statusIndicator: 'waiting',
         jobIcons: [
           {
             iconType: 'pencil',

@@ -58,7 +58,7 @@ export default class SignUp extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
-      this.props.actions.showSendOTPPage({
+      this.props.actions.showVerifyOTPPage({
         'name': this.formData.name,
         'email': this.formData.email,
         'phone': this.formData.phone,
@@ -81,8 +81,8 @@ export default class SignUp extends Component {
             <div className="login-panel signup">
               <div className="login-panel-header">
                 <h3 className="login-title">Sign Up</h3>
-                <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); router.push('send-otp') }} btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
-                <Button iconName="google" btnCallBack={(e) => { e.preventDefault(); router.push('send-otp') }} btnType="gmail" btnSize="lg" fontSize={16} label="Google" />
+                <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/facebook?type=customer"}} btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
+                <Button iconName="google" btnCallBack={(e) => { e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/google?type=customer"}} btnType="gmail" btnSize="lg" fontSize={16} label="Google" />
               </div>
               <div className="or-text">
                 <span>OR</span>

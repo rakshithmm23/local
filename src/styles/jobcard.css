@@ -20,7 +20,7 @@
         cursor: pointer;
     }
 
-    .job-updates.warning:hover {
+    .job-updates.waiting:hover {
         border: 1px solid #FFBE2C;
         border-left-width: 4px;
     }
@@ -300,7 +300,7 @@
     }
 
     @media screen and (max-width: 1024px) {
-        .job-updates.warning {
+        .job-updates.waiting {
             border: 1px solid #FFBE2C;
             border-left-width: 4px;
         }
