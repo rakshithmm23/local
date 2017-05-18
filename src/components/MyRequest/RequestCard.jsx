@@ -83,22 +83,30 @@ export default class RequestCard extends Component {
         name: "Shine Works",
         rating: 4,
         distance: 3.2,
-        review: 23
+        review: 23,
+        latitude:12.9952672,
+        longitude:77.5905857
       }, {
         name: "Shine Works",
         rating: 4,
         distance: 3.2,
-        review: 23
+        review: 23,
+        latitude:12.7952672,
+        longitude:77.2905857
       }, {
         name: "Shine Works",
         rating: 4,
         distance: 3.2,
-        review: 23
+        review: 23,
+        latitude:12.4952672,
+        longitude:77.5905857
       }, {
         name: "Shine Works",
         rating: 4,
         distance: 3.2,
-        review: 23
+        review: 23,
+        latitude:12.1952672,
+        longitude:77.8905857
       }
     ]
     const jobDataList = map(jobData, (item, key) => {
@@ -214,19 +222,19 @@ export default class RequestCard extends Component {
                           {this.state.jobUpdates == "quotes" &&
                             <div>
                               {map(jobCardDetails, (val, key) => {
-                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} />
+                                return(
+                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} 
+                                        reviews={val.review} latitude={val.latitude} longitude={val.longitude} />
+                                )
                               })}
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                              
                             </div>
                           }
                         </div>
                       </div>
                     </div>
                     <div className="col-md-6 clearfix right pad0">
-                      <div className="mapSection hide">
+                      <div className="mapSection ">
                         <Gmaps
                           center={{ lat: 12.9952672, lng: 77.5905857 }}
                           markers={
@@ -237,6 +245,9 @@ export default class RequestCard extends Component {
                               }, {
                                 location:
                                 { lat: 12.2958, lng: 76.6394 }
+                              }, {
+                                location:
+                                { lat: 12.5958, lng: 76.9394 }
                               }
                             ]}
                           zoom={9}
@@ -245,7 +256,7 @@ export default class RequestCard extends Component {
 
                         />
                       </div>
-                      <div className="contentSection">
+                      <div className="contentSection hide">
                         <div className="quotes-right-header">
                           <div className="profile-head">
                             <span>
