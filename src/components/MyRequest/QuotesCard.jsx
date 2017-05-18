@@ -13,7 +13,7 @@ class QuotesCard extends Component {
     render() {
         const {index, vendorName, rating, distance, reviews} = this.props;
         return (
-            <div className={this.props.activeClass?"jobcard box active":"jobcard box"}>
+            <div className={this.props.activeClass == "active"?"jobcard box active":"jobcard box"}>
                 <div className="box-content">
                     <Media>
                         <Media.Left>

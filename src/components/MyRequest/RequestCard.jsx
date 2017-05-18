@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map } from 'lodash';
+import { map,each,includes } from 'lodash';
 import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
@@ -18,8 +18,39 @@ export default class RequestCard extends Component {
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
-      latitude:'',
-      longitue:''
+      activelatitude:'',
+      activelongitue:'',
+      jobCardDetails : [
+      {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23,
+        latitude:12.9952672,
+        longitude:77.59058570000002
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23,
+        latitude:12.7952672,
+        longitude:77.29058570000007
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23,
+        latitude:12.4952672,
+        longitude:77.59058570000002
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23,
+        latitude:12.1952672,
+        longitude:77.89058569999997
+      }
+    ]
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -47,7 +78,13 @@ export default class RequestCard extends Component {
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
   mapClick(map){
+    console.log(map.latLng.lng(),map.latLng.lat())
      this.setState({latitude:map.latLng.lat(),longitude:map.latLng.lng()})
+     for(let data=0; data<=this.state.jobCardDetails.length-1; data++){
+       if(this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()){
+              this.setState({activelatitude:map.latLng.lat(),activelongitue:map.latLng.lng()})
+          }
+     }
   }
   render() {
     // console.log(this.state.currentWidth)
@@ -83,38 +120,8 @@ export default class RequestCard extends Component {
       },
 
     ];
-    const jobCardDetails = [
-      {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.9952672,
-        longitude:77.5905857,
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.7952672,
-        longitude:77.2905857
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.4952672,
-        longitude:77.5905857
-      }, {
-        name: "Shine Works",
-        rating: 4,
-        distance: 3.2,
-        review: 23,
-        latitude:12.1952672,
-        longitude:77.8905857
-      }
-    ]
-    const jobCardLocation=map(jobCardDetails,(val,key)=>{
+    
+    const jobCardLocation=map(this.state.jobCardDetails,(val,key)=>{
       return{ lat: val.latitude, lng: val.longitude }
     })
    
@@ -229,9 +236,9 @@ export default class RequestCard extends Component {
                         <div className="wrapper">
                           {this.state.jobUpdates == "quotes" &&
                             <div>
-                              {map(jobCardDetails, (val, key) => {
+                              {map(this.state.jobCardDetails, (val, key) => {
                                 return(
-                               <QuotesCard activeClass = {val.isActive} key={key} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} 
+                               <QuotesCard activeClass = {this.state.activelatitude==val.latitude && this.state.activelongitue == val.longitude ? "active":""} key={key} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} 
                                         reviews={val.review} latitude={val.latitude} longitude={val.longitude} /> 
                                 )
                               })}

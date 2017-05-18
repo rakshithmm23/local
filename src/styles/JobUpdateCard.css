@@ -5,6 +5,9 @@
     border-radius: 3px;
     margin-bottom: 15px;
 }
+.quotes-section .jobcard.box.active{
+    border: 1px solid red;
+}
 
 .quotes-section .jobcard.box .box-content .media-left img {
     width: 100px;
