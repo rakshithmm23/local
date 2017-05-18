@@ -18,6 +18,11 @@ export default class RequestCard extends Component {
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
+      quotation: true,
+      messages: false,
+      mapView:false,
+      quotationView:true,
+
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -44,6 +49,12 @@ export default class RequestCard extends Component {
       body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
+  viewQuotation(){
+    this.setState({quotation:!this.state.quotation,messages:!this.state.messages})
+  }
+  viewMessages(){
+    this.setState({quotation:!this.state.quotation,messages:!this.state.messages})
+  }
   render() {
     // console.log(this.state.currentWidth)
     let jobLeftGridValue = "";
@@ -66,7 +77,7 @@ export default class RequestCard extends Component {
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'warning',
+        statusIndicator: 'waiting',
         jobIcons: [
           {
             iconType: 'pencil',
@@ -152,7 +163,7 @@ export default class RequestCard extends Component {
                           key={key}
                           iconType={jobIcon.iconType}
                           iconLabel={jobIcon.iconLabel}
-                          notifyClass="notification" />);
+                          notifyClassName="notification" />);
                       })}
                     </div>
                     <div>
@@ -169,16 +180,13 @@ export default class RequestCard extends Component {
                 </div>
               </div>
             </div>
-            <div className="requestSection">
-              <div className="row">
-                <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                  {/*
-                    |--------------------------------------------------
-                    | job summary
-                    |--------------------------------------------------
-                    */}
-                  <div className="request-summary clearfix">
-                    <div className="col-md-6 clearfix left pad0">
+          </div>
+          <div className="requestSection">
+            <div className="row">
+              <div className="col-md-12 col-sm-12 col-xs-12">
+                <div className="request-summary clearfix">
+                  <div className="col-md-12 col-sm-12 col-xs-12 pad0 request-summary-header">
+                    <div className="col-md-6 col-sm-12 col-xs-12 pad0">
                       <div className="request-summary-tab clearfix">
                         <div className="col-md-6 clearfix">
                           <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
@@ -191,86 +199,164 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className="quotes-section">
-                        <div className="title">
-                          <span>4 Quotes Received</span>
-                          <div className="filterSection">
-                            <select>
-                              <option value="volvo">Filter</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
-                            <select>
-                              <option value="volvo">Sort By</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
+                    </div>
+                  </div>
+                  <div className="col-md-6 clearfix left pad0">
+                    <div className="quotes-section">
+                      <div className="title">
+                        <span>4 Quotes Received</span>
+                        <div className="filterSection">
+                          <select>
+                            <option value="volvo">Filter</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                          <select>
+                            <option value="volvo">Sort By</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="wrapper">
+                        {this.state.jobUpdates == "quotes" &&
+                          <div>
+                            {map(jobCardDetails, (val, key) => {
+                              <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} />
+                            })}
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
                           </div>
-                        </div>
-                        <div className="wrapper">
-
-                          {this.state.jobUpdates == "quotes" &&
-                            <div>
-                              {map(jobCardDetails, (val, key) => {
-                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} />
-                              })}
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
-                            </div>
-                          }
-                        </div>
+                        }
                       </div>
                     </div>
-                    <div className="col-md-6 clearfix right pad0">
-                      <div className="mapSection hide">
-                        <Gmaps
-                          center={{ lat: 12.9952672, lng: 77.5905857 }}
-                          markers={
-                            [
-                              {
-                                location:
-                                { lat: 12.9952672, lng: 77.5905857 }
-                              }, {
-                                location:
-                                { lat: 12.2958, lng: 76.6394 }
-                              }
-                            ]}
-                          zoom={9}
-                          containerElement={<div style={{ height: 100 + 'vh' }} />}
-                          mapElement={<div style={{ height: 100 + 'vh' }} />}
+                  </div>
+                  <div className="col-md-6 clearfix right pad0">
+                    <div className={this.state.mapView == true?"mapSection":"mapSection hide"}>
+                      <Gmaps
+                        center={{ lat: 12.9952672, lng: 77.5905857 }}
+                        markers={
+                          [
+                            {
+                              location:
+                              { lat: 12.9952672, lng: 77.5905857 }
+                            }, {
+                              location:
+                              { lat: 12.2958, lng: 76.6394 }
+                            }
+                          ]}
+                        zoom={9}
+                        containerElement={<div style={{ height: 100 + 'vh' }} />}
+                        mapElement={<div style={{ height: 100 + 'vh' }} />}
 
-                        />
+                      />
+                    </div>
+                    <div className={this.state.quotationView == true?"quotesSection":"quotesSection hide"}>
+                      <div className="quotes-right-header">
+                        <div className="profile-head">
+                          <span>
+                            <img src="../images/pic.png" alt="" />
+                          </span>
+                          <label> Shine Works </label>
+                        </div>
+                        <div className="quotes-right-tabs">
+                          <ul>
+                            <li className={this.state.quotation == true ? "active" : ""} onClick={()=>this.viewQuotation()}>Quote</li>
+                            <li className={this.state.messages == true ? "active" : ""} onClick={()=>this.viewMessages()}>Message</li>
+                          </ul>
+                          <a href="" className="close-Tab"><i className="mdi mdi-close" /></a>
+                        </div>
                       </div>
-                      <div className="contentSection">
-                        <div className="quotes-right-header">
-                          <div className="profile-head">
-                            <span>
-                              <img src="../images/pic.png" alt="" />
-                            </span>
-                            <label> Shine Works </label>
-                          </div>
-                          <div className="quotes-right-tabs">
+                      <div className="quotes-right-body">
+                        <div className={this.state.quotation == true ? "quotes-details-Section" : "quotes-details-Section hide"}>
+                          <div className="invoice-head">
                             <ul>
-                              <li className="active">Quote</li>
-                              <li>Message</li>
+                              <li>
+                                <label>Job Start Time:</label>
+                                <span>11:30 AM on Jan 5 2017 (Rescheduled)</span>
+                              </li>
+                              <li>
+                                <label>Quote Generated:</label>
+                                <span>Jan 2, 2017</span>
+                              </li>
                             </ul>
-                            <a href="" className="close-Tab"><i className="mdi mdi-close" /></a>
+                          </div>
+                          <div className="invoice-details">
+                            <div className="invoice-block">
+                              <h4>1. Brakes & Exhaust</h4>
+                              <ul>
+                                <li>
+                                  <label>Brake Pads</label>
+                                  <span>3 AED</span>
+                                </li>
+                                <li>
+                                  <label>Brake Oil Change</label>
+                                  <span>5 AED</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="invoice-block">
+                              <h4>2. AC Heating & Cooling</h4>
+                              <ul>
+                                <li>
+                                  <label>Brake Pads</label>
+                                  <span>3 AED</span>
+                                </li>
+                                <li>
+                                  <label>Brake Oil Change</label>
+                                  <span>5 AED</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="invoice-total">
+                              <label>Total</label>
+                              <span>20 AED</span>
+                            </div>
                           </div>
                         </div>
-                        <div className="quotes-right-body" />
-                        <div className="quotes-right-footer">
-                          <FormGroup>
-                            <InputGroup>
-                              <FormControl type="text" placeholder="Search" />
-                              <InputGroup.Addon>
-                                <i className="mdi mdi-send" />
-                              </InputGroup.Addon>
-                            </InputGroup>
-                          </FormGroup>
+                        <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                          <div className="quotes-chat-area">
+                            <div className="c-message message-in">
+                              <div className="profile-head">
+                                <span>
+                                  <img src="../images/pic.png" alt="" />
+                                </span>
+                              </div>
+                              <div className="c-chat">
+                                <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                              </div>
+                              <div className="delivered-details">
+                                <label>2:44 PM</label>
+                              </div>
+                            </div>
+                            <div className="c-message message-out">
+                              <div className="profile-head">
+                                <span>
+                                  <img src="../images/pic.png" alt="" />
+                                </span>
+                              </div>
+                              <div className="c-chat">
+                                <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                              </div>
+                              <div className="delivered-details">
+                                <label>2:44 PM</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="quotes-message-footer">
+                            <FormGroup>
+                              <InputGroup>
+                                <FormControl type="text" placeholder="Search" />
+                                <InputGroup.Addon>
+                                  <i className="mdi mdi-send" />
+                                </InputGroup.Addon>
+                              </InputGroup>
+                            </FormGroup>
+                          </div>
                         </div>
                       </div>
                     </div>
