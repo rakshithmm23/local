@@ -3,7 +3,6 @@ import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import {decryptCookie} from '../helpers';
-import {escape} from 'lodash';
 const cookies = new Cookies();
 
 export function signInAction(signInData) {
@@ -17,36 +16,11 @@ export function signInAction(signInData) {
     .then((response) => {
       if (response.status === 200) {
         const responseData = response.data;
-        const cookieObj = decryptCookie(response.headers.authorization);
-        cookies.set('carauth', cookieObj.carauth, { path: cookieObj.Path, expires: new Date(cookieObj.Expires)});
+        localStorage.setItem('authData', JSON.stringify(responseData));
         if (responseData.phone && (!responseData.phoneVerified)) {
-          const carauth = 'carauth='+ escape(cookieObj.carauth);
-          axios.post(API_END_POINTS.REQUEST_OTP, JSON.stringify({ "phone": responseData.phone}), {
-            headers: {
-              'Accept': 'application/json,',
-              'Content-Type': 'application/json',
-            },
-            withCredentials:true
-          })
-          .then((response) => {
-            if (response.status === 200) {
-              dispatch({
-                type: types.SHOW_SEND_OTP_PAGE,
-                authData: responseData
-              });
-            } else {
-              dispatch({
-                type: types.SHOW_ERROR_MESSAGE,
-                statusMessage: "Unknown error occurred please try again"
-              });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            dispatch({
-              type: types.SHOW_ERROR_MESSAGE,
-              statusMessage: 'Unknown error occurred please try again'
-            });
+          dispatch({
+            type: types.SHOW_VERIFY_OTP_PAGE,
+            authData: responseData
           });
         } else {
           dispatch({
@@ -77,7 +51,7 @@ export function signInAction(signInData) {
   };
 }
 
-export function showSendOTPPage(signUpData) {
+export function showVerifyOTPPage(signUpData) {
   return (dispatch) => {
     axios.post(API_END_POINTS.SIGNUP, JSON.stringify(signUpData), {
       headers: {
@@ -88,9 +62,10 @@ export function showSendOTPPage(signUpData) {
     .then((response) => {
       if (response.status === 200) {
         const responseData = response.data;
+        localStorage.setItem('authData', JSON.stringify(responseData));
         dispatch({
-          type: responseData.verified ? types.SHOW_WELCOME_PAGE : types.SHOW_SEND_OTP_PAGE,
-          signUpData: responseData
+          type: responseData.verified ? types.SHOW_WELCOME_PAGE : types.SHOW_VERIFY_OTP_PAGE,
+          authData: responseData
         });
       } else {
         dispatch({
@@ -134,10 +109,10 @@ export function showWelcomePage(otp, phone, userId) {
         }
       })
       .then((response) => {
-        dispatch({
-          type: types.SHOW_WELCOME_PAGE,
-        });
         if (response.status === 200) {
+          const authData = JSON.parse(localStorage.getItem('authData'));
+          authData.phoneVerified = true;
+          localStorage.setItem('authData', JSON.stringify(authData));
           dispatch({
             type: types.SHOW_WELCOME_PAGE,
           });
@@ -177,4 +152,90 @@ export function hideErrorMessage() {
       type: types.HIDE_ERROR_MESSAGE
     });
   }
+}
+
+export function fetchCurrentUserInfo(){
+  return (dispatch) => {
+    axios.get(API_END_POINTS.CURRENT_USER_DETAILS, {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json',
+      },
+      withCredentials:true
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        const responseData = response.data;
+        localStorage.setItem('authData', JSON.stringify(responseData));
+        if (!responseData.phone) {
+          dispatch({
+            type: types.SHOW_SEND_OTP_PAGE,
+            authData: responseData
+          });
+        }
+        if (responseData.phone && (!responseData.phoneVerified)) {
+          dispatch({
+            type: types.SHOW_VERIFY_OTP_PAGE,
+            authData: responseData
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_DASHBOARD,
+            authData: responseData
+          });
+        }
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: "Unknown error occurred please try again"
+        });
+      }
+    })
+    .catch((err) => {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'System error, please try later'
+        });
+    });
+  };
+}
+
+export function resendOTP(){
+  return (dispatch) => {
+    const authData = JSON.parse(localStorage.authData);
+    if (authData.phone && (!authData.phoneVerified)) {
+          axios.post(API_END_POINTS.REQUEST_OTP, JSON.stringify({ "phone": authData.phone}), {
+            headers: {
+              'Accept': 'application/json,',
+              'Content-Type': 'application/json'
+            },
+            withCredentials:true
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              dispatch({
+                type: types.VERIFY_OTP,
+                authData: authData
+              });
+            } else {
+              dispatch({
+                type: types.SHOW_ERROR_MESSAGE,
+                statusMessage: "Unknown error occurred please try again"
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            dispatch({
+              type: types.SHOW_ERROR_MESSAGE,
+              statusMessage: 'Unknown error occurred please try again'
+            });
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_DASHBOARD,
+            authData: authData
+          });
+        }
+  };
 }
