@@ -1,9 +1,6 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
-import {decryptCookie} from '../helpers';
-const cookies = new Cookies();
 
 export function signInAction(signInData) {
   return (dispatch) => {
@@ -136,13 +133,13 @@ export function showWelcomePage(otp, phone, userId) {
           });
         }
       });
-    }
+    };
   } else {
     return (dispatch) => {
       dispatch({
         type: types.SHOW_WELCOME_PAGE,
       });
-    }
+    };
   }
 }
 
@@ -192,6 +189,7 @@ export function fetchCurrentUserInfo(){
       }
     })
     .catch((err) => {
+        console.log(err);
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
           statusMessage: 'System error, please try later'
