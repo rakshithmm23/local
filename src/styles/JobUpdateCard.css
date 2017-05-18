@@ -42,7 +42,33 @@
     height: 70px;
     width: 100px
 }
-
+.quotes-section .jobcard.box .notifyTag{
+	top: -6px;
+	    height: 8px;
+    width: 8px;
+}
+.quotes-section .jobcard.box .media-heading{
+	color: #454B51;
+	font-family: "CenturyGothic";
+	font-size: 17px;
+	display: inline-block;
+}
+.quotes-section .jobcard.box .rating {
+	padding: 5px 0;
+}
+.quotes-section .jobcard.box .rating-text{
+	padding-left: 10px;
+}
+.quotes-section .jobcard.box .rating span{
+	color: #717982;
+	font-family: "CenturyGothic";
+	font-size: 13px;
+}
+.quotes-section .jobcard.box .distance{
+	color: #25AF49;
+	font-family: "CenturyGothic";
+	font-size: 13px;
+} 
 .quotes-section .jobcard.box .media-heading {
     color: #454B51;
     font-family: CenturyGothic;

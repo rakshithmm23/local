@@ -1,6 +1,10 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+import {decryptCookie} from '../helpers';
+import {escape} from 'lodash';
+const cookies = new Cookies();
 
 export function signInAction(signInData) {
   return (dispatch) => {
@@ -13,10 +17,43 @@ export function signInAction(signInData) {
     .then((response) => {
       if (response.status === 200) {
         const responseData = response.data;
-        dispatch({
-          type: types.SHOW_DASHBOARD,
-          signInData: responseData
-        });
+        const cookieObj = decryptCookie(response.headers.authorization);
+        cookies.set('carauth', cookieObj.carauth, { path: cookieObj.Path, expires: new Date(cookieObj.Expires)});
+        if (responseData.phone && (!responseData.phoneVerified)) {
+          const carauth = 'carauth='+ escape(cookieObj.carauth);
+          axios.post(API_END_POINTS.REQUEST_OTP, JSON.stringify({ "phone": responseData.phone}), {
+            headers: {
+              'Accept': 'application/json,',
+              'Content-Type': 'application/json',
+            },
+            withCredentials:true
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              dispatch({
+                type: types.SHOW_SEND_OTP_PAGE,
+                authData: responseData
+              });
+            } else {
+              dispatch({
+                type: types.SHOW_ERROR_MESSAGE,
+                statusMessage: "Unknown error occurred please try again"
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            dispatch({
+              type: types.SHOW_ERROR_MESSAGE,
+              statusMessage: 'Unknown error occurred please try again'
+            });
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_DASHBOARD,
+            authData: responseData
+          });
+        }
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
