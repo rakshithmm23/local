@@ -4,7 +4,7 @@ export default class Button extends Component {
     constructor(props, context) {
         super(props, context);
     }
-    
+
     render() {
         const { btnType, btnSize, fontSize, label, btnCallBack, iconName } = this.props;
         const btnProperties = {};
@@ -19,7 +19,7 @@ export default class Button extends Component {
           btnProperties.onClick = btnCallBack;
         }
         return (
-          <button {...btnProperties} onClick={this.props.viewPayment}>
+          <button {...btnProperties}>
               {iconName && <i className={'mdi mdi-' + iconName}/>}
               {label}
           </button >

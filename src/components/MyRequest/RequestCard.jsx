@@ -83,7 +83,6 @@ export default class RequestCard extends Component {
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
   viewPayment() {
-    debugger
     this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
   }
   viewMessaging(){
@@ -262,7 +261,7 @@ export default class RequestCard extends Component {
                           <div>
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
-                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} 
+                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
                                 viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)}/>
 
                               )
