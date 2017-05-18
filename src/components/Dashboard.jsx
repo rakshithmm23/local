@@ -22,12 +22,11 @@ export default class Dashboard extends Component {
         this.state = {
             notificationVisible: false
         };
+        this.props.actions.fetchCurrentUserInfo();
     }
     componentWillMount() {
       debugger;
-      if (this.props.location.hash == '#facebook' || this.props.location.hash == '#google') {
-        this.props.actions.fetchCurrentUserInfo();
-      } else if (localStorage && localStorage.authData) {
+      if (localStorage && localStorage.authData) {
         const authData = JSON.parse(localStorage.authData);
         if (!authData.phone) {
           this.props.router.push('send-otp');
