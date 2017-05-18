@@ -7,6 +7,9 @@ import { Collapse } from 'react-bootstrap';
 import QuotesCard from './QuotesCard';
 import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
+import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
+import { StickyContainer, Sticky } from 'react-sticky';
+
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -77,32 +80,32 @@ export default class RequestCard extends Component {
     ];
     const jobCardDetails = [
       {
-        name:"Shine Works",
-        rating:4,
-        distance:3.2,
-        review:23
-      },{
-        name:"Shine Works",
-        rating:4,
-        distance:3.2,
-        review:23
-      },{
-        name:"Shine Works",
-        rating:4,
-        distance:3.2,
-        review:23
-      },{
-        name:"Shine Works",
-        rating:4,
-        distance:3.2,
-        review:23
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23
+      }, {
+        name: "Shine Works",
+        rating: 4,
+        distance: 3.2,
+        review: 23
       }
     ]
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
           {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
-          <div className={"job-updates " + item.statusIndicator}>
+          <div className={"job-updates myRequest " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                 <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
@@ -153,107 +156,134 @@ export default class RequestCard extends Component {
                       })}
                     </div>
                     <div>
-                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage && <div className="jr-body">
-                        <div className={infoClass}>
-                          <p>
-                            {item.jobInfoMessage}
-                          </p>
-                        </div>
-                      </div>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                {/*
-                |--------------------------------------------------
-                | job summary
-                |--------------------------------------------------
-                */}
-                <div className="request-summary clearfix">
-                  <div className="col-md-6 clearfix left">
-                    <div className="request-summary-tab clearfix">
-                      <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
-                          <span>Job Details</span>
-                        </div>
-
-                      </div>
-                      <div className="col-md-6 clearfix">
-                        <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>Quotes</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="quotes-section">
-                      <div className="title">
-                        <span>4 Quotes Received</span>
-                        <div className="filterSection">
-                          <select>
-                            <option value="volvo">Filter</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                          </select>
-                          <select>
-                            <option value="volvo">Sort By</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="wrapper">
-
-                        {this.state.jobUpdates == "quotes" &&
-                          <div>
-                            {map(jobCardDetails,(val,key)=>{
-                              <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}/>
-                            })}
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
-                            <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)"/>
+                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage &&
+                        <div className="jr-body">
+                          <div className={infoClass}>
+                            <p>
+                              {item.jobInfoMessage}
+                            </p>
                           </div>
-                        }
-                      </div>
+                        </div>}
                     </div>
-
-                  </div>
-                  <div className="col-md-6 clearfix right">
-                    <Gmaps
-                      center={{ lat: 12.9952672, lng: 77.5905857 }}
-                      markers={
-                        [
-                          {
-                            location:
-                            { lat: 12.9952672, lng: 77.5905857 }
-                          },{
-                            location:
-                            { lat: 12.2958, lng: 76.6394 }
-                          }
-                        ]}
-                      zoom={9}
-                      containerElement={<div style={{ height: 100 + 'vh' }} />}
-                      mapElement={<div style={{ height: 100 + 'vh' }} />}
-
-                    />
                   </div>
                 </div>
               </div>
             </div>
+            <div className="requestSection">
+              <div className="row">
+                <div className="col-md-12 col-sm-12 col-xs-12 pad0">
+                  {/*
+                    |--------------------------------------------------
+                    | job summary
+                    |--------------------------------------------------
+                    */}
+                  <div className="request-summary clearfix">
+                    <div className="col-md-6 clearfix left pad0">
+                      <div className="request-summary-tab clearfix">
+                        <div className="col-md-6 clearfix">
+                          <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
+                            <span>Job Details</span>
+                          </div>
+                        </div>
+                        <div className="col-md-6 clearfix">
+                          <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
+                            <span>Quotes</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="quotes-section">
+                        <div className="title">
+                          <span>4 Quotes Received</span>
+                          <div className="filterSection">
+                            <select>
+                              <option value="volvo">Filter</option>
+                              <option value="saab">Saab</option>
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </select>
+                            <select>
+                              <option value="volvo">Sort By</option>
+                              <option value="saab">Saab</option>
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="wrapper">
 
+                          {this.state.jobUpdates == "quotes" &&
+                            <div>
+                              {map(jobCardDetails, (val, key) => {
+                                <QuotesCard vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review} />
+                              })}
+                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                              <QuotesCard vendorName="Shine Works" index={1} rating="3.2" distance="2.5km" reviews="(23 Reviews)" />
+                            </div>
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 clearfix right pad0">
+                      <div className="mapSection hide">
+                        <Gmaps
+                          center={{ lat: 12.9952672, lng: 77.5905857 }}
+                          markers={
+                            [
+                              {
+                                location:
+                                { lat: 12.9952672, lng: 77.5905857 }
+                              }, {
+                                location:
+                                { lat: 12.2958, lng: 76.6394 }
+                              }
+                            ]}
+                          zoom={9}
+                          containerElement={<div style={{ height: 100 + 'vh' }} />}
+                          mapElement={<div style={{ height: 100 + 'vh' }} />}
+
+                        />
+                      </div>
+                      <div className="contentSection">
+                        <div className="quotes-right-header">
+                          <div className="profile-head">
+                            <span>
+                              <img src="../images/pic.png" alt="" />
+                            </span>
+                            <label> Shine Works </label>
+                          </div>
+                          <div className="quotes-right-tabs">
+                            <ul>
+                              <li className="active">Quote</li>
+                              <li>Message</li>
+                            </ul>
+                            <a href="" className="close-Tab"><i className="mdi mdi-close" /></a>
+                          </div>
+                        </div>
+                        <div className="quotes-right-body" />
+                        <div className="quotes-right-footer">
+                          <FormGroup>
+                            <InputGroup>
+                              <FormControl type="text" placeholder="Search" />
+                              <InputGroup.Addon>
+                                <i className="mdi mdi-send" />
+                              </InputGroup.Addon>
+                            </InputGroup>
+                          </FormGroup>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       );
     });
     return (
-      <div>
-        {jobDataList}
-      </div>
+      <div> {jobDataList} </div>
     );
   }
 }

@@ -65,9 +65,11 @@
 .login-banner .carousel-control {
     display: none;
 }
-.customScroll{
+
+.customScroll {
     height: 100vh !important;
 }
+
 .login-panel {
     width: 590px;
     margin: 0 auto;
@@ -122,10 +124,11 @@
 
 /*Checkbox*/
 
-.note-text label{
+.note-text label {
     font-weight: normal;
     cursor: pointer;
 }
+
 .note-text input {
     -webkit-appearance: none;
     background-color: #fafafa;
@@ -250,11 +253,15 @@
         display: none;
     }
     .login-title.mobile {
-        display: inline-block;
+        display: block;
         font-size: 18px;
         position: absolute;
-        top: 20px;
-        left: 20px;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background: #fff;
+        z-index: 999;
+        padding: 15px 20px;
     }
     .login-panel-header .btn-theme.facebook {
         margin-right: 10px;
