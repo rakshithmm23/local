@@ -25,7 +25,6 @@ export default class Dashboard extends Component {
         this.props.actions.fetchCurrentUserInfo();
     }
     componentWillMount() {
-      debugger;
       if (localStorage && localStorage.authData) {
         const authData = JSON.parse(localStorage.authData);
         if (!authData.phone) {

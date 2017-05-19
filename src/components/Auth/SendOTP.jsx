@@ -10,7 +10,6 @@ export default class SendOTP extends Component {
      super(props);
     }
     componentWillMount(){
-      debugger;
       if (localStorage && localStorage.authData){
        const authData = JSON.parse(localStorage.authData);
        if (authData.phone && authData.phoneVerified) {

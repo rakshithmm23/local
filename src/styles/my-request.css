@@ -93,7 +93,11 @@ input[type="color"][list] {
 
 .quotes-right-body {
     position: relative;
-    height: 65vh;
+    height: 70vh;
+}
+
+.mapSection .quotes-right-body{
+    overflow: hidden;
 }
 
 .quotes-right-header {
@@ -151,6 +155,7 @@ input[type="color"][list] {
     color: #717982;
     display: inline-block;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 .quotes-message-footer {

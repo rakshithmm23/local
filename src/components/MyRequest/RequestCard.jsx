@@ -300,15 +300,17 @@ export default class RequestCard extends Component {
                   </div>
                   <div className="col-md-6 clearfix right pad0">
                     <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
-                      <Gmaps
-                        center={{ lat: 12.9952672, lng: 77.5905857 }}
-                        markers={{ jobCardLocation }}
-                        markerClick={this.mapClick.bind(this)}
-                        zoom={9}
-                        containerElement={<div style={{ height: 100 + 'vh' }} />}
-                        mapElement={<div style={{ height: 100 + 'vh' }} />}
+                      <div className="quotes-right-body">
+                        <Gmaps
+                          center={{ lat: 12.9952672, lng: 77.5905857 }}
+                          markers={{ jobCardLocation }}
+                          markerClick={this.mapClick.bind(this)}
+                          zoom={9}
+                          containerElement={<div style={{ height: 100 + 'vh' }} />}
+                          mapElement={<div style={{ height: 100 + 'vh' }} />}
 
-                      />
+                        />
+                      </div>
                     </div>
                     <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
                       <div className="quotes-right-header">
