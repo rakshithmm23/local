@@ -110,6 +110,21 @@ export default class RequestCard extends Component {
       jobCardDetails:newDetails,
     });
   }
+  ClickedQuoteCard(key){
+    let update,newArray=[]
+    debugger
+    this.state.jobCardDetails.map((val,index)=>{
+      if(index==key.key){
+        update = {...val,isActive:true,pinImage: "../../images/location-pin-active.png"}
+      }else{
+        update = {...val,isActive:false,pinImage: "../../images/location-pin.png"}
+      }
+      newArray.push(update)
+    })
+    this.setState({
+      jobCardDetails:newArray
+    })
+  }
   closeChat() {
     this.setState({ mapView: true, quotationView: false })
   }
@@ -273,7 +288,7 @@ export default class RequestCard extends Component {
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
                                 <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
-                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} />
+                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={()=>this.ClickedQuoteCard({key})}/>
                               )
                             })}
 
