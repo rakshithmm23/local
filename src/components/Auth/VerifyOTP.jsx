@@ -25,7 +25,6 @@ export default class VerifyOTP extends Component {
       this.onFieldChange = this.onFieldChange.bind(this);
     }
     componentWillMount(){
-      debugger;
       if (localStorage && localStorage.authData){
        const authData = JSON.parse(localStorage.authData);
        if (authData.phone && authData.phoneVerified) {
@@ -64,7 +63,6 @@ export default class VerifyOTP extends Component {
         return;
       } else {
         this.setState({submissionError: false});
-        debugger;
         this.props.actions.showWelcomePage(
           this.formData.otp,
           this.props.authReducer && this.props.authReducer.authData && this.props.authReducer.authData.phone ? this.props.authReducer.authData.phone : '',
