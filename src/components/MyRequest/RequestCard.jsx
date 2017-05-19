@@ -9,6 +9,7 @@ import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 export default class RequestCard extends Component {
@@ -57,13 +58,21 @@ export default class RequestCard extends Component {
           longitude: 77.89058569999997,
           pinImage: '../../images/location-pin.png',
           isActive: false
+        },{
+          name: "Shine Works",
+          rating: 4,
+          distance: 3.2,
+          review: 23,
+          latitude: 12.1952672,
+          longitude: 77.89058569999997,
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }
       ],
       quotation: true,
       messages: false,
       mapView: true,
       quotationView: false,
-
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -99,30 +108,29 @@ export default class RequestCard extends Component {
   mapClick(map) {
     let update, newDetails = [];
     this.state.jobCardDetails.map((value) => {
-      if (value.latitude == map.latLng.lat() && value.longitude == map.latLng.lng()) {        
-        update = {...value, pinImage: "../../images/location-pin-active.png", isActive:true};
+      if (value.latitude == map.latLng.lat() && value.longitude == map.latLng.lng()) {
+        update = { ...value, pinImage: "../../images/location-pin-active.png", isActive: true };
       } else {
-        update = {...value, pinImage:"../../images/location-pin.png", isActive:false};
+        update = { ...value, pinImage: "../../images/location-pin.png", isActive: false };
       }
       newDetails.push(update);
     });
     this.setState({
-      jobCardDetails:newDetails,
+      jobCardDetails: newDetails,
     });
   }
-  ClickedQuoteCard(key){
-    let update,newArray=[]
-    debugger
-    this.state.jobCardDetails.map((val,index)=>{
-      if(index==key.key){
-        update = {...val,isActive:true,pinImage: "../../images/location-pin-active.png"}
-      }else{
-        update = {...val,isActive:false,pinImage: "../../images/location-pin.png"}
+  ClickedQuoteCard(key) {
+    let update, newArray = []
+    this.state.jobCardDetails.map((val, index) => {
+      if (index == key.key) {
+        update = { ...val, isActive: true, pinImage: "../../images/location-pin-active.png" }
+      } else {
+        update = { ...val, isActive: false, pinImage: "../../images/location-pin.png" }
       }
       newArray.push(update)
     })
     this.setState({
-      jobCardDetails:newArray
+      jobCardDetails: newArray
     })
   }
   closeChat() {
@@ -134,6 +142,7 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
+
   render() {
     // console.log(this.state.currentWidth)
     let jobLeftGridValue = "";
@@ -260,11 +269,10 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                       </div>
-
                     </div>
                   </div>
                   <div className="col-md-6 clearfix left pad0">
-                    <div className="quotes-section">
+                    <div className="quotes-view">
                       <div className="title">
                         <span>4 Quotes Received</span>
                         <div className="filterSection">
@@ -282,21 +290,21 @@ export default class RequestCard extends Component {
                           </select>
                         </div>
                       </div>
-                      <div className="wrapper">
-                        {this.state.jobUpdates == "quotes" && 
-                          <div>
-                            {map(this.state.jobCardDetails, (val, key) => {
-                              return (
-                                <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
-                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={()=>this.ClickedQuoteCard({key})}/>
-                              )
-                            })}
-
+                      <div className="quotes-left-body">
+                          <div className="wrapper">
+                            {this.state.jobUpdates == "quotes" &&
+                              <div>
+                                {map(this.state.jobCardDetails, (val, key) => {
+                                  return (
+                                    <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
+                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                  );
+                                })}
+                              </div>
+                            }
                           </div>
-                        }
                       </div>
                     </div>
-
                   </div>
                   <div className="col-md-6 clearfix right pad0">
                     <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
@@ -306,8 +314,8 @@ export default class RequestCard extends Component {
                           markers={{ jobCardLocation }}
                           markerClick={this.mapClick.bind(this)}
                           zoom={9}
-                          containerElement={<div style={{ height: 100 + 'vh' }} />}
-                          mapElement={<div style={{ height: 100 + 'vh' }} />}
+                          containerElement={<div style={{ height: 100 + '%' }} />}
+                          mapElement={<div style={{ height: 100 + '%' }} />}
 
                         />
                       </div>
@@ -329,7 +337,7 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                       <div className="quotes-right-body">
-                        <div className={this.state.quotation == true ? "quotes-details-Section" : "quotes-details-Section hide"}>
+                        <div className={this.state.quotation == true ? "quotes-invoice-Section" : "quotes-invoice-Section hide"}>
                           <div className="invoice-head">
                             <ul>
                               <li>
@@ -403,6 +411,46 @@ export default class RequestCard extends Component {
                                 <label>2:44 PM</label>
                               </div>
                             </div>
+                            <div className="c-message message-in">
+                              <div className="profile-head">
+                                <span>
+                                  <img src="../images/pic.png" alt="" />
+                                </span>
+                              </div>
+                              <div className="c-chat">
+                                <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                              </div>
+                              <div className="delivered-details">
+                                <label>2:44 PM</label>
+                              </div>
+                            </div>
+                            <div className="c-message message-in">
+                              <div className="profile-head">
+                                <span>
+                                  <img src="../images/pic.png" alt="" />
+                                </span>
+                              </div>
+                              <div className="c-chat">
+                                <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                              </div>
+                              <div className="delivered-details">
+                                <label>2:44 PM</label>
+                              </div>
+                            </div>
+                            <div className="c-message message-in">
+                              <div className="profile-head">
+                                <span>
+                                  <img src="../images/pic.png" alt="" />
+                                </span>
+                              </div>
+                              <div className="c-chat">
+                                <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                              </div>
+                              <div className="delivered-details">
+                                <label>2:44 PM</label>
+                              </div>
+                            </div>
+
                           </div>
                           <div className="quotes-message-footer">
                             <FormGroup>

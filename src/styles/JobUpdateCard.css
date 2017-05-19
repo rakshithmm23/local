@@ -1,102 +1,102 @@
-.quotes-section .jobcard.box {
+.quotes-view .jobcard.box {
     box-sizing: border-box;
     width: 100%;
     border: 1px solid #006FBA;
     border-radius: 3px;
     margin-bottom: 15px;
 }
-.quotes-section .jobcard.box.active{
+.quotes-view .jobcard.box.active{
     border: 1px solid red;
 }
 
-.quotes-section .jobcard.box .box-content .media-left img {
+.quotes-view .jobcard.box .box-content .media-left img {
     width: 100px;
     height: 70px;
     border-radius: 5px;
 }
 
-.quotes-section .media {
+.quotes-view .media {
     box-sizing: border-box;
     height: 100px;
     padding: 10px;
 }
 
-.quotes-section .media-body {
+.quotes-view .media-body {
     position: relative;
 }
 
-.quotes-section .media-body .mdi-heart,
-.quotes-section .media-body .mdi-heart-outline {
+.quotes-view .media-body .mdi-heart,
+.quotes-view .media-body .mdi-heart-outline {
     position: absolute;
     color: red;
     top: 0;
     right: 0;
 }
 
-.quotes-section .media-body .rating {
+.quotes-view .media-body .rating {
     line-height: 30px;
 }
 
-.quotes-section .media-body .mdi-star {
+.quotes-view .media-body .mdi-star {
     color: #FF7300 !important;
 }
 
-.quotes-section .jobcard.box .media-left {
+.quotes-view .jobcard.box .media-left {
     height: 70px;
     width: 100px
 }
-.quotes-section .jobcard.box .notifyTag{
+.quotes-view .jobcard.box .notifyTag{
 	top: -6px;
 	    height: 8px;
     width: 8px;
 }
-.quotes-section .jobcard.box .media-heading{
+.quotes-view .jobcard.box .media-heading{
 	color: #454B51;
 	font-family: "CenturyGothic";
 	font-size: 17px;
 	display: inline-block;
 }
-.quotes-section .jobcard.box .rating {
+.quotes-view .jobcard.box .rating {
 	padding: 5px 0;
 }
-.quotes-section .jobcard.box .rating-text{
+.quotes-view .jobcard.box .rating-text{
 	padding-left: 10px;
 }
-.quotes-section .jobcard.box .rating span{
+.quotes-view .jobcard.box .rating span{
 	color: #717982;
 	font-family: "CenturyGothic";
 	font-size: 13px;
 }
-.quotes-section .jobcard.box .distance{
+.quotes-view .jobcard.box .distance{
 	color: #25AF49;
 	font-family: "CenturyGothic";
 	font-size: 13px;
 } 
-.quotes-section .jobcard.box .media-heading {
+.quotes-view .jobcard.box .media-heading {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 17px;
     display: inline-block;
 }
 
-.quotes-section .jobcard.box .rating span {
+.quotes-view .jobcard.box .rating span {
     color: #717982;
     font-family: CenturyGothic;
     font-size: 13px;
 }
 
-.quotes-section .jobcard.box .distance {
+.quotes-view .jobcard.box .distance {
     color: #25AF49;
     font-family: CenturyGothic;
     font-size: 13px;
 }
 
-.quotes-section .jobcard.box .box-footer {
+.quotes-view .jobcard.box .box-footer {
     background-color: #F9FBFB;
     border-radius: 0px 0px 5px 5px;
 }
 
-.quotes-section .jobcard.box .box-footer .quotes-cost {
+.quotes-view .jobcard.box .box-footer .quotes-cost {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 14px;
@@ -105,18 +105,18 @@
     display: inline-block;
 }
 
-.quotes-section .jobcard.box .box-footer .box-message {
+.quotes-view .jobcard.box .box-footer .box-message {
     float: right;
 	margin-top: 6px;
 }
-.quotes-section .jobcard.box .box-footer .box-message .job-icon{
+.quotes-view .jobcard.box .box-footer .box-message .job-icon{
 	margin: 0;
 }
-.quotes-section .jobcard.box .footer-container {
+.quotes-view .jobcard.box .footer-container {
     padding: 10px;
 }
 
-.quotes-section .jobcard.box .footer-container .btn-theme {
+.quotes-view .jobcard.box .footer-container .btn-theme {
     height: 35px;
 	margin: 0;
 }
