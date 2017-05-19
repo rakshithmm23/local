@@ -28,8 +28,8 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.9952672,
           longitude: 77.59058570000002,
-          pinImage:'../../images/location-pin.png',
-          isActive:false
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
@@ -37,8 +37,8 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.7952672,
           longitude: 77.29058570000007,
-          pinImage:'../../images/location-pin.png',
-          isActive:false
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
@@ -46,8 +46,8 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.4952672,
           longitude: 77.59058570000002,
-          pinImage:'../../images/location-pin.png',
-          isActive:false
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
@@ -55,8 +55,8 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.1952672,
           longitude: 77.89058569999997,
-          pinImage:'../../images/location-pin.png',
-          isActive:false
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }
       ],
       quotation: true,
@@ -93,16 +93,23 @@ export default class RequestCard extends Component {
   viewPayment() {
     this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
   }
-  viewMessaging(){
+  viewMessaging() {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    debugger
     this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
     for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
       if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
-          
-        this.setState({ activelatitude: map.latLng.lat(), activelongitue: map.latLng.lng() })
+        this.state.jobCardDetails[data].isActive = !this.state.jobCardDetails[data].isActive;
+        if(this.state.jobCardDetails[data].pinImage == "../../images/location-pin-active.png"){
+          this.state.jobCardDetails[data].pinImage = "../../images/location-pin.png";
+        } else{
+          this.state.jobCardDetails[data].pinImage = "../../images/location-pin-active.png";
+        }
+        this.setState(
+          this.state.jobCardDetails
+        );
+        
       }
     }
   }
@@ -268,8 +275,8 @@ export default class RequestCard extends Component {
                           <div>
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
-                                <QuotesCard activeClass={val.latitude == this.state.activelatitude && val.longitude == this.state.activelongitue?"active":""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
-                                viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} />
+                                <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
+                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} />
                               )
                             })}
 
