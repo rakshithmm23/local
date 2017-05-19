@@ -97,21 +97,18 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
-    for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
-      if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
-        this.state.jobCardDetails[data].isActive = !this.state.jobCardDetails[data].isActive;
-        if(this.state.jobCardDetails[data].pinImage == "../../images/location-pin-active.png"){
-          this.state.jobCardDetails[data].pinImage = "../../images/location-pin.png";
-        } else{
-          this.state.jobCardDetails[data].pinImage = "../../images/location-pin-active.png";
-        }
-        this.setState(
-          this.state.jobCardDetails
-        );
-        
+    let update, newDetails = [];
+    this.state.jobCardDetails.map((value) => {
+      if (value.latitude == map.latLng.lat() && value.longitude == map.latLng.lng()) {        
+        update = {...value, pinImage: "../../images/location-pin-active.png", isActive:true};
+      } else {
+        update = {...value, pinImage:"../../images/location-pin.png", isActive:false};
       }
-    }
+      newDetails.push(update);
+    });
+    this.setState({
+      jobCardDetails:newDetails,
+    });
   }
   closeChat() {
     this.setState({ mapView: true, quotationView: false })
