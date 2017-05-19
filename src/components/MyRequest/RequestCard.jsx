@@ -268,7 +268,7 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                       <div className="wrapper">
-                        {this.state.jobUpdates == "quotes" &&
+                        {this.state.jobUpdates == "quotes" && 
                           <div>
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
