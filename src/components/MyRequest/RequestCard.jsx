@@ -87,11 +87,9 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
   }
   viewMessaging(){
-    debugger
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    console.log(map.latLng.lng(), map.latLng.lat())
     this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
     for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
       if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
@@ -100,7 +98,6 @@ export default class RequestCard extends Component {
     }
   }
   closeChat() {
-    debugger
     this.setState({ mapView: true, quotationView: false })
   }
   viewQuotation() {
