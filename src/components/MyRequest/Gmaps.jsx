@@ -4,14 +4,19 @@ import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 class Gmaps extends Component {
     
     render() {
-        const markers = this.props.markers.jobCardLocation.map((val,i)=>{
+        
+        const markers = this.props.markers.jobCardLocation.map((val, i) => {
             const marker = {
-                position:{
-                    lat:val.lat,
-                    lng:val.lng
+                position: {
+                    lat: val.lat,
+                    lng: val.lng
                 }
             }
-            return <Marker key={i} {...marker} onClick={this.props.markerClick}/>
+            return <Marker key={i} {...marker} onClick={this.props.markerClick}
+                icon={{
+                    url: val.pinImage
+                }}
+            />
         })
         return (
             <div>

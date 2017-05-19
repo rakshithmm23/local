@@ -36,6 +36,6 @@ export default (
     <Route path="sign-in" component={AuthContainer(SignIn)}/>
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
-    <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
+    <Route path="request" component={AuthContainer(MyRequest)} />
   </Route>
 );

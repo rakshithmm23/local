@@ -27,28 +27,36 @@ export default class RequestCard extends Component {
           distance: 3.2,
           review: 23,
           latitude: 12.9952672,
-          longitude: 77.59058570000002
+          longitude: 77.59058570000002,
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.7952672,
-          longitude: 77.29058570000007
+          longitude: 77.29058570000007,
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.4952672,
-          longitude: 77.59058570000002
+          longitude: 77.59058570000002,
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.1952672,
-          longitude: 77.89058569999997
+          longitude: 77.89058569999997,
+          pinImage: '../../images/location-pin.png',
+          isActive: false
         }
       ],
       quotation: true,
@@ -89,13 +97,18 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    console.log(map.latLng.lng(), map.latLng.lat())
-    this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
-    for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
-      if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
-        this.setState({ activelatitude: map.latLng.lat(), activelongitue: map.latLng.lng() })
+    let update, newDetails = [];
+    this.state.jobCardDetails.map((value) => {
+      if (value.latitude == map.latLng.lat() && value.longitude == map.latLng.lng()) {        
+        update = {...value, pinImage: "../../images/location-pin-active.png", isActive:true};
+      } else {
+        update = {...value, pinImage:"../../images/location-pin.png", isActive:false};
       }
-    }
+      newDetails.push(update);
+    });
+    this.setState({
+      jobCardDetails:newDetails,
+    });
   }
   closeChat() {
     this.setState({ mapView: true, quotationView: false })
@@ -142,7 +155,7 @@ export default class RequestCard extends Component {
     ];
 
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
-      return { lat: val.latitude, lng: val.longitude }
+      return { lat: val.latitude, lng: val.longitude, pinImage: val.pinImage }
     })
 
     const jobDataList = map(jobData, (item, key) => {
@@ -255,11 +268,11 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                       <div className="wrapper">
-                        {this.state.jobUpdates == "quotes" &&
+                        {this.state.jobUpdates == "quotes" && 
                           <div>
                             {map(this.state.jobCardDetails, (val, key) => {
                               return (
-                                <QuotesCard activeClass={val.latitude == this.state.activelatitude && val.longitude == this.state.activelongitue ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
+                                <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
                                   viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} />
                               )
                             })}
