@@ -27,28 +27,36 @@ export default class RequestCard extends Component {
           distance: 3.2,
           review: 23,
           latitude: 12.9952672,
-          longitude: 77.59058570000002
+          longitude: 77.59058570000002,
+          pinImage:'../../images/location-pin.png',
+          isActive:false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.7952672,
-          longitude: 77.29058570000007
+          longitude: 77.29058570000007,
+          pinImage:'../../images/location-pin.png',
+          isActive:false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.4952672,
-          longitude: 77.59058570000002
+          longitude: 77.59058570000002,
+          pinImage:'../../images/location-pin.png',
+          isActive:false
         }, {
           name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.1952672,
-          longitude: 77.89058569999997
+          longitude: 77.89058569999997,
+          pinImage:'../../images/location-pin.png',
+          isActive:false
         }
       ],
       quotation: true,
@@ -89,9 +97,11 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
+    debugger
     this.setState({ latitude: map.latLng.lat(), longitude: map.latLng.lng() })
     for (let data = 0; data <= this.state.jobCardDetails.length - 1; data++) {
       if (this.state.jobCardDetails[data].latitude == map.latLng.lat() && this.state.jobCardDetails[data].longitude == map.latLng.lng()) {
+          
         this.setState({ activelatitude: map.latLng.lat(), activelongitue: map.latLng.lng() })
       }
     }
@@ -141,7 +151,7 @@ export default class RequestCard extends Component {
     ];
 
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
-      return { lat: val.latitude, lng: val.longitude }
+      return { lat: val.latitude, lng: val.longitude, pinImage: val.pinImage }
     })
 
     const jobDataList = map(jobData, (item, key) => {
