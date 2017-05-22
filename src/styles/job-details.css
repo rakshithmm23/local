@@ -1,0 +1,145 @@
+.request-summary-body .tab-jobDetails {
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.request-summary-body .data-time {
+  margin-bottom: 30px;
+  border-radius: 3px;
+  background-color: #F9FBFB;
+  font-family: "CenturyGothic";
+}
+.request-summary-body .repair-detail{
+    padding-left: 0 !important;
+}
+
+.request-summary-body .data-time title,
+.request-summary-body .data-time span {
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 14px;
+  display: block;
+  color: #454B51;
+}
+
+.request-summary-body .data-time .margin-correction {
+  padding: 30px;
+  padding-left: 20px;
+}
+
+.request-summary-body .data-time .margin-correction title {
+  padding-bottom: 10px;
+  color: #454B51;
+}
+
+.request-summary-body .data-time .margin-correction .wrapper {
+  border-right: 2px solid #DAE1E7;
+}
+
+.request-summary-body .data-time .margin-correction:nth-child(3) .wrapper {
+  border-right: 0;
+}
+
+.request-summary-body .repair-category {
+  
+  clear: both;
+}
+.request-summary-body .more-details{
+    border-left: 2px solid #DAE1E7;
+}
+
+.request-summary-body title {
+  clear: both;
+  display: block;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 16px;
+  padding-bottom: 30px;
+}
+.more-details title{
+    padding-left: 8px;
+}
+.request-summary-body .repair-category,
+.request-summary-body .uploads,
+.request-summary-body .uploads .images
+{
+    padding-left: 0 !important;
+}
+.request-summary-body .repair-category .figure{
+  vertical-align: super;
+}
+
+.request-summary-body .repair-category .interior-clean {
+  width: 15px;
+  height: 15px;
+  background: url(http://web-test.carcility.com/statusIcon.png);
+  display: inline-block;
+  background-repeat: no-repeat;
+
+}
+
+.request-summary-body .repair-category .wash {
+  width: 15px;
+  height: 15px;
+  background: url(http://web-test.carcility.com/statusIcon.png);
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+.request-summary-body figcaption {
+  display: inline-block;
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 14px;
+  vertical-align: 9px;
+  padding-left: 8px;
+  padding-bottom: 20px;
+}
+
+.request-summary-body .more-details figcaption{
+    line-height: 22px;
+}
+
+.request-summary-body .uploads caption{
+    display: block;
+	color: #717982;
+	font-family: "CenturyGothic";
+	font-size: 14px;
+	line-height: 14px;
+    margin-bottom: 19px;
+}
+.request-summary-body .uploads .figure img{
+    height: 100px;
+    width: 100px;
+    padding-right: 10px; 
+    border-radius: 3px;
+}
+.request-summary-body .uploads .figure{
+    padding: 30px 0;
+    border-bottom: 2px solid #DAE1E7;
+}
+
+.request-summary-body .uploads .images:first-child .figure{
+    padding-top: 0
+}
+.request-summary-body .uploads .images{
+    padding-right: 20px !important;
+}
+.request-summary-body .uploads .images:nth-child(odd){
+    border-left: 2px solid #DAE1E7;
+    padding-left: 20px !important;
+}
+.request-summary-body .uploads .figure.no-border{
+    border-bottom: 0;
+}
+.request-summary-body .uploads .figure.no-top-padding{
+    padding-top: 0;
+}
+.request-summary-body .uploads .image-container{
+    display: inline-block;
+    position: relative;
+}
+

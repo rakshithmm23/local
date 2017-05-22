@@ -10,6 +10,7 @@ import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { Scrollbars } from 'react-custom-scrollbars';
+import JobDetails from './JobDetails'
 
 
 export default class RequestCard extends Component {
@@ -54,7 +55,7 @@ export default class RequestCard extends Component {
           latitude: 12.4952672,
           longitude: 77.1105857,
           isActive: false
-        }, 
+        },
         {
           name: "Shine Works4",
           rating: 4,
@@ -63,7 +64,7 @@ export default class RequestCard extends Component {
           latitude: 12.4952672,
           longitude: 77.98705857000004,
           isActive: false
-        }, 
+        },
       ],
       quotation: true,
       messages: false,
@@ -76,10 +77,10 @@ export default class RequestCard extends Component {
         {
           startTime: "11:30 AM on Jan 5 2017",
           schedule: "Rescheduled",
-            generatedTime: "Jan2, 2017",
-            serviceName: "Brakes & Exhaust",
-            serviceAccessories: "Brake Pads",
-            accsessoriesCost: "3 AED",
+          generatedTime: "Jan2, 2017",
+          serviceName: "Brakes & Exhaust",
+          serviceAccessories: "Brake Pads",
+          accsessoriesCost: "3 AED",
         },
       ]
 
@@ -116,7 +117,6 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    debugger
     let update, newDetails = [];
 
     this.state.jobCardDetails.map((value, key) => {
@@ -286,10 +286,10 @@ export default class RequestCard extends Component {
                   </div>
                 </div>
                 <div className="row request-summary-body">
-                  <div className="tab-jobDetails">
-                    Job Details goes here
-                  </div>
-                  <div className="tab-quotes">
+                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
+                    <JobDetails />
+                  </div>}
+                  {this.state.jobUpdates == "quotes" && <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0">
                       <div className="quotes-view">
                         <div className="title">
@@ -311,16 +311,16 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-left-body">
                           <div className="wrapper">
-                            {this.state.jobUpdates == "quotes" &&
-                              <div>
-                                {map(this.state.jobCardDetails, (val, key) => {
-                                  return (
-                                    <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
-                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
-                                  );
-                                })}
-                              </div>
-                            }
+
+                            <div>
+                              {map(this.state.jobCardDetails, (val, key) => {
+                                return (
+                                  <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
+                                    viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                );
+                              })}
+                            </div>
+                            {/*}*/}
                           </div>
 
                         </div>
@@ -485,7 +485,7 @@ export default class RequestCard extends Component {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </div>
