@@ -23,51 +23,47 @@ export default class RequestCard extends Component {
       activelongitue: '',
       jobCardDetails: [
         {
-          name: "Shine Works",
+          name: "Shine Works0",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.9952672,
           longitude: 77.59058570000002,
-          pinImage: '../../images/location-pin.png',
           isActive: false
         }, {
-          name: "Shine Works",
+          name: "Shine Works1",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.7952672,
           longitude: 77.29058570000007,
-          pinImage: '../../images/location-pin.png',
           isActive: false
         }, {
-          name: "Shine Works",
+          name: "Shine Works2",
           rating: 4,
           distance: 3.2,
           review: 23,
           latitude: 12.4952672,
           longitude: 77.59058570000002,
-          pinImage: '../../images/location-pin.png',
           isActive: false
         }, {
-          name: "Shine Works",
+          name: "Shine Works3",
           rating: 4,
           distance: 3.2,
           review: 23,
-          latitude: 12.1952672,
-          longitude: 77.80958569999997,
-          pinImage: '../../images/location-pin.png',
+          latitude: 12.4952672,
+          longitude: 77.1105857,
           isActive: false
-        }, {
-          name: "Shine Works",
+        }, 
+        {
+          name: "Shine Works4",
           rating: 4,
           distance: 3.2,
           review: 23,
-          latitude: 12.1952672,
-          longitude: 77.89058569999997,
-          pinImage: '../../images/location-pin.png',
+          latitude: 12.4952672,
+          longitude: 77.98705857000004,
           isActive: false
-        }
+        }, 
       ],
       quotation: true,
       messages: false,
@@ -86,6 +82,7 @@ export default class RequestCard extends Component {
             accsessoriesCost: "3 AED",
         },
       ]
+
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -325,6 +322,7 @@ export default class RequestCard extends Component {
                               </div>
                             }
                           </div>
+
                         </div>
                       </div>
                     </div>
