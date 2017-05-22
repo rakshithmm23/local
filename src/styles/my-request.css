@@ -9,6 +9,9 @@
 .request-summary {
     border-top: 2px solid #F9FCFB;
 }
+.requestSection .row{
+    margin: 0;
+}
 
 select,
 input[type="color"][list] {
@@ -243,13 +246,13 @@ input[type="color"][list] {
 
 .quotes-chat-area,
 .quotes-left-body .wrapper,
-.quotes-invoice-Section,
+.quotes-quotation-Section,
 {
     position: absolute;
     height: 100%;
     overflow: auto;
 }
-.quotes-invoice-Section{
+.quotes-quotation-Section{
     width: 100%;
 }
 
@@ -378,9 +381,9 @@ input[type="color"][list] {
 }
 
 
-/*Invoice Section*/
+/*quotation Section*/
 
-.invoice-head {
+.quotation-head {
     height: 80px;
     border-radius: 3px;
     background-color: #F9FBFB;
@@ -388,46 +391,46 @@ input[type="color"][list] {
     padding: 18px 15px;
 }
 
-.invoice-head ul li label {
+.quotation-head ul li label {
     min-width: 150px;
 }
 
-.invoice-head ul li {
+.quotation-head ul li {
     padding: 3px 0;
 }
 
-.invoice-head ul li span,
-.invoice-head ul li label {
+.quotation-head ul li span,
+.quotation-head ul li label {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 14px;
     font-weight: normal;
 }
 
-.invoice-block {
+.quotation-block {
     padding: 10px 20px;
 }
 
-.invoice-block h4,
-.invoice-total label {
+.quotation-block h4,
+.quotation-total label {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 16px;
     margin-bottom: 15px;
 }
 
-.invoice-block li {
+.quotation-block li {
     padding: 3px 18px;
 }
 
-.invoice-block li label {
+.quotation-block li label {
     color: #717982;
     font-family: CenturyGothic;
     font-size: 14px;
     font-weight: normal;
 }
 
-.invoice-total {
+.quotation-total {
     margin: 30px 38px;
     margin-right: 35px;
     border-top: 1px solid rgba(113, 121, 130, 0.2);
@@ -435,20 +438,20 @@ input[type="color"][list] {
     padding: 15px 0 0;
 }
 
-.invoice-total label {
+.quotation-total label {
     color: #454B51;
     font-weight: 900;
 }
 
-.invoice-block li span,
-.invoice-total span {
+.quotation-block li span,
+.quotation-total span {
     float: right;
     color: #717982;
     font-size: 14px;
     font-family: CenturyGothic;
 }
 
-.invoice-total span {
+.quotation-total span {
     font-weight: 900;
     font-size: 16px;
 }
