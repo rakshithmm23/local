@@ -111,8 +111,9 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
+    debugger
     let update, newDetails = [];
-
+    
     this.state.jobCardDetails.map((value,key) => {
       if (value.latitude == map.latLng.lat() && value.longitude == map.latLng.lng()) {        
         update = {...value, pinImage: this.state.activeSvg+key+this.state.svgEnd, isActive:true};
@@ -128,12 +129,11 @@ export default class RequestCard extends Component {
 
   ClickedQuoteCard(key){
     let update,newArray=[]
-    debugger
     this.state.jobCardDetails.map((val,index)=>{
       if(index==key.key){
         update = {...val,isActive:true,pinImage: this.state.activeSvg+index+this.state.svgEnd}
       }else{
-        update = {...val,isActive:false,pinImage: this.state.svg+key+this.state.svgEnd}
+        update = {...val,isActive:false,pinImage: this.state.svg+index+this.state.svgEnd}
       }
       newArray.push(update)
     })
@@ -185,9 +185,11 @@ export default class RequestCard extends Component {
       },
 
     ];
-
+    
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
-      return { lat: val.latitude, lng: val.longitude, pinImage: val.pinImage }
+      return { 
+        lat: val.latitude, lng: val.longitude, pinImage: val.isActive?this.state.activeSvg+key+this.state.svgEnd : this.state.svg+key+this.state.svgEnd 
+      }
     })
 
     const jobDataList = map(jobData, (item, key) => {
