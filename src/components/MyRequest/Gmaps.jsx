@@ -11,6 +11,8 @@ class Gmaps extends Component {
                     lng: val.lng
                 }
             }
+        debugger
+            
             return <Marker key={i} {...marker} onClick={this.props.markerClick}
                 icon={{
                     url: val.pinImage
