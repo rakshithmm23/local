@@ -15,8 +15,8 @@ class Gmaps extends Component {
                 icon={{
                     url: val.pinImage
                 }}
-            />
-        })
+            />;
+        });
         return (
             <div>
                 <GoogleMap
