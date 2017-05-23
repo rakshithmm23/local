@@ -45,6 +45,8 @@ export default class SignUp extends Component {
           } else {
             this.props.router.push('verify-otp');
           }
+        } else {
+            this.props.router.push('send-otp');
         }
       }
     }
@@ -58,6 +60,8 @@ export default class SignUp extends Component {
           } else {
             this.props.router.push('verify-otp');
           }
+        } else {
+            this.props.router.push('send-otp');
         }
       }
     }

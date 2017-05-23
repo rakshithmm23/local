@@ -10,7 +10,8 @@ export function signInUser (signInData, dispatch) {
       headers: {
         'Accept': 'application/json,',
         'Content-Type': 'application/json'
-      }
+      },
+      withCredentials:true
     })
     .then((response) => {
       if (response.status === 200) {
@@ -70,7 +71,8 @@ export function showVerifyOTPPage(signUpData) {
       headers: {
         'Accept': 'application/json,',
         'Content-Type': 'application/json'
-      }
+      },
+      withCredentials:true
     })
     .then((response) => {
       if (response.status === 200) {
@@ -78,17 +80,6 @@ export function showVerifyOTPPage(signUpData) {
           'email': signUpData.email,
           'password': signUpData.password
         }, dispatch, true);
-        // const authCookie = decryptCookie(response.headers.authorization);
-        // cookies.set('carauth', authCookie.carauth, {
-        //   domain: authCookie.Domain,
-        //   expires: new Date(authCookie.Expires),
-        //   path: authCookie.Path
-        // });
-        // localStorage.setItem('authData', JSON.stringify(responseData));
-        // dispatch({
-        //   type: responseData.verified ? types.SHOW_WELCOME_PAGE : types.SHOW_VERIFY_OTP_PAGE,
-        //   authData: responseData
-        // });
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
@@ -128,7 +119,8 @@ export function showWelcomePage(otp, phone, userId) {
         headers: {
           'Accept': 'application/json,',
           'Content-Type': 'application/json',
-        }
+        },
+        withCredentials:true
       })
       .then((response) => {
         if (response.status === 200) {
