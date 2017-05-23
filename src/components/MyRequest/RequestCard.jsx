@@ -18,7 +18,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       open: false,
-      jobUpdates: "quotes",
+      jobUpdates: "details",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',

@@ -54,33 +54,35 @@ class JobDetails extends Component {
                     <div className="col-md-6 images">
                          <div className="figure no-top-padding">
                              <caption>Car Images:</caption>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             {/*<img src="../../images/test.jpg" alt=""/>
+                             <img src="../../images/test.jpg" alt=""/>*/}
                          </div>
                     </div>
                     <div className="col-md-6 images">
                          <div className="figure no-top-padding">
                              <caption>Police Report:</caption>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                          </div>
                     </div>
                     <div className="col-md-6 images ">
                          <div className="figure no-border" >
                              <caption>Driving Licence:</caption>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                          </div>
                     </div>
                     <div className="col-md-6 images ">
                          <div className="figure no-border">
                              <caption>Registration Card:</caption>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
+                             <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                          </div>
                     </div>
                    

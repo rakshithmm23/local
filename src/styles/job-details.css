@@ -13,6 +13,10 @@
 .request-summary-body .repair-detail{
     padding-left: 0 !important;
 }
+.repair-detail{
+    border-bottom: 2px solid #DAE1E7;
+    padding-bottom: 30px;
+}
 
 .request-summary-body .data-time title,
 .request-summary-body .data-time span {
@@ -72,6 +76,7 @@
 }
 
 .request-summary-body .repair-category .interior-clean {
+    vertical-align: 6px;
   width: 15px;
   height: 15px;
   background: url(http://web-test.carcility.com/statusIcon.png);
@@ -81,6 +86,7 @@
 }
 
 .request-summary-body .repair-category .wash {
+    vertical-align: 6px;
   width: 15px;
   height: 15px;
   background: url(http://web-test.carcility.com/statusIcon.png);
@@ -96,7 +102,6 @@
   line-height: 14px;
   vertical-align: 9px;
   padding-left: 8px;
-  padding-bottom: 20px;
 }
 
 .request-summary-body .more-details figcaption{
@@ -111,9 +116,9 @@
 	line-height: 14px;
     margin-bottom: 19px;
 }
+
 .request-summary-body .uploads .figure img{
-    height: 100px;
-    width: 100px;
+    
     padding-right: 10px; 
     border-radius: 3px;
 }
@@ -142,4 +147,19 @@
     display: inline-block;
     position: relative;
 }
-
+.request-summary-body .uploads title {
+    padding: 20px 0;
+}
+.request-summary-body .uploads .figure .upload-images{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    position: relative
+}
+.request-summary-body .uploads .figure .upload-images img{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%)
+}
