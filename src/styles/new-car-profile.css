@@ -1,0 +1,148 @@
+.new-car-profile .title {
+  background: white;
+  padding: 30px 0;
+  padding-left: 40px;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  position: relative;
+}
+
+.new-car-profile .title h4 {
+  margin-top: 0;
+}
+
+.ncr .s1,.ncr .s2{
+  max-height: 825px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+  /*width: 1110px;*/
+  margin: 0 auto;
+}
+
+.ncr .title {
+  position: relative;
+  padding: 22px;
+  border-radius: 4px 4px 0 0;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+}
+
+.ncr .title h4 {
+  display: inline-block;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.ncr .s1 .search-box {
+  top: 30px;
+  display: inline-block;
+  position: absolute;
+  right: 23%;
+  width: 32%;
+  background-color: transparent;
+}
+
+.ncr .s1 .search-box input {
+    width: 100%;
+  border: transparent;
+  border-bottom: 2px solid #DAE1E7 !important;
+  
+      outline: 0 !important;
+}
+
+.ncr .s1 .search-box input::-webkit-input-placeholder,
+.ncr .s1 .search-box input::-moz-placeholder,
+.ncr .s1 .search-box input:-ms-input-placeholder,
+.ncr .s1 .search-box input:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: "CenturyGothic";
+}
+
+.ncr .title .mdi.mdi-chevron-down,.ncr .title .mdi.mdi-chevron-up {
+  position: absolute;
+  right: 19px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.ncr .title .mdi.mdi-magnify {
+  position: absolute;
+  right: 0;
+  font-size: 18px;
+  color: #949DA5;
+}
+
+.s1 .img-container {
+    overflow: scroll;
+  height: 632px;
+  border-bottom: 1px solid #C8D4DE;
+}
+.s1 .img-circle {
+
+    cursor: pointer;
+  position: relative;
+  vertical-align: top;
+  margin: 24px;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #EEF2F5;
+  border-radius: 100%;
+  background-color: #FFFFFF;
+      margin-bottom: 13px;
+}
+
+.s1 .img-circle.active {
+  border: 1px solid #ED3124;
+}
+
+.s1 .img-circle img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inSection.ncr .s1 .btn-theme.submit {
+  background-color: #ED3124;
+  margin: 20px 30px;
+
+  float: right;
+}
+
+.s1 .img-container .image-view{
+    text-align: center;
+}
+.s1 .img-container  h6{
+    margin-top: 0 !important;
+	color: #454B51;
+	font-family: "CenturyGothic";
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+}
+
+.ncr .s1 .next-button{
+    height: 90px;
+}
+.ncr .s2 select{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #C8D4DE; 
+    border-radius: 0;
+    -webkit-appearance: none;
+    outline: none;
+}
+.ncr .s2 .modal-select .mdi{
+    position: absolute;
+    right: 14px;
+    top: 7px;
+    font-size: 26px;
+}
