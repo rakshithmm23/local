@@ -5,3 +5,4 @@ export const SHOW_DASHBOARD = 'SHOW_DASHBOARD';
 export const SHOW_SEND_OTP_PAGE = 'SHOW_SEND_OTP_PAGE';
 export const SHOW_VERIFY_OTP_PAGE = 'SHOW_VERIFY_OTP_PAGE';
 export const VERIFY_OTP = 'VERIFY_OTP';
+export const LOGOUT = 'LOGOUT';

@@ -5,7 +5,7 @@ import Search from '../common/Search';
 
 export default class Header extends Component {
   render() {
-    const {notificationCount, profileName, notificationCallBack} = this.props;
+    const {authActions, router, notificationCount, profileName, notificationCallBack} = this.props;
     return (
         <div className="header-section navbar-fixed-top">
             <div className="logo-section">
@@ -32,7 +32,7 @@ export default class Header extends Component {
                       </label>
                   </li>
                   <li className="profile-header">
-                      <Dropdown/>
+                      <Dropdown authActions={authActions} router={router}/>
                   </li>
               </ul>
             </div>

@@ -33,6 +33,35 @@ export default class SignUp extends Component {
     };
     this.onFieldChange = this.onFieldChange.bind(this);
   }
+  componentWillMount(){
+      // const signedUserDataCookie = cookies.get('carauth');
+      if (localStorage && localStorage.authData){
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
+    }
+    componentWillReceiveProps(){
+      if (localStorage && localStorage.authData){
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
+    }
   onFieldChange(value, key, name) {
     if (value) {
       this.formData[name] = value;
@@ -69,6 +98,10 @@ export default class SignUp extends Component {
   }
   componentWillUnmount() {
     this.props.actions.hideErrorMessage();
+  }
+  componentWillReceiveProps(nextProps) {
+    debugger;
+    // nextProps.
   }
   render() {
     const { router, authReducer } = this.props;

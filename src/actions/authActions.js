@@ -1,6 +1,9 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
+import {decryptCookie} from '../helpers';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export function signInAction(signInData) {
   return (dispatch) => {
@@ -13,6 +16,12 @@ export function signInAction(signInData) {
     .then((response) => {
       if (response.status === 200) {
         const responseData = response.data;
+        const authCookie = decryptCookie(response.headers.authorization);
+        cookies.set('carauth', authCookie.carauth, {
+          domain: authCookie.Domain,
+          expires: new Date(authCookie.Expires),
+          path: authCookie.Path
+        });
         localStorage.setItem('authData', JSON.stringify(responseData));
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
@@ -59,6 +68,13 @@ export function showVerifyOTPPage(signUpData) {
     .then((response) => {
       if (response.status === 200) {
         const responseData = response.data;
+        debugger;
+        const authCookie = decryptCookie(response.headers.authorization);
+        cookies.set('carauth', authCookie.carauth, {
+          domain: authCookie.Domain,
+          expires: new Date(authCookie.Expires),
+          path: authCookie.Path
+        });
         localStorage.setItem('authData', JSON.stringify(responseData));
         dispatch({
           type: responseData.verified ? types.SHOW_WELCOME_PAGE : types.SHOW_VERIFY_OTP_PAGE,
@@ -235,5 +251,30 @@ export function resendOTP(){
             authData: authData
           });
         }
+  };
+}
+
+export function logout(router) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.LOGOUT, {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json',
+      },
+      withCredentials:true
+    })
+    .then((response) => {
+      if (response.status == 200) {
+        localStorage.clear();
+        dispatch({
+          type: types.LOGOUT,
+        });
+        router.push('/');
+        // dispatch(push('/logout'));
+      }
+    })
+    .catch((err) => {
+        console.log(err);
+    });
   };
 }

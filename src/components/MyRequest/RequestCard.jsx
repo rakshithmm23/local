@@ -54,7 +54,7 @@ export default class RequestCard extends Component {
           latitude: 12.4952672,
           longitude: 77.1105857,
           isActive: false
-        }, 
+        },
         {
           name: "Shine Works4",
           rating: 4,
@@ -63,7 +63,7 @@ export default class RequestCard extends Component {
           latitude: 12.4952672,
           longitude: 77.98705857000004,
           isActive: false
-        }, 
+        },
       ],
       quotation: true,
       messages: false,
@@ -116,7 +116,6 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
   }
   mapClick(map) {
-    debugger
     let update, newDetails = [];
 
     this.state.jobCardDetails.map((value, key) => {

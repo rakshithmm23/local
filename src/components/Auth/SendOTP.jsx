@@ -4,22 +4,41 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class SendOTP extends Component {
     constructor(props) {
      super(props);
     }
     componentWillMount(){
+      // const signedUserDataCookie = cookies.get('carauth');
       if (localStorage && localStorage.authData){
-       const authData = JSON.parse(localStorage.authData);
-       if (authData.phone && authData.phoneVerified) {
-         this.props.router.push('dashboard');
-       } else if (authData.phone && !authData.phoneVerified) {
-         this.props.router.push('verify-otp');
-       }
-     } else {
-         this.props.router.push('/');
-     }
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
+    }
+    componentWillReceiveProps(){
+      if (localStorage && localStorage.authData){
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
     }
     render() {
         const { router } = this.props;
