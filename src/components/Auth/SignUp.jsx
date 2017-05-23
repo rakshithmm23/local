@@ -6,6 +6,8 @@ import TextInput from '../common/TextInput';
 import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -34,8 +36,8 @@ export default class SignUp extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   componentWillMount(){
-      // const signedUserDataCookie = cookies.get('carauth');
-      if (localStorage && localStorage.authData){
+      const signedUserDataCookie = cookies.get('carauth');
+      if (signedUserDataCookie && localStorage && localStorage.authData){
         const authData = JSON.parse(localStorage.authData);
         if (authData.phone) {
           if (authData.phoneVerified) {
@@ -44,12 +46,11 @@ export default class SignUp extends Component {
             this.props.router.push('verify-otp');
           }
         }
-      } else {
-        this.props.router.push('/');
       }
     }
-    componentWillReceiveProps(){
-      if (localStorage && localStorage.authData){
+    componentWillReceiveProps(nextProps){
+      const signedUserDataCookie = cookies.get('carauth');
+      if (signedUserDataCookie && localStorage && localStorage.authData){
         const authData = JSON.parse(localStorage.authData);
         if (authData.phone) {
           if (authData.phoneVerified) {
@@ -58,8 +59,6 @@ export default class SignUp extends Component {
             this.props.router.push('verify-otp');
           }
         }
-      } else {
-        this.props.router.push('/');
       }
     }
   onFieldChange(value, key, name) {
@@ -98,10 +97,6 @@ export default class SignUp extends Component {
   }
   componentWillUnmount() {
     this.props.actions.hideErrorMessage();
-  }
-  componentWillReceiveProps(nextProps) {
-    debugger;
-    // nextProps.
   }
   render() {
     const { router, authReducer } = this.props;

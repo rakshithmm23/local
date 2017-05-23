@@ -3,7 +3,7 @@ import { assign } from 'lodash';
 
 const initialState = {
   signUpModalVisible: false
-}
+};
 export default function authenticationReducer(state = initialState, action) {
   switch (action.type) {
     case types.SHOW_SIGNUP_PAGE:

@@ -22,9 +22,10 @@ export default class Dashboard extends Component {
         this.state = {
             notificationVisible: false
         };
-        this.props.actions.fetchCurrentUserInfo();
     }
     componentWillMount() {
+      this.props.actions.fetchCurrentUserInfo(this.props.router);
+      const signedUserDataCookie = cookies.get('carauth');
       if (localStorage && localStorage.authData) {
         const authData = JSON.parse(localStorage.authData);
         if (!authData.phone) {
@@ -33,7 +34,7 @@ export default class Dashboard extends Component {
           this.props.router.push('verify-otp');
         }
       }
-        else {
+      else if (!signedUserDataCookie) {
         this.props.router.push('/');
       }
     }
