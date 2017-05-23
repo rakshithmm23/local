@@ -37,7 +37,7 @@ export default class RequestCard extends Component {
           distance: 3.2,
           review: 23,
           latitude: 12.7952672,
-          longitude: 77.29058570000007,
+          longitude: 77.29058570000007, 
           isActive: false
         }, {
           name: "Shine Works2",
