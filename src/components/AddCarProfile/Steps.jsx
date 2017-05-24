@@ -8,6 +8,7 @@ class Steps extends Component {
         super()
         this.state = {
             activeLogo: null,
+            activeModel: null,
             tab1: true,
             tab2: false,
             tab3: false,
@@ -16,6 +17,10 @@ class Steps extends Component {
     activeLogo(name) {
         debugger
         this.setState({ activeLogo: name })
+    }
+    activeModel(name){
+        console.log('sadasd')
+        this.setState({ activeModel: name })
     }
     tabClose(val) {
         if (val == 'tab1') {
@@ -59,10 +64,31 @@ class Steps extends Component {
                 name: 'Acura 3'
             }
         ]
-        debugger
+        const carModel = [
+            {
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 1'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 1'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 1'
+            }
+        ]
         const carListView = map(carList, (carItem) => {
             return (
                 <CarLogo imgUrl={carItem.logo} active={carItem.name == this.state.activeLogo} carName={carItem.name} activeClick={() => { this.activeLogo(carItem.name) }} />
+            )
+        })
+        const carModelView = map(carModel, (carItem) => {
+            return (
+                <div className="col-md-2 image-view" onClick={() => { this.activeModel(carItem.name) }}>
+                    <div className={carItem.name == this.state.activeModel?"img-circle active":"img-circle"}>
+                        <img src={carItem.logo} alt="" />
+                    </div>
+                    <h6>Aston Martin</h6>
+                </div>
             )
         })
 
@@ -110,24 +136,7 @@ class Steps extends Component {
                             </div>
                         </div>
                         <div className="img-container">
-                            <div className="col-md-2 image-view" >
-                                <div className="img-circle" >
-                                    <img src='../../images/logo1.png' alt="" />
-                                </div>
-                                <h6>Aston Martin</h6>
-                            </div>
-                            <div className="col-md-2 image-view" >
-                                <div className="img-circle" >
-                                    <img src='../../images/logo1.png' alt="" />
-                                </div>
-                                <h6>Aston Martin</h6>
-                            </div>
-                            <div className="col-md-2 image-view" >
-                                <div className="img-circle" >
-                                    <img src='../../images/logo1.png' alt="" />
-                                </div>
-                                <h6>Aston Martin</h6>
-                            </div>
+                            {carModelView}
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
