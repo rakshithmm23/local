@@ -82,6 +82,7 @@ class Steps extends Component {
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
+                    <h6>{carItem.name}</h6>
                 </div>
             )
         })
@@ -91,7 +92,7 @@ class Steps extends Component {
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
-                    <h6>Aston Martin</h6>
+                    <h6>{carItem.name}</h6>
                 </div>
             )
         })
@@ -157,6 +158,7 @@ class Steps extends Component {
                             <div className="upload-image">
                                 <h4>upload images</h4>
                                 <div className="upload-box">
+                                    <input id="file-input" className="hide" type="file"/>
                                 </div>
                             </div>
                             <div className="car-profile">
