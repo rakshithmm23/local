@@ -107,7 +107,7 @@ class Steps extends Component {
                             </div>
                             <i className="mdi mdi-magnify"></i>
                         </div>
-                        <i className={this.state.tab2 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab1') }}></i>
+                        <i className={this.state.tab1 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab1') }}></i>
                     </div>
                     {this.state.tab1 && <div>
                         <div className="img-container">
@@ -122,7 +122,7 @@ class Steps extends Component {
                 <section className="s2">
                     <div className="title">
                         <h4>Step 2: Select The Modal</h4>
-                        <i className={this.state.tab3 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab2') }}></i>
+                        <i className={this.state.tab2 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab2') }}></i>
                     </div>
                     {this.state.tab2 && <div>
                         <div className="container-fluid select-option">
@@ -150,7 +150,7 @@ class Steps extends Component {
                 <section className="s3">
                     <div className="title">
                         <h4>Step 3: Enter Other Details</h4>
-                        <i className={this.state.tab1 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab3') }}></i>
+                        <i className={this.state.tab3 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab3') }}></i>
                     </div>
                     {this.state.tab3 &&
                         <div className="wrapper">
