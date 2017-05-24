@@ -57,8 +57,6 @@ class JobDetails extends Component {
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
-                             {/*<img src="../../images/test.jpg" alt=""/>
-                             <img src="../../images/test.jpg" alt=""/>*/}
                          </div>
                     </div>
                     <div className="col-md-6 images">

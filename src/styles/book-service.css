@@ -1,0 +1,81 @@
+.inSection.anc.container{
+        width: initial;
+}
+.new-car-profile.add-new-car button{
+    font-size: 13px;
+    background: transparent;
+    border: 1px solid #ED3124;
+    color: #ED3124 !important;
+    position: absolute;
+    right: 65px;
+    margin-top: 21px;
+} 
+.anc .box-holder figure {
+  height: 248px;
+  width: 356px;
+  position: relative;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.anc .box-holder figure img {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.anc .box-holder figure .heading span,
+.anc .box-holder figure .value span {
+  color: #F9FBFB;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  position: absolute;
+  bottom: 50px;
+  text-transform: capitalize;
+}
+
+.anc .box-holder figure .heading .us-title {
+  left: 15px;
+}
+
+.anc .box-holder figure .heading .model-title {
+      left: 245px;
+}
+
+.anc .box-holder figure .value .us {
+  bottom: 25px;
+  left: 15px;
+}
+
+.anc .box-holder figure .value .model {
+  bottom: 25px;
+      left: 245px;
+}
+.anc .box-holder figcaption{
+    background: white;
+    padding: 10px;
+    position: relative;
+        width: 356px;
+    margin: 0 auto;
+}
+.anc .box-holder figcaption h4{
+	color: #717982;
+	font-family: "CenturyGothic";
+	font-size: 13px;
+}
+.anc .box-holder figcaption h5{
+	font-family: "CenturyGothic";
+	color: #4C4C4C;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
+}
+.anc .box-holder figcaption button{
+         position: absolute; 
+     right: 6px; 
+     top: 14px; 
+     background: #ED3124;
+}

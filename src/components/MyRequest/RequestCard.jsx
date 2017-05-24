@@ -18,13 +18,13 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       open: false,
-      jobUpdates: "details",
+      jobUpdates: "quotes",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',
       jobCardDetails: [
         {
-          name: "Shine Works0",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -32,7 +32,7 @@ export default class RequestCard extends Component {
           longitude: 77.59058570000002,
           isActive: false
         }, {
-          name: "Shine Works1",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -193,7 +193,7 @@ export default class RequestCard extends Component {
 
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
-        lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + key + this.state.svgEnd : this.state.svg + key + this.state.svgEnd
+        lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key+1) + this.state.svgEnd : this.state.svg + (key+1) + this.state.svgEnd
       }
     })
 
@@ -315,7 +315,7 @@ export default class RequestCard extends Component {
                             <div>
                               {map(this.state.jobCardDetails, (val, key) => {
                                 return (
-                                  <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key} rating={val.rating} distance={val.distance} reviews={val.review}
+                                  <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
                                     viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                 );
                               })}
