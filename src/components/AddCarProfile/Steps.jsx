@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
-import { map } from 'lodash';
+import { map, each } from 'lodash';
+
 
 class Steps extends Component {
     constructor() {
@@ -11,14 +12,14 @@ class Steps extends Component {
             tab1: true,
             tab2: false,
             tab3: false,
+            imageUploaded: []
+
         };
     }
     activeLogo(name) {
-        debugger
         this.setState({ activeLogo: name })
     }
     activeModel(name) {
-        console.log('sadasd')
         this.setState({ activeModel: name })
     }
     tabClose(val) {
@@ -29,6 +30,17 @@ class Steps extends Component {
         } else if (val == 'tab3') {
             this.setState({ tab1: false, tab2: false, tab3: true })
         }
+    }
+    fileNameUpload(e) {
+        debugger
+        const uploadFile = [];
+        each(e.target.files, (val) => {
+            uploadFile.push({ name: val.name, path: URL.createObjectURL(val) });
+        });
+        this.setState({
+            imageUploaded: uploadFile
+        });
+
     }
 
 
@@ -97,6 +109,18 @@ class Steps extends Component {
             )
         })
 
+        debugger
+        const imageUploadedView = map(this.state.imageUploaded, (img) => {
+            return (
+                <div className="upload-box-wrapper">
+                    <div className="uploaded-image">
+                        <img src={img.path} />
+                    </div>
+                    <h5>{img.name}</h5>
+                </div>
+            )
+        })
+
         return (
             <div>
                 <section className="s1">
@@ -135,9 +159,6 @@ class Steps extends Component {
                                     <option value="audi">Audi</option>
                                 </select>
                                 <i className="mdi mdi-chevron-down"></i>
-
-
-
                             </div>
                         </div>
                         <div className="img-container">
@@ -157,8 +178,12 @@ class Steps extends Component {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <div className="upload-box">
-                                    <input id="file-input" className="hide" type="file"/>
+                                {imageUploadedView}
+                                <div className="upload-box-wrapper">
+                                    <label htmlFor="file-input" className="upload-box">
+                                        <img src="../../images/attach.png" />
+                                    </label>
+                                    <input id="file-input" type="file" className="hide" onChange={(e) => this.fileNameUpload(e)} multiple />
                                 </div>
                             </div>
                             <div className="car-profile">

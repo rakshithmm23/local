@@ -148,7 +148,6 @@
 }
 
 .ncr .s3 .next-button {
-
   margin: 0;
   margin-top: 30px;
 }
@@ -191,12 +190,56 @@
   background: white;
 }
 
+.ncr .s3 .wrapper .uploaded-image {
+  height: 110px;
+  width: 110px;
+  position: relative;
+  border: 1px dashed #F48021;
+  display: inline-block;
+  margin-right: 30px;
+  vertical-align: top;
+}
+
+.ncr .s3 .wrapper .upload-box-wrapper h5 {
+  font-family: "CenturyGothic";
+  font-size: 12px;
+  color: #454B51;
+  width: 100px;
+  overflow: hidden;
+}
+
+.ncr .s3 .wrapper .uploaded-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ncr .s3 .wrapper .upload-box-wrapper {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .ncr .s3 .wrapper .upload-box {
+  margin: 0;
+  position: relative;
+  cursor: pointer;
   height: 110px;
   width: 110px;
   border: 1px dashed #F48021;
   border-radius: 3px;
   background-color: #FFFFFF;
+}
+
+.ncr .s3 .wrapper .upload-box img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .ncr .s3 .wrapper .car-profile {
