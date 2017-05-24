@@ -27,7 +27,8 @@ import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import MyCarList from './components/MyCarList';
 import MyRequest from './components/MyRequest/MyRequest';
-import NewCarProfile from './components/AddCarProfile/NewCarProfile.jsx';
+import NewCarProfile from './components/AddCarProfile/NewCarProfile';
+import BookService from './components/BookService/BookService';
 
 export default (
   <Route path="/" component={Home}>
@@ -39,5 +40,6 @@ export default (
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
     <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
     <Route path="car-profile" component={AuthContainer(NewCarProfile)} />
+    <Route path="book-service" component={AuthContainer(BookService)} />
   </Route>
 );
