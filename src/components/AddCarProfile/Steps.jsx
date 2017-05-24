@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
-import CarLogo from './CarLogo';
 import { map } from 'lodash';
 
 class Steps extends Component {
@@ -18,7 +17,7 @@ class Steps extends Component {
         debugger
         this.setState({ activeLogo: name })
     }
-    activeModel(name){
+    activeModel(name) {
         console.log('sadasd')
         this.setState({ activeModel: name })
     }
@@ -78,13 +77,18 @@ class Steps extends Component {
         ]
         const carListView = map(carList, (carItem) => {
             return (
-                <CarLogo imgUrl={carItem.logo} active={carItem.name == this.state.activeLogo} carName={carItem.name} activeClick={() => { this.activeLogo(carItem.name) }} />
+
+                <div className="col-md-2 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
+                    <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
+                        <img src={carItem.logo} alt="" />
+                    </div>
+                </div>
             )
         })
         const carModelView = map(carModel, (carItem) => {
             return (
-                <div className="col-md-2 image-view" onClick={() => { this.activeModel(carItem.name) }}>
-                    <div className={carItem.name == this.state.activeModel?"img-circle active":"img-circle"}>
+                <div className="col-md-2 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
+                    <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>Aston Martin</h6>
