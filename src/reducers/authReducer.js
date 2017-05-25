@@ -3,7 +3,7 @@ import { assign } from 'lodash';
 
 const initialState = {
   signUpModalVisible: false
-}
+};
 export default function authenticationReducer(state = initialState, action) {
   switch (action.type) {
     case types.SHOW_SIGNUP_PAGE:
@@ -26,6 +26,8 @@ export default function authenticationReducer(state = initialState, action) {
       return assign({}, state, {currentComponentKey: '', showErrorMessage: true, statusMessage: action.statusMessage});
     case types.HIDE_ERROR_MESSAGE:
       return assign({}, state, {currentComponentKey: '', showErrorMessage: false});
+    case types.LOGOUT:
+      return assign({}, state, {authData: ''});
     default:
       return state;
   }

@@ -4,22 +4,85 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class SendOTP extends Component {
     constructor(props) {
-     super(props);
+      super(props);
+      this.state = {
+        submissionError: false,
+        termsAgreed: false
+      };
+      this.initialFormData = {
+        'phone': ''
+      };
+      this.formData = {
+        ...this.initialFormData
+      };
+      this.errors = {
+        'phone': false,
+      };
+      this.onFieldChange = this.onFieldChange.bind(this);
     }
     componentWillMount(){
       if (localStorage && localStorage.authData){
-       const authData = JSON.parse(localStorage.authData);
-       if (authData.phone && authData.phoneVerified) {
-         this.props.router.push('dashboard');
-       } else if (authData.phone && !authData.phoneVerified) {
-         this.props.router.push('verify-otp');
-       }
-     } else {
-         this.props.router.push('/');
-     }
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
+    }
+    componentWillReceiveProps(){
+      if (localStorage && localStorage.authData){
+        const authData = JSON.parse(localStorage.authData);
+        if (authData.phone) {
+          if (authData.phoneVerified) {
+            this.props.router.push('dashboard');
+          } else {
+            this.props.router.push('verify-otp');
+          }
+        }
+      } else {
+        this.props.router.push('/');
+      }
+    }
+    onFieldChange(value, key, name) {
+      if (value) {
+        this.formData[name] = value;
+        this.errors[name] = false;
+      }
+    }
+    sendOTPAction(e){
+      e.preventDefault();
+      const {router} = this.props;
+      let formData = {
+        ...this.formData
+      };
+      let validForm = true;
+      for (const key in formData) {
+        if (!formData[key]) {
+          this.errors[key] = true;
+          validForm = false;
+        } else
+          this.errors[key] = false;
+      }
+      if (!validForm) {
+        this.setState({submissionError: true});
+        return;
+      } else {
+        this.setState({submissionError: false});
+        const authData = JSON.parse(localStorage.getItem('authData'));
+        authData.phone = this.formData.phone;
+        localStorage.setItem('authData', JSON.stringify(authData));
+        this.props.router.push('verify-otp');
+      }
     }
     render() {
         const { router } = this.props;
@@ -36,11 +99,15 @@ export default class SendOTP extends Component {
 
                             <div className="login-panel-body">
                                 <div className="form-group otp-input">
-                                    <input type="text" className="form-control form-input" />
-                                    <span className="error-text">Error text goes here</span>
-                                    <label>Enter your phone number to receive an OTP</label>
+                                <TextInput
+                                  type="phone"
+                                  name="phone"
+                                  showValidationError={this.errors['phone']}
+                                  validationError="Enter a valid mobile number"
+                                  label="Enter your phone number to receive an OTP"
+                                  onChange={this.onFieldChange.bind(this)} />
                                 </div>
-                                <Button btnCallBack={(e) => { e.preventDefault(); router.push('verify-otp') }} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
+                                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
                             </div>
                         </div>
                     </Scrollbars>

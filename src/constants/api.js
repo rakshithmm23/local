@@ -7,3 +7,4 @@ export const VERIFY_OTP = BASE_URL + '/auth/verify';
 export const REQUEST_OTP = BASE_URL + '/api/users/otp';
 export const CREATE_PROFILE = BASE_URL + '/api/vehicles';
 export const CURRENT_USER_DETAILS = BASE_URL + '/api/users/me';
+export const LOGOUT = BASE_URL + '/auth/logout';

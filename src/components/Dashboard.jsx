@@ -22,9 +22,23 @@ export default class Dashboard extends Component {
         this.state = {
             notificationVisible: false
         };
-        this.props.actions.fetchCurrentUserInfo();
     }
     componentWillMount() {
+      this.props.actions.fetchCurrentUserInfo(this.props.router);
+      const signedUserDataCookie = cookies.get('carauth');
+      if (localStorage && localStorage.authData) {
+        const authData = JSON.parse(localStorage.authData);
+        if (!authData.phone) {
+          this.props.router.push('send-otp');
+        } else if (!authData.phoneVerified) {
+          this.props.router.push('verify-otp');
+        }
+      }
+      else if (!signedUserDataCookie) {
+        this.props.router.push('/');
+      }
+    }
+    componentWillReceiveProps() {
       if (localStorage && localStorage.authData) {
         const authData = JSON.parse(localStorage.authData);
         if (!authData.phone) {
@@ -55,7 +69,7 @@ export default class Dashboard extends Component {
         return (
             <div>
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification}/>
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} authActions={this.props.actions}/>
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification}/>
                 <div className="main-wrapper">
                     {/*Sidebar*/}

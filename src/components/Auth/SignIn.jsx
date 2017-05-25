@@ -5,7 +5,8 @@ import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import { Scrollbars } from 'react-custom-scrollbars';
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -30,6 +31,36 @@ export default class SignIn extends Component {
     if (value) {
       this.formData[name] = value;
       this.errors[name] = false;
+    }
+  }
+  componentWillMount() {
+    const signedUserDataCookie = cookies.get('carauth');
+    if (signedUserDataCookie && localStorage && localStorage.authData){
+      const authData = JSON.parse(localStorage.authData);
+      if (authData.phone) {
+        if (authData.phoneVerified) {
+          this.props.router.push('dashboard');
+        } else {
+          this.props.router.push('verify-otp');
+        }
+      } else {
+        this.props.router.push('send-otp');
+      }
+    }
+  }
+  componentWillUpdate(nextProps) {
+    const signedUserDataCookie = cookies.get('carauth');
+    if (signedUserDataCookie && localStorage && localStorage.authData){
+      const authData = JSON.parse(localStorage.authData);
+      if (authData.phone) {
+        if (authData.phoneVerified) {
+          this.props.router.push('dashboard');
+        } else {
+          this.props.router.push('verify-otp');
+        }
+      } else {
+        this.props.router.push('send-otp');
+      }
     }
   }
   componentWillUnmount() {
@@ -102,7 +133,7 @@ export default class SignIn extends Component {
                                 <Button btnCallBack={this.signInAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
                             <div className="auth-footer-text text-center">
-                                {'Don\'t have an account?'} <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-up'); }}>Sign Up</a>
+                                {'Don\'t have an account?'} <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('/'); }}>Sign Up</a>
                             </div>
                         </div>
                       </Scrollbars>

@@ -29,6 +29,10 @@ import '../node_modules/slick-carousel/slick/slick.css';
 import '../node_modules/slick-carousel/slick/slick-theme.css';
 import './styles/JobUpdateCard.css';
 import './styles/gmaps.css';
+import './styles/job-details.css';
+import './styles/new-car-profile.css';
+import './styles/book-service.css';
+
 
 export const store = configureStore();
 
