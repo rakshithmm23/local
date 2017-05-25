@@ -103,7 +103,7 @@ class Steps extends Component {
 
         return (
             <div>
-                <section className="s1">
+                <section className="s1" onClick={() => { this.tabClose('tab1') }}>
                     <div className="title">
                         <h4>Step 1: Select The Manufacturer</h4>
                         <div className="search-box ">
@@ -112,22 +112,22 @@ class Steps extends Component {
                             </div>
                             <i className="mdi mdi-magnify"></i>
                         </div>
-                        <i className={this.state.tab1 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab1') }}></i>
+                        <i className={this.state.tab1 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
                     {this.state.tab1 && <div>
                         <div className="img-container">
                             {carListView}
-                        </div>
+                    </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
 
                     </div>}
                 </section>
-                <section className="s2">
+                <section className="s2" onClick={() => { this.tabClose('tab2') }}>
                     <div className="title">
                         <h4>Step 2: Select The Modal</h4>
-                        <i className={this.state.tab2 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab2') }}></i>
+                        <i className={this.state.tab2 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
                     {this.state.tab2 && <div>
                         <div className="container-fluid select-option">
@@ -149,10 +149,10 @@ class Steps extends Component {
                         </div>
                     </div>}
                 </section>
-                <section className="s3">
+                <section className="s3" onClick={() => { this.tabClose('tab3') }}>
                     <div className="title">
                         <h4>Step 3: Enter Other Details</h4>
-                        <i className={this.state.tab3 ? "mdi mdi-chevron-down" : "mdi mdi-chevron-up"} onClick={() => { this.tabClose('tab3') }}></i>
+                        <i className={this.state.tab3 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
                     {this.state.tab3 &&
                         <div className="wrapper">

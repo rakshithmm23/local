@@ -183,6 +183,11 @@
   color: #454B51;
 }
 
+.ncr .s1,
+.ncr .s2,
+.ncr .s3 {
+cursor: pointer;
+}
 .ncr .s2,
 .ncr .s3 {
   margin-top: 20px;
