@@ -229,16 +229,12 @@ input[type="color"][list] {
 
 .message-in.chain-msg {
     position: relative;
-    left: 34px;
+    left: 50px;
 }
 
 .message-out.chain-msg {
     position: relative;
-    right: 30px;
-}
-
-.dropdown-menu {
-    overflow: initial !important;
+    right: 50px;
 }
 
 
@@ -297,7 +293,10 @@ input[type="color"][list] {
 }
 
 .quotes-chat-area .c-message.message-in.chain-msg .c-chat:before,
-.quotes-chat-area .c-message.message-out.chain-msg .c-chat:after {
+.quotes-chat-area .c-message.message-out.chain-msg .c-chat:after,
+.quotes-chat-area .c-message.message-in.chain-msg .profile-head,
+.quotes-chat-area .c-message.message-out.chain-msg .profile-head,
+ {
     display: none;
 }
 
@@ -374,10 +373,6 @@ input[type="color"][list] {
 
 .quotes-chat-area .c-message.message-continuation .delivered-details {
     display: none;
-}
-
-.quotes-chat-area .c-message.message-continuation.seen .delivered-details {
-    display: block;
 }
 
 

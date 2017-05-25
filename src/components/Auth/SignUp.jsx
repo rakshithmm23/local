@@ -36,35 +36,35 @@ export default class SignUp extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   componentWillMount(){
-      const signedUserDataCookie = cookies.get('carauth');
-      if (signedUserDataCookie && localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          } else {
-            this.props.router.push('verify-otp');
-          }
+    const signedUserDataCookie = cookies.get('carauth');
+    if (signedUserDataCookie && localStorage && localStorage.authData){
+      const authData = JSON.parse(localStorage.authData);
+      if (authData.phone) {
+        if (authData.phoneVerified) {
+          this.props.router.push('dashboard');
         } else {
-            this.props.router.push('send-otp');
+          this.props.router.push('verify-otp');
         }
+      } else {
+          this.props.router.push('send-otp');
       }
     }
-    componentWillReceiveProps(nextProps){
-      const signedUserDataCookie = cookies.get('carauth');
-      if (signedUserDataCookie && localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          } else {
-            this.props.router.push('verify-otp');
-          }
+  }
+  componentWillReceiveProps(nextProps){
+    const signedUserDataCookie = cookies.get('carauth');
+    if (signedUserDataCookie && localStorage && localStorage.authData){
+      const authData = JSON.parse(localStorage.authData);
+      if (authData.phone) {
+        if (authData.phoneVerified) {
+          this.props.router.push('dashboard');
         } else {
-            this.props.router.push('send-otp');
+          this.props.router.push('verify-otp');
         }
+      } else {
+          this.props.router.push('send-otp');
       }
     }
+  }
   onFieldChange(value, key, name) {
     if (value) {
       this.formData[name] = value;

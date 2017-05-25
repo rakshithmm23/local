@@ -26,7 +26,6 @@ export default class SendOTP extends Component {
       this.onFieldChange = this.onFieldChange.bind(this);
     }
     componentWillMount(){
-      // const signedUserDataCookie = cookies.get('carauth');
       if (localStorage && localStorage.authData){
         const authData = JSON.parse(localStorage.authData);
         if (authData.phone) {

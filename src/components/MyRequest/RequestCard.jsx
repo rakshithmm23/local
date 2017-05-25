@@ -30,7 +30,52 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.9952672,
           longitude: 77.59058570000002,
-          isActive: false
+          isActive: false,
+          quotationDetails: [
+            {
+              startTime: "11:30 AM on Jan 5 2017",
+              schedule: "Rescheduled",
+              generatedTime: "Jan2, 2017",
+              serviceIndex: "1",
+              serviceName: "Brakes & Exhaust",
+              Accessories: [
+                {
+                  name: "Brake Pads",
+                  cost: 10,
+                  currency: "AED"
+                }, {
+                  name: "Brake Oil Change",
+                  cost: 75,
+                  currency: "AED"
+                }, {
+                  name: "Brake Shoes",
+                  cost: 10,
+                  currency: "AED"
+                }, {
+                  name: "Brake Wire",
+                  cost: 5,
+                  currency: "AED"
+                }
+              ],
+            }, {
+              startTime: "11:30 AM on Jan 5 2017",
+              schedule: "Rescheduled",
+              generatedTime: "Jan2, 2017",
+              serviceIndex: "2",
+              serviceName: "AC Heating & Cooling",
+              Accessories: [
+                {
+                  name: "Coolent Change",
+                  cost: 60,
+                  currency: "AED"
+                }, {
+                  name: "AC Pipe Change",
+                  cost: 35,
+                  currency: "AED"
+                }
+              ],
+            },
+          ]
         }, {
           name: "Shine Works",
           rating: 4,
@@ -73,17 +118,6 @@ export default class RequestCard extends Component {
       activeSvg: 'data:image/svg+xml,<svg%20width%3D"36px"%20height%3D"40px"%20viewBox%3D"0%200%2036%2040"%20version%3D"1.1"%20xmlns%3D"http%3A//www.w3.org/2000/svg"%20xmlns%3Axlink%3D"http%3A//www.w3.org/1999/xlink">%0A%20%20%20%20<%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20-->%0A%20%20%20%20<title>location-pin%20copy%209</title>%0A%20%20%20%20<desc>Created%20with%20Sketch.</desc>%0A%20%20%20%20<defs>%0A%20%20%20%20%20%20%20%20<path%20d%3D"M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z"%20id%3D"path-1"></path>%0A%20%20%20%20%20%20%20%20<mask%20id%3D"mask-2"%20maskContentUnits%3D"userSpaceOnUse"%20maskUnits%3D"objectBoundingBox"%20x%3D"0"%20y%3D"0"%20width%3D"36"%20height%3D"40"%20fill%3D"white">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</mask>%0A%20%20%20%20</defs>%0A%20%20%20%20<g%20id%3D"Symbols"%20stroke%3D"none"%20stroke-width%3D"1"%20fill%3D"none"%20fill-rule%3D"evenodd"%20stroke-opacity%3D"0.455219656">%0A%20%20%20%20%20%20%20%20<g%20id%3D"location-pin-copy-9"%20stroke%3D"%23FFFFFF"%20stroke-width%3D"4"%20fill%3D"%2323AE49">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20id%3D"Rectangle-10-Copy-3"%20mask%3D"url%28%23mask-2%29"%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</g>%0A%20%20%20%20</g>%0A<text%20transform%3D"translate%2819%2018.5%29"%20fill%3D"%23fff"%20style%3D"font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B"%20font-size%3D"12"%20text-anchor%3D"middle">',
       svg: 'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2236px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2036%2040%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3ERectangle%2010%20Copy%203%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z%22%20id%3D%22path-1%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-2%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2240%22%20fill%3D%22white%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/mask%3E%0A%20%20%20%20%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20stroke-opacity%3D%220.455219656%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22location-pin%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20fill%3D%22%23EE3124%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Rectangle-10-Copy-3%22%20mask%3D%22url%28%23mask-2%29%22%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%20%20%3Ctext%20transform%3D%22translate%2819%2018.5%29%22%20fill%3D%22%23fff%22%20style%3D%22font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%3E',
       svgEnd: '</text>%0A</svg>',
-      quotationDetails: [
-        {
-          startTime: "11:30 AM on Jan 5 2017",
-          schedule: "Rescheduled",
-          generatedTime: "Jan2, 2017",
-          serviceName: "Brakes & Exhaust",
-          serviceAccessories: "Brake Pads",
-          accsessoriesCost: "3 AED",
-        },
-      ]
-
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -171,6 +205,13 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
+    const chatBox=[
+      {
+        type:'message-in',
+        continuation:true,
+        
+      }
+    ]
     const jobData = [
       {
         carImage: '../../images/car.jpg',
@@ -361,115 +402,126 @@ export default class RequestCard extends Component {
                               <ul>
                                 <li>
                                   <label>Job Start Time:</label>
-                                  <span>{this.state.quotationDetails[0].startTime}</span>
+                                  <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
                                 </li>
                                 <li>
                                   <label>Quote Generated:</label>
-                                  <span>Jan 2, 2017</span>
+                                  <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
                                 </li>
                               </ul>
                             </div>
                             <div className="quotation-details">
-                              <div className="quotation-block">
-                                <h4>1. Brakes & Exhaust</h4>
-                                <ul>
-                                  <li>
-                                    <label>Brake Pads</label>
-                                    <span>3 AED</span>
-                                  </li>
-                                  <li>
-                                    <label>Brake Oil Change</label>
-                                    <span>5 AED</span>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div className="quotation-block">
-                                <h4>2. AC Heating & Cooling</h4>
-                                <ul>
-                                  <li>
-                                    <label>Brake Pads</label>
-                                    <span>3 AED</span>
-                                  </li>
-                                  <li>
-                                    <label>Brake Oil Change</label>
-                                    <span>5 AED</span>
-                                  </li>
-                                </ul>
-                              </div>
+                              {map(this.state.jobCardDetails, (value, key) => {
+                                return (
+                                  <div className="quotation-block" key={key}>
+                                    {map(value.quotationDetails, (val, index) => {
+                                      return (
+                                        <div>
+                                          <h4 index={index}>{val.serviceIndex}. {val.serviceName}</h4>
+                                          <ul>
+                                            {map(val.Accessories, (v, k) => {
+                                              return (
+                                                <li>
+                                                  <label>{v.name}</label>
+                                                  <span>{v.cost} {v.currency}</span>
+                                                </li>
+                                              )
+                                            })}
+                                          </ul>
+                                        </div>
+                                      );
+                                    })}
+
+                                  </div>
+                                );
+                              })}
                               <div className="quotation-total">
                                 <label>Total</label>
-                                <span>16 AED</span>
+                                <span>195 AED</span>
                               </div>
                             </div>
                           </div>
                           <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                             <div className="quotes-chat-area">
-                              <div className="c-message message-in">
-                                <div className="profile-head">
-                                  <span>
-                                    <img src="../images/pic.png" alt="" />
-                                  </span>
-                                </div>
-                                <div className="c-chat">
-                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                </div>
-                                <div className="delivered-details">
-                                  <label>2:44 PM</label>
-                                </div>
-                              </div>
-                              <div className="c-message message-out">
-                                <div className="profile-head">
-                                  <span>
-                                    <img src="../images/pic.png" alt="" />
-                                  </span>
-                                </div>
-                                <div className="c-chat">
-                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                </div>
-                                <div className="delivered-details">
-                                  <label>2:44 PM</label>
-                                </div>
-                              </div>
-                              <div className="c-message message-in">
-                                <div className="profile-head">
-                                  <span>
-                                    <img src="../images/pic.png" alt="" />
-                                  </span>
-                                </div>
-                                <div className="c-chat">
-                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                </div>
-                                <div className="delivered-details">
-                                  <label>2:44 PM</label>
-                                </div>
-                              </div>
-                              <div className="c-message message-in">
-                                <div className="profile-head">
-                                  <span>
-                                    <img src="../images/pic.png" alt="" />
-                                  </span>
-                                </div>
-                                <div className="c-chat">
-                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                </div>
-                                <div className="delivered-details">
-                                  <label>2:44 PM</label>
-                                </div>
-                              </div>
-                              <div className="c-message message-in">
-                                <div className="profile-head">
-                                  <span>
-                                    <img src="../images/pic.png" alt="" />
-                                  </span>
-                                </div>
-                                <div className="c-chat">
-                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                </div>
-                                <div className="delivered-details">
-                                  <label>2:44 PM</label>
-                                </div>
-                              </div>
 
+                              <div className="c-message message-in">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
+                              <div className="c-message message-out message-continuation">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
+                              <div className="c-message message-out chain-msg">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
+                              <div className="c-message message-in message-continuation">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
+                              <div className="c-message message-in chain-msg message-continuation">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
+                              <div className="c-message message-in chain-msg">
+                                <div className="profile-head">
+                                  <span>
+                                    <img src="../images/pic.png" alt="" />
+                                  </span>
+                                </div>
+                                <div className="c-chat">
+                                  <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                </div>
+                                <div className="delivered-details">
+                                  <label>2:44 PM</label>
+                                </div>
+                              </div>
                             </div>
                             <div className="quotes-message-footer">
                               <FormGroup>
