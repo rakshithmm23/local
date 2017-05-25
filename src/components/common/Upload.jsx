@@ -7,7 +7,7 @@ class Upload extends Component {
                 <label htmlFor="file-input" className="upload-box">
                     <img src="../../images/attach.png" />
                 </label>
-                <input id="file-input" type="file" className="hide" onChange={(e) => this.fileNameUpload(e)} multiple />
+                <input id="file-input" type="file" className="hide" onChange={this.props.uploadChange} multiple />
             </div>
         );
     }

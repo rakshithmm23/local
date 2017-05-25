@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
+import Upload from '../common/Upload';
 import { map, each } from 'lodash';
 
 
@@ -188,12 +189,7 @@ class Steps extends Component {
                             <div className="upload-image">
                                 <h4>upload images</h4>
                                 {imageUploadedView}
-                                <div className="upload-box-wrapper">
-                                    <label htmlFor="file-input" className="upload-box">
-                                        <img src="../../images/attach.png" />
-                                    </label>
-                                    <input id="file-input" type="file" className="hide" onChange={(e) => this.fileNameUpload(e)} multiple />
-                                </div>
+                                <Upload uploadChange={(e) => this.fileNameUpload(e)}/>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
