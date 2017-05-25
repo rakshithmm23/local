@@ -19,7 +19,6 @@
 
 .ncr .s1,
 .ncr .s2 {
-  max-height: 825px;
   border-radius: 4px;
   background-color: #FFFFFF;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
@@ -44,12 +43,20 @@
 }
 
 .ncr .s1 .search-box {
-  top: 23px;
+  position: relative;
+  margin: 23px;
   display: inline-block;
-  position: absolute;
-  right: 23%;
   width: 32%;
   background-color: transparent;
+  margin-bottom: 0;
+}
+
+.ncr .s1 .search-box .mdi-magnify {
+  position: absolute;
+  top: 29px;
+  right: 0;
+  font-size: 18px;
+  color: #949DA5;
 }
 
 .ncr .s1 .search-box input {
@@ -183,6 +190,12 @@
   color: #454B51;
 }
 
+.ncr .s1 .title,
+.ncr .s2 .title,
+.ncr .s3 .title {
+  cursor: pointer;
+}
+
 .ncr .s2,
 .ncr .s3 {
   margin-top: 20px;
@@ -197,10 +210,26 @@
   height: 110px;
   width: 110px;
   position: relative;
-  border: 1px dashed #F48021;
+  /*border: 1px dashed #F48021;*/
   display: inline-block;
   margin-right: 30px;
   vertical-align: top;
+      margin-bottom: 20px;
+}
+
+.ncr .s3 .wrapper .uploaded-image .mdi-close {
+  background: red;
+  border-radius: 100%;
+  padding: 2px 3px;
+  color: white;
+}
+
+.ncr .s3 .wrapper .uploaded-image .cancel-image {
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  z-index: 1;
+  cursor: pointer
 }
 
 .ncr .s3 .wrapper .upload-box-wrapper h5 {
@@ -213,16 +242,14 @@
 
 .ncr .s3 .wrapper .uploaded-image img {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ncr .s3 .wrapper .upload-box-wrapper {
-  display: inline-block;
-  vertical-align: top;
+  /*display: inline-block;
+  vertical-align: top;*/
 }
 
 .ncr .s3 .wrapper .upload-box {
@@ -247,13 +274,13 @@
 
 .ncr .s3 .wrapper .car-profile {
   display: block;
+      clear: both;
 }
 
 .ncr .s3 .wrapper .upload-image h4,
 .ncr .s3 .wrapper .car-profile h4,
 .ncr .s3 .wrapper .insurance-details h4,
 .ncr .s3 .wrapper .car-notes h4 {
-  padding-bottom: 15px;
   color: #454B51;
   font-family: "CenturyGothic";
   font-size: 16px;
@@ -261,9 +288,14 @@
   text-transform: capitalize;
 }
 
+.ncr .s3 .wrapper .upload-image h4 {
+  margin-bottom: 30px;
+}
+
 .ncr .s3 .wrapper .upload-image {
   padding-top: 35px;
   padding-bottom: 30px;
+  display: block;
 }
 
 .ncr .input-values {
@@ -276,4 +308,10 @@
 
 .remove-left-padding {
   padding-left: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .ncr .s1 .search-box {
+    width: 32%;
+  }
 }
