@@ -93,10 +93,8 @@ onFieldChange(value, key, name) {
                 manufacturerId: 8
             }, {
                 logo: '../../images/logo3.png',
-                name: 'Acura 3',
-                manufacturerId: 9
             }
-        ]
+        ];
         const carModel = [
             {
                 logo: '../../images/logo1.png',
@@ -115,7 +113,7 @@ onFieldChange(value, key, name) {
         const carListView = map(carList, (carItem) => {
             return (
 
-                <div className="col-md-2 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -125,7 +123,7 @@ onFieldChange(value, key, name) {
         })
         const carModelView = map(carModel, (carItem) => {
             return (
-                <div className="col-md-2 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
