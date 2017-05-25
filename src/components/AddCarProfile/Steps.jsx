@@ -10,9 +10,9 @@ class Steps extends Component {
         this.state = {
             activeLogo: null,
             activeModel: null,
-            tab1: false,
+            tab1: true,
             tab2: false,
-            tab3: true,
+            tab3: false,
             imageUploaded: []
 
         };
@@ -23,7 +23,7 @@ class Steps extends Component {
     activeModel(name) {
         this.setState({ activeModel: name })
     }
-    tabClose(val) {
+    tabOpen(val) {
         if (val == 'tab1') {
             this.setState({ tab1: true, tab2: false, tab3: false })
         } else if (val == 'tab2') {
@@ -103,29 +103,30 @@ class Steps extends Component {
 
         return (
             <div>
-                <section className="s1" onClick={() => { this.tabClose('tab1') }}>
-                    <div className="title">
+                <section className="s1" >
+                    <div className="title" onClick={() => { this.tabOpen('tab1') }}>
                         <h4>Step 1: Select The Manufacturer</h4>
+                        
+                        <i className={this.state.tab1 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
+                    </div>
+                    {this.state.tab1 && <div>
                         <div className="search-box ">
                             <div className="form-group">
                                 <input type="text" className="form-control input-values" placeholder="Car Profile Name" />
                             </div>
                             <i className="mdi mdi-magnify"></i>
                         </div>
-                        <i className={this.state.tab1 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
-                    </div>
-                    {this.state.tab1 && <div>
                         <div className="img-container">
                             {carListView}
                     </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('tab2')}}/>
                         </div>
 
                     </div>}
                 </section>
-                <section className="s2" onClick={() => { this.tabClose('tab2') }}>
-                    <div className="title">
+                <section className="s2" >
+                    <div className="title" onClick={() => {this.tabOpen('tab2') }}>
                         <h4>Step 2: Select The Modal</h4>
                         <i className={this.state.tab2 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
@@ -145,12 +146,12 @@ class Steps extends Component {
                             {carModelView}
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('tab3')}}/>
                         </div>
                     </div>}
                 </section>
-                <section className="s3" onClick={() => { this.tabClose('tab3') }}>
-                    <div className="title">
+                <section className="s3" >
+                    <div className="title" onClick={() => { this.tabOpen('tab3') }}>
                         <h4>Step 3: Enter Other Details</h4>
                         <i className={this.state.tab3 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>

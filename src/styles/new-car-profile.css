@@ -44,12 +44,20 @@
 }
 
 .ncr .s1 .search-box {
-  top: 23px;
-  display: inline-block;
-  position: absolute;
-  right: 23%;
-  width: 32%;
-  background-color: transparent;
+  position: relative;
+    margin: 23px;
+    display: inline-block;
+    width: 32%;
+    background-color: transparent;
+    margin-bottom: 0;
+}
+
+.ncr .s1 .search-box .mdi-magnify{
+      position: absolute;
+    top: 7px;
+    right: 0;
+    font-size: 16px;
+    color: #949DA5;
 }
 
 .ncr .s1 .search-box input {
@@ -183,9 +191,9 @@
   color: #454B51;
 }
 
-.ncr .s1,
-.ncr .s2,
-.ncr .s3 {
+.ncr .s1 .title,
+.ncr .s2 .title,
+.ncr .s3 .title{
 cursor: pointer;
 }
 .ncr .s2,
