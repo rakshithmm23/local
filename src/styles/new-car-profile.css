@@ -279,12 +279,14 @@ cursor: pointer;
 .ncr .s3 .wrapper .car-profile h4,
 .ncr .s3 .wrapper .insurance-details h4,
 .ncr .s3 .wrapper .car-notes h4 {
-  padding-bottom: 15px;
   color: #454B51;
   font-family: "CenturyGothic";
   font-size: 16px;
   line-height: 14px;
   text-transform: capitalize;
+}
+.ncr .s3 .wrapper .upload-image h4{
+  margin-bottom: 30px;
 }
 
 .ncr .s3 .wrapper .upload-image {

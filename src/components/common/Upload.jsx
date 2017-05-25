@@ -34,7 +34,7 @@ class Upload extends Component {
                         </span>
                         <img src={img.path} />
                     </div>
-                    <h5>{img.name}</h5>
+                    {/*<h5>{img.name}</h5>*/}
                 </div>
             )
         })
