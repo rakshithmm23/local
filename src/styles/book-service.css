@@ -1,81 +1,103 @@
-.inSection.anc.container{
-        width: initial;
+.page-sec-header {
+    padding: 20px 0;
 }
-.new-car-profile.add-new-car button{
-    font-size: 13px;
+
+.page-sec-header h4 {
+    display: inline-block;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 15px;
+}
+
+.page-sec-header {
+    padding: 20px 0;
+}
+
+.page-sec-header button {
     background: transparent;
     border: 1px solid #ED3124;
     color: #ED3124 !important;
     position: absolute;
-    right: 65px;
-    margin-top: 21px;
-} 
-.anc .box-holder figure {
-  height: 248px;
-  width: 356px;
-  position: relative;
-  margin: 0 auto;
-  background-color: white;
+    right: 50px;
+    margin-top: 0;
 }
 
-.anc .box-holder figure img {
-  max-height: 100%;
-  max-width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%)
+.myCar-card {
+    box-shadow: 1px 1px 1px 1px #ddd;
+    cursor: pointer;
+    margin: 10px 0;    
 }
 
-.anc .box-holder figure .heading span,
-.anc .box-holder figure .value span {
-  color: #F9FBFB;
-  font-family: "CenturyGothic";
-  font-size: 14px;
-  position: absolute;
-  bottom: 50px;
-  text-transform: capitalize;
+.myCar-card figure {
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
 }
 
-.anc .box-holder figure .heading .us-title {
-  left: 15px;
+.myCar-card figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.anc .box-holder figure .heading .model-title {
-      left: 245px;
+.myCar-card-footer {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 10px;
+    visibility: hidden;
 }
 
-.anc .box-holder figure .value .us {
-  bottom: 25px;
-  left: 15px;
+.myCar-card:hover .myCar-card-footer {
+    visibility: visible;
 }
 
-.anc .box-holder figure .value .model {
-  bottom: 25px;
-      left: 245px;
+.myCar-card-footer li {
+    color: #F9FBFB;
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    text-transform: capitalize;
+    display: inline-block;
+    width: 49%;
+    font-weight: normal;
 }
-.anc .box-holder figcaption{
+
+.myCar-card-footer li h4 {
+    font-size: 14px;
+    font-weight: 900;
+    font-family: CenturyGothic;
+}
+
+.myCar-card-footer li:last-child {
+    text-align: right;
+}
+
+.myCard-caption {
     background: white;
     padding: 10px;
     position: relative;
-        width: 356px;
-    margin: 0 auto;
 }
-.anc .box-holder figcaption h4{
-	color: #717982;
-	font-family: "CenturyGothic";
-	font-size: 13px;
+
+.myCard-caption h4 {
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 13px;
 }
-.anc .box-holder figcaption h5{
-	font-family: "CenturyGothic";
-	color: #4C4C4C;
-	font-size: 18px;
-	font-weight: bold;
-	line-height: 22px;
+
+.myCard-caption h5 {
+    font-family: "CenturyGothic";
+    color: #4C4C4C;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
 }
-.anc .box-holder figcaption button{
-         position: absolute; 
-     right: 6px; 
-     top: 14px; 
-     background: #ED3124;
+
+.myCard-caption button {
+    position: absolute;
+    right: 6px;
+    top: 14px;
+    background: #ED3124;
 }

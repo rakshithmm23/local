@@ -30,22 +30,24 @@ export default class BookService extends Component {
                     <Sidebar />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="new-car-profile add-new-car">
-                        <div className="title">
-                            <h4>My Card</h4>
-                        </div>
-                        <Button btnType="" btnSize="sm" fontSize={13} label="Next" />
-                    </div>
-
-                    <div className="inSection anc container">
+                    <div className="page-sec-header">
                         <div className="padwrapper">
-                            {/*Job Updates*/}
-                            <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R"/>
-                            <BookServiceBox date="17 April 16" model="Red 2016" place="B Singapore" name="My Nissan GT-R"/>
-                            <BookServiceBox date="17 April 16" model="Red 2016" place=" Hong Kong" name="My Nissan GT-R"/>
+                            <h4>My Cars</h4>
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Next" />
                         </div>
                     </div>
-
+                    <div className="inSection">
+                        <div className="padwrapper">
+                            <div className="myCar-list">
+                                <div className="myCar-body row">
+                                    {/*Job Updates*/}
+                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
+                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B Singapore" name="My Nissan GT-R" />
+                                    <BookServiceBox date="17 April 16" model="Red 2016" place=" Hong Kong" name="My Nissan GT-R" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="footerSection">
                     {/*AppLink*/}

@@ -28,32 +28,32 @@ class JobDetails extends Component {
                 <div className="col-md-12 repair-detail">
                     <div className="col-md-6 repair-category">
                         <title>Car Repair Categories:</title>
-                        <div className="category-list">
-                            <div>
-                                <figure className="interior-clean"></figure>
-                                <figcaption>Interior Clean (3 Selected)</figcaption>
-                            </div>
-                            <div>
-                                <figure className="wash"></figure>
-                                <figcaption>Interior Clean (3 Selected)</figcaption>
-                            </div>
-                        </div>
+                        <ul className="category-list">
+                            <li>
+                                <span className="interior-clean"/>
+                                <label>Interior Clean (3 Selected)</label>
+                            </li>
+                            <li>
+                                <span className="wash"/>
+                                <label>Interior Clean (3 Selected)</label>
+                            </li>
+                        </ul>
                     </div>
                     <div className="col-md-6 more-details">
                         <title>More Details:</title>
-                        <figcaption>In hac habitasse platea dictumst.
+                        <p>In hac habitasse platea dictumst.
                         Vivamus adipiscing fermentum quam volutpat aliquam.
                         Integer et elit eget elit facilisis tristique.
                         Nam vel iaculis mauris.
                         Sed ullamcorper tellus erat, non ultrices sem tincidunt euismod.
-                        Brakes & Exhaust</figcaption>
+                        Brakes & Exhaust</p>
                     </div>
                 </div>
                 <div className="col-md-12 uploads">
                     <title>Uploads:</title>
                     <div className="col-md-6 images">
                          <div className="figure no-top-padding">
-                             <caption>Car Images:</caption>
+                             <h4>Car Images:</h4>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
@@ -61,7 +61,7 @@ class JobDetails extends Component {
                     </div>
                     <div className="col-md-6 images">
                          <div className="figure no-top-padding">
-                             <caption>Police Report:</caption>
+                             <h4>Police Report:</h4>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
@@ -69,7 +69,7 @@ class JobDetails extends Component {
                     </div>
                     <div className="col-md-6 images ">
                          <div className="figure no-border" >
-                             <caption>Driving Licence:</caption>
+                             <h4>Driving Licence:</h4>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
@@ -77,7 +77,7 @@ class JobDetails extends Component {
                     </div>
                     <div className="col-md-6 images ">
                          <div className="figure no-border">
-                             <caption>Registration Card:</caption>
+                             <h4>Registration Card:</h4>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
