@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { map, each } from 'lodash';
+import { map } from 'lodash';
 
 
 class Steps extends Component {
@@ -32,25 +32,8 @@ class Steps extends Component {
             this.setState({ tab1: false, tab2: false, tab3: true })
         }
     }
-    fileNameUpload(e) {
-        let files = [] 
-        each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) })
-        });
-        // upload = { ...this.state.imageUploaded, files }
-        this.setState({
-            imageUploaded: this.state.imageUploaded.concat(files)
-        })
-
-
-    }
-    cancelImageUpload(val){
-        const array = this.state.imageUploaded;
-        array.splice(val, 1);
-        this.setState({imageUploaded: array });
-
-
-    }
+    
+    
 
 
     render() {
@@ -117,19 +100,6 @@ class Steps extends Component {
                 </div>
             );
         });
-        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
-            return (
-                <div className="upload-box-wrapper">
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    <h5>{img.name}</h5>
-                </div>
-            )
-        })
 
         return (
             <div>
@@ -188,8 +158,7 @@ class Steps extends Component {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                {imageUploadedView}
-                                <Upload uploadChange={(e) => this.fileNameUpload(e)}/>
+                                <Upload />
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
