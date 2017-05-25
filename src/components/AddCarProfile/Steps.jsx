@@ -9,9 +9,9 @@ class Steps extends Component {
         this.state = {
             activeLogo: null,
             activeModel: null,
-            tab1: true,
+            tab1: false,
             tab2: false,
-            tab3: false,
+            tab3: true,
             imageUploaded: []
 
         };
@@ -32,14 +32,22 @@ class Steps extends Component {
         }
     }
     fileNameUpload(e) {
-        debugger
-        const uploadFile = [];
+        let files = [] 
         each(e.target.files, (val) => {
-            uploadFile.push({ name: val.name, path: URL.createObjectURL(val) });
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
         });
+        // upload = { ...this.state.imageUploaded, files }
         this.setState({
-            imageUploaded: uploadFile
-        });
+            imageUploaded: this.state.imageUploaded.concat(files)
+        })
+
+
+    }
+    cancelImageUpload(val){
+        const array = this.state.imageUploaded;
+        array.splice(val, 1);
+        this.setState({imageUploaded: array });
+
 
     }
 
@@ -106,14 +114,15 @@ class Steps extends Component {
                     </div>
                     <h6>{carItem.name}</h6>
                 </div>
-            )
-        })
-
-        debugger
-        const imageUploadedView = map(this.state.imageUploaded, (img) => {
+            );
+        });
+        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
             return (
                 <div className="upload-box-wrapper">
                     <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
                         <img src={img.path} />
                     </div>
                     <h5>{img.name}</h5>
