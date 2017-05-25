@@ -84,6 +84,60 @@ onFieldChange(value, key, name) {
             }, {
                 logo: '../../images/logo3.png',
                 name: 'Acura 3'
+            },{
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 1'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 1'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 1'
+            }, {
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 2'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 2'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 2'
+            }, {
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 3'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 3'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 3'
+            },{
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 1'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 1'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 1'
+            }, {
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 2'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 2'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 2'
+            }, {
+                logo: '../../images/logo1.png',
+                name: 'Aston Martin 3'
+            }, {
+                logo: '../../images/logo2.png',
+                name: 'Alfa Romeo 3'
+            }, {
+                logo: '../../images/logo3.png',
+                name: 'Acura 3'
             }
         ]
         const carModel = [
@@ -101,7 +155,7 @@ onFieldChange(value, key, name) {
         const carListView = map(carList, (carItem) => {
             return (
 
-                <div className="col-md-2 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -111,7 +165,7 @@ onFieldChange(value, key, name) {
         })
         const carModelView = map(carModel, (carItem) => {
             return (
-                <div className="col-md-2 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
