@@ -10,9 +10,7 @@ import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { Scrollbars } from 'react-custom-scrollbars';
 import JobDetails from './JobDetails'
-var scrollToElement = require('scroll-to-element');
 
 export default class RequestCard extends Component {
   constructor(...args) {
