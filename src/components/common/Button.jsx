@@ -6,7 +6,7 @@ export default class Button extends Component {
     }
 
     render() {
-        const { btnType, btnSize, fontSize, label, btnCallBack, iconName } = this.props;
+        const { btnType, btnSize, disabled, fontSize, label, btnCallBack, iconName } = this.props;
         const btnProperties = {};
         let btnClass = 'btn btn-theme ';
         let customStyle = {};
@@ -17,6 +17,9 @@ export default class Button extends Component {
         btnProperties.className = btnClass + (btnSize ? (btnSize + " ") : '') + (btnType ? btnType : '');
         if (btnCallBack) {
           btnProperties.onClick = btnCallBack;
+        }
+        if (disabled) {
+          btnProperties.disabled = disabled;
         }
         return (
           <button {...btnProperties}>

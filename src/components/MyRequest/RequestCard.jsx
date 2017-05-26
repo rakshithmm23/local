@@ -195,7 +195,7 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    // console.log(this.state.currentWidth)
+    //console.log(this.state.currentWidth)
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -209,11 +209,10 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
-    const chatBox=[
+    const chatBox = [
       {
-        type:'message-in',
-        continuation:true,
-
+        type: 'message-in',
+        continuation: true,
       }
     ]
     const jobData = [
@@ -238,7 +237,7 @@ export default class RequestCard extends Component {
 
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
-        lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key+1) + this.state.svgEnd : this.state.svg + (key+1) + this.state.svgEnd
+        lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key + 1) + this.state.svgEnd : this.state.svg + (key + 1) + this.state.svgEnd
       }
     })
 
@@ -361,7 +360,7 @@ export default class RequestCard extends Component {
                               {map(this.state.jobCardDetails, (val, key) => {
                                 return (
                                   <QuotesCard ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
-                                    viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                 );
                               })}
                             </div>
@@ -401,6 +400,7 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-right-body">
+                          {/*Quotation*/}
                           <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
                             <div className="quotation-head">
                               <ul>
@@ -445,6 +445,7 @@ export default class RequestCard extends Component {
                               </div>
                             </div>
                           </div>
+                          {/*ChatBox*/}
                           <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                             <div className="quotes-chat-area">
 
