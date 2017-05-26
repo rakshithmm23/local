@@ -110,10 +110,9 @@ onFieldChange(value, key, name) {
                 modalId: 3
             }
         ]
-        const carListView = map(carList, (carItem) => {
+        const carListView = map(carList, (carItem, key) => {
             return (
-
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }} key={key}>
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -121,9 +120,9 @@ onFieldChange(value, key, name) {
                 </div>
             )
         })
-        const carModelView = map(carModel, (carItem) => {
+        const carModelView = map(carModel, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }} key={key}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -232,7 +231,7 @@ onFieldChange(value, key, name) {
                                 </div>
                             </div>
                             <div className="next-button">
-                                <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
+                                <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
                             </div>
                         </div>}
                 </section>
