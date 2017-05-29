@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Status from '../common/Status';
@@ -9,9 +10,7 @@ import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
-import { Scrollbars } from 'react-custom-scrollbars';
 import JobDetails from './JobDetails'
-
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -132,6 +131,10 @@ export default class RequestCard extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
+  componentDidUpdate() {
+    const curr = this.currentTopEle
+    this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+  }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
   }
@@ -165,7 +168,6 @@ export default class RequestCard extends Component {
       jobCardDetails: newDetails,
     });
   }
-
   ClickedQuoteCard(key) {
     let update, newArray = []
     this.state.jobCardDetails.map((val, index) => {
@@ -209,7 +211,6 @@ export default class RequestCard extends Component {
       {
         type: 'message-in',
         continuation: true,
-
       }
     ]
     const jobData = [
@@ -331,7 +332,7 @@ export default class RequestCard extends Component {
                     <JobDetails />
                   </div>}
                   {this.state.jobUpdates == "quotes" && <div className="tab-quotes ">
-                    <div className="col-md-6 clearfix left pad0">
+                    <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
                         <div className="title">
                           <span>4 Quotes Received</span>
@@ -351,13 +352,13 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-left-body">
-                          <div className="wrapper">
+                          <div className="wrapper" ref={'quotesList'}>
 
                             <div>
                               {map(this.state.jobCardDetails, (val, key) => {
                                 return (
-                                  <QuotesCard activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key + 1} rating={val.rating} distance={val.distance} reviews={val.review}
-                                    viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                  <QuotesCard ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
+                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                 );
                               })}
                             </div>

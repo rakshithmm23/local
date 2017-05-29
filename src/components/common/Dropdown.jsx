@@ -11,6 +11,7 @@ export default class Dropdown extends Component {
     render() {
         return (
             <DropdownButton
+                id={this.props.id ? this.props.id : 0}
                 onToggle={()=>{this.setState({'dropDownVisible': !this.state.dropDownVisible});}}
                 title={
                     <span>
