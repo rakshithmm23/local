@@ -33,7 +33,7 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Cars</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Next" />
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car" />
                         </div>
                     </div>
                     <div className="inSection">
@@ -42,8 +42,8 @@ export default class BookService extends Component {
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
                                     <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
-                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B Singapore" name="My Nissan GT-R" />
-                                    <BookServiceBox date="17 April 16" model="Red 2016" place=" Hong Kong" name="My Nissan GT-R" />
+                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
+                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
                                 </div>
                             </div>
                         </div>

@@ -55,19 +55,24 @@
     border-radius: 0;
     border-color: #DAE1E7;
 }
-.header-search .form-control::-webkit-input-placeholder { 
-  color: #55595B
+
+.header-search .form-control::-webkit-input-placeholder {
+    color: #55595B
 }
-.header-search .form-control::-moz-placeholder { 
-  color: #55595B
+
+.header-search .form-control::-moz-placeholder {
+    color: #55595B
 }
-.header-search .form-control:-ms-input-placeholder { 
-  color: #55595B
+
+.header-search .form-control:-ms-input-placeholder {
+    color: #55595B
 }
-.header-search .form-control:-moz-placeholder { 
-  color: #55595B
+
+.header-search .form-control:-moz-placeholder {
+    color: #55595B
 }
-.header-search .searchLeft .form-control{
+
+.header-search .searchLeft .form-control {
     padding: 6px 5px;
 }
 
@@ -78,9 +83,11 @@
     border-color: #DAE1E7;
     cursor: pointer;
 }
-.header-search .input-group-addon .mdi-crosshairs-gps{
+
+.header-search .input-group-addon .mdi-crosshairs-gps {
     font-size: 18px;
 }
+
 .header-search .input-group-addon:first-child {
     border-right: 0;
     border-left-width: 1px;
@@ -194,50 +201,61 @@
 
 /*Search Suggestion*/
 
-.locationSuggestion{
+.locationSuggestion {
     font-family: CenturyGothic;
     background-color: #FEFEFE;
     border: 1px solid #DAE1E7;
     margin-top: -6px;
     padding: 5px 13px;
 }
-.locationSuggestion li{
+
+.locationSuggestion li {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
     cursor: pointer;
 }
-.locationSuggestion li:last-child{
+
+.locationSuggestion li:last-child {
     border: 0;
 }
-.locationSuggestion li label{
+
+.locationSuggestion li label {
     font-weight: normal;
     color: #454B51;
     font-size: 11px;
     display: block;
-     cursor: pointer;
+    cursor: pointer;
+    position: relative;
+    top: auto;
+    left: auto;
 }
+
 .locationSuggestion li label i,
-.locationSuggestion li span i{
+.locationSuggestion li span i {
     margin-right: 5px;
     vertical-align: top;
     cursor: pointer;
-        font-size: 14px;
+    font-size: 14px;
 }
-.locationSuggestion li label .mdi-pencil{
+
+.locationSuggestion li label .mdi-pencil {
     color: #006FB9;
 }
-.locationSuggestion li span{
+
+.locationSuggestion li span {
     color: #717982;
     font-size: 11px;
     display: block;
 }
-.locationSuggestion li label span{
+
+.locationSuggestion li label span {
     display: inline-block;
     color: #454B51;
     font-size: 11px;
     margin-left: 5px;
 }
-.locationSuggestion li span.small-text{
+
+.locationSuggestion li span.small-text {
     font-size: 10px;
     margin-left: 25px;
     width: 120px;
@@ -246,7 +264,8 @@
     white-space: nowrap;
     vertical-align: top;
 }
-.locationSuggestion li span span{
+
+.locationSuggestion li span span {
     display: inline-block;
     margin-left: 5px;
     width: 110px;
@@ -255,7 +274,8 @@
     white-space: nowrap;
     vertical-align: top;
 }
-.locationSuggestion li a{
+
+.locationSuggestion li a {
     display: inline-block;
     font-size: 11px;
     float: right;
@@ -268,16 +288,16 @@
 
 /*responsive*/
 
-@media screen and (min-width: 992px) and (max-width: 1200px){
-    .header-search{
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .header-search {
         width: 62%;
         margin-left: 0;
         padding-right: 20px;
     }
-    .header-search .searchFill{
+    .header-search .searchFill {
         width: 55%;
     }
-    .header-right{
+    .header-right {
         width: 230px;
     }
 }

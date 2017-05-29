@@ -15,13 +15,15 @@ class BookServiceBox extends Component {
                                     <span>{this.props.date}</span>
                                 </li>
                                 <li>
-                                    <h4>model</h4>
-                                    <span>{this.props.model}</span>
+                                    <span>
+                                        <h4>model</h4>
+                                        <span>{this.props.model}</span>
+                                    </span>
                                 </li>
                             </ul>
                         </div>
                     </figure>
-                    <figcaption className="myCard-caption">
+                    <figcaption className="myCar-card-caption">
                         <h4>{this.props.place}</h4>
                         <h5>{this.props.name}</h5>
                         <Button btnSize="sm" fontSize={14} label="Book Service" />

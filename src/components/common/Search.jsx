@@ -18,9 +18,9 @@ export default class Search extends Component {
     handleblur() {        
         this.setState({
             showResults: false                
-        })
+        });
     }
-    render() {              
+    render() { 
         return (
                 <div className="searchBar">
                    <div className="searchLeft">
@@ -34,6 +34,7 @@ export default class Search extends Component {
                                     <i className="mdi mdi-chevron-down" />
                                 </InputGroup.Addon>
                             </InputGroup>
+
                             <Popup open={this.state.showResults}>
                                 <div className="locationSuggestion">
                                     <ul>

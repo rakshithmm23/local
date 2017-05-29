@@ -176,17 +176,17 @@ onFieldChange(value, key, name) {
 
         return (
             <div>
-                <section className="s1" >
+                <section className="s1">
                     <div className="title" onClick={() => { this.tabOpen('tab1') }}>
                         <h4>Step 1: Select The Manufacturer</h4>
-                        <i className={this.state.tab1 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
+                        <i className={this.state.tab1 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.tab1 && <div>
                         <div className="search-box ">
                             <div className="remove-left-padding">
                                 <TextInput label="Car Profile Name" name="text" type="text"/>
                             </div>
-                            <i className="mdi mdi-magnify"></i>
+                            <i className="mdi mdi-magnify"/>
                         </div>
                         <div className="img-container">
                             {carListView}
@@ -198,9 +198,9 @@ onFieldChange(value, key, name) {
                     </div>}
                 </section>
                 <section className="s2" >
-                    <div className="title" onClick={() => {this.tabOpen('tab2') }}>
+                    <div className="title" onClick={() => {this.tabOpen('tab2'); }}>
                         <h4>Step 2: Select The Modal</h4>
-                        <i className={this.state.tab2 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
+                        <i className={this.state.tab2 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.tab2 && <div>
                         <div className="container-fluid select-option">
@@ -211,7 +211,7 @@ onFieldChange(value, key, name) {
                                     <option value="mercedes">Mercedes</option>
                                     <option value="audi">Audi</option>
                                 </select>
-                                <i className="mdi mdi-chevron-down"></i>
+                                <i className="mdi mdi-chevron-down"/>
                             </div>
                         </div>
                         <div className="img-container">
@@ -223,9 +223,9 @@ onFieldChange(value, key, name) {
                     </div>}
                 </section>
                 <section className="s3" >
-                    <div className="title" onClick={() => { this.tabOpen('tab3') }}>
+                    <div className="title" onClick={() => { this.tabOpen('tab3'); }}>
                         <h4>Step 3: Enter Other Details</h4>
-                        <i className={this.state.tab3 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
+                        <i className={this.state.tab3 ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.tab3 &&
                         <div className="wrapper">
