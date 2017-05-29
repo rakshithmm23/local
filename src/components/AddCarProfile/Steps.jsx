@@ -132,20 +132,20 @@ onFieldChange(value, key, name) {
         });
 
         return (
-            <div>
+            <div className="collapse-panal">
                 <section className="s1" >
                     <div className="title" onClick={() => { this.tabOpen('manufacturerTabVisible') }}>
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
                     {this.state.manufacturerTabVisible && <div>
-                        <div className="search-box ">
+                        <div className="search-box col-md-6 clearfix">
                             <div className="remove-left-padding">
                                 <TextInput label="Search for manufacturer" name="text" type="text"/>
                             </div>
                             <i className="mdi mdi-magnify"></i>
                         </div>
-                        <div className="img-container">
+                        <div className="img-container clearfix">
                             {carListView}
                     </div>
                         <div className="next-button">
@@ -160,8 +160,8 @@ onFieldChange(value, key, name) {
                         <i className={this.state.modelTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
                     {this.state.modelTabVisible && <div>
-                        <div className="container-fluid select-option">
-                            <div className="model-select col-md-6">
+                        <div className="container-fluid select-option col-md-6">
+                            <div className="model-select ">
                                 <select>
                                     <option value="volvo">Volvo</option>
                                     <option value="saab">Saab</option>
@@ -171,7 +171,7 @@ onFieldChange(value, key, name) {
                                 <i className="mdi mdi-chevron-down"></i>
                             </div>
                         </div>
-                        <div className="img-container">
+                        <div className="img-container ">
                             {carModelView}
                         </div>
                         <div className="next-button">
