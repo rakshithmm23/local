@@ -1,3 +1,7 @@
 .request-summary .right div div:first{
     height: 100vh !important;
 }
+.gmaps{
+  overflow: hidden;
+  width: 100%;
+}
