@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
-import Status from '../common/Status';
 import Button from '../common/Button';
-import { Collapse } from 'react-bootstrap';
 import QuotesCard from './QuotesCard';
 import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
-import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
-import { StickyContainer, Sticky } from 'react-sticky';
+import { FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import JobDetails from './JobDetails'
 
 export default class RequestCard extends Component {
@@ -165,7 +161,7 @@ export default class RequestCard extends Component {
       newDetails.push(update);
     });
     this.setState({
-      jobCardDetails: newDetails,
+      carWashCategories: newDetails,
     });
   }
   ClickedQuoteCard(key) {
@@ -207,12 +203,7 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
-    const chatBox = [
-      {
-        type: 'message-in',
-        continuation: true,
-      }
-    ]
+    
     const jobData = [
       {
         carImage: '../../images/car.jpg',
@@ -232,7 +223,7 @@ export default class RequestCard extends Component {
       },
 
     ];
-
+    debugger
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
         lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key + 1) + this.state.svgEnd : this.state.svg + (key + 1) + this.state.svgEnd
@@ -357,7 +348,7 @@ export default class RequestCard extends Component {
                             <div>
                               {map(this.state.jobCardDetails, (val, key) => {
                                 return (
-                                  <QuotesCard ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
+                                  <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
                                   viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                 );
                               })}
@@ -413,17 +404,17 @@ export default class RequestCard extends Component {
                               </ul>
                             </div>
                             <div className="quotation-details">
-                              {map(this.state.jobCardDetails, (value, key) => {
+                              {map(this.state.jobCardDetails, (value, jobCardKey) => {
                                 return (
-                                  <div className="quotation-block" key={key}>
-                                    {map(value.quotationDetails, (val, index) => {
+                                  <div className="quotation-block" key={jobCardKey}>
+                                    {map(value.quotationDetails, (val, quotationKey) => {
                                       return (
                                         <div>
-                                          <h4 index={index}>{val.serviceIndex}. {val.serviceName}</h4>
+                                          <h4 key={quotationKey}>{val.serviceIndex}. {val.serviceName}</h4>
                                           <ul>
-                                            {map(val.Accessories, (v, k) => {
+                                            {map(val.Accessories, (v, accessoriesKey) => {
                                               return (
-                                                <li>
+                                                <li key={accessoriesKey}>
                                                   <label>{v.name}</label>
                                                   <span>{v.cost} {v.currency}</span>
                                                 </li>

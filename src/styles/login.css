@@ -124,12 +124,12 @@
 
 /*Checkbox*/
 
-.note-text label {
+.checkbox-style label {
     font-weight: normal;
     cursor: pointer;
 }
 
-.note-text input {
+.checkbox-style input {
     -webkit-appearance: none;
     background-color: #fafafa;
     border: 1px solid #cacece;
@@ -145,13 +145,13 @@
     cursor: pointer;
 }
 
-.note-text input:checked {
+.checkbox-style input:checked {
     background-color: #23AE49;
     border: 1px solid #23AE49;
     color: #fff;
 }
 
-.note-text input:checked:after {
+.checkbox-style input:checked:after {
     content: '\F12C';
     font-family: 'Material Design Icons';
     font-size: 14px;

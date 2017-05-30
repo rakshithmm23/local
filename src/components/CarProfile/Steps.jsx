@@ -132,24 +132,25 @@ class Steps extends Component {
         });
 
         return (
-            <div>
+            <div className="collapse-panal">
                 <section className="s1" >
                     <div className="title" onClick={() => { this.tabOpen('manufacturerTabVisible'); }}>
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.manufacturerTabVisible && <div>
-                        <div className="search-box ">
+                    {this.state.manufacturerTabVisible && 
+                    <div>
+                        <div className="search-box col-md-6 clearfix">
                             <div className="remove-left-padding">
                                 <TextInput label="Search for manufacturer" name="text" type="text" />
                             </div>
                             <i className="mdi mdi-magnify" />
                         </div>
-                        <div className="img-container">
+                        <div className="img-container clearfix">
                             {carListView}
-                        </div>
-                        <div className="next-button">
-                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('modelTabVisible'); this.setState({ 'modelTabIsUnlocked': this.state.activeLogo ? true : false }) }} />
+                    </div>
+                        <div className="next-button clearfix">
+                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false})}}/>
                         </div>
 
                     </div>}
@@ -160,8 +161,8 @@ class Steps extends Component {
                         <i className={this.state.modelTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.modelTabVisible && <div>
-                        <div className="container-fluid select-option">
-                            <div className="model-select col-md-6">
+                        <div className="container-fluid select-option col-md-6">
+                            <div className="model-select ">
                                 <select>
                                     <option value="volvo">Volvo</option>
                                     <option value="saab">Saab</option>
@@ -171,11 +172,11 @@ class Steps extends Component {
                                 <i className="mdi mdi-chevron-down" />
                             </div>
                         </div>
-                        <div className="img-container">
+                        <div className="img-container ">
                             {carModelView}
                         </div>
-                        <div className="next-button">
-                            <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
+                        <div className="next-button clearfix">
+                            <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false})}}/>
                         </div>
                     </div>}
                 </section>
@@ -188,7 +189,7 @@ class Steps extends Component {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <Upload />
+                                <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6"/>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
@@ -230,7 +231,7 @@ class Steps extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="next-button">
+                            <div className="next-button clearfix">
                                 <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
                             </div>
                         </div>}

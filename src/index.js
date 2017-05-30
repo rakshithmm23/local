@@ -33,6 +33,7 @@ import './styles/job-details.css';
 import './styles/new-car-profile.css';
 import './styles/book-service.css';
 import './styles/timeline.css';
+import './styles/car-wash.css';
 
 
 export const store = configureStore();

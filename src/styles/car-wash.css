@@ -1,0 +1,219 @@
+.collapse-panal .sub-collapse-panal {
+    margin-bottom: 20px;
+}
+
+.collapse-panal .sub-collapse-panal .title.active {
+    background-color: #F8F9FA;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category {
+    box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label {
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 13px;
+    line-height: 14px;
+    text-transform: capitalize;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label input {
+    margin-right: 10px;
+    outline: none;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label input:checked {
+    background-color: #454B51;
+    border: 1px solid #454B51;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .options {
+    padding: 7px;
+    padding-left: 80px;
+}
+
+.collapse-panal .sub-collapse-panal .title {
+    padding: 10px 22px;
+}
+
+.collapse-panal .sub-collapse-panal .title .mdi-chevron-down {
+    color: #979797;
+}
+
+.collapse-panal .sub-collapse-panal .title h4 {
+    color: #454B51;
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: capitalize;
+    margin-left: 33px;
+}
+
+.collapse-panal .sub-collapse-panal .title .sub-category-count {
+    top: 21px;
+    position: absolute;
+    right: 61px;
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.collapse-panal .sub-collapse-panal .title figure {
+    display: inline-block;
+}
+
+.collapse-panal .sub-collapse-panal .title figure img {
+    height: 21px;
+    width: 20px;
+    margin-left: 12px;
+}
+
+.car-wash .s2 {
+    margin-top: 20px;
+}
+
+.car-wash .s2 .left {
+    border-right: 1px solid #949DA5;
+    margin-top: 44px;
+}
+
+.car-wash .s2 .right {
+    margin-top: 44px;
+    padding-left: 20px;
+}
+
+.car-wash .s2 .scr .selection {
+    padding-left: 0;
+}
+
+.car-wash .s2 .sec-title {
+    color: #454B51;
+    font-family: "CenturyGothic";
+    font-size: 16px;
+    line-height: 14px;
+    display: block;
+    text-transform: capitalize;
+}
+
+.car-wash .s2 .sec-container {
+    margin: 30px 0;
+}
+
+.car-wash .s2 .scr.sec-container .car-wash .right .uai.sec-container,
+{
+    margin-top: 0;
+}
+
+.car-wash .s2 .model-select {
+    margin-top: 36px;
+    margin-bottom: 36px;
+}
+
+
+/*.car-wash .s2 .model-select select{
+    width: 90%;
+}*/
+
+.car-wash .s2 .model-select .mdi-chevron-down {
+    right: 17px;
+    color: #949DA5;
+}
+
+.car-wash .s2 .repair-reasons,
+.car-wash .s2 .job-details {
+    margin-top: 50px;
+}
+
+.no-left-pad {
+    padding-left: 0 !important;
+}
+
+.car-wash .s2 .right .img-uploads {
+    margin-top: 20px;
+}
+
+.radio-btn .radio-style {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.radio-btn .radio-style label {
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.radio-btn .radio-style:first-child {
+    margin-right: 62px;
+}
+
+.radio-btn label:hover .mf-radio-button {
+    color: #337ab7;
+}
+
+.radio-btn label span {
+    display: block;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.radio-btn input {
+    width: auto;
+    opacity: 0.0001;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.radio-btn input:checked~.mf-radio-button::after {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+}
+
+.radio-btn input:checked~.mf-radio-button::before {
+    color: #ED3124;
+}
+
+.mf-radio-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #999;
+}
+
+.mf-radio-button::before,
+.mf-radio-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2px 0;
+    width: 15px;
+    height: 15px;
+    -webkit-transition: -webkit-transform 0.28s ease;
+    transition: -webkit-transform 0.28s ease;
+    transition: transform 0.28s ease;
+    transition: transform 0.28s ease, -webkit-transform 0.28s ease;
+    border-radius: 50%;
+    border: 0.125rem solid currentColor;
+}
+
+.mf-radio-button::after {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background-color: #ED3124;
+    border-color: #ED3124;
+}
