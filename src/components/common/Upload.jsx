@@ -42,7 +42,7 @@ class Upload extends Component {
         return (
             <div className="img-uploads">
                 <div className="clearfix"> 
-                 {imageUploadedView}
+                 
             
                 <div className={className}>
                     <label htmlFor="file-input" className="upload-box">
@@ -50,6 +50,7 @@ class Upload extends Component {
                     </label>
                     <input id="file-input" type="file" className="hide" onChange={(e) => this.fileNameUpload(e)} multiple />
                 </div>
+                {imageUploadedView}
                 </div>
              </div>
         );
