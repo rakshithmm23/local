@@ -2,54 +2,58 @@
         /*background: rgb(236, 243, 245);*/
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyBold;
         src: url('../fonts/Oxygen-Bold.ttf')
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyLight;
         src: url('../fonts/Oxygen-Light.ttf')
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyReg;
         src: url('../fonts/Oxygen-Regular.ttf')
     }
-    
+
     @font-face {
         font-family: CenturyGothic;
         src: url('../fonts/CenturyGothic.ttf')
     }
-    
+
     ul,
     li {
         padding: 0;
         margin: 0;
         list-style: none;
     }
-    
+
     .container,
     .container-fluid {
         padding: 0;
     }
-    
+
+    .row{
+        margin: 0;
+        padding: 0;
+    }
+
     .pad0 {
         padding: 0;
     }
     /*commom wrapper*/
-    
+
     .main-wrapper {
         margin-top: 90px;
         padding-left: 110px;
         overflow: hidden;
     }
-    
     /*Error Control*/
-    
+
     .login-panel .alert {
         margin-top: 30px;
         color: #B4312C;
@@ -59,14 +63,37 @@
         font-size: 12px;
         font-weight: 900;
     }
-    
+
     .login-panel .alert i {
         margin-right: 10px;
         font-size: 15px;
         vertical-align: middle;
     }
+    /*Page Secition header*/
+
+    .page-sec-header {
+        padding: 20px 0;
+    }
+
+    .page-sec-header h4 {
+        display: inline-block;
+        color: #454B51;
+        font-family: CenturyGothic;
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    .page-sec-header button {
+        background: transparent;
+        border: 1px solid #ED3124;
+        color: #ED3124 !important;
+        position: absolute;
+        right: 35px;
+        margin-top: 0;
+        font-weight: 900;
+    }
     /*responsive*/
-    
+
     @media screen and (max-width: 1024px) {
         .main-wrapper {
             padding-left: 0px;
@@ -77,9 +104,20 @@
             margin-bottom: 20px;
         }
     }
-    
+
     @media screen and (max-width: 767px) {
         .mpad-0 {
             padding: 0;
+        }
+        .page-sec-header {
+            padding: 10px 0;
+        }
+        .page-sec-header h4 {
+            font-size: 16px;
+        }
+        .page-sec-header button {
+            right: 10px;
+            height: auto;
+            font-size: 12px !important;
         }
     }

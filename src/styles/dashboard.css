@@ -11,6 +11,7 @@
 
 .padwrapper {
     padding: 0px 40px;
+    position: relative;
 }
 
 .service-data img {
@@ -147,6 +148,9 @@
 }
 
 @media screen and (max-width: 767px) {
+    .main-wrapper .inSection {
+        padding: 15px 0;
+    }
     .service-data {
         margin: 5px;
     }
@@ -170,7 +174,7 @@
         margin-top: 0px;
         display: none;
     }
-    .welcome-banner.empty h4{
+    .welcome-banner.empty h4 {
         font-size: 16px;
     }
 }

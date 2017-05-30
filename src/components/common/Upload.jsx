@@ -25,7 +25,6 @@ class Upload extends Component {
         })
     }
     render() {
-        debugger
         let className = "upload-box-wrapper "+this.props.responsiveSize;
         const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
             return (
