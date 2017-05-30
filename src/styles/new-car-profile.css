@@ -29,7 +29,7 @@
 .collapse-panal .title {
   cursor: pointer;
   position: relative;
-  padding: 22px;
+  padding: 14px 22px;
   border-radius: 4px 4px 0 0;
   background-color: #FFFFFF;
   box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
@@ -45,6 +45,7 @@
 
 .collapse-panal .s1 .search-box,
 .collapse-panal .s2 .select-option {
+  padding: 0;
   position: relative;
   margin: 23px;
   display: inline-block;
@@ -58,13 +59,13 @@
 .collapse-panal .s1 .search-box .mdi-magnify {
   position: absolute;
   top: 29px;
-  right: 0;
+  right: 130px;
   font-size: 18px;
   color: #949DA5;
 }
 
 .collapse-panal .s1 .search-box input {
-  width: 100%;
+  width: 80%;
   border: transparent;
   border-bottom: 2px solid #DAE1E7 !important;
   outline: 0 !important;
@@ -137,9 +138,9 @@
   transform: translate(-50%, -50%);
 }
 
-.inSection.ncr .s1 .btn-theme.submit,
-.inSection.ncr .s2 .btn-theme.submit,
-.inSection.ncr .s3 .btn-theme.submit {
+.collapse-panal .s1 .btn-theme.submit,
+.collapse-panal .s2 .btn-theme.submit,
+.collapse-panal .s3 .btn-theme.submit {
   background-color: #ED3124;
   margin: 20px 0;
   float: right;
@@ -160,16 +161,16 @@
   text-align: center;
 }
 
-.ncr .s1 .next-button,
-.ncr .s2 .next-button,
-.ncr .s3 .next-button {
+.collapse-panal .s1 .next-button,
+.collapse-panal .s2 .next-button,
+.collapse-panal .s3 .next-button {
   height: 90px;
   border-top: 1px solid #C8D4DE;
   margin: 0 30px;
   margin-top: 30px;
 }
 
-.ncr .s3 .next-button {
+.collapse-panal .s3 .next-button {
   margin: 0;
   margin-top: 30px;
 }

@@ -1,0 +1,66 @@
+.collapse-panal .sub-collapse-panal{
+    margin-bottom: 20px;
+}
+.collapse-panal .sub-collapse-panal .title.active {
+  background-color: #F8F9FA;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category {
+  box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label {
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 13px;
+  line-height: 14px;
+  text-transform: capitalize;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label input {
+  margin-right: 10px;
+  outline: none;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .label input:checked {
+  background-color: #454B51;
+  border: 1px solid #454B51;
+}
+
+.collapse-panal .sub-collapse-panal .sub-category .options {
+  padding: 7px;
+  padding-left: 80px;
+}
+
+.collapse-panal .sub-collapse-panal .title {
+  padding: 10px 22px;
+}
+
+.collapse-panal .sub-collapse-panal .title h4 {
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: capitalize;
+  margin-left: 33px;
+}
+
+.collapse-panal .sub-collapse-panal .title .sub-category-count {
+  top: 21px;
+  position: absolute;
+  right: 61px;
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.collapse-panal .sub-collapse-panal .title figure {
+  display: inline-block;
+}
+
+.collapse-panal .sub-collapse-panal .title figure img {
+  height: 21px;
+  width: 20px;
+  margin-left: 12px;
+}

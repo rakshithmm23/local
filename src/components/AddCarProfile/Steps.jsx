@@ -138,7 +138,8 @@ onFieldChange(value, key, name) {
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} ></i>
                     </div>
-                    {this.state.manufacturerTabVisible && <div>
+                    {this.state.manufacturerTabVisible && 
+                    <div>
                         <div className="search-box col-md-6 clearfix">
                             <div className="remove-left-padding">
                                 <TextInput label="Search for manufacturer" name="text" type="text"/>
@@ -148,7 +149,7 @@ onFieldChange(value, key, name) {
                         <div className="img-container clearfix">
                             {carListView}
                     </div>
-                        <div className="next-button">
+                        <div className="next-button clearfix">
                             <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false})}}/>
                         </div>
 
@@ -174,7 +175,7 @@ onFieldChange(value, key, name) {
                         <div className="img-container ">
                             {carModelView}
                         </div>
-                        <div className="next-button">
+                        <div className="next-button clearfix">
                             <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false})}}/>
                         </div>
                     </div>}
@@ -230,7 +231,7 @@ onFieldChange(value, key, name) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="next-button">
+                            <div className="next-button clearfix">
                                 <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
                             </div>
                         </div>}

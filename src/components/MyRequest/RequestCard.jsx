@@ -165,7 +165,7 @@ export default class RequestCard extends Component {
       newDetails.push(update);
     });
     this.setState({
-      jobCardDetails: newDetails,
+      carWashCategories: newDetails,
     });
   }
   ClickedQuoteCard(key) {

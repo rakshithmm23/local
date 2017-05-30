@@ -29,6 +29,7 @@ import MyCarList from './components/MyCarList';
 import MyRequest from './components/MyRequest/MyRequest';
 import NewCarProfile from './components/AddCarProfile/NewCarProfile';
 import BookService from './components/BookService/BookService';
+import CarWash from './components/CarWash/CarWash';
 
 export default (
   <Route path="/" component={Home}>
@@ -41,5 +42,6 @@ export default (
     <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
     <Route path="car-profile" component={AuthContainer(NewCarProfile)}/>
     <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
+    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/>
   </Route>
 );

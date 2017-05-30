@@ -39,7 +39,7 @@ export default class CarWash extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             <div className="myCar-list">
-                                <div className="myCar-body row cw">
+                                <div className="myCar-body row cw ">
                                     {/*Job Updates*/}
                                     <Steps />
                                 </div>
