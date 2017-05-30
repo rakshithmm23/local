@@ -280,8 +280,8 @@ class Steps extends Component {
                                                 <Gmaps
                                                     center={{ lat: 12.9952672, lng: 77.5905857 }}
                                                     zoom={9}
-                                                    containerElement={<div style={{ height: 500 + 'px',width: 520 + 'px' }} />}
-                                                    mapElement={<div style={{ height: 500 + 'px',width: 520 + 'px' }} />}
+                                                    containerElement={<div style={{ height: "auto",width: 570 + 'px' }} />}
+                                                    mapElement={<div style={{ height: 500 + 'px',width: 570 + 'px' }} />}
                                                 />
                                             </div>
                                         </div>
