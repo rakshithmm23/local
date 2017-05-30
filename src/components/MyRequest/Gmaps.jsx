@@ -5,7 +5,6 @@ class Gmaps extends Component {
 
     render() {
         
-        debugger
         const markers = this.props.markers?this.props.markers.jobCardLocation.map((val, i) => {
             const marker = {
                 position: {

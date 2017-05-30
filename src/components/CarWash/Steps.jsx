@@ -93,9 +93,13 @@ class Steps extends Component {
     openCategory(id){        
         let newCat = [];
         map(this.state.carWashCategories,(category)=>{
-            let cat = {...category, active: false}
+            let cat = {...category}
             if(category.id == id){
-                cat.active = true;
+                if(cat.active == true){
+                    cat.active = false;
+                }else{
+                    cat.active = true;
+                }
             }
             newCat.push(cat);
         })
@@ -228,7 +232,7 @@ class Steps extends Component {
                                         <div className="clearfix">
                                             <title className="sec-title">Job Details</title>
                                             <div className="col-md-11 remove-left-padding">
-                                                <TextInput label="Job details" name="text" type="text"  />
+                                                <input type="text" className="jd-text"/>
                                             </div>
                                         </div>
                                     </div>

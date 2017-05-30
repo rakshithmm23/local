@@ -223,7 +223,6 @@ export default class RequestCard extends Component {
       },
 
     ];
-    debugger
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
         lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key + 1) + this.state.svgEnd : this.state.svg + (key + 1) + this.state.svgEnd

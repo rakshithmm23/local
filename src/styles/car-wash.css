@@ -97,11 +97,11 @@
 }
 
 .car-wash .s2 .sec-container {
-  margin: 30px 0;
+  margin: 50px 0;
 }
 
-.car-wash .s2 .scr.sec-container
-.car-wash .right .uai.sec-container,
+.car-wash .s2 .scr.sec-container,
+.car-wash .right .uai.sec-container
  {
   margin-top: 0;
 }
@@ -121,9 +121,21 @@
   color: #949DA5;
 }
 
-.car-wash .s2 .repair-reasons,
-.car-wash .s2 .job-details {
-  margin-top: 50px;
+
+.car-wash .s2 .job-details .jd-text{
+    margin-top: 25px;
+    cursor: pointer;
+    font-family: "CenturyGothic";
+    color: #949DA5;
+    font-size: 16px;
+    line-height: 14px;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #C8D4DE;
+    border-radius: 0;
+    -webkit-appearance: none;
+    outline: none;
 }
 
 .car-wash .s2 .radio-btn .radio {
@@ -148,4 +160,10 @@
 
 .car-wash .s2 .right .img-uploads{
     margin-top: 20px;
+}
+.car-wash .preffered-time-date.sec-container{
+        margin-bottom: 0px;
+}
+.car-wash .preffered-location.sec-container{
+        margin-top: 23px;
 }
