@@ -39,9 +39,9 @@ export default (
     <Route path="sign-in" component={AuthContainer(SignIn)}/>
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
-    <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
+    <Route path="request" component={AuthContainer(MyRequest)} />
     <Route path="car-profile" component={AuthContainer(NewCarProfile)}/>
-    <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
-    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/>
+    <Route path="book-service" component={AuthContainer(BookService)} />
+    <Route path="car-wash" component={AuthContainer(CarWash)} />
   </Route>
 );

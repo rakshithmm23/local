@@ -1,6 +1,7 @@
-.collapse-panal .sub-collapse-panal{
-    margin-bottom: 20px;
+.collapse-panal .sub-collapse-panal {
+  margin-bottom: 20px;
 }
+
 .collapse-panal .sub-collapse-panal .title.active {
   background-color: #F8F9FA;
 }
@@ -36,6 +37,10 @@
   padding: 10px 22px;
 }
 
+.collapse-panal .sub-collapse-panal .title .mdi-chevron-down {
+  color: #979797;
+}
+
 .collapse-panal .sub-collapse-panal .title h4 {
   color: #454B51;
   font-family: "CenturyGothic";
@@ -63,4 +68,83 @@
   height: 21px;
   width: 20px;
   margin-left: 12px;
+}
+
+.car-wash .s2 {
+    margin-top: 20px;
+}
+.car-wash .s2 .left {
+  border-right: 1px solid #949DA5;
+  margin-top: 44px;
+}
+
+.car-wash .s2 .right {
+  margin-top: 44px;
+  padding-left: 20px;
+}
+
+.car-wash .s2 .scr .selection {
+  padding-left: 0;
+}
+
+.car-wash .s2 .sec-title {
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 16px;
+  line-height: 14px;
+  display: block;
+  text-transform: capitalize;
+}
+
+.car-wash .s2 .sec-container {
+  margin: 30px 0;
+}
+
+.car-wash .s2 .scr.sec-container
+.car-wash .right .uai.sec-container,
+ {
+  margin-top: 0;
+}
+
+.car-wash .s2 .model-select {
+  margin-top: 36px;
+}
+
+
+/*.car-wash .s2 .model-select select{
+    width: 90%;
+}*/
+
+.car-wash .s2 .model-select .mdi-chevron-down {
+  right: 17px;
+  color: #949DA5;
+}
+
+.car-wash .s2 .repair-reasons,
+.car-wash .s2 .job-details {
+  margin-top: 50px;
+}
+
+.car-wash .s2 .radio-btn .radio {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.car-wash .s2 .radio-btn .radio label {
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.car-wash .s2 .radio-btn .radio.opt1 {
+  margin-right: 62px;
+}
+
+.no-left-pad {
+  padding-left: 0 !important;
+}
+
+.car-wash .s2 .right .img-uploads{
+    margin-top: 20px;
 }

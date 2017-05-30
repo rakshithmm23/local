@@ -189,7 +189,7 @@ onFieldChange(value, key, name) {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <Upload />
+                                <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6"/>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">

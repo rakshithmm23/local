@@ -25,9 +25,11 @@ class Upload extends Component {
         })
     }
     render() {
+        debugger
+        let className = "upload-box-wrapper "+this.props.responsiveSize;
         const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
             return (
-                <div className="upload-box-wrapper col-md-2 col-sm-3 col-xs-6">
+                <div className={className}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
                             <i className="mdi mdi-close"></i>
@@ -39,15 +41,18 @@ class Upload extends Component {
             )
         })
         return (
-            <div className="">
-            {imageUploadedView}
-                <div className="upload-box-wrapper col-md-2 col-sm-3 col-xs-6">
+            <div className="img-uploads">
+                <div className="clearfix"> 
+                 {imageUploadedView}
+            
+                <div className={className}>
                     <label htmlFor="file-input" className="upload-box">
                         <img src="../../images/attach.png" />
                     </label>
                     <input id="file-input" type="file" className="hide" onChange={(e) => this.fileNameUpload(e)} multiple />
                 </div>
-            </div>
+                </div>
+             </div>
         );
     }
 }
