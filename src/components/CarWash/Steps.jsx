@@ -232,7 +232,7 @@ class Steps extends Component {
                                         <div className="clearfix">
                                             <title className="sec-title">Job Details</title>
                                             <div className="col-md-11 remove-left-padding">
-                                                <input type="text" className="jd-text"/>
+                                                <input type="text" className="jd-text" placeholder="Enter Text Here"/>
                                             </div>
                                         </div>
                                     </div>
@@ -267,10 +267,10 @@ class Steps extends Component {
                                                 <div className="clearfix">
                                                     <div className="model-select  ">
                                                         <select className="car-selection ">
-                                                            <option value="volvo">Volvo</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="mercedes">Mercedes</option>
-                                                            <option value="audi">Audi</option>
+                                                            <option value="volvo">Marathalli</option>
+                                                            <option value="saab">Mg Road</option>
+                                                            <option value="mercedes">Rajajinagar</option>
+                                                            <option value="audi">Mysore Road</option>
                                                         </select>
                                                         <i className="mdi mdi-chevron-down"></i>
                                                     </div>
@@ -293,26 +293,26 @@ class Steps extends Component {
                                         <div className="uai sec-title">
                                             <div className="clearfix">
                                                 <title className="sec-title">Upload An Image</title>
-                                                <Upload responsiveSize="col-md-4 col-sm-2 col-xs-2 no-left-pad "/>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad "/>
                                             </div>
                                          </div>
                                         
                                          <div className="police-report sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">police report</title>
-                                                <Upload responsiveSize="col-md-4 col-sm-2 col-xs-2 no-left-pad " key={"2"}/>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={"2"}/>
                                             </div>
                                          </div>
                                          <div className="ration card sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">ration card</title>
-                                                <Upload responsiveSize="col-md-4 col-sm-2 col-xs-2 no-left-pad " key={"3"}/>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={"3"}/>
                                             </div>
                                          </div>
                                          <div className="driving-licence sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">driving licence</title>
-                                                <Upload responsiveSize="col-md-4 col-sm-2 col-xs-2 no-left-pad " key={"4"}/>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={"4"}/>
                                             </div>
                                          </div>
                                     </div>
