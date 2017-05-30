@@ -5,28 +5,29 @@ import { map, each } from 'lodash';
 class Upload extends Component {
     constructor() {
         super()
-        this.state = {
-            imageUploaded: []
-        };
+        this.cancelImageUpload = this.cancelImageUpload.bind(this);
+        this.fileNameUpload = this.fileNameUpload.bind(this);
     }
     cancelImageUpload(val){
-        const array = this.state.imageUploaded;
+        const array = this.props.uploadData;
         array.splice(val, 1);
-        this.setState({imageUploaded: array });
+        this.props.uploadCallBack(this.props.name, array)
+        // this.setState({imageUploaded: array });
     }
     fileNameUpload(e) {
-        let files = [] 
+        let files = []
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val) })
         });
         // upload = { ...this.state.imageUploaded, files }
-        this.setState({
-            imageUploaded: this.state.imageUploaded.concat(files)
-        })
+        // this.setState({
+        //     imageUploaded: this.state.imageUploaded.concat(files)
+        // })
+        this.props.uploadCallBack(this.props.name, this.props.uploadData.concat(files))
     }
     render() {
         let className = "upload-box-wrapper "+this.props.responsiveSize;
-        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
+        const imageUploadedView = map(this.props.uploadData, (img,index) => {
             return (
                 <div className={className}>
                     <div className="uploaded-image">
@@ -40,10 +41,10 @@ class Upload extends Component {
             )
         })
         return (
-            <div className="img-uploads">
-                <div className="clearfix"> 
-                 
-            
+            <div className="img-uploads" key={this.props.name}>
+                <div className="clearfix">
+
+
                 <div className={className}>
                     <label htmlFor="file-input" className="upload-box">
                         <img src="../../images/attach.png" />

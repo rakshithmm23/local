@@ -8,9 +8,10 @@ import Gmaps from '../MyRequest/Gmaps';
 class Steps extends Component {
     constructor(props) {
         super(props)
+        this._uploadCallBack = this._uploadCallBack.bind(this);
         this.state = {
             carWashCategories:[
-            {   
+            {
                 id:1,
                 active:false,
                 heading:"AC Heating & Cooling",
@@ -88,8 +89,19 @@ class Steps extends Component {
                 image:'../../images/logo1.png'
             }
         ],
-
+        imgUploads: [],
+        policeReports: [],
+        rationCard: [],
+        drivingLicense: []
         };
+    }
+    _uploadCallBack(name, files) {
+      switch(name) {
+        case 'imgUploads':
+          this.setState({'imgUploads': files})
+          break;
+      }
+      this.setState({})
     }
     openCategory(id) {
         let newCat = [];
@@ -254,7 +266,7 @@ class Steps extends Component {
                                                     <i className="mf-radio-button"/><span>General</span>
                                                 </label>
                                             </div>
-                                           
+
                                         </div>
                                                 <div className="date-time col-md-11  no-left-pad">
                                                     <div className="clearfix">
@@ -306,7 +318,7 @@ class Steps extends Component {
                                         <div className="uai sec-title">
                                             <div className="clearfix">
                                                 <title className="sec-title">Upload An Image</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad "/>
+                                                <Upload uploadData={this.state.imgUploads} name="imgUploads" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={1}/>
 
                                             </div>
                                         </div>
@@ -314,21 +326,21 @@ class Steps extends Component {
                                         <div className="police-report sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">police report</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+                                                <Upload uploadData={this.state.policeReports} name="policeReports" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={2} />
 
                                             </div>
                                         </div>
                                         <div className="ration card sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">ration card</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+                                                <Upload uploadData={this.state.rationCard} name="rationCard" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={3} />
 
                                             </div>
                                         </div>
                                         <div className="driving-licence sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">driving licence</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+                                                <Upload uploadData={this.state.drivingLicense} name="drivingLicense" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={4} />
 
                                             </div>
                                         </div>
