@@ -116,7 +116,7 @@ class Steps extends Component {
                                 <h4>{carWashCategory.heading}</h4>
                                 <span className="sub-category-count">6 subcategories</span>
                             </span>
-                            <i className= "mdi mdi-chevron-up"/>
+                            <i className= {carWashCategory.active?'mdi mdi-chevron-up':'mdi mdi-chevron-down'}/>
                         </div>
                         <div className={ carWashCategory.active ? "sub-category" : "sub-category hide" }>
                             {map(carWashCategory.categories,(category,index)=>{
@@ -139,7 +139,7 @@ class Steps extends Component {
                                 <h4>{carWashCategory.heading}</h4>
                                 <span className="sub-category-count">6 subcategories</span>
                             </span>
-                            <i className= "mdi mdi-chevron-up"/>
+                            <i className= {carWashCategory.active?'mdi mdi-chevron-up':'mdi mdi-chevron-down'}/>
                         </div>
                         <div className={carWashCategory.active ? "sub-category" : "sub-category hide"}>
                             {map(carWashCategory.categories,(category,index)=>{
