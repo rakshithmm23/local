@@ -32,6 +32,7 @@ import './styles/gmaps.css';
 import './styles/job-details.css';
 import './styles/new-car-profile.css';
 import './styles/book-service.css';
+import './styles/timeline.css';
 
 
 export const store = configureStore();

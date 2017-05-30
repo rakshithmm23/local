@@ -1,0 +1,163 @@
+.timeline-card {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.service-details {
+    border-right: 1px solid #EEF2F5;
+}
+
+.service-details .carousel-indicators {
+    bottom: 0;
+}
+
+.service-details .carousel-indicators li {
+    width: 7px;
+    height: 7px;
+    margin: 0 1px;
+}
+
+.carousel-control {
+    display: none !important;
+}
+
+.service-car-info {
+    padding: 10px 15px;
+}
+
+.service-carPlate {
+    font-family: CenturyGothic;
+    color: #717982;
+    font-weight: 900;
+    border-bottom: 1px solid #EEF2F5;
+    padding-bottom: 20px;
+    line-height: 1.5;
+}
+
+.service-carPlate h6 {
+    font-size: 13px;
+}
+
+.service-carPlate h4 {
+    font-size: 18px;
+    color: #4C4C4C;
+}
+
+.service-carPlate span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.service-car-info .service-info li {
+    font-size: 14px;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.timeline-summary-header {
+    height: 70px;
+    border-bottom: 1px solid #DAE1E7;
+    padding: 20px 0 0;
+    text-align: center;
+}
+
+.timeline-summary-header .timeline-summary-tab {
+    font-size: 18px;
+    color: #4C4C4C;
+    font-family: CenturyGothic;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 22px;
+}
+
+.timeline-summary-header .timeline-summary-tab.active {
+    color: #2b2b2b;
+    border-bottom-color: #ED3124;
+}
+
+.timeline-summary-body {
+    padding: 30px;
+}
+
+.timeline-log li {
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.timeline-log .timeline-month {
+    color: #4C4C4C;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.timeline-log .timeline-icon {
+    height: 60px;
+    width: 60px;
+    border: 1px solid #979797;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    vertical-align: middle;
+    margin: 0 30px;
+    position: relative;
+}
+
+.timeline-log .timeline-icon .line-joint {
+    width: 1px;
+    height: 75px;
+    border-left: 1px solid #979797;
+    position: absolute;
+    top: -75px;
+    left: 50%;
+}
+
+.timeline-log li:first-child .line-joint {
+    display: none;
+}
+
+.timeline-log .timeline-icon img {
+    max-width: 100%;
+}
+
+.timeline-content {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: CenturyGothic;
+}
+
+.timeline-content h4 {
+    color: #717982;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.timeline-content h4.completed {
+    color: #EE3124;
+}
+
+.timeline-content h4.current {
+    color: #23AE49;
+}
+
+.timeline-content span {
+    display: block;
+    line-height: 1.9;
+    color: #454B51;
+    font-size: 14px;
+}
+
+.timeline-log li .status-label {
+    float: right;
+    margin-top: 25px;
+}

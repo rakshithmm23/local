@@ -37,6 +37,11 @@
         padding: 0;
     }
 
+    .row{
+        margin: 0;
+        padding: 0;
+    }
+
     .pad0 {
         padding: 0;
     }

@@ -29,6 +29,7 @@ import MyCarList from './components/MyCarList';
 import MyRequest from './components/MyRequest/MyRequest';
 import CreateCarProfile from './components/CarProfile/CreateCarProfile';
 import BookService from './components/BookService/BookService';
+import CarTimeline from './components/CarTimeline/CarTimeline';
 
 export default (
   <Route path="/" component={Home}>
@@ -41,5 +42,6 @@ export default (
     <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
     <Route path="car-profile" component={AuthContainer(CreateCarProfile)} onEnter={isLoggedIn}/>
     <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
+    <Route path="timeline" component={AuthContainer(CarTimeline)} onEnter={isLoggedIn}/>
   </Route>
 );

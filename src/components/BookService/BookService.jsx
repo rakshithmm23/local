@@ -21,7 +21,7 @@ export default class BookService extends Component {
 
     render() {
         return (
-            <div className="jobUpdate">
+            <div>
                 {/*Header*/}
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
