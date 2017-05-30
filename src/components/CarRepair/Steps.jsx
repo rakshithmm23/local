@@ -218,29 +218,58 @@ class Steps extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                   
+                                    <div className="repair-reasons sec-container">
+                                        <title className="sec-title">Reason For Repair</title>
+                                        <div className="radio-btn">
+                                            <div className="radio-style">
+                                                <label>
+                                                    <input type="radio" name="radio" />
+                                                    <i className="mf-radio-button"/><span>Accident</span>
+                                                </label>
+                                            </div>
+                                            <div className="radio-style">
+                                                <label>
+                                                    <input type="radio" name="radio" />
+                                                    <i className="mf-radio-button"/><span>General</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="job-details sec-container">
+                                        <div className="clearfix">
+                                            <title className="sec-title">Job Details</title>
+                                            <div className="col-md-11 remove-left-padding">
+                                                <input type="text" className="jd-text" placeholder="Enter Text Here"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="preffered-time-date sec-container">
                                         <div className="clearfix">
                                             <title className="sec-title">Preffered Time & Date</title>
                                             <div className="radio-btn">
-                                            
+                                            <div className="radio-style">
+                                                <label>
+                                                    <input type="radio" name="preffered-time" />
+                                                    <i className="mf-radio-button"/><span>General</span>
+                                                </label>
+                                            </div>
                                            
                                         </div>
-                                        <div className="date-time col-md-11  no-left-pad">
-                                            <div className="clearfix">
-                                                <div className="col-md-6 no-left-pad">
+                                                <div className="date-time col-md-11  no-left-pad">
                                                     <div className="clearfix">
-                                                        <TextInput label="Date" name="text" type="text" />
+                                                        <div className="col-md-6 no-left-pad">
+                                                            <div className="clearfix">
+                                                                <TextInput label="Date" name="text" type="text" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="clearfix">
+                                                                <TextInput label="Time" name="text" type="text" />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div className="col-md-6">
-                                                    <div className="clearfix">
-                                                        <TextInput label="Time" name="text" type="text" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                     <div className="preffered-location sec-container">
@@ -274,12 +303,35 @@ class Steps extends Component {
                                 </div>
                                 <div className="col-md-6 right">
                                     <div className="clearfix">
-                                        <div className="special-instruction">
-                                             <title className="sec-title">Special Instruction</title>
+                                        <div className="uai sec-title">
+                                            <div className="clearfix">
+                                                <title className="sec-title">Upload An Image</title>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad "/>
+
+                                            </div>
                                         </div>
-                                        <p className="special-instruction-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. 
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                                        
+
+                                        <div className="police-report sec-container">
+                                            <div className="clearfix">
+                                                <title className="sec-title">police report</title>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+
+                                            </div>
+                                        </div>
+                                        <div className="ration card sec-container">
+                                            <div className="clearfix">
+                                                <title className="sec-title">ration card</title>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+
+                                            </div>
+                                        </div>
+                                        <div className="driving-licence sec-container">
+                                            <div className="clearfix">
+                                                <title className="sec-title">driving licence</title>
+                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

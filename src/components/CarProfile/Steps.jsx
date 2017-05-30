@@ -17,7 +17,7 @@ class Steps extends Component {
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
             imageUploaded: [],
-            submissionError: false
+            submissionError: false,
         };
         this.initialFormData = {
             'email': '',

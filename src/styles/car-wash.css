@@ -1,116 +1,117 @@
 .collapse-panal .sub-collapse-panal {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .collapse-panal .sub-collapse-panal .title.active {
-    background-color: #F8F9FA;
+  background-color: #F8F9FA;
 }
 
 .collapse-panal .sub-collapse-panal .sub-category {
-    box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+  box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
 }
 
 .collapse-panal .sub-collapse-panal .sub-category .label {
-    color: #717982;
-    font-family: "CenturyGothic";
-    font-size: 13px;
-    line-height: 14px;
-    text-transform: capitalize;
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 13px;
+  line-height: 14px;
+  text-transform: capitalize;
 }
 
 .collapse-panal .sub-collapse-panal .sub-category .label input {
-    margin-right: 10px;
-    outline: none;
+  margin-right: 10px;
+  outline: none;
 }
 
 .collapse-panal .sub-collapse-panal .sub-category .label input:checked {
-    background-color: #454B51;
-    border: 1px solid #454B51;
+  background-color: #454B51;
+  border: 1px solid #454B51;
 }
 
 .collapse-panal .sub-collapse-panal .sub-category .options {
-    padding: 7px;
-    padding-left: 80px;
+  padding: 7px;
+  padding-left: 80px;
 }
 
 .collapse-panal .sub-collapse-panal .title {
-    padding: 10px 22px;
+  padding: 10px 22px;
 }
 
 .collapse-panal .sub-collapse-panal .title .mdi-chevron-down {
-    color: #979797;
+  color: #979797;
 }
 
 .collapse-panal .sub-collapse-panal .title h4 {
-    color: #454B51;
-    font-family: "CenturyGothic";
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: capitalize;
-    margin-left: 33px;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: capitalize;
+  margin-left: 33px;
 }
 
 .collapse-panal .sub-collapse-panal .title .sub-category-count {
-    top: 21px;
-    position: absolute;
-    right: 61px;
-    color: #717982;
-    font-family: "CenturyGothic";
-    font-size: 11px;
-    line-height: 14px;
+  top: 21px;
+  position: absolute;
+  right: 61px;
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 11px;
+  line-height: 14px;
 }
 
 .collapse-panal .sub-collapse-panal .title figure {
-    display: inline-block;
+  display: inline-block;
 }
 
 .collapse-panal .sub-collapse-panal .title figure img {
-    height: 21px;
-    width: 20px;
-    margin-left: 12px;
+  height: 21px;
+  width: 20px;
+  margin-left: 12px;
 }
 
 .car-wash .s2 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .car-wash .s2 .left {
-    border-right: 1px solid #949DA5;
-    margin-top: 44px;
+  border-right: 1px solid #949DA5;
+  margin-top: 44px;
 }
 
 .car-wash .s2 .right {
-    margin-top: 44px;
-    padding-left: 20px;
+  margin-top: 44px;
+  padding-left: 20px;
 }
 
 .car-wash .s2 .scr .selection {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .car-wash .s2 .sec-title {
-    color: #454B51;
-    font-family: "CenturyGothic";
-    font-size: 16px;
-    line-height: 14px;
-    display: block;
-    text-transform: capitalize;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 16px;
+  line-height: 14px;
+  display: block;
+  text-transform: capitalize;
 }
 
 .car-wash .s2 .sec-container {
-
-    margin: 30px 0;
+  margin: 30px 0;
 }
 
-.car-wash .s2 .scr.sec-container, .car-wash .right .uai.sec-container,
+.car-wash .s2 .scr.sec-container,
+.car-wash .right .uai.sec-container,
 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .car-wash .s2 .model-select {
-    margin-top: 36px;
-    margin-bottom: 36px;
+  margin-top: 36px;
+  margin-bottom: 36px;
 }
+
 .car-wash .s2 .scr .model-select {
   margin-bottom: 20px;
 }
@@ -121,133 +122,143 @@
 }*/
 
 .car-wash .s2 .model-select .mdi-chevron-down {
-    right: 17px;
-    color: #949DA5;
+  right: 17px;
+  color: #949DA5;
 }
 
-
-.car-wash .s2 .job-details .jd-text{
-    margin-top: 25px;
-    cursor: pointer;
-    font-family: "CenturyGothic";
-    color: #949DA5;
-    font-size: 16px;
-    line-height: 14px;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #C8D4DE;
-    border-radius: 0;
-    -webkit-appearance: none;
-    outline: none;
-
+.car-wash .s2 .job-details .jd-text {
+  margin-top: 25px;
+  cursor: pointer;
+  font-family: "CenturyGothic";
+  color: #949DA5;
+  font-size: 16px;
+  line-height: 14px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
 }
 
 .no-left-pad {
-    padding-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .car-wash .s2 .right .img-uploads {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .radio-btn .radio-style {
-    display: inline-block;
-    margin-top: 20px;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .radio-btn .radio-style label {
-    color: #717982;
-    font-family: "CenturyGothic";
-    font-size: 14px;
-    line-height: 20px;
-    position: relative;
-    padding-left: 25px;
-    cursor: pointer;
+  color: #717982;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
 }
 
-.car-wash .s2 .right .img-uploads{
-    margin-top: 20px;
+.car-wash .s2 .right .img-uploads {
+  margin-top: 20px;
 }
-.car-wash .preffered-time-date.sec-container{
-        margin-bottom: 0px;
-        margin-top: 50px;
+
+.car-wash .preffered-time-date.sec-container {
+  margin-bottom: 0px;
+  margin-top: 50px;
 }
-.car-wash .job-details.sec-container{
-        margin: 40px 0;
+
+.car-wash .job-details.sec-container {
+  margin: 40px 0;
 }
-.car-wash .repair-reasons.sec-container{
-    margin: 40px 0;
-    margin-top: -5px;
+
+.car-wash .repair-reasons.sec-container {
+  margin: 40px 0;
+  margin-top: -5px;
 }
-.car-wash .preffered-location.sec-container{
-        margin-top: 15px;
+
+.car-wash .preffered-location.sec-container {
+  margin-top: 15px;
 }
+
 .radio-btn .radio-style:first-child {
-    margin-right: 62px;
+  margin-right: 62px;
 }
 
 .radio-btn label:hover .mf-radio-button {
-    color: #337ab7;
+  color: #337ab7;
 }
 
 .radio-btn label span {
-    display: block;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+  display: block;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
 }
 
 .radio-btn input {
-    width: auto;
-    opacity: 0.0001;
-    position: absolute;
-    left: 0;
-    margin: 0;
-    padding: 0;
+  width: auto;
+  opacity: 0.0001;
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .radio-btn input:checked~.mf-radio-button::after {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
 }
 
 .radio-btn input:checked~.mf-radio-button::before {
-    color: #ED3124;
+  color: #ED3124;
 }
 
 .mf-radio-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    display: block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: #999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #999;
 }
 
 .mf-radio-button::before,
 .mf-radio-button::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 2px 0;
-    width: 15px;
-    height: 15px;
-    -webkit-transition: -webkit-transform 0.28s ease;
-    transition: -webkit-transform 0.28s ease;
-    transition: transform 0.28s ease;
-    transition: transform 0.28s ease, -webkit-transform 0.28s ease;
-    border-radius: 50%;
-    border: 0.125rem solid currentColor;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 2px 0;
+  width: 15px;
+  height: 15px;
+  -webkit-transition: -webkit-transform 0.28s ease;
+  transition: -webkit-transform 0.28s ease;
+  transition: transform 0.28s ease;
+  transition: transform 0.28s ease, -webkit-transform 0.28s ease;
+  border-radius: 50%;
+  border: 0.125rem solid currentColor;
 }
 
 .mf-radio-button::after {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    background-color: #ED3124;
-    border-color: #ED3124;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  background-color: #ED3124;
+  border-color: #ED3124;
+}
+.car-wash .special-instruction-text{
+	color: #717982;
+	font-family: "CenturyGothic";
+	font-size: 14px;
+	line-height: 28px;
+    margin-top: 14px;
 }
