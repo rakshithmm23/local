@@ -48,7 +48,7 @@ class Steps extends Component {
                         name:"subcategory 6"
                     }],
                 image:'../../images/logo1.png'
-            },{
+            },{``
                 id:3,
                 active:false,
                 heading:"Body Work",
