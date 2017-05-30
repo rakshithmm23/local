@@ -32,7 +32,7 @@ export default class CarWash extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>Car Wash</h4>
+                            <h4>Car Repair</h4>
                             <Button btnType="" btnSize="sm" fontSize={13} label="Next" />
                         </div>
                     </div>
