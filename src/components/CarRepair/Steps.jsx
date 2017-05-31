@@ -10,6 +10,8 @@ class Steps extends Component {
         super(props)
         this._uploadCallBack = this._uploadCallBack.bind(this);
         this.state = {
+            step1Panel:false,
+            step2Panel:true,
             uploadImage:[],
             policeReport:[],
             rationCard:[],
@@ -95,6 +97,13 @@ class Steps extends Component {
         ],
     };
    
+}
+    hidePanel(panel){
+        if(panel == 'step1'){
+            this.setState({step1Panel:!this.state.step1Panel})
+        }else if(panel == 'step2'){
+            this.setState({step2Panel:!this.state.step2Panel})
+        }
     }
     _uploadCallBack(name, files) {
       switch(name) {
@@ -248,7 +257,7 @@ class Steps extends Component {
                                     <img src={carWashCategory.image} alt="" />
                                 </figure>
                                 <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">6 subcategories</span>
+                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             </span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
@@ -271,7 +280,7 @@ class Steps extends Component {
                                     <img src={carWashCategory.image} alt="" />
                                 </figure>
                                 <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">6 subcategories</span>
+                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             </span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
@@ -290,7 +299,7 @@ class Steps extends Component {
         return (
             <div className="collapse-panal car-wash">
                 <section className="s1" >
-                    <div className="title">
+                    <div className="title" onClick={()=>{this.hidePanel('step1')}}>
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className="mdi mdi-chevron-up" />
                     </div>
@@ -315,7 +324,7 @@ class Steps extends Component {
                     </div>
                 </section>
                 <section className="s2 " >
-                    <div className="title">
+                    <div className="title" onClick={()=>{this.hidePanel('step1');}}>
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className="mdi mdi-chevron-up"/>
                     </div>
