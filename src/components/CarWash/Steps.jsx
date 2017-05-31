@@ -9,6 +9,8 @@ class Steps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            step1Panel:false,
+            step2Panel:true,
             carWashCategories: [
                 {
                     id: 1,
@@ -104,6 +106,13 @@ class Steps extends Component {
             carWashCategories: newCat
         });
     }
+    hidePanel(panel){
+        if(panel == 'step1'){
+            this.setState({step1Panel:!this.state.step1Panel})
+        }else if(panel == 'step2'){
+            this.setState({step2Panel:!this.state.step2Panel})
+        }
+    }
     render() {
         let leftBlock = [];
         let rightBlock = [];
@@ -159,11 +168,11 @@ class Steps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head">
+                    <div className="panel-head" onClick={()=>{this.hidePanel('step1')}}>
                         <h4>Step 1: Select Car Wash Type</h4>
-                        <i className="mdi mdi-chevron-up" />
+                        <i className={this.state.step1Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
                     </div>
-                    <div className="panel-content">
+                    {this.state.step1Panel && <div className="panel-content">
                         <div className="search-box col-md-6 clearfix">
                             <div className="remove-left-padding">
                                 <TextInput label="Search" name="text" type="text" />
@@ -177,14 +186,14 @@ class Steps extends Component {
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
-                    </div>
+                    </div>}
                 </section>
                 <section className="collapse-panel">
-                    <div className="panel-head">
+                    <div className="panel-head" onClick={()=>{this.hidePanel('step2')}}>>
                         <h4>Step 2: Create A Car Wash Request</h4>
-                        <i className="mdi mdi-chevron-up" />
+                        <i className={this.state.step2Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
                     </div>
-                    <div className="panel-content">
+                    {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6 left">
                                 <div className="form-section">
@@ -241,7 +250,7 @@ class Steps extends Component {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                     <div className="next-button clearfix">
                         <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
                     </div>
