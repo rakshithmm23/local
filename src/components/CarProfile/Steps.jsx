@@ -39,25 +39,24 @@ class Steps extends Component {
         }
     }
     activeLogo(name) {
-        this.setState({ activeLogo: name, modelTabIsUnlocked: true })
+        this.setState({ activeLogo: name, modelTabIsUnlocked: true });
     }
     activeModel(name) {
-        this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true })
+        this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true });
     }
     tabOpen(val) {
         if (val == 'manufacturerTabVisible') {
-            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false })
+            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' && this.state.modelTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false })
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
         } else if (val == 'otherDetailsTabVisible', this.state.otherDetailsTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true })
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
         }
     }
     fileNameUpload(e) { 
-        debugger
-        let files = [] 
+        let files = [];
         each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            files.push({ name: val.name, path: URL.createObjectURL(val) });
         });
         // upload = { ...this.state.imageUploaded, files }
         this.setState({
@@ -72,17 +71,17 @@ class Steps extends Component {
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
             return (
-                <div className='upload-box-wrapper col-md-2 col-sm-4 col-xs-4 '>
+                <div className="upload-box-wrapper col-md-2 col-sm-4 col-xs-4">
                     <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
-                            <i className="mdi mdi-close"></i>
+                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index);}}>
+                            <i className="mdi mdi-close" />>
                         </span>
                         <img src={img.path} />
                     </div>
                     {/*<h5>{img.name}</h5>*/}
                 </div>
-            )
-        })
+            );
+        });
         const carList = [ 
             {
                 logo: '../../images/logo1.png',
@@ -137,7 +136,7 @@ class Steps extends Component {
         ];
         const carListView = map(carList, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); }} key={key}>
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -147,7 +146,7 @@ class Steps extends Component {
         });
         const carModelView = map(carModel, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }); }} key={key}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -175,7 +174,9 @@ class Steps extends Component {
                             {carListView}
                     </div>
                         <div className="next-button clearfix">
-                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false})}}/>
+                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" 
+                                    btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); 
+                                    this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false});}}/>
                         </div>
 
                     </div>}
