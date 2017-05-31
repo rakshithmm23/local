@@ -45,7 +45,7 @@ export default (
     <Route path="car-profile" component={AuthContainer(CreateCarProfile)} onEnter={isLoggedIn}/>
     <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
     <Route path="timeline" component={AuthContainer(CarTimeline)} onEnter={isLoggedIn}/>
-    <Route path="car-repair" component={AuthContainer(CarRepair)} onEnter={isLoggedIn}/>
-    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/>
+    <Route path="car-repair" component={AuthContainer(CarRepair)} />
+    <Route path="car-wash" component={AuthContainer(CarWash)} />
   </Route>
 );

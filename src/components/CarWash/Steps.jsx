@@ -94,13 +94,9 @@ class Steps extends Component {
     openCategory(id) {
         let newCat = [];
         map(this.state.carWashCategories,(category)=>{
-            let cat = {...category}
+            let cat = {...category,active : false}
             if(category.id == id){
-                if(cat.active == true){
-                    cat.active = false;
-                }else{
                     cat.active = true;
-                }
             }
             newCat.push(cat);
         })
@@ -114,8 +110,8 @@ class Steps extends Component {
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
-                    <div className="sub-collapse-panal" key={key} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                        <div className={carWashCategory.active ? "title active" : "title "}>
+                    <div className="sub-collapse-panal" key={key}>
+                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
                             <span>
                                 <figure>
                                     <img src={carWashCategory.image} alt="" />
@@ -137,8 +133,8 @@ class Steps extends Component {
                     </div>)
             } else {
                 leftBlock.push(
-                    <div className="sub-collapse-panal" key={key} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                        <div className={carWashCategory.active ? "title active" : "title "}>
+                    <div className="sub-collapse-panal" key={key} >
+                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
                             <span>
                                 <figure>
                                     <img src={carWashCategory.image} alt="" />
@@ -264,7 +260,7 @@ class Steps extends Component {
                                                     center={{ lat: 12.9952672, lng: 77.5905857 }}
                                                     zoom={9}
                                                     containerElement={<div style={{ height: "auto",width: 570 + 'px' }} />}
-                                                    mapElement={<div style={{ height: 500 + 'px',width: 570 + 'px' }} />}
+                                                    mapElement={<div style={{ height: 192 + 'px',width: 570 + 'px' }} />}
 
                                                 />
                                             </div>
