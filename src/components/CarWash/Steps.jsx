@@ -114,6 +114,7 @@ class Steps extends Component {
         }
     }
     render() {
+        debugger
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
@@ -126,7 +127,7 @@ class Steps extends Component {
                                     <img src={carWashCategory.image} alt="" />
                                 </figure>
                                 <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">6 subcategories</span>
+                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             </span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
