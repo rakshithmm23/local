@@ -261,6 +261,7 @@
   border: 1px dashed #F48021;
   border-radius: 3px;
   background-color: #FFFFFF;
+  margin-bottom: 25px;  
 }
 
 .upload-box img {
@@ -292,7 +293,7 @@
   margin-bottom: 30px;
 }
 
-.ncr .s3 .wrapper .upload-image {
+.upload-image {
   padding-top: 35px;
   padding-bottom: 30px;
   display: block;
@@ -306,7 +307,10 @@
   border-bottom: 1px solid #C8D4DE !important;
 }
 
-.ncr .collapse-panel .select-option .model-select {}
+.upload-box-wrapper{
+      display: inline-block;
+      vertical-align: top;
+}
 
 @media screen and (max-width: 991px) {
   .ncr .collapse-panel .search-box {

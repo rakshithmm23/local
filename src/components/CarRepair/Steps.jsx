@@ -10,6 +10,10 @@ class Steps extends Component {
         super(props)
         this._uploadCallBack = this._uploadCallBack.bind(this);
         this.state = {
+            uploadImage:[],
+            policeReport:[],
+            rationCard:[],
+            drivingLicence:[],
             carWashCategories:[
             {
                 id:1,
@@ -89,11 +93,8 @@ class Steps extends Component {
                 image:'../../images/logo1.png'
             }
         ],
-        imgUploads: [],
-        policeReports: [],
-        rationCard: [],
-        drivingLicense: []
-        };
+    };
+   
     }
     _uploadCallBack(name, files) {
       switch(name) {
@@ -106,28 +107,142 @@ class Steps extends Component {
     openCategory(id) {
         let newCat = [];
         map(this.state.carWashCategories,(category)=>{
-            let cat = {...category}
+            let cat = {...category,active:false}
             if(category.id == id){
-                if(cat.active == true){
-                    cat.active = false;
-                }else{
-                    cat.active = true;
-                }
+                cat.active = true;
             }
             newCat.push(cat);
-        })
+        });
         this.setState({
             carWashCategories: newCat
         });
     }
+    
+    uploadImage(e,val) { 
+        if(val=='uploadImage'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                uploadImage: this.state.uploadImage.concat(files)
+            })
+        }
+        else if(val=='policeReports'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                policeReport: this.state.policeReport.concat(files)
+            })
+        }
+        else if(val=='rationCard'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                rationCard: this.state.rationCard.concat(files)
+            })
+        }
+         else if(val=='drivingLicence'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                drivingLicence: this.state.drivingLicence.concat(files)
+            })
+        }
+    }
+    
+   
+    cancelUploadImage(val,index){
+        if(val=='uploadImage'){
+            const array = this.state.imageUploaded;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='policeReport'){
+            const array = this.state.policeReport;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='rationCard'){
+            const array = this.state.rationCard;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='drivingLicence'){
+            const array = this.state.drivingLicence;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }
+        
+    }
     render() {
         let leftBlock = [];
         let rightBlock = [];
+        
+        const uploadImage = map(this.state.uploadImage, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage("uploadImage",index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const policeReportView = map(this.state.policeReport, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('policeReport',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const rationCardView = map(this.state.rationCard, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('rationCard',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const drivingLicenceView = map(this.state.drivingLicence, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('drivingLicence',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
-                    <div className="sub-collapse-panal" key={key} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                        <div className={carWashCategory.active ? "title active" : "title "}>
+                    <div className="sub-collapse-panal" key={key} >
+                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
                             <span>
                                 <figure>
                                     <img src={carWashCategory.image} alt="" />
@@ -146,11 +261,11 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>)
+                    </div>);
             } else {
                 leftBlock.push(
-                    <div className="sub-collapse-panal" key={key} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                        <div className={carWashCategory.active ? "title active" : "title "}>
+                    <div className="sub-collapse-panal" key={key} >
+                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
                             <span>
                                 <figure>
                                     <img src={carWashCategory.image} alt="" />
@@ -169,7 +284,7 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>)
+                    </div>);
             }
         });
         return (
@@ -177,14 +292,14 @@ class Steps extends Component {
                 <section className="s1" >
                     <div className="title">
                         <h4>Step 1: Select The Manufacturer</h4>
-                        <i className="mdi mdi-chevron-up" ></i>
+                        <i className="mdi mdi-chevron-up" />
                     </div>
                     <div className="">
                         <div className="search-box col-md-6 clearfix">
                             <div className="remove-left-padding">
                                 <TextInput label="Search" name="text" type="text" />
                             </div>
-                            <i className="mdi mdi-magnify"></i>
+                            <i className="mdi mdi-magnify"/>
                         </div>
                         <div className="container-fluid">
 
@@ -202,7 +317,7 @@ class Steps extends Component {
                 <section className="s2 " >
                     <div className="title">
                         <h4>Step 1: Select The Manufacturer</h4>
-                        <i className="mdi mdi-chevron-up" ></i>
+                        <i className="mdi mdi-chevron-up"/>
                     </div>
                     <div className="content clearfix">
                         <div className="col-md-12">
@@ -296,7 +411,7 @@ class Steps extends Component {
                                                             <option value="mercedes">Rajajinagar</option>
                                                             <option value="audi">Mysore Road</option>
                                                         </select>
-                                                        <i className="mdi mdi-chevron-down"></i>
+                                                        <i className="mdi mdi-chevron-down"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -305,7 +420,7 @@ class Steps extends Component {
                                                     center={{ lat: 12.9952672, lng: 77.5905857 }}
                                                     zoom={9}
                                                     containerElement={<div style={{ height: "auto",width: 570 + 'px' }} />}
-                                                    mapElement={<div style={{ height: 500 + 'px',width: 570 + 'px' }} />}
+                                                    mapElement={<div style={{ height: 192 + 'px',width: 570 + 'px' }} />}
 
                                                 />
                                             </div>
@@ -318,36 +433,34 @@ class Steps extends Component {
                                         <div className="uai sec-title">
                                             <div className="clearfix">
                                                 <title className="sec-title">Upload An Image</title>
-                                                <Upload uploadData={this.state.imgUploads} name="imgUploads" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={1}/>
-
+                                                <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 pad0" fileUpload={(e)=>{this.uploadImage(e,'uploadImage')}}/> 
+                                                    {uploadImage}
                                             </div>
                                         </div>
 
                                         <div className="police-report sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">police report</title>
-                                                <Upload uploadData={this.state.policeReports} name="policeReports" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={2} />
-
+                                                <Upload id="police" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'policeReports')}}/> 
+                                                    {policeReportView}
                                             </div>
                                         </div>
                                         <div className="ration card sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">ration card</title>
-                                                <Upload uploadData={this.state.rationCard} name="rationCard" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={3} />
-
+                                                <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'rationCard')}}/>
+                                                    {rationCardView}
                                             </div>
                                         </div>
                                         <div className="driving-licence sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">driving licence</title>
-                                                <Upload uploadData={this.state.drivingLicense} name="drivingLicense" uploadCallBack={this._uploadCallBack} responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " key={4} />
-
+                                                <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'drivingLicence')}}/>
+                                                    {drivingLicenceView}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

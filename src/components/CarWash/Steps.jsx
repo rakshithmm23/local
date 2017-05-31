@@ -7,7 +7,7 @@ import Gmaps from '../MyRequest/Gmaps';
 
 class Steps extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             carWashCategories: [
                 {
@@ -93,10 +93,10 @@ class Steps extends Component {
     }
     openCategory(id) {
         let newCat = [];
-        map(this.state.carWashCategories, (category) => {
-            let cat = { ...category, active: false }
-            if (category.id == id) {
-                cat.active = true;
+        map(this.state.carWashCategories,(category)=>{
+            let cat = {...category,active : false};
+            if(category.id == id){
+                    cat.active = true;
             }
             newCat.push(cat);
         })
@@ -110,8 +110,8 @@ class Steps extends Component {
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
+                    <div className="sub-collapse-panal" key={key}>
+                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id); }}>
                             <span>
                                 <figure>
                                     <img src={carWashCategory.image} alt="" />
@@ -130,7 +130,7 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>)
+                    </div>);
             } else {
                 leftBlock.push(
                     <div className="sub-collapse-panel" key={key} >
@@ -153,7 +153,7 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>);
+                    </div>)
             }
         });
         return (

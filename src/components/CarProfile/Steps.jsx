@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { map } from 'lodash';
+import { map,each } from 'lodash';
 import TextInput from '../common/TextInput';
 
 
@@ -9,14 +9,14 @@ class Steps extends Component {
     constructor() {
         super();
         this.state = {
+            imageUploaded: [],
             activeLogo: null,
             activeModel: null,
-            manufacturerTabVisible: true,
+            manufacturerTabVisible: false,
             modelTabVisible: false,
-            otherDetailsTabVisible: false,
+            otherDetailsTabVisible: true,
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
-            imageUploaded: [],
             submissionError: false,
         };
         this.initialFormData = {
@@ -39,26 +39,50 @@ class Steps extends Component {
         }
     }
     activeLogo(name) {
-        this.setState({ activeLogo: name, modelTabIsUnlocked: true })
+        this.setState({ activeLogo: name, modelTabIsUnlocked: true });
     }
     activeModel(name) {
-        this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true })
+        this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true });
     }
     tabOpen(val) {
         if (val == 'manufacturerTabVisible') {
-            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false })
+            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' && this.state.modelTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false })
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
         } else if (val == 'otherDetailsTabVisible', this.state.otherDetailsTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true })
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
         }
     }
-
-
-
-
+    fileNameUpload(e) { 
+        let files = [];
+        each(e.target.files, (val) => {
+            files.push({ name: val.name, path: URL.createObjectURL(val) });
+        });
+        // upload = { ...this.state.imageUploaded, files }
+        this.setState({
+            imageUploaded: this.state.imageUploaded.concat(files)
+        })
+    }
+    cancelImageUpload(val){
+        const array = this.state.imageUploaded;
+        array.splice(val, 1);
+        this.setState({imageUploaded: array });
+    }
     render() {
-        const carList = [
+        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
+            return (
+                <div className="upload-box-wrapper col-md-2 col-sm-4 col-xs-4">
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index);}}>
+                            <i className="mdi mdi-close" />>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            );
+        });
+        const carList = [ 
             {
                 logo: '../../images/logo1.png',
                 name: 'Aston Martin 1',
@@ -112,17 +136,17 @@ class Steps extends Component {
         ];
         const carListView = map(carList, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name) }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); }} key={key}>
                     <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
                 </div>
-            )
+            );
         });
         const carModelView = map(carModel, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }); }} key={key}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -150,7 +174,9 @@ class Steps extends Component {
                             {carListView}
                     </div>
                         <div className="next-button clearfix">
-                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false})}}/>
+                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" 
+                                    btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); 
+                                    this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false});}}/>
                         </div>
 
                     </div>}
@@ -189,7 +215,11 @@ class Steps extends Component {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6" page="carProfile"/>
+                                 <div className="img-uploads">
+                                    <Upload id="carProfileUpload" responsiveSize="col-md-2 col-sm-3 col-xs-6" fileUpload={(e) => this.fileNameUpload(e)}/> 
+                                   
+                                         {imageUploadedView}
+                                 </div>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
