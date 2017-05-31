@@ -110,6 +110,7 @@ form {
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
     font-family: CenturyGothic;
+    margin-bottom: 0;
 }
 
 .form-input:focus,
@@ -122,7 +123,7 @@ form {
 
 .form-input:focus ~ label,
 .form-input:valid ~ label{
-    top: -5px;
+    top: -5px !important;
     font-size: 11px;
     color: #39B65B;
 }

@@ -1,19 +1,67 @@
-.collapse-panel .sub-collapse-panel {
-    margin-bottom: 20px;
+.sub-collapse-panel {
+    margin-bottom: 10px;
 }
 
-.collapse-panel .sub-collapse-panel .title.active {
-    background-color: #F8F9FA;
+.sub-collapse-panel .sub-collapse-panel-head {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(218, 225, 231, 0.4);
+    height: 54px;
 }
 
-.collapse-panel .sub-collapse-panel .sub-category {
-    box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+.sub-collapse-panel .sub-collapse-panel-head.active {
+    background-color: rgba(218, 225, 231, 0.2);
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid transparent;
+}
+
+.sub-collapse-panel .sub-collapse-panel-head i {
+    color: #454B51;
+    font-size: 26px;
+    float: right;
+}
+
+.sub-collapse-panel .sub-collapse-panel-head h4 {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: capitalize;
+    margin-left: 33px;
+    display: inline-block;
+}
+
+.sub-collapse-panel .sub-collapse-panel-head .sub-category-count {
+    top: 20px;
+    position: absolute;
+    right: 75px;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.sub-collapse-panel .sub-collapse-panel-head figure {
+    display: inline-block;
+}
+
+.sub-collapse-panel .sub-collapse-panel-head figure img {
+    height: 21px;
+    width: 20px;
+}
+
+.sub-collapse-panel .sub-collapse-panel-body {
+    border: 1px solid rgba(218, 225, 231, 0.4);
+    border-top: 0;
     max-height: 250px;
     overflow: auto;
     padding: 10px 0;
 }
 
-.collapse-panel .sub-collapse-panel .sub-category .label {
+.sub-collapse-panel .sub-collapse-panel-body .label {
     color: #717982;
     font-family: CenturyGothic;
     font-size: 13px;
@@ -21,56 +69,19 @@
     text-transform: capitalize;
 }
 
-.collapse-panel .sub-collapse-panel .sub-category .label input {
+.sub-collapse-panel .sub-collapse-panel-body .label input {
     margin-right: 10px;
     outline: none;
 }
 
-.collapse-panel .sub-collapse-panel .sub-category .label input:checked {
+.sub-collapse-panel .sub-collapse-panel-body .label input:checked {
     background-color: #454B51;
     border: 1px solid #454B51;
 }
 
-.collapse-panel .sub-collapse-panel .sub-category .options {
+.sub-collapse-panel .sub-collapse-panel-body .options {
     padding: 7px;
-    padding-left: 80px;
-}
-
-.collapse-panel .sub-collapse-panel .title {
-    padding: 10px 22px;
-}
-
-.collapse-panel .sub-collapse-panel .title .mdi-chevron-down {
-    color: #979797;
-}
-
-.collapse-panel .sub-collapse-panel .title h4 {
-    color: #454B51;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: capitalize;
-    margin-left: 33px;
-}
-
-.collapse-panel .sub-collapse-panel .title .sub-category-count {
-    top: 21px;
-    position: absolute;
-    right: 61px;
-    color: #717982;
-    font-family: CenturyGothic;
-    font-size: 11px;
-    line-height: 14px;
-}
-
-.collapse-panel .sub-collapse-panel .title figure {
-    display: inline-block;
-}
-
-.collapse-panel .sub-collapse-panel .title figure img {
-    height: 21px;
-    width: 20px;
-    margin-left: 12px;
+    padding-left: 67px;
 }
 
 .car-wash .collapse-panel {
