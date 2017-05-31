@@ -56,7 +56,7 @@ export default class TextInput extends Component {
       <div className={inputClass}>
           <input
             type={type == "password" ? this.state.passwordVisible ? "text" : "password" : type}
-            className="form-control form-input"
+            className="form-control form-input" 
             onBlur={this
               .handleOnBlur
               .bind(this)

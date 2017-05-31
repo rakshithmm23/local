@@ -15,45 +15,37 @@ class Steps extends Component {
                 {
                     id: 1,
                     active: false,
-                    heading: "AC Heating & Cooling",
+                    heading: "Brakes & Exhaust",
                     categories: [
                         {
-                            name: "subcategory 1"
+                            name: "Service title one"
                         }, {
-                            name: "subcategory 2"
+                            name: "Service title two"
                         }, {
-                            name: "subcategory 3"
+                            name: "Service title three"
                         }, {
-                            name: "subcategory 4"
-                        }, {
-                            name: "subcategory 5"
-                        }, {
-                            name: "subcategory 6"
+                            name: "I am not sure"
                         }],
                     image: '../../images/logo1.png'
                 }, {
                     id: 2,
                     active: false,
-                    heading: "breaks and exhaust",
+                    heading: "Basic Wash",
                     categories: [
                         {
-                            name: "subcategory 1"
+                            name: "Service title one"
                         }, {
-                            name: "subcategory 2"
+                            name: "Service title two"
                         }, {
-                            name: "subcategory 3"
+                            name: "Service title three"
                         }, {
-                            name: "subcategory 4"
-                        }, {
-                            name: "subcategory 5"
-                        }, {
-                            name: "subcategory 6"
+                            name: "I am not sure"
                         }],
                     image: '../../images/logo1.png'
                 }, {
                     id: 3,
                     active: false,
-                    heading: "Body Work",
+                    heading: "Awesome Wash & Detail",
                     categories: [
                         {
                             name: "subcategory 1"
@@ -72,7 +64,7 @@ class Steps extends Component {
                 }, {
                     id: 4,
                     active: false,
-                    heading: "engine",
+                    heading: "Wash & Shine",
                     categories: [
                         {
                             name: "subcategory 1"
@@ -88,17 +80,82 @@ class Steps extends Component {
                             name: "subcategory 6"
                         }],
                     image: '../../images/logo1.png'
+                },
+                {
+                    id: 5,
+                    active: false,
+                    heading: "Totally Awesome & Detail",
+                    categories: [
+                        {
+                            name: "Service title one"
+                        }, {
+                            name: "Service title two"
+                        }, {
+                            name: "Service title three"
+                        }, {
+                            name: "I am not sure"
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 6,
+                    active: false,
+                    heading: "Total detail",
+                    categories: [
+                        {
+                            name: "Service title one"
+                        }, {
+                            name: "Service title two"
+                        }, {
+                            name: "Service title three"
+                        }, {
+                            name: "I am not sure"
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 7,
+                    active: false,
+                    heading: "AC Dust Sanitization",
+                   categories: [
+                        {
+                            name: "Service title one"
+                        }, {
+                            name: "Service title two"
+                        }, {
+                            name: "Service title three"
+                        }, {
+                            name: "I am not sure"
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 8,
+                    active: false,
+                    heading: "Monthly Package",
+                    categories: [
+                        {
+                            name: "Service title one"
+                        }, {
+                            name: "Service title two"
+                        }, {
+                            name: "Service title three"
+                        }, {
+                            name: "I am not sure"
+                        }],
+                    image: '../../images/logo1.png'
                 }
+                
             ],
 
         };
     }
     openCategory(id) {
         let newCat = [];
-        map(this.state.carWashCategories,(category)=>{
-            let cat = {...category,active : false};
-            if(category.id == id){
-                    cat.active = true;
+        map(this.state.carWashCategories, (category) => {
+            let cat = { ...category, active: false };
+            if (category.id == id) {
+                cat.active = true;
             }
             newCat.push(cat);
         })
@@ -114,24 +171,21 @@ class Steps extends Component {
         }
     }
     render() {
-        debugger
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
-                    <div className="sub-collapse-panal" key={key}>
-                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <span>
-                                <figure>
-                                    <img src={carWashCategory.image} alt="" />
-                                </figure>
-                                <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
-                            </span>
+                    <div className="sub-collapse-panel" key={key}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
+                            <figure>
+                                <img src={carWashCategory.image} alt="" />
+                            </figure>
+                            <h4>{carWashCategory.heading}</h4>
+                            <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
-                        <div className={carWashCategory.active ? "sub-category" : "sub-category hide"}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
@@ -143,18 +197,16 @@ class Steps extends Component {
                     </div>);
             } else {
                 leftBlock.push(
-                    <div className="sub-collapse-panel" key={key} >
-                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                            <span>
-                                <figure>
-                                    <img src={carWashCategory.image} alt="" />
-                                </figure>
-                                <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
-                            </span>
+                    <div className="sub-collapse-panel" key={key}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
+                            <figure>
+                                <img src={carWashCategory.image} alt="" />
+                            </figure>
+                            <h4>{carWashCategory.heading}</h4>
+                            <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
-                        <div className={carWashCategory.active ? "sub-category" : "sub-category hide"}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
@@ -163,7 +215,7 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>)
+                    </div>);
             }
         });
         return (
@@ -173,21 +225,23 @@ class Steps extends Component {
                         <h4>Step 1: Select Car Wash Type</h4>
                         <i className={this.state.step1Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.step1Panel && <div className="panel-content">
-                        <div className="search-box col-md-6 clearfix">
-                            <div className="remove-left-padding">
-                                <TextInput label="Search" name="text" type="text" />
+                    <div className="panel-content">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="search-box">
+                                    <TextInput label="Search" name="text" type="text" />
+                                    <i className="mdi mdi-magnify" />
+                                </div>
                             </div>
-                            <i className="mdi mdi-magnify" />
                         </div>
                         <div className="row">
-                            <div className="col-md-6">{leftBlock}</div>
                             <div className="col-md-6">{rightBlock}</div>
+                            <div className="col-md-6">{leftBlock}</div>
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
-                    </div>}
+                    </div>
                 </section>
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={()=>{this.hidePanel('step2')}}>>
