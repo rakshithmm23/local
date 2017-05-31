@@ -47,7 +47,6 @@
 .collapse-panal .s2 .select-option {
   padding: 0;
   position: relative;
-  margin: 23px;
   display: inline-block;
   background-color: transparent;
   margin-bottom: 0;
@@ -309,10 +308,6 @@
   border-radius: 0 !important;
   box-shadow: none !important;
   border-bottom: 1px solid #C8D4DE !important;
-}
-
-.remove-left-padding {
-  padding-left: 0;
 }
 
 .ncr .s2 .select-option .model-select {}

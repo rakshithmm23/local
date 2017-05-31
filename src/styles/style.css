@@ -37,13 +37,21 @@
         padding: 0;
     }
 
-    .row{
+    .row {
         margin: 0;
         padding: 0;
     }
 
     .pad0 {
         padding: 0;
+    }
+
+    .padLeft0 {
+        padding-left: 0;
+    }
+
+    .padRight0 {
+        padding-right: 0;
     }
     /*commom wrapper*/
 
