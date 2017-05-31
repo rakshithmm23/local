@@ -9,6 +9,8 @@ class Steps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            step1Panel:false,
+            step2Panel:true,
             carWashCategories: [
                 {
                     id: 1,
@@ -161,6 +163,13 @@ class Steps extends Component {
             carWashCategories: newCat
         });
     }
+    hidePanel(panel){
+        if(panel == 'step1'){
+            this.setState({step1Panel:!this.state.step1Panel})
+        }else if(panel == 'step2'){
+            this.setState({step2Panel:!this.state.step2Panel})
+        }
+    }
     render() {
         let leftBlock = [];
         let rightBlock = [];
@@ -173,7 +182,7 @@ class Steps extends Component {
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
-                            <span className="sub-category-count">6 subcategories</span>
+                            <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
                         <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
@@ -194,7 +203,7 @@ class Steps extends Component {
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
-                            <span className="sub-category-count">6 subcategories</span>
+                            <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
                         <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
@@ -206,15 +215,15 @@ class Steps extends Component {
                                 </div>);
                             })}
                         </div>
-                    </div>)
+                    </div>);
             }
         });
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head">
+                    <div className="panel-head" onClick={()=>{this.hidePanel('step1')}}>
                         <h4>Step 1: Select Car Wash Type</h4>
-                        <i className="mdi mdi-chevron-up" />
+                        <i className={this.state.step1Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
                     </div>
                     <div className="panel-content">
                         <div className="row">
@@ -235,11 +244,11 @@ class Steps extends Component {
                     </div>
                 </section>
                 <section className="collapse-panel">
-                    <div className="panel-head">
+                    <div className="panel-head" onClick={()=>{this.hidePanel('step2')}}>>
                         <h4>Step 2: Create A Car Wash Request</h4>
-                        <i className="mdi mdi-chevron-up" />
+                        <i className={this.state.step2Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
                     </div>
-                    <div className="panel-content">
+                    {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6 left">
                                 <div className="form-section">
@@ -296,7 +305,7 @@ class Steps extends Component {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                     <div className="next-button clearfix">
                         <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
                     </div>
