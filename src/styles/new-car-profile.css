@@ -297,7 +297,7 @@
   margin-bottom: 30px;
 }
 
-.ncr .s3 .wrapper .upload-image {
+.upload-image {
   padding-top: 35px;
   padding-bottom: 30px;
   display: block;
@@ -315,6 +315,10 @@
   padding-left: 0;
 }
 
+.upload-box-wrapper{
+      display: inline-block;
+      vertical-align: top;
+}
 .ncr .s2 .select-option .model-select {}
 
 @media screen and (max-width: 991px) {

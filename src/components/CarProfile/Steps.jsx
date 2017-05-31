@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { map } from 'lodash';
+import { map,each } from 'lodash';
 import TextInput from '../common/TextInput';
 
 
@@ -9,14 +9,14 @@ class Steps extends Component {
     constructor() {
         super();
         this.state = {
+            imageUploaded: [],
             activeLogo: null,
             activeModel: null,
-            manufacturerTabVisible: true,
+            manufacturerTabVisible: false,
             modelTabVisible: false,
-            otherDetailsTabVisible: false,
+            otherDetailsTabVisible: true,
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
-            imageUploaded: [],
             submissionError: false,
         };
         this.initialFormData = {
@@ -53,12 +53,37 @@ class Steps extends Component {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true })
         }
     }
-
-
-
-
+    fileNameUpload(e) { 
+        debugger
+        let files = [] 
+        each(e.target.files, (val) => {
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
+        });
+        // upload = { ...this.state.imageUploaded, files }
+        this.setState({
+            imageUploaded: this.state.imageUploaded.concat(files)
+        })
+    }
+    cancelImageUpload(val){
+        const array = this.state.imageUploaded;
+        array.splice(val, 1);
+        this.setState({imageUploaded: array });
+    }
     render() {
-        const carList = [
+        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-2 col-sm-4 col-xs-4 '>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const carList = [ 
             {
                 logo: '../../images/logo1.png',
                 name: 'Aston Martin 1',
@@ -118,7 +143,7 @@ class Steps extends Component {
                     </div>
                     <h6>{carItem.name}</h6>
                 </div>
-            )
+            );
         });
         const carModelView = map(carModel, (carItem, key) => {
             return (
@@ -189,7 +214,11 @@ class Steps extends Component {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6" page="carProfile"/>
+                                 <div className="img-uploads">
+                                    <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6" fileUpload={(e) => this.fileNameUpload(e)}/>
+                                   
+                                         {imageUploadedView}
+                                 </div>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
