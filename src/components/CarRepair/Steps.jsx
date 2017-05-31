@@ -9,6 +9,10 @@ class Steps extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            uploadImage:[],
+            policeReport:[],
+            rationCard:[],
+            drivingLicence:[],
             carWashCategories:[
             {   
                 id:1,
@@ -89,7 +93,8 @@ class Steps extends Component {
             }
         ],
 
-        };
+    };
+   
     }
     openCategory(id) {
         let newCat = [];
@@ -104,9 +109,127 @@ class Steps extends Component {
             carWashCategories: newCat
         });
     }
+    
+    uploadImage(e,val) { 
+        if(val=='uploadImage'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                uploadImage: this.state.uploadImage.concat(files)
+            })
+        }
+        else if(val=='policeReports'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                policeReport: this.state.policeReport.concat(files)
+            })
+        }
+        else if(val=='rationCard'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                rationCard: this.state.rationCard.concat(files)
+            })
+        }
+         else if(val=='drivingLicence'){
+            let files = [] 
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            this.setState({
+                drivingLicence: this.state.drivingLicence.concat(files)
+            })
+        }
+    }
+    
+   
+    cancelUploadImage(val,index){
+        if(val=='uploadImage'){
+            const array = this.state.imageUploaded;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='policeReport'){
+            const array = this.state.policeReport;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='rationCard'){
+            const array = this.state.rationCard;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }else if(val=='drivingLicence'){
+            const array = this.state.drivingLicence;
+            array.splice(index, 1);
+            this.setState({imageUploaded: array });
+        }
+        
+    }
     render() {
         let leftBlock = [];
         let rightBlock = [];
+        
+        const uploadImage = map(this.state.uploadImage, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage("uploadImage",index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const policeReportView = map(this.state.policeReport, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('policeReport',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const rationCardView = map(this.state.rationCard, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('rationCard',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const drivingLicenceView = map(this.state.drivingLicence, (img,index) => {
+            return (
+                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('drivingLicence',index)}}>
+                            <i className="mdi mdi-close"></i>
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
@@ -302,7 +425,8 @@ class Steps extends Component {
                                         <div className="uai sec-title">
                                             <div className="clearfix">
                                                 <title className="sec-title">Upload An Image</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad "/>
+                                                <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 pad0" fileUpload={(e)=>{this.uploadImage(e,'uploadImage')}}/> 
+                                                    {uploadImage}
 
                                             </div>
                                         </div>
@@ -310,22 +434,22 @@ class Steps extends Component {
                                         <div className="police-report sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">police report</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
-
+                                                <Upload id="police" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'policeReports')}}/> 
+                                                    {policeReportView}
                                             </div>
                                         </div>
                                         <div className="ration card sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">ration card</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
-
+                                                <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'rationCard')}}/>
+                                                    {rationCardView}
                                             </div>
                                         </div>
                                         <div className="driving-licence sec-container">
                                             <div className="clearfix">
                                                 <title className="sec-title">driving licence</title>
-                                                <Upload responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " />
-
+                                                <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'drivingLicence')}}/>
+                                                    {drivingLicenceView}
                                             </div>
                                         </div>
                                     </div>

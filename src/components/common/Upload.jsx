@@ -11,14 +11,14 @@ class Upload extends Component {
     
     
     render() {
-        let className = " "+this.props.responsiveSize;
+        let className = "upload-box-wrapper "+this.props.responsiveSize;
         
         return (
-                <div className="upload-box-wrapper">
-                    <label htmlFor="file-input" className="upload-box">
+                <div className={className}>
+                    <label htmlFor={this.props.id} className="upload-box">
                         <img src="../../images/attach.png" />
                     </label>
-                    <input id="file-input" type="file" className="hide" onChange={this.props.fileUpload} multiple />
+                    <input id={this.props.id} type="file" className="hide" onChange={this.props.fileUpload} multiple />
                 </div>
                 
         );
