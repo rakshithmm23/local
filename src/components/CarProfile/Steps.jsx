@@ -215,7 +215,7 @@ class Steps extends Component {
                             <div className="upload-image">
                                 <h4>upload images</h4>
                                  <div className="img-uploads">
-                                    <Upload responsiveSize="col-md-2 col-sm-3 col-xs-6" fileUpload={(e) => this.fileNameUpload(e)}/> 
+                                    <Upload id="carProfileUpload" responsiveSize="col-md-2 col-sm-3 col-xs-6" fileUpload={(e) => this.fileNameUpload(e)}/> 
                                    
                                          {imageUploadedView}
                                  </div>
