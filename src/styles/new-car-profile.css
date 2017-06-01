@@ -149,7 +149,6 @@
 .panel-section .s3 .btn-theme.submit {
     background-color: #ED3124;
     margin: 20px 0;
-    float: right;
 }
 
 .ncr .collapse-panel .img-container .image-view,
@@ -170,10 +169,10 @@
 .panel-section .collapse-panel .next-button,
 .panel-section .collapse-panel .next-button,
 .panel-section .s3 .next-button {
-    height: 90px;
+    padding: 15px 0;
+    text-align: right;
     border-top: 1px solid #C8D4DE;
-    margin: 0 30px;
-    margin-top: 30px;
+    margin: 50px 15px 0;
 }
 
 .panel-section .s3 .next-button {
@@ -188,7 +187,6 @@
     font-family: "CenturyGothic";
     color: #949DA5;
     font-size: 16px;
-    line-height: 14px;
     width: 100%;
     background: transparent;
     border: 0;

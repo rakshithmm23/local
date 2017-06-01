@@ -93,16 +93,20 @@
     margin-top: 44px;
 }
 
+.panel-content .form-section{
+    margin-bottom: 55px;
+}
+.panel-content .date-time .form-group,
+.panel-content .date-time .form-input{
+    margin-bottom: 0;
+}
+
 .car-wash .collapse-panel .right {
     margin-top: 44px;
     padding-left: 20px;
 }
 
-.car-wash .collapse-panel .scr .selection {
-    padding-left: 0;
-}
-
-.car-wash .collapse-panel .sec-title {
+.car-wash .collapse-panel .panel-sub-title {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 16px;
@@ -111,29 +115,19 @@
     text-transform: capitalize;
 }
 
-.car-wash .collapse-panel .sec-container {
-    margin: 30px 0;
-}
-
-.car-wash .collapse-panel .scr.sec-container,
-.car-wash .right .uai.sec-container,
-{
-    margin-top: 0;
+.car-wash .collapse-panel .panel-text {
+    color: #717982;
+    font-size: 14px;
+    font-family: CenturyGothic;
+    line-height: 28px;
+    margin-top: 20px;
+    font-weight: normal;
 }
 
 .car-wash .collapse-panel .model-select {
     margin-top: 36px;
     margin-bottom: 36px;
 }
-
-.car-wash .collapse-panel .scr .model-select {
-    margin-bottom: 20px;
-}
-
-
-/*.car-wash .collapse-panel .model-select select{
-    width: 90%;
-}*/
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {
     right: 17px;

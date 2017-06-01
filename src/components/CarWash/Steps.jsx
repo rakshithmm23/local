@@ -382,7 +382,7 @@ class Steps extends Component {
                                 </div>
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
-                                    <div className="date-time">
+                                    <div className="row date-time">
                                         <div className="col-md-6 padLeft0">
                                             <TextInput label="Date" name="text" type="text" />
                                         </div>
@@ -407,8 +407,8 @@ class Steps extends Component {
                                             <Gmaps
                                                 center={{ lat: 12.9952672, lng: 77.5905857 }}
                                                 zoom={9}
-                                                containerElement={<div style={{ height: "auto", width: 570 + 'px' }} />}
-                                                mapElement={<div style={{ height: 192 + 'px', width: 570 + 'px' }} />}
+                                                containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
+                                                mapElement={<div style={{ height: 192 + 'px', width: 100 + '%' }} />}
                                             />
                                         </div>
                                     </div>
@@ -416,7 +416,7 @@ class Steps extends Component {
                             </div>
                             <div className="col-md-6 right">
                                 <h4 className="panel-sub-title">Special Instruction</h4>
-                                <p>
+                                <p className="panel-text">
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
                                 </p>
