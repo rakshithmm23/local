@@ -33,7 +33,6 @@ export default class CarWash extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>Car Wash</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Next" />
                         </div>
                     </div>
                     <div className="inSection">
