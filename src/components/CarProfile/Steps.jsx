@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { map,each } from 'lodash';
+import { map, each } from 'lodash';
 import TextInput from '../common/TextInput';
 
 
@@ -53,7 +53,7 @@ class Steps extends Component {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
         }
     }
-    fileNameUpload(e) { 
+    fileNameUpload(e) {
         let files = [];
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val) });
@@ -63,26 +63,23 @@ class Steps extends Component {
             imageUploaded: this.state.imageUploaded.concat(files)
         })
     }
-    cancelImageUpload(val){
+    cancelImageUpload(val) {
         const array = this.state.imageUploaded;
         array.splice(val, 1);
-        this.setState({imageUploaded: array });
+        this.setState({ imageUploaded: array });
     }
     render() {
-        const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
+        const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
-                <div className="upload-box-wrapper col-md-2 col-sm-4 col-xs-4">
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index);}}>
-                            <i className="mdi mdi-close" />>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
+                <div className="upload-box-wrapper box-shadow">
+                    <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
+                        <i className="mdi mdi-close" />
+                    </span>
+                    <img src={img.path} />
                 </div>
             );
         });
-        const carList = [ 
+        const carList = [
             {
                 logo: '../../images/logo1.png',
                 name: 'Aston Martin 1',
@@ -115,8 +112,6 @@ class Steps extends Component {
                 logo: '../../images/logo2.png',
                 name: 'Alfa Romeo 3',
                 manufacturerId: 8
-            }, {
-                logo: '../../images/logo3.png',
             }
         ];
         const carModel = [
@@ -156,113 +151,112 @@ class Steps extends Component {
         });
 
         return (
-            <div className="collapse-panal">
-                <section className="s1" >
-                    <div className="title" onClick={() => { this.tabOpen('manufacturerTabVisible'); }}>
+            <div className="panel-section">
+                <section className="collapse-panel">
+                    <div className="panel-head" onClick={() => { this.tabOpen('manufacturerTabVisible') }}>
                         <h4>Step 1: Select The Manufacturer</h4>
                         <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.manufacturerTabVisible && 
-                    <div>
-                        <div className="search-box col-md-6 clearfix">
-                            <div className="remove-left-padding">
-                                <TextInput label="Search for manufacturer" name="text" type="text" />
+                    {this.state.manufacturerTabVisible &&
+                        <div className="panel-content">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="search-box">
+                                        <TextInput label="Search" name="text" type="text" />
+                                        <i className="mdi mdi-magnify" />
+                                    </div>
+                                </div>
                             </div>
-                            <i className="mdi mdi-magnify" />
-                        </div>
-                        <div className="img-container clearfix">
-                            {carListView}
-                    </div>
-                        <div className="next-button clearfix">
-                            <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" 
-                                    btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('modelTabVisible'); 
-                                    this.setState({'modelTabIsUnlocked': this.state.activeLogo ? true : false});}}/>
-                        </div>
-
-                    </div>}
+                            <div className="img-container clearfix">
+                                {carListView}
+                            </div>
+                            <div className="next-button">
+                                <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next"
+                                    btnCallBack={(e) => {
+                                        e.preventDefault(); this.tabOpen('modelTabVisible');
+                                        this.setState({ 'modelTabIsUnlocked': this.state.activeLogo ? true : false });
+                                    }} />
+                            </div>
+                        </div>}
                 </section>
-                <section className="s2" >
-                    <div className="title" onClick={() => { this.tabOpen('modelTabVisible'); }}>
+                <section className="collapse-panel">
+                    <div className="panel-head" onClick={() => { this.tabOpen('modelTabVisible'); }}>
                         <h4>Step 2: Select The model</h4>
-                        <i className={this.state.modelTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
+                        <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.modelTabVisible && <div>
-                        <div className="container-fluid select-option col-md-6">
-                            <div className="model-select ">
-                                <select>
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                                <i className="mdi mdi-chevron-down" />
+                    {this.state.modelTabVisible &&
+                        <div className="panel-content">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="model-select">
+                                        <select className="car-selection ">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                        <i className="mdi mdi-chevron-down" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="img-container ">
-                            {carModelView}
-                        </div>
-                        <div className="next-button clearfix">
-                            <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) =>{e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false})}}/>
-                        </div>
-                    </div>}
+                            <div className="row">
+                                <div className="img-container ">
+                                    {carModelView}
+                                </div>
+                            </div>
+                            <div className="next-button">
+                                <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
+                            </div>
+                        </div>}
                 </section>
-                <section className="s3" >
-                    <div className="title" onClick={() => { this.tabOpen('otherDetailsTabVisible'); }}>
+                <section className="collapse-panel">
+                    <div className="panel-head" onClick={() => { this.tabOpen('otherDetailsTabVisible'); }}>
                         <h4>Step 3: Enter Other Details</h4>
                         <i className={this.state.otherDetailsTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.otherDetailsTabVisible &&
-                        <div className="wrapper">
-                            <div className="upload-image">
-                                <h4>upload images</h4>
-                                 <div className="img-uploads">
-                                    <Upload id="carProfileUpload" responsiveSize="col-md-2 col-sm-3 col-xs-6" fileUpload={(e) => this.fileNameUpload(e)}/> 
-                                   
-                                         {imageUploadedView}
-                                 </div>
-                            </div>
-                            <div className="car-profile">
-                                <div className="container-fluid">
-                                    <h4>car profile</h4>
-
-                                    <div className="col-md-6 remove-left-padding">
+                        <div className="panel-content">
+                            <div className="wrapper">
+                                <div className="row upload-image">
+                                    <h4 className="panel-sub-title">Upload images</h4>
+                                    <div className="img-uploads">
+                                        <Upload id="carProfileUpload" fileUpload={(e) => this.fileNameUpload(e)} />
+                                        {imageUploadedView}
+                                    </div>
+                                </div>
+                                <div className="row car-profile">
+                                    <h4 className="panel-sub-title">car profile</h4>
+                                    <div className="col-md-6">
                                         <TextInput label="Car Profile Name" name="text" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
-                                    <div className="col-md-6 remove-left-padding">
+                                    <div className="col-md-6">
                                         <TextInput label="Plate Number*" name="text" type="text" validationError="Plate Number cannot be empty" />
                                     </div>
-                                    <div className="col-md-6 remove-left-padding">
+                                    <div className="col-md-6">
                                         <TextInput label="Kms Travelled*" name="text" type="text" validationError="Kms Travelled cannot be empty" />
                                     </div>
-
                                 </div>
-
-                            </div>
-                            <div className="insurance-details">
-                                <div className="container-fluid">
-                                    <h4>Insurance Details (Optional)</h4>
-                                    <div className="col-md-6 remove-left-padding">
+                                <div className="row insurance-details">
+                                    <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
+                                    <div className="col-md-6">
                                         <TextInput label="Insurance Provider" name="text" type="text" />
                                     </div>
-                                    <div className="col-md-6 remove-left-padding">
+                                    <div className="col-md-6">
                                         <TextInput label="Insurance Policy Number" name="text" type="text" />
                                     </div>
-                                    <div className="col-md-6 remove-left-padding">
+                                    <div className="col-md-6">
                                         <TextInput label="State" name="text" type="text" />
                                     </div>
                                 </div>
-
-                            </div>
-                            <div className="car-notes">
-                                <div className="container-fluid">
-                                    <h4>Car Notes (Optional)</h4>
-                                    <div className="col-md-6 remove-left-padding">
+                                <div className="row car-notes">
+                                    <h4 className="panel-sub-title">Car Notes (Optional)</h4>
+                                    <div className="col-md-6">
                                         <TextInput label="Additional Details About The Car (Optional)" name="text" type="text" validationError="Enter a valid text" />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="next-button clearfix">
-                                <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
+                                <div className="next-button">
+                                    <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
+                                </div>
                             </div>
                         </div>}
                 </section>

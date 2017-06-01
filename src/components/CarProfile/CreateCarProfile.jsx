@@ -35,7 +35,7 @@ export default class NewCarProfile extends Component {
                         </div>
                     </div>
 
-                    <div className="inSection ncr">
+                    <div className="inSection">
                         <div className="padwrapper">
                             {/*Job Updates*/}
                             <Steps />

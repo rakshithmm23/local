@@ -1,135 +1,302 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import { each, map } from 'lodash';
+import { each, map, find } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
+
 
 class Steps extends Component {
     constructor(props) {
-        super(props)
-        this._uploadCallBack = this._uploadCallBack.bind(this);
+        super(props);
         this.state = {
-            step1Panel:false,
-            step2Panel:true,
-            uploadImage:[],
-            policeReport:[],
-            rationCard:[],
-            drivingLicence:[],
-            carWashCategories:[
-            {
-                id:1,
-                active:false,
-                heading:"AC Heating & Cooling",
-                categories:[
-                    {
-                        name:"subcategory 1"
-                    },{
-                        name:"subcategory 2"
-                    },{
-                        name:"subcategory 3"
-                    },{
-                        name:"subcategory 4"
-                    },{
-                        name:"subcategory 5"
-                    },{
-                        name:"subcategory 6"
-                    }],
-                image:'../../images/logo1.png'
-            },{
-                id:2,
-                active:false,
-                heading:"breaks and exhaust",
-                categories:[
-                    {
-                        name:"subcategory 1"
-                    },{
-                        name:"subcategory 2"
-                    },{
-                        name:"subcategory 3"
-                    },{
-                        name:"subcategory 4"
-                    },{
-                        name:"subcategory 5"
-                    },{
-                        name:"subcategory 6"
-                    }],
-                image:'../../images/logo1.png'
-            },{
-                id:3,
-                active:false,
-                heading:"Body Work",
-                categories:[
-                    {
-                        name:"subcategory 1"
-                    },{
-                        name:"subcategory 2"
-                    },{
-                        name:"subcategory 3"
-                    },{
-                        name:"subcategory 4"
-                    },{
-                        name:"subcategory 5"
-                    },{
-                        name:"subcategory 6"
-                    }],
-                image:'../../images/logo1.png'
-            },{
-                id:4,
-                active:false,
-                heading:"engine",
-                categories:[
-                    {
-                        name:"subcategory 1"
-                    },{
-                        name:"subcategory 2"
-                    },{
-                        name:"subcategory 3"
-                    },{
-                        name:"subcategory 4"
-                    },{
-                        name:"subcategory 5"
-                    },{
-                        name:"subcategory 6"
-                    }],
-                image:'../../images/logo1.png'
-            }
-        ],
-    };
-   
-}
-    hidePanel(panel){
-        if(panel == 'step1'){
-            this.setState({step1Panel:!this.state.step1Panel})
-        }else if(panel == 'step2'){
-            this.setState({step2Panel:!this.state.step2Panel})
-        }
+            uploadImage: [],
+            policeReport: [],
+            rationCard: [],
+            drivingLicence: [],
+            PrefferedLocation: 'Select Location',
+            startDate: moment(),
+            step1Panel: false,
+            step2Panel: true,
+            carWashCategories: [
+                {
+                    id: 1,
+                    active: false,
+                    heading: "Brakes & Exhaust",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                }, {
+                    id: 2,
+                    active: false,
+                    heading: "Basic Wash",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                }, {
+                    id: 3,
+                    active: false,
+                    heading: "Awesome Wash & Detail",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "subcategory 1",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "subcategory 2",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "subcategory 3",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "subcategory 4",
+                            checked: false
+                        }, {
+                            id: 5,
+                            name: "subcategory 5",
+                            checked: false
+                        }, {
+                            id: 6,
+                            name: "subcategory 6",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                }, {
+                    id: 4,
+                    active: false,
+                    heading: "Wash & Shine",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "subcategory 1",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "subcategory 2",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "subcategory 3",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "subcategory 4",
+                            checked: false
+                        }, {
+                            id: 5,
+                            name: "subcategory 5",
+                            checked: false
+                        }, {
+                            id: 6,
+                            name: "subcategory 6",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 5,
+                    active: false,
+                    heading: "Totally Awesome & Detail",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 6,
+                    active: false,
+                    heading: "Total detail",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 7,
+                    active: false,
+                    heading: "AC Dust Sanitization",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                },
+                {
+                    id: 8,
+                    active: false,
+                    heading: "Monthly Package",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/logo1.png'
+                }
+
+            ],
+
+        };
+        this.handleChange = this.handleChange.bind(this);
     }
-    _uploadCallBack(name, files) {
-      switch(name) {
-        case 'imgUploads':
-          this.setState({'imgUploads': files})
-          break;
-      }
-      this.setState({})
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        });
     }
     openCategory(id) {
         let newCat = [];
-        map(this.state.carWashCategories,(category)=>{
-            let cat = {...category,active:false}
-            if(category.id == id){
-                cat.active = true;
+        map(this.state.carWashCategories, (category) => {
+            let cat = { ...category };
+            if (category.id == id) {
+                cat.active = !cat.active;
+            } else {
+                cat.active = false;
             }
             newCat.push(cat);
-        });
+        })
         this.setState({
             carWashCategories: newCat
         });
     }
-    
-    uploadImage(e,val) { 
-        if(val=='uploadImage'){
-            let files = [] 
+    hidePanel(panel) {
+        if (panel == 'step1') {
+            this.setState({ step1Panel: !this.state.step1Panel });
+        } else if (panel == 'step2') {
+            this.setState({ step2Panel: !this.state.step2Panel });
+        }
+    }
+
+    chageCheckoxState(e, val) {
+        let updateVal = [...this.state.carWashCategories], checkedCount = 0;
+
+        find(updateVal, (washCategory) => {
+            if (washCategory.active) {
+                find(washCategory.categories, (subCategory) => {
+                    if (subCategory.name == val.name && subCategory.id == val.id) {
+                        subCategory.checked = !subCategory.checked;
+                    }
+                    if (subCategory.checked) {
+                        checkedCount++
+                    }
+                })
+                washCategory.checkedCategoryCount = checkedCount;
+            }
+        })
+        this.setState({
+            carWashCategories: updateVal
+        })
+
+    }
+    selectedDropdownText(location) {
+        this.setState({ PrefferedLocation: location });
+    }
+    uploadImage(e, val) {
+        if (val == 'uploadImage') {
+            let files = []
             each(e.target.files, (val) => {
                 files.push({ name: val.name, path: URL.createObjectURL(val) })
             });
@@ -138,8 +305,8 @@ class Steps extends Component {
                 uploadImage: this.state.uploadImage.concat(files)
             })
         }
-        else if(val=='policeReports'){
-            let files = [] 
+        else if (val == 'policeReport') {
+            let files = []
             each(e.target.files, (val) => {
                 files.push({ name: val.name, path: URL.createObjectURL(val) })
             });
@@ -148,8 +315,8 @@ class Steps extends Component {
                 policeReport: this.state.policeReport.concat(files)
             })
         }
-        else if(val=='rationCard'){
-            let files = [] 
+        else if (val == 'rationCard') {
+            let files = []
             each(e.target.files, (val) => {
                 files.push({ name: val.name, path: URL.createObjectURL(val) })
             });
@@ -158,8 +325,8 @@ class Steps extends Component {
                 rationCard: this.state.rationCard.concat(files)
             })
         }
-         else if(val=='drivingLicence'){
-            let files = [] 
+        else if (val == 'drivingLicence') {
+            let files = []
             each(e.target.files, (val) => {
                 files.push({ name: val.name, path: URL.createObjectURL(val) })
             });
@@ -169,37 +336,33 @@ class Steps extends Component {
             })
         }
     }
-    
-   
-    cancelUploadImage(val,index){
-        if(val=='uploadImage'){
-            const array = this.state.imageUploaded;
+
+    cancelUploadImage(val, index) {
+        if (val == 'uploadImage') {
+            const array = this.state.uploadImage;
             array.splice(index, 1);
-            this.setState({imageUploaded: array });
-        }else if(val=='policeReport'){
+            this.setState({ uploadImage: array });
+        } else if (val == 'policeReport') {
             const array = this.state.policeReport;
             array.splice(index, 1);
-            this.setState({imageUploaded: array });
-        }else if(val=='rationCard'){
+            this.setState({ imageUploaded: array });
+        } else if (val == 'rationCard') {
             const array = this.state.rationCard;
             array.splice(index, 1);
-            this.setState({imageUploaded: array });
-        }else if(val=='drivingLicence'){
+            this.setState({ imageUploaded: array });
+        } else if (val == 'drivingLicence') {
             const array = this.state.drivingLicence;
             array.splice(index, 1);
-            this.setState({imageUploaded: array });
+            this.setState({ imageUploaded: array });
         }
-        
+
     }
     render() {
-        let leftBlock = [];
-        let rightBlock = [];
-        
-        const uploadImage = map(this.state.uploadImage, (img,index) => {
+        const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
                 <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
                     <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage("uploadImage",index)}}>
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
                             <i className="mdi mdi-close"></i>
                         </span>
                         <img src={img.path} />
@@ -208,11 +371,11 @@ class Steps extends Component {
                 </div>
             )
         })
-        const policeReportView = map(this.state.policeReport, (img,index) => {
+        const policeReportView = map(this.state.policeReport, (img, index) => {
             return (
                 <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
                     <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('policeReport',index)}}>
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
                             <i className="mdi mdi-close"></i>
                         </span>
                         <img src={img.path} />
@@ -247,25 +410,34 @@ class Steps extends Component {
                 </div>
             )
         })
+        const format = 'h:mm a';
+        const now = moment().hour(0).minute(0);
+        let leftBlock = [];
+        let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
             if (key % 2 == 0) {
                 rightBlock.push(
-                    <div className="sub-collapse-panal" key={key} >
-                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                            <span>
-                                <figure>
-                                    <img src={carWashCategory.image} alt="" />
-                                </figure>
-                                <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
-                            </span>
+                    <div className="sub-collapse-panel" key={key}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
+                            <figure>
+                                <img src={carWashCategory.image} alt="" />
+                            </figure>
+                            <h4>{carWashCategory.heading}</h4>
+                            {carWashCategory.checkedCategoryCount == 0 ?
+                                <span className="sub-category-count">
+                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
+                                </span> :
+                                <span className="sub-category-count">
+                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
+                                </span>
+                            }
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
-                        <div className={carWashCategory.active ? "sub-category" : "sub-category hide"}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" value="" />{category.name}</label>
+                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>
                                 </div>);
                             })}
@@ -273,22 +445,27 @@ class Steps extends Component {
                     </div>);
             } else {
                 leftBlock.push(
-                    <div className="sub-collapse-panal" key={key} >
-                        <div className={carWashCategory.active ? "title active" : "title "} onClick={() => { this.openCategory(carWashCategory.id) }}>
-                            <span>
-                                <figure>
-                                    <img src={carWashCategory.image} alt="" />
-                                </figure>
-                                <h4>{carWashCategory.heading}</h4>
-                                <span className="sub-category-count">{carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}</span>
-                            </span>
+                    <div className="sub-collapse-panel" key={key}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
+                            <figure>
+                                <img src={carWashCategory.image} alt="" />
+                            </figure>
+                            <h4>{carWashCategory.heading}</h4>
+                            {carWashCategory.checkedCategoryCount == 0 ?
+                                <span className="sub-category-count">
+                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
+                                </span> :
+                                <span className="sub-category-count">
+                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
+                                </span>
+                            }
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
-                        <div className={carWashCategory.active ? "sub-category" : "sub-category hide"}>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" value="" />{category.name}</label>
+                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>
                                 </div>);
                             })}
@@ -297,186 +474,178 @@ class Steps extends Component {
             }
         });
         return (
-            <div className="collapse-panal car-wash">
-                <section className="s1" >
-                    <div className="title" onClick={()=>{this.hidePanel('step1')}}>
-                        <h4>Step 1: Select The Manufacturer</h4>
-                        <i className="mdi mdi-chevron-up" />
+            <div className="panel-section car-wash">
+                <section className="collapse-panel">
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
+                        <h4>Step 1: Select Car Wash Type</h4>
+                        <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    <div className="">
-                        <div className="search-box col-md-6 clearfix">
-                            <div className="remove-left-padding">
-                                <TextInput label="Search" name="text" type="text" />
-                            </div>
-                            <i className="mdi mdi-magnify"/>
-                        </div>
-                        <div className="container-fluid">
-
-                            <div className="col-md-12">
-                                <div className="col-md-6">{leftBlock}</div>
-                                <div className="col-md-6">{rightBlock}</div>
+                    <div className="panel-content">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="search-box">
+                                    <TextInput label="Search" name="text" type="text" />
+                                    <i className="mdi mdi-magnify" />
+                                </div>
                             </div>
                         </div>
-                        <div className="next-button clearfix">
+                        <div className="row">
+                            <div className="col-md-6">{rightBlock}</div>
+                            <div className="col-md-6">{leftBlock}</div>
+                        </div>
+                        <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
-
                     </div>
                 </section>
-                <section className="s2 " >
-                    <div className="title" onClick={()=>{this.hidePanel('step1');}}>
-                        <h4>Step 1: Select The Manufacturer</h4>
-                        <i className="mdi mdi-chevron-up"/>
+                <section className="collapse-panel">
+                    <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>>
+                        <h4>Step 2: Create A Car Wash Request</h4>
+                        <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    <div className="content clearfix">
-                        <div className="col-md-12">
-                            <div className="clearfix">
-                                <div className="col-md-6 left">
-                                    <div className="scr sec-container">
-                                        <div className="clearfix">
-                                            <div className="dd-title">
-                                                <title className="sec-title">Select Car Profile</title>
-                                            </div>
-                                            <div className="selection col-md-11">
-                                                <div className="clearfix">
-                                                    <div className="model-select  ">
+                    {this.state.step2Panel && <div className="panel-content">
+                        <div className="row">
+                            <div className="col-md-6 left">
 
-                                                        <select className="car-selection ">
-                                                            <option value="volvo">Volvo</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="mercedes">Mercedes</option>
-                                                            <option value="audi">Audi</option>
-                                                        </select>
-
-                                                        <i className="mdi mdi-chevron-down"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div className="form-section">
+                                    <h4 className="panel-sub-title">Select Car Profile</h4>
+                                    <div className="model-select">
+                                        <select className="car-selection ">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                        <i className="mdi mdi-chevron-down" />
+                                    </div>
+                                </div>
+                                <div className="form-section">
+                                    <title className="panel-sub-title">Reason For Repair</title>
+                                    <div className="radio-btn">
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>Accident</span>
+                                            </label>
+                                        </div>
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>General</span>
+                                            </label>
                                         </div>
                                     </div>
-                                    <div className="repair-reasons sec-container">
-                                        <title className="sec-title">Reason For Repair</title>
-                                        <div className="radio-btn">
-                                            <div className="radio-style">
-                                                <label>
-                                                    <input type="radio" name="radio" />
-                                                    <i className="mf-radio-button"/><span>Accident</span>
-                                                </label>
-                                            </div>
-                                            <div className="radio-style">
-                                                <label>
-                                                    <input type="radio" name="radio" />
-                                                    <i className="mf-radio-button"/><span>General</span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                </div>
 
+                                <div className="form-section">
+                                    <title className="panel-sub-title">Job Details</title>
+                                    <div className="model-select">
+                                        <input type="text" className="jd-text" placeholder="Enter Text Here" />
                                     </div>
-                                    <div className="job-details sec-container">
-                                        <div className="clearfix">
-                                            <title className="sec-title">Job Details</title>
-                                            <div className="col-md-11 remove-left-padding">
-                                                <input type="text" className="jd-text" placeholder="Enter Text Here"/>
-                                            </div>
+                                </div>
+
+                                <div className="form-section">
+                                    <h4 className="panel-sub-title">Preffered Time & Date</h4>
+                                    <div className="radio-btn">
+
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>This is urgent reuest!</span>
+                                            </label>
                                         </div>
                                     </div>
-                                    <div className="preffered-time-date sec-container">
-                                        <div className="clearfix">
-                                            <title className="sec-title">Preffered Time & Date</title>
-                                            <div className="radio-btn">
-                                            <div className="radio-style">
-                                                <label>
-                                                    <input type="radio" name="preffered-time" />
-                                                    <i className="mf-radio-button"/><span>General</span>
-                                                </label>
-                                            </div>
+                                    <div className="row date-time">
+                                        <div className="col-md-6 padLeft0">
+                                            <DatePicker
+                                                selected={this.state.startDate}
+                                                onChange={this.handleChange}
+                                            />
 
                                         </div>
-                                                <div className="date-time col-md-11  no-left-pad">
-                                                    <div className="clearfix">
-                                                        <div className="col-md-6 no-left-pad">
-                                                            <div className="clearfix">
-                                                                <TextInput label="Date" name="text" type="text" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-6">
-                                                            <div className="clearfix">
-                                                                <TextInput label="Time" name="text" type="text" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div className="preffered-location sec-container">
-                                        <div className="clearfix">
-                                            <title className="sec-title">Preffered location</title>
-                                            <div className="selection col-md-11 no-left-pad">
-                                                <div className="clearfix">
-                                                    <div className="model-select  ">
-                                                        <select className="car-selection ">
-                                                            <option value="volvo">Marathalli</option>
-                                                            <option value="saab">Mg Road</option>
-                                                            <option value="mercedes">Rajajinagar</option>
-                                                            <option value="audi">Mysore Road</option>
-                                                        </select>
-                                                        <i className="mdi mdi-chevron-down"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="gmaps">
-                                                <Gmaps
-                                                    center={{ lat: 12.9952672, lng: 77.5905857 }}
-                                                    zoom={9}
-                                                    containerElement={<div style={{ height: "auto",width: 570 + 'px' }} />}
-                                                    mapElement={<div style={{ height: 192 + 'px',width: 570 + 'px' }} />}
 
-                                                />
-                                            </div>
+                                        <div className="col-md-6 padRight0">
+                                            <TimePicker
+                                                showSecond={false}
+                                                defaultValue={now}
+                                                className="xxx"
+                                                format={format}
+                                                use12Hours
+                                            />
                                         </div>
 
                                     </div>
                                 </div>
-                                <div className="col-md-6 right">
-                                    <div className="clearfix">
-                                        <div className="uai sec-title">
-                                            <div className="clearfix">
-                                                <title className="sec-title">Upload An Image</title>
-                                                <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 pad0" fileUpload={(e)=>{this.uploadImage(e,'uploadImage')}}/> 
-                                                    {uploadImage}
-                                            </div>
-                                        </div>
-
-                                        <div className="police-report sec-container">
-                                            <div className="clearfix">
-                                                <title className="sec-title">police report</title>
-                                                <Upload id="police" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'policeReports')}}/> 
-                                                    {policeReportView}
-                                            </div>
-                                        </div>
-                                        <div className="ration card sec-container">
-                                            <div className="clearfix">
-                                                <title className="sec-title">ration card</title>
-                                                <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'rationCard')}}/>
-                                                    {rationCardView}
-                                            </div>
-                                        </div>
-                                        <div className="driving-licence sec-container">
-                                            <div className="clearfix">
-                                                <title className="sec-title">driving licence</title>
-                                                <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e)=>{this.uploadImage(e,'drivingLicence')}}/>
-                                                    {drivingLicenceView}
-                                            </div>
+                                <div className="form-section">
+                                    <h4 className="panel-sub-title">Preffered location</h4>
+                                    <div className="model-select">
+                                        <select className="car-selection ">
+                                            <option value="volvo">Marathalli</option>
+                                            <option value="saab">Mg Road</option>
+                                            <option value="mercedes">Rajajinagar</option>
+                                            <option value="audi">Mysore Road</option>
+                                        </select>
+                                        <i className="mdi mdi-chevron-down" />
+                                    </div>
+                                    <div className="map-panel">
+                                        <div className="gmaps">
+                                            <Gmaps
+                                                center={{ lat: 12.9952672, lng: 77.5905857 }}
+                                                zoom={9}
+                                                containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
+                                                mapElement={<div style={{ height: 192 + 'px', width: 100 + '%' }} />}
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-md-6 right">
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <title className="panel-sub-title">upload a image</title>
+                                        <div className="model-select upload">
+                                            <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
+                                            {uploadImage}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <title className="panel-sub-title">police report</title>
+                                        <div className="model-select upload">
+                                            <Upload id="policeReport" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
+                                            {policeReportView}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <title className="panel-sub-title">ration card</title>
+                                        <div className="model-select upload">
+                                            <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
+                                            {rationCardView}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <title className="panel-sub-title">driving licence</title>
+                                        <div className="model-select upload">
+                                            <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
+                                            {drivingLicenceView}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
+                    </div>}
                     <div className="next-button clearfix">
                         <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
                     </div>
-
                 </section>
             </div>
         );

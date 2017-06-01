@@ -42,8 +42,9 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>My Nissan GT-R</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car" />
+                            <h4>My Nissan GT-R <i className="mdi mdi-chevron-down"/></h4>
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Book Service" />
+                            {/*<i className="mdi mdi-dots-vertical"/>*/}
                         </div>
                     </div>
                     <div className="inSection">

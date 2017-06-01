@@ -4,123 +4,131 @@ import TextInput from '../common/TextInput';
 import { each, map, find } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
+
 
 class Steps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            step1Panel:false,
-            step2Panel:true,
+            PrefferedLocation:'Select Location',
+            startDate: moment(),
+            step1Panel: false,
+            step2Panel: true,
             carWashCategories: [
                 {
                     id: 1,
                     active: false,
                     heading: "Brakes & Exhaust",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 }, {
                     id: 2,
                     active: false,
                     heading: "Basic Wash",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 }, {
                     id: 3,
                     active: false,
                     heading: "Awesome Wash & Detail",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "subcategory 1",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "subcategory 2",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "subcategory 3",
-                            checked:false
-                        }, {id:4,
+                            checked: false
+                        }, {
+                            id: 4,
                             name: "subcategory 4",
-                            checked:false
+                            checked: false
                         }, {
-                            id:5,
+                            id: 5,
                             name: "subcategory 5",
-                            checked:false
+                            checked: false
                         }, {
-                            id:6,
+                            id: 6,
                             name: "subcategory 6",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 }, {
                     id: 4,
                     active: false,
                     heading: "Wash & Shine",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "subcategory 1",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "subcategory 2",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "subcategory 3",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "subcategory 4",
-                            checked:false
+                            checked: false
                         }, {
-                            id:5,
+                            id: 5,
                             name: "subcategory 5",
-                            checked:false
+                            checked: false
                         }, {
-                            id:6,
+                            id: 6,
                             name: "subcategory 6",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 },
@@ -128,24 +136,24 @@ class Steps extends Component {
                     id: 5,
                     active: false,
                     heading: "Totally Awesome & Detail",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 },
@@ -153,24 +161,24 @@ class Steps extends Component {
                     id: 6,
                     active: false,
                     heading: "Total detail",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 },
@@ -178,24 +186,24 @@ class Steps extends Component {
                     id: 7,
                     active: false,
                     heading: "AC Dust Sanitization",
-                    checkedCategoryCount:0,
-                   categories: [
+                    checkedCategoryCount: 0,
+                    categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 },
@@ -203,41 +211,47 @@ class Steps extends Component {
                     id: 8,
                     active: false,
                     heading: "Monthly Package",
-                    checkedCategoryCount:0,
+                    checkedCategoryCount: 0,
                     categories: [
                         {
-                            id:1,
+                            id: 1,
                             name: "Service title one",
-                            checked:false
+                            checked: false
                         }, {
-                            id:2,
+                            id: 2,
                             name: "Service title two",
-                            checked:false
+                            checked: false
                         }, {
-                            id:3,
+                            id: 3,
                             name: "Service title three",
-                            checked:false
+                            checked: false
                         }, {
-                            id:4,
+                            id: 4,
                             name: "I am not sure",
-                            checked:false
+                            checked: false
                         }],
                     image: '../../images/logo1.png'
                 }
-                
+
             ],
 
         };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        });
     }
     openCategory(id) {
         debugger
         let newCat = [];
         map(this.state.carWashCategories, (category) => {
-            let cat = { ...category};
+            let cat = { ...category };
             if (category.id == id) {
                 cat.active = !cat.active;
-            }else{
-                cat.active=false;
+            } else {
+                cat.active = false;
             }
             newCat.push(cat);
         })
@@ -245,35 +259,41 @@ class Steps extends Component {
             carWashCategories: newCat
         });
     }
-    hidePanel(panel){
-        if(panel == 'step1'){
-            this.setState({step1Panel:!this.state.step1Panel});
-        }else if(panel == 'step2'){
-            this.setState({step2Panel:!this.state.step2Panel});
+    hidePanel(panel) {
+        if (panel == 'step1') {
+            this.setState({ step1Panel: !this.state.step1Panel });
+        } else if (panel == 'step2') {
+            this.setState({ step2Panel: !this.state.step2Panel });
         }
     }
-    chageCheckoxState(e,val){
-        let updateVal=[...this.state.carWashCategories],checkedCount=0;
 
-        find(updateVal,(washCategory)=>{
-            if(washCategory.active){
-            find(washCategory.categories,(subCategory)=>{
-                if(subCategory.name == val.name && subCategory.id == val.id){
-                    subCategory.checked = !subCategory.checked;
-                }
-                if(subCategory.checked){
-                    checkedCount++
-                }
-            })
-            washCategory.checkedCategoryCount = checkedCount;
+    chageCheckoxState(e, val) {
+        let updateVal = [...this.state.carWashCategories], checkedCount = 0;
+
+        find(updateVal, (washCategory) => {
+            if (washCategory.active) {
+                find(washCategory.categories, (subCategory) => {
+                    if (subCategory.name == val.name && subCategory.id == val.id) {
+                        subCategory.checked = !subCategory.checked;
+                    }
+                    if (subCategory.checked) {
+                        checkedCount++
+                    }
+                })
+                washCategory.checkedCategoryCount = checkedCount;
             }
         })
         this.setState({
-            carWashCategories:updateVal
+            carWashCategories: updateVal
         })
 
     }
+    selectedDropdownText(location) {
+        this.setState({PrefferedLocation:location});
+    }
     render() {
+        const format = 'h:mm a';
+        const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
@@ -285,13 +305,13 @@ class Steps extends Component {
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount==0?
-                            <span className="sub-category-count">
-                                {carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}
-                            </span>:
-                            <span className="sub-category-count">
-                                {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount==1?" Category Selected":" Categories Selected"}
-                            </span>
+                            {carWashCategory.checkedCategoryCount == 0 ?
+                                <span className="sub-category-count">
+                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
+                                </span> :
+                                <span className="sub-category-count">
+                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
+                                </span>
                             }
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
@@ -299,7 +319,7 @@ class Steps extends Component {
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e)=>{this.chageCheckoxState(e,category,index)}} value="" />{category.name}</label>
+                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>
                                 </div>);
                             })}
@@ -313,13 +333,13 @@ class Steps extends Component {
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount==0?
-                            <span className="sub-category-count">
-                                {carWashCategory.categories.length} {carWashCategory.categories.length==1?"subcategory":"subcategories"}
-                            </span>:
-                            <span className="sub-category-count">
-                                {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount==1?" Category Selected":" Categories Selected"}
-                            </span>
+                            {carWashCategory.checkedCategoryCount == 0 ?
+                                <span className="sub-category-count">
+                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
+                                </span> :
+                                <span className="sub-category-count">
+                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
+                                </span>
                             }
                             <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
                         </div>
@@ -327,7 +347,7 @@ class Steps extends Component {
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e)=>{this.chageCheckoxState(e,category,index)}} value="" />{category.name}</label>
+                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>
                                 </div>);
                             })}
@@ -338,9 +358,9 @@ class Steps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={()=>{this.hidePanel('step1')}}>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
                         <h4>Step 1: Select Car Wash Type</h4>
-                        <i className={this.state.step1Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
+                        <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     <div className="panel-content">
                         <div className="row">
@@ -363,7 +383,7 @@ class Steps extends Component {
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={()=>{this.hidePanel('step2');}}>
                         <h4>Step 2: Create A Car Wash Request</h4>
-                        <i className={this.state.step2Panel?"mdi mdi-chevron-up":"mdi mdi-chevron-down"} />
+                        <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
@@ -384,11 +404,23 @@ class Steps extends Component {
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
                                     <div className="row date-time">
                                         <div className="col-md-6 padLeft0">
-                                            <TextInput label="Date" name="text" type="text" />
+                                            <DatePicker
+                                                selected={this.state.startDate}
+                                                onChange={this.handleChange}
+                                            />
+
                                         </div>
+
                                         <div className="col-md-6 padRight0">
-                                            <TextInput label="Time" name="text" type="text" />
+                                            <TimePicker
+                                                showSecond={false}
+                                                defaultValue={now}
+                                                className="xxx"
+                                                format={format}
+                                                use12Hours
+                                            />
                                         </div>
+
                                     </div>
                                 </div>
                                 <div className="form-section">

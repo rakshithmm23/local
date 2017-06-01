@@ -89,6 +89,14 @@
         font-family: CenturyGothic;
         font-size: 20px;
         font-weight: 900;
+        cursor: pointer;
+    }
+
+    .page-sec-header h4 i {
+        color: #454B51;
+        font-size: 26px;
+        vertical-align: middle;
+        margin-left: 15px;
     }
 
     .page-sec-header button {
