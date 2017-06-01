@@ -4,11 +4,15 @@ import TextInput from '../common/TextInput';
 import { each, map, find } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
 
 class Steps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            startDate: moment(),
             step1Panel:false,
             step2Panel:true,
             carWashCategories: [
@@ -228,7 +232,13 @@ class Steps extends Component {
             ],
 
         };
+        this.handleChange = this.handleChange.bind(this);
     }
+    handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
     openCategory(id) {
         debugger
         let newCat = [];
@@ -383,9 +393,13 @@ class Steps extends Component {
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
                                     <div className="row date-time">
-                                        <div className="col-md-6 padLeft0">
+                                        {/*<div className="col-md-6 padLeft0">
                                             <TextInput label="Date" name="text" type="text" />
-                                        </div>
+                                        </div>*/}
+                                        <DatePicker 
+                                            selected={this.state.startDate}
+                                            onChange={this.handleChange}
+                                        />
                                         <div className="col-md-6 padRight0">
                                             <TextInput label="Time" name="text" type="text" />
                                         </div>
