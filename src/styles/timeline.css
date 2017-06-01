@@ -3,10 +3,6 @@
     background: #fff;
 }
 
-.service-details {
-    border-right: 1px solid #EEF2F5;
-}
-
 .service-details .carousel-indicators {
     bottom: 0;
 }
@@ -59,6 +55,7 @@
 .timeline-summary-header {
     height: 70px;
     border-bottom: 1px solid #DAE1E7;
+    border-left: 1px solid #EEF2F5;
     padding: 20px 0 0;
     text-align: center;
 }
@@ -78,8 +75,17 @@
     border-bottom-color: #ED3124;
 }
 
+.timelineScroll {
+    height: 480px !important;
+}
+
+.service-info .timelineScroll {
+    height: 210px !important;
+}
+
 .timeline-summary-body {
-    padding: 30px;
+    padding: 0 30px;
+    border-left: 1px solid #EEF2F5;
 }
 
 .timeline-log li {
@@ -95,6 +101,8 @@
     text-transform: uppercase;
     display: inline-block;
     vertical-align: middle;
+    width: 50px;
+    margin-top: 6px;
 }
 
 .timeline-log .timeline-icon {
@@ -107,7 +115,8 @@
     text-align: center;
     padding: 10px 0;
     vertical-align: middle;
-    margin: 0 30px;
+    margin: 6px 40px 0;
+    margin-left: 20px;
     position: relative;
 }
 
@@ -128,6 +137,10 @@
     max-width: 100%;
 }
 
+.timeline-log {
+    padding: 30px 0;
+}
+
 .timeline-content {
     display: inline-block;
     vertical-align: middle;
@@ -140,6 +153,14 @@
     text-transform: uppercase;
     font-weight: normal;
     margin-bottom: 5px;
+}
+
+.timeline-content h4.due {
+    color: #EE3124;
+}
+
+.timeline-content h4.upcoming {
+    color: #23AE49;
 }
 
 .timeline-content h4.completed {
@@ -160,4 +181,59 @@
 .timeline-log li .status-label {
     float: right;
     margin-top: 25px;
+}
+
+
+/*Other Details*/
+
+.otherDetails-content {
+    padding: 15px 0;
+}
+
+.otherDetails-content li {
+    padding: 10px 0;
+    font-family: CenturyGothic;
+    color: #454B51;
+    font-size: 14px;
+}
+
+.otherDetails-content li label {
+    font-weight: normal;
+    width: 300px;
+    letter-spacing: 1px;
+}
+
+.otherDetails-content li span {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.otherDetails-content li span,
+.otherDetails-content li p {
+    color: #717982;
+    line-height: 28px;
+}
+
+.otherDetails-content li span a {
+    text-decoration: none;
+    color: #006FB9 !important;
+    outline: 0;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
+}
+.otherDetails-content li p{
+    border: 1px solid transparent;
+    padding: 10px;
+    margin: -10px;
+}
+
+.otherDetails-content li p[contenteditable="true"],
+.otherDetails-content li p[contenteditable="true"]:active,
+.otherDetails-content li p[contenteditable="true"]:focus {
+    border: 1px solid #dadada;
+    outline: none;
+    box-shadow: none;
 }
