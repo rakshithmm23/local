@@ -477,12 +477,12 @@ class Steps extends Component {
         });
         return (
             <div className="panel-section car-wash">
-                <section className="collapse-panel">
+                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
                         <h4>Step 1: Select Car Wash Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    <div className="panel-content">
+                   {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="search-box">
@@ -498,7 +498,7 @@ class Steps extends Component {
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
-                    </div>
+                    </div>}
                 </section>
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>>
@@ -644,10 +644,11 @@ class Steps extends Component {
 
                             </div>
                         </div>
-                    </div>}
-                    <div className="next-button clearfix">
+                        <div className="next-button clearfix">
                         <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
                     </div>
+                    </div>}
+                    
                 </section>
             </div>
         );
