@@ -46,7 +46,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 }, {
                     id: 2,
                     active: false,
@@ -70,7 +70,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 }, {
                     id: 3,
                     active: false,
@@ -102,7 +102,7 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 }, {
                     id: 4,
                     active: false,
@@ -134,7 +134,7 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 },
                 {
                     id: 5,
@@ -159,7 +159,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 },
                 {
                     id: 6,
@@ -184,7 +184,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 },
                 {
                     id: 7,
@@ -209,7 +209,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 },
                 {
                     id: 8,
@@ -234,7 +234,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/logo1.png'
+                    image: '../../images/wash-icon.png'
                 }
 
             ],
@@ -360,7 +360,7 @@ class Steps extends Component {
     render() {
         const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
-                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
                             <i className="mdi mdi-close"></i>
@@ -373,7 +373,7 @@ class Steps extends Component {
         })
         const policeReportView = map(this.state.policeReport, (img, index) => {
             return (
-                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
                             <i className="mdi mdi-close"></i>
@@ -386,7 +386,7 @@ class Steps extends Component {
         })
         const rationCardView = map(this.state.rationCard, (img,index) => {
             return (
-                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={()=>{this.cancelUploadImage('rationCard',index)}}>
                             <i className="mdi mdi-close"></i>
@@ -399,7 +399,7 @@ class Steps extends Component {
         })
         const drivingLicenceView = map(this.state.drivingLicence, (img,index) => {
             return (
-                <div className='upload-box-wrapper col-md-3 col-sm-4 col-xs-4 pad0'>
+                <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={()=>{this.cancelUploadImage('drivingLicence',index)}}>
                             <i className="mdi mdi-close"></i>
@@ -475,12 +475,12 @@ class Steps extends Component {
         });
         return (
             <div className="panel-section car-wash">
-                <section className="collapse-panel">
+                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
                         <h4>Step 1: Select Car Wash Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    <div className="panel-content">
+                   {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="search-box">
@@ -496,10 +496,10 @@ class Steps extends Component {
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
                         </div>
-                    </div>
+                    </div>}
                 </section>
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>
                         <h4>Step 2: Create A Car Wash Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
@@ -520,7 +520,7 @@ class Steps extends Component {
                                     </div>
                                 </div>
                                 <div className="form-section">
-                                    <title className="panel-sub-title">Reason For Repair</title>
+                                    <h4 className="panel-sub-title">Reason For Repair</h4>
                                     <div className="radio-btn">
                                         <div className="radio-style">
                                             <label>
@@ -538,7 +538,7 @@ class Steps extends Component {
                                 </div>
 
                                 <div className="form-section">
-                                    <title className="panel-sub-title">Job Details</title>
+                                    <h4 className="panel-sub-title">Job Details</h4>
                                     <div className="model-select">
                                         <input type="text" className="jd-text" placeholder="Enter Text Here" />
                                     </div>
@@ -602,9 +602,9 @@ class Steps extends Component {
                             <div className="col-md-6 right">
                                 <div className="form-section uploads">
                                     <div className="row">
-                                        <title className="panel-sub-title">upload a image</title>
+                                        <h4 className="panel-sub-title">upload a image </h4>
                                         <div className="model-select upload">
-                                            <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
+                                            <Upload id="uploadImage" fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
                                             {uploadImage}
                                         </div>
                                     </div>
@@ -612,9 +612,9 @@ class Steps extends Component {
 
                                 <div className="form-section uploads">
                                     <div className="row">
-                                        <title className="panel-sub-title">police report</title>
+                                        <h4 className="panel-sub-title">police report</h4>
                                         <div className="model-select upload">
-                                            <Upload id="policeReport" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
+                                            <Upload id="policeReport" fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
                                             {policeReportView}
                                         </div>
                                     </div>
@@ -622,9 +622,9 @@ class Steps extends Component {
 
                                 <div className="form-section uploads">
                                     <div className="row">
-                                        <title className="panel-sub-title">ration card</title>
+                                        <h4 className="panel-sub-title">ration card</h4>
                                         <div className="model-select upload">
-                                            <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
+                                            <Upload id="rationCard" fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
                                             {rationCardView}
                                         </div>
                                     </div>
@@ -632,9 +632,9 @@ class Steps extends Component {
 
                                 <div className="form-section uploads">
                                     <div className="row">
-                                        <title className="panel-sub-title">driving licence</title>
+                                        <h4 className="panel-sub-title">driving licence</h4>
                                         <div className="model-select upload">
-                                            <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
+                                            <Upload id="drivingLicence" fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
                                             {drivingLicenceView}
                                         </div>
                                     </div>
@@ -642,10 +642,11 @@ class Steps extends Component {
 
                             </div>
                         </div>
-                    </div>}
-                    <div className="next-button clearfix">
+                        <div className="next-button clearfix">
                         <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
                     </div>
+                    </div>}
+                    
                 </section>
             </div>
         );

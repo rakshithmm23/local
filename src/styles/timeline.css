@@ -1,3 +1,35 @@
+.btn-theme.timeline{
+    right: 70px;
+}
+.mdi-dots-vertical.timeline{
+    float: right;
+    font-size: 20px;
+    color: #23AE49;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.bookservice-more{
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.08);
+	height: 99px;
+	width: 126px;
+	border-radius: 4px;
+	background-color: #FFFFFF;
+    position: absolute;
+    z-index: 999;
+    top: 33px;
+    right: 50px;
+}
+.bookservice-more li{
+    cursor: pointer;
+	color: #454B51;
+	font-family: "CenturyGothic";
+	font-size: 17px;
+	line-height: 17px;
+    padding: 20px;   
+    padding-bottom:3px; 
+    
+}
+
 .timeline-card {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
     background: #fff;

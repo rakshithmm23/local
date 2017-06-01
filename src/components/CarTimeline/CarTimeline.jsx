@@ -18,6 +18,7 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             timelineUpdate: "timeline",
+            BookServiceDropdown:false
 
         };
     }
@@ -27,7 +28,9 @@ export default class BookService extends Component {
     timelineDetail(val) {
         this.setState({ timelineUpdate: val });
     }
-
+    BookServiceDropdown(){
+        this.setState({BookServiceDropdown:!this.state.BookServiceDropdown});
+    }
 
     render() {
         return (
@@ -43,8 +46,15 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Nissan GT-R <i className="mdi mdi-chevron-down"/></h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Book Service" />
-                            {/*<i className="mdi mdi-dots-vertical"/>*/}
+                            <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
+                            <i className="mdi mdi-dots-vertical timeline" onClick={()=>{this.BookServiceDropdown();}}/>
+                            {this.state.BookServiceDropdown && 
+                            <div className="bookservice-more">
+                                <ul>
+                                    <li>Edit</li>
+                                    <li>delete</li>
+                                </ul>
+                            </div>}
                         </div>
                     </div>
                     <div className="inSection">
