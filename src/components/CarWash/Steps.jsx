@@ -381,7 +381,7 @@ class Steps extends Component {
                     </div>}
                 </section>
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>>
+                    <div className="panel-head" onClick={()=>{this.hidePanel('step2');}}>
                         <h4>Step 2: Create A Car Wash Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>

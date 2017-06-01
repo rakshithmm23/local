@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class ServiceDetails extends Component {
     constructor(...args) {
@@ -35,16 +36,18 @@ export default class ServiceDetails extends Component {
                         <span>{this.state.color} - {this.state.year}</span>
                     </div>
                     <div className="service-info">
-                        <ul>
-                            <li>
-                                <h5>Upcoming Service</h5>
-                                <span>{this.state.upcomingService} kms</span>
-                            </li>
-                            <li>
-                                <h5>Previous Service</h5>
-                                <span>Car wash: {this.state.date}, {this.state.previousService} kms</span>
-                            </li>
-                        </ul>
+                        <Scrollbars className="timelineScroll">
+                            <ul>
+                                <li>
+                                    <h5>Upcoming Service</h5>
+                                    <span>{this.state.upcomingService} kms</span>
+                                </li>
+                                <li>
+                                    <h5>Previous Service</h5>
+                                    <span>Car wash: {this.state.date}, {this.state.previousService} kms</span>
+                                </li>
+                            </ul>
+                        </Scrollbars>
                     </div>
                 </div>
             </div>

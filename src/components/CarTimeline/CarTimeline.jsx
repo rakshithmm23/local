@@ -8,6 +8,8 @@ import Button from '../common/Button';
 import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 export default class BookService extends Component {
     constructor(props, context) {
@@ -16,6 +18,7 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             timelineUpdate: "timeline",
+            BookServiceDropdown:false
 
         };
     }
@@ -25,7 +28,9 @@ export default class BookService extends Component {
     timelineDetail(val) {
         this.setState({ timelineUpdate: val });
     }
-
+    BookServiceDropdown(){
+        this.setState({BookServiceDropdown:!this.state.BookServiceDropdown});
+    }
 
     render() {
         return (
@@ -41,14 +46,22 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Nissan GT-R</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car" />
+                            <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
+                            <i className="mdi mdi-dots-vertical timeline" onClick={()=>{this.BookServiceDropdown()}}></i>
+                            {this.state.BookServiceDropdown && 
+                            <div className="bookservice-more">
+                                <ul>
+                                    <li>Edit</li>
+                                    <li>delete</li>
+                                </ul>
+                            </div>}
                         </div>
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
                             <div className="row timeline-card">
                                 <div className="col-md-3 pad0">
-                                    <ServiceDetails />
+                                        <ServiceDetails />
                                 </div>
                                 <div className="col-md-9 pad0">
                                     <div className="row timeline-summary-header">
@@ -64,12 +77,14 @@ export default class BookService extends Component {
                                         </div>
                                     </div>
                                     <div className="row timeline-summary-body">
-                                        {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
-                                            <OtherDetails />
-                                        </div>}
-                                        {this.state.timelineUpdate == "timeline" && <div className="tab-timeline ">
-                                            <Timeline />
-                                        </div>}
+                                        <Scrollbars className="timelineScroll">
+                                            {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
+                                                <OtherDetails />
+                                            </div>}
+                                            {this.state.timelineUpdate == "timeline" && <div className="tab-timeline ">
+                                                <Timeline />
+                                            </div>}
+                                        </Scrollbars>
                                     </div>
                                 </div>
                             </div>
