@@ -126,7 +126,7 @@
 }
 
 .car-wash .collapse-panel .right {
-  margin-top: 44px;
+  margin-top: 53px;
   padding-left: 20px;
 }
 
@@ -151,6 +151,10 @@
 .car-wash .collapse-panel .model-select {
   margin-top: 36px;
   margin-bottom: 36px;
+}
+.car-wash .collapse-panel .model-select.upload {
+  margin-top: 20px;
+  
 }
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {
