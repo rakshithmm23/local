@@ -6,6 +6,7 @@ import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import TimePicker from 'rc-time-picker';
 
 
 class Steps extends Component {
@@ -284,6 +285,8 @@ class Steps extends Component {
 
     }
     render() {
+        const format = 'h:mm a';
+        const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
@@ -400,9 +403,17 @@ class Steps extends Component {
                                             selected={this.state.startDate}
                                             onChange={this.handleChange}
                                         />
-                                        <div className="col-md-6 padRight0">
+                                        {/*<div className="col-md-6 padRight0">
                                             <TextInput label="Time" name="text" type="text" />
-                                        </div>
+                                        </div>*/}
+                                        <TimePicker
+                                            showSecond={false}
+                                            defaultValue={now}
+                                            className="xxx"
+                                            
+                                            format={format}
+                                            use12Hours
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-section">
