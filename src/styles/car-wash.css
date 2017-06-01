@@ -96,6 +96,9 @@
 .panel-content .form-section {
   margin-bottom: 55px;
 }
+.panel-content .form-section.uploads{
+  margin-bottom: 20px;
+}
 
 .panel-content .date-time .form-group,
 .panel-content .date-time .form-input {

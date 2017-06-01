@@ -602,41 +602,41 @@ class Steps extends Component {
                                 </div>
                             </div>
                             <div className="col-md-6 right">
-                                <div className="form-section">
+                                <div className="form-section uploads">
                                     <div className="row">
                                         <title className="panel-sub-title">upload a image</title>
                                         <div className="model-select">
-                                            <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
+                                            <Upload id="uploadImage" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
                                             {uploadImage}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="form-section">
+                                <div className="form-section uploads">
                                     <div className="row">
                                         <title className="panel-sub-title">police report</title>
                                         <div className="model-select">
-                                            <Upload id="policeReport" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
+                                            <Upload id="policeReport" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
                                             {policeReportView}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="form-section">
+                                <div className="form-section uploads">
                                     <div className="row">
                                         <title className="panel-sub-title">ration card</title>
                                         <div className="model-select">
-                                            <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
+                                            <Upload id="rationCard" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
                                             {rationCardView}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="form-section">
+                                <div className="form-section uploads">
                                     <div className="row">
                                         <title className="panel-sub-title">driving licence</title>
                                         <div className="model-select">
-                                            <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 no-left-pad " fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
+                                            <Upload id="drivingLicence" responsiveSize="col-md-3 col-sm-2 col-xs-2 padLeft0 " fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
                                             {drivingLicenceView}
                                         </div>
                                     </div>
