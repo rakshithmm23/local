@@ -301,9 +301,9 @@
 
 .rc-time-picker-panel {
   left: 476.5px !important;
-  top: 1188px !important;
+  top: 670px !important;
 }
 
-.react-datepicker__tether-element {
+/*.react-datepicker__tether-element {
   transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
-}
+}*/

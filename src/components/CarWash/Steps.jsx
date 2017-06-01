@@ -358,7 +358,7 @@ class Steps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1')}}>
                         <h4>Step 1: Select Car Wash Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
