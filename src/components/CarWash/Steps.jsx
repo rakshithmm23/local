@@ -230,11 +230,14 @@ class Steps extends Component {
         };
     }
     openCategory(id) {
+        debugger
         let newCat = [];
         map(this.state.carWashCategories, (category) => {
-            let cat = { ...category, active: false };
+            let cat = { ...category};
             if (category.id == id) {
                 cat.active = !cat.active;
+            }else{
+                cat.active=false;
             }
             newCat.push(cat);
         })
