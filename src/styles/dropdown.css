@@ -1,110 +1,110 @@
 .profile-header .btn-default {
-    box-shadow: none !important;
-    border: 0;
-    background: none !important;
-    width: 100px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    margin-top: 4px;
-    font-family: CenturyGothic;
+  box-shadow: none !important;
+  border: 0;
+  background: none !important;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin-top: 4px;
+  font-family: CenturyGothic;
 }
 
 .profile-header .btn-default span img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .profile-header .btn-default span .profileName {
-    margin-right: 5px;
-    color: #006FB9;
+  margin-right: 5px;
+  color: #006FB9;
 }
 
 .profile-header .btn-default .caret {
-    display: none;
+  display: none;
 }
 
 .profile-header .btn-default span i {
-    color: #454B51;
-    font-size: 26px;
-    vertical-align: middle;
+  color: #454B51;
+  font-size: 26px;
+  vertical-align: middle;
 }
 
 .profile-header .dropdown-menu {
-    left: auto;
-    right: -23px;
-    padding: 10px 0 0;
-    border-radius: 0;
-    top: 72px;
-    min-width: 255px;
+  left: auto;
+  right: -23px;
+  padding: 10px 0 0;
+  border-radius: 0;
+  top: 72px;
+  min-width: 255px;
 }
 
 .profile-header .dropdown-menu i {
-    color: #949DA5;
-    font-size: 24px;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-top: -3px;
-    display: inline-block;
+  color: #949DA5;
+  font-size: 24px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-top: -3px;
+  display: inline-block;
 }
 
 .profile-header .dropdown-menu li {
-    padding: 5px 20px;
-    display: block;
+  padding: 5px 20px;
+  display: block;
 }
 
 .profile-header .dropdown-menu li:hover a,
 .profile-header .dropdown-menu li:hover i {
-    color: rgba(0, 111, 185, 0.84);
+  color: rgba(0, 111, 185, 0.84);
 }
 
 .profile-header .dropdown-menu li.active {
-    background: #E7EDEF;
-    margin-top: 10px;
+  background: #E7EDEF;
+  margin-top: 10px;
 }
 
 .profile-header .dropdown-menu li.active a,
 .profile-header .dropdown-menu li.active i {
-    color: rgba(0, 111, 185, 0.84);
+  color: rgba(0, 111, 185, 0.84);
 }
 
 .profile-header .dropdown-menu li a {
-    background: none !important;
-    display: block;
-    padding: 0;
-    font-family: CenturyGothic;
-    cursor: pointer;
-    outline: 0 !important;
+  background: none !important;
+  display: block;
+  padding: 0;
+  font-family: CenturyGothic;
+  cursor: pointer;
+  outline: 0 !important;
 }
 
 @media screen and (max-width: 991px) {
-    .profile-header .dropdown-menu {
-        right: 0;
-        top: 57px;
-        min-width: 205px;
-    }
+  .profile-header .dropdown-menu {
+    right: 0;
+    top: 57px;
+    min-width: 205px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .profile-header {
-        margin-left: 20px;
-    }
-    .profile-header .btn-default {
-        width: auto;
-    }
-    .profile-header .dropdown-menu li a {
-        font-size: 12px;
-    }
-    .profile-header .dropdown-menu i {
-        font-size: 20px;
-    }
-    .profile-header .btn-default span .profileName {
-        display: none;
-    }
+  .profile-header {
+    margin-left: 20px;
+  }
+  .profile-header .btn-default {
+    width: auto;
+  }
+  .profile-header .dropdown-menu li a {
+    font-size: 12px;
+  }
+  .profile-header .dropdown-menu i {
+    font-size: 20px;
+  }
+  .profile-header .btn-default span .profileName {
+    display: none;
+  }
 }
 
 
@@ -140,4 +140,66 @@
   line-height: 17px;
   padding: 13px 20px;
   background-color: transparent !important;
+}
+
+
+/*text dropdown*/
+
+.text-dropdown .dropdown-toggle {
+  border: none;
+  display: inline-block;
+  color: #454B51 !important;
+  font-family: CenturyGothic;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  right: 0;
+  padding: 0;
+ 
+}
+.text-dropdown .dropdown-toggle h4{
+        margin-left: 15px;
+}
+.text-dropdown .dropdown-toggle .mdi{
+	color: #454B51;
+	font-size: 26px;
+    position: absolute;
+    right: -40px;
+    top: 4px;
+}
+
+.text-dropdown .dropdown-menu {
+  margin: 0;
+  width: 274px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+  padding: 0;
+}
+
+.text-dropdown .dropdown-menu li a {
+  padding: 12px 20px;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.text-dropdown .dropdown-menu li:last-child {
+  background: red !important;
+  border-radius: 0 0px 5px 5px;
+}
+
+.text-dropdown .dropdown-menu li:last-child a {
+    outline: none;
+  background: red !important;
+  color: #FFFFFF;
+  font-family: "CenturyGothic";
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 0 0px 5px 5px;
 }

@@ -32,7 +32,7 @@ export default class Header extends Component {
                       </label>
                   </li>
                   <li className="profile-header">
-                      <Dropdown authActions={authActions} router={router}/>
+                      <Dropdown authActions={authActions} router={router}/> 
                   </li>
               </ul>
             </div>

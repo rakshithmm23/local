@@ -7,7 +7,7 @@ class Upload extends Component {
         return (
             <div className={className}>
                 <label htmlFor={this.props.id} className="upload-box">
-                    <img src="../../images/attach.png" />
+                    <i className="mdi mdi-attachment"></i>
                 </label>
                 <input id={this.props.id} type="file" className="hide" onChange={this.props.fileUpload} multiple />
             </div>
