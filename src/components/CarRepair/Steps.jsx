@@ -20,8 +20,8 @@ class Steps extends Component {
             drivingLicence: [],
             PrefferedLocation: 'Select Location',
             startDate: moment(),
-            step1Panel: false,
-            step2Panel: true,
+            step1Panel: true,
+            step2Panel: false,
             carWashCategories: [
                 {
                     id: 1,
@@ -264,9 +264,9 @@ class Steps extends Component {
     }
     hidePanel(panel) {
         if (panel == 'step1') {
-            this.setState({ step1Panel: !this.state.step1Panel });
+            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false  });
         } else if (panel == 'step2') {
-            this.setState({ step2Panel: !this.state.step2Panel });
+            this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
     }
 
@@ -477,7 +477,7 @@ class Steps extends Component {
             <div className="panel-section car-wash">
                  <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
-                        <h4>Step 1: Select Car Wash Type</h4>
+                        <h4>Step 1: Select Car Repair Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                    {this.state.step1Panel && <div className="panel-content">
@@ -494,13 +494,13 @@ class Steps extends Component {
                             <div className="col-md-6">{leftBlock}</div>
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }}/>
                         </div>
                     </div>}
                 </section>
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>
-                        <h4>Step 2: Create A Car Wash Request</h4>
+                        <h4>Step 2: Create A Car Repair Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
