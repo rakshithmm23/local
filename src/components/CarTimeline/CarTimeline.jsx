@@ -54,8 +54,8 @@ export default class BookService extends Component {
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
                                         <h4>My Nissan GT-R</h4>
-                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
-                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
                                     <MenuItem eventKey="My Audi">My Audi</MenuItem>
                                     <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>
