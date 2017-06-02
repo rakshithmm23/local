@@ -132,6 +132,9 @@
     color: #454B51;
     font-size: 26px;
 }
+.header-right ul li.notification-menu.active i {
+    color: #23AE49;
+}
 
 .header-right ul li.notification-menu label {
     position: relative;
@@ -160,6 +163,9 @@
     right: -1px;
     font-size: 11px;
     padding: 2px;
+}
+.header-right ul .notification-menu.active .no-notify {
+    display: none;
 }
 
 .profile-header .profile-img {
