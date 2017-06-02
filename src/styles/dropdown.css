@@ -106,3 +106,38 @@
         display: none;
     }
 }
+
+
+/*three button dropdown*/
+
+.three-dots-icon {
+  position: absolute;
+  z-index: 999;
+  top: 5px;
+  right: 0px;
+}
+
+.three-dots-icon .dropdown .mdi-dots-vertical {
+  font-size: 20px;
+  color: #23AE49;
+}
+
+.three-dots-icon .dropdown-toggle {
+  border: none;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.three-dots-icon .dropdown-menu {
+  right: 45px;
+}
+
+.three-dots-icon .dropdown-menu li a {
+  cursor: pointer;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 17px;
+  line-height: 17px;
+  padding: 13px 20px;
+  background-color: transparent !important;
+}
