@@ -130,6 +130,9 @@
 
 .three-dots-icon .dropdown-menu {
   right: 45px;
+  width: 126px;
+  min-width: inherit;
+  top: 26px;
 }
 
 .three-dots-icon .dropdown-menu li a {
@@ -235,16 +238,17 @@
   background-color: #F9FBFB;
 }
 
-.text-dropdown.notify .media-left .notification-img{
-    display: inline-block;
+.text-dropdown.notify .media-left .notification-img {
+  display: inline-block;
   height: 40px;
   width: 40px;
   border-radius: 3px;
 }
-.text-dropdown.notify .media-left .notification-img img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+
+.text-dropdown.notify .media-left .notification-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .text-dropdown.notify .media-heading {
@@ -301,5 +305,3 @@
   text-align: center;
   border-radius: 0 0px 5px 5px;
 }
-
-.text-dropdown.notification .dropdown-toggle {}
