@@ -183,20 +183,25 @@
   
 }
 .text-dropdown.notify .dropdown-menu {
-  
-  left: auto;
-  right: -32px;
-  margin-top: 30px;
+          border: none;
+    left: auto;
+    right: -30px;
+    margin-top: 21px;
 }
 
 .text-dropdown.notify .dropdown-menu:before {
-  content: '';
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
-  border-bottom: 16px solid black;
-  position: absolute;
-  top: -15px;
-  right: 30px;
+    content: '';
+    height: 25px;
+    width: 25px;
+    background: white;
+    position: absolute;
+    top: -11px;
+    right: 30px;
+    box-shadow: -2px -2px 1px 0px rgba(134, 134, 134, 0.12);
+    -webkit-transform: rotate(46deg);
+    transform: rotate(46deg);
+    /* z-index: -9; */
+    /* display: block; */
 }
 
 .text-dropdown .dropdown-menu li a {
