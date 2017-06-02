@@ -9,7 +9,7 @@ import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { ButtonToolbar, DropdownButton, MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
 export default class BookService extends Component {
@@ -19,7 +19,7 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             timelineUpdate: "timeline",
-            myCarDropdownIcon:true
+            myCarDropdownIcon: true
 
         };
     }
@@ -29,8 +29,8 @@ export default class BookService extends Component {
     timelineDetail(val) {
         this.setState({ timelineUpdate: val });
     }
-    myCarDropdown(){
-        this.setState({myCarDropdownIcon:!this.state.myCarDropdownIcon})
+    myCarDropdown() {
+        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon })
     }
 
     render() {
@@ -48,21 +48,21 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            
-                            <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service"/>
+
+                            <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
                             <div className="text-dropdown add-new" >
-                                    <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={()=>{this.myCarDropdown()}} title={
-                                        <span>
-                                            <h4>My Nissan GT-R</h4>
-                                            {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
-                                            {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
-                                        </span>} >
-                                        <MenuItem eventKey="My Audi">My Audi</MenuItem>
-                                        <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>
-                                        <MenuItem eventKey="My Audi">My Audi</MenuItem>
-                                        <MenuItem eventKey="My Nissan GT-R">My Nissan GT-R</MenuItem>
-                                        <MenuItem eventKey="My Nissan GT-R">Add New</MenuItem>
-                                    </DropdownButton>
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
+                                    <span>
+                                        <h4>My Nissan GT-R</h4>
+                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
+                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                    </span>} >
+                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>
+                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">My Nissan GT-R</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">Add New</MenuItem>
+                                </DropdownButton>
                             </div>
 
                             <div className="three-dots-icon">

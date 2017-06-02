@@ -157,17 +157,20 @@
   box-shadow: none !important;
   right: 0;
   padding: 0;
- 
 }
-.text-dropdown .dropdown-toggle h4{
-        margin-left: 15px;
+
+.text-dropdown .dropdown-toggle h4 {
+  margin-left: 15px;
 }
-.text-dropdown .dropdown-toggle .mdi{
-	color: #454B51;
-	font-size: 26px;
-    position: absolute;
-    right: -40px;
-    top: 4px;
+
+.text-dropdown .dropdown-toggle .mdi-chevron-up,
+.text-dropdown .dropdown-toggle .mdi-chevron-down,
+{
+  color: #454B51;
+  font-size: 26px;
+  position: absolute;
+  right: -40px;
+  top: 4px;
 }
 
 .text-dropdown .dropdown-menu {
@@ -177,10 +180,27 @@
   background-color: #FFFFFF;
   box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
   padding: 0;
+  
+}
+.text-dropdown.notify .dropdown-menu {
+  
+  left: auto;
+  right: -32px;
+  margin-top: 30px;
+}
+
+.text-dropdown.notify .dropdown-menu:before {
+  content: '';
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid black;
+  position: absolute;
+  top: -15px;
+  right: 30px;
 }
 
 .text-dropdown .dropdown-menu li a {
-    outline: none;
+  outline: none;
   padding: 12px 20px;
   color: #454B51;
   font-family: "CenturyGothic";
@@ -194,7 +214,6 @@
 }
 
 .text-dropdown.add-new .dropdown-menu li:last-child a {
-    
   background: red !important;
   color: #FFFFFF;
   font-family: "CenturyGothic";
@@ -204,3 +223,6 @@
   text-align: center;
   border-radius: 0 0px 5px 5px;
 }
+
+.text-dropdown.notification .dropdown-toggle {}
+
