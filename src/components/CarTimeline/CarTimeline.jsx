@@ -9,6 +9,7 @@ import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { ButtonToolbar,DropdownButton,MenuItem } from 'react-bootstrap';
 
 
 export default class BookService extends Component {
@@ -47,14 +48,23 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <h4>My Nissan GT-R <i className="mdi mdi-chevron-down"/></h4>
                             <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
-                            <i className="mdi mdi-dots-vertical timeline" onClick={()=>{this.BookServiceDropdown();}}/>
-                            {this.state.BookServiceDropdown && 
+                            
+                            {/*{this.state.BookServiceDropdown && */}
                             <div className="bookservice-more">
-                                <ul>
+                                {/*<ul>
                                     <li>Edit</li>
                                     <li>delete</li>
-                                </ul>
-                            </div>}
+                                </ul>*/}
+                            <DropdownButton  bsSize="xsmall" title="" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical"></i>} noCaret pullRight>
+      
+                                   
+                                <MenuItem eventKey="Edit">Edit</MenuItem>
+                                <MenuItem eventKey="<Delete></Delete>">Delete</MenuItem>
+                                
+                            </DropdownButton>
+                            </div>
+                            {/*}*/}
+                            
                         </div>
                     </div>
                     <div className="inSection">

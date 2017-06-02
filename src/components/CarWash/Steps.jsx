@@ -16,8 +16,8 @@ class Steps extends Component {
         this.state = {
             PrefferedLocation:'Select Location',
             startDate: moment(),
-            step1Panel: false,
-            step2Panel: true,
+            step1Panel: true,
+            step2Panel: false,
             carWashCategories: [
                 {
                     id: 1,
@@ -261,9 +261,9 @@ class Steps extends Component {
     }
     hidePanel(panel) {
         if (panel == 'step1') {
-            this.setState({ step1Panel: !this.state.step1Panel });
+            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false  });
         } else if (panel == 'step2') {
-            this.setState({ step2Panel: !this.state.step2Panel });
+            this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
     }
 
@@ -376,7 +376,7 @@ class Steps extends Component {
                             <div className="col-md-6">{leftBlock}</div>
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" />
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2'); }}/>
                         </div>
                     </div>}
                 </section>
