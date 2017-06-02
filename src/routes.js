@@ -32,13 +32,14 @@ import BookService from './components/BookService/BookService';
 import CarTimeline from './components/CarTimeline/CarTimeline';
 import CarRepair from './components/CarRepair/CarRepair';
 import CarWash from './components/CarWash/CarWash';
+import CarService from './components/CarService/CarService';
 
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
     <Route path="dashboard" component={DashboardContainer(Dashboard)} onEnter={isLoggedIn}/>
     <Route path="mycar-list" component={DashboardContainer(MyCarList)} onEnter={isLoggedIn}/>
-    <Route path="sign-in" component={AuthContainer(SignIn)}/>
+    <Route path="sign-in" component={AuthContainer(SignIn)} onEnter={isLoggedIn}/>
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
     <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
@@ -48,5 +49,6 @@ export default (
     <Route path="timeline" component={AuthContainer(CarTimeline)} onEnter={isLoggedIn}/>
     <Route path="car-repair" component={AuthContainer(CarRepair)} onEnter={isLoggedIn}/>
     <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/> 
+    <Route path="car-service" component={AuthContainer(CarService)} onEnter={isLoggedIn}/> 
   </Route>
 );

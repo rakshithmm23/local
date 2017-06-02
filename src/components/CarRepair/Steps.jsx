@@ -264,7 +264,7 @@ class Steps extends Component {
     }
     hidePanel(panel) {
         if (panel == 'step1') {
-            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false  });
+            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false });
         } else if (panel == 'step2') {
             this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
@@ -384,11 +384,11 @@ class Steps extends Component {
                 </div>
             )
         })
-        const rationCardView = map(this.state.rationCard, (img,index) => {
+        const rationCardView = map(this.state.rationCard, (img, index) => {
             return (
                 <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('rationCard',index)}}>
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('rationCard', index) }}>
                             <i className="mdi mdi-close"></i>
                         </span>
                         <img src={img.path} />
@@ -397,11 +397,11 @@ class Steps extends Component {
                 </div>
             )
         })
-        const drivingLicenceView = map(this.state.drivingLicence, (img,index) => {
+        const drivingLicenceView = map(this.state.drivingLicence, (img, index) => {
             return (
                 <div className='upload-box-wrapper box-shadow'>
                     <div className="uploaded-image">
-                        <span className="cancel-image" onClick={()=>{this.cancelUploadImage('drivingLicence',index)}}>
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('drivingLicence', index) }}>
                             <i className="mdi mdi-close"></i>
                         </span>
                         <img src={img.path} />
@@ -475,12 +475,12 @@ class Steps extends Component {
         });
         return (
             <div className="panel-section car-wash">
-                 <section className="collapse-panel">
+                <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
                         <h4>Step 1: Select Car Repair Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                   {this.state.step1Panel && <div className="panel-content">
+                    {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="search-box">
@@ -494,7 +494,7 @@ class Steps extends Component {
                             <div className="col-md-6">{leftBlock}</div>
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }}/>
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
                         </div>
                     </div>}
                 </section>
@@ -551,7 +551,7 @@ class Steps extends Component {
                                         <div className="radio-style">
                                             <label>
                                                 <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>This is urgent reuest!</span>
+                                                <i className="mf-radio-button" /><span>This is urgent request!</span>
                                             </label>
                                         </div>
                                     </div>
@@ -608,6 +608,11 @@ class Steps extends Component {
                                             {uploadImage}
                                         </div>
                                     </div>
+                                    <span className="image-ipload-error">
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" />
+                                    </span>
                                 </div>
 
                                 <div className="form-section uploads">
@@ -618,6 +623,11 @@ class Steps extends Component {
                                             {policeReportView}
                                         </div>
                                     </div>
+                                    <span className="image-ipload-error hide">
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" />
+                                    </span>
                                 </div>
 
                                 <div className="form-section uploads">
@@ -628,6 +638,11 @@ class Steps extends Component {
                                             {rationCardView}
                                         </div>
                                     </div>
+                                    <span className="image-ipload-error hide">
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" />
+                                    </span>
                                 </div>
 
                                 <div className="form-section uploads">
@@ -638,15 +653,20 @@ class Steps extends Component {
                                             {drivingLicenceView}
                                         </div>
                                     </div>
+                                    <span className="image-ipload-error hide">
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" />
+                                    </span>
                                 </div>
 
                             </div>
                         </div>
                         <div className="next-button clearfix">
-                        <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quote" />
-                    </div>
+                            <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quotes" />
+                        </div>
                     </div>}
-                    
+
                 </section>
             </div>
         );

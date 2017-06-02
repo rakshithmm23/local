@@ -19,7 +19,7 @@
 }
 
 .service-list {
-    padding: 30px 0px;
+    padding: 30px 0px !important;
 }
 
 .service-list h5 {

@@ -1,5 +1,6 @@
 /*Collapse Panel*/
 
+
 /*ncr = new-car-request*/
 
 .new-car-profile .title {
@@ -68,7 +69,7 @@
 
 .panel-section .collapse-panel .search-box input {
     border: transparent;
-    border-bottom: 2px solid #DAE1E7 !important;
+    border-bottom: 1px solid #C8D4DE !important;
     outline: 0 !important;
     padding-right: 40px;
 }
@@ -202,7 +203,7 @@
     color: #454B51;
 }
 
-.collapse-panel{
+.collapse-panel {
     margin-top: 20px;
 }
 
@@ -215,12 +216,15 @@
     vertical-align: top;
     border-radius: 3px;
 }
+
 .car-wash .collapse-panel .right .uploads .upload-box-wrapper {
-  margin-left: 0;
+    margin-left: 0;
 }
-.upload-box-wrapper.box-shadow{
+
+.upload-box-wrapper.box-shadow {
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
 }
+
 .upload-box-wrapper .mdi-close {
     color: #fff;
     font-size: 11px;
@@ -266,7 +270,7 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: none;
-    border-radius: 3px;    
+    border-radius: 3px;
 }
 
 .upload-image {
@@ -283,181 +287,185 @@
     border-bottom: 1px solid #C8D4DE !important;
 }
 
+
 /*Sub Collpase Panel*/
 
 .sub-collapse-panel {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head {
-  cursor: pointer;
-  position: relative;
-  padding: 10px 22px;
-  border-radius: 4px;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(218, 225, 231, 0.4);
-  height: 54px;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(218, 225, 231, 0.4);
+    height: 54px;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head.active {
-  background-color: rgba(218, 225, 231, 0.2);
-  border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid transparent;
+    background-color: rgba(218, 225, 231, 0.2);
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid transparent;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head i {
-  color: #454B51;
-  font-size: 26px;
-  float: right;
+    color: #454B51;
+    font-size: 26px;
+    float: right;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head h4 {
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  line-height: 14px;
-  text-transform: capitalize;
-  margin-left: 33px;
-  display: inline-block;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: capitalize;
+    margin-left: 33px;
+    display: inline-block;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head .sub-category-count {
-  top: 20px;
-  position: absolute;
-  right: 75px;
-  color: #717982;
-  font-family: CenturyGothic;
-  font-size: 11px;
-  line-height: 14px;
+    top: 20px;
+    position: absolute;
+    right: 75px;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 11px;
+    line-height: 14px;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head figure {
-  display: inline-block;
+    display: inline-block;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head figure img {
-  height: 21px;
-  width: 20px;
+    height: 21px;
+    width: 20px;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body {
-  border: 1px solid rgba(218, 225, 231, 0.4);
-  border-top: 0;
-  max-height: 250px;
-  overflow: auto;
-  padding: 10px 0;
+    border: 1px solid rgba(218, 225, 231, 0.4);
+    border-top: 0;
+    max-height: 250px;
+    overflow: auto;
+    padding: 10px 0;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body .label {
-  color: #717982;
-  font-family: CenturyGothic;
-  font-size: 13px;
-  line-height: 14px;
-  text-transform: capitalize;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 13px;
+    line-height: 14px;
+    text-transform: capitalize;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body .label input {
-  margin-right: 10px;
-  outline: none;
+    margin-right: 10px;
+    outline: none;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body .label input:checked {
-  background-color: #454B51;
-  border: 1px solid #454B51;
+    background-color: #454B51;
+    border: 1px solid #454B51;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body .options {
-  padding: 7px;
-  padding-left: 67px;
+    padding: 7px;
+    padding-left: 67px;
 }
 
 .car-wash .collapse-panel {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .car-wash .collapse-panel .left {
-  border-right: 1px solid rgba(148, 157, 165, 0.4);
-  margin-top: 44px;
+    border-right: 1px solid rgba(148, 157, 165, 0.4);
+    margin-top: 44px;
 }
 
 .panel-content .form-section {
-  margin-bottom: 55px;
+    margin-bottom: 55px;
 }
-.panel-content .form-section.uploads{
-  margin-bottom: 20px;
+
+.panel-content .form-section.uploads {
+    margin-bottom: 20px;
 }
 
 .panel-content .date-time .form-group,
 .panel-content .date-time .form-input {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .panel-content .date-time .react-datepicker__input-container,
 .panel-content .date-time .rc-time-picker {
-  width: 100%;
+    width: 100%;
 }
 
 .panel-content .date-time .react-datepicker__input-container input,
 .panel-content .date-time .rc-time-picker input {
-  color: #868D91;
-  border: 0;
-  outline: 0 !important;
-  box-shadow: none !important;
-  border-bottom: 1px solid #ddd;
-  border-radius: 0;
-  padding: 0;
-  font-size: 14px;
-  height: 48px;
-  margin: 10px 0;
-  width: 100%
+    color: #868D91;
+    border: 0;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    padding: 0;
+    font-size: 14px;
+    height: 48px;
+    margin: 10px 0;
+    width: 100%
 }
 
 .car-wash .collapse-panel .right {
-  margin-top: 53px;
-  padding-left: 20px;
+    margin-top: 53px;
+    padding-left: 20px;
 }
 
 .collapse-panel .panel-sub-title {
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-size: 16px;
-  line-height: 14px;
-  display: block;
-  text-transform: capitalize;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 16px;
+    line-height: 14px;
+    display: block;
+    text-transform: capitalize;
 }
 
-.collapse-panel .panel-content .wrapper .panel-sub-title{
-  margin-left: 15px;
+.collapse-panel .panel-content .wrapper .panel-sub-title {
+    margin-left: 15px;
 }
-.collapse-panel .panel-content .wrapper .upload-image .panel-sub-title{
-  margin-bottom: 25px;
+
+.collapse-panel .panel-content .wrapper .upload-image .panel-sub-title {
+    margin-bottom: 25px;
 }
 
 .car-wash .collapse-panel .panel-text {
-  color: #717982;
-  font-size: 14px;
-  font-family: CenturyGothic;
-  line-height: 28px;
-  margin-top: 20px;
-  font-weight: normal;
+    color: #717982;
+    font-size: 14px;
+    font-family: CenturyGothic;
+    line-height: 28px;
+    margin-top: 20px;
+    font-weight: normal;
+    margin-bottom: 35px;
 }
 
 .collapse-panel .model-select {
-  margin-top: 36px;
-  margin-bottom: 36px;
+    margin-top: 36px;
+    margin-bottom: 20px;
 }
+
 .car-wash .collapse-panel .model-select.upload {
-  margin-top: 20px;
-  
+    margin-top: 20px;
 }
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {
-  right: 17px;
-  color: #949DA5;
+    right: 17px;
+    color: #949DA5;
 }
 
 .form-section .jd-text {
-  z-index: 9;
+    z-index: 9;
     cursor: pointer;
     position: relative;
     font-family: "CenturyGothic";
@@ -473,121 +481,141 @@
 }
 
 .car-wash .collapse-panel .right .img-uploads {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .radio-btn .radio-style {
-  display: inline-block;
-  margin-top: 20px;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .radio-btn .radio-style label {
-  color: #717982;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  line-height: 20px;
-  position: relative;
-  padding-left: 25px;
-  cursor: pointer;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
 }
 
 .car-wash .collapse-panel .right .img-uploads {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .car-wash .preffered-time-date.sec-container {
-  margin-bottom: 0px;
-  margin-top: 50px;
+    margin-bottom: 0px;
+    margin-top: 50px;
 }
 
 .car-wash .job-details.sec-container {
-  margin: 40px 0;
+    margin: 40px 0;
 }
 
 .car-wash .repair-reasons.sec-container {
-  margin: 40px 0;
-  margin-top: -5px;
+    margin: 40px 0;
+    margin-top: -5px;
 }
 
 .car-wash .preffered-location.sec-container {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
 .radio-btn .radio-style:first-child {
-  margin-right: 62px;
+    margin-right: 62px;
 }
 
 .radio-btn label:hover .mf-radio-button {
-  color: #337ab7;
+    color: #337ab7;
 }
 
 .radio-btn label span {
-  display: block;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+    display: block;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
 }
 
 .radio-btn input {
-  width: auto;
-  opacity: 0.0001;
-  position: absolute;
-  left: 0;
-  margin: 0;
-  padding: 0;
+    width: auto;
+    opacity: 0.0001;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .radio-btn input:checked~.mf-radio-button::after {
-  -webkit-transform: scale(0.5);
-  transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
 }
 
 .radio-btn input:checked~.mf-radio-button::before {
-  color: #ED3124;
+    color: #ED3124;
 }
 
 .mf-radio-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  display: block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #999;
 }
 
 .mf-radio-button::before,
 .mf-radio-button::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin: 2px 0;
-  width: 15px;
-  height: 15px;
-  -webkit-transition: -webkit-transform 0.28s ease;
-  transition: -webkit-transform 0.28s ease;
-  transition: transform 0.28s ease;
-  transition: transform 0.28s ease, -webkit-transform 0.28s ease;
-  border-radius: 50%;
-  border: 0.125rem solid currentColor;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2px 0;
+    width: 15px;
+    height: 15px;
+    -webkit-transition: -webkit-transform 0.28s ease;
+    transition: -webkit-transform 0.28s ease;
+    transition: transform 0.28s ease;
+    transition: transform 0.28s ease, -webkit-transform 0.28s ease;
+    border-radius: 50%;
+    border: 0.125rem solid currentColor;
 }
 
 .mf-radio-button::after {
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  background-color: #ED3124;
-  border-color: #ED3124;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    background-color: #ED3124;
+    border-color: #ED3124;
 }
 
 .car-wash .special-instruction-text {
-  color: #717982;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  line-height: 28px;
-  margin-top: 14px;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 28px;
+    margin-top: 14px;
+}
+
+.image-ipload-error p {
+    color: #ED3124;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 22px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.image-ipload-error i {
+    color: #717982;
+    font-size: 20px;
+    cursor: pointer;
+    vertical-align: top;
+    margin-top: -2px;
+    display: inline-block;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 991px) {
@@ -598,6 +626,8 @@
 
 
 /*timpicker*/
+
+
 /*
 .rc-time-picker-panel {
   left: 476.5px !important;

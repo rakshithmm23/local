@@ -86,8 +86,8 @@ export default class JobUpdate extends Component {
             iconLabel: 'Quotes',
           }
         ],
-       jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
-       'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
+        jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
+        'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
       {
         carImage: '../../images/car.jpg',
@@ -106,7 +106,7 @@ export default class JobUpdate extends Component {
           {
             vendor: 'Buddy’s Car Service',
             vendorPlace: '3916 Address Tower, Street Name, Dubai',
-             vendorMobile: '+971 919 233 470',
+            vendorMobile: '+971 919 233 470',
             quote: '200 AED',
             totalTask: '8 Tasks',
           }
@@ -138,7 +138,7 @@ export default class JobUpdate extends Component {
           {
             vendor: 'Buddy’s Car Service',
             vendorPlace: '3916 Address Tower, Street Name, Dubai',
-             vendorMobile: '+971 919 233 470',
+            vendorMobile: '+971 919 233 470',
             quote: '200 AED',
             totalTask: '8 Tasks',
           }
@@ -241,7 +241,7 @@ export default class JobUpdate extends Component {
       });
       const vendorDetailsView = item.vendorDetails ? item.vendorDetails.map((item, key) => {
         return (
-          <div key={key}>
+          <ul key={key}>
             <li>
               <label>
                 Vendor
@@ -264,7 +264,7 @@ export default class JobUpdate extends Component {
                 {item.quote}
               </span>
             </li>
-          </div>
+          </ul>
         );
       }) : '';
       return (
@@ -320,21 +320,25 @@ export default class JobUpdate extends Component {
                       })}
                     </div>
                     <div>
-                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage && <div className="jr-body">
-                        <div className={infoClass}>
-                          <p>
-                            {item.jobInfoMessage}
-                          </p>
-                        </div>
-                      </div>}
+                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage ?
+                        <div className="jr-body">
+                          <div className={infoClass}>
+                            <p>
+                              {item.jobInfoMessage}
+                            </p>
+                          </div>
+                        </div> :
+                        <div className="vendor-quote">
+                          {vendorDetailsView}
+                        </div>}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <div className={this.state.open?"job-footer active":"job-footer"}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <div className="job-footer">
                   <Collapse in={this.state.open}>
                     <div>
                       <h1 className="job-footer-title">Job Progress</h1>
@@ -344,17 +348,17 @@ export default class JobUpdate extends Component {
                       <span className="job-end-point">Car ready</span>
                     </div>
                   </Collapse>
-                </div>}
+                </div>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
       );
     });
     return (
       <div>
-          <h4 className="job-update-title">Job Updates</h4>
-          <EmptyUpdates />
+        <h4 className="job-update-title">Job Updates</h4>
+        <EmptyUpdates />
         {jobDataList}
       </div>
     );
