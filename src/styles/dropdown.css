@@ -180,6 +180,7 @@
 }
 
 .text-dropdown .dropdown-menu li a {
+    outline: none;
   padding: 12px 20px;
   color: #454B51;
   font-family: "CenturyGothic";
@@ -187,13 +188,13 @@
   line-height: 14px;
 }
 
-.text-dropdown .dropdown-menu li:last-child {
+.text-dropdown.add-new .dropdown-menu li:last-child {
   background: red !important;
   border-radius: 0 0px 5px 5px;
 }
 
-.text-dropdown .dropdown-menu li:last-child a {
-    outline: none;
+.text-dropdown.add-new .dropdown-menu li:last-child a {
+    
   background: red !important;
   color: #FFFFFF;
   font-family: "CenturyGothic";

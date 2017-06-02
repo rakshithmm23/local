@@ -50,7 +50,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             
                             <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service"/>
-                            <div className="text-dropdown" >
+                            <div className="text-dropdown add-new" >
                                     <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={()=>{this.myCarDropdown()}} title={
                                         <span>
                                             <h4>My Nissan GT-R</h4>
