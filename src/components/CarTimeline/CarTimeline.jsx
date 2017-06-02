@@ -9,7 +9,7 @@ import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { ButtonToolbar,DropdownButton,MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
 export default class BookService extends Component {
@@ -19,7 +19,7 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             timelineUpdate: "timeline",
-            BookServiceDropdown:false
+            myCarDropdownIcon: true
 
         };
     }
@@ -29,12 +29,14 @@ export default class BookService extends Component {
     timelineDetail(val) {
         this.setState({ timelineUpdate: val });
     }
-    BookServiceDropdown(){
-        this.setState({BookServiceDropdown:!this.state.BookServiceDropdown});
+    myCarDropdown() {
+        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon })
     }
 
     render() {
+        debugger
         return (
+
             <div>
                 {/*Header*/}
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
@@ -46,32 +48,36 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>My Nissan GT-R <i className="mdi mdi-chevron-down"/></h4>
+
                             <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
-                            
-                            {/*{this.state.BookServiceDropdown && */}
-                            <div className="bookservice-more">
-                                {/*<ul>
-                                    <li>Edit</li>
-                                    <li>delete</li>
-                                </ul>*/}
-                            <DropdownButton  bsSize="xsmall" title="" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical"></i>} noCaret pullRight>
-      
-                                   
-                                <MenuItem eventKey="Edit">Edit</MenuItem>
-                                <MenuItem eventKey="<Delete></Delete>">Delete</MenuItem>
-                                
-                            </DropdownButton>
+                            <div className="text-dropdown add-new" >
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
+                                    <span>
+                                        <h4>My Nissan GT-R</h4>
+                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
+                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                    </span>} >
+                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>
+                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">My Nissan GT-R</MenuItem>
+                                    <MenuItem eventKey="My Nissan GT-R">Add New</MenuItem>
+                                </DropdownButton>
                             </div>
-                            {/*}*/}
-                            
+
+                            <div className="three-dots-icon">
+                                <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                    <MenuItem eventKey="Edit">Edit</MenuItem>
+                                    <MenuItem eventKey="<Delete></Delete>">Delete</MenuItem>
+                                </DropdownButton>
+                            </div>
                         </div>
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
                             <div className="row timeline-card">
                                 <div className="col-md-3 pad0">
-                                        <ServiceDetails />
+                                    <ServiceDetails />
                                 </div>
                                 <div className="col-md-9 pad0">
                                     <div className="row timeline-summary-header">
