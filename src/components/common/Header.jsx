@@ -45,7 +45,7 @@ export default class Header extends Component {
                         <li className={this.state.notificationSelected ? "notification-menu active":"notification-menu"}>
                             <div className="text-dropdown notify" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({notificationSelected:!this.state.notificationSelected})}} title={
-                                    <div className="d-inline-block">
+                                    <div className="">
                                         <i className="mdi mdi-bell" aria-hidden="true" />
                                         <span className="no-notify"></span>
                                         {/*{this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}

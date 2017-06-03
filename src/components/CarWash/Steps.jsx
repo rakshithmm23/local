@@ -244,7 +244,6 @@ class Steps extends Component {
         });
     }
     openCategory(id) {
-        debugger
         let newCat = [];
         map(this.state.carWashCategories, (category) => {
             let cat = { ...category };
