@@ -92,6 +92,7 @@
     border: 1px solid #DAE1E7 !important;
     margin-top: -1px !important;
         padding: 5px 13px;
+        box-shadow: none !important;
 }
 .header-search .form-group .dropdown-menu li{
       border-bottom: 1px solid #ddd;
