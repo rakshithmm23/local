@@ -3,19 +3,19 @@ import { FormGroup, InputGroup, Addon, FormControl } from 'react-bootstrap';
 import Popup from "./Popup";
 // import { findDOMNode } from 'react-dom';
 import { DropdownButton, MenuItem, } from 'react-bootstrap';
-import {map,filter,lowerCase} from "lodash"; 
+import { map, filter, lowerCase } from "lodash";
 
 export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showResults: false,
-            seachedValue:null,
-            dropdownList : ["Audi","Renault","BMW","Benz"],
-            seachedResult:[]
+            seachedValue: null,
+            dropdownList: ["Audi", "Renault", "BMW", "Benz"],
+            seachedResult: []
         }
     }
-    
+
     handleFocus() {
         this.setState({
             showResults: true
@@ -26,15 +26,15 @@ export default class Search extends Component {
             showResults: false
         });
     }
-    seachedValue(e){
-        this.setState({seachedValue:e})
+    seachedValue(e) {
+        this.setState({ seachedValue: e })
     }
-    
-   
+
+
     render() {
-        let searchView =filter(this.state.dropdownList,(val)=>{
+        let searchView = filter(this.state.dropdownList, (val) => {
             debugger
-            if(this.state.seachedValue!="" && val.toLowerCase().indexOf(this.state.seachedValue)!=-1){
+            if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
                 return val
             }
         })
@@ -97,21 +97,19 @@ export default class Search extends Component {
                                 <i className="mdi mdi-magnify" />
                             </InputGroup.Addon>
                         </InputGroup>*/}
-                        <DropdownButton bsSize="large"  id="dropdown-size-large" onSelect={(e)=>{this.seachedValue(e)}} open={searchView.length>0 ?true:false} noCaret title={
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e) }} open={searchView.length > 0 ? true : false} noCaret title={
                             <div >
-                                <input value={this.state.searchView} placeholder="Search" 
-                                    onChange={(e)=>this.setState({seachedValue:e.target.value})}/>
+                                <input value={this.state.searchView} placeholder="Search"
+                                    onChange={(e) => this.setState({ seachedValue: e.target.value })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
                                 <span className="no-notify" />
                             </div>} >
-                            {map(searchView,(result,key)=>{
-                                
-                                
-                                return(
+                            {map(searchView, (result, key) => {
+                                return (
                                     <MenuItem key={key} eventKey={result}>{result}</MenuItem>
                                 );
                             })}
-                            
+
                         </DropdownButton>
                     </FormGroup>
 

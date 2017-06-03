@@ -1,21 +1,107 @@
 import React, { Component } from 'react';
 import Dropdown from '../common/Dropdown';
 import Search from '../common/Search';
-import { DropdownButton, MenuItem,Media } from 'react-bootstrap';
-
+import { DropdownButton, MenuItem, Media } from 'react-bootstrap';
+import { map } from 'lodash';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
-       this.state = {
-           notificationSelected:false,
-           messageSelected:false
-       }
+        this.state = {
+            notificationSelected: false,
+            messageSelected: false
+        }
     }
-  
-   
+
+
     render() {
         const { authActions, router, notificationCount, profileName, notificationCallBack } = this.props;
+        const messagesThread = [
+            {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }
+
+        ]
+        const notificationThread = [
+            {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }, {
+                messageFrom: "Shine Works",
+                image: "../../images/welcome.png",
+                text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
+                time:"2 hours ago"
+            }
+
+        ]
+        const viewMessages = map(messagesThread, (message, key) => {
+            return (
+                <MenuItem eventKey={message.key} key={key}>
+                    <Media>
+                        <Media.Left>
+                            <div className="notification-img">
+                                <img src={message.image} alt="Image" />
+                            </div>
+                        </Media.Left>
+                        <Media.Body>
+                            <Media.Heading> <span>{message.messageFrom}</span>  has sent you a message</Media.Heading>
+                            <p>{message.text} </p>
+                            <span className="notify-time">{message.time}</span>
+                        </Media.Body>
+                    </Media>
+
+                </MenuItem>
+            )
+        })
+        const viewNotifications = map(notificationThread, (message, key) => {
+            return (
+                <MenuItem eventKey={message.key} key={key}>
+                    <Media>
+                        <Media.Left>
+                            <div className="notification-img">
+                                <img src={message.image} alt="Image" />
+                            </div>
+                        </Media.Left>
+                        <Media.Body>
+                            <Media.Heading> <span>{message.messageFrom}</span>  has sent you a message</Media.Heading>
+                            <p>{message.text} </p>
+                            <span className="notify-time">{message.time}</span>
+                        </Media.Body>
+                    </Media>
+
+                </MenuItem>
+            )
+        })
         return (
             <div className="header-section navbar-fixed-top">
                 <div className="logo-section">
@@ -35,16 +121,16 @@ export default class Header extends Component {
                                 <span className="no-notify"></span>
                             </label>
                         </li>
-                         <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
+                        <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
                             <label>
                                 <i className="mdi mdi-message-processing" aria-hidden="true" />
                                 <span className="no-notify"></span>
                             </label>
                         </li>
 
-                        <li className={this.state.notificationSelected ? "notification-menu active":"notification-menu"}>
+                        <li className={this.state.notificationSelected ? "notification-menu active" : "notification-menu"}>
                             <div className="text-dropdown notify" >
-                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({notificationSelected:!this.state.notificationSelected})}} title={
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({ notificationSelected: !this.state.notificationSelected }) }} title={
                                     <div className="">
                                         <i className="mdi mdi-bell" aria-hidden="true" />
                                         <span className="no-notify"></span>
@@ -52,80 +138,16 @@ export default class Header extends Component {
                                             {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}*/}
                                     </div>} >
                                     <MenuItem eventKey="My Nissan GT-R">
-                                    
-                                    Notifications
-                                    </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
 
+                                        Notifications
                                     </MenuItem>
-                                    
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
+                                    {viewNotifications}
                                 </DropdownButton>
                             </div>
                         </li>
-                         <li className={this.state.messageSelected ? "notification-menu active":"notification-menu"}>
+                        <li className={this.state.messageSelected ? "notification-menu active" : "notification-menu"}>
                             <div className="text-dropdown notify" >
-                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({messageSelected:!this.state.messageSelected})}} title={
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({ messageSelected: !this.state.messageSelected }) }} title={
                                     <div className="d-inline-block">
                                         <i className="mdi mdi-message-processing" aria-hidden="true" />
                                         <span className="no-notify"></span>
@@ -133,78 +155,12 @@ export default class Header extends Component {
                                     <MenuItem eventKey="My Nissan GT-R">
                                         Messages
                                     </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent you a invite. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
 
-                                    </MenuItem>
-                                    
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent you a invite. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent you a invite. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
-                                    <MenuItem eventKey="My Audi">
-                                        <Media>
-                                            <Media.Left>
-                                                <div className="notification-img">
-                                                    <img width={64} height={64} src="../../images/welcome.png" alt="Image" />
-                                                </div>
-                                                
-                                            </Media.Left>
-                                            <Media.Body>
-                                                <Media.Heading> <span>Shine Works</span>  has sent you a message</Media.Heading>
-                                                <p>Shine Works has sent you a invite. </p>
-                                                <span className="notify-time">2 hours ago</span>
-                                            </Media.Body>
-                                        </Media>
-
-                                    </MenuItem>
+                                    {viewMessages}
                                 </DropdownButton>
                             </div>
                         </li>
 
-                       
-
-                       
                         <li className="profile-header">
                             <Dropdown authActions={authActions} router={router} />
                         </li>
