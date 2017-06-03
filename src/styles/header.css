@@ -78,7 +78,7 @@
   display: inline-block;
   border: none;
   outline: none;
-  width: 94%;
+  width: 94%; 
 }
 .header-search .form-group .dropdown-toggle .mdi-magnify {
   float: right;
