@@ -252,7 +252,7 @@
 }
 
 .text-dropdown.notify .media-heading {
-  color: #454B51;
+  color: rgba(69, 75, 81, 0.67);
   font-family: "CenturyGothic";
   font-size: 14px;
   line-height: 14px;

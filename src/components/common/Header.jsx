@@ -35,8 +35,14 @@ export default class Header extends Component {
                                 <span className="no-notify"></span>
                             </label>
                         </li>
+                         <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
+                            <label>
+                                <i className="mdi mdi-message-processing" aria-hidden="true" />
+                                <span className="no-notify"></span>
+                            </label>
+                        </li>
 
-                        <li className={this.state.notificationSelected?"notification-menu active":"notification-menu"}>
+                        <li className={this.state.notificationSelected ? "notification-menu active":"notification-menu"}>
                             <div className="text-dropdown notify" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({notificationSelected:!this.state.notificationSelected})}} title={
                                     <div className="d-inline-block">
@@ -117,22 +123,12 @@ export default class Header extends Component {
                                 </DropdownButton>
                             </div>
                         </li>
-
-                        <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
-                            <label>
-                                <i className="mdi mdi-message-processing" aria-hidden="true" />
-                                <span className="no-notify"></span>
-                            </label>
-                        </li>
-
-                        <li className={this.state.messageSelected?"notification-menu active":"notification-menu"}>
+                         <li className={this.state.messageSelected ? "notification-menu active":"notification-menu"}>
                             <div className="text-dropdown notify" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({messageSelected:!this.state.messageSelected})}} title={
                                     <div className="d-inline-block">
                                         <i className="mdi mdi-message-processing" aria-hidden="true" />
                                         <span className="no-notify"></span>
-                                        {/*{this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
-                                            {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}*/}
                                     </div>} >
                                     <MenuItem eventKey="My Nissan GT-R">
                                         Messages
@@ -205,6 +201,10 @@ export default class Header extends Component {
                                 </DropdownButton>
                             </div>
                         </li>
+
+                       
+
+                       
                         <li className="profile-header">
                             <Dropdown authActions={authActions} router={router} />
                         </li>
