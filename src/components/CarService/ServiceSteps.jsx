@@ -10,7 +10,7 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
-class Steps extends Component {
+class ServiceSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -513,4 +513,4 @@ class Steps extends Component {
     }
 }
 
-export default Steps;
+export default ServiceSteps;

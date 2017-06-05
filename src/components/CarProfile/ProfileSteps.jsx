@@ -5,7 +5,7 @@ import { map, each } from 'lodash';
 import TextInput from '../common/TextInput';
 
 
-class Steps extends Component {
+class ProfileSteps extends Component {
     constructor() {
         super();
         this.state = {
@@ -265,4 +265,4 @@ class Steps extends Component {
     }
 }
 
-export default Steps;
+export default ProfileSteps;
