@@ -42,7 +42,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-5.png'
                 }, {
                     id: 2,
                     active: false,
@@ -66,7 +66,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-2.png'
                 }, {
                     id: 3,
                     active: false,
@@ -98,7 +98,7 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 }, {
                     id: 4,
                     active: false,
@@ -130,7 +130,7 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-1.png'
                 },
                 {
                     id: 5,
@@ -155,7 +155,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-3.png'
                 },
                 {
                     id: 6,
@@ -180,7 +180,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-5.png'
                 },
                 {
                     id: 7,
@@ -205,7 +205,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 },
                 {
                     id: 8,
@@ -230,7 +230,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-2.png'
                 }
 
             ],

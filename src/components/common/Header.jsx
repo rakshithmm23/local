@@ -18,22 +18,22 @@ export default class Header extends Component {
         const messagesThread = [
             {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification1.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification2.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification3.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification4.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }
@@ -42,22 +42,22 @@ export default class Header extends Component {
         const notificationThread = [
             {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification1.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification2.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification3.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }, {
                 messageFrom: "Shine Works",
-                image: "../../images/welcome.png",
+                image: "../../images/notification4.png",
                 text: "Shine Works has sent a great offer for all care. Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.",
                 time: "2 hours ago"
             }

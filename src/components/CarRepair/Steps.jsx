@@ -26,6 +26,30 @@ class Steps extends Component {
                 {
                     id: 1,
                     active: false,
+                    heading: "AC Heating & cooling",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/auto-service-icons-5.png'
+                }, {
+                    id: 2,
+                    active: false,
                     heading: "Brakes & Exhaust",
                     checkedCategoryCount: 0,
                     categories: [
@@ -46,35 +70,11 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
-                }, {
-                    id: 2,
-                    active: false,
-                    heading: "Basic Wash",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-3.png'
                 }, {
                     id: 3,
                     active: false,
-                    heading: "Awesome Wash & Detail",
+                    heading: "Body Work, Dents & Repair",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -102,11 +102,11 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 }, {
                     id: 4,
                     active: false,
-                    heading: "Wash & Shine",
+                    heading: "Engine",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -134,12 +134,12 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-1.png'
                 },
                 {
                     id: 5,
                     active: false,
-                    heading: "Totally Awesome & Detail",
+                    heading: "Clutch & Gearbox Repair",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -159,7 +159,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-3.png'
                 },
                 {
                     id: 6,
@@ -184,12 +184,12 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-5.png'
                 },
                 {
                     id: 7,
                     active: false,
-                    heading: "AC Dust Sanitization",
+                    heading: "Electrical & Batteries",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -209,7 +209,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 },
                 {
                     id: 8,
@@ -234,7 +234,31 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-2.png'
+                },{
+                    id: 8,
+                    active: false,
+                    heading: "Yearly Package",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/auto-service-icons-3.png'
                 }
 
             ],
@@ -415,7 +439,7 @@ class Steps extends Component {
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
-            if (key % 2 == 0) {
+            if (key % 2 != 0) {
                 rightBlock.push(
                     <div className="sub-collapse-panel" key={key}>
                         <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
@@ -490,8 +514,8 @@ class Steps extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">{rightBlock}</div>
                             <div className="col-md-6">{leftBlock}</div>
+                            <div className="col-md-6">{rightBlock}</div>
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
