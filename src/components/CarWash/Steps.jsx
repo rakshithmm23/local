@@ -276,15 +276,15 @@ class Steps extends Component {
                         subCategory.checked = !subCategory.checked;
                     }
                     if (subCategory.checked) {
-                        checkedCount++
+                        checkedCount++;
                     }
-                })
+                });
                 washCategory.checkedCategoryCount = checkedCount;
             }
-        })
+        });
         this.setState({
             carWashCategories: updateVal
-        })
+        });
 
     }
     selectedDropdownText(location) {
@@ -318,7 +318,7 @@ class Steps extends Component {
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
+                                        <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.checked} {category.name}</label>
                                     </span>
                                 </div>);
                             })}
@@ -346,7 +346,7 @@ class Steps extends Component {
                             {map(carWashCategory.categories, (category, index) => {
                                 return (<div className="options" index={index}>
                                     <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
+                                        <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>
                                 </div>);
                             })}

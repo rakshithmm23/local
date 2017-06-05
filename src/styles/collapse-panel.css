@@ -362,6 +362,9 @@
     line-height: 14px;
     text-transform: capitalize;
 }
+.sub-collapse-panel .sub-collapse-panel-body .label.active {
+    color: #454B51;
+}
 
 .sub-collapse-panel .sub-collapse-panel-body .label input {
     margin-right: 10px;
