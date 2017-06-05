@@ -16,6 +16,15 @@ export default class Search extends Component {
         }
     }
 
+    componentWillMount() {
+        document.body.addEventListener('click', this.bodyClick.bind(this));
+    }
+    bodyClick(e) {
+        if ((e.target.closest('.searchFill') == null)) {
+            this.setState({ seachedValue: "" })
+        }
+    }
+
     handleFocus() {
         this.setState({
             showResults: true
@@ -32,8 +41,9 @@ export default class Search extends Component {
 
 
     render() {
+
         let searchView = filter(this.state.dropdownList, (val) => {
-            debugger
+
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
                 return val
             }
@@ -99,14 +109,15 @@ export default class Search extends Component {
                         </InputGroup>*/}
                         <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e) }} open={searchView.length > 0 ? true : false} noCaret title={
                             <div >
-                                <input value={this.state.searchView} placeholder="Search"
+
+                                <input value={this.state.seachedValue} placeholder="Search"
                                     onChange={(e) => this.setState({ seachedValue: e.target.value })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
                                 <span className="no-notify" />
                             </div>} >
                             {map(searchView, (result, key) => {
                                 return (
-                                    <MenuItem key={key} eventKey={result}>{result}</MenuItem>
+                                    <MenuItem key={key} eventKey={result} >{result}</MenuItem>
                                 );
                             })}
 

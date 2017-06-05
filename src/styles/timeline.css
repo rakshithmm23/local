@@ -37,12 +37,19 @@
 }
 
 .service-carPlate h6 {
-  font-size: 13px;
+    color: #717982;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 16px;
 }
 
 .service-carPlate h4 {
+  font-weight: bold;
   font-size: 18px;
   color: #4C4C4C;
+}
+.service-carPlate .car-make {
+  	letter-spacing: 1px;
 }
 
 .service-carPlate span {
@@ -56,6 +63,9 @@
   font-family: CenturyGothic;
   font-weight: normal;
   margin: 20px 0;
+}
+.service-car-info .service-info li h5{
+  letter-spacing: 1px;  
 }
 
 .timeline-summary-header {
