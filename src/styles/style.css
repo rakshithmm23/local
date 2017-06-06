@@ -49,6 +49,9 @@
     .padLeft0 {
         padding-left: 0;
     }
+    .padLeft15 {
+        padding-left: 15px;
+    }
 
     .padRight0 {
         padding-right: 0;

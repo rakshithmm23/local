@@ -9,6 +9,8 @@ class ProfileSteps extends Component {
     constructor() {
         super();
         this.state = {
+            uploadImgSize: 0,
+            uploadImageErrText: false,
             imageUploaded: [],
             activeLogo: null,
             activeModel: null,
@@ -54,14 +56,23 @@ class ProfileSteps extends Component {
         }
     }
     fileNameUpload(e) {
-        let files = [];
+        debugger
+        let files = [], fileImgSize = 0;
+        this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) });
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            fileImgSize += val.size;
         });
         // upload = { ...this.state.imageUploaded, files }
-        this.setState({
-            imageUploaded: this.state.imageUploaded.concat(files)
-        })
+        if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            // this.state.uploadImgSize += fileImgSize;
+            this.setState({
+                imageUploaded: this.state.imageUploaded.concat(files),
+                uploadImgSize: fileImgSize + this.state.uploadImgSize,
+            });
+        }
     }
     cancelImageUpload(val) {
         const array = this.state.imageUploaded;
@@ -112,31 +123,31 @@ class ProfileSteps extends Component {
                 logo: '../../images/Buick-Logo.png',
                 name: 'Buick 1',
                 manufacturerId: 9
-            },{
+            }, {
                 logo: '../../images/Cadillac-Logo.png',
                 name: 'Cadillac 1',
                 manufacturerId: 10
-            },{
+            }, {
                 logo: '../../images/Chevrolet-Logo.png',
                 name: 'Chevrolet 1',
                 manufacturerId: 11
-            },{
+            }, {
                 logo: '../../images/Chrysler-log.png',
                 name: 'Chrysler 1',
                 manufacturerId: 12
-            },{
+            }, {
                 logo: '../../images/citroen-logo.png',
                 name: 'citroen 1',
                 manufacturerId: 13
-            },{
+            }, {
                 logo: '../../images/Datsun-logo.png',
                 name: 'Datsun 1',
                 manufacturerId: 14
-            },{
+            }, {
                 logo: '../../images/exagon.png',
                 name: 'exagon 1',
                 manufacturerId: 15
-            },{
+            }, {
                 logo: '../../images/Acura-logo.png',
                 name: 'Acura 2',
                 manufacturerId: 16
@@ -168,7 +179,7 @@ class ProfileSteps extends Component {
                 logo: '../../images/Buick-Logo.png',
                 name: 'Buick 2',
                 manufacturerId: 23
-            },{
+            }, {
                 logo: '../../images/Cadillac-Logo.png',
                 name: 'Cadillac 2',
                 manufacturerId: 124
@@ -183,7 +194,7 @@ class ProfileSteps extends Component {
                 logo: '../../images/audi-a6.png',
                 name: 'audi a6',
                 modalId: 2
-            },{
+            }, {
                 logo: '../../images/audi-a3.png',
                 name: 'audi a5',
                 modalId: 1
@@ -191,7 +202,7 @@ class ProfileSteps extends Component {
                 logo: '../../images/audi-a6.png',
                 name: 'audi a7',
                 modalId: 2
-            },{
+            }, {
                 logo: '../../images/audi-a3.png',
                 name: 'audi a8',
                 modalId: 1
@@ -200,7 +211,7 @@ class ProfileSteps extends Component {
                 name: 'audi a9',
                 modalId: 2
             }
-            
+
         ];
         const carListView = map(carList, (carItem, key) => {
             return (
@@ -296,6 +307,11 @@ class ProfileSteps extends Component {
                                         <Upload id="carProfileUpload" fileUpload={(e) => this.fileNameUpload(e)} />
                                         {imageUploadedView}
                                     </div>
+                                    <span className={this.state.uploadImageErrText ? "image-ipload-error padLeft15" : "image-ipload-error padLeft15 hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
+                                    </span>
                                 </div>
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
