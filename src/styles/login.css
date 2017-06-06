@@ -143,6 +143,7 @@
     margin-right: 10px !important;
     margin-top: -4px !important;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .checkbox-style input:checked {
@@ -154,7 +155,7 @@
 .checkbox-style input:checked:after {
     content: '\F12C';
     font-family: 'Material Design Icons';
-    font-size: 14px;
+    font-size: 13px;
     position: absolute;
     top: 0px;
     left: 0px;

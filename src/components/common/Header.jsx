@@ -10,7 +10,6 @@ export default class Header extends Component {
         document.body.addEventListener("click", this.hideChevron.bind(this));
     }
     hideChevron(event) {
-        debugger;
     }
     render() {
         const { authActions, router, notificationCount, profileName, notificationCallBack } = this.props;

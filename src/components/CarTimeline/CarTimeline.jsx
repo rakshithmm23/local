@@ -34,7 +34,6 @@ export default class BookService extends Component {
     }
 
     render() {
-        debugger
         return (
 
             <div>
@@ -48,7 +47,6 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-
                             <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
                             <div className="text-dropdown add-new" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
