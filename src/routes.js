@@ -39,7 +39,7 @@ export default (
     <IndexRoute component={AuthContainer(SignUp)}/>
     <Route path="dashboard" component={DashboardContainer(Dashboard)} onEnter={isLoggedIn}/>
     <Route path="mycar-list" component={DashboardContainer(MyCarList)} onEnter={isLoggedIn}/>
-    <Route path="sign-in" component={AuthContainer(SignIn)} onEnter={isLoggedIn}/>
+    <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
     <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
@@ -48,7 +48,7 @@ export default (
     <Route path="car-list" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
     <Route path="timeline" component={AuthContainer(CarTimeline)} onEnter={isLoggedIn}/>
     <Route path="car-repair" component={AuthContainer(CarRepair)} onEnter={isLoggedIn}/>
-    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/> 
-    <Route path="car-service" component={AuthContainer(CarService)} onEnter={isLoggedIn}/> 
+    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/>
+    <Route path="car-service" component={AuthContainer(CarService)} onEnter={isLoggedIn}/>
   </Route>
 );
