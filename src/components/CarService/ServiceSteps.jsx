@@ -196,7 +196,6 @@ class ServiceSteps extends Component {
         this.setState({ PrefferedLocation: location });
     }
     fileNameUpload(e) {
-        debugger
         let files = [], fileImgSize = 0;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
