@@ -5,16 +5,18 @@ import { map, each } from 'lodash';
 import TextInput from '../common/TextInput';
 
 
-class Steps extends Component {
+class ProfileSteps extends Component {
     constructor() {
         super();
         this.state = {
+            uploadImgSize: 0,
+            uploadImageErrText: false,
             imageUploaded: [],
             activeLogo: null,
             activeModel: null,
-            manufacturerTabVisible: false,
+            manufacturerTabVisible: true,
             modelTabVisible: false,
-            otherDetailsTabVisible: true,
+            otherDetailsTabVisible: false,
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
             submissionError: false,
@@ -54,14 +56,22 @@ class Steps extends Component {
         }
     }
     fileNameUpload(e) {
-        let files = [];
+        let files = [], fileImgSize = 0;
+        this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) });
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            fileImgSize += val.size;
         });
         // upload = { ...this.state.imageUploaded, files }
-        this.setState({
-            imageUploaded: this.state.imageUploaded.concat(files)
-        })
+        if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            // this.state.uploadImgSize += fileImgSize;
+            this.setState({
+                imageUploaded: this.state.imageUploaded.concat(files),
+                uploadImgSize: fileImgSize + this.state.uploadImgSize,
+            });
+        }
     }
     cancelImageUpload(val) {
         const array = this.state.imageUploaded;
@@ -81,53 +91,126 @@ class Steps extends Component {
         });
         const carList = [
             {
-                logo: '../../images/logo1.png',
-                name: 'Aston Martin 1',
+                logo: '../../images/Acura-logo.png',
+                name: 'Acura 1',
                 manufacturerId: 1
             }, {
-                logo: '../../images/logo2.png',
+                logo: '../../images/Alfa-Romeo-logo.png',
                 name: 'Alfa Romeo 1',
                 manufacturerId: 2
             }, {
-                logo: '../../images/logo3.png',
-                name: 'Acura 1',
+                logo: '../../images/Aston-Martin-logo.png',
+                name: 'Aston Martin 1',
                 manufacturerId: 3
             }, {
-                logo: '../../images/logo1.png',
-                name: 'Aston Martin 2',
+                logo: '../../images/audi-logo.png',
+                name: 'Audi 1',
                 manufacturerId: 4
             }, {
-                logo: '../../images/logo2.png',
-                name: 'Alfa Romeo 2',
+                logo: '../../images/Bentley-logo.png',
+                name: 'Bentley 1',
                 manufacturerId: 5
             }, {
-                logo: '../../images/logo3.png',
-                name: 'Acura 2',
+                logo: '../../images/bmw-logo.png',
+                name: 'bmw 1',
                 manufacturerId: 6
             }, {
-                logo: '../../images/logo1.png',
-                name: 'Aston Martin 3',
+                logo: '../../images/bugatti-logo.png',
+                name: 'bugatti 1',
                 manufacturerId: 7
             }, {
-                logo: '../../images/logo2.png',
-                name: 'Alfa Romeo 3',
-                manufacturerId: 8
+                logo: '../../images/Buick-Logo.png',
+                name: 'Buick 1',
+                manufacturerId: 9
+            }, {
+                logo: '../../images/Cadillac-Logo.png',
+                name: 'Cadillac 1',
+                manufacturerId: 10
+            }, {
+                logo: '../../images/Chevrolet-Logo.png',
+                name: 'Chevrolet 1',
+                manufacturerId: 11
+            }, {
+                logo: '../../images/Chrysler-log.png',
+                name: 'Chrysler 1',
+                manufacturerId: 12
+            }, {
+                logo: '../../images/citroen-logo.png',
+                name: 'citroen 1',
+                manufacturerId: 13
+            }, {
+                logo: '../../images/Datsun-logo.png',
+                name: 'Datsun 1',
+                manufacturerId: 14
+            }, {
+                logo: '../../images/exagon.png',
+                name: 'exagon 1',
+                manufacturerId: 15
+            }, {
+                logo: '../../images/Acura-logo.png',
+                name: 'Acura 2',
+                manufacturerId: 16
+            }, {
+                logo: '../../images/Alfa-Romeo-logo.png',
+                name: 'Alfa Romeo 2',
+                manufacturerId: 17
+            }, {
+                logo: '../../images/Aston-Martin-logo.png',
+                name: 'Aston Martin 2',
+                manufacturerId: 18
+            }, {
+                logo: '../../images/audi-logo.png',
+                name: 'Audi 2',
+                manufacturerId: 19
+            }, {
+                logo: '../../images/Bentley-logo.png',
+                name: 'Bentley 2',
+                manufacturerId: 20
+            }, {
+                logo: '../../images/bmw-logo.png',
+                name: 'bmw 2',
+                manufacturerId: 21
+            }, {
+                logo: '../../images/bugatti-logo.png',
+                name: 'bugatti 2',
+                manufacturerId: 22
+            }, {
+                logo: '../../images/Buick-Logo.png',
+                name: 'Buick 2',
+                manufacturerId: 23
+            }, {
+                logo: '../../images/Cadillac-Logo.png',
+                name: 'Cadillac 2',
+                manufacturerId: 124
             }
         ];
         const carModel = [
             {
-                logo: '../../images/logo1.png',
-                name: 'Aston Martin 1',
+                logo: '../../images/audi-a3.png',
+                name: 'audi a3',
                 modalId: 1
             }, {
-                logo: '../../images/logo2.png',
-                name: 'Alfa Romeo 1',
+                logo: '../../images/audi-a6.png',
+                name: 'audi a6',
                 modalId: 2
             }, {
-                logo: '../../images/logo3.png',
-                name: 'Acura 1',
-                modalId: 3
+                logo: '../../images/audi-a3.png',
+                name: 'audi a5',
+                modalId: 1
+            }, {
+                logo: '../../images/audi-a6.png',
+                name: 'audi a7',
+                modalId: 2
+            }, {
+                logo: '../../images/audi-a3.png',
+                name: 'audi a8',
+                modalId: 1
+            }, {
+                logo: '../../images/audi-a6.png',
+                name: 'audi a9',
+                modalId: 2
             }
+
         ];
         const carListView = map(carList, (carItem, key) => {
             return (
@@ -223,6 +306,11 @@ class Steps extends Component {
                                         <Upload id="carProfileUpload" fileUpload={(e) => this.fileNameUpload(e)} />
                                         {imageUploadedView}
                                     </div>
+                                    <span className={this.state.uploadImageErrText ? "image-ipload-error padLeft15" : "image-ipload-error padLeft15 hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
+                                    </span>
                                 </div>
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
@@ -265,4 +353,4 @@ class Steps extends Component {
     }
 }
 
-export default Steps;
+export default ProfileSteps;

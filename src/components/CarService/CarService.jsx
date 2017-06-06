@@ -5,7 +5,7 @@ import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
 import Button from '../common/Button';
-import Steps from './Steps';
+import ServiceSteps from './ServiceSteps';
 
 export default class CarWash extends Component {
     constructor(props, context) {
@@ -40,7 +40,7 @@ export default class CarWash extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row cw ">
                                     {/*Job Updates*/}
-                                    <Steps />
+                                    <ServiceSteps />
                                 </div>
                             </div>
                         </div>

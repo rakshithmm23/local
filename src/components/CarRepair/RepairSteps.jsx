@@ -10,17 +10,49 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
-class Steps extends Component {
+class RepairSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            PrefferedLocation:'Select Location',
+            uploadImgSize: 0,
+            policeReportImgSize: 0,
+            rationCardImgSize: 0,
+            drivingLicenceImgSize: 0,
+            uploadImage: [],
+            policeReport: [],
+            rationCard: [],
+            drivingLicence: [],
+            PrefferedLocation: 'Select Location',
             startDate: moment(),
             step1Panel: true,
             step2Panel: false,
             carWashCategories: [
                 {
                     id: 1,
+                    active: false,
+                    heading: "AC Heating & cooling",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/auto-service-icons-5.png'
+                }, {
+                    id: 2,
                     active: false,
                     heading: "Brakes & Exhaust",
                     checkedCategoryCount: 0,
@@ -42,35 +74,11 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
-                }, {
-                    id: 2,
-                    active: false,
-                    heading: "Basic Wash",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-3.png'
                 }, {
                     id: 3,
                     active: false,
-                    heading: "Awesome Wash & Detail",
+                    heading: "Body Work, Dents & Repair",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -98,11 +106,11 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 }, {
                     id: 4,
                     active: false,
-                    heading: "Wash & Shine",
+                    heading: "Engine",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -130,12 +138,12 @@ class Steps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-1.png'
                 },
                 {
                     id: 5,
                     active: false,
-                    heading: "Totally Awesome & Detail",
+                    heading: "Clutch & Gearbox Repair",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -155,7 +163,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-3.png'
                 },
                 {
                     id: 6,
@@ -180,12 +188,12 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-5.png'
                 },
                 {
                     id: 7,
                     active: false,
-                    heading: "AC Dust Sanitization",
+                    heading: "Electrical & Batteries",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -205,7 +213,7 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-4.png'
                 },
                 {
                     id: 8,
@@ -230,10 +238,38 @@ class Steps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/wash-icon.png'
+                    image: '../../images/auto-service-icons-2.png'
+                }, {
+                    id: 8,
+                    active: false,
+                    heading: "Yearly Package",
+                    checkedCategoryCount: 0,
+                    categories: [
+                        {
+                            id: 1,
+                            name: "Service title one",
+                            checked: false
+                        }, {
+                            id: 2,
+                            name: "Service title two",
+                            checked: false
+                        }, {
+                            id: 3,
+                            name: "Service title three",
+                            checked: false
+                        }, {
+                            id: 4,
+                            name: "I am not sure",
+                            checked: false
+                        }],
+                    image: '../../images/auto-service-icons-3.png'
                 }
 
             ],
+            uploadImageErrText: false,
+            policeReportErrText: false,
+            rationCardErrText: false,
+            drivingLicenceErrText: false,
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -244,7 +280,6 @@ class Steps extends Component {
         });
     }
     openCategory(id) {
-        debugger
         let newCat = [];
         map(this.state.carWashCategories, (category) => {
             let cat = { ...category };
@@ -261,7 +296,7 @@ class Steps extends Component {
     }
     hidePanel(panel) {
         if (panel == 'step1') {
-            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false  });
+            this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false });
         } else if (panel == 'step2') {
             this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
@@ -277,7 +312,7 @@ class Steps extends Component {
                         subCategory.checked = !subCategory.checked;
                     }
                     if (subCategory.checked) {
-                        checkedCount++
+                        checkedCount++;
                     }
                 })
                 washCategory.checkedCategoryCount = checkedCount;
@@ -289,15 +324,186 @@ class Steps extends Component {
 
     }
     selectedDropdownText(location) {
-        this.setState({PrefferedLocation:location});
+        this.setState({ PrefferedLocation: location });
+    }
+    uploadImage(e, img) {
+        let files = [], fileImgSize = 0;
+
+        if (img == 'uploadImage') {
+            this.setState({ uploadImageErrText: false });
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                fileImgSize += val.size;
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+                this.setState({ uploadImageErrText: true });
+            } else {
+                // this.state.uploadImgSize += fileImgSize;
+                this.setState({
+                    uploadImage: this.state.uploadImage.concat(files),
+                    uploadImgSize: fileImgSize + this.state.uploadImgSize,
+                });
+            }
+
+        }
+        else if (img == 'policeReport') {
+            this.setState({ policeReportErrText: false });
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) });
+                fileImgSize += val.size;
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            if (this.state.policeReportImgSize + fileImgSize >= 20000000) {
+                this.setState({ policeReportErrText: true });
+            } else {
+                // this.state.uploadImgSize += fileImgSize;
+                this.setState({
+                    policeReport: this.state.policeReport.concat(files),
+                    policeReportImgSize: fileImgSize + this.state.policeReportImgSize
+                })
+            }
+
+        }
+        else if (img == 'rationCard') {
+            this.setState({ rationCardErrText: false });
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                fileImgSize += val.size;
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            if (this.state.rationCardImgSize + fileImgSize >= 20000000) {
+                this.setState({ rationCardErrText: true });
+            } else {
+                // this.state.uploadImgSize += fileImgSize;
+                this.setState({
+                    rationCard: this.state.rationCard.concat(files),
+                    rationCardImgSize: fileImgSize + this.state.rationCardImgSize
+                });
+            }
+
+        }
+        else if (img == 'drivingLicence') {
+            this.setState({ drivingLicenceErrText: false });
+            each(e.target.files, (val) => {
+                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                fileImgSize += val.size;
+            });
+            // upload = { ...this.state.imageUploaded, files }
+            if (this.state.drivingLicence + fileImgSize >= 20000000) {
+                this.setState({ drivingLicenceErrText: true });
+            } else {
+                // this.state.uploadImgSize += fileImgSize;
+                this.setState({
+                    drivingLicence: this.state.drivingLicence.concat(files),
+                    drivingLicenceImgSize: fileImgSize + this.state.drivingLicenceImgSize
+                });
+            }
+
+        }
+    }
+
+    cancelUploadImage(val, index) {
+        if (val == 'uploadImage') {
+            const array = this.state.uploadImage;
+            array.splice(index, 1);
+            this.setState({ uploadImage: array });
+            if (this.state.uploadImage >= 20000000) {
+                this.setState({ uploadImageErrText: true });
+            } else {
+                this.setState({ uploadImageErrText: false });
+            }
+        } else if (val == 'policeReport') {
+            const array = this.state.policeReport;
+            array.splice(index, 1);
+            this.setState({ policeReport: array });
+            if (this.state.rationCard >= 20000000) {
+                this.setState({ policeReportErrText: true });
+            } else {
+                this.setState({ policeReportErrText: false });
+            }
+        } else if (val == 'rationCard') {
+
+            const array = this.state.rationCard;
+            array.splice(index, 1);
+            this.setState({ rationCard: array });
+            if (this.state.rationCard >= 20000000) {
+                this.setState({ rationCardErrText: true });
+            } else {
+                this.setState({ rationCardErrText: false });
+            }
+        } else if (val == 'drivingLicence') {
+
+            const array = this.state.drivingLicence;
+            array.splice(index, 1);
+            this.setState({ drivingLicence: array });
+            if (this.state.drivingLicence >= 20000000) {
+                this.setState({ drivingLicenceErrText: true });
+            } else {
+                this.setState({ drivingLicenceErrText: false });
+            }
+        }
+
     }
     render() {
+        const uploadImage = map(this.state.uploadImage, (img, index) => {
+            return (
+                <div className='upload-box-wrapper box-shadow'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
+                            <i className="mdi mdi-close" />
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const policeReportView = map(this.state.policeReport, (img, index) => {
+            return (
+                <div className='upload-box-wrapper box-shadow'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
+                            <i className="mdi mdi-close" />
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const rationCardView = map(this.state.rationCard, (img, index) => {
+            return (
+                <div className='upload-box-wrapper box-shadow'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('rationCard', index) }}>
+                            <i className="mdi mdi-close" />
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
+        const drivingLicenceView = map(this.state.drivingLicence, (img, index) => {
+            return (
+                <div className='upload-box-wrapper box-shadow'>
+                    <div className="uploaded-image">
+                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('drivingLicence', index) }}>
+                            <i className="mdi mdi-close" />
+                        </span>
+                        <img src={img.path} />
+                    </div>
+                    {/*<h5>{img.name}</h5>*/}
+                </div>
+            )
+        })
         const format = 'h:mm a';
         const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {
-            if (key % 2 == 0) {
+            if (key % 2 != 0) {
                 rightBlock.push(
                     <div className="sub-collapse-panel" key={key}>
                         <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
@@ -358,8 +564,8 @@ class Steps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step1')}}>
-                        <h4>Step 1: Select Car Wash Type</h4>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
+                        <h4>Step 1: Select Car Repair Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step1Panel && <div className="panel-content">
@@ -372,23 +578,23 @@ class Steps extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">{rightBlock}</div>
                             <div className="col-md-6">{leftBlock}</div>
+                            <div className="col-md-6">{rightBlock}</div>
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2'); }}/>
+                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
                         </div>
                     </div>}
                 </section>
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={()=>{this.hidePanel('step2');}}>
-                        <h4>Step 2: Create A Car Wash Request</h4>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>
+                        <h4>Step 2: Create A Car Repair Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.step2Panel && 
-                    <div className="panel-content">
+                    {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6 left">
+
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
                                     <div className="model-select">
@@ -402,7 +608,41 @@ class Steps extends Component {
                                     </div>
                                 </div>
                                 <div className="form-section">
+                                    <h4 className="panel-sub-title">Reason For Repair</h4>
+                                    <div className="radio-btn">
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>Accident</span>
+                                            </label>
+                                        </div>
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>General</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-section">
+                                    <h4 className="panel-sub-title">Job Details</h4>
+                                    <div className="model-select">
+                                        <input type="text" className="jd-text" placeholder="Enter Text Here" />
+                                    </div>
+                                </div>
+
+                                <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
+                                    <div className="radio-btn">
+
+                                        <div className="radio-style">
+                                            <label>
+                                                <input type="radio" name="radio" />
+                                                <i className="mf-radio-button" /><span>This is urgent request!</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                     <div className="row date-time">
                                         <div className="col-md-6 padLeft0">
                                             <DatePicker
@@ -448,22 +688,77 @@ class Steps extends Component {
                                 </div>
                             </div>
                             <div className="col-md-6 right">
-                                <h4 className="panel-sub-title">Special Instruction</h4>
-                                <p className="panel-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                                </p>
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <h4 className="panel-sub-title">upload a image </h4>
+                                        <div className="model-select upload">
+                                            <Upload id="uploadImage" fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
+                                            {uploadImage}
+                                        </div>
+                                    </div>
+                                    <span className={this.state.uploadImageErrText ? "image-ipload-error" : "image-ipload-error hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={()=>this.setState({uploadImageErrText:false})}/>
+                                    </span>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <h4 className="panel-sub-title">police report</h4>
+                                        <div className="model-select upload">
+                                            <Upload id="policeReport" fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
+                                            {policeReportView}
+                                        </div>
+                                    </div>
+                                    <span className={this.state.policeReportErrText ? "image-ipload-error" : "image-ipload-error hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={()=>this.setState({policeReportErrText:false})}/>
+                                    </span>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <h4 className="panel-sub-title">ration card</h4>
+                                        <div className="model-select upload">
+                                            <Upload id="rationCard" fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
+                                            {rationCardView}
+                                        </div>
+                                    </div>
+                                    <span className={this.state.rationCardErrText ? "image-ipload-error" : "image-ipload-error hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={()=>this.setState({rationCardErrText:false})}/>
+                                    </span>
+                                </div>
+
+                                <div className="form-section uploads">
+                                    <div className="row">
+                                        <h4 className="panel-sub-title">driving licence</h4>
+                                        <div className="model-select upload">
+                                            <Upload id="drivingLicence" fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
+                                            {drivingLicenceView}
+                                        </div>
+                                    </div>
+                                    <span className={this.state.drivingLicenceErrText ? "image-ipload-error" : "image-ipload-error hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={()=>this.setState({drivingLicenceErrText:false})}/>
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
                         <div className="next-button clearfix">
-                        <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quotes" />
-                    </div>
+                            <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quotes" />
+                        </div>
                     </div>}
-                    
+
                 </section>
             </div>
         );
     }
 }
 
-export default Steps;
+export default RepairSteps;

@@ -33,7 +33,7 @@ export default class ServiceDetails extends Component {
                     <div className="service-carPlate">
                         <h6>{this.state.plateNumber}</h6>
                         <h4>{this.state.brand}</h4>
-                        <span>{this.state.color} - {this.state.year}</span>
+                        <span className="car-make">{this.state.color} - {this.state.year}</span>
                     </div>
                     <div className="service-info">
                         <Scrollbars className="timelineScroll">

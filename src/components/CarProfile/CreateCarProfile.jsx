@@ -3,7 +3,7 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
-import Steps from './Steps';
+import ProfileSteps from './ProfileSteps';
 import MobileNotification from '../common/MobileNotification';
 
 export default class NewCarProfile extends Component {
@@ -38,7 +38,7 @@ export default class NewCarProfile extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <Steps />
+                            <ProfileSteps />
                         </div>
                     </div>
 

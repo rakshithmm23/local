@@ -4,6 +4,7 @@
 }
 
 
+
 .timeline-card {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
   background: #fff;
@@ -37,12 +38,19 @@
 }
 
 .service-carPlate h6 {
-  font-size: 13px;
+    color: #717982;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 16px;
 }
 
 .service-carPlate h4 {
+  font-weight: bold;
   font-size: 18px;
   color: #4C4C4C;
+}
+.service-carPlate .car-make {
+  	letter-spacing: 1px;
 }
 
 .service-carPlate span {
@@ -57,6 +65,9 @@
   font-weight: normal;
   margin: 20px 0;
 }
+.service-car-info .service-info li h5{
+  letter-spacing: 1px;  
+}
 
 .timeline-summary-header {
   height: 70px;
@@ -68,17 +79,19 @@
 
 .timeline-summary-header .timeline-summary-tab {
   font-size: 18px;
-  color: #4C4C4C;
+  color: #454B51;
   font-family: CenturyGothic;
   text-align: center;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   padding-bottom: 22px;
+  font-weight: normal;
 }
 
 .timeline-summary-header .timeline-summary-tab.active {
-  color: #2b2b2b;
-  border-bottom-color: #ED3124;
+    color: #4C4C4C;
+    border-bottom-color: #ED3124;
+    font-weight: bold;
 }
 
 .timelineScroll {
@@ -196,7 +209,7 @@
 /*Other Details*/
 
 .otherDetails-content {
-  padding: 15px 0;
+  padding: 15px 30px;
 }
 
 .otherDetails-content li {

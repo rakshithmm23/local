@@ -47,13 +47,13 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <Button btnType="" btnSize="sm timeline" fontSize={13} label="Book Service" />
+                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" />
                             <div className="text-dropdown add-new" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
                                         <h4>My Nissan GT-R</h4>
-                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
-                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                        {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
+                                        {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
                                     <MenuItem eventKey="My Audi">My Audi</MenuItem>
                                     <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>

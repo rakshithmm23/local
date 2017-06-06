@@ -10,11 +10,13 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
-class Steps extends Component {
+class ServiceSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            uploadImage: [],
+            uploadImgSize: 0,
+            uploadImageErrText: false,
+            imageUploaded: [],
             policeReport: [],
             rationCard: [],
             drivingLicence: [],
@@ -26,7 +28,7 @@ class Steps extends Component {
                 {
                     id: 1,
                     active: false,
-                    heading: "Brakes & Exhaust",
+                    heading: "Regular Service",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -50,7 +52,7 @@ class Steps extends Component {
                 }, {
                     id: 2,
                     active: false,
-                    heading: "Basic Wash",
+                    heading: "Fuel Economy Service Type",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -74,7 +76,7 @@ class Steps extends Component {
                 }, {
                     id: 3,
                     active: false,
-                    heading: "Awesome Wash & Detail",
+                    heading: "Full Service",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -106,7 +108,7 @@ class Steps extends Component {
                 }, {
                     id: 4,
                     active: false,
-                    heading: "Wash & Shine",
+                    heading: "Annual Package - Car Care & Dealing",
                     checkedCategoryCount: 0,
                     categories: [
                         {
@@ -135,108 +137,7 @@ class Steps extends Component {
                             checked: false
                         }],
                     image: '../../images/wash-icon.png'
-                },
-                {
-                    id: 5,
-                    active: false,
-                    heading: "Totally Awesome & Detail",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
-                },
-                {
-                    id: 6,
-                    active: false,
-                    heading: "Total detail",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
-                },
-                {
-                    id: 7,
-                    active: false,
-                    heading: "AC Dust Sanitization",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
-                },
-                {
-                    id: 8,
-                    active: false,
-                    heading: "Monthly Package",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png'
                 }
-
             ],
 
         };
@@ -294,122 +195,41 @@ class Steps extends Component {
     selectedDropdownText(location) {
         this.setState({ PrefferedLocation: location });
     }
-    uploadImage(e, val) {
-        if (val == 'uploadImage') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
+    fileNameUpload(e) {
+        let files = [], fileImgSize = 0;
+        this.setState({ uploadImageErrText: false });
+        each(e.target.files, (val) => {
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            fileImgSize += val.size;
+        });
+        // upload = { ...this.state.imageUploaded, files }
+        if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            // this.state.uploadImgSize += fileImgSize;
             this.setState({
-                uploadImage: this.state.uploadImage.concat(files)
-            })
-        }
-        else if (val == 'policeReport') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                imageUploaded: this.state.imageUploaded.concat(files),
+                uploadImgSize: fileImgSize + this.state.uploadImgSize,
             });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                policeReport: this.state.policeReport.concat(files)
-            })
-        }
-        else if (val == 'rationCard') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                rationCard: this.state.rationCard.concat(files)
-            })
-        }
-        else if (val == 'drivingLicence') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                drivingLicence: this.state.drivingLicence.concat(files)
-            })
         }
     }
-
-    cancelUploadImage(val, index) {
-        if (val == 'uploadImage') {
-            const array = this.state.uploadImage;
-            array.splice(index, 1);
-            this.setState({ uploadImage: array });
-        } else if (val == 'policeReport') {
-            const array = this.state.policeReport;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        } else if (val == 'rationCard') {
-            const array = this.state.rationCard;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        } else if (val == 'drivingLicence') {
-            const array = this.state.drivingLicence;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        }
-
+    cancelImageUpload(val) {
+        const array = this.state.imageUploaded;
+        array.splice(val, 1);
+        this.setState({ imageUploaded: array });
     }
     render() {
-        const uploadImage = map(this.state.uploadImage, (img, index) => {
+        const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
+                <div className="upload-box-wrapper box-shadow">
+                    <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
+                        <i className="mdi mdi-close" />
+                    </span>
+                    <img src={img.path} />
                 </div>
-            )
-        })
-        const policeReportView = map(this.state.policeReport, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
-        const rationCardView = map(this.state.rationCard, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('rationCard', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
-        const drivingLicenceView = map(this.state.drivingLicence, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('drivingLicence', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
+            );
+        });
+       
         const format = 'h:mm a';
         const now = moment().hour(0).minute(0);
         let leftBlock = [];
@@ -477,7 +297,7 @@ class Steps extends Component {
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
-                        <h4>Step 1: Select Car Repair Type</h4>
+                        <h4>Step 1: Select Car Service Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step1Panel && <div className="panel-content">
@@ -500,7 +320,7 @@ class Steps extends Component {
                 </section>
                 <section className="collapse-panel">
                     <div className="panel-head" onClick={() => { this.hidePanel('step2') }}>
-                        <h4>Step 2: Create A Car Repair Request</h4>
+                        <h4>Step 2: Create A Car Service Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
@@ -519,24 +339,6 @@ class Steps extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                 </div>
-                                <div className="form-section">
-                                    <h4 className="panel-sub-title">Reason For Repair</h4>
-                                    <div className="radio-btn">
-                                        <div className="radio-style">
-                                            <label>
-                                                <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>Accident</span>
-                                            </label>
-                                        </div>
-                                        <div className="radio-style">
-                                            <label>
-                                                <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>General</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Job Details</h4>
                                     <div className="model-select">
@@ -600,66 +402,25 @@ class Steps extends Component {
                                 </div>
                             </div>
                             <div className="col-md-6 right">
+                                <h4 className="panel-sub-title">Special Instruction</h4>
+                                <p className="panel-text">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                                </p>
                                 <div className="form-section uploads">
                                     <div className="row">
                                         <h4 className="panel-sub-title">upload a image </h4>
                                         <div className="model-select upload">
-                                            <Upload id="uploadImage" fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
-                                            {uploadImage}
+                                            <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
+                                            {imageUploadedView}
                                         </div>
-                                    </div>
-                                    <span className="image-ipload-error">
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                        <span className={this.state.uploadImageErrText ? "image-ipload-error padLeft15" : "image-ipload-error padLeft15 hide"}>
+                                            <p>Sorry, your image exceeds the file size limit of 20mb.
                                             Try again with another image.</p>
-                                        <i className="mdi mdi-close" />
-                                    </span>
-                                </div>
-
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">police report</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="policeReport" fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
-                                            {policeReportView}
-                                        </div>
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
+                                        </span>
                                     </div>
-                                    <span className="image-ipload-error hide">
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
-                                        <i className="mdi mdi-close" />
-                                    </span>
                                 </div>
-
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">ration card</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="rationCard" fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
-                                            {rationCardView}
-                                        </div>
-                                    </div>
-                                    <span className="image-ipload-error hide">
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
-                                        <i className="mdi mdi-close" />
-                                    </span>
-                                </div>
-
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">driving licence</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="drivingLicence" fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
-                                            {drivingLicenceView}
-                                        </div>
-                                    </div>
-                                    <span className="image-ipload-error hide">
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
-                                        <i className="mdi mdi-close" />
-                                    </span>
-                                </div>
-
                             </div>
                         </div>
                         <div className="next-button clearfix">
@@ -673,4 +434,4 @@ class Steps extends Component {
     }
 }
 
-export default Steps;
+export default ServiceSteps;

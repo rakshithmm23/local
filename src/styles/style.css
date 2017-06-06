@@ -50,6 +50,10 @@
         padding-left: 0;
     }
 
+    .padLeft15 {
+        padding-left: 15px;
+    }
+
     .padRight0 {
         padding-right: 0;
     }
@@ -89,7 +93,7 @@
         color: #454B51;
         font-family: CenturyGothic;
         font-size: 20px;
-        font-weight: 900;
+        font-weight: bold;
         cursor: pointer;
     }
 
@@ -107,7 +111,8 @@
         position: absolute;
         right: 35px;
         margin-top: 0;
-        font-weight: 900;
+        font-weight: bold;
+        height: 42px;
     }
     /*responsive*/
 

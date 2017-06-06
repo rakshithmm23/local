@@ -151,6 +151,7 @@
 
 .collapse-panel .img-container h6,
 .collapse-panel .img-container h6 {
+    text-transform: capitalize;
     margin-top: 0 !important;
     color: #454B51;
     font-family: "CenturyGothic";
@@ -178,7 +179,7 @@
     cursor: pointer;
     position: relative;
     font-family: "CenturyGothic";
-    color: #949DA5;
+    color: #868D91;
     font-size: 16px;
     width: 100%;
     background: transparent;
@@ -305,6 +306,9 @@
     border: 1px solid rgba(218, 225, 231, 0.4);
     height: 54px;
 }
+.sub-collapse-panel .sub-collapse-panel-head:hover {
+    background-color: rgba(218, 225, 231, 0.2);
+}
 
 .sub-collapse-panel .sub-collapse-panel-head.active {
     background-color: rgba(218, 225, 231, 0.2);
@@ -361,6 +365,9 @@
     font-size: 13px;
     line-height: 14px;
     text-transform: capitalize;
+}
+.sub-collapse-panel .sub-collapse-panel-body .label.active {
+    color: #454B51;
 }
 
 .sub-collapse-panel .sub-collapse-panel-body .label input {
@@ -444,7 +451,7 @@
 
 .car-wash .collapse-panel .panel-text {
     color: #717982;
-    font-size: 14px;
+    font-size: 16px;
     font-family: CenturyGothic;
     line-height: 28px;
     margin-top: 20px;
