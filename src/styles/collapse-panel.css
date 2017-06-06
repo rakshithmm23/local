@@ -607,7 +607,7 @@
     margin-top: 14px;
 }
 
-.image-ipload-error p {
+.image-upload-error p {
     color: #ED3124;
     font-family: CenturyGothic;
     font-size: 14px;
@@ -617,7 +617,7 @@
     vertical-align: top;
 }
 
-.image-ipload-error i {
+.image-upload-error i {
     color: #717982;
     font-size: 20px;
     cursor: pointer;

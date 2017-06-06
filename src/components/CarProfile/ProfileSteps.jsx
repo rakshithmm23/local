@@ -56,14 +56,18 @@ class ProfileSteps extends Component {
         }
     }
     fileNameUpload(e) {
-        let files = [], fileImgSize = 0;
+        let files = [], fileImgSize = 0, errFileType = false;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val) })
             fileImgSize += val.size;
+            if (val.type == "image/png" || val.type == "image/jpeg") {
+            } else {
+                errFileType = true;
+            }
         });
         // upload = { ...this.state.imageUploaded, files }
-        if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+        if (this.state.uploadImgSize + fileImgSize >= 20000000 || errFileType == true) {
             this.setState({ uploadImageErrText: true });
         } else {
             // this.state.uploadImgSize += fileImgSize;
@@ -306,7 +310,7 @@ class ProfileSteps extends Component {
                                         <Upload id="carProfileUpload" fileUpload={(e) => this.fileNameUpload(e)} />
                                         {imageUploadedView}
                                     </div>
-                                    <span className={this.state.uploadImageErrText ? "image-ipload-error padLeft15" : "image-ipload-error padLeft15 hide"}>
+                                    <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
                                         <p>Sorry, your image exceeds the file size limit of 20mb.
                                             Try again with another image.</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
