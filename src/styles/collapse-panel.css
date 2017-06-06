@@ -151,6 +151,7 @@
 
 .collapse-panel .img-container h6,
 .collapse-panel .img-container h6 {
+    text-transform: capitalize;
     margin-top: 0 !important;
     color: #454B51;
     font-family: "CenturyGothic";

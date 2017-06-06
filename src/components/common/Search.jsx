@@ -107,7 +107,7 @@ export default class Search extends Component {
                                 <i className="mdi mdi-magnify" />
                             </InputGroup.Addon>
                         </InputGroup>*/}
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e) }} open={searchView.length > 0 ? true : false} noCaret title={
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} open={searchView.length > 0 ? true : false} noCaret title={
                             <div >
 
                                 <input value={this.state.seachedValue} placeholder="Search"
