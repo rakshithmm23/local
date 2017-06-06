@@ -14,7 +14,9 @@ class ServiceSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            uploadImage: [],
+            uploadImgSize: 0,
+            uploadImageErrText: false,
+            imageUploaded: [],
             policeReport: [],
             rationCard: [],
             drivingLicence: [],
@@ -193,122 +195,42 @@ class ServiceSteps extends Component {
     selectedDropdownText(location) {
         this.setState({ PrefferedLocation: location });
     }
-    uploadImage(e, val) {
-        if (val == 'uploadImage') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
+    fileNameUpload(e) {
+        debugger
+        let files = [], fileImgSize = 0;
+        this.setState({ uploadImageErrText: false });
+        each(e.target.files, (val) => {
+            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            fileImgSize += val.size;
+        });
+        // upload = { ...this.state.imageUploaded, files }
+        if (this.state.uploadImgSize + fileImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            // this.state.uploadImgSize += fileImgSize;
             this.setState({
-                uploadImage: this.state.uploadImage.concat(files)
-            })
-        }
-        else if (val == 'policeReport') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                imageUploaded: this.state.imageUploaded.concat(files),
+                uploadImgSize: fileImgSize + this.state.uploadImgSize,
             });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                policeReport: this.state.policeReport.concat(files)
-            })
-        }
-        else if (val == 'rationCard') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                rationCard: this.state.rationCard.concat(files)
-            })
-        }
-        else if (val == 'drivingLicence') {
-            let files = []
-            each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
-            });
-            // upload = { ...this.state.imageUploaded, files }
-            this.setState({
-                drivingLicence: this.state.drivingLicence.concat(files)
-            })
         }
     }
-
-    cancelUploadImage(val, index) {
-        if (val == 'uploadImage') {
-            const array = this.state.uploadImage;
-            array.splice(index, 1);
-            this.setState({ uploadImage: array });
-        } else if (val == 'policeReport') {
-            const array = this.state.policeReport;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        } else if (val == 'rationCard') {
-            const array = this.state.rationCard;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        } else if (val == 'drivingLicence') {
-            const array = this.state.drivingLicence;
-            array.splice(index, 1);
-            this.setState({ imageUploaded: array });
-        }
-
+    cancelImageUpload(val) {
+        const array = this.state.imageUploaded;
+        array.splice(val, 1);
+        this.setState({ imageUploaded: array });
     }
     render() {
-        const uploadImage = map(this.state.uploadImage, (img, index) => {
+        const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
+                <div className="upload-box-wrapper box-shadow">
+                    <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
+                        <i className="mdi mdi-close" />
+                    </span>
+                    <img src={img.path} />
                 </div>
-            )
-        })
-        const policeReportView = map(this.state.policeReport, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
-        const rationCardView = map(this.state.rationCard, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('rationCard', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
-        const drivingLicenceView = map(this.state.drivingLicence, (img, index) => {
-            return (
-                <div className='upload-box-wrapper box-shadow'>
-                    <div className="uploaded-image">
-                        <span className="cancel-image" onClick={() => { this.cancelUploadImage('drivingLicence', index) }}>
-                            <i className="mdi mdi-close"></i>
-                        </span>
-                        <img src={img.path} />
-                    </div>
-                    {/*<h5>{img.name}</h5>*/}
-                </div>
-            )
-        })
+            );
+        });
+       
         const format = 'h:mm a';
         const now = moment().hour(0).minute(0);
         let leftBlock = [];
@@ -490,13 +412,13 @@ class ServiceSteps extends Component {
                                     <div className="row">
                                         <h4 className="panel-sub-title">upload a image </h4>
                                         <div className="model-select upload">
-                                            <Upload id="uploadImage" fileUpload={(e) => { this.uploadImage(e, 'uploadImage') }} />
-                                            {uploadImage}
+                                            <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
+                                            {imageUploadedView}
                                         </div>
-                                        <span className="image-ipload-error">
+                                        <span className={this.state.uploadImageErrText ? "image-ipload-error padLeft15" : "image-ipload-error padLeft15 hide"}>
                                             <p>Sorry, your image exceeds the file size limit of 20mb.
                                             Try again with another image.</p>
-                                            <i className="mdi mdi-close" />
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
                                         </span>
                                     </div>
                                 </div>
