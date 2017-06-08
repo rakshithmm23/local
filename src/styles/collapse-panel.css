@@ -48,7 +48,9 @@
     font-size: 26px;
     float: right;
 }
-
+.panel-content{
+    padding: 15px;
+}
 .panel-section .collapse-panel .search-box {
     padding: 0;
     position: relative;
@@ -102,14 +104,10 @@
     right: 0;
 }
 
-.collapse-panel .img-container,
-.collapse-panel .img-container {
-    width: 100%;
-    overflow: scroll;
-    max-height: 632px;
+.collapse-panel .img-container{
+    height: 500px !important;
 }
 
-.collapse-panel .img-circle,
 .collapse-panel .img-circle {
     cursor: pointer;
     position: relative;
@@ -124,32 +122,26 @@
     margin-bottom: 13px;
 }
 
-.collapse-panel .img-circle.active,
 .collapse-panel .img-circle.active {
     border: 1px solid #ED3124;
 }
 
-.collapse-panel .img-circle img,
-.collapse-panel .img-circle img {
+.collapse-panel .img-circle img{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.panel-section .collapse-panel .btn-theme.submit,
-.panel-section .collapse-panel .btn-theme.submit,
-.panel-section .s3 .btn-theme.submit {
+.panel-section .collapse-panel .btn-theme.submit {
     background-color: #ED3124;
     margin: 20px 0;
 }
 
-.collapse-panel .img-container .image-view,
-.collapse-panel .img-container .image-view {
+.collapse-panel .img-container .image-view{
     text-align: center;
 }
 
-.collapse-panel .img-container h6,
 .collapse-panel .img-container h6 {
     text-transform: capitalize;
     margin-top: 0 !important;
@@ -160,9 +152,7 @@
     text-align: center;
 }
 
-.panel-section .collapse-panel .next-button,
-.panel-section .collapse-panel .next-button,
-.panel-section .s3 .next-button {
+.panel-section .collapse-panel .next-button{
     padding: 15px 0;
     text-align: right;
     border-top: 1px solid #C8D4DE;

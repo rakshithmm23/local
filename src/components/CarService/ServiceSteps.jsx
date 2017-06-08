@@ -302,7 +302,7 @@ class ServiceSteps extends Component {
                     </div>
                     {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-6 pad0">
                                 <div className="search-box">
                                     <TextInput label="Search" name="text" type="text" />
                                     <i className="mdi mdi-magnify" />
@@ -310,11 +310,11 @@ class ServiceSteps extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">{rightBlock}</div>
-                            <div className="col-md-6">{leftBlock}</div>
+                            <div className="col-md-6 padLeft0">{rightBlock}</div>
+                            <div className="col-md-6 padRight0">{leftBlock}</div>
                         </div>
                         <div className="next-button">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
+                            <Button btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
                         </div>
                     </div>}
                 </section>
@@ -325,7 +325,7 @@ class ServiceSteps extends Component {
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6 left">
+                            <div className="col-md-6 left padLeft0">
 
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
@@ -401,7 +401,7 @@ class ServiceSteps extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 right">
+                            <div className="col-md-6 right padRight0">
                                 <h4 className="panel-sub-title">Special Instruction</h4>
                                 <p className="panel-text">
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
@@ -424,7 +424,7 @@ class ServiceSteps extends Component {
                             </div>
                         </div>
                         <div className="next-button clearfix">
-                            <Button btnType="submit" btnSize="lg" fontSize={13} label="Request For Quotes" />
+                            <Button btnType="submit" btnSize="lg" fontSize={14} label="Request For Quotes" />
                         </div>
                     </div>}
 

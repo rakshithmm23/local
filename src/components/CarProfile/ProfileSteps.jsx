@@ -3,6 +3,8 @@ import Button from '../common/Button';
 import Upload from '../common/Upload';
 import { map, each } from 'lodash';
 import TextInput from '../common/TextInput';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 
 class ProfileSteps extends Component {
@@ -243,18 +245,18 @@ class ProfileSteps extends Component {
                     {this.state.manufacturerTabVisible &&
                         <div className="panel-content">
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6 pad0">
                                     <div className="search-box">
                                         <TextInput label="Search" name="text" type="text" />
                                         <i className="mdi mdi-magnify" />
                                     </div>
                                 </div>
                             </div>
-                            <div className="img-container clearfix">
+                            <Scrollbars className="img-container">
                                 {carListView}
-                            </div>
+                            </Scrollbars>
                             <div className="next-button">
-                                <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next"
+                                <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next"
                                     btnCallBack={(e) => {
                                         e.preventDefault(); this.tabOpen('modelTabVisible');
                                         this.setState({ 'modelTabIsUnlocked': this.state.activeLogo ? true : false });
@@ -288,7 +290,7 @@ class ProfileSteps extends Component {
                                 </div>
                             </div>
                             <div className="next-button">
-                                <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
+                                <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
                             </div>
                         </div>}
                 </section>
@@ -314,36 +316,36 @@ class ProfileSteps extends Component {
                                 </div>
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padLeft0">
                                         <TextInput label="Car Profile Name" name="text" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padRight0">
                                         <TextInput label="Plate Number*" name="text" type="text" validationError="Plate Number cannot be empty" />
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padLeft0">
                                         <TextInput label="Kms Travelled*" name="text" type="text" validationError="Kms Travelled cannot be empty" />
                                     </div>
                                 </div>
                                 <div className="row insurance-details">
                                     <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padLeft0">
                                         <TextInput label="Insurance Provider" name="text" type="text" />
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padRight0">
                                         <TextInput label="Insurance Policy Number" name="text" type="text" />
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padLeft0">
                                         <TextInput label="State" name="text" type="text" />
                                     </div>
                                 </div>
                                 <div className="row car-notes">
                                     <h4 className="panel-sub-title">Car Notes (Optional)</h4>
-                                    <div className="col-md-6">
+                                    <div className="col-md-6 padLeft0">
                                         <TextInput label="Additional Details About The Car (Optional)" name="text" type="text" validationError="Enter a valid text" />
                                     </div>
                                 </div>
                                 <div className="next-button">
-                                    <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
+                                    <Button btnType="submit" btnSize="sm" fontSize={14} label="Save" />
                                 </div>
                             </div>
                         </div>}

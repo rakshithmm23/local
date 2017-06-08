@@ -29,8 +29,8 @@ export default class NewCarProfile extends Component {
                     <Sidebar />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="new-car-profile">
-                        <div className="title">
+                    <div className="page-sec-header">
+                        <div className="padwrapper">
                             <h4>Create A Car Profile</h4>
                         </div>
                     </div>

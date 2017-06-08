@@ -564,13 +564,13 @@ class RepairSteps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step1') }}>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1');}}>
                         <h4>Step 1: Select Car Repair Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
                     {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-6 pad0">
                                 <div className="search-box">
                                     <TextInput label="Search" name="text" type="text" />
                                     <i className="mdi mdi-magnify" />
@@ -578,8 +578,8 @@ class RepairSteps extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6">{leftBlock}</div>
-                            <div className="col-md-6">{rightBlock}</div>
+                            <div className="col-md-6 padLeft0">{leftBlock}</div>
+                            <div className="col-md-6 padRight0">{rightBlock}</div>
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={13} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
@@ -593,7 +593,7 @@ class RepairSteps extends Component {
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6 left">
+                            <div className="col-md-6 left padLeft0">
 
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
@@ -648,14 +648,15 @@ class RepairSteps extends Component {
                                             <DatePicker
                                                 selected={this.state.startDate}
                                                 onChange={this.handleChange}
+                                                placeholderText="Date"
                                             />
 
                                         </div>
 
                                         <div className="col-md-6 padRight0">
                                             <TimePicker
+                                                placeholder="Time"
                                                 showSecond={false}
-                                                defaultValue={now}
                                                 className="xxx"
                                                 format={format}
                                                 use12Hours
@@ -687,7 +688,7 @@ class RepairSteps extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 right">
+                            <div className="col-md-6 right padRight0">
                                 <div className="form-section uploads">
                                     <div className="row">
                                         <h4 className="panel-sub-title">upload a image </h4>
