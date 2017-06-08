@@ -19,7 +19,8 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             timelineUpdate: "timeline",
-            myCarDropdownIcon: true
+            myCarDropdownIcon: true,
+            selectedCar:"My Nissan GT-R"
 
         };
     }
@@ -31,6 +32,10 @@ export default class BookService extends Component {
     }
     myCarDropdown() {
         this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon })
+    }
+    carSelection(car){
+        debugger
+        this.setState({selectedCar:car})
     }
 
     render() {
@@ -49,22 +54,22 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" />
                             <div className="text-dropdown add-new" >
-                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.myCarDropdown() }} title={
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onSelect={(e)=>{this.carSelection(e)}} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
-                                        <h4>My Nissan GT-R</h4>
+                                        <h4>{this.state.selectedCar}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
                                         {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
-                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
-                                    <MenuItem eventKey="My Nissan GT-R">Another action</MenuItem>
-                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
                                     <MenuItem eventKey="My Nissan GT-R">My Nissan GT-R</MenuItem>
-                                    <MenuItem eventKey="My Nissan GT-R">Add New</MenuItem>
+                                    <MenuItem eventKey="BMW">BMW</MenuItem>
+                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
+                                    <MenuItem eventKey="Ferrari">Ferrari</MenuItem>
+                                    <MenuItem eventKey="">Add New</MenuItem>
                                 </DropdownButton>
                             </div>
 
                             <div className="three-dots-icon">
-                                <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                            <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
                                     <MenuItem eventKey="<Delete></Delete>">Delete</MenuItem>
                                 </DropdownButton>
