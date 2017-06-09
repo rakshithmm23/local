@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import ToggleSwitch from '@trendmicro/react-toggle-switch';
 
 
 class RepairSteps extends Component {
@@ -655,14 +656,15 @@ class RepairSteps extends Component {
 
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
-                                    <div className="radio-btn">
-
-                                        <div className="radio-style">
-                                            <label>
-                                                <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>This is urgent request!</span>
-                                            </label>
-                                        </div>
+                                     <div className="toggleBtn">
+                                        <span> This is an urgent request ! </span>
+                                        <ToggleSwitch
+                                            checked
+                                            size="small"
+                                            ref={(node) => {
+                                                this.toggleSwitch = node;
+                                            }}
+                                        />
                                     </div>
                                     <div className="row date-time">
                                         <div className="col-md-6 padLeft0">

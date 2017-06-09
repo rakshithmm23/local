@@ -30,6 +30,7 @@
   "author": "Cartoon Mango Studios",
   "license": "MIT",
   "dependencies": {
+    "@trendmicro/react-toggle-switch": "0.5.4",
     "axios": "0.15.3",
     "lodash": "4.17.4",
     "moment": "2.18.1",

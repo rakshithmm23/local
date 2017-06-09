@@ -64,6 +64,43 @@
         padding-left: 110px;
         overflow: hidden;
     }
+    /*Toggle Btn*/
+
+    .toggleBtn {
+        margin: 30px 0;
+    }
+    .toggleBtn span{
+        color: #717982;	
+        font-family: CenturyGothic;	
+        font-size: 14px;	
+    }
+    .toggleBtn a {
+        outline: 0;
+        display: inline-block;
+        margin-top: 4px;
+        float: right;
+    }
+
+    .toggleBtn .toggle-switch---switch---3EchW.toggle-switch---checked---3aC9B .toggle-switch---toggle---mncCu {
+        border-color: #EF2E24;
+        background-color: #EF2E24;
+    }
+
+    .toggleBtn .toggle-switch---toggle---mncCu,
+    .toggleBtn .toggle-switch---toggle---mncCu:hover {
+        border-color: #9BA1A5;
+        background-color: #9BA1A5;
+    }
+
+    .toggleBtn .toggle-switch---toggle-sm---20q-N:before {
+        height: 8px;
+        width: 8px;
+    }
+
+    .toggleBtn .toggle-switch---toggle---mncCu:before {
+        left: 3px;
+        top: 4px;
+    }
     /*Error Control*/
 
     .login-panel .alert {
