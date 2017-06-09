@@ -73,7 +73,7 @@ export default class BookService extends Component {
                             </div>
 
                             <div className="three-dots-icon">
-                                <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() =>  this.setState({ showModal: true })}>Delete</MenuItem>
 

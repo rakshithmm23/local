@@ -199,16 +199,18 @@ class ServiceSteps extends Component {
         let files = [], fileImgSize = 0, errFileType = false;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
             fileImgSize += val.size;
             if (val.type == "image/png" || val.type == "image/jpeg") {
             } else {
                 errFileType = true;
             }
         });
-        if (this.state.uploadImgSize + fileImgSize > 20000000 || errFileType == true) {
+        // upload = { ...this.state.imageUploaded, files }
+        if (this.state.uploadImgSize + fileImgSize >= 20000000 || errFileType == true) {
             this.setState({ uploadImageErrText: true });
         } else {
+            // this.state.uploadImgSize += fileImgSize;
             this.setState({
                 imageUploaded: this.state.imageUploaded.concat(files),
                 uploadImgSize: fileImgSize + this.state.uploadImgSize,
@@ -216,9 +218,17 @@ class ServiceSteps extends Component {
         }
     }
     cancelImageUpload(val) {
+        let deleteSize = 0;
+        if (this.state.uploadImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            this.setState({ uploadImageErrText: false });
+        }
+
         const array = this.state.imageUploaded;
+        deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
         array.splice(val, 1);
-        this.setState({ imageUploaded: array });
+        this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
     }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
@@ -403,22 +413,22 @@ class ServiceSteps extends Component {
                                         />
                                     </div>
                                 </div>
-                            <div className="form-section uploads car-service-upload">
-                                <div className="row">
-                                    <h4 className="panel-sub-title">upload a image </h4>
-                                    <div className="model-select upload">
-                                        <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
-                                        {imageUploadedView}
-                                    </div>
-                                    <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                <div className="form-section uploads car-service-upload">
+                                    <div className="row">
+                                        <h4 className="panel-sub-title">upload a image </h4>
+                                        <div className="model-select upload">
+                                            <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
+                                            {imageUploadedView}
+                                        </div>
+                                        <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
+                                            <p>Sorry, your image exceeds the file size limit of 20mb.
                                             Try again with another image.</p>
-                                        <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
-                                    </span>
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                         <div className="next-button clearfix">
                             <Button btnType="submit" btnSize="lg" fontSize={14} label="Request For Quotes" />
                         </div>
