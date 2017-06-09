@@ -10,6 +10,10 @@
   padding: 25px 20px;
 }
 
+.modal-header span {
+  display: none;
+}
+
 .modal-title {
   color: #454B51;
   font-family: CenturyGothic !important;

@@ -380,6 +380,9 @@ class ServiceSteps extends Component {
 
                                     </div>
                                 </div>
+
+                            </div>
+                            <div className="col-md-6 right padRight0">
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered location</h4>
                                     <div className="model-select">
@@ -391,40 +394,31 @@ class ServiceSteps extends Component {
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
-                                    <div className="map-panel">
-                                        <div className="gmaps">
-                                            <Gmaps
-                                                center={{ lat: 12.9952672, lng: 77.5905857 }}
-                                                zoom={9}
-                                                containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
-                                                mapElement={<div style={{ height: 192 + 'px', width: 100 + '%' }} />}
-                                            />
-                                        </div>
+                                    <div className="gmaps">
+                                        <Gmaps
+                                            center={{ lat: 12.9952672, lng: 77.5905857 }}
+                                            zoom={9}
+                                            containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
+                                            mapElement={<div style={{ height: 126 + 'px', width: 100 + '%' }} />}
+                                        />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-md-6 right padRight0">
-                                <h4 className="panel-sub-title">Special Instruction</h4>
-                                <p className="panel-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                                </p>
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">upload a image </h4>
-                                        <div className="model-select upload">
-                                            <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
-                                            {imageUploadedView}
-                                        </div>
-                                        <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
-                                            <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
-                                            <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
-                                        </span>
+                            <div className="form-section uploads car-service-upload">
+                                <div className="row">
+                                    <h4 className="panel-sub-title">upload a image </h4>
+                                    <div className="model-select upload">
+                                        <Upload id="uploadImage" fileUpload={(e) => { this.fileNameUpload(e) }} />
+                                        {imageUploadedView}
                                     </div>
+                                    <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
+                                        <p>Sorry, your image exceeds the file size limit of 20mb.
+                                            Try again with another image.</p>
+                                        <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div className="next-button clearfix">
                             <Button btnType="submit" btnSize="lg" fontSize={14} label="Request For Quotes" />
                         </div>

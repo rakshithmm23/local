@@ -276,22 +276,24 @@ class ProfileSteps extends Component {
                     {this.state.modelTabVisible &&
                         <div className="panel-content">
                             <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-6 padLeft0">
                                     <div className="model-select">
                                         <select className="car-selection ">
-                                            <option value="volvo">Volvo</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
+                                            <option value="" selected> Select Launch Year</option>
+                                            <option value="2013">2013</option>
+                                            <option value="2014">2014</option>
+                                            <option value="2015">2015</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="img-container ">
+                                <Scrollbars className="img-container">
                                     {carModelView}
-                                </div>
+                                </Scrollbars>
                             </div>
                             <div className="next-button">
                                 <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
@@ -306,7 +308,7 @@ class ProfileSteps extends Component {
                     {this.state.otherDetailsTabVisible &&
                         <div className="panel-content">
                             <div className="wrapper">
-                                <div className="row upload-image">
+                                <div className="row upload-image car-repair">
                                     <h4 className="panel-sub-title">Upload images</h4>
                                     <div className="img-uploads">
                                         <Upload id="carProfileUpload" fileUpload={(e) => this.fileNameUpload(e)} />
