@@ -10,6 +10,8 @@ import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import CustomModal from '../common/CustomModal';
+import { Modal } from 'react-bootstrap';
 
 
 export default class BookService extends Component {
@@ -20,7 +22,8 @@ export default class BookService extends Component {
             notificationVisible: false,
             timelineUpdate: "timeline",
             myCarDropdownIcon: true,
-            selectedCar:"My Nissan GT-R"
+            selectedCar: "My Nissan GT-R",
+            showModal: false
 
         };
     }
@@ -33,12 +36,15 @@ export default class BookService extends Component {
     myCarDropdown() {
         this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon })
     }
-    carSelection(car){
-        debugger
-        this.setState({selectedCar:car})
+    carSelection(car) {
+        this.setState({ selectedCar: car })
+    }
+    modalVisiblity() {
+        this.setState({ showModal: true })
     }
 
     render() {
+
         return (
 
             <div>
@@ -54,7 +60,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" />
                             <div className="text-dropdown add-new" >
-                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onSelect={(e)=>{this.carSelection(e)}} onToggle={() => { this.myCarDropdown() }} title={
+                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onSelect={(e) => { this.carSelection(e) }} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
                                         <h4>{this.state.selectedCar}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
@@ -69,11 +75,18 @@ export default class BookService extends Component {
                             </div>
 
                             <div className="three-dots-icon">
-                            <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="<Delete></Delete>">Delete</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() => { this.modalVisiblity() }}>Delete</MenuItem>
+
                                 </DropdownButton>
                             </div>
+                            <CustomModal showModal={this.state.showModal}>
+                                <Modal.Body>
+                                    <p className="warning-text">Are you sure you want to delete this profile?</p>
+                                </Modal.Body>
+
+                            </CustomModal>
                         </div>
                     </div>
                     <div className="inSection">

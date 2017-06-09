@@ -35,6 +35,7 @@ import './styles/job-details.css';
 import './styles/collapse-panel.css';
 import './styles/book-service.css';
 import './styles/timeline.css';
+import './styles/modal.css';
 
 
 export const store = configureStore();
