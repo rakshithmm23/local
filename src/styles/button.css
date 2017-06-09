@@ -7,8 +7,8 @@
     color: #fff !important;
     outline: 0 !important;
     box-shadow: none !important;
-    margin: 5px;
     font-weight: bold;
+    margin: 5px !important;
 }
 .btn-theme.lg{
     width: 220px;

@@ -1,0 +1,31 @@
+.modal-dialog {
+  width: 468px;
+  /*position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;*/
+}
+
+.modal-header {
+  padding: 25px 20px;
+}
+
+.modal-title {
+  color: #454B51;
+  font-family: CenturyGothic !important;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.modal-body {
+  padding: 20px 20px;
+}
+
+.warning-text {
+  padding: 10px 0 20px 0;
+  color: #717982;
+  font-family: CenturyGothic;
+  font-size: 16px;
+  line-height: 16px;
+}
