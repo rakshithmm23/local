@@ -34,13 +34,13 @@ export default class BookService extends Component {
         this.setState({ timelineUpdate: val });
     }
     myCarDropdown() {
-        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon })
+        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon });
     }
     carSelection(car) {
-        this.setState({ selectedCar: car })
+        this.setState({ selectedCar: car });
     }
     modalVisiblity() {
-        this.setState({ showModal: true })
+        this.setState({ showModal: true });
     }
 
     render() {
