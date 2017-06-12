@@ -13,9 +13,8 @@ class CustomModal extends Component {
         }    
     }
     componentWillReceiveProps(nextProps) {
-        debugger
         const { showModal } = nextProps;
-        if(this.state.showModal != showModal) {
+        if(this.state.showModal != showModal && showModal != undefined) {
             this.setState({
                 showModal: nextProps
             });
@@ -31,11 +30,11 @@ class CustomModal extends Component {
             <div>
                 <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>{this.props.title}</Modal.Title>
                     </Modal.Header>
                     {children}
                     {footer=="true" && <Modal.Footer>
-                        <Button btnType="submit" btnSize="sm" fontSize={15} label="Cancel" btnCallBack={this.close.bind(this)}/>
+                        <Button btnType="submit" btnSize="sm" fontSize={15} label="Cancel" backgroundColor="red" btnCallBack={this.close.bind(this)}/>
                         <Button btnType="submit" btnSize="sm" fontSize={15} label="Save" />
                     </Modal.Footer>}
                 </Modal>

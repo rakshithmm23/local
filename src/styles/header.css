@@ -32,6 +32,169 @@
   float: left;
 }
 
+.header-search .searchLeft button {
+  padding: 0;
+  border: none;
+}
+
+.header-search .searchLeft .input-group-addon {
+  padding-left: 0 9px;
+}
+
+.header-search .searchLeft .caret {
+  display: none;
+}
+
+.header-search .searchLeft .mdi {
+  color: #949DA5;
+}
+
+.header-search .searchLeft .mdi-chevron-down {
+  position: absolute;
+  right: 16px;
+  z-index: 9;
+  top: 12px;
+  font-size: 20px;
+}
+
+.header-search .dropdown-menu {
+  width: 100.5%;
+  border-radius: 0;
+  font-family: CenturyGothic;
+  background-color: #fefefe;
+  border: 1px solid #dae1e7;
+  margin-top: -1px;
+  padding: 5px 13px;
+  box-shadow: none;
+}
+
+
+/*.header-search .dropdown-menu li a{
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.header-search .dropdown-menu li span{
+	color: #979797;
+	font-family: CenturyGothic;
+	font-size: 10px;
+}
+
+.header-search .dropdown-menu label{
+      font-weight: 400;
+    color: #454b51;
+    font-size: 11px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    top: auto;
+    left: auto;
+}
+.header-search .dropdown-menu span.small-text {
+  font-size: 10px;
+  margin-left: 25px;
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.header-search .dropdown-menu li label i, .header-search .dropdown-menu li span i {
+    margin-right: 5px;
+    vertical-align: top;
+    cursor: pointer;
+    font-size: 14px;
+}*/
+
+.header-search .dropdown-menu li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.header-search .dropdown-menu li:last-child {
+  border: 0;
+}
+
+.header-search .dropdown-menu li label {
+  font-weight: normal;
+  color: #454B51;
+  font-size: 11px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  top: auto;
+  left: auto;
+}
+
+.header-search .dropdown-menu li label i,
+.header-search .dropdown-menu li span i {
+  margin-right: 5px;
+  vertical-align: top;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.header-search .dropdown-menu li label .mdi-pencil {
+  color: #006FB9;
+}
+
+.header-search .dropdown-menu li span {
+  color: #717982;
+  font-size: 11px;
+  display: block;
+}
+
+.header-search .dropdown-menu li label span {
+  display: inline-block;
+  color: #454B51;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.header-search .dropdown-menu li span.small-text {
+  font-size: 10px;
+  margin-left: 25px;
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.header-search .dropdown-menu li span span {
+  display: inline-block;
+  margin-left: 5px;
+  width: 110px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.header-search .dropdown-menu li a {
+  padding: 0;
+  display: inline-block;
+  font-size: 11px;
+  color: #006FB9;
+  text-decoration: none;
+  outline: 0 !important;
+  background: transparent;
+  width: 100%;
+}
+.header-search .dropdown-menu li a .saveLocation{
+  float: right;
+}
+.header-search .dropdown-menu li a a{
+      display: inline-block;
+    font-size: 11px;
+    float: right;
+    margin-top: -20px;
+    color: #006fb9;
+    text-decoration: none;
+    outline: 0!important;
+}
+
 .header-search .searchFill {
   width: 65%;
   display: inline-block;
@@ -139,6 +302,7 @@
 
 .header-search .searchLeft .form-control {
   padding: 6px 5px;
+  padding-left: 0;
 }
 
 .header-search .input-group-addon {
