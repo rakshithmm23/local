@@ -79,7 +79,7 @@ export default class BookService extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal}>
+                            <CustomModal showModal={this.state.showModal} footer="true">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
                                 </Modal.Body>

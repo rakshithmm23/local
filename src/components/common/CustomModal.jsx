@@ -26,7 +26,7 @@ class CustomModal extends Component {
         this.setState({ showModal: false });
     }
     render() {
-        const { children } = this.props;
+        const { children, footer } = this.props;
         return (            
             <div>
                 <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
@@ -34,10 +34,10 @@ class CustomModal extends Component {
                         <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     {children}
-                    <Modal.Footer>
+                    {footer=="true" && <Modal.Footer>
                         <Button btnType="submit" btnSize="sm" fontSize={15} label="Cancel" btnCallBack={this.close.bind(this)}/>
                         <Button btnType="submit" btnSize="sm" fontSize={15} label="Save" />
-                    </Modal.Footer>
+                    </Modal.Footer>}
                 </Modal>
             </div>
         );
