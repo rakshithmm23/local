@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import ToggleSwitch from '@trendmicro/react-toggle-switch';
 
 
 class ServiceSteps extends Component {
@@ -360,28 +361,30 @@ class ServiceSteps extends Component {
 
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
-                                    <div className="radio-btn">
-
-                                        <div className="radio-style">
-                                            <label>
-                                                <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>This is urgent request!</span>
-                                            </label>
-                                        </div>
+                                    <div className="toggleBtn">
+                                        <span> This is an urgent request ! </span>
+                                        <ToggleSwitch
+                                            checked
+                                            size="small"
+                                            ref={(node) => {
+                                                this.toggleSwitch = node;
+                                            }}
+                                        />
                                     </div>
                                     <div className="row date-time">
                                         <div className="col-md-6 padLeft0">
                                             <DatePicker
-                                                selected={this.state.startDate}
+                                                // selected={this.state.startDate}
                                                 onChange={this.handleChange}
+                                                placeholderText="Date"
                                             />
 
                                         </div>
 
                                         <div className="col-md-6 padRight0">
                                             <TimePicker
+                                                placeholder="Time"
                                                 showSecond={false}
-                                                defaultValue={now}
                                                 className="xxx"
                                                 format={format}
                                                 use12Hours
@@ -409,7 +412,7 @@ class ServiceSteps extends Component {
                                             center={{ lat: 12.9952672, lng: 77.5905857 }}
                                             zoom={9}
                                             containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
-                                            mapElement={<div style={{ height: 126 + 'px', width: 100 + '%' }} />}
+                                            mapElement={<div style={{ height: 140 + 'px', width: 100 + '%' }} />}
                                         />
                                     </div>
                                 </div>

@@ -407,6 +407,7 @@ class WashSteps extends Component {
                                             <DatePicker
                                                 selected={this.state.startDate}
                                                 onChange={this.handleChange}
+                                                placeholderText="Date"
                                             />
 
                                         </div>
@@ -414,7 +415,7 @@ class WashSteps extends Component {
                                         <div className="col-md-6 padRight0">
                                             <TimePicker
                                                 showSecond={false}
-                                                defaultValue={now}
+                                                placeholder="Time"
                                                 className="xxx"
                                                 format={format}
                                                 use12Hours

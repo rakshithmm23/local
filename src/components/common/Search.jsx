@@ -16,7 +16,8 @@ export default class Search extends Component {
             dropdownList: ["Audi", "Renault", "BMW", "Benz"],
             seachedResult: [],
             location: "",
-            showLocationModal: false
+            addLocationModal: false,
+            editLocationModal: false
         }
     }
 
@@ -29,11 +30,15 @@ export default class Search extends Component {
     bodyClick(e) {
         debugger
         if ((e.target.closest('.searchFill') == null)) {
-            this.setState({ seachedValue: "" })
+            this.setState({ seachedValue: "" });
         }
         if (e.target.className != "saveLocation") {
-            this.setState({ showLocationModal: false })
+            this.setState({ addLocationModal: false });
         }
+        if (e.target.className != "editLocation") {
+            this.setState({ editLocationModal: false });
+        }
+
     }
 
     handleFocus() {
@@ -53,9 +58,13 @@ export default class Search extends Component {
         this.setState({ location: e })
     }
     saveLocation(e) {
+        debugger
         if (e.target.text == "Save") {
-            this.setState({ showLocationModal: true })
+            this.setState({ addLocationModal: true })
+        }else if (e.target.classList.contains('editLocation')) {
+            this.setState({ editLocationModal: true })
         }
+
     }
 
 
@@ -85,7 +94,7 @@ export default class Search extends Component {
                             <label>
                                 <i className="mdi mdi-home-variant" />
                                 <span>Home</span>
-                                <i className="mdi mdi-pencil pull-right" />
+                                <i className="mdi mdi-pencil pull-right editLocation" onClick={(e) => { this.saveLocation(e) }}/>
                             </label>
                             <span className="small-text">507 Dickens Fall Suite 422</span>
                         </MenuItem>
@@ -134,7 +143,7 @@ export default class Search extends Component {
                     </FormGroup>
 
                 </div>
-                <CustomModal showModal={this.state.showLocationModal} footer="true" title="save location">
+                <CustomModal showModal={this.state.addLocationModal} footer="true" title="save location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -145,7 +154,25 @@ export default class Search extends Component {
                             <input type="text" className="plain-input"/>
                         </div>
                     </Modal.Body>
-
+                </CustomModal>
+                <CustomModal showModal={this.state.editLocationModal} footer="true" title="save location">
+                    <Modal.Body>
+                        <div>
+                            <h5 className="caption">Address</h5>
+                            <span className="caption-result">{this.state.location}</span>
+                        </div>
+                        <div>
+                            <h5 className="caption">location label</h5>
+                            <div className="row">
+                                <div className="col-md-10 pad0">
+                                    <input type="text" className="plain-input"/>
+                                </div>
+                                <div className="col-md-2">
+                                    <span className="delete-text">Delete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </Modal.Body>
                 </CustomModal>
             </div>
 
