@@ -163,6 +163,7 @@
 }
 
 .header-search .dropdown-menu li span span {
+  text-transform: capitalize;
   display: inline-block;
   margin-left: 5px;
   width: 110px;
