@@ -153,20 +153,10 @@
 }
 
 .header-search .dropdown-menu li span.small-text {
+  display: inline-block;
   font-size: 10px;
   margin-left: 25px;
   width: 120px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: top;
-}
-
-.header-search .dropdown-menu li span span {
-  text-transform: capitalize;
-  display: inline-block;
-  margin-left: 5px;
-  width: 110px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -183,17 +173,31 @@
   background: transparent;
   width: 100%;
 }
-.header-search .dropdown-menu li a .saveLocation{
+
+.header-search .dropdown-menu li span .saveLocation,
+.header-search .dropdown-menu li span .editLocation {
+  margin-top: 5px;
   float: right;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-left: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
 }
-.header-search .dropdown-menu li a a{
-      display: inline-block;
-    font-size: 11px;
-    float: right;
-    margin-top: -20px;
-    color: #006fb9;
-    text-decoration: none;
-    outline: 0!important;
+.header-search .dropdown-menu li span .editLocation {
+  margin-top: 0px;
+}
+
+.header-search .dropdown-menu li .saveLocation a ,
+.header-search .dropdown-menu li .editLocation a {
+  display: inline-block;
+  font-size: 11px;
+  float: right;
+  color: #006fb9;
+  text-decoration: none;
+  outline: 0!important;
 }
 
 .header-search .searchFill {
@@ -230,7 +234,7 @@
   border-radius: 0;
   height: 50px;
   border: 1px solid #DAE1E7 !important;
-  background: #fff !important;
+  background: #fefefe !important;
   box-shadow: none;
 }
 
@@ -243,6 +247,7 @@
   border: none;
   outline: none;
   width: 94%;
+  background-color: #fefefe;
 }
 
 .header-search .form-group .dropdown-toggle .mdi-magnify {
@@ -262,7 +267,8 @@
 }
 
 .header-search .form-group .dropdown-menu li {
-  border-bottom: 1px solid #ddd;
+  /*border-bottom: 1px solid #ddd;*/
+  border-bottom: none;
   padding: 7px 0;
 }
 
@@ -273,8 +279,8 @@
 .header-search .form-group .dropdown-menu li a {
   text-transform: capitalize;
   font-weight: normal;
-  color: #454B51;
-  font-size: 11px;
+  color: #717982;
+  font-size: 13px;
   display: block;
   cursor: pointer;
   position: relative;
@@ -494,9 +500,10 @@
 }
 
 .locationSuggestion li span.small-text {
+  /*display: inline-block;*/
   font-size: 10px;
   margin-left: 25px;
-  width: 120px;
+  /*width: 120px;*/
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

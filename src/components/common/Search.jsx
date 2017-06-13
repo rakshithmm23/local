@@ -55,13 +55,13 @@ export default class Search extends Component {
     saveLocation(e) {
         if (e.target.text == "Save") {
             this.setState({ addLocationModal: true })
-        } else if (e.target.classList.contains('editLocation')) {
+        } else if (e.target.text == "Edit") {
             this.setState({ editLocationModal: true })
         }
     }
 
     render() {
-
+        
         let searchView = filter(this.state.dropdownList, (val) => {
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
                 return val;
@@ -69,20 +69,24 @@ export default class Search extends Component {
         });
         const savedLocation = [
             {
-                address: "507 Dickens Fall Suite",
+                address: "kr market",
                 name: "home"
             },
             {
                 address: "551, Mg Road",
                 name: "work"
             }, {
-                address: "sp road"
+                address: "mysore road"
             }
         ]
-
         let locationFilterView = filter(savedLocation, (val) => {
+            debugger
             if (this.state.location != "" && val.address.toLowerCase().indexOf(this.state.location) != -1) {
-                return val.address;
+                
+                return val;
+            }
+            if(this.state.location == ""){
+                return val;
             }
         });
 
@@ -92,41 +96,30 @@ export default class Search extends Component {
                     <span>
                         {location.name ?
                             <div>
-                                {/*<i className="mdi mdi-home-variant" />
-                            <span>{location.name}</span>
-                            <span>{location.address}</span>
-                            <i className="mdi mdi-pencil pull-right editLocation" onClick={(e) => { this.saveLocation(e) }} />*/}
                                 <label>
                                     <i className="mdi mdi-home-variant" />
                                     <span>{location.name}</span>
-                                    <i className="mdi mdi-pencil pull-right editLocation" onClick={(e) => { this.saveLocation(e) }} />
+                                    
                                 </label>
-                                <span className="small-text">{location.address}</span>
+                                <span>
+                                    <span className="small-text">{location.address}</span>
+                                    {/*<i className="mdi mdi-pencil pull-right editLocation" onClick={(e) => { this.saveLocation(e) }} />*/}
+                                     <span className="editLocation inline-disp" onClick={(e) => { this.saveLocation(e) }}><a>Edit</a></span>
+                                </span>
+                                
                             </div> :
                             <div>
-                                
-
-                                <span>
+                                <span className="inline-disp">
                                     <i className="mdi mdi-map-marker" />
-                                    <span>{location.address}</span>
+                                    <span className="inline-disp">{location.address}</span>
                                 </span>
-                                <span className="saveLocation" onClick={(e) => { this.saveLocation(e) }}><a>Save</a></span>                            
-                                </div>}
+                                <span className="saveLocation inline-disp" onClick={(e) => { this.saveLocation(e) }}><a>Save</a></span>
+                            </div>}
                     </span>
                 </MenuItem>
             )
         })
-        // const recentLocationView = map(recentLocation, (location, index) => {
-        //     return (
-        //         <MenuItem eventKey={location.address} index={index}>
-        //             <span>
-        //                 <i className="mdi mdi-map-marker" />
-        //                 <span>{location.address} </span>
-        //             </span>
-        //             <span className="saveLocation" onClick={(e) => { this.saveLocation(e)}}><a>Save</a></span>
-        //         </MenuItem>
-        //     )
-        // })
+        
         return (
             <div className="searchBar">
                 <div className="searchLeft">
@@ -172,6 +165,7 @@ export default class Search extends Component {
                                 <span className="no-notify" />
                             </div>} >
                             {map(searchView, (result, key) => {
+                                {/*modifiedResult = result.replace(new RegExp(find,this.state.seachedValue ), '<b>'+result+'</b>')*/}
                                 return (
                                     <MenuItem key={key} eventKey={result} >{result}</MenuItem>
                                 );
