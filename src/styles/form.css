@@ -65,8 +65,9 @@
     height: 11px;
     color: #8F9397;
     text-align: center;
-    width: 40%;
+    width: 100%;
     margin: 30px auto;
+    margin-bottom: 10px;
 }
 
 .or-text span {

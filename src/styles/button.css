@@ -8,7 +8,7 @@
     outline: 0 !important;
     box-shadow: none !important;
     font-weight: bold;
-    margin: 5px !important;
+    /*margin: 5px !important;*/
 }
 .btn-theme.lg{
     width: 220px;
@@ -18,9 +18,11 @@
 }
 .btn-theme.facebook{
     background: #3D5AA6;
+    margin-right: 10px;
 }
 .btn-theme.gmail{
-    background: #DE4E44;
+    background: #ED3124;
+    margin-left: 10px;
 }
 .btn-theme.submit{
     background: #23AE49;

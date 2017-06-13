@@ -6,10 +6,18 @@
 }
 .green-text,
 .green-text:hover,
-.green-text:focus{
+.green-text:focus,
+.blue-text,
+.blue-text:hover,
+.blue-text:focus{
     color: #23AE49;
     font-size: 13px;
     font-family: CenturyGothic;
     text-decoration: none;
     outline: none;
+}
+.blue-text,
+.blue-text:hover,
+.blue-text:focus{
+    color: #006FBA;
 }
