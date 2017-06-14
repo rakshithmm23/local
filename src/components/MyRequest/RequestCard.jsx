@@ -163,7 +163,7 @@ export default class RequestCard extends Component {
       newDetails.push(update);
     });
     this.setState({
-      carWashCategories: newDetails,
+      jobCardDetails: newDetails,
     });
   }
   ClickedQuoteCard(key) {
