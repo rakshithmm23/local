@@ -198,7 +198,7 @@
 }
 
 .collapse-panel {
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .upload-box-wrapper {
@@ -381,10 +381,6 @@
 .sub-collapse-panel .sub-collapse-panel-body .options {
     padding: 7px;
     padding-left: 67px;
-}
-
-.car-wash .collapse-panel {
-    margin-top: 20px;
 }
 
 .car-wash .collapse-panel .left {

@@ -61,7 +61,7 @@ class ProfileSteps extends Component {
         let files = [], fileImgSize = 0, errFileType = false;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
-            files.push({ name: val.name, path: URL.createObjectURL(val) })
+            files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
             fileImgSize += val.size;
             if (val.type == "image/png" || val.type == "image/jpeg") {
             } else {
@@ -80,9 +80,17 @@ class ProfileSteps extends Component {
         }
     }
     cancelImageUpload(val) {
+        let deleteSize = 0;
+        if (this.state.uploadImgSize >= 20000000) {
+            this.setState({ uploadImageErrText: true });
+        } else {
+            this.setState({ uploadImageErrText: false });
+        }
+
         const array = this.state.imageUploaded;
+        deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
         array.splice(val, 1);
-        this.setState({ imageUploaded: array });
+        this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
     }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {

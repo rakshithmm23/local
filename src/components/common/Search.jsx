@@ -4,6 +4,8 @@ import Popup from "./Popup";
 // import { findDOMNode } from 'react-dom';
 import { DropdownButton, MenuItem, } from 'react-bootstrap';
 import { map, filter, lowerCase } from "lodash";
+import CustomModal from '../common/CustomModal';
+import { Modal } from 'react-bootstrap';
 
 export default class Search extends Component {
     constructor(props) {
@@ -12,16 +14,24 @@ export default class Search extends Component {
             showResults: false,
             seachedValue: null,
             dropdownList: ["Audi", "Renault", "BMW", "Benz"],
-            seachedResult: []
+            seachedResult: [],
+            location: "",
+            showLocationModal: false
         }
     }
 
     componentWillMount() {
         document.body.addEventListener('click', this.bodyClick.bind(this));
     }
+    componetWillUnmount() {
+        document.body.removeEventListener()
+    }
     bodyClick(e) {
         if ((e.target.closest('.searchFill') == null)) {
             this.setState({ seachedValue: "" })
+        }
+        if (e.target.className != "saveLocation") {
+            this.setState({ showLocationModal: false })
         }
     }
 
@@ -38,6 +48,14 @@ export default class Search extends Component {
     seachedValue(e) {
         this.setState({ seachedValue: e })
     }
+    dropdownSelect(e) {
+        this.setState({ location: e })
+    }
+    saveLocation(e) {
+        if (e.target.text == "Save") {
+            this.setState({ showLocationModal: true })
+        }
+    }
 
 
     render() {
@@ -45,60 +63,50 @@ export default class Search extends Component {
         let searchView = filter(this.state.dropdownList, (val) => {
 
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
-                return val
+                return val;
             }
-        })
+        });
         return (
             <div className="searchBar">
                 <div className="searchLeft">
-                    <FormGroup>
-                        <InputGroup>
-                            <InputGroup.Addon>
-                                <i className="mdi mdi-crosshairs-gps" />
-                            </InputGroup.Addon>
-                            <FormControl type="text" placeholder="Location" ref={(inputRef) => { this.locationPopup = inputRef; }} onFocus={this.handleFocus.bind(this)} onBlur={this.handleblur.bind(this)} />
-                            <InputGroup.Addon>
-                                <i className="mdi mdi-chevron-down" />
-                            </InputGroup.Addon>
-                        </InputGroup>
+                    <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.dropdownSelect(e) }} title={
+                        <div className="input-group">
+                            <span className="input-group-addon" id="basic-addon1"><i className="mdi mdi-crosshairs-gps" /></span>
+                            <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })} aria-describedby="basic-addon1" />
+                            <i className="mdi mdi-chevron-down" />
+                        </div>}>
+                        <MenuItem eventKey="1">
+                            <label><i className="mdi mdi-crosshairs-gps" />
+                                <span>Current Location</span>
+                            </label>
+                        </MenuItem>
+                        <MenuItem eventKey="507 Dickens Fall Suite 422">
+                            <label>
+                                <i className="mdi mdi-home-variant" />
+                                <span>Home</span>
+                                <i className="mdi mdi-pencil pull-right" />
+                            </label>
+                            <span className="small-text">507 Dickens Fall Suite 422</span>
+                        </MenuItem>
+                        <MenuItem eventKey="507 Dickens Fall Suite">
+                            <span>
+                                <i className="mdi mdi-map-marker" />
+                                <span>507 Dickens Fall Suite </span>
 
-                        <Popup open={this.state.showResults}>
-                            <div className="locationSuggestion">
-                                <ul>
-                                    <li>
-                                        <label>
-                                            <i className="mdi mdi-crosshairs-gps" />  Current Location
-                                            </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <i className="mdi mdi-home-variant" />
-                                            <span>Home</span>
-                                            <i className="mdi mdi-pencil pull-right" />
-                                        </label>
-                                        <span className="small-text">
-                                            507 Dickens Fall Suite 422
-                                            </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            <i className="mdi mdi-map-marker" />
-                                            <span>507 Dickens Fall Suite </span>
-                                        </span>
-                                        <a href="">Save</a>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            <i className="mdi mdi-map-marker" />
-                                            <span>507 Dickens Fall Suite </span>
-                                            <i className="mdi mdi-arrow-top-left pull-right" />
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </Popup>
-                    </FormGroup>
+                            </span>
+                            <span className="saveLocation" onClick={(e) => { this.saveLocation(e) }}><a>Save</a></span>
+                        </MenuItem>
+                        <MenuItem eventKey="507 Dickens Fall Suite">
+                            <span>
+                                <i className="mdi mdi-map-marker" />
+                                <span>507 Dickens Fall Suite </span>
+                                <i className="mdi mdi-arrow-top-left pull-right" />
+                            </span>
+                        </MenuItem>
+                    </DropdownButton>
+
                 </div>
+
                 <div className="searchFill">
                     <FormGroup>
                         {/*<InputGroup>
@@ -125,7 +133,21 @@ export default class Search extends Component {
                     </FormGroup>
 
                 </div>
+                <CustomModal showModal={this.state.showLocationModal} footer="true" title="save location">
+                    <Modal.Body>
+                        <div>
+                            <h5 className="caption">Address</h5>
+                            <span className="caption-result">{this.state.location}</span>
+                        </div>
+                        <div>
+                            <h5 className="caption">location label</h5>
+                            <input type="text" className="plain-input"/>
+                        </div>
+                    </Modal.Body>
+
+                </CustomModal>
             </div>
+
         );
     }
 }

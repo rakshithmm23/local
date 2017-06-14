@@ -39,14 +39,12 @@ export default class BookService extends Component {
     carSelection(car) {
         this.setState({ selectedCar: car });
     }
-    modalVisiblity() {
-        this.setState({ showModal: true });
-    }
+    // modalVisiblity() {
+    //     this.setState({ showModal: true });
+    // }
 
     render() {
-
         return (
-
             <div>
                 {/*Header*/}
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
@@ -75,13 +73,13 @@ export default class BookService extends Component {
                             </div>
 
                             <div className="three-dots-icon">
-                                <DropdownButton bsSize="xsmall" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() => { this.modalVisiblity() }}>Delete</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() =>  this.setState({ showModal: true })}>Delete</MenuItem>
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal}>
+                            <CustomModal showModal={this.state.showModal} footer="true" title="Delete my audi a6">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
                                 </Modal.Body>

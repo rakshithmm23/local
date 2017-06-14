@@ -24,7 +24,7 @@ class RepairSteps extends Component {
             rationCard: [],
             drivingLicence: [],
             PrefferedLocation: 'Select Location',
-            startDate: moment(),
+            startDate:"",
             step1Panel: true,
             step2Panel: false,
             carWashCategories: [
@@ -271,7 +271,6 @@ class RepairSteps extends Component {
             policeReportErrText: false,
             rationCardErrText: false,
             drivingLicenceErrText: false,
-
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -334,7 +333,7 @@ class RepairSteps extends Component {
             let errFileType = false;
             this.setState({ uploadImageErrText: false });
             each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) });
+                files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
                 fileImgSize += val.size;
                 if (val.type == "image/png" || val.type == "image/jpeg") {
                 } else {
@@ -357,7 +356,7 @@ class RepairSteps extends Component {
             let errFileType = false;
             this.setState({ policeReportErrText: false });
             each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) });
+                files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
                 fileImgSize += val.size;
                 if (val.type == "image/png" || val.type == "image/jpeg") {
                 } else {
@@ -381,7 +380,7 @@ class RepairSteps extends Component {
             let errFileType = false;
             this.setState({ rationCardErrText: false });
             each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size })
                 fileImgSize += val.size;
                 if (val.type == "image/png" || val.type == "image/jpeg") {
                 } else {
@@ -404,7 +403,7 @@ class RepairSteps extends Component {
             let errFileType = false;
             this.setState({ drivingLicenceErrText: false });
             each(e.target.files, (val) => {
-                files.push({ name: val.name, path: URL.createObjectURL(val) })
+                files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size })
                 fileImgSize += val.size;
                 if (val.type == "image/png" || val.type == "image/jpeg") {
                 } else {
@@ -426,44 +425,53 @@ class RepairSteps extends Component {
     }
 
     cancelUploadImage(val, index) {
+        let deleteFileSize = 0
         if (val == 'uploadImage') {
-            const array = this.state.uploadImage;
-            array.splice(index, 1);
-            this.setState({ uploadImage: array });
-            if (this.state.uploadImage >= 20000000) {
+            if (this.state.uploadImgSize >= 20000000) {
                 this.setState({ uploadImageErrText: true });
             } else {
                 this.setState({ uploadImageErrText: false });
             }
-        } else if (val == 'policeReport') {
-            const array = this.state.policeReport;
+            const array = this.state.uploadImage;
             array.splice(index, 1);
-            this.setState({ policeReport: array });
+            deleteFileSize = this.state.uploadImgSize - this.state.uploadImage[index].size;
+            this.setState({ uploadImage: array, uploadImgSize: deleteFileSize });
+
+        } else if (val == 'policeReport') {
             if (this.state.rationCard >= 20000000) {
+                this.setState({ policeReport: array });
                 this.setState({ policeReportErrText: true });
             } else {
                 this.setState({ policeReportErrText: false });
             }
-        } else if (val == 'rationCard') {
-
-            const array = this.state.rationCard;
+            const array = this.state.policeReport;
             array.splice(index, 1);
-            this.setState({ rationCard: array });
+            deleteFileSize = this.state.policeReportSize - this.state.policeReport[index].size;
+            this.setState({ uploadImage: array, policeReportSize: deleteFileSize });
+        } else if (val == 'rationCard') {
             if (this.state.rationCard >= 20000000) {
+                this.setState({ rationCard: array });
                 this.setState({ rationCardErrText: true });
             } else {
                 this.setState({ rationCardErrText: false });
             }
-        } else if (val == 'drivingLicence') {
 
-            const array = this.state.drivingLicence;
+            const array = this.state.rationCard;
             array.splice(index, 1);
-            this.setState({ drivingLicence: array });
+            deleteFileSize = this.state.rationCardSize - this.state.rationCard[index].size;
+            this.setState({ uploadImage: array, rationCardSize: deleteFileSize });
+        } else if (val == 'drivingLicence') {
             if (this.state.drivingLicence >= 20000000) {
+                this.setState({ drivingLicence: array });
                 this.setState({ drivingLicenceErrText: true });
             } else {
                 this.setState({ drivingLicenceErrText: false });
             }
+
+            const array = this.state.drivingLicence;
+            array.splice(index, 1);
+            deleteFileSize = this.state.drivingLicenceSize - this.state.drivingLicence[index].size;
+            this.setState({ uploadImage: array, drivingLicenceSize: deleteFileSize });
         }
 
     }
@@ -586,7 +594,7 @@ class RepairSteps extends Component {
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
-                    <div className="panel-head" onClick={() => { this.hidePanel('step1');}}>
+                    <div className="panel-head" onClick={() => { this.hidePanel('step1'); }}>
                         <h4>Step 1: Select Car Repair Type</h4>
                         <i className={this.state.step1Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
@@ -721,8 +729,8 @@ class RepairSteps extends Component {
                                         </div>
                                     </div>
                                     <span className={this.state.uploadImageErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                        <p>Sorry, image exceeds the file size 20mb.
+                                            or you uploaded wrong image type.</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
                                     </span>
                                 </div>
@@ -736,8 +744,8 @@ class RepairSteps extends Component {
                                         </div>
                                     </div>
                                     <span className={this.state.policeReportErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                        <p>Sorry, image exceeds the file size 20mb.
+                                            or you uploaded wrong image type.</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ policeReportErrText: false })} />
                                     </span>
                                 </div>
@@ -751,8 +759,8 @@ class RepairSteps extends Component {
                                         </div>
                                     </div>
                                     <span className={this.state.rationCardErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                        <p>Sorry, image exceeds the file size 20mb.
+                                            or you uploaded wrong image type.</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ rationCardErrText: false })} />
                                     </span>
                                 </div>
@@ -766,8 +774,8 @@ class RepairSteps extends Component {
                                         </div>
                                     </div>
                                     <span className={this.state.drivingLicenceErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                        <p>Sorry, image exceeds the file size 20mb.
+                                            or you uploaded wrong image type.</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ drivingLicenceErrText: false })} />
                                     </span>
                                 </div>
