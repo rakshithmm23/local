@@ -96,7 +96,6 @@ export default class SendOTP extends Component {
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
                             </div>
-
                             <div className="login-panel-body">
                                 <div className="form-group otp-input">
                                 <TextInput

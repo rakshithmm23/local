@@ -106,7 +106,7 @@ export default class SignUp extends Component {
     const { router, authReducer } = this.props;
     return (
       <div className="container-fluid" id="wrapper">
-        <LoginHeader headerTitle="Sign Up" />
+        <LoginHeader pageType="signUp" headerClickAction={(e)=>{e.preventDefault();router.push('/sign-in')}} />
         <CarouselSlider />
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
            <Scrollbars className="customScroll">
@@ -157,7 +157,7 @@ export default class SignUp extends Component {
                     <label htmlFor="agreeCheckbox">
                       <input type="checkbox" onChange={(e) => {this.setState({'terms': e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }}/>
                         By signing up, you agree to the
-                            <a href="" className="green-text"> terms and conditions</a>, and <a href="" className="green-text">privacy policy</a>.
+                            <a href="" className="blue-text"> terms and conditions</a>, and <a href="" className="blue-text">privacy policy</a>.
                     </label>
                   </span>
                   <span className="error-text">{'Please agree to the terms and condition'}</span>
@@ -166,10 +166,7 @@ export default class SignUp extends Component {
 
               </div>
               <div className="login-panel-footer">
-                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
-              </div>
-              <div className="auth-footer-text text-center">
-                Already having account? <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('sign-in'); }}>Sign In</a>
+                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
               </div>
             </div>
           </Scrollbars>

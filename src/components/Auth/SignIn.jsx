@@ -95,7 +95,7 @@ export default class SignIn extends Component {
         const { router, authReducer } = this.props;
         return (
             <div className="container-fluid" id="wrapper">
-                <LoginHeader headerTitle='Sign In' />
+                <LoginHeader pageType="signIn" headerClickAction={(e)=>{e.preventDefault();router.push('/')}}/>
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                 <Scrollbars className="customScroll">
@@ -127,13 +127,9 @@ export default class SignIn extends Component {
                                 validationError="Password should be greater than six digits"
                                 onChange={this.onFieldChange.bind(this)}/>
                             </div>
-
                             <div className="login-panel-footer">
-                                <a href="" className="green-text">Forget Password ?</a>
-                                <Button btnCallBack={this.signInAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Sign In"/>
-                            </div>
-                            <div className="auth-footer-text text-center">
-                                {'Don\'t have an account?'} <a href="" className="green-text" onClick={(e) => { e.preventDefault(); router.push('/'); }}>Sign Up</a>
+                                <a href="" className="blue-text">Forget Password ?</a>
+                                <Button btnCallBack={this.signInAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
                         </div>
                       </Scrollbars>
