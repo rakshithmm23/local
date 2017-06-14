@@ -80,7 +80,6 @@ export default class Search extends Component {
             }
         ]
         let locationFilterView = filter(savedLocation, (val) => {
-            debugger
             if (this.state.location != "" && val.address.toLowerCase().indexOf(this.state.location) != -1) {
                 
                 return val;

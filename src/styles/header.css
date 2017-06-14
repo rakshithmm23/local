@@ -146,6 +146,7 @@
 }
 
 .header-search .dropdown-menu li label span {
+  text-transform: capitalize;
   display: inline-block;
   color: #454B51;
   font-size: 11px;
@@ -153,6 +154,7 @@
 }
 
 .header-search .dropdown-menu li span.small-text {
+  text-transform: capitalize;
   display: inline-block;
   font-size: 10px;
   margin-left: 25px;
