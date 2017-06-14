@@ -8,9 +8,9 @@ class CustomModal extends Component {
         this.state = {
             showModal: false
         };
-        this.propTypes = {
-            showModal: React.PropTypes.bool.isRequired,
-        }    
+        // this.propTypes = {
+        //     showModal: React.PropTypes.bool.isRequired,
+        // }    
     }
     componentWillReceiveProps(nextProps) {
         const { showModal } = nextProps;
@@ -21,21 +21,20 @@ class CustomModal extends Component {
         }
     }    
     close() {
-        debugger
         this.setState({ showModal: false });
     }
     render() {
-        const { children, footer } = this.props;
+        const { children, footer, className } = this.props;
         return (            
             <div>
-                <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+                <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
                     </Modal.Header>
                     {children}
                     {footer=="true" && <Modal.Footer>
-                        <Button btnType="submit" btnSize="sm" fontSize={15} label="Cancel" backgroundColor="red" btnCallBack={this.close.bind(this)}/>
-                        <Button btnType="submit" btnSize="sm" fontSize={15} label="Save" />
+                        <Button btnType="cancel" btnSize="sm" fontSize={15} label="Cancel"  btnCallBack={this.close.bind(this)}/>
+                        <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} />
                     </Modal.Footer>}
                 </Modal>
             </div>

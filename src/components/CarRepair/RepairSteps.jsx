@@ -478,7 +478,7 @@ class RepairSteps extends Component {
     render() {
         const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
+                <div className='upload-box-wrapper box-shadow' index={index}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage("uploadImage", index) }}>
                             <i className="mdi mdi-close" />
@@ -491,7 +491,7 @@ class RepairSteps extends Component {
         })
         const policeReportView = map(this.state.policeReport, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
+                <div className='upload-box-wrapper box-shadow' index={index}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage('policeReport', index) }}>
                             <i className="mdi mdi-close" />
@@ -504,7 +504,7 @@ class RepairSteps extends Component {
         })
         const rationCardView = map(this.state.rationCard, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
+                <div className='upload-box-wrapper box-shadow' index={index}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage('rationCard', index) }}>
                             <i className="mdi mdi-close" />
@@ -517,7 +517,7 @@ class RepairSteps extends Component {
         })
         const drivingLicenceView = map(this.state.drivingLicence, (img, index) => {
             return (
-                <div className='upload-box-wrapper box-shadow'>
+                <div className='upload-box-wrapper box-shadow' index={index}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={() => { this.cancelUploadImage('drivingLicence', index) }}>
                             <i className="mdi mdi-close" />

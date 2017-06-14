@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { map } from 'lodash'
 
 class Gmaps extends Component {
-
+    
     render() {
-        
-        const markers = this.props.markers?this.props.markers.jobCardLocation.map((val, i) => {
+        let mapRes = null;
+        { this.props.markers.jobCardLocation == undefined ? mapRes = this.props.markers : mapRes = this.props.markers.jobCardLocation }
+        const markers = this.props.markers ? map(mapRes, (val, i) => {
             const marker = {
                 position: {
                     lat: val.lat,
@@ -17,13 +19,22 @@ class Gmaps extends Component {
                     url: val.pinImage
                 }}
             />;
-        }):null;
+        }) : null;
+        let mapSettings = {
+            defaultZoom: this.props.zoom,
+            defaultCenter: this.props.center
+        }
+        if(this.props.setCenter) {
+            mapSettings["center"] = this.props.center;
+        }
         return (
             <div>
-                <GoogleMap
-                    defaultZoom={this.props.zoom}
-                    defaultCenter={this.props.center}>
+                <GoogleMap                    
+                    {...mapSettings}
+                     >
+                    
                     {markers}
+
                 </GoogleMap>
             </div>
         );
