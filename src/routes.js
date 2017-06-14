@@ -12,6 +12,8 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import VerifyOTP from './components/Auth/VerifyOTP';
 import SendOTP from './components/Auth/SendOTP';
+import ForgetPassword from './components/Auth/ForgetPassword';
+import EditMobileNo from './components/Auth/EditMobileNo';
 
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
@@ -40,6 +42,8 @@ export default (
     <Route path="dashboard" component={DashboardContainer(Dashboard)} onEnter={isLoggedIn}/>
     <Route path="mycar-list" component={DashboardContainer(MyCarList)} onEnter={isLoggedIn}/>
     <Route path="sign-in" component={AuthContainer(SignIn)} />
+    <Route path="forget-password" component={AuthContainer(ForgetPassword)} />
+    <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
     <Route path="car-request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
