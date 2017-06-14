@@ -1,71 +1,86 @@
 .header-section {
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
-  height: 90px;
-  background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    height: 90px;
+    background-color: #fff;
 }
 
 .header-section .logo-section {
-  display: inline-block;
-  padding: 23px 0px;
-  margin: 0 auto;
-  text-align: center;
-  width: 110px;
-  vertical-align: top;
+    display: inline-block;
+    padding: 23px 0px;
+    margin: 0 auto;
+    text-align: center;
+    width: 110px;
+    vertical-align: top;
 }
 
 .header-search {
-  padding: 20px 50px;
-  display: inline-block;
-  vertical-align: top;
-  height: 90px;
-  width: 65%;
-  margin-left: 50px;
+    padding: 20px 40px;
+    display: inline-block;
+    vertical-align: top;
+    height: 90px;
+    width: 70%;
+    margin-left: 0px;
 }
 
 .searchBar {
-  width: 100%;
-  height: 50px;
+    width: 100%;
+    height: 50px;
 }
 
 .header-search .searchLeft {
-  width: 217px;
-  float: left;
+    width: 217px;
+    float: left;
+}
+
+.header-search .searchLeft input {
+    padding-right: 40px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .header-search .searchLeft button {
-  padding: 0;
-  border: none;
+    padding: 0;
+    border: none;
 }
 
 .header-search .searchLeft .input-group-addon {
-  padding-left: 0 9px;
+    padding-left: 0 9px;
 }
 
 .header-search .searchLeft .caret {
-  display: none;
+    display: none;
 }
 
 .header-search .searchLeft .mdi {
-  color: #949DA5;
+    color: #949DA5;
 }
 
 .header-search .searchLeft .mdi-chevron-down {
-  position: absolute;
-  right: 16px;
-  z-index: 9;
-  top: 12px;
-  font-size: 20px;
+    position: absolute;
+    right: 16px;
+    z-index: 9;
+    top: 12px;
+    font-size: 20px;
 }
 
 .header-search .dropdown-menu {
-  width: 100.5%;
-  border-radius: 0;
-  font-family: CenturyGothic;
-  background-color: #fefefe;
-  border: 1px solid #dae1e7;
-  margin-top: -1px;
-  padding: 5px 13px;
-  box-shadow: none;
+    width: 100.5%;
+    border-radius: 0;
+    font-family: CenturyGothic;
+    background-color: #fefefe;
+    border: 1px solid #dae1e7;
+    margin-top: -1px;
+    padding: 5px 13px;
+    box-shadow: none;
+}
+
+.view_all{
+  color: #006FB9 !important;	
+  font-size: 12px !important;
+  float: right;
+  display: inline-block;
+  padding: 0 !important;
 }
 
 
@@ -107,42 +122,42 @@
 }*/
 
 .header-search .dropdown-menu li {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    cursor: pointer;
 }
 
 .header-search .dropdown-menu li:last-child {
-  border: 0;
+    border: 0;
 }
 
 .header-search .dropdown-menu li label {
-  font-weight: normal;
-  color: #454B51;
-  font-size: 11px;
-  display: block;
-  cursor: pointer;
-  position: relative;
-  top: auto;
-  left: auto;
+    font-weight: normal;
+    color: #454B51;
+    font-size: 11px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    top: auto;
+    left: auto;
 }
 
 .header-search .dropdown-menu li label i,
 .header-search .dropdown-menu li span i {
-  margin-right: 5px;
-  vertical-align: top;
-  cursor: pointer;
-  font-size: 14px;
+    margin-right: 5px;
+    vertical-align: top;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .header-search .dropdown-menu li label .mdi-pencil {
-  color: #006FB9;
+    color: #006FB9;
 }
 
 .header-search .dropdown-menu li span {
-  color: #717982;
-  font-size: 11px;
-  display: block;
+    color: #717982;
+    font-size: 11px;
+    display: block;
 }
 
 .header-search .dropdown-menu li label span {
@@ -203,32 +218,32 @@
 }
 
 .header-search .searchFill {
-  width: 65%;
-  display: inline-block;
+    width: 65%;
+    display: inline-block;
 }
 
 .header-search .form-group {
-  margin-bottom: 0px;
-  display: inline-block;
-  width: 100%;
+    margin-bottom: 0px;
+    display: inline-block;
+    width: 100%;
 }
 
 .header-search .form-control,
 .header-search .form-control:focus {
-  margin: 0;
-  height: 50px;
-  outline: 0 !important;
-  box-shadow: none !important;
-  font-family: CenturyGothic;
-  font-size: 15px;
-  border-left: 0;
-  border-right: 0;
-  border-radius: 0;
-  border-color: #DAE1E7;
+    margin: 0;
+    height: 50px;
+    outline: 0 !important;
+    box-shadow: none !important;
+    font-family: CenturyGothic;
+    font-size: 15px;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-color: #DAE1E7;
 }
 
 .header-search .form-group .dropdown {
-  width: 100%
+    width: 100%
 }
 
 .header-search .form-group .dropdown-toggle {
@@ -253,19 +268,19 @@
 }
 
 .header-search .form-group .dropdown-toggle .mdi-magnify {
-  float: right;
-  color: #949DA5;
-  font-size: 22px;
+    float: right;
+    color: #949DA5;
+    font-size: 22px;
 }
 
 .header-search .form-group .dropdown-menu {
-  width: 100%;
-  border-radius: 0;
-  background-color: #FEFEFE;
-  border: 1px solid #DAE1E7 !important;
-  margin-top: -1px !important;
-  padding: 5px 13px;
-  box-shadow: none !important;
+    width: 100%;
+    border-radius: 0;
+    background-color: #FEFEFE;
+    border: 1px solid #DAE1E7 !important;
+    margin-top: -1px !important;
+    padding: 5px 13px;
+    box-shadow: none !important;
 }
 
 .header-search .form-group .dropdown-menu li {
@@ -275,7 +290,7 @@
 }
 
 .header-search .form-group .dropdown-menu li:last-child {
-  border: 0;
+    border: 0;
 }
 
 .header-search .form-group .dropdown-menu li a {
@@ -294,211 +309,211 @@
 }
 
 .header-search .form-control::-webkit-input-placeholder {
-  color: #55595B
+    color: #55595B
 }
 
 .header-search .form-control::-moz-placeholder {
-  color: #55595B
+    color: #55595B
 }
 
 .header-search .form-control:-ms-input-placeholder {
-  color: #55595B
+    color: #55595B
 }
 
 .header-search .form-control:-moz-placeholder {
-  color: #55595B
+    color: #55595B
 }
 
 .header-search .searchLeft .form-control {
-  padding: 6px 5px;
-  padding-left: 0;
+    padding: 6px 5px;
+    padding-left: 0;
 }
 
 .header-search .input-group-addon {
-  background-color: #fff;
-  padding: 0px 10px 0px;
-  border-radius: 0;
-  border-color: #DAE1E7;
-  cursor: pointer;
+    background-color: #fff;
+    padding: 0px 10px 0px;
+    border-radius: 0;
+    border-color: #DAE1E7;
+    cursor: pointer;
 }
 
 .header-search .input-group-addon .mdi-crosshairs-gps {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .header-search .input-group-addon:first-child {
-  border-right: 0;
-  border-left-width: 1px;
+    border-right: 0;
+    border-left-width: 1px;
 }
 
 .header-search input:focus::-webkit-input-placeholder,
 .header-search input:valid::-webkit-input-placeholder {
-  font-family: CenturyGothic;
-  transform: none;
-  color: #949DA5;
-  font-size: 16px;
+    font-family: CenturyGothic;
+    transform: none;
+    color: #949DA5;
+    font-size: 16px;
 }
 
 .header-search .mdi-magnify {
-  color: #949DA5;
-  font-size: 22px;
+    color: #949DA5;
+    font-size: 22px;
 }
 
 .header-right {
-  display: inline-block;
-  padding: 0px;
-  width: 250px;
-  vertical-align: top;
-  padding: 16px 15px;
-  float: right;
-  margin-right: 10px;
+    display: inline-block;
+    padding: 0px;
+    width: 250px;
+    vertical-align: top;
+    padding: 16px 15px;
+    float: right;
+    margin-right: 10px;
 }
 
 .header-right ul li {
-  display: inline-block;
-  cursor: pointer;
-  vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
 }
 
 .header-right ul li.notification-menu {
-  position: relative;
-  margin-right: 20px;
-  margin-top: 5px;
+    position: relative;
+    margin-right: 20px;
+    margin-top: 5px;
 }
 
 .header-right ul li.notification-menu i {
-  color: #454B51;
-  font-size: 26px;
+    color: #454B51;
+    font-size: 26px;
 }
 
 .header-right ul li.notification-menu.active i {
-  color: #23AE49;
+    color: #23AE49;
 }
 
 .header-right ul li.notification-menu label {
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 0px;
-  margin-top: 5px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 0px;
+    margin-top: 5px;
 }
 
 .header-right ul {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .header-right ul li.notification-menu .no-notify {
-  position: absolute;
-  border: 1px solid #FFFFFF;
-  box-sizing: border-box;
-  height: 10px;
-  width: 10px;
-  border: 2px solid #fff;
-  background-color: #ED3124;
-  border-radius: 100%;
-  text-align: center;
-  color: #fff;
-  font-family: CenturyGothic;
-  top: 20px;
-  right: -1px;
-  font-size: 11px;
-  padding: 2px;
+    position: absolute;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    height: 10px;
+    width: 10px;
+    border: 2px solid #fff;
+    background-color: #ED3124;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: CenturyGothic;
+    top: 20px;
+    right: -1px;
+    font-size: 11px;
+    padding: 2px;
 }
 
 .header-right ul .notification-menu.active .no-notify {
-  display: none;
+    display: none;
 }
 
 .profile-header .profile-img {
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  display: inline-block;
-  border: 3px solid #EEF2F5;
-  border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
+    border: 3px solid #EEF2F5;
+    border-radius: 100%;
 }
 
 .profile-header .profile-img img {
-  width: 100%;
+    width: 100%;
 }
 
 .profile-header .profile-desc {
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 10px;
-  padding-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .profile-header .profile-desc span {
-  font-size: 14px;
-  color: #91A3AF;
-  font-family: CenturyGothic;
-  padding-right: 10px;
+    font-size: 14px;
+    color: #91A3AF;
+    font-family: CenturyGothic;
+    padding-right: 10px;
 }
 
 .profile-header .profile-desc .fa-angle-down {
-  font-size: 14px;
-  color: rgba(147, 158, 166, 1);
+    font-size: 14px;
+    color: rgba(147, 158, 166, 1);
 }
 
 .search-mobile i {
-  display: none;
+    display: none;
 }
 
 
 /*Search Suggestion*/
 
 .locationSuggestion {
-  font-family: CenturyGothic;
-  background-color: #FEFEFE;
-  border: 1px solid #DAE1E7;
-  margin-top: -6px;
-  padding: 5px 13px;
+    font-family: CenturyGothic;
+    background-color: #FEFEFE;
+    border: 1px solid #DAE1E7;
+    margin-top: -6px;
+    padding: 5px 13px;
 }
 
 .locationSuggestion li {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    cursor: pointer;
 }
 
 .locationSuggestion li:last-child {
-  border: 0;
+    border: 0;
 }
 
 .locationSuggestion li label {
-  font-weight: normal;
-  color: #454B51;
-  font-size: 11px;
-  display: block;
-  cursor: pointer;
-  position: relative;
-  top: auto;
-  left: auto;
+    font-weight: normal;
+    color: #454B51;
+    font-size: 11px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    top: auto;
+    left: auto;
 }
 
 .locationSuggestion li label i,
 .locationSuggestion li span i {
-  margin-right: 5px;
-  vertical-align: top;
-  cursor: pointer;
-  font-size: 14px;
+    margin-right: 5px;
+    vertical-align: top;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .locationSuggestion li label .mdi-pencil {
-  color: #006FB9;
+    color: #006FB9;
 }
 
 .locationSuggestion li span {
-  color: #717982;
-  font-size: 11px;
-  display: block;
+    color: #717982;
+    font-size: 11px;
+    display: block;
 }
 
 .locationSuggestion li label span {
-  display: inline-block;
-  color: #454B51;
-  font-size: 11px;
-  margin-left: 5px;
+    display: inline-block;
+    color: #454B51;
+    font-size: 11px;
+    margin-left: 5px;
 }
 
 .locationSuggestion li span.small-text {
@@ -513,23 +528,23 @@
 }
 
 .locationSuggestion li span span {
-  display: inline-block;
-  margin-left: 5px;
-  width: 110px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: top;
+    display: inline-block;
+    margin-left: 5px;
+    width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: top;
 }
 
 .locationSuggestion li a {
-  display: inline-block;
-  font-size: 11px;
-  float: right;
-  margin-top: -20px;
-  color: #006FB9;
-  text-decoration: none;
-  outline: 0 !important;
+    display: inline-block;
+    font-size: 11px;
+    float: right;
+    margin-top: -20px;
+    color: #006FB9;
+    text-decoration: none;
+    outline: 0 !important;
 }
 
 /*Auth header css*/
@@ -551,69 +566,69 @@
 /*responsive*/
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
-  .header-search {
-    width: 62%;
-    margin-left: 0;
-    padding-right: 20px;
-  }
-  .header-search .searchFill {
-    width: 55%;
-  }
-  .header-right {
-    width: 230px;
-  }
+    .header-search {
+        width: 62%;
+        margin-left: 0;
+        padding-right: 20px;
+    }
+    .header-search .searchFill {
+        width: 55%;
+    }
+    .header-right {
+        width: 230px;
+    }
 }
 
 @media screen and (max-width: 991px) {
-  .header-section {
-    padding: 0px;
-    height: 70px;
-  }
-  .header-right {
-    padding: 0px !important;
-    margin-right: 0;
-    border: 0;
-    width: auto;
-  }
-  .header-search,
-  .profile-desc span {
-    display: none;
-  }
-  .padwrapper {
-    padding: 15px !important;
-  }
-  .service-data {
-    margin-bottom: 15px;
-  }
-  .logo-img {
-    width: 40px;
-  }
-  .header-right ul li {
-    padding: 8px 0;
-  }
-  .profile-header .btn-default span img {
-    width: 35px;
-    height: 35px;
-  }
-  .header-right ul li.notification-menu {
-    margin-right: 0;
-  }
-  .search-mobile i {
-    font-size: 24px;
-    display: block;
-    margin-right: 15px;
-    margin-top: 3px;
-  }
-  .header-right ul {
-    margin-bottom: 0px;
-  }
-  .header-section .logo-section {
-    padding: 15px;
-    text-align: left;
-    width: auto;
-    border: 0;
-  }
-  .header-right li:nth-child(3) {
-    display: none;
-  }
+    .header-section {
+        padding: 0px;
+        height: 70px;
+    }
+    .header-right {
+        padding: 0px !important;
+        margin-right: 0;
+        border: 0;
+        width: auto;
+    }
+    .header-search,
+    .profile-desc span {
+        display: none;
+    }
+    .padwrapper {
+        padding: 15px !important;
+    }
+    .service-data {
+        margin-bottom: 15px;
+    }
+    .logo-img {
+        width: 40px;
+    }
+    .header-right ul li {
+        padding: 8px 0;
+    }
+    .profile-header .btn-default span img {
+        width: 35px;
+        height: 35px;
+    }
+    .header-right ul li.notification-menu {
+        margin-right: 0;
+    }
+    .search-mobile i {
+        font-size: 24px;
+        display: block;
+        margin-right: 15px;
+        margin-top: 3px;
+    }
+    .header-right ul {
+        margin-bottom: 0px;
+    }
+    .header-section .logo-section {
+        padding: 15px;
+        text-align: left;
+        width: auto;
+        border: 0;
+    }
+    .header-right li:nth-child(3) {
+        display: none;
+    }
 }

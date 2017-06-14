@@ -125,11 +125,15 @@ input[type="color"][list] {
 }
 
 .profile-head span img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     display: inline-block;
     margin-right: 8px;
+    border-radius: 3px;
+}
+.quotes-right-header .profile-head span img{
+    width: 36px;
+    height: 36px;
 }
 
 .profile-head label {
@@ -242,12 +246,12 @@ input[type="color"][list] {
 
 .message-in.chain-msg {
     position: relative;
-    left: 50px;
+    left: 40px;
 }
 
 .message-out.chain-msg {
     position: relative;
-    right: 50px;
+    right: 40px;
 }
 
 
@@ -290,7 +294,7 @@ input[type="color"][list] {
 .quotes-chat-area .c-message .c-chat {
     background-color: #f7f7f7;
     border-radius: 0 5px 5px 5px;
-    padding: 5px;
+    padding: 10px;
     display: inline-block;
     max-width: 80%;
     vertical-align: top;

@@ -533,7 +533,7 @@ export default class RequestCard extends Component {
                               <div className="quotes-message-footer">
                                 <FormGroup>
                                   <InputGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl type="text" placeholder="Type your message here..." />
                                     <InputGroup.Addon>
                                       <i className="mdi mdi-send" />
                                     </InputGroup.Addon>

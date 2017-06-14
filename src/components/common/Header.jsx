@@ -136,9 +136,9 @@ export default class Header extends Component {
                                         {/*{this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                             {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}*/}
                                     </div>} >
-                                    <MenuItem eventKey="My Nissan GT-R">
-
+                                    <MenuItem eventKey="Notifications">
                                         Notifications
+                                        <a href="" className="view_all">View All</a>
                                     </MenuItem>
                                     {viewNotifications}
                                 </DropdownButton>
@@ -151,8 +151,9 @@ export default class Header extends Component {
                                         <i className="mdi mdi-message-processing" aria-hidden="true" />
                                         <span className="no-notify"></span>
                                     </div>} >
-                                    <MenuItem eventKey="My Nissan GT-R">
-                                        Messages
+                                    <MenuItem eventKey="Messages">
+                                        Messages 
+                                        <a href="" className="view_all">View All</a>
                                     </MenuItem>
 
                                     {viewMessages}

@@ -37,6 +37,7 @@ import './styles/collapse-panel.css';
 import './styles/book-service.css';
 import './styles/timeline.css';
 import './styles/modal.css';
+import './styles/messages.css';
 
 
 

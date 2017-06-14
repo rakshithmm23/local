@@ -35,6 +35,7 @@ import CarTimeline from './components/CarTimeline/CarTimeline';
 import CarRepair from './components/CarRepair/CarRepair';
 import CarWash from './components/CarWash/CarWash';
 import CarService from './components/CarService/CarService';
+import Messages from './components/Messages/Messages';
 
 export default (
   <Route path="/" component={Home}>
@@ -54,6 +55,6 @@ export default (
     <Route path="car-repair" component={AuthContainer(CarRepair)} />
     <Route path="car-wash" component={AuthContainer(CarWash)} />
     <Route path="car-service" component={AuthContainer(CarService)} />
-
+    <Route path="messages" component={AuthContainer(Messages)} />
   </Route>
 );
