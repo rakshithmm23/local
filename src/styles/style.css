@@ -57,6 +57,9 @@
     .padRight0 {
         padding-right: 0;
     }
+    .inline-disp{
+        display: inline-block !important;
+    }
     /*commom wrapper*/
 
     .main-wrapper {

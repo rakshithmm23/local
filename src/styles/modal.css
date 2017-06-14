@@ -96,3 +96,50 @@
   -webkit-appearance: none;
   outline: none;
 }
+
+.delete-text {
+  color: #EF2E24;
+  font-family: "CenturyGothic";
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.map-modal .modal-dialog {
+  width: 836px;
+}
+
+.map-modal .btn.submit {
+  font-size: 12px !important;
+}
+
+.map-modal .modal-body {
+  padding: 0;
+  margin: 0;
+}
+
+.map-modal .current-position {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
+  text-align: center;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.map-modal .current-position i {
+  color: #ED3124;
+  font-size: 20px;
+  text-align: center;
+  line-height: 39px;
+}
+
+.map-modal .btn.cancel {
+  border: 1px solid #ED3124;
+  color: #ED3124 !important;
+  background: transparent;
+}

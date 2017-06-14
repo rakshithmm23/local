@@ -1,4 +1,3 @@
-
 .btn-theme {
   font-family: CenturyGothic;
   font-size: 15px;
@@ -8,7 +7,6 @@
   color: #fff !important;
   outline: 0 !important;
   box-shadow: none !important;
-  margin: 5px !important;
   font-weight: bold;
 }
 
@@ -22,10 +20,12 @@
 
 .btn-theme.facebook {
   background: #3D5AA6;
+  margin-right: 10px;
 }
 
 .btn-theme.gmail {
-  background: #DE4E44;
+  background: #ED3124;
+  margin-left: 10px;
 }
 
 .btn-theme.submit {

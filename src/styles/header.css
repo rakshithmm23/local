@@ -161,55 +161,60 @@
 }
 
 .header-search .dropdown-menu li label span {
-    display: inline-block;
-    color: #454B51;
-    font-size: 11px;
-    margin-left: 5px;
+  text-transform: capitalize;
+  display: inline-block;
+  color: #454B51;
+  font-size: 11px;
+  margin-left: 5px;
 }
 
 .header-search .dropdown-menu li span.small-text {
-    font-size: 10px;
-    margin-left: 25px;
-    width: 120px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    vertical-align: top;
-}
-
-.header-search .dropdown-menu li span span {
-    display: inline-block;
-    margin-left: 5px;
-    width: 110px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    vertical-align: top;
+  text-transform: capitalize;
+  display: inline-block;
+  font-size: 10px;
+  margin-left: 25px;
+  width: 120px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
 }
 
 .header-search .dropdown-menu li a {
-    padding: 0;
-    display: inline-block;
-    font-size: 11px;
-    color: #006FB9;
-    text-decoration: none;
-    outline: 0 !important;
-    background: transparent;
-    width: 100%;
+  padding: 0;
+  display: inline-block;
+  font-size: 11px;
+  color: #006FB9;
+  text-decoration: none;
+  outline: 0 !important;
+  background: transparent;
+  width: 100%;
 }
 
-.header-search .dropdown-menu li a .saveLocation {
-    float: right;
+.header-search .dropdown-menu li span .saveLocation,
+.header-search .dropdown-menu li span .editLocation {
+  margin-top: 5px;
+  float: right;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-left: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.header-search .dropdown-menu li span .editLocation {
+  margin-top: 0px;
 }
 
-.header-search .dropdown-menu li a a {
-    display: inline-block;
-    font-size: 11px;
-    float: right;
-    margin-top: -20px;
-    color: #006fb9;
-    text-decoration: none;
-    outline: 0!important;
+.header-search .dropdown-menu li .saveLocation a ,
+.header-search .dropdown-menu li .editLocation a {
+  display: inline-block;
+  font-size: 11px;
+  float: right;
+  color: #006fb9;
+  text-decoration: none;
+  outline: 0!important;
 }
 
 .header-search .searchFill {
@@ -242,23 +247,24 @@
 }
 
 .header-search .form-group .dropdown-toggle {
-    width: 100%;
-    border-radius: 0;
-    height: 50px;
-    border: 1px solid #DAE1E7 !important;
-    background: #fff !important;
-    box-shadow: none;
+  width: 100%;
+  border-radius: 0;
+  height: 50px;
+  border: 1px solid #DAE1E7 !important;
+  background: #fefefe !important;
+  box-shadow: none;
 }
 
 .header-search .form-group .dropdown-toggle input {
-    float: left;
-    color: #949DA5;
-    font-size: 15px;
-    margin-top: 5px;
-    display: inline-block;
-    border: none;
-    outline: none;
-    width: 94%;
+  float: left;
+  color: #949DA5;
+  font-size: 15px;
+  margin-top: 5px;
+  display: inline-block;
+  border: none;
+  outline: none;
+  width: 94%;
+  background-color: #fefefe;
 }
 
 .header-search .form-group .dropdown-toggle .mdi-magnify {
@@ -278,8 +284,9 @@
 }
 
 .header-search .form-group .dropdown-menu li {
-    border-bottom: 1px solid #ddd;
-    padding: 7px 0;
+  /*border-bottom: 1px solid #ddd;*/
+  border-bottom: none;
+  padding: 7px 0;
 }
 
 .header-search .form-group .dropdown-menu li:last-child {
@@ -287,18 +294,18 @@
 }
 
 .header-search .form-group .dropdown-menu li a {
-    text-transform: capitalize;
-    font-weight: normal;
-    color: #454B51;
-    font-size: 11px;
-    display: block;
-    cursor: pointer;
-    position: relative;
-    top: auto;
-    left: auto;
-    outline: none;
-    padding: 3px 5px !important;
-    background-color: transparent !important;
+  text-transform: capitalize;
+  font-weight: normal;
+  color: #717982;
+  font-size: 13px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  top: auto;
+  left: auto;
+  outline: none;
+  padding: 3px 5px !important;
+  background-color: transparent !important;
 }
 
 .header-search .form-control::-webkit-input-placeholder {
@@ -510,13 +517,14 @@
 }
 
 .locationSuggestion li span.small-text {
-    font-size: 10px;
-    margin-left: 25px;
-    width: 120px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    vertical-align: top;
+  /*display: inline-block;*/
+  font-size: 10px;
+  margin-left: 25px;
+  /*width: 120px;*/
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
 }
 
 .locationSuggestion li span span {
@@ -539,6 +547,21 @@
     outline: 0 !important;
 }
 
+/*Auth header css*/
+.authNav-right{
+    margin: 16px 0px;
+}
+.authNav-right ul li label{
+  color: #454B51;
+  font-size: 12px;
+  font-family: CenturyGothic;
+  margin-bottom: 0;
+}
+.authNav-right ul li label a{
+  font-family: CenturyGothic;
+  color: #006FBA;
+  padding-left: 3px;
+}
 
 /*responsive*/
 
