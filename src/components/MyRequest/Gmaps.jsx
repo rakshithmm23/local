@@ -11,7 +11,7 @@ class Gmaps extends Component {
         }
     }
     mouseLeave(){
-        // this.setState({activeInfoWindow: null})
+        this.setState({activeInfoWindow: null})
     }
 
     render() {

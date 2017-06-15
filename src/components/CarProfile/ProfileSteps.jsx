@@ -49,13 +49,14 @@ class ProfileSteps extends Component {
         this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true });
     }
     tabOpen(val) {
+        debugger
         if (val == 'manufacturerTabVisible') {
             this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
-        } else if (val == 'modelTabVisible' && this.state.modelTabIsUnlocked) {
+        } else if (val == 'modelTabVisible' ) {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
-        } else if (val == 'otherDetailsTabVisible', this.state.otherDetailsTabIsUnlocked) {
+        } else if (val == 'otherDetailsTabVisible') {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
-        }
+        } 
     }
     fileNameUpload(e) {
         let files = [], fileImgSize = 0, errFileType = false;
@@ -229,7 +230,7 @@ class ProfileSteps extends Component {
         const carListView = map(carList, (carItem, key) => {
             return (
                 <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); }} key={key}>
-                    <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
+                    <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('modelTabVisible')}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -239,7 +240,7 @@ class ProfileSteps extends Component {
         const carModelView = map(carModel, (carItem, key) => {
             return (
                 <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }); }} key={key}>
-                    <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
+                    <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('otherDetailsTabVisible')}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
