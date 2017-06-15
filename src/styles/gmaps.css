@@ -40,3 +40,4 @@
       left:0 !important;
       border-radius:2px;
   }
+  .gm-style-iw + div {display: none;}

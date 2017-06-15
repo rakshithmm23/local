@@ -7,12 +7,14 @@ class Gmaps extends Component {
     constructor() {
         super()
         this.state = {
-            activeInfoWindow: 0
+            activeInfoWindow: null
         }
+    }
+    mouseLeave(){
+        // this.setState({activeInfoWindow: null})
     }
 
     render() {
-        debugger
         let mapRes = null;
         if(this.props.markers != undefined ){
             {  this.props.markers.jobCardLocation == undefined ? mapRes = this.props.markers : mapRes = this.props.markers.jobCardLocation }
@@ -25,7 +27,7 @@ class Gmaps extends Component {
                     lng: val.lng
                 }
             }
-            return <Marker key={i} {...marker}  onMouseOver={() => this.setState({ activeInfoWindow: i }) } onMouseLeave={() => this.setState({ activeInfoWindow: null }) } onClick={this.props.markerClick}
+            return <Marker key={i} {...marker}  onMouseOver={() => this.setState({ activeInfoWindow: i }) } onMouseOut={() => {this.mouseLeave()} } onClick={this.props.markerClick}
                 icon={{
                     url: val.pinImage
                 }}
@@ -48,6 +50,7 @@ class Gmaps extends Component {
                     {this.props.markers ? map(mapRes, (val, i) => {
                         if (i == this.state.activeInfoWindow) {
                             return (
+                                this.props.infoPopUp?
                                 <InfoWindow  options={{pixelOffset: new google.maps.Size(0,-40),maxWidth: 327}} defaultPosition={{ lat: val.lat, lng: val.lng }} key={i}>
                                     <Media>
                                         <Media.Left>
@@ -66,7 +69,8 @@ class Gmaps extends Component {
                                             <span className="distance">{val.distance} km</span>
                                         </Media.Body>
                                     </Media>
-                                </InfoWindow>
+                                </InfoWindow>:""
+                                
                             )
                         }
 

@@ -335,6 +335,8 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
+                            <i className="mdi mdi-filter-variant"></i>
+                            <i className="mdi mdi-swap-horizontal"></i>
                             <select>
                               <option value="volvo">Filter</option>
                               <option value="saab">Saab</option>
@@ -376,6 +378,7 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
+                            infoPopUp={true}
                             center={{ lat: 12.9952672, lng: 77.5905857 }}
                             markers={{ jobCardLocation }}
                             markerClick={this.mapClick.bind(this)}
