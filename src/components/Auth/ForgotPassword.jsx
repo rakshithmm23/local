@@ -91,6 +91,7 @@ export default class VerifyOTP extends Component {
     }
     render() {
         const { router, authReducer } = this.props;
+        debugger;
         console.log(authReducer);
         return (
             <div className="container-fluid" id="wrapper">

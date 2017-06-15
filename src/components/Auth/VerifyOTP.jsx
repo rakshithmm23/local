@@ -94,7 +94,7 @@ export default class VerifyOTP extends Component {
         console.log(authReducer);
         return (
             <div className="container-fluid" id="wrapper">
-                <LoginHeader headerTitle='Sign Up' />
+                <LoginHeader headerTitle='Sign Up'/>
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                   <Scrollbars className="customScroll">
