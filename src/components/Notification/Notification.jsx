@@ -124,6 +124,12 @@ export default class CarWash extends Component {
                           </div>
                         </div>
                     </div>
+                    <div className="footerSection">
+                        {/*AppLink*/}
+                        <AppLink />
+                        {/*Footer*/}
+                        <Footer />
+                    </div>
                 </div>
             </div>
         );
