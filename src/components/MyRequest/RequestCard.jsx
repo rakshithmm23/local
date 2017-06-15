@@ -240,7 +240,7 @@ export default class RequestCard extends Component {
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
-          {key + 1 == 1 && <h4 className="job-update-title">Job Updates</h4>}
+          
           <div className={"job-updates myRequest " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">

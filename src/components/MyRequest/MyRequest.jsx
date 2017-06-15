@@ -28,21 +28,28 @@ export default class MyRequest extends Component {
         return (
             <div className="jobUpdate">
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification}/>
-                <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification}/>
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
+                <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
                     <Sidebar />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    
-                    <div className="inSection">
+                    <div className="page-sec-header">
                         <div className="padwrapper">
-                            {/*Job Updates*/}
-                            <RequestCard />
+                            <h4>My Request</h4>
                         </div>
                     </div>
-                    
+                    <div className="inSection">
+                        <div className="padwrapper">
+                            <div className="myCar-list">
+                                <div className="myCar-body row">
+                                    {/*Job Updates*/}
+                                    <RequestCard />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="footerSection">
                     {/*AppLink*/}
