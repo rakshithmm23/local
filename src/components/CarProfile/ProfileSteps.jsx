@@ -56,7 +56,7 @@ class ProfileSteps extends Component {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
         } else if (val == 'otherDetailsTabVisible') {
             this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
-        }
+        } 
     }
     fileNameUpload(e) {
         let files = [], fileImgSize = 0, errFileType = false;
