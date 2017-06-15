@@ -76,7 +76,7 @@
 }
 
 .view_all{
-  color: #006FB9 !important;	
+  color: #006FB9 !important;
   font-size: 12px !important;
   float: right;
   display: inline-block;
@@ -589,6 +589,9 @@
         margin-right: 0;
         border: 0;
         width: auto;
+    }
+    .header-right.authNav-right{
+        margin-right: 15px;
     }
     .header-search,
     .profile-desc span {

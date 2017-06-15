@@ -25,6 +25,12 @@
         src: url('../fonts/CenturyGothic.ttf')
     }
 
+     @font-face {
+        font-family: CenturyGothic_bold;
+        src: url('../fonts/CenturyGothic_bold.ttf')
+    }
+
+
     ul,
     li {
         padding: 0;
@@ -73,9 +79,9 @@
         margin: 30px 0;
     }
     .toggleBtn span{
-        color: #717982;	
-        font-family: CenturyGothic;	
-        font-size: 14px;	
+        color: #717982;
+        font-family: CenturyGothic;
+        font-size: 14px;
     }
     .toggleBtn a {
         outline: 0;
@@ -131,7 +137,7 @@
     .page-sec-header h4 {
         display: inline-block;
         color: #454B51;
-        font-family: CenturyGothic;
+        font-family: CenturyGothic_bold;
         font-size: 20px;
         font-weight: bold;
         cursor: pointer;
