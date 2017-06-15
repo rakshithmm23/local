@@ -69,6 +69,7 @@
 }
 
 .header-search .dropdown-menu {
+<<<<<<< HEAD
   width: 100.5%;
   border-radius: 0;
   font-family: CenturyGothic;
@@ -80,6 +81,19 @@
 }
 
 .view_all {
+=======
+    width: 100.5%;
+    border-radius: 0;
+    font-family: CenturyGothic;
+    background-color: #fefefe;
+    border: 1px solid #dae1e7;
+    margin-top: -1px;
+    padding: 5px 13px;
+    box-shadow: none;
+}
+
+.view_all{
+>>>>>>> 316127ad43d60dd040eae122700e2306a3af7370
   color: #006FB9 !important;
   font-size: 12px !important;
   float: right;
@@ -599,55 +613,58 @@
 }
 
 @media screen and (max-width: 991px) {
-  .header-section {
-    padding: 0px;
-    height: 70px;
-  }
-  .header-right {
-    padding: 0px !important;
-    margin-right: 0;
-    border: 0;
-    width: auto;
-  }
-  .header-search,
-  .profile-desc span {
-    display: none;
-  }
-  .padwrapper {
-    padding: 15px !important;
-  }
-  .service-data {
-    margin-bottom: 15px;
-  }
-  .logo-img {
-    width: 40px;
-  }
-  .header-right ul li {
-    padding: 8px 0;
-  }
-  .profile-header .btn-default span img {
-    width: 35px;
-    height: 35px;
-  }
-  .header-right ul li.notification-menu {
-    margin-right: 0;
-  }
-  .search-mobile i {
-    font-size: 24px;
-    display: block;
-    margin-right: 15px;
-    margin-top: 3px;
-  }
-  .header-right ul {
-    margin-bottom: 0px;
-  }
-  .header-section .logo-section {
-    padding: 15px;
-    text-align: left;
-    width: auto;
-    border: 0;
-  }
-  .header-right li:nth-child(3) {
-    display: none;
-  }
+    .header-section {
+        padding: 0px;
+        height: 70px;
+    }
+    .header-right {
+        padding: 0px !important;
+        margin-right: 0;
+        border: 0;
+        width: auto;
+    }
+    .header-right.authNav-right{
+        margin-right: 15px;
+    }
+    .header-search,
+    .profile-desc span {
+        display: none;
+    }
+    .padwrapper {
+        padding: 15px !important;
+    }
+    .service-data {
+        margin-bottom: 15px;
+    }
+    .logo-img {
+        width: 40px;
+    }
+    .header-right ul li {
+        padding: 8px 0;
+    }
+    .profile-header .btn-default span img {
+        width: 35px;
+        height: 35px;
+    }
+    .header-right ul li.notification-menu {
+        margin-right: 0;
+    }
+    .search-mobile i {
+        font-size: 24px;
+        display: block;
+        margin-right: 15px;
+        margin-top: 3px;
+    }
+    .header-right ul {
+        margin-bottom: 0px;
+    }
+    .header-section .logo-section {
+        padding: 15px;
+        text-align: left;
+        width: auto;
+        border: 0;
+    }
+    .header-right li:nth-child(3) {
+        display: none;
+    }
 }

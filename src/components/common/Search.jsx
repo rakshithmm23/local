@@ -13,7 +13,7 @@ export default class Search extends Component {
             mapLocationChanged:false,
             showLocationModal: false,
             locationSearch: [{
-                latitude: 0, 
+                latitude: 0,
                 longitude: 0,
                 pinImage:null
             }],
@@ -41,7 +41,7 @@ export default class Search extends Component {
                                          longitude:position.coords.longitude,
                                           pinImage:this.state.svg } })
     }
-    
+
     componetWillUnmount() {
         document.body.removeEventListener()
     }
@@ -86,12 +86,12 @@ export default class Search extends Component {
             this.setState({ editLocationModal: true })
         }
     }
-    
-    
+
+
     render() {
         const jobCardLocation = map(this.state.locationSearch,() => {
             return {
-                lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude, pinImage: this.state.svg 
+                lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude, pinImage: this.state.svg
             }
         })
         // const locationValue=[{lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude, pinImage: this.state.svg  + this.state.svgEnd}]

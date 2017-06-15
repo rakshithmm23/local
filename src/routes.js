@@ -37,7 +37,7 @@ import CarWash from './components/CarWash/CarWash';
 import CarService from './components/CarService/CarService';
 import Messages from './components/Messages/Messages';
 import SearchResult from './components/SearchResult/SearchResult.jsx';
-
+import Notification from './components/Notification/Notification';
 
 export default (
   <Route path="/" component={Home}>
@@ -58,6 +58,10 @@ export default (
     <Route path="car-wash" component={AuthContainer(CarWash)} />
     <Route path="car-service" component={AuthContainer(CarService)} />
     <Route path="messages" component={AuthContainer(Messages)} />
+<<<<<<< HEAD
     <Route path="search-result" component={AuthContainer(SearchResult)} />
+=======
+    <Route path="notification" component={AuthContainer(Notification)} onEnter={isLoggedIn} />
+>>>>>>> 316127ad43d60dd040eae122700e2306a3af7370
   </Route>
 );
