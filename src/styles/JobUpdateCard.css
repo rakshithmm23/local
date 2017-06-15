@@ -1,12 +1,12 @@
 .quotes-view .jobcard.box {
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid #006FBA;
+    border: 1px solid #CFDCE1;
     border-radius: 3px;
     margin-bottom: 15px;
 }
 .quotes-view .jobcard.box.active{
-    border: 1px solid red;
+    border: 1px solid #006FBA;
 }
 
 .quotes-view .jobcard.box .box-content .media-left img {

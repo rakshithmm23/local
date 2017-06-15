@@ -5,3 +5,39 @@
   overflow: hidden;
   width: 100%;
 }
+.mapSection .media-left img{
+
+}
+
+.mapSection .media-heading{
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 17px;
+}
+.mapSection .media-body{
+  padding: 0;
+  vertical-align: initial;
+}
+.mapSection .media-heading{
+  margin-bottom: 12px;
+}
+.mapSection .rating{
+   margin-bottom: 12px;
+}
+.rating .rating-text {
+  padding-left: 8px;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 13px;
+}
+.rating .distance{
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 13px;
+}
+.custom-iw .gm-style-iw {
+      top:15px !important;
+      left:0 !important;
+      border-radius:2px;
+  }
+  .gm-style-iw + div {display: none;}

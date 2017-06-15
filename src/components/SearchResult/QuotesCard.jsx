@@ -31,13 +31,14 @@ class QuotesCard extends Component {
                             <span className="distance">{distance}</span>
                         </Media.Body>
                     </Media>
-                    <div className="box-footer">
+                    <div className="box-footer search-result-card">
                         <div className="footer-container">
-                            <Button btnType="submit" btnSize="sm" fontSize={13} backgroundColor="red" label="View Quote" btnCallBack={this.props.viewPayment} />
-                            <span className="quotes-cost">120 AED</span>
+                            <span className="card-ph-number">+971 919 233 470</span>
+                            <Button btnType="" btnSize="sm" fontSize={13} label="View Quote" btnCallBack={this.props.viewPayment} />
+                            {/*<span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" viewMessaging={this.props.viewMessaging}/>
-                            </div>
+                            </div>*/}
                         </div>
 
                     </div>

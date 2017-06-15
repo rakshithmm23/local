@@ -171,32 +171,17 @@ export default class Search extends Component {
                                 <span >Current Location</span>
                             </label>
                         </MenuItem>
-
-                        {/*
-                        <MenuItem eventKey="507 Dickens Fall Suite">
-                            <span>
-                                <i className="mdi mdi-map-marker" />
-                                <span>507 Dickens Fall Suite </span>
-                                <i className="mdi mdi-arrow-top-left pull-right" />
-                            </span>
-                        </MenuItem>*/}
                         {savedLocationView}
                     </DropdownButton>
 
                 </div>
 
-                <div className="searchFill">
+                <div className={searchView.length > 0?"searchFill active":"searchFill"}>
                     <FormGroup>
-                        {/*<InputGroup>
-                            <FormControl type="text" placeholder="Search" />
-                            <InputGroup.Addon>
-                                <i className="mdi mdi-magnify" />
-                            </InputGroup.Addon>
-                        </InputGroup>*/}
                         <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} open={searchView.length > 0 ? true : false}  noCaret title={
                             <div >
 
-                                <input value={this.state.seachedValue} placeholder="Search"
+                                <input value={this.state.seachedValue} placeholder="Search" 
                                     onChange={(e) => this.setState({ seachedValue: e.target.value })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
                                 <span className="no-notify" />
