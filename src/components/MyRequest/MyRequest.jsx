@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {map} from 'lodash';
+import { map } from 'lodash';
 import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import Extra from '../common/Extra';
@@ -9,22 +9,24 @@ import Footer from '../common/Footer';
 import RequestCard from './RequestCard';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
-import {serviceTypes} from '../../constants/staticData';
+import { serviceTypes } from '../../constants/staticData';
+import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
+import CustomModal from '../common/CustomModal';
 
 export default class MyRequest extends Component {
     constructor(props, context) {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
-            notificationVisible: false
+            notificationVisible: false,
+            showModal: false
         };
     }
     toggleNotification(isVisible) {
-        this.setState({'notificationVisible': isVisible});
+        this.setState({ 'notificationVisible': isVisible });
     }
 
     render() {
-      
         return (
             <div className="jobUpdate">
                 {/*Header*/}
@@ -38,7 +40,36 @@ export default class MyRequest extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Request</h4>
+                            <div className="three-dots-icon">
+                                <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                    <MenuItem eventKey="Edit">Edit</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() => this.setState({ showModal: true })}>Delete</MenuItem>
+
+                                </DropdownButton>
+                            </div>
+                            <CustomModal showModal={this.state.showModal} footer="true" title="Cancel request" saveText="Confirm">
+                                <Modal.Body>
+                                    <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
+                                    <div className="info-heading">
+                                        <span>reason to cancel</span>
+                                    </div>
+                                    <div className="model-select">
+                                        <select className="car-selection ">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                        <i className="mdi mdi-chevron-down" />
+                                    </div>
+                                    <div className="comments">
+                                        <input type="text" placeholder="Comments"/>
+                                    </div>
+                                </Modal.Body>
+
+                            </CustomModal>
                         </div>
+
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
@@ -57,6 +88,7 @@ export default class MyRequest extends Component {
                     {/*Footer*/}
                     <Footer />
                 </div>
+
             </div>
         );
     }
