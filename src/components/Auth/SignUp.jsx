@@ -138,19 +138,19 @@ export default class SignUp extends Component {
                   validationError="Please enter your email id"
                   showValidationError={this.errors['email']}
                   onChange={this.onFieldChange.bind(this)} />
+                   <TextInput
+                  type="phone"
+                  label="Mobile Number"
+                  name="phone"
+                  showValidationError={this.errors['phone']}
+                  validationError="Enter a valid mobile number"
+                  onChange={this.onFieldChange.bind(this)} />
                 <TextInput
                   type="password"
                   label="Password"
                   name="password"
                   showValidationError={this.errors['password']}
                   validationError="Password should be greater than six digits"
-                  onChange={this.onFieldChange.bind(this)} />
-                <TextInput
-                  type="phone"
-                  label="Mobile Number"
-                  name="phone"
-                  showValidationError={this.errors['phone']}
-                  validationError="Enter a valid mobile number"
                   onChange={this.onFieldChange.bind(this)} />
                 <p className={this.errors.terms ? "note-text error" : "note-text"}>
                   <span className="checkbox-style">

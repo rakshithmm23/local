@@ -276,7 +276,7 @@ class ProfileSteps extends Component {
                             </div>
                         </div>}
                 </section>
-                <section className="collapse-panel">
+                <section className="collapse-panel selectModal">
                     <div className="panel-head" onClick={() => { this.tabOpen('modelTabVisible'); }}>
                         <h4>Step 2: Select The model</h4>
                         <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
@@ -299,9 +299,9 @@ class ProfileSteps extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <Scrollbars className="img-container">
+                                <div className="img-container">
                                     {carModelView}
-                                </Scrollbars>
+                                </div>
                             </div>
                             <div className="next-button">
                                 <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />

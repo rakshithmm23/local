@@ -119,14 +119,14 @@ form {
     box-shadow: none;
     outline: none;
     background-position: 0 0;
-    border-color: #39B65B;
+    border-color: #006FBA;
 }
 
 .form-input:focus ~ label,
 .form-input:valid ~ label{
     top: -5px !important;
     font-size: 11px;
-    color: #39B65B;
+    color: #006FBA;
 }
 
 .form-group.error label{
