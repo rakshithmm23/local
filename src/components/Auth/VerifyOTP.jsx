@@ -106,7 +106,7 @@ export default class VerifyOTP extends Component {
                                 </AlertDismissable>}
                                 <p className="note-text">
                                   A One Time Password has been sent on your registered mobile no.
-                                  {authReducer && authReducer.authData && authReducer.authData.phone && <strong><span className="edit-mobileno">98998 38962</span><i className="mdi mdi-pencil"/></strong>}
+                                  {authReducer && authReducer.authData && authReducer.authData.phone && <strong><span className="edit-mobileno">98998 38962</span><i className="mdi mdi-pencil" onClick={(e) => {e.preventDefault(); router.push('send-otp')}}/></strong>}
                                 </p>
                             </div>
                             <div className="login-panel-body">

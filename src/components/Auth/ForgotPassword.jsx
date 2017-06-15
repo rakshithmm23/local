@@ -24,36 +24,6 @@ export default class VerifyOTP extends Component {
       };
       this.onFieldChange = this.onFieldChange.bind(this);
     }
-    componentWillMount(){
-      if (localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          } else {
-            this.props.actions.resendOTP(authData.phone);
-          }
-        } else {
-            this.props.router.push('send-otp');
-        }
-      } else {
-        this.props.router.push('/');
-      }
-    }
-    componentWillReceiveProps() {
-      if (localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          }
-        } else {
-            this.props.router.push('send-otp');
-        }
-      } else {
-        this.props.router.push('/');
-      }
-    }
     onFieldChange(value, key, name) {
       if (value) {
         this.formData[name] = value;

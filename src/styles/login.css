@@ -100,7 +100,7 @@
 }
 
 .login-panel-header .btn-theme.lg {
-    width: 48%;
+    width: 47%;
 }
 
 .login-panel-header .note-text {
@@ -122,6 +122,9 @@
     margin-left: 15px;
 }
 
+.login-panel-header .gmail{
+  float: right;
+}
 
 /*Checkbox*/
 
