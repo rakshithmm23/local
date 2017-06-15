@@ -56,7 +56,7 @@ export default class TextInput extends Component {
       <div className={inputClass}>
           <input
             type={type == "password" ? this.state.passwordVisible ? "text" : "password" : type}
-            className="form-control form-input" 
+            className="form-control form-input"
             onBlur={this
               .handleOnBlur
               .bind(this)
@@ -64,7 +64,7 @@ export default class TextInput extends Component {
             onChange={(e) => this.handleInputChange(e, type)}
             required/>
           {type === "password" && <span className="input-icon" onClick={(e) => {e.preventDefault(); this.setState({'passwordVisible': !this.state.passwordVisible})}}>
-            <img src="../../images/eye.png" alt="" />
+            {this.state.passwordVisible ? <img src="../../images/eye-active.png" alt="" /> : <img src="../../images/eye.png" alt="" /> }
           </span>}
           {this.state.showValidationError && validationError && <span className="error-text">{validationError}</span>}
           <label>{label}</label>

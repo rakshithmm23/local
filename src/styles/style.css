@@ -160,6 +160,17 @@
         font-weight: bold;
         height: 42px;
     }
+
+    /*IE fix*/
+    input::-ms-clear,
+    input::-ms-reveal {
+        display: none;
+    }
+    input[type=password]::-ms-reveal,
+    input[type=password]::-ms-clear
+    {
+        display: none;
+    }
     /*responsive*/
 
     @media screen and (max-width: 1024px) {
