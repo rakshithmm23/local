@@ -48,17 +48,17 @@ export default (
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
     <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
-    <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
-    <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
-    <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
-    <Route path="car-profile" component={AuthContainer(CreateCarProfile)} onEnter={isLoggedIn}/>
-    <Route path="car-list" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
-    <Route path="timeline" component={AuthContainer(CarTimeline)} onEnter={isLoggedIn}/>
-    <Route path="car-repair" component={AuthContainer(CarRepair)} onEnter={isLoggedIn}/>
-    <Route path="car-wash" component={AuthContainer(CarWash)} onEnter={isLoggedIn}/>
-    <Route path="car-service" component={AuthContainer(CarService)} onEnter={isLoggedIn}/>
-    <Route path="messages" component={AuthContainer(Messages)} onEnter={isLoggedIn}/>
-    <Route path="search-result" component={AuthContainer(SearchResult)} onEnter={isLoggedIn}/>
-    <Route path="notification" component={AuthContainer(Notification)} onEnter={isLoggedIn} />
+    <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
+    <Route path="request" component={AuthContainer(MyRequest)} />
+    <Route path="book-service" component={AuthContainer(BookService)} />
+    <Route path="car-profile" component={AuthContainer(CreateCarProfile)} />
+    <Route path="car-list" component={AuthContainer(BookService)} />
+    <Route path="timeline" component={AuthContainer(CarTimeline)} />
+    <Route path="car-repair" component={AuthContainer(CarRepair)} />
+    <Route path="car-wash" component={AuthContainer(CarWash)} />
+    <Route path="car-service" component={AuthContainer(CarService)} />
+    <Route path="messages" component={AuthContainer(Messages)} />
+    <Route path="search-result" component={AuthContainer(SearchResult)} />
+    <Route path="notification" component={AuthContainer(Notification)}  />
   </Route>
 );

@@ -27,9 +27,7 @@ input[type="color"][list] {
   cursor: pointer;
 }
 
-.request-summary .request-summary-tab .title.active {
-  border-bottom: 2px solid #E50000;
-}
+
 
 .request-summary .title span {
   color: #454B51;
@@ -38,6 +36,12 @@ input[type="color"][list] {
   line-height: 22px;
   display: block;
   text-align: center;
+}
+.request-summary .request-summary-tab .title.active {
+  border-bottom: 2px solid #E50000;
+}
+.request-summary .request-summary-tab .title.active span{
+  font-family: 'CenturyGothic_bold';
 }
 
 .request-summary .left {

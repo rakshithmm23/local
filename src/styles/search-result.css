@@ -6,11 +6,4 @@
   display: inline-block;
 }
 
-.search-result-card button {
-  margin-top: 4px !important;
-  border: 1px solid #ED3124;
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  float: right;
-  	color: #ED3124 !important;
-}
+

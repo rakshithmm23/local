@@ -10,7 +10,6 @@ export default function AuthContainer(ComposedComponent) {
     }
 
     render() {
-      debugger;
       return (<ComposedComponent {...this.props}/>);
     }
   }
