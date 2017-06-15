@@ -29,7 +29,6 @@ export default class Search extends Component {
     }
 
     componentWillMount() {
-        debugger
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
         } else {

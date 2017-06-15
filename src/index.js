@@ -38,7 +38,7 @@ import './styles/book-service.css';
 import './styles/timeline.css';
 import './styles/modal.css';
 import './styles/messages.css';
-
+import './styles/search-result.css';
 
 
 export const store = configureStore();
