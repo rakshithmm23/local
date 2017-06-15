@@ -5,6 +5,9 @@
     border-radius: 3px;
     margin-bottom: 15px;
 }
+.quotes-view .jobcard.box .media{
+    padding: 15px;
+}   
 .quotes-view .jobcard.box.active{
     border: 1px solid #006FBA;
 }
@@ -57,7 +60,7 @@
 	display: inline-block;
 }
 .quotes-view .jobcard.box .rating {
-	padding: 5px 0;
+	/*padding: 5px 0;*/
 }
 .quotes-view .jobcard.box .rating-text{
 	padding-left: 10px;
@@ -115,7 +118,7 @@
 	margin: 0;
 }
 .quotes-view .jobcard.box .footer-container {
-    padding: 11px;
+    padding: 15px;
 }
 
 .quotes-view .jobcard.box .footer-container .btn-theme {
