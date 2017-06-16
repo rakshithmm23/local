@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, InputGroup, Addon, FormControl, Modal } from 'react-bootstrap';
 import { DropdownButton, MenuItem, } from 'react-bootstrap';
-import { map, filter, merge } from "lodash";
+import { map, filter, merge,forEach } from "lodash";
 import CustomModal from '../common/CustomModal';
 import Gmaps from '../MyRequest/Gmaps';
 
@@ -13,9 +13,9 @@ export default class Search extends Component {
             mapLocationChanged:false,
             showLocationModal: false,
             locationSearch: [{
-                latitude: 0,
-                longitude: 0,
-                pinImage:null
+                lat: 0,
+                lng: 0,
+                pinImage:''
             }],
             showResults: false,
             seachedValue: null,
@@ -24,7 +24,8 @@ export default class Search extends Component {
             location: "",
             addLocationModal: false,
             editLocationModal: false,
-            svg: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyOHB4IiBoZWlnaHQ9IjQwcHgiIHZpZXdCb3g9IjAgMCAyOCA0MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Mb2NhdGlvbiBwaW48L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJNYXJrLUxvY2F0aW9uIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY4LjAwMDAwMCwgLTUzMi4wMDAwMDApIiBmaWxsPSIjRUQzMTI0Ij4gICAgICAgICAgICA8cGF0aCBkPSJNNjgyLDU1MC45Njg3NSBDNjgzLjQzNzUwNyw1NTAuOTY4NzUgNjg0LjYyNDk5NSw1NTAuNTAwMDA1IDY4NS41NjI1LDU0OS41NjI1IEM2ODYuNTAwMDA1LDU0OC42MjQ5OTUgNjg2Ljk2ODc1LDU0Ny40Mzc1MDcgNjg2Ljk2ODc1LDU0NiBDNjg2Ljk2ODc1LDU0NC41NjI0OTMgNjg2LjUwMDAwNSw1NDMuMzc1MDA1IDY4NS41NjI1LDU0Mi40Mzc1IEM2ODQuNjI0OTk1LDU0MS40OTk5OTUgNjgzLjQzNzUwNyw1NDEuMDMxMjUgNjgyLDU0MS4wMzEyNSBDNjgwLjU2MjQ5Myw1NDEuMDMxMjUgNjc5LjM3NTAwNSw1NDEuNDk5OTk1IDY3OC40Mzc1LDU0Mi40Mzc1IEM2NzcuNDk5OTk1LDU0My4zNzUwMDUgNjc3LjAzMTI1LDU0NC41NjI0OTMgNjc3LjAzMTI1LDU0NiBDNjc3LjAzMTI1LDU0Ny40Mzc1MDcgNjc3LjQ5OTk5NSw1NDguNjI0OTk1IDY3OC40Mzc1LDU0OS41NjI1IEM2NzkuMzc1MDA1LDU1MC41MDAwMDUgNjgwLjU2MjQ5Myw1NTAuOTY4NzUgNjgyLDU1MC45Njg3NSBaIE02ODIsNTMyLjAzMTI1IEM2ODYuMDAwMDIsNTMyLjA5Mzc1IDY4OS4zMTI0ODcsNTMzLjQzNzQ4NyA2OTEuOTM3NSw1MzYuMDYyNSBDNjk0LjU2MjUxMyw1MzguNjg3NTEzIDY5NS45MDYyNSw1NDEuOTk5OTggNjk1Ljk2ODc1LDU0NiBDNjk1LjQwNjI0Nyw1NTEuNjg3NTI4IDY5My4wNzgxNDUsNTU3LjMyODA5NyA2ODguOTg0Mzc1LDU2Mi45MjE4NzUgQzY4NC44OTA2MDUsNTY4LjUxNTY1MyA2ODIuNTYyNTAzLDU3MS41MzEyNDggNjgyLDU3MS45Njg3NSBDNjgxLjQzNzQ5Nyw1NzEuNTMxMjQ4IDY3OS4xMDkzOTUsNTY4LjUxNTY1MyA2NzUuMDE1NjI1LDU2Mi45MjE4NzUgQzY3MC45MjE4NTUsNTU3LjMyODA5NyA2NjguNTkzNzUzLDU1MS42ODc1MjggNjY4LjAzMTI1LDU0NiBDNjY4LjA5Mzc1LDU0MS45OTk5OCA2NjkuNDM3NDg3LDUzOC42ODc1MTMgNjcyLjA2MjUsNTM2LjA2MjUgQzY3NC42ODc1MTMsNTMzLjQzNzQ4NyA2NzcuOTk5OTgsNTMyLjA5Mzc1IDY4Miw1MzIuMDMxMjUgWiIgaWQ9IkxvY2F0aW9uLXBpbiI+PC9wYXRoPiAgICAgICAgPC9nPiAgICA8L2c+PC9zdmc+'
+            pinImage:'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyOHB4IiBoZWlnaHQ9IjQwcHgiIHZpZXdCb3g9IjAgMCAyOCA0MCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5Mb2NhdGlvbiBwaW48L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJNYXJrLUxvY2F0aW9uIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjY4LjAwMDAwMCwgLTUzMi4wMDAwMDApIiBmaWxsPSIjRUQzMTI0Ij4gICAgICAgICAgICA8cGF0aCBkPSJNNjgyLDU1MC45Njg3NSBDNjgzLjQzNzUwNyw1NTAuOTY4NzUgNjg0LjYyNDk5NSw1NTAuNTAwMDA1IDY4NS41NjI1LDU0OS41NjI1IEM2ODYuNTAwMDA1LDU0OC42MjQ5OTUgNjg2Ljk2ODc1LDU0Ny40Mzc1MDcgNjg2Ljk2ODc1LDU0NiBDNjg2Ljk2ODc1LDU0NC41NjI0OTMgNjg2LjUwMDAwNSw1NDMuMzc1MDA1IDY4NS41NjI1LDU0Mi40Mzc1IEM2ODQuNjI0OTk1LDU0MS40OTk5OTUgNjgzLjQzNzUwNyw1NDEuMDMxMjUgNjgyLDU0MS4wMzEyNSBDNjgwLjU2MjQ5Myw1NDEuMDMxMjUgNjc5LjM3NTAwNSw1NDEuNDk5OTk1IDY3OC40Mzc1LDU0Mi40Mzc1IEM2NzcuNDk5OTk1LDU0My4zNzUwMDUgNjc3LjAzMTI1LDU0NC41NjI0OTMgNjc3LjAzMTI1LDU0NiBDNjc3LjAzMTI1LDU0Ny40Mzc1MDcgNjc3LjQ5OTk5NSw1NDguNjI0OTk1IDY3OC40Mzc1LDU0OS41NjI1IEM2NzkuMzc1MDA1LDU1MC41MDAwMDUgNjgwLjU2MjQ5Myw1NTAuOTY4NzUgNjgyLDU1MC45Njg3NSBaIE02ODIsNTMyLjAzMTI1IEM2ODYuMDAwMDIsNTMyLjA5Mzc1IDY4OS4zMTI0ODcsNTMzLjQzNzQ4NyA2OTEuOTM3NSw1MzYuMDYyNSBDNjk0LjU2MjUxMyw1MzguNjg3NTEzIDY5NS45MDYyNSw1NDEuOTk5OTggNjk1Ljk2ODc1LDU0NiBDNjk1LjQwNjI0Nyw1NTEuNjg3NTI4IDY5My4wNzgxNDUsNTU3LjMyODA5NyA2ODguOTg0Mzc1LDU2Mi45MjE4NzUgQzY4NC44OTA2MDUsNTY4LjUxNTY1MyA2ODIuNTYyNTAzLDU3MS41MzEyNDggNjgyLDU3MS45Njg3NSBDNjgxLjQzNzQ5Nyw1NzEuNTMxMjQ4IDY3OS4xMDkzOTUsNTY4LjUxNTY1MyA2NzUuMDE1NjI1LDU2Mi45MjE4NzUgQzY3MC45MjE4NTUsNTU3LjMyODA5NyA2NjguNTkzNzUzLDU1MS42ODc1MjggNjY4LjAzMTI1LDU0NiBDNjY4LjA5Mzc1LDU0MS45OTk5OCA2NjkuNDM3NDg3LDUzOC42ODc1MTMgNjcyLjA2MjUsNTM2LjA2MjUgQzY3NC42ODc1MTMsNTMzLjQzNzQ4NyA2NzcuOTk5OTgsNTMyLjA5Mzc1IDY4Miw1MzIuMDMxMjUgWiIgaWQ9IkxvY2F0aW9uLXBpbiI+PC9wYXRoPiAgICAgICAgPC9nPiAgICA8L2c+PC9zdmc+'
+            
         }
     }
 
@@ -37,9 +38,12 @@ export default class Search extends Component {
         document.body.addEventListener('mousedown', this.bodyClick.bind(this));
     }
     showPosition(position) {
-        this.setState({ locationSearch: {latitude:position.coords.latitude,
-                                         longitude:position.coords.longitude,
-                                          pinImage:this.state.svg } })
+        
+        let positionVal=[{lat:position.coords.latitude,
+                                         lng:position.coords.longitude,
+                                          pinImage:this.state.pinImage }]
+        this.setState({ locationSearch: positionVal })
+        
     }
 
     componetWillUnmount() {
@@ -89,16 +93,15 @@ export default class Search extends Component {
 
 
     render() {
-        const jobCardLocation = map(this.state.locationSearch,() => {
+        
+        
+        const jobCardLocation = forEach(this.state.locationSearch,(loc) => {
             return {
-                lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude, pinImage: this.state.svg
+                
+                lat: loc.latitude, lng: loc.longitude, pinImage: loc.pinImage
             }
         })
-        // const locationValue=[{lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude, pinImage: this.state.svg  + this.state.svgEnd}]
-        // // const jobCardLocation = {}
-        // // jobCardLocation[0].lat=this.state.locationSearch.latitude;
-        // // jobCardLocation[0].lng=this.state.locationSearch.longitude;
-        // // jobCardLocation[0].pinImage=this.state.svg  + this.state.svgEnd;
+
 
         let searchView = filter(this.state.dropdownList, (val) => {
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
@@ -233,7 +236,7 @@ export default class Search extends Component {
                         <span onClick={()=>this.setState({ setCenter:true } )} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         <Gmaps
                             setCenter={this.state.setCenter}
-                            center={{ lat: this.state.locationSearch.latitude, lng: this.state.locationSearch.longitude }}
+                            center={{ lat: this.state.locationSearch[0].lat, lng: this.state.locationSearch[0].lng }}
                             markers={jobCardLocation}
                             zoom={9}
                             containerElement={<div style={{ height: 562 + 'px',width:'auto' }} />}
