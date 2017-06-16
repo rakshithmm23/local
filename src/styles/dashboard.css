@@ -6,11 +6,12 @@
 
 .main-wrapper .inSection {
     background-color: rgb(249, 252, 251);
-    padding: 50px 0;
+     padding: 40px 0 70px 0;
 }
 
 .padwrapper {
     padding: 0px 40px;
+    position: relative;
 }
 
 .service-data img {
@@ -18,7 +19,7 @@
 }
 
 .service-list {
-    padding: 30px 0px;
+    padding: 30px 0px !important;
 }
 
 .service-list h5 {
@@ -147,6 +148,9 @@
 }
 
 @media screen and (max-width: 767px) {
+    .main-wrapper .inSection {
+        padding: 15px 0;
+    }
     .service-data {
         margin: 5px;
     }
@@ -170,7 +174,7 @@
         margin-top: 0px;
         display: none;
     }
-    .welcome-banner.empty h4{
+    .welcome-banner.empty h4 {
         font-size: 16px;
     }
 }

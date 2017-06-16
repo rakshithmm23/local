@@ -29,3 +29,13 @@
 .job-right-header .expired{
     color: #A5A5A5;
 }
+.status-label.basic{
+    border: 1px solid #DAE1E7;
+    padding: 3px 0;
+    border-radius: 3px;
+    color: #8F9397;
+    font-family: CenturyGothic;
+    height: 27px;	
+    min-width: 63px;
+    text-align: center;
+}

@@ -8,7 +8,6 @@ export default class CarouselSlider extends Component {
         return (
             <div className="col-md-6 col-sm-6 col-xs-12 pad0">
                 <div className="login-banner">
-                    <a href="index.html" className="logo absolute" />
                     <Carousel interval={0}>
                         <Carousel.Item>
                             <img src="../../images/signIn-banner.png" alt="" />

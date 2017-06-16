@@ -106,3 +106,210 @@
         display: none;
     }
 }
+
+
+/*three button dropdown*/
+
+.three-dots-icon {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: -7px;
+}
+
+.three-dots-icon .dropdown .mdi-dots-vertical {
+    font-size: 20px;
+    color: #717982;
+}
+
+.three-dots-icon .dropdown.open .mdi-dots-vertical {
+    color: #23AE49;
+}
+
+.three-dots-icon .dropdown-toggle {
+    border: none;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.three-dots-icon .dropdown-menu {
+    right: 47px;
+    width: 126px;
+    min-width: inherit;
+    top: 30px;
+}
+
+.three-dots-icon .dropdown-menu li a {
+    cursor: pointer;
+    color: #454B51;
+    font-family: "CenturyGothic";
+    font-size: 17px;
+    line-height: 17px;
+    padding: 13px 20px;
+    background-color: transparent !important;
+    outline: 0;
+}
+
+
+/*text dropdown*/
+
+.text-dropdown .dropdown-toggle {
+    border: none;
+    display: inline-block;
+    color: #454B51 !important;
+    font-family: CenturyGothic;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    right: 0;
+    padding: 0;
+}
+
+.text-dropdown .dropdown-toggle h4 {
+    margin-left: 0;
+}
+
+.text-dropdown .dropdown-toggle .mdi-chevron-up,
+.text-dropdown .dropdown-toggle .mdi-chevron-down,
+{
+    color: #454B51;
+    font-size: 26px;
+    position: absolute;
+    right: -40px;
+    top: 4px;
+}
+
+.text-dropdown .dropdown-menu {
+    margin: 0;
+    width: 274px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+    padding: 0;
+}
+
+.text-dropdown.notify .dropdown-menu {
+    border: none;
+    left: auto;
+    right: -30px;
+    margin-top: 21px;
+    width: 430px;
+    padding-bottom: 10px;
+}
+
+.text-dropdown.notify .dropdown-menu:before {
+    content: '';
+    height: 25px;
+    width: 25px;
+    background: white;
+    position: absolute;
+    top: -11px;
+    right: 30px;
+    box-shadow: -2px -2px 1px 0px rgba(134, 134, 134, 0.12);
+    -webkit-transform: rotate(46deg);
+    transform: rotate(46deg);
+    /* z-index: -9; */
+    /* display: block; */
+}
+
+.text-dropdown.notify .dropdown-menu li {
+    display: block;
+    position: relative;
+}
+
+.text-dropdown .dropdown-menu li a {
+    outline: none;
+    padding: 12px 20px;
+    color: #454B51;
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.text-dropdown.notify .dropdown-menu li:first-child a {
+    padding: 22px;
+    background-color: transparent !important;
+    font-size: 16px;
+}
+
+.text-dropdown.notify .dropdown-menu li a {
+    padding: 10px 22px;
+    ;
+}
+
+.text-dropdown.notify .dropdown-menu li a:hover,
+.text-dropdown.notify .dropdown-menu li a.active {
+    background-color: #F9FBFB;
+}
+
+.text-dropdown.notify .media-left .notification-img {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 3px;
+}
+
+.text-dropdown.notify .media-left .notification-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text-dropdown.notify .media-heading {
+    color: rgba(69, 75, 81, 0.67);
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    line-height: 14px;
+    display: inline-block;
+}
+
+.text-dropdown.notify .media-heading span {
+    color: black;
+    font-weight: bolder;
+}
+
+.text-dropdown.notify .media-body .notify-time {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.text-dropdown.notify .media-body h4 {
+    height: 17px;
+    margin: 0;
+    width: 248px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.text-dropdown.notify .media-body p {
+    width: 248px;
+    color: #717982;
+    font-family: "CenturyGothic";
+    font-size: 11px;
+    line-height: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.text-dropdown.add-new .dropdown-menu li:last-child {
+    background: red !important;
+    border-radius: 0 0px 5px 5px;
+}
+
+.text-dropdown.add-new .dropdown-menu li:last-child a {
+    background: red !important;
+    color: #FFFFFF;
+    font-family: "CenturyGothic";
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 0 0px 5px 5px;
+}

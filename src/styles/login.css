@@ -77,13 +77,14 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 100vh;
+    /*height: 100vh;*/
+    margin-top: 115px;
     flex-direction: column;
 }
 
 .login-title {
     font-size: 28px;
-    font-family: CenturyGothic;
+    font-family: CenturyGothic_bold;
     color: #3E4244;
     margin-bottom: 30px;
 }
@@ -115,21 +116,24 @@
 }
 
 .login-panel-header .note-text strong i {
-    color: #ff7500;
+    color: #006FBA;
     display: inline-block;
     cursor: pointer;
     margin-left: 15px;
 }
 
+.login-panel-header .gmail{
+  float: right;
+}
 
 /*Checkbox*/
 
-.note-text label {
+.checkbox-style label {
     font-weight: normal;
     cursor: pointer;
 }
 
-.note-text input {
+.checkbox-style input {
     -webkit-appearance: none;
     background-color: #fafafa;
     border: 1px solid #cacece;
@@ -143,18 +147,19 @@
     margin-right: 10px !important;
     margin-top: -4px !important;
     cursor: pointer;
+    border-radius: 3px;
 }
 
-.note-text input:checked {
+.checkbox-style input:checked {
     background-color: #23AE49;
     border: 1px solid #23AE49;
     color: #fff;
 }
 
-.note-text input:checked:after {
+.checkbox-style input:checked:after {
     content: '\F12C';
     font-family: 'Material Design Icons';
-    font-size: 14px;
+    font-size: 13px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -193,7 +198,11 @@
 .gm-scrollbar .thumb:active {
     background-color: rgba(0, 0, 0, 0);
 }
-
+.edit-mobileno{
+  color: #454B51;
+  font-family: CenturyGothic;
+  font-size:18px;
+}
 @media screen and (min-height: 701px) {
     .login-panel {
         justify-content: center;

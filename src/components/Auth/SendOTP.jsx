@@ -25,34 +25,7 @@ export default class SendOTP extends Component {
       };
       this.onFieldChange = this.onFieldChange.bind(this);
     }
-    componentWillMount(){
-      if (localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          } else {
-            this.props.router.push('verify-otp');
-          }
-        }
-      } else {
-        this.props.router.push('/');
-      }
-    }
-    componentWillReceiveProps(){
-      if (localStorage && localStorage.authData){
-        const authData = JSON.parse(localStorage.authData);
-        if (authData.phone) {
-          if (authData.phoneVerified) {
-            this.props.router.push('dashboard');
-          } else {
-            this.props.router.push('verify-otp');
-          }
-        }
-      } else {
-        this.props.router.push('/');
-      }
-    }
+
     onFieldChange(value, key, name) {
       if (value) {
         this.formData[name] = value;
@@ -96,7 +69,6 @@ export default class SendOTP extends Component {
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
                             </div>
-
                             <div className="login-panel-body">
                                 <div className="form-group otp-input">
                                 <TextInput

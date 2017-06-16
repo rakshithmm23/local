@@ -19,8 +19,7 @@ export default class Dropdown extends Component {
                         {this.state.dropDownVisible && <i className="mdi mdi-chevron-up" />}
                         {!this.state.dropDownVisible && <i className="mdi mdi-chevron-down" />}
                     </span>
-                }
-            >
+                }>
                 <MenuItem eventKey="1">
                     <i className="mdi mdi-account" /> My Account
                 </MenuItem>

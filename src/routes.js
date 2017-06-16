@@ -13,6 +13,8 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import VerifyOTP from './components/Auth/VerifyOTP';
 import SendOTP from './components/Auth/SendOTP';
+import ForgotPassword from './components/Auth/ForgotPassword';
+import EditMobileNo from './components/Auth/EditMobileNo';
 
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
@@ -28,19 +30,36 @@ import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import MyCarList from './components/MyCarList';
 import MyRequest from './components/MyRequest/MyRequest';
-import NewCarProfile from './components/AddCarProfile/NewCarProfile';
+import CreateCarProfile from './components/CarProfile/CreateCarProfile';
 import BookService from './components/BookService/BookService';
+import CarTimeline from './components/CarTimeline/CarTimeline';
+import CarRepair from './components/CarRepair/CarRepair';
+import CarWash from './components/CarWash/CarWash';
+import CarService from './components/CarService/CarService';
+import Messages from './components/Messages/Messages';
+import SearchResult from './components/SearchResult/SearchResult.jsx';
+import Notification from './components/Notification/Notification';
 
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
     <Route path="dashboard" component={DashboardContainer(Dashboard)} onEnter={isLoggedIn}/>
     <Route path="mycar-list" component={DashboardContainer(MyCarList)} onEnter={isLoggedIn}/>
-    <Route path="sign-in" component={AuthContainer(SignIn)}/>
+    <Route path="sign-in" component={AuthContainer(SignIn)} />
+    <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
+    <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
     <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
-    <Route path="verify-otp" component={AuthContainer(VerifyOTP)} onEnter={isLoggedIn}/>
-    <Route path="request" component={AuthContainer(MyRequest)} onEnter={isLoggedIn}/>
-    <Route path="car-profile" component={CarProfileContainer(NewCarProfile)}  onEnter={isLoggedIn}/>
-    <Route path="book-service" component={AuthContainer(BookService)} onEnter={isLoggedIn}/>
+    <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
+    <Route path="request" component={AuthContainer(MyRequest)} />
+    <Route path="book-service" component={AuthContainer(BookService)} />
+    <Route path="car-profile" component={CarProfileContainer(CreateCarProfile)} />
+    <Route path="car-list" component={AuthContainer(BookService)} />
+    <Route path="timeline" component={AuthContainer(CarTimeline)} />
+    <Route path="car-repair" component={AuthContainer(CarRepair)} />
+    <Route path="car-wash" component={AuthContainer(CarWash)} />
+    <Route path="car-service" component={AuthContainer(CarService)} />
+    <Route path="messages" component={AuthContainer(Messages)} />
+    <Route path="search-result" component={AuthContainer(SearchResult)} />
+    <Route path="notification" component={AuthContainer(Notification)}  />
   </Route>
 );

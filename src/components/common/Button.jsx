@@ -6,15 +6,18 @@ export default class Button extends Component {
     }
 
     render() {
-        const { btnType, btnSize, disabled, fontSize, label, btnCallBack, iconName } = this.props;
+        const { btnType, btnSize, disabled, fontSize, label, btnCallBack, iconName, customClass, backgroundColor } = this.props;
         const btnProperties = {};
         let btnClass = 'btn btn-theme ';
         let customStyle = {};
         if (fontSize) {
             customStyle.fontSize = Number(fontSize);
         }
+        if (backgroundColor) {
+            customStyle.backgroundColor = backgroundColor;
+        }
         btnProperties.style = customStyle;
-        btnProperties.className = btnClass + (btnSize ? (btnSize + " ") : '') + (btnType ? btnType : '');
+        btnProperties.className = btnClass + (btnSize ? (btnSize + " ") : '') + (customClass ? (customClass + " ") : '') + (btnType ? btnType : '');
         if (btnCallBack) {
           btnProperties.onClick = btnCallBack;
         }

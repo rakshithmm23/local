@@ -3,28 +3,30 @@ import Header from '../common/Header';
 import Sidebar from '../common/Sidebar';
 import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
-import Steps from './Steps';
 import MobileNotification from '../common/MobileNotification';
+import MessagesView from './MessagesView';
+import { Scrollbars } from 'react-custom-scrollbars';
 
-export default class NewCarProfile extends Component {
-    constructor(props) {
-        super(props);
+
+export default class BookService extends Component {
+    constructor(props, context) {
+        super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
-            notificationVisible: false
+            notificationVisible: false,
         };
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
 
-    onSubmit(carProfileData){
-      this.props.actions.setCarProfileAction(carProfileData);
-    }
+    // modalVisiblity() {
+    //     this.setState({ showModal: true });
+    // }
 
     render() {
         return (
-            <div className="jobUpdate">
+            <div>
                 {/*Header*/}
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
@@ -33,19 +35,18 @@ export default class NewCarProfile extends Component {
                     <Sidebar />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="new-car-profile">
-                        <div className="title">
-                            <h4>Create A Car Profile</h4>
-                        </div>
-                    </div>
-
-                    <div className="inSection ncr">
+                    <div className="page-sec-header">
                         <div className="padwrapper">
-                            {/*Job Updates*/}
-                            <Steps {...this.props} onSubmit={this.onSubmit.bind(this)}/>
+                            <h4>Messages</h4>
                         </div>
                     </div>
-
+                    <div className="inSection">
+                        <div className="padwrapper">
+                            <div className="messageBody">
+                                <MessagesView />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="footerSection">
                     {/*AppLink*/}

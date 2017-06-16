@@ -1,0 +1,196 @@
+.modal-dialog {
+  width: 468px;
+  /*position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;*/
+}
+
+.modal-header {
+  padding: 25px 20px;
+}
+
+.modal-header span {
+  display: none;
+}
+
+.modal-title {
+  text-transform: capitalize;
+  color: #454B51;
+  font-family: CenturyGothic_bold !important;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.modal-body {
+  padding: 20px 0;
+  margin: 0 20px;
+  /*border-bottom: 1px solid #DAE1E7;*/
+}
+
+.modal-body .info-text {
+  color: #525252;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.modal-body .info-heading {
+  margin-top: 30px;
+}
+
+.modal-body .info-heading span {
+  display: inline-block;
+  color: #525252;
+  font-family: CenturyGothic_bold;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.modal-body select,
+.modal-body .comments input {
+  z-index: 9;
+  cursor: pointer;
+  position: relative;
+  font-family: "CenturyGothic";
+  color: #868D91;
+  font-size: 13px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
+  
+}
+.modal-body .comments input {
+  font-size: 16px;
+}
+.modal-body .comments {
+  padding-top: 35px;
+}
+
+.modal-body .model-select .mdi-chevron-down {
+  position: absolute;
+  right: 1px;
+  font-size: 18px;
+  color: #717982;
+  margin-top: 4px;
+}
+
+.modal-body .caption {
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 16px;
+}
+
+.modal-body .caption-result {
+  color: #9B9B9B;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.modal-body .media-body h5 {
+  color: #454B51;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.media-body {
+  position: relative;
+  vertical-align: middle;
+}
+
+.media-body .mdi.mdi-chevron-right {
+  position: absolute;
+  right: 0;
+  top: 25px;
+  color: #454B51;
+  font-size: 24px;
+}
+
+.warning-text {
+  padding: 10px 0 20px 0;
+  color: #717982;
+  font-family: CenturyGothic;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.modal-content {
+  border-radius: 3px;
+}
+
+.modal-content .modal-footer {
+  border-top: 0;
+}
+
+.plain-input {
+  position: relative;
+  font-family: "CenturyGothic";
+  color: #868D91;
+  font-size: 14px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.delete-text {
+  color: #EF2E24;
+  font-family: "CenturyGothic";
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.map-modal .modal-dialog {
+  width: 836px;
+}
+
+.map-modal .btn.submit {
+  font-size: 12px !important;
+}
+
+.map-modal .modal-body {
+  padding: 0;
+  margin: 0;
+}
+
+.map-modal .current-position {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
+  text-align: center;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.map-modal .current-position i {
+  color: #ED3124;
+  font-size: 20px;
+  text-align: center;
+  line-height: 39px;
+}
+
+.btn-theme.cancel {
+  border: 1px solid #ED3124;
+  color: #ED3124 !important;
+  background: transparent;
+}

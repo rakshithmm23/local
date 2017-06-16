@@ -65,8 +65,9 @@
     height: 11px;
     color: #8F9397;
     text-align: center;
-    width: 40%;
+    width: 100%;
     margin: 30px auto;
+    margin-bottom: 10px;
 }
 
 .or-text span {
@@ -99,7 +100,7 @@ form {
 }
 
 .form-group label {
-    color: #999;
+    color: #717982;
     font-size: 14px;
     font-weight: normal;
     position: absolute;
@@ -110,6 +111,7 @@ form {
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
     font-family: CenturyGothic;
+    margin-bottom: 0;
 }
 
 .form-input:focus,
@@ -117,14 +119,14 @@ form {
     box-shadow: none;
     outline: none;
     background-position: 0 0;
-    border-color: #39B65B;
+    border-color: #006FBA;
 }
 
 .form-input:focus ~ label,
 .form-input:valid ~ label{
-    top: -5px;
+    top: -5px !important;
     font-size: 11px;
-    color: #39B65B;
+    color: #006FBA;
 }
 
 .form-group.error label{

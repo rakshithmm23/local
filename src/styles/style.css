@@ -2,54 +2,116 @@
         /*background: rgb(236, 243, 245);*/
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyBold;
         src: url('../fonts/Oxygen-Bold.ttf')
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyLight;
         src: url('../fonts/Oxygen-Light.ttf')
     }
     /*Font Bold*/
-    
+
     @font-face {
         font-family: OxyReg;
         src: url('../fonts/Oxygen-Regular.ttf')
     }
-    
+
     @font-face {
         font-family: CenturyGothic;
         src: url('../fonts/CenturyGothic.ttf')
     }
-    
+
+     @font-face {
+        font-family: CenturyGothic_bold;
+        src: url('../fonts/CenturyGothic_bold.ttf')
+    }
+
+
     ul,
     li {
         padding: 0;
         margin: 0;
         list-style: none;
     }
-    
+
     .container,
     .container-fluid {
         padding: 0;
     }
-    
+
+    .row {
+        margin: 0;
+        padding: 0;
+    }
+
     .pad0 {
         padding: 0;
     }
+
+    .padLeft0 {
+        padding-left: 0;
+    }
+
+    .padLeft15 {
+        padding-left: 15px;
+    }
+
+    .padRight0 {
+        padding-right: 0;
+    }
+    .inline-disp{
+        display: inline-block !important;
+    }
     /*commom wrapper*/
-    
+
     .main-wrapper {
         margin-top: 90px;
         padding-left: 110px;
         overflow: hidden;
     }
-    
+    /*Toggle Btn*/
+
+    .toggleBtn {
+        margin: 30px 0;
+    }
+    .toggleBtn span{
+        color: #717982;
+        font-family: CenturyGothic;
+        font-size: 14px;
+    }
+    .toggleBtn a {
+        outline: 0;
+        display: inline-block;
+        margin-top: 4px;
+        float: right;
+    }
+
+    .toggleBtn .toggle-switch---switch---3EchW.toggle-switch---checked---3aC9B .toggle-switch---toggle---mncCu {
+        border-color: #EF2E24;
+        background-color: #EF2E24;
+    }
+
+    .toggleBtn .toggle-switch---toggle---mncCu,
+    .toggleBtn .toggle-switch---toggle---mncCu:hover {
+        border-color: #9BA1A5;
+        background-color: #9BA1A5;
+    }
+
+    .toggleBtn .toggle-switch---toggle-sm---20q-N:before {
+        height: 8px;
+        width: 8px;
+    }
+
+    .toggleBtn .toggle-switch---toggle---mncCu:before {
+        left: 3px;
+        top: 4px;
+    }
     /*Error Control*/
-    
+
     .login-panel .alert {
         margin-top: 30px;
         color: #B4312C;
@@ -59,14 +121,58 @@
         font-size: 12px;
         font-weight: 900;
     }
-    
+
     .login-panel .alert i {
         margin-right: 10px;
         font-size: 15px;
         vertical-align: middle;
     }
+    /*Page Secition header*/
+
+    .page-sec-header {
+        padding: 20px 0;
+        position: relative;
+    }
+
+    .page-sec-header h4 {
+        display: inline-block;
+        color: #454B51;
+        font-family: CenturyGothic_bold;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .page-sec-header h4 i {
+        color: #454B51;
+        font-size: 26px;
+        vertical-align: middle;
+        margin-left: 15px;
+    }
+
+    .page-sec-header button {
+        background: transparent;
+        border: 1px solid #ED3124;
+        color: #ED3124 !important;
+        position: absolute;
+        right: 35px;
+        margin-top: 0;
+        font-weight: bold;
+        height: 42px;
+    }
+
+    /*IE fix*/
+    input::-ms-clear,
+    input::-ms-reveal {
+        display: none;
+    }
+    input[type=password]::-ms-reveal,
+    input[type=password]::-ms-clear
+    {
+        display: none;
+    }
     /*responsive*/
-    
+
     @media screen and (max-width: 1024px) {
         .main-wrapper {
             padding-left: 0px;
@@ -77,9 +183,20 @@
             margin-bottom: 20px;
         }
     }
-    
+
     @media screen and (max-width: 767px) {
         .mpad-0 {
             padding: 0;
+        }
+        .page-sec-header {
+            padding: 10px 0;
+        }
+        .page-sec-header h4 {
+            font-size: 16px;
+        }
+        .page-sec-header button {
+            right: 10px;
+            height: auto;
+            font-size: 12px !important;
         }
     }

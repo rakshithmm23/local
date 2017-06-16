@@ -91,9 +91,10 @@ export default class VerifyOTP extends Component {
     }
     render() {
         const { router, authReducer } = this.props;
+        console.log(authReducer);
         return (
             <div className="container-fluid" id="wrapper">
-                <LoginHeader headerTitle='Sign Up' />
+                <LoginHeader headerTitle='Sign Up'/>
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                   <Scrollbars className="customScroll">
@@ -104,11 +105,10 @@ export default class VerifyOTP extends Component {
                                   <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                                 </AlertDismissable>}
                                 <p className="note-text">
-                                    A One Time Password has been sent on your registered mobile no.
-                                  {authReducer && authReducer.signUpData && authReducer.signUpData.phone && <strong>+{authReducer && authReducer.signUpData && authReducer.signUpData.phone} <i className="fa fa-pencil" /></strong>}
+                                  A One Time Password has been sent on your registered mobile no.
+                                  {authReducer && authReducer.authData && authReducer.authData.phone && <strong><span className="edit-mobileno">98998 38962</span><i className="mdi mdi-pencil" onClick={(e) => {e.preventDefault(); router.push('send-otp')}}/></strong>}
                                 </p>
                             </div>
-
                             <div className="login-panel-body">
                                 <TextInput
                                   label="Enter the OTP code below to continue"
@@ -119,9 +119,9 @@ export default class VerifyOTP extends Component {
                                   limitCharacters={4}
                                   onChange={this.onFieldChange.bind(this)}
                                   isOTP={true} />
-                                <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Proceed" />
+                                <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="gmail" btnSize="lg" fontSize={14} label="Complete sign up" />
                                 <p className="note-text">
-                                    {'Didn\'t get OTP ?'} <a href="" className="green-text">Resend</a>
+                                    {'Didn\'t get OTP ?'} <a href="" className="blue-text">Resend</a>
                                 </p>
                             </div>
                         </div>
