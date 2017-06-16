@@ -27,8 +27,6 @@ input[type="color"][list] {
   cursor: pointer;
 }
 
-
-
 .request-summary .title span {
   color: #454B51;
   font-family: 'CenturyGothic';
@@ -70,51 +68,86 @@ input[type="color"][list] {
   margin-top: 24px;
   margin-right: 10px;
 }
+.filterSection .filterLabel{
+    height: 30px;
+    border-radius: 3px;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    color: #55595B;
+    position: relative;
+    box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+    width: 125px;
+    margin-left: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    display: inline-block;
+    outline: 0;
+    background: url(http://web-test.carcility.com/arrow-down.png);
+    background-repeat: no-repeat;
+    background-position: 92% 12px;
+    padding-right: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.filterSection .filterLabel label{
+  padding-left: 10px;
+  cursor: pointer;
+}
 
 .filterSection .mdi-filter-variant {
-  position: absolute;
-  left: 30px;
-  top: 5px;
   font-size: 14px;
 }
 
 .filterSection .mdi-swap-horizontal {
-  position: absolute;
-  right: 83px;
-  top: 5px;
   font-size: 14px;
   transform: rotate(450deg);
 }
-
-.quotes-view .title .filterSection select {
-  height: 30px;
-  border-radius: 3px;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  color: #55595B;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 107px;
-  margin-left: 20px;
-  padding: 0 5px;
-  padding-left: 30px;
-  vertical-align: middle;
-  display: inline-block;
-  box-shadow: none;
-  outline: 0;
-  position: relative;
-  background: url('../images/arrow-down.png');
-  background-repeat: no-repeat;
-  background-position: 92% 10px;
-  padding-right: 30px;
-  border: none;
-  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5)
+.filterCard{
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  width: 440px;
+  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+  z-index: 999;
+  padding: 15px;
 }
-
+.filterCard.Filterby {
+    left: 0;
+    right: inherit;
+    background-color: #fff;
+    width: 900px;
+    padding-top: 40px;
+}
+.filterCard ul li.active label,
+.filterCard ul li.active span i{
+  color: #ED3124;
+}
+.filterCard ul li{
+  position: relative;
+  padding: 20px 0px;
+  cursor: pointer;
+}
+.filterCard ul li label{
+  color: #454B51;
+  font-size: 16px;
+  font-family: CenturyGothic;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.filterCard ul li span{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    padding: 0px !important;
+}
+.filterCard ul li span i{
+  font-size: 20px;
+  color: #454B51;
+}
 .quotes-view .title .filterSection select::-ms-expand {
   display: none;
 }
-
 
 /*Quotes right*/
 
@@ -492,6 +525,35 @@ input[type="color"][list] {
 .quotation-total span {
   font-weight: 900;
   font-size: 16px;
+}
+.f-card{
+  margin-bottom:30px;
+}
+.f-card h5{
+    color: #717982;
+    font-size: 14px;
+    font-family: CenturyGothic;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.f-card ul li{
+    height: 37px;
+    width: 37px;
+    border-radius: 100%;
+    border: 1px solid #EF2E24;
+    color: #ED3124;
+    font-family: CenturyGothic;
+    font-size: 12px;
+    padding: 10px 0px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+.f-card ul li.active{
+  background-color: #ED3124;
+  color:#fff;
 }
 
 @media screen and (max-width: 1100px) {

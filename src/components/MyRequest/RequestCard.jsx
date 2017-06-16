@@ -240,7 +240,7 @@ export default class RequestCard extends Component {
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
-          
+
           <div className={"job-updates myRequest " + item.statusIndicator}>
             <div className="row">
               <div className="col-md-12 col-sm-12 col-xs-12 pad0">
@@ -335,20 +335,104 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
-                            <i className="mdi mdi-filter-variant"></i>
-                            <i className="mdi mdi-swap-horizontal"></i>
-                            <select>
-                              <option value="volvo">Filter</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
-                            <select>
-                              <option value="volvo">Sort By</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
+                            <div className="filterLabel">
+                              <i className="mdi mdi-filter-variant"></i>
+                              <label>Sort by</label>
+                            </div>
+                            <div className="sortFilter filterCard hide">
+                              <ul className="list-unstyled">
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check"/>
+                                  </span>
+                                </li>
+                                <li className="active">
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check"/>
+                                  </span>
+                                </li>
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check"/>
+                                  </span>
+                                </li>
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check"/>
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="filterSection">
+                            <div className="filterLabel">
+                              <i className="mdi mdi-swap-horizontal"></i>
+                              <label>Filter</label>
+                            </div>
+                            <div className="Filterby filterCard">
+                              <div className="col-md-6">
+                                <div className="filterby-wrapper">
+                                  <div className="f-card">
+                                    <h5>Open Between</h5>
+                                    <ul className="list-unstyled">
+                                      <li className="active">
+                                        SUN
+                                      </li>
+                                      <li>
+                                        MON
+                                      </li>
+                                      <li>
+                                        TUE
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div className="f-card">
+                                    <h5>Open Between</h5>
+                                    <ul className="list-unstyled">
+                                      <li className="active">
+                                        SUN
+                                      </li>
+                                      <li>
+                                        MON
+                                      </li>
+                                      <li>
+                                        TUE
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className="filterby-wrapper">
+                                  <div className="f-card">
+                                    <h5>Open Between</h5>
+                                    <ul className="list-unstyled">
+                                      <li>
+                                        SUN
+                                      </li>
+                                      <li>
+                                        MON
+                                      </li>
+                                      <li>
+                                        TUE
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div className="quotes-left-body">
