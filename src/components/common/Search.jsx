@@ -18,7 +18,7 @@ export default class Search extends Component {
                 pinImage:''
             }],
             showResults: false,
-            seachedValue: null,
+            seachedValue: "",
             dropdownList: ["Audi", "Renault", "BMW", "Benz"],
             seachedResult: [],
             location: "",
@@ -38,7 +38,6 @@ export default class Search extends Component {
         document.body.addEventListener('mousedown', this.bodyClick.bind(this));
     }
     showPosition(position) {
-        
         let positionVal=[{lat:position.coords.latitude,
                                          lng:position.coords.longitude,
                                           pinImage:this.state.pinImage }]
@@ -163,7 +162,7 @@ export default class Search extends Component {
         return (
             <div className="searchBar">
                 <div className="searchLeft">
-                    <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.dropdownSelect(e) }} title={
+                    <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.dropdownSelect(e)}} title={
                         <div className="input-group">
                             <span className="input-group-addon" id="basic-addon1"><i className="mdi mdi-crosshairs-gps" /></span>
                             <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })} aria-describedby="basic-addon1" />
@@ -181,9 +180,8 @@ export default class Search extends Component {
 
                 <div className={searchView.length > 0?"searchFill active":"searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} open={searchView.length > 0 ? true : false}  noCaret title={
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} onToggle={searchView.length > 0 ? true : false}  noCaret title={
                             <div >
-
                                 <input value={this.state.seachedValue} placeholder="Search" 
                                     onChange={(e) => this.setState({ seachedValue: e.target.value })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
@@ -195,7 +193,6 @@ export default class Search extends Component {
                                     <MenuItem key={key} eventKey={result} >{result}</MenuItem>
                                 );
                             })}
-
                         </DropdownButton>
                     </FormGroup>
 

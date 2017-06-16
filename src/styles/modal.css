@@ -68,6 +68,9 @@
 .modal-body .comments input {
   font-size: 16px;
 }
+.modal-body .comments {
+  padding-top: 35px;
+}
 
 .modal-body .model-select .mdi-chevron-down {
   position: absolute;

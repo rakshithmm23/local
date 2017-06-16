@@ -24,7 +24,6 @@ class Gmaps extends Component {
         }
         
         const markers =  map(mapRes, (val, i) => {
-            debugger
             const marker = {
                 position: {
                     lat: val.lat,
