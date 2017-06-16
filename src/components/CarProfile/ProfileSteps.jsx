@@ -41,23 +41,25 @@ class ProfileSteps extends Component {
         };
         this.errors = {};
 
-        const { resetFields } = Object.assgn({}, this.state)
+        this.resetFields  = Object.assign({}, this.state)
         this.onFieldChange = this.onFieldChange.bind(this);
     }
     onSubmit(){
       this.props.onSubmit(this.formData);
     }
     onFieldChange(value, key, name) {
-        if (value) {
-            this.formData[name] = value;
-            this.errors[name] = false;
-        }
+      if (value) {
+          this.formData[name] = value;
+          this.errors[name] = false;
+      }
     }
     activeLogo(name) {
         this.setState({ activeLogo: name, modelTabIsUnlocked: true });
+        this.formData['make'] = name;
     }
     activeModel(name) {
         this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true });
+        this.formData['model'] = name;
     }
     tabOpen(val) {
         debugger
@@ -91,6 +93,12 @@ class ProfileSteps extends Component {
             });
             this.formData['file'] = this.state.imageUploaded;
         }
+    }
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.carProfileReducer.currentComponentKey === 'create-car-profile'){
+        this.formData = { ...this.initialFormData };
+        this.state = {...this.resetFields};
+      }
     }
     cancelImageUpload(val) {
         let deleteSize = 0;
@@ -251,7 +259,8 @@ class ProfileSteps extends Component {
         });
         const carModelView = map(carModel, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }); }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view"
+                  onClick={() => { this.activeModel(carItem.name) }} key={key}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('otherDetailsTabVisible')}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -344,35 +353,38 @@ class ProfileSteps extends Component {
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Car Profile Name" name="text" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput label="Car Profile Name" name="name" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="text" type="text" validationError="Plate Number cannot be empty" />
+                                        <TextInput label="Plate Number*" name="regNo" type="text" validationError="Plate Number cannot be empty"
+                                        onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Kms Travelled*" name="text" type="text" validationError="Kms Travelled cannot be empty" />
+                                        <TextInput label="Kms Travelled*" name="travelled" type="text" validationError="Kms Travelled cannot be empty"
+                                          onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
                                 <div className="row insurance-details">
                                     <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Insurance Provider" name="text" type="text" />
+                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text"
+                                          onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Insurance Policy Number" name="text" type="text" />
+                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="State" name="text" type="text" />
+                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                 </div>
                                 <div className="row car-notes">
                                     <h4 className="panel-sub-title">Car Notes (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Additional Details About The Car (Optional)" name="text" type="text" validationError="Enter a valid text" />
+                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
                                 <div className="next-button">
-                                    <Button btnType="submit" btnSize="sm" fontSize={14} label="Save" />
+                                    <Button btnType="submit" btnSize="sm" fontSize={14} label="Save" btnCallBack={()=>this.onSubmit()} />
                                 </div>
                             </div>
                         </div>}

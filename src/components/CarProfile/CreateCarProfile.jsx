@@ -42,7 +42,7 @@ export default class NewCarProfile extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <ProfileSteps onSubmit={this.onSubmit.bind(this)} />
+                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} />
                         </div>
                     </div>
 
