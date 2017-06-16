@@ -352,19 +352,17 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-left-body">
-                          <div className="wrapper" ref={'quotesList'}>
-
-                            <div>
-                              {map(this.state.jobCardDetails, (val, key) => {
-                                return (
-                                  <QuotesCard ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
-                                  viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
-                                );
-                              })}
+                            <div className="wrapper" ref={'quotesList'}>
+                              <div>
+                                {map(this.state.jobCardDetails, (val, key) => {
+                                  return (
+                                    <QuotesCard ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} key={key} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key+1} rating={val.rating} distance={val.distance} reviews={val.review}
+                                    viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                  );
+                                })}
+                              </div>
+                              {/*}*/}
                             </div>
-                            {/*}*/}
-                          </div>
-
                         </div>
                       </div>
                     </div>
@@ -418,12 +416,12 @@ export default class RequestCard extends Component {
                                   <div className="quotation-block" key={key}>
                                     {map(value.quotationDetails, (val, index) => {
                                       return (
-                                        <div>
-                                          <h4 index={index}>{val.serviceIndex}. {val.serviceName}</h4>
+                                        <div key={index}>
+                                          <h4>{val.serviceIndex}. {val.serviceName}</h4>
                                           <ul>
                                             {map(val.Accessories, (v, k) => {
                                               return (
-                                                <li>
+                                                <li key={k}>
                                                   <label>{v.name}</label>
                                                   <span>{v.cost} {v.currency}</span>
                                                 </li>

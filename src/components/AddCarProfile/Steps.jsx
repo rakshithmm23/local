@@ -6,8 +6,8 @@ import TextInput from '../common/TextInput';
 
 
 class Steps extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props);
         this.state = {
             activeLogo: null,
             activeModel: null,
@@ -20,43 +20,63 @@ class Steps extends Component {
             submissionError: false
         };
         this.initialFormData = {
-            'email': '',
-            'password': '',
+            'make': '',
+            'model': '',
+            'name': '',
+            'year': '',
+            'regNo': '',
+            'travelled': '',
+            'insuranceProvider': '',
+            'policyNo': '',
+            'state': '',
+            'additionalDetails': '',
+            'file': ''
         };
-            this.formData = {
-            ...this.initialFormData
+        this.formData = {
+          ...this.initialFormData
         };
-            this.errors = {
-            'email': false,
-            'password': false,
+        this.errors = {
+          '': false,
+          '': false,
         };
+        const { resetFields } = Object.assgn({}, this.state)
     this.onFieldChange = this.onFieldChange.bind(this);
-}
-onFieldChange(value, key, name) {
+  }
+  onFieldChange(value, key, name) {
     if (value) {
       this.formData[name] = value;
       this.errors[name] = false;
     }
   }
+  onSubmit(){
+    this.props.onSubmit(this.formData);
+  }
     activeLogo(name) {
-        this.setState({ activeLogo: name, modelTabIsUnlocked: true})
+      this.setState({ activeLogo: name, modelTabIsUnlocked: true})
+      this.formData['make'] = name;
     }
     activeModel(name) {
-        this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true})
+      this.setState({ activeModel: name, otherDetailsTabIsUnlocked: true})
+      this.formData['model'] = name;
     }
     tabOpen(val) {
-        if (val == 'manufacturerTabVisible') {
-            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false })
-        } else if (val == 'modelTabVisible' && this.state.modelTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false })
-        } else if (val == 'otherDetailsTabVisible', this.state.otherDetailsTabIsUnlocked) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true })
-        }
+      if (val == 'manufacturerTabVisible') {
+          this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false })
+      } else if (val == 'modelTabVisible' && this.state.modelTabIsUnlocked) {
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false })
+      } else if (val == 'otherDetailsTabVisible', this.state.otherDetailsTabIsUnlocked) {
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true })
+      }
     }
-
-
-
-
+    imagesUploaded(fileData){
+      this.formData['file'] = fileData;
+    }
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.carProfileReducer.currentComponentKey === 'create-car-profile'){
+        this.formData = { ...this.initialFormData };
+        this.state = {...resetFields};
+      }
+    }
     render() {
         const carList = [
             {
@@ -122,7 +142,7 @@ onFieldChange(value, key, name) {
         })
         const carModelView = map(carModel, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.setState({ activeModel: carItem.name }) }} key={key}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeModel( carItem.name) }} key={key}>
                     <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -162,11 +182,11 @@ onFieldChange(value, key, name) {
                     {this.state.modelTabVisible && <div>
                         <div className="container-fluid select-option">
                             <div className="model-select col-md-6">
-                                <select>
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
+                                <select onChange={(e)=>this.onFieldChange(e.target.value, '',e.target.name)} name="year">
+                                    <option key={"1997"} value="1997">1997</option>
+                                    <option key={"1998"} value="1998">1998</option>
+                                    <option key={"1999"} value="1999">1999</option>
+                                    <option key={"2000"} value="2000">2000</option>
                                 </select>
                                 <i className="mdi mdi-chevron-down"></i>
                             </div>
@@ -188,20 +208,20 @@ onFieldChange(value, key, name) {
                         <div className="wrapper">
                             <div className="upload-image">
                                 <h4>upload images</h4>
-                                <Upload />
+                                <Upload cb={this.imagesUploaded.bind(this)}/>
                             </div>
                             <div className="car-profile">
                                 <div className="container-fluid">
                                     <h4>car profile</h4>
 
                                     <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Car Profile Name" name="text" type="text"  showValidationError={this.errors['text']}  validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Car Profile Name" name="name" type="text"  showValidationError={this.errors['text']}  validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Plate Number*" name="text" type="text" validationError="Plate Number cannot be empty"/>
+                                        <TextInput label="Plate Number*" name="regNo" type="text" validationError="Plate Number cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Kms Travelled*" name="text" type="text" validationError="Kms Travelled cannot be empty"/>
+                                        <TextInput label="Kms Travelled*" name="travelled" type="text" validationError="Kms Travelled cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
 
                                 </div>
@@ -211,13 +231,13 @@ onFieldChange(value, key, name) {
                                 <div className="container-fluid">
                                     <h4>Insurance Details (Optional)</h4>
                                     <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Insurance Provider" name="text" type="text" />
+                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Insurance Policy Number" name="text" type="text"/>
+                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="State" name="text" type="text" />
+                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
 
@@ -226,12 +246,12 @@ onFieldChange(value, key, name) {
                                 <div className="container-fluid">
                                     <h4>Car Notes (Optional)</h4>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Additional Details About The Car (Optional)" name="text" type="text" validationError="Enter a valid text"/>
+                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
                             </div>
                             <div className="next-button">
-                                <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" />
+                                <Button btnType="submit" btnSize="sm" fontSize={13} label="Save" btnCallBack={()=>this.onSubmit()} />
                             </div>
                         </div>}
                 </section>

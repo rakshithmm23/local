@@ -15,19 +15,20 @@ class Upload extends Component {
         this.setState({imageUploaded: array });
     }
     fileNameUpload(e) {
-        let files = [] 
+        let files = []
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val) })
         });
-        // upload = { ...this.state.imageUploaded, files }
+        let upload = this.state.imageUploaded.concat(files)
         this.setState({
-            imageUploaded: this.state.imageUploaded.concat(files)
-        })
+          imageUploaded: upload
+        });
+        this.props.cb(upload);
     }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img,index) => {
             return (
-                <div className="upload-box-wrapper col-md-2 col-sm-3 col-xs-6">
+                <div className="upload-box-wrapper col-md-2 col-sm-3 col-xs-6" key={index}>
                     <div className="uploaded-image">
                         <span className="cancel-image" onClick={()=>{this.cancelImageUpload(index)}}>
                             <i className="mdi mdi-close"></i>
