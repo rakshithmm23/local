@@ -529,7 +529,6 @@ class RepairSteps extends Component {
             )
         })
         const format = 'h:mm a';
-        const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
         each(this.state.carWashCategories, (carWashCategory, key) => {

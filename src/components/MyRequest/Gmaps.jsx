@@ -17,13 +17,15 @@ class Gmaps extends Component {
     render() {
         debugger
         let mapRes = null;
-        if(this.props.markers.jobCardLocation != undefined ){
+        if(this.props.markers == undefined){
+            mapRes=undefined;
+        }else if(this.props.markers.jobCardLocation != undefined ){
              mapRes = this.props.markers.jobCardLocation 
         }else{
             mapRes = this.props.markers 
         }
         
-        const markers =  map(mapRes, (val, i) => {
+        const markers =  mapRes?map(mapRes, (val, i) => {
             const marker = {
                 position: {
                     lat: val.lat,
@@ -35,7 +37,7 @@ class Gmaps extends Component {
                     url: val.pinImage
                 }}
             />;
-        }) 
+        }) :""
         let mapSettings = {
             defaultZoom: this.props.zoom,
             defaultCenter: this.props.center

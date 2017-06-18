@@ -9,12 +9,16 @@ import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import InputRange from 'react-input-range';
+import ToggleSwitch from '@trendmicro/react-toggle-switch';
+import TimePicker from 'rc-time-picker';
 
 
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      filterType:"",
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
@@ -116,6 +120,9 @@ export default class RequestCard extends Component {
       activeSvg: 'data:image/svg+xml,<svg%20width%3D"36px"%20height%3D"40px"%20viewBox%3D"0%200%2036%2040"%20version%3D"1.1"%20xmlns%3D"http%3A//www.w3.org/2000/svg"%20xmlns%3Axlink%3D"http%3A//www.w3.org/1999/xlink">%0A%20%20%20%20<%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20-->%0A%20%20%20%20<title>location-pin%20copy%209</title>%0A%20%20%20%20<desc>Created%20with%20Sketch.</desc>%0A%20%20%20%20<defs>%0A%20%20%20%20%20%20%20%20<path%20d%3D"M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z"%20id%3D"path-1"></path>%0A%20%20%20%20%20%20%20%20<mask%20id%3D"mask-2"%20maskContentUnits%3D"userSpaceOnUse"%20maskUnits%3D"objectBoundingBox"%20x%3D"0"%20y%3D"0"%20width%3D"36"%20height%3D"40"%20fill%3D"white">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</mask>%0A%20%20%20%20</defs>%0A%20%20%20%20<g%20id%3D"Symbols"%20stroke%3D"none"%20stroke-width%3D"1"%20fill%3D"none"%20fill-rule%3D"evenodd"%20stroke-opacity%3D"0.455219656">%0A%20%20%20%20%20%20%20%20<g%20id%3D"location-pin-copy-9"%20stroke%3D"%23FFFFFF"%20stroke-width%3D"4"%20fill%3D"%2323AE49">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20id%3D"Rectangle-10-Copy-3"%20mask%3D"url%28%23mask-2%29"%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</g>%0A%20%20%20%20</g>%0A<text%20transform%3D"translate%2819%2018.5%29"%20fill%3D"%23fff"%20style%3D"font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B"%20font-size%3D"12"%20text-anchor%3D"middle">',
       svg: 'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2236px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2036%2040%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3ERectangle%2010%20Copy%203%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z%22%20id%3D%22path-1%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-2%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2240%22%20fill%3D%22white%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/mask%3E%0A%20%20%20%20%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20stroke-opacity%3D%220.455219656%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22location-pin%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20fill%3D%22%23EE3124%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Rectangle-10-Copy-3%22%20mask%3D%22url%28%23mask-2%29%22%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%20%20%3Ctext%20transform%3D%22translate%2819%2018.5%29%22%20fill%3D%22%23fff%22%20style%3D%22font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%3E',
       svgEnd: '</text>%0A</svg>',
+      distValue: { min: 2, max: 10 },
+      priceValue: { min: 10, max: 70 },
+
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -236,6 +243,8 @@ export default class RequestCard extends Component {
 
       }
     })
+    const formatFrom = 'h:mm a';
+    const formatTo = 'h:mm a';
 
     const jobDataList = map(jobData, (item, key) => {
       return (
@@ -335,18 +344,18 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
-                            <div className="filterLabel">
+                            <div className="filterLabel" onClick={()=>this.setState({filterType:"sortFilter"})}>
                               <i className="mdi mdi-filter-variant"></i>
                               <label>Sort by</label>
                             </div>
-                            <div className="sortFilter filterCard hide">
+                            <div className={this.state.filterType=="sortFilter"?"sortFilter filterCard":"sortFilter filterCard hide"}>
                               <ul className="list-unstyled">
                                 <li>
                                   <label>
                                     Distance - Near to Far
                                   </label>
                                   <span>
-                                    <i className="mdi mdi-check"/>
+                                    <i className="mdi mdi-check" />
                                   </span>
                                 </li>
                                 <li className="active">
@@ -354,7 +363,7 @@ export default class RequestCard extends Component {
                                     Distance - Near to Far
                                   </label>
                                   <span>
-                                    <i className="mdi mdi-check"/>
+                                    <i className="mdi mdi-check" />
                                   </span>
                                 </li>
                                 <li>
@@ -362,7 +371,7 @@ export default class RequestCard extends Component {
                                     Distance - Near to Far
                                   </label>
                                   <span>
-                                    <i className="mdi mdi-check"/>
+                                    <i className="mdi mdi-check" />
                                   </span>
                                 </li>
                                 <li>
@@ -370,65 +379,136 @@ export default class RequestCard extends Component {
                                     Distance - Near to Far
                                   </label>
                                   <span>
-                                    <i className="mdi mdi-check"/>
+                                    <i className="mdi mdi-check" />
                                   </span>
                                 </li>
                               </ul>
                             </div>
                           </div>
                           <div className="filterSection">
-                            <div className="filterLabel">
+                            <div className="filterLabel" onClick={()=>this.setState({filterType:"Filterby"})}>
                               <i className="mdi mdi-swap-horizontal"></i>
                               <label>Filter</label>
                             </div>
-                            <div className="Filterby filterCard">
-                              <div className="col-md-6">
-                                <div className="filterby-wrapper">
-                                  <div className="f-card">
-                                    <h5>Open Between</h5>
-                                    <ul className="list-unstyled">
-                                      <li className="active">
-                                        SUN
-                                      </li>
-                                      <li>
-                                        MON
-                                      </li>
-                                      <li>
-                                        TUE
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="f-card">
-                                    <h5>Open Between</h5>
-                                    <ul className="list-unstyled">
-                                      <li className="active">
-                                        SUN
-                                      </li>
-                                      <li>
-                                        MON
-                                      </li>
-                                      <li>
-                                        TUE
-                                      </li>
-                                    </ul>
+                            <div className={this.state.filterType=="Filterby"?"Filterby filterCard":"Filterby filterCard hide"}>
+                              <div className="row">
+                                <div className="col-md-6 left">
+                                  <div className="filterby-wrapper">
+                                    <div className="f-card">
+                                      <h5>Distance</h5>
+                                      <InputRange
+                                        formatLabel={distValue => `${distValue}km`}
+                                        minValue={0}
+                                        maxValue={20}
+                                        value={this.state.distValue}
+                                        onChange={distValue => this.setState({ distValue })} />
+                                      
+                                    </div>
+                                    <div className="f-card">
+                                      <h5>Price</h5>
+                                      <InputRange
+                                        formatLabel={priceValue => `${priceValue}AED`}
+                                        minValue={0}
+                                        maxValue={100}
+                                        value={this.state.priceValue}
+                                        onChange={priceValue => this.setState({ priceValue })} />
+                                    </div>
+                                    <div className="f-card">
+                                      <h5>Open Between</h5>
+                                      <ul className="list-unstyled">
+                                        <li>SUN</li>
+                                        <li className="active">MON</li>
+                                        <li className="active">TUE</li>
+                                        <li>wed</li>
+                                        <li>thu</li>
+                                        <li>fri</li>
+                                        <li>sat</li>
+                                      </ul>
+                                      <TimePicker
+                                        placeholder="Time"
+                                        showSecond={false}
+                                        className="xxx"
+                                        format={formatFrom}
+                                        use12Hours
+                                      />
+                                      <span className="time-to-time">to</span>
+                                      <TimePicker
+                                        placeholder="Time"
+                                        showSecond={false}
+                                        className="xxx"
+                                        format={formatTo}
+                                        use12Hours
+                                      />
+
+                                    </div>
+
                                   </div>
                                 </div>
-                              </div>
-                              <div className="col-md-6">
-                                <div className="filterby-wrapper">
-                                  <div className="f-card">
-                                    <h5>Open Between</h5>
-                                    <ul className="list-unstyled">
-                                      <li>
-                                        SUN
-                                      </li>
-                                      <li>
-                                        MON
-                                      </li>
-                                      <li>
-                                        TUE
-                                      </li>
-                                    </ul>
+                                <div className="col-md-6 right toggleBtn">
+                                  <div className="filterby-wrapper">
+                                    <div className="f-card ">
+                                      <h5>Open 24/7</h5>
+                                      <ToggleSwitch
+                                        checked
+                                        size="small"
+                                        ref={(node) => {
+                                          this.toggleSwitch = node;
+                                        }}
+                                      />
+                                    </div>
+                                    <div className="f-card">
+                                      <h5>Rating</h5>
+                                      <ul className="rating">
+                                        <span className="mdi mdi-star-outline"></span>
+                                        <span className="mdi mdi-star-outline"></span>
+                                        <span className="mdi mdi-star-outline"></span>
+                                        <span className="mdi mdi-star-outline"></span>
+                                        <span className="mdi mdi-star-outline"></span>
+                                      </ul>
+                                    </div>
+                                    <div className="f-card ">
+                                      <h5>Only show Authorized Businesses</h5>
+                                      <ToggleSwitch
+                                        checked
+                                        size="small"
+                                        ref={(node) => {
+                                          this.toggleSwitch = node;
+                                        }}
+                                      />
+                                    </div>
+                                    <div className="f-card ">
+                                      <h5>Only show Businesses with Deals & Offers</h5>
+                                      <ToggleSwitch
+                                        checked
+                                        size="small"
+                                        ref={(node) => {
+                                          this.toggleSwitch = node;
+                                        }}
+                                      />
+                                    </div>
+                                    <div className="f-card payment-type">
+                                      <h5>Payment by</h5>
+                                      <div className="holder">
+                                        <span className="pad0">pay by cash</span>
+                                        <ToggleSwitch
+                                        checked
+                                        size="small"
+                                        ref={(node) => {
+                                          this.toggleSwitch = node;
+                                        }}
+                                      />
+                                      </div>
+                                      <div className="holder">
+                                        <span className="">pay by credit card</span>
+                                        <ToggleSwitch
+                                        checked
+                                        size="small"
+                                        ref={(node) => {
+                                          this.toggleSwitch = node;
+                                        }}
+                                      />
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>

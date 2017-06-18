@@ -35,10 +35,12 @@ input[type="color"][list] {
   display: block;
   text-align: center;
 }
+
 .request-summary .request-summary-tab .title.active {
   border-bottom: 2px solid #E50000;
 }
-.request-summary .request-summary-tab .title.active span{
+
+.request-summary .request-summary-tab .title.active span {
   font-family: 'CenturyGothic_bold';
 }
 
@@ -68,31 +70,67 @@ input[type="color"][list] {
   margin-top: 24px;
   margin-right: 10px;
 }
-.filterSection .filterLabel{
-    height: 30px;
-    border-radius: 3px;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    color: #55595B;
-    position: relative;
-    box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
-    width: 125px;
-    margin-left: 20px;
-    padding: 5px;
-    padding-left: 10px;
-    display: inline-block;
-    outline: 0;
-    background: url(http://web-test.carcility.com/arrow-down.png);
-    background-repeat: no-repeat;
-    background-position: 92% 12px;
-    padding-right: 20px;
-    border: none;
-    cursor: pointer;
+
+.filterSection .filterLabel {
+  height: 30px;
+  border-radius: 3px;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  color: #55595B;
+  position: relative;
+  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+  width: 125px;
+  margin-left: 20px;
+  padding: 5px;
+  padding-left: 10px;
+  display: inline-block;
+  outline: 0;
+  background: url(http://web-test.carcility.com/arrow-down.png);
+  background-repeat: no-repeat;
+  background-position: 92% 12px;
+  padding-right: 20px;
+  border: none;
+  cursor: pointer;
 }
 
-.filterSection .filterLabel label{
+.filterSection .filterLabel label {
   padding-left: 10px;
   cursor: pointer;
+}
+
+.input-range__label--min,
+.input-range__label--max {
+  display: none !important;
+}
+
+.f-card .input-range__slider {
+  top: 0 !important;
+}
+
+.f-card .input-range__label {
+  padding: 0 !important;
+}
+
+.f-card .input-range__track {
+  height: 2px !important;
+}
+
+.f-card .input-range__label-container {
+  color: #717982 !important;
+  font-family: CenturyGothic !important;
+  font-size: 14px !important;
+  margin-left: 19px !important;
+}
+
+.f-card .input-range__track.input-range__track--active {
+  background-color: #ED3124;
+}
+
+.f-card .input-range__slider {
+  height: 14px;
+  background: #fff;
+  border: 1px solid #ED3124;
+  width: 14px;
 }
 
 .filterSection .mdi-filter-variant {
@@ -103,7 +141,8 @@ input[type="color"][list] {
   font-size: 14px;
   transform: rotate(450deg);
 }
-.filterCard{
+
+.filterCard {
   position: absolute;
   right: 0;
   background-color: #fff;
@@ -112,42 +151,53 @@ input[type="color"][list] {
   z-index: 999;
   padding: 15px;
 }
+
 .filterCard.Filterby {
-    left: 0;
-    right: inherit;
-    background-color: #fff;
-    width: 900px;
-    padding-top: 40px;
+  left: 0;
+  right: inherit;
+  background-color: #fff;
+  width: 900px;
+  padding-top: 40px;
 }
+.filterCard.Filterby .left{
+  border-right:0;
+}
+
 .filterCard ul li.active label,
-.filterCard ul li.active span i{
+.filterCard ul li.active span i {
   color: #ED3124;
 }
-.filterCard ul li{
+
+.filterCard ul li {
   position: relative;
   padding: 20px 0px;
   cursor: pointer;
 }
-.filterCard ul li label{
+
+.filterCard ul li label {
   color: #454B51;
   font-size: 16px;
   font-family: CenturyGothic;
   margin-bottom: 0px;
   cursor: pointer;
 }
-.filterCard ul li span{
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    padding: 0px !important;
+
+.filterCard ul li span {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  padding: 0px !important;
 }
-.filterCard ul li span i{
+
+.filterCard ul li span i {
   font-size: 20px;
   color: #454B51;
 }
+
 .quotes-view .title .filterSection select::-ms-expand {
   display: none;
 }
+
 
 /*Quotes right*/
 
@@ -526,34 +576,89 @@ input[type="color"][list] {
   font-weight: 900;
   font-size: 16px;
 }
-.f-card{
-  margin-bottom:30px;
+
+.f-card {
+  margin-bottom: 30px;
 }
-.f-card h5{
-    color: #717982;
-    font-size: 14px;
-    font-family: CenturyGothic;
-    margin: 0px;
+
+.f-card .input-range {
+  width: 98% !important;
+  margin-left: 5px !important;
+  margin-bottom: 55px;
+}
+
+.f-card h5 {
+  display: inline-block;
+  color: #717982;
+  font-size: 16px;
+  font-family: CenturyGothic;
+  margin: 0px;
+
+}
+.Filterby .left .f-card h5 {
     margin-bottom: 20px;
 }
 
-.f-card ul li{
-    height: 37px;
-    width: 37px;
-    border-radius: 100%;
-    border: 1px solid #EF2E24;
-    color: #ED3124;
-    font-family: CenturyGothic;
-    font-size: 12px;
-    padding: 10px 0px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 20px;
+.f-card .rc-time-picker {
+  padding: 0 !important;
 }
-.f-card ul li.active{
+
+.f-card .rc-time-picker input {
+  height: 38px;
+  width: 130px;
+  border: 1px solid #CCD2D7;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+}
+
+.f-card .time-to-time {
+  padding: 0 20px !important;
+}
+
+.f-card .toggle-switch---switch---3EchW {
+  float: right;
+}
+
+.f-card ul li {
+  text-transform: capitalize;
+  height: 37px;
+  width: 37px;
+  border-radius: 100%;
+  border: 1px solid #EF2E24;
+  color: #ED3124;
+  font-family: CenturyGothic;
+  font-size: 12px;
+  padding: 10px 0px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+.f-card.payment-type {
+
+}
+.f-card.payment-type h5{
+  padding-bottom: 12px;
+}
+.f-card.payment-type .holder{
+  padding: 8px 0 ;
+}
+.f-card.payment-type span{
+  padding: 0!important;
+  	color: #717982 !important;
+	font-family: CenturyGothic;
+	font-size: 14px !important;
+}
+
+
+.f-card ul li.active {
   background-color: #ED3124;
-  color:#fff;
+  color: #fff;
+}
+.f-card .rating span{
+  padding: 0;
+  padding-top: 10px;
+  font-size: 24px;
 }
 
 @media screen and (max-width: 1100px) {
