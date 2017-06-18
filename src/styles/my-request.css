@@ -163,18 +163,18 @@ input[type="color"][list] {
   border-right:0;
 }
 
-.filterCard ul li.active label,
-.filterCard ul li.active span i {
+.filterCard  li.active label,
+.filterCard  li.active span i {
   color: #ED3124;
 }
 
-.filterCard ul li {
+.filterCard  li {
   position: relative;
   padding: 20px 0px;
   cursor: pointer;
 }
 
-.filterCard ul li label {
+.filterCard  li label {
   color: #454B51;
   font-size: 16px;
   font-family: CenturyGothic;
@@ -182,14 +182,14 @@ input[type="color"][list] {
   cursor: pointer;
 }
 
-.filterCard ul li span {
+.filterCard  li span {
   position: absolute;
   right: 20px;
   top: 25px;
   padding: 0px !important;
 }
 
-.filterCard ul li span i {
+.filterCard  li span i {
   font-size: 20px;
   color: #454B51;
 }
