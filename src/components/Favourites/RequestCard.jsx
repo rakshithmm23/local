@@ -3,7 +3,7 @@ import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import QuotesCard from './QuotesCard';
-import Gmaps from './Gmaps';
+import Gmaps from '../MyRequest/Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
@@ -22,8 +22,6 @@ export default class RequestCard extends Component {
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
-      changedWeek:false,
-      filterType: "",
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
@@ -127,7 +125,6 @@ export default class RequestCard extends Component {
       svgEnd: '</text>%0A</svg>',
       distValue: { min: 2, max: 10 },
       priceValue: { min: 10, max: 70 },
-
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -202,7 +199,7 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
-  day(selDay){
+   day(selDay){
     let days={...this.state.daySelected}
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
@@ -225,6 +222,7 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
+    
 
     const jobData = [
       {
@@ -257,96 +255,16 @@ export default class RequestCard extends Component {
     })
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
-     
 
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
-
-          <div className={"job-updates myRequest " + item.statusIndicator}>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-left">
-                    <div className="job-card">
-                      <div className="card-img">
-                        <img src={item.carImage} alt="Ayaz's Buick" />
-                      </div>
-                      <div className="card-info">
-                        <div className="job-name">{item.customerName}</div>
-                        <div className="job-title">{item.serviceTypes}</div>
-                        <div className="job-details">
-                          <ul>
-                            <li>
-                              <label>Order ID :</label>
-                              <span>{item.customeId}</span>
-                            </li>
-                            <li>
-                              <label>Start :</label>
-                              <span>{item.startDate}</span>
-                            </li>
-                            <li>
-                              {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <Button iconName={this.state.open ? 'chevron-up' : 'chevron-down'} btnCallBack={() => this.setState({ open: !this.state.open })}
-                                btnType="label"
-                                btnSize="sm"
-                                fontSize={11}
-                                label={this.state.open ? 'Collapse Timeline' : 'Expand Timeline'}
-                              />}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-right">
-                    <div className="job-right-header">
-                      <Badge badgeType={item.statusIndicator} fontSize={14}>
-                        {item.statusIndicator}
-                      </Badge>
-                      {item.jobIcons && item.jobIcons.length > 0 && item.jobIcons.map((jobIcon, key) => {
-                        return (<IconNotification
-                          key={key}
-                          iconType={jobIcon.iconType}
-                          iconLabel={jobIcon.iconLabel}
-                          notifyClassName="notification" />);
-                      })}
-                    </div>
-                    <div>
-                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage &&
-                        <div className="jr-body">
-                          <div className={infoClass}>
-                            <p>
-                              {item.jobInfoMessage}
-                            </p>
-                          </div>
-                        </div>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
+          
           <div className="requestSection">
             <div className="row">
               <div className="request-summary">
-                <div className="row request-summary-header">
-                  <div className="col-md-6 col-sm-12 col-xs-12 pad0">
-                    <div className="request-summary-tab">
-                      <div className="col-md-6">
-                        <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
-                          <span>Job Details</span>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>Quotes</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
                 <div className="row request-summary-body">
                   {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
                     <JobDetails />
@@ -355,7 +273,7 @@ export default class RequestCard extends Component {
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
                         <div className="title">
-                          <span>4 Quotes Received</span>
+                          <span>5 Results Found</span>
                           <div className="filterSection">
                             
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={

@@ -38,6 +38,7 @@ import CarService from './components/CarService/CarService';
 import Messages from './components/Messages/Messages';
 import SearchResult from './components/SearchResult/SearchResult.jsx';
 import Notification from './components/Notification/Notification';
+import Favourites from './components/Favourites/Favourites';
 
 export default (
   <Route path="/" component={Home}>
@@ -60,5 +61,6 @@ export default (
     <Route path="messages" component={AuthContainer(Messages)} />
     <Route path="search-result" component={AuthContainer(SearchResult)} />
     <Route path="notification" component={AuthContainer(Notification)}  />
+    <Route path="favourites" component={AuthContainer(Favourites)}  />
   </Route>
 );
