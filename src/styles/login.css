@@ -169,11 +169,13 @@
 .login-panel-footer {
     text-align: right;
     margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .login-panel-footer a {
     float: left;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 .gm-scroll-view {

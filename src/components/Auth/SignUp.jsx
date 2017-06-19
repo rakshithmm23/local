@@ -154,16 +154,14 @@ export default class SignUp extends Component {
                   onChange={this.onFieldChange.bind(this)} />
                 <p className={this.errors.terms ? "note-text error" : "note-text"}>
                   <span className="checkbox-style">
-                    <label htmlFor="agreeCheckbox">
-                      <input type="checkbox" onChange={(e) => {this.setState({'terms': e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }}/>
+                    <label htmlFor="agreeCheckbox" className="agreelabel">
+                      <input type="checkbox" onChange={(e) => {this.setState({'terms': !e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }}/>
                         By signing up, you agree to the
-                            <a href="" className="blue-text"> terms and conditions</a>, and <a href="" className="blue-text">privacy policy</a>.
+                        <a href="" className="blue-text"> Terms and Conditions </a>, and <a href="" className="blue-text">Privacy Policy</a>.
                     </label>
                   </span>
                   <span className="error-text">{'Please agree to the terms and condition'}</span>
                 </p>
-
-
               </div>
               <div className="login-panel-footer">
                 <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
