@@ -79,7 +79,7 @@ export default class SendOTP extends Component {
                                   label="Enter your phone number to receive an OTP"
                                   onChange={this.onFieldChange.bind(this)} />
                                 </div>
-                                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="submit" btnSize="sm" fontSize={16} label="Get OTP" />
+                                <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
                             </div>
                         </div>
                     </Scrollbars>
