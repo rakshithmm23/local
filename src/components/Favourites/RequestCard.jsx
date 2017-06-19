@@ -397,11 +397,11 @@ export default class RequestCard extends Component {
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
+                                          <span className="mdi mdi-star"></span>
+                                          <span className="mdi mdi-star"></span>
+                                          <span className="mdi mdi-star"></span>
+                                          <span className="mdi mdi-star"></span>
+                                          <span className="mdi mdi-star"></span>
                                         </ul>
                                       </div>
                                       <div className="f-card ">
@@ -448,6 +448,10 @@ export default class RequestCard extends Component {
                                         </div>
                                       </div>
                                     </div>
+                                  </div>
+                                  <div className="footer">  
+                                    <a>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
                                 </div>
                               </div>

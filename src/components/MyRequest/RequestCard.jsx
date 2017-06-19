@@ -531,6 +531,11 @@ export default class RequestCard extends Component {
                                       </div>
                                     </div>
                                   </div>
+                                  <div className="footer">  
+                                    <a>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
+                                  </div>
+                                  
                                 </div>
                               </div>
                             </DropdownButton>
