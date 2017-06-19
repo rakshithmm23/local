@@ -19,6 +19,9 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      daySelected:{
+      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
+    },
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
@@ -196,6 +199,13 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
+   day(selDay){
+    let days={...this.state.daySelected}
+    days[selDay] = !this.state.daySelected[selDay]
+    this.setState({
+      daySelected:days
+    })
+  }
 
   render() {
     //console.log(this.state.currentWidth)
@@ -344,13 +354,13 @@ export default class RequestCard extends Component {
                                       <div className="f-card">
                                         <h5>Open Between</h5>
                                         <ul className="list-unstyled">
-                                          <li>SUN</li>
-                                          <li className="active">MON</li>
-                                          <li className="active">TUE</li>
-                                          <li>wed</li>
-                                          <li>thu</li>
-                                          <li>fri</li>
-                                          <li>sat</li>
+                                          <li className={this.state.daySelected["sunday"]?'active':''} onClick={this.day.bind(this,"sunday")}>SUN</li>
+                                          <li className={this.state.daySelected["monday"]?'active':''} onClick={this.day.bind(this,"monday")}>MON</li>
+                                          <li className={this.state.daySelected["tuesday"]?'active':''} onClick={this.day.bind(this,"tuesday")}>TUE</li>
+                                          <li className={this.state.daySelected["wednesday"]?'active':''} onClick={this.day.bind(this,"wednesday")}>wed</li>
+                                          <li className={this.state.daySelected["thrusday"]?'active':''} onClick={this.day.bind(this,"thrusday")}>thu</li>
+                                          <li className={this.state.daySelected["friday"]?'active':''} onClick={this.day.bind(this,"friday")}>fri</li>
+                                          <li className={this.state.daySelected["saturday"]?'active':''} onClick={this.day.bind(this,"saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
                                           placeholder="Time"
