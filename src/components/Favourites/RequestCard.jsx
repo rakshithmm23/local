@@ -222,7 +222,7 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
-    
+
 
     const jobData = [
       {
@@ -259,12 +259,12 @@ export default class RequestCard extends Component {
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
-          
-          
+
+
           <div className="requestSection">
             <div className="row">
               <div className="request-summary">
-                
+
                 <div className="row request-summary-body">
                   {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
                     <JobDetails />
@@ -275,11 +275,11 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>5 Results Found</span>
                           <div className="filterSection">
-                            
+
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-filter-variant" />
-                                <label>Filter</label>
+                                <i className="mdi mdi-swap-horizontal" />
+                                <label>Sort By</label>
                               </div>
                             }>
                               <div className="sortFilter filterCard">
@@ -321,11 +321,11 @@ export default class RequestCard extends Component {
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
-                           
+
                             <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-swap-horizontal" />
-                                <label>sort by</label>
+                                <i className="mdi mdi-filter-variant" />
+                                <label>Filter</label>
                               </div>
                             }>
                               <div className="Filterby filterCard">
@@ -394,7 +394,7 @@ export default class RequestCard extends Component {
                                   </div>
                                   <div className="col-md-6 right toggleBtn">
                                     <div className="filterby-wrapper">
-                                      
+
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
@@ -460,7 +460,7 @@ export default class RequestCard extends Component {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="footer">  
+                                  <div className="footer">
                                     <a>Clear</a>
                                     <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>

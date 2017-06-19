@@ -100,6 +100,7 @@ input[type="color"][list] {
   padding-right: 20px;
   border: none;
   cursor: pointer;
+  text-align: left;
 }
 
 .filterSection .filterLabel label {
@@ -170,9 +171,6 @@ input[type="color"][list] {
   left: -190px;
 }
 
-.filterCard.Filterby .left {
-  border-right: 0;
-}
 
 .filterCard li.active label,
 .filterCard li.active span i {

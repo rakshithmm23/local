@@ -14,14 +14,14 @@ export default class SignUp extends Component {
     super(props);
     this.state = {
       submissionError: false,
-      termsAgreed: false
+      termsAgreed: true
     };
     this.initialFormData = {
       'name': '',
       'email': '',
       'password': '',
       'phone': '',
-      'terms': false
+      'terms': true
     };
     this.formData = {
       ...this.initialFormData
@@ -155,7 +155,7 @@ export default class SignUp extends Component {
                 <p className={this.errors.terms ? "note-text error" : "note-text"}>
                   <span className="checkbox-style">
                     <label htmlFor="agreeCheckbox" className="agreelabel">
-                      <input type="checkbox" onChange={(e) => {this.setState({'terms': !e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }}/>
+                      <input type="checkbox" onChange={(e) => {this.setState({'terms': !e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }} checked={this.formData.terms}/>
                         By signing up, you agree to the
                         <a href="" className="blue-text"> Terms and Conditions </a>, and <a href="" className="blue-text">Privacy Policy</a>.
                     </label>
