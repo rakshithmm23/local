@@ -96,7 +96,7 @@ export function showVerifyOTPPage(signUpData) {
       } else if (err.response.status === 409) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'User already registered please login'
+          statusMessage: 'This email id is already in use. Do you already have an account?'
         });
       } else {
         dispatch({

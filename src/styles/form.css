@@ -28,7 +28,7 @@
 
 .form-group .error-text{
     color: red;
-    font-size: 13px;
+    font-size: 12px;
     font-family: CenturyGothic;
     display: block;
     margin: 5px 0;
@@ -137,6 +137,15 @@ form {
    margin: 30px 0;
 }
 
+.forget-input .form-input{
+  margin-top: 0px;
+}
+.forget-panel-header.login-panel-header .note-text {
+    margin-bottom: 15px;
+}
+.agreelabel{
+  font-size:14px;
+}
 @media screen and (max-width: 767px) {
     .input-icon {
         right: 10px;

@@ -69,7 +69,7 @@ export default class VerifyOTP extends Component {
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                   <Scrollbars className="customScroll">
                         <div className="login-panel otp">
-                            <div className="login-panel-header">
+                            <div className="login-panel-header forget-panel-header">
                                 <h3 className="login-title">Forgot Password</h3>
                                 {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
                                   <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
@@ -78,7 +78,7 @@ export default class VerifyOTP extends Component {
                                     Enter your email address to recieve password reset link.
                                 </p>
                             </div>
-                            <div className="login-panel-body">
+                            <div className="login-panel-body forget-input">
                                 <TextInput
                                   label="Email"
                                   name="otp"

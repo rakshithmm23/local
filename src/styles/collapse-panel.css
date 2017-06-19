@@ -385,7 +385,8 @@
 
 .car-wash .collapse-panel .left {
     border-right: 1px solid rgba(148, 157, 165, 0.4);
-    margin-top: 44px;
+    /*margin-top: 44px;*/
+    margin-top: 10px;
 }
 
 .panel-content .form-section {
@@ -422,7 +423,8 @@
 }
 
 .car-wash .collapse-panel .right {
-    margin-top: 53px;
+    /*margin-top: 53px;*/
+    margin-top: 10px;
     padding-left: 20px;
 }
 
