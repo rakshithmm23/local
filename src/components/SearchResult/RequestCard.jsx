@@ -9,6 +9,10 @@ import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import InputRange from 'react-input-range';
+import ToggleSwitch from '@trendmicro/react-toggle-switch';
+import TimePicker from 'rc-time-picker';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 
 export default class RequestCard extends Component {
@@ -236,6 +240,8 @@ export default class RequestCard extends Component {
 
       }
     })
+    const formatFrom = 'h:mm a';
+    const formatTo = 'h:mm a';
 
     const jobDataList = map(jobData, (item, key) => {
       return (
@@ -256,20 +262,183 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>5 Results Found</span>
                           <div className="filterSection">
-                            <i className="mdi mdi-filter-variant"></i>
-                            <i className="mdi mdi-swap-horizontal"></i>
-                            <select>
-                              <option value="volvo">Filter</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
-                            <select>
-                              <option value="volvo">Sort By</option>
-                              <option value="saab">Saab</option>
-                              <option value="mercedes">Mercedes</option>
-                              <option value="audi">Audi</option>
-                            </select>
+                            
+                            <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
+                              <div className="filterLabel">
+                                <i className="mdi mdi-filter-variant" />
+                                <label>Filter</label>
+                              </div>
+                            }>
+                              <div className="sortFilter filterCard">
+                                <ul className="list-unstyled">
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check" />
+                                  </span>
+                                </li>
+                                <li className="active">
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check" />
+                                  </span>
+                                </li>
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check" />
+                                  </span>
+                                </li>
+                                <li>
+                                  <label>
+                                    Distance - Near to Far
+                                  </label>
+                                  <span>
+                                    <i className="mdi mdi-check" />
+                                  </span>
+                                </li>
+                              </ul>
+                              </div>
+                            </DropdownButton>
+                          </div>
+                          <div className="filterSection">
+                           
+                            <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
+                              <div className="filterLabel">
+                                <i className="mdi mdi-swap-horizontal" />
+                                <label>sort by</label>
+                              </div>
+                            }>
+                              <div className="Filterby filterCard">
+                                <div className="row">
+                                  <div className="col-md-6 left">
+                                    <div className="filterby-wrapper">
+                                      <div className="f-card">
+                                        <h5>Distance</h5>
+                                        <InputRange
+                                          formatLabel={distValue => `${distValue}km`}
+                                          minValue={0}
+                                          maxValue={20}
+                                          value={this.state.distValue}
+                                          onChange={distValue => this.setState({ distValue })} />
+
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Price</h5>
+                                        <InputRange
+                                          formatLabel={priceValue => `${priceValue}AED`}
+                                          minValue={0}
+                                          maxValue={100}
+                                          value={this.state.priceValue}
+                                          onChange={priceValue => this.setState({ priceValue })} />
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Open Between</h5>
+                                        <ul className="list-unstyled">
+                                          <li>SUN</li>
+                                          <li className="active">MON</li>
+                                          <li className="active">TUE</li>
+                                          <li>wed</li>
+                                          <li>thu</li>
+                                          <li>fri</li>
+                                          <li>sat</li>
+                                        </ul>
+                                        <TimePicker
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatFrom}
+                                          use12Hours
+                                        />
+                                        <span className="time-to-time">to</span>
+                                        <TimePicker
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatTo}
+                                          use12Hours
+                                        />
+
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
+                                      <div className="f-card ">
+                                        <h5>Open 24/7</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Rating</h5>
+                                        <ul className="rating">
+                                          <span className="mdi mdi-star-outline"></span>
+                                          <span className="mdi mdi-star-outline"></span>
+                                          <span className="mdi mdi-star-outline"></span>
+                                          <span className="mdi mdi-star-outline"></span>
+                                          <span className="mdi mdi-star-outline"></span>
+                                        </ul>
+                                      </div>
+                                      <div className="f-card ">
+                                        <h5>Only show Authorized Businesses</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="f-card ">
+                                        <h5>Only show Businesses with Deals & Offers</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="f-card payment-type">
+                                        <h5>Payment by</h5>
+                                        <div className="holder">
+                                          <span className="pad0">pay by cash</span>
+                                          <ToggleSwitch
+                                            checked
+                                            size="small"
+                                            ref={(node) => {
+                                              this.toggleSwitch = node;
+                                            }}
+                                          />
+                                        </div>
+                                        <div className="holder">
+                                          <span className="">pay by credit card</span>
+                                          <ToggleSwitch
+                                            checked
+                                            size="small"
+                                            ref={(node) => {
+                                              this.toggleSwitch = node;
+                                            }}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </DropdownButton>
                           </div>
                         </div>
                         <div className="quotes-left-body">
