@@ -71,6 +71,16 @@ input[type="color"][list] {
   margin-right: 10px;
 }
 
+.quotes-view .title .filterSection .dropdown-toggle {
+  padding: 0;
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow:none;
+}
+.quotes-view .title .filterSection .dropdown-menu{
+  border: 0;
+}
+
 .filterSection .filterLabel {
   height: 30px;
   border-radius: 3px;
@@ -80,7 +90,6 @@ input[type="color"][list] {
   position: relative;
   box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
   width: 125px;
-  margin-left: 20px;
   padding: 5px;
   padding-left: 10px;
   display: inline-block;
@@ -159,22 +168,23 @@ input[type="color"][list] {
   width: 900px;
   padding-top: 40px;
 }
-.filterCard.Filterby .left{
-  border-right:0;
+
+.filterCard.Filterby .left {
+  border-right: 0;
 }
 
-.filterCard  li.active label,
-.filterCard  li.active span i {
+.filterCard li.active label,
+.filterCard li.active span i {
   color: #ED3124;
 }
 
-.filterCard  li {
+.filterCard li {
   position: relative;
   padding: 20px 0px;
   cursor: pointer;
 }
 
-.filterCard  li label {
+.filterCard li label {
   color: #454B51;
   font-size: 16px;
   font-family: CenturyGothic;
@@ -182,14 +192,14 @@ input[type="color"][list] {
   cursor: pointer;
 }
 
-.filterCard  li span {
+.filterCard li span {
   position: absolute;
   right: 20px;
   top: 25px;
   padding: 0px !important;
 }
 
-.filterCard  li span i {
+.filterCard li span i {
   font-size: 20px;
   color: #454B51;
 }
@@ -593,10 +603,10 @@ input[type="color"][list] {
   font-size: 16px;
   font-family: CenturyGothic;
   margin: 0px;
-
 }
+
 .Filterby .left .f-card h5 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .f-card .rc-time-picker {
@@ -634,28 +644,30 @@ input[type="color"][list] {
   vertical-align: top;
   margin-right: 20px;
 }
-.f-card.payment-type {
 
-}
-.f-card.payment-type h5{
+.f-card.payment-type {}
+
+.f-card.payment-type h5 {
   padding-bottom: 12px;
 }
-.f-card.payment-type .holder{
-  padding: 8px 0 ;
-}
-.f-card.payment-type span{
-  padding: 0!important;
-  	color: #717982 !important;
-	font-family: CenturyGothic;
-	font-size: 14px !important;
+
+.f-card.payment-type .holder {
+  padding: 8px 0;
 }
 
+.f-card.payment-type span {
+  padding: 0!important;
+  color: #717982 !important;
+  font-family: CenturyGothic;
+  font-size: 14px !important;
+}
 
 .f-card ul li.active {
   background-color: #ED3124;
   color: #fff;
 }
-.f-card .rating span{
+
+.f-card .rating span {
   padding: 0;
   padding-top: 10px;
   font-size: 24px;

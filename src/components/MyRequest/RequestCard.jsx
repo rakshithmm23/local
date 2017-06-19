@@ -388,7 +388,7 @@ export default class RequestCard extends Component {
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
                                 <i className="mdi mdi-filter-variant" />
-                                <label>Sort by</label>
+                                <label>Filter</label>
                               </div>
                             }>
                               <div className="sortFilter filterCard">
@@ -560,7 +560,7 @@ export default class RequestCard extends Component {
                             <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
                               <div className="filterLabel">
                                 <i className="mdi mdi-swap-horizontal" />
-                                <label>Filter</label>
+                                <label>sort by</label>
                               </div>
                             }>
                               <div className="Filterby filterCard">

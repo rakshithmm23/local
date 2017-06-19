@@ -15,7 +15,6 @@ class Gmaps extends Component {
     }
 
     render() {
-        debugger
         let mapRes = null;
         if(this.props.markers == undefined){
             mapRes=undefined;
