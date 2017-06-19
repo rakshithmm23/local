@@ -9,7 +9,7 @@ import Footer from '../common/Footer';
 import RequestCard from './RequestCard';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
-import {serviceTypes} from '../../constants/staticData';
+import {serviceTypes} from '../../constants/staticData'; 
 
 export default class SearchResult extends Component {
     constructor(props, context) {
