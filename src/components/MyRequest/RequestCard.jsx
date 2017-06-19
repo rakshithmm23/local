@@ -257,7 +257,7 @@ export default class RequestCard extends Component {
     })
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
-     
+
 
     const jobDataList = map(jobData, (item, key) => {
       return (
@@ -357,11 +357,10 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
-                            
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-filter-variant" />
-                                <label>Filter</label>
+                                <i className="mdi mdi-swap-horizontal" />
+                                <label>Sort by</label>
                               </div>
                             }>
                               <div className="sortFilter filterCard">
@@ -403,11 +402,10 @@ export default class RequestCard extends Component {
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
-                           
                             <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-swap-horizontal" />
-                                <label>sort by</label>
+                                <i className="mdi mdi-filter-variant" />
+                                <label>Filter</label>
                               </div>
                             }>
                               <div className="Filterby filterCard">

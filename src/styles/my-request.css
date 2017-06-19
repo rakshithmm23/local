@@ -152,21 +152,22 @@ input[type="color"][list] {
 }
 
 .filterCard {
-  position: absolute;
-  right: 0;
-  background-color: #fff;
-  width: 440px;
-  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
-  z-index: 999;
-  padding: 15px;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    width: 440px;
+    box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+    z-index: 999;
+    padding: 15px;
+    top: -1px;
 }
-
 .filterCard.Filterby {
   left: 0;
   right: inherit;
   background-color: #fff;
   width: 900px;
   padding-top: 40px;
+  left: -190px;
 }
 
 .filterCard.Filterby .left {
@@ -673,6 +674,9 @@ input[type="color"][list] {
   font-size: 24px;
 }
 
+.filterSection .dropdown.open button{
+   border-bottom: 2px solid #ed3124 !important;
+}
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {
     padding-bottom: 20px
