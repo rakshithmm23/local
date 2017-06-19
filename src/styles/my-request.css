@@ -204,6 +204,18 @@ input[type="color"][list] {
   font-size: 20px;
   color: #454B51;
 }
+.filterCard .footer{
+  float: right;
+  padding: 0 15px;
+}
+.filterCard .footer a,.filterCard .footer button{
+	font-family: CenturyGothic;
+	font-size: 14px;
+}
+.filterCard .footer a{
+	color: #006FB9;
+  padding-right: 25px;
+}
 
 .quotes-view .title .filterSection select::-ms-expand {
   display: none;

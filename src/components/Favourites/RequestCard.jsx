@@ -379,12 +379,7 @@ export default class RequestCard extends Component {
                                         />
 
                                       </div>
-
-                                    </div>
-                                  </div>
-                                  <div className="col-md-6 right toggleBtn">
-                                    <div className="filterby-wrapper">
-                                      <div className="f-card ">
+                                      <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
                                           checked
@@ -394,6 +389,12 @@ export default class RequestCard extends Component {
                                           }}
                                         />
                                       </div>
+
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
+                                      
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
@@ -403,6 +404,16 @@ export default class RequestCard extends Component {
                                           <span className="mdi mdi-star-outline"></span>
                                           <span className="mdi mdi-star-outline"></span>
                                         </ul>
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Only show favourites</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
                                       </div>
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
@@ -448,6 +459,10 @@ export default class RequestCard extends Component {
                                         </div>
                                       </div>
                                     </div>
+                                  </div>
+                                  <div className="footer">  
+                                    <a>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
                                 </div>
                               </div>
