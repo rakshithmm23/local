@@ -19,6 +19,7 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      filterSort : "low-high",
       filterdropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
@@ -149,7 +150,7 @@ export default class RequestCard extends Component {
     window.removeEventListener();
   }
   bodyClick(e){
-    if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
       this.setState({filterdropdown:true})
     }else if(this.state.filterdropdown){
       this.setState({filterdropdown:false})
@@ -214,6 +215,10 @@ export default class RequestCard extends Component {
     this.setState({
       daySelected:days
     })
+  }
+  filterSort(val){
+    debugger
+    this.setState({filterSort:val})
   }
 
   render() {
@@ -289,55 +294,57 @@ export default class RequestCard extends Component {
                               <div className="filterLabel">
                                 <i className="mdi mdi-swap-vertical" />
                                 <label>Sort By</label>
+                                <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li className="active">
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                              </ul>
+                                  <li onClick={()=>{this.filterSort("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
+                                    <label>
+                                      Distance - Near to Far
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li className="active" onClick={()=>{this.filterSort("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
+                                    <label>
+                                      Distance - Far to Near
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>{this.filterSort("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
+                                    <label>
+                                      Distance - Highest to Lowest
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>{this.filterSort("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
+                                    <label>
+                                      Distance - Lowest to Highest
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                </ul>
                               </div>
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
 
                             <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel showFilters">
+                              <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
+                                <i className="mdi mdi-chevron-down downIcon pull-right" />
                               </div>
                             }>
-                              <div className="Filterby filterCard">
+                              <div className="Filterby filterCard filter-dropdown">
                                 <div className="row">
                                   <div className="col-md-6 left">
                                     <div className="filterby-wrapper">

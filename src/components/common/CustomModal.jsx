@@ -33,7 +33,7 @@ class CustomModal extends Component {
                     </Modal.Header>
                     {children}
                     {footer=="true" && <Modal.Footer>
-                        <Button btnType="cancel" btnSize="sm" fontSize={15} label="Cancel"  btnCallBack={this.close.bind(this)}/>
+                        <Button btnType="cancel" btnSize="sm" fontSize={15} label={this.props.cancelText?this.props.cancelText:"Cancel"}  btnCallBack={this.close.bind(this)}/>
                         <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} />
                     </Modal.Footer>}
                 </Modal>

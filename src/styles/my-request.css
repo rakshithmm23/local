@@ -99,10 +99,10 @@ input[type="color"][list] {
   padding-left: 10px;
   display: inline-block;
   outline: 0;
-  background: url('../images/arrow-down.png');
-  background-repeat: no-repeat;
-  background-position: 92% 12px;
-  padding-right: 20px;
+  /*background: url('../images/arrow-down.png');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: 92% 12px;*/
+  /*padding-right: 20px;*/
   border: none;
   cursor: pointer;
   text-align: left;
@@ -700,6 +700,7 @@ input[type="color"][list] {
 
 .filterSection .dropdown.open button{
   border-bottom: 2px solid #ed3124 !important;
+  border-radius: 0;
 }
 .filterby-wrapper{
     padding: 0px 15px 0px 0px;
@@ -711,6 +712,16 @@ input[type="color"][list] {
 .filterCard  .f-card:last-child,
 .Filterby .left .f-card h5:last-child {
     margin-bottom: 0px;
+}
+.downIcon{
+    font-size: 20px;
+    color: #55595b;
+    position: absolute;
+    top: 2px;
+    right: 3px;
+}
+.downIcon.downAlign{
+     top: 1px;
 }
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {

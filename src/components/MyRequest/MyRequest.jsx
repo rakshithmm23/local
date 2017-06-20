@@ -21,11 +21,20 @@ export default class MyRequest extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
-            showModal: false
+            showModal: false,
+            max_chars:200,
+            chars_left:0
         };
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
+    }
+    handleChange(event) {
+        let input=null
+        input = event.target.value;
+        this.setState({
+            chars_left: this.state.max_chars - input.length
+        });
     }
 
     render() {
@@ -49,7 +58,7 @@ export default class MyRequest extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} footer="true" title="Cancel request" saveText="Confirm">
+                            <CustomModal showModal={this.state.showModal} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
                                 <Modal.Body>
                                     <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
                                     <div className="info-heading">
@@ -69,7 +78,9 @@ export default class MyRequest extends Component {
                                             type="text"
                                             label="Comments"
                                             name="Comments"
+                                            onChange={this.handleChange.bind(this)}
                                         />
+                                        <span className="text-limit">{this.state.chars_left}/200</span>
                                     </div>
                                 </Modal.Body>
 
