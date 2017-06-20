@@ -19,6 +19,7 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      filterSort : "low-high",
       filterdropdown:false, 
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
@@ -220,6 +221,10 @@ export default class RequestCard extends Component {
       daySelected:days
     })
   }
+  filterSort(val){
+    debugger
+    this.setState({filterSort:val})
+  }
 
   render() {
     //console.log(this.state.currentWidth)
@@ -376,39 +381,39 @@ export default class RequestCard extends Component {
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li className="active">
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                                <li>
-                                  <label>
-                                    Distance - Near to Far
-                                  </label>
-                                  <span>
-                                    <i className="mdi mdi-check" />
-                                  </span>
-                                </li>
-                              </ul>
+                                  <li onClick={()=>{this.filterSort("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
+                                    <label>
+                                      Distance - Near to Far
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li className="active" onClick={()=>{this.filterSort("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
+                                    <label>
+                                      Distance - Far to Near
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>{this.filterSort("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
+                                    <label>
+                                      Distance - Highest to Lowest
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>{this.filterSort("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
+                                    <label>
+                                      Distance - Lowest to Highest
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                </ul>
                               </div>
                             </DropdownButton>
                           </div>

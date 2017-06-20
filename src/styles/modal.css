@@ -109,6 +109,12 @@
   position: relative;
   vertical-align: middle;
 }
+.modal-body .text-limit{
+	color: #717982;
+	font-family: CenturyGothic;
+	font-size: 10px;
+  float: right;
+}
 
 .media-body .mdi.mdi-chevron-right {
   position: absolute;
