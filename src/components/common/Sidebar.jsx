@@ -3,39 +3,51 @@ import {map} from 'lodash';
 import '../../styles/sidebar.css';
 
 export default class Sidebar extends Component {
+  componentWillMount(){
+   const currentPath = window.location.pathname;
+   this.state = {
+     currentPath: currentPath
+   };
+  }
+  componentWillReceiveProps(){
+   const currentPath = window.location.pathname;
+   this.state = {
+     currentPath: currentPath
+   };
+  }
   render() {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
         iconName: 'mdi mdi-view-grid',
         name: 'Dashboard',
-        hyperLink: '#'
+        hyperLink: '/dashboard'
       },
       {
         iconName: 'mdi mdi-pencil',
         name: 'Requests',
-        hyperLink: '#'
+        hyperLink: '/request'
       },
       {
         iconName: 'mdi mdi-car',
         name: 'My Cars',
-        hyperLink: '#'
+        hyperLink: '/mycar-list'
       },
       {
         iconName: 'mdi mdi-comment-processing',
         name: 'Messages',
-        hyperLink: '#'
+        hyperLink: '/messages'
       },
       {
         iconName: 'mdi mdi-heart',
         name: 'Favourites',
-        hyperLink: '#'
+        hyperLink: '/favourites'
       },
     ];
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
       return (
-        <li key={key}>
+        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''}>
           <a href={item.hyperLink}>
             {item.iconName && <label className={item.iconName}/> }
             <span>{item.name}</span>

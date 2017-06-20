@@ -650,7 +650,7 @@ input[type="color"][list] {
 }
 
 .f-card ul li {
-  text-transform: capitalize;
+  text-transform: uppercase;
   height: 37px;
   width: 37px;
   border-radius: 100%;
@@ -665,7 +665,6 @@ input[type="color"][list] {
   margin-right: 20px;
 }
 
-.f-card.payment-type {}
 
 .f-card.payment-type h5 {
   padding-bottom: 12px;
