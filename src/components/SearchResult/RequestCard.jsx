@@ -149,7 +149,7 @@ export default class RequestCard extends Component {
     window.removeEventListener();
   }
   bodyClick(e){
-    if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
       this.setState({filterdropdown:true})
     }else if(this.state.filterdropdown){
       this.setState({filterdropdown:false})
@@ -332,12 +332,12 @@ export default class RequestCard extends Component {
                           <div className="filterSection">
 
                             <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel showFilters">
+                              <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
                               </div>
                             }>
-                              <div className="Filterby filterCard">
+                              <div className="Filterby filterCard filter-dropdown">
                                 <div className="row">
                                   <div className="col-md-6 left">
                                     <div className="filterby-wrapper">

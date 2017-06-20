@@ -19,7 +19,7 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      filterdropdown:false,
+      filterdropdown:false, 
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -153,7 +153,8 @@ export default class RequestCard extends Component {
     window.removeEventListener("resize", this.updateDimensions);
   } 
   bodyClick(e){
-    if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+
+    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
       this.setState({filterdropdown:true});
     }else if(this.state.filterdropdown){
       this.setState({filterdropdown:false});
@@ -207,10 +208,10 @@ export default class RequestCard extends Component {
     this.setState({ mapView: true, quotationView: false })
   }
   viewQuotation() {
-    this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
+    this.setState({ quotation: true, messages: false })
   }
   viewMessages() {
-    this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
+    this.setState({ quotation: false, messages: true })
   }
   day(selDay){
     let days={...this.state.daySelected}
@@ -413,12 +414,12 @@ export default class RequestCard extends Component {
                           </div>
                           <div className="filterSection">
                             <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel showFilters">
+                              <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
                               </div>
                             }>
-                              <div className="Filterby filterCard">
+                              <div className="Filterby filterCard filter-dropdown">
                                 <div className="row">
                                   <div className="col-md-6 left">
                                     <div className="filterby-wrapper">
