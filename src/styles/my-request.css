@@ -147,9 +147,8 @@ input[type="color"][list] {
   font-size: 14px;
 }
 
-.filterSection .mdi-swap-horizontal {
+.filterSection .mdi-swap-vertical {
   font-size: 14px;
-  transform: rotate(450deg);
 }
 
 .filterCard {
@@ -292,14 +291,15 @@ input[type="color"][list] {
 }
 
 .quotes-right-tabs li {
-  display: inline-block;
-  border-bottom: 1px solid transparent;
-  padding: 10px 25px 25px;
-  cursor: pointer;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    padding: 10px 25px 20px;
+    cursor: pointer;
 }
 
 .quotes-right-tabs li.active {
   border-bottom-color: #E50000;
+  font-family: CenturyGothic_bold;
 }
 
 .close-Tab {
@@ -426,7 +426,7 @@ input[type="color"][list] {
 }
 
 .quotes-chat-area .c-message .c-chat {
-  background-color: #f7f7f7;
+  background-color: #cfe7f7;
   border-radius: 0 5px 5px 5px;
   padding: 10px;
   display: inline-block;
@@ -439,7 +439,7 @@ input[type="color"][list] {
 
 .quotes-chat-area .c-message.message-in .c-chat:before {
   content: '';
-  border-top: 10px solid #f7f7f7;
+  border-top: 10px solid #cfe7f7;
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 10px solid transparent;
@@ -457,7 +457,7 @@ input[type="color"][list] {
 }
 
 .quotes-chat-area .c-message .c-chat p {
-  font-size: 14px;
+  font-size: 15px;
   font-family: CenturyGothic;
   color: #454B51;
   margin-bottom: 0px;
@@ -490,7 +490,7 @@ input[type="color"][list] {
 
 .quotes-chat-area .c-message.message-out .c-chat {
   border-radius: 5px 0px 5px 5px;
-  background-color: #efefef;
+  background-color: #fafafa;
   float: right;
   margin-right: 10px;
   position: relative;
@@ -498,7 +498,7 @@ input[type="color"][list] {
 
 .quotes-chat-area .c-message.message-out .c-chat:after {
   content: '';
-  border-top: 10px solid #efefef;
+  border-top: 10px solid #fafafa;
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 10px solid transparent;
@@ -591,7 +591,7 @@ input[type="color"][list] {
 
 .quotation-total label {
   color: #454B51;
-  font-weight: 900;
+  font-family: CenturyGothic_bold;
 }
 
 .quotation-block li span,
@@ -603,7 +603,7 @@ input[type="color"][list] {
 }
 
 .quotation-total span {
-  font-weight: 900;
+  font-family: CenturyGothic_bold;
   font-size: 16px;
 }
 

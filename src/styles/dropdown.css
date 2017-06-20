@@ -157,9 +157,8 @@
     border: none;
     display: inline-block;
     color: #454B51 !important;
-    font-family: CenturyGothic;
     font-size: 20px;
-    font-weight: 900;
+    font-family: CenturyGothic_bold;
     cursor: pointer;
     background-color: transparent !important;
     box-shadow: none !important;
@@ -267,7 +266,7 @@
 
 .text-dropdown.notify .media-heading span {
     color: black;
-    font-weight: bolder;
+    font-family: CenturyGothic_bold;
 }
 
 .text-dropdown.notify .media-body .notify-time {
@@ -306,9 +305,8 @@
 .text-dropdown.add-new .dropdown-menu li:last-child a {
     background: red !important;
     color: #FFFFFF;
-    font-family: "CenturyGothic";
     font-size: 14px;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
     line-height: 18px;
     text-align: center;
     border-radius: 0 0px 5px 5px;

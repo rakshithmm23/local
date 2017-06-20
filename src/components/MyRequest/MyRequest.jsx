@@ -12,6 +12,8 @@ import MobileNotification from '../common/MobileNotification';
 import { serviceTypes } from '../../constants/staticData';
 import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
+import TextInput from '../common/TextInput';
+
 
 export default class MyRequest extends Component {
     constructor(props, context) {
@@ -63,7 +65,11 @@ export default class MyRequest extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                        <input type="text" placeholder="Comments"/>
+                                        <TextInput
+                                            type="text"
+                                            label="Comments"
+                                            name="Comments"
+                                        />
                                     </div>
                                 </Modal.Body>
 

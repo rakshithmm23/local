@@ -38,17 +38,15 @@
 
 .messageCard .media-heading {
     color: #717982;
-    font-family: CenturyGothic;
+    font-family: CenturyGothic_bold;
     font-size: 13px;
-    font-weight: bold;
     line-height: 18px;
 }
 
 .messageCard .messenger-name {
     color: #454B51;
-    font-family: CenturyGothic;
+    font-family: CenturyGothic_bold;
     font-size: 18px;
-    font-weight: bold;
     line-height: 18px;
 }
 

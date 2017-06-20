@@ -61,7 +61,7 @@
 
     .card-img {
         width: 200px;
-        height: 140px;
+        height: 150px;
         border-radius: 5px;
         overflow: hidden;
         display: inline-block;
@@ -83,12 +83,11 @@
     }
 
     .job-update-title {
-        font-family: CenturyGothic;
+       font-family: CenturyGothic_bold;
         margin-left: 0;
         margin-bottom: 20px;
         font-size: 18px;
         color: #454B51;
-        font-weight: 900;
     }
 
     .jobInfo p {
@@ -121,16 +120,14 @@
         color: #717982;
         font-size: 13px;
         text-transform: capitalize;
-        font-family: CenturyGothic;
-        font-weight: 900;
+        font-family: CenturyGothic_bold;
     }
 
     .card-info .job-title {
-        font-family: CenturyGothic;
         font-size: 18px;
         color: #006FB9;
         text-transform: capitalize;
-        font-weight: 900;
+        font-family: CenturyGothic_bold;
     }
 
     .card-info .job-details {
@@ -168,13 +165,14 @@
 
     .job-right {
         border-left: 1px solid #eef2f5;
-        min-height: 170px;
+        min-height: 178px;
         position: relative;
         overflow: hidden;
     }
 
     .job-right-header {
         padding: 15px 10px;
+        border-bottom: 1px solid #eef2f5;
     }
 
     .job-right-header .btn-theme.label {

@@ -1,5 +1,4 @@
 .btn-theme {
-  font-family: CenturyGothic;
   font-size: 15px;
   border-radius: 4px !important;
   height: 42px;
@@ -7,7 +6,7 @@
   color: #fff !important;
   outline: 0 !important;
   box-shadow: none !important;
-  font-weight: bold;
+  font-family: CenturyGothic_bold;
 }
 
 .btn-theme.lg {

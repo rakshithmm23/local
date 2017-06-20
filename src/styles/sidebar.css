@@ -36,7 +36,7 @@
 .sidebar ul li:hover a,
 .sidebar ul li.active a {
     color: #ED3124;
-    font-weight: 900;
+    font-family: CenturyGothic_bold;
 }
 
 

@@ -29,9 +29,8 @@
 }
 
 .service-carPlate {
-  font-family: CenturyGothic;
+  font-family: CenturyGothic_bold;
   color: #717982;
-  font-weight: 900;
   border-bottom: 1px solid #EEF2F5;
   padding-bottom: 20px;
   line-height: 1.5;
@@ -40,12 +39,12 @@
 .service-carPlate h6 {
     color: #717982;
     font-size: 13px;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
     line-height: 16px;
 }
 
 .service-carPlate h4 {
-  font-weight: bold;
+  font-family: CenturyGothic_bold;
   font-size: 18px;
   color: #4C4C4C;
 }
@@ -91,7 +90,7 @@
 .timeline-summary-header .timeline-summary-tab.active {
     color: #4C4C4C;
     border-bottom-color: #ED3124;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
 }
 
 .timelineScroll {

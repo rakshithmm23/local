@@ -287,7 +287,7 @@ export default class RequestCard extends Component {
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-swap-horizontal" />
+                                <i className="mdi mdi-swap-vertical" />
                                 <label>Sort By</label>
                               </div>
                             }>
