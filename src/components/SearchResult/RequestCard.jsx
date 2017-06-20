@@ -83,7 +83,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Worksqw",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,

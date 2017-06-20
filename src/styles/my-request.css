@@ -59,7 +59,7 @@ input[type="color"][list] {
   display: inline-block;
   text-align: left;
   padding: 33px 0;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 17px;
   vertical-align: middle;
 }
@@ -207,6 +207,7 @@ input[type="color"][list] {
     border-top: 1px solid #ddd;
     margin-top: 40px;
     text-align: right;
+    padding-right: 0px;
 }
 .filterCard .footer a,.filterCard .footer button{
 	font-family: CenturyGothic;
@@ -565,7 +566,7 @@ input[type="color"][list] {
 .quotation-block h4,
 .quotation-total label {
   color: #454B51;
-  font-family: CenturyGothic;
+  font-family: CenturyGothic_bold;
   font-size: 16px;
   margin-bottom: 15px;
 }
@@ -603,7 +604,7 @@ input[type="color"][list] {
 }
 
 .quotation-total span {
-  font-weight: 900;
+ font-family: CenturyGothic_bold;
   font-size: 16px;
 }
 
