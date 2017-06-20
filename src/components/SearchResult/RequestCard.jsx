@@ -426,7 +426,7 @@ export default class RequestCard extends Component {
                                       <div className="f-card payment-type">
                                         <h5>Payment by</h5>
                                         <div className="holder">
-                                          <span className="pad0">pay by cash</span>
+                                          <span className="pad0">Pay by cash</span>
                                           <ToggleSwitch
                                             checked
                                             size="small"
@@ -436,7 +436,7 @@ export default class RequestCard extends Component {
                                           />
                                         </div>
                                         <div className="holder">
-                                          <span className="">pay by credit card</span>
+                                          <span className="">Pay by credit card</span>
                                           <ToggleSwitch
                                             checked
                                             size="small"
@@ -448,7 +448,7 @@ export default class RequestCard extends Component {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="footer">
+                                  <div className="col-md-12 footer">
                                     <a>Clear</a>
                                     <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
