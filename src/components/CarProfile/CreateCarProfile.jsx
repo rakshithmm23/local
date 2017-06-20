@@ -7,8 +7,8 @@ import ProfileSteps from './ProfileSteps';
 import MobileNotification from '../common/MobileNotification';
 
 export default class NewCarProfile extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false
@@ -16,6 +16,10 @@ export default class NewCarProfile extends Component {
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
+    }
+
+    onSubmit(carProfileData){
+      this.props.actions.setCarProfileAction(carProfileData);
     }
 
     render() {
@@ -38,7 +42,7 @@ export default class NewCarProfile extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <ProfileSteps />
+                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} />
                         </div>
                     </div>
 

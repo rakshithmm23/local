@@ -3,6 +3,18 @@ import {map} from 'lodash';
 import '../../styles/sidebar.css';
 
 export default class Sidebar extends Component {
+  componentWillMount(){
+   const currentPath = window.location.pathname;
+   this.state = {
+     currentPath: currentPath
+   };
+  }
+  componentWillReceiveProps(){
+   const currentPath = window.location.pathname;
+   this.state = {
+     currentPath: currentPath
+   };
+  }
   render() {
     const {bgColor} = this.props;
     const sidebarItems = [
@@ -35,7 +47,7 @@ export default class Sidebar extends Component {
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
       return (
-        <li key={key}>
+        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''}>
           <a href={item.hyperLink}>
             {item.iconName && <label className={item.iconName}/> }
             <span>{item.name}</span>
