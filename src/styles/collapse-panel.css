@@ -80,8 +80,11 @@
     top: 15px;
     font-size: 16px;
 }
-.collapse-panel .panel-content .form-group label{
-    font-size: 16px;
+
+.panel-section .collapse-panel .search-box .form-group .form-input:focus ~ label, 
+.panel-section .collapse-panel .search-box .form-group .form-input:valid ~ label{
+    font-size: 11px;
+    top: 3px;
 }
 
 .panel-section .collapse-panel .search-box input::-webkit-input-placeholder,
