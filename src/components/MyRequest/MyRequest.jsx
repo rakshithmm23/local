@@ -44,8 +44,8 @@ export default class MyRequest extends Component {
                             <h4>My Request</h4>
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() => this.setState({ showModal: true })}>Delete</MenuItem>
+                                    <MenuItem eventKey="Edit">Edit Request</MenuItem>
+                                    <MenuItem eventKey="Cancel" onClick={() => this.setState({ showModal: true })}>Cancel Request</MenuItem>
 
                                 </DropdownButton>
                             </div>

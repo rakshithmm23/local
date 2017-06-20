@@ -83,7 +83,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Worksqw",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -672,7 +672,7 @@ export default class RequestCard extends Component {
                               <div className="quotes-message-footer">
                                 <FormGroup>
                                   <InputGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl type="text" placeholder="Type your message here..." />
                                     <InputGroup.Addon>
                                       <i className="mdi mdi-send" />
                                     </InputGroup.Addon>

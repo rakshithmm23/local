@@ -41,8 +41,8 @@
 
 .modal-body .info-heading span {
   display: inline-block;
-  color: #525252;
-  font-family: CenturyGothic_bold;
+  color: #006FBA;
+  font-family: CenturyGothic;
   font-size: 14px;
   text-transform: capitalize;
 }
@@ -62,10 +62,11 @@
   border-radius: 0;
   -webkit-appearance: none;
   outline: none;
-  
+
 }
 .modal-body .comments input {
   font-size: 16px;
+  border-color: #C8D4DE;
 }
 .modal-body .comments {
   padding-top: 10px;
@@ -156,7 +157,6 @@
 .map-modal .modal-dialog {
   width: 836px;
 }
-
 .map-modal .modal-body {
   padding: 0;
   margin: 0;

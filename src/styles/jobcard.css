@@ -125,7 +125,8 @@
 
     .card-info .job-title {
         font-size: 18px;
-        color: #006FB9;
+        /*color: #006FB9;*/
+        color: #454b51;
         text-transform: capitalize;
         font-family: CenturyGothic_bold;
     }

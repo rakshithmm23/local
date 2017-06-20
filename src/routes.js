@@ -6,6 +6,7 @@ const cookies = new Cookies();
 // Containers
 import DashboardContainer from './containers/DashboardContainer';
 import AuthContainer from './containers/AuthContainer';
+import CarProfileContainer from './containers/CarProfileContainer'
 
 // Auth Components
 import SignIn from './components/Auth/SignIn';
@@ -52,7 +53,7 @@ export default (
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
     <Route path="request" component={AuthContainer(MyRequest)} />
     <Route path="book-service" component={AuthContainer(BookService)} />
-    <Route path="car-profile" component={AuthContainer(CreateCarProfile)} />
+    <Route path="car-profile" component={CarProfileContainer(CreateCarProfile)} />
     <Route path="car-list" component={AuthContainer(BookService)} />
     <Route path="timeline" component={AuthContainer(CarTimeline)} />
     <Route path="car-repair" component={AuthContainer(CarRepair)} />

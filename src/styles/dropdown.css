@@ -134,7 +134,7 @@
 
 .three-dots-icon .dropdown-menu {
     right: 47px;
-    width: 126px;
+    width: auto;
     min-width: inherit;
     top: 30px;
 }
@@ -143,9 +143,9 @@
     cursor: pointer;
     color: #454B51;
     font-family: "CenturyGothic";
-    font-size: 17px;
+    font-size: 14px;
     line-height: 17px;
-    padding: 13px 20px;
+    padding: 8px 15px;
     background-color: transparent !important;
     outline: 0;
 }

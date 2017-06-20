@@ -85,7 +85,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Worksqw",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -143,7 +143,7 @@ export default class RequestCard extends Component {
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
-    
+
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
@@ -151,7 +151,7 @@ export default class RequestCard extends Component {
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
-  } 
+  }
   bodyClick(e){
     if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
       this.setState({filterdropdown:true});
@@ -240,7 +240,7 @@ export default class RequestCard extends Component {
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
-        serviceTypes: 'Emergency Service',
+        serviceTypes: 'Car Repair',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'waiting',
@@ -288,7 +288,7 @@ export default class RequestCard extends Component {
                         <div className="job-details">
                           <ul>
                             <li>
-                              <label>Order ID :</label>
+                              <label>Request ID :</label>
                               <span>{item.customeId}</span>
                             </li>
                             <li>
@@ -495,6 +495,16 @@ export default class RequestCard extends Component {
                                         </ul>
                                       </div>
                                       <div className="f-card ">
+                                        <h5>Only show Favourites</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
                                         <ToggleSwitch
                                           checked
@@ -517,7 +527,7 @@ export default class RequestCard extends Component {
                                       <div className="f-card payment-type">
                                         <h5>Payment by</h5>
                                         <div className="holder">
-                                          <span className="pad0">pay by cash</span>
+                                          <span className="pad0">Pay by Cash</span>
                                           <ToggleSwitch
                                             checked
                                             size="small"
@@ -527,7 +537,7 @@ export default class RequestCard extends Component {
                                           />
                                         </div>
                                         <div className="holder">
-                                          <span className="">pay by credit card</span>
+                                          <span className="">Pay by Credit Card</span>
                                           <ToggleSwitch
                                             checked
                                             size="small"
@@ -742,7 +752,7 @@ export default class RequestCard extends Component {
                               <div className="quotes-message-footer">
                                 <FormGroup>
                                   <InputGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl type="text" placeholder="Type your message here..." />
                                     <InputGroup.Addon>
                                       <i className="mdi mdi-send" />
                                     </InputGroup.Addon>
