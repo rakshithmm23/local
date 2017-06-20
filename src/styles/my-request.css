@@ -223,6 +223,9 @@ input[type="color"][list] {
   display: none;
 }
 
+.filterCard.sortFilter {
+    padding: 15px 15px 15px;
+}
 
 /*Quotes right*/
 
