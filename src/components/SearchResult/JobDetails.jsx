@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class JobDetails extends Component {
     render() {
-        
+
         return (
             <div>
                 <div className="data-time col-md-12">
@@ -27,7 +27,7 @@ class JobDetails extends Component {
                 </div>
                 <div className="col-md-12 repair-detail">
                     <div className="col-md-6 repair-category">
-                        <title>Car Repair Categories:</title>
+                        <title>Accidental Car Repair Categories:</title>
                         <ul className="category-list">
                             <li>
                                 <span className="interior-clean"/>
@@ -83,7 +83,7 @@ class JobDetails extends Component {
                              <div className="upload-images"><img src="../../images/test.jpg" alt=""/></div>
                          </div>
                     </div>
-                   
+
                 </div>
             </div>
         );

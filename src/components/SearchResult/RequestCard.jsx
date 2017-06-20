@@ -84,7 +84,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Worksqw",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -294,6 +294,7 @@ export default class RequestCard extends Component {
                               <div className="filterLabel">
                                 <i className="mdi mdi-swap-horizontal" />
                                 <label>Sort By</label>
+                                <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
@@ -340,6 +341,7 @@ export default class RequestCard extends Component {
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
+                                <i className="mdi mdi-chevron-down downIcon pull-right" />
                               </div>
                             }>
                               <div className="Filterby filterCard filter-dropdown">

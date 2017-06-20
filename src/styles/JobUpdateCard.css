@@ -7,7 +7,7 @@
 }
 .quotes-view .jobcard.box .media{
     padding: 15px;
-}   
+}
 .quotes-view .jobcard.box.active{
     border: 1px solid #006FBA;
 }
@@ -89,7 +89,7 @@
 }
 
 .quotes-view .jobcard.box .distance {
-    color: #25AF49;
+    color: #717982;
     font-family: CenturyGothic;
     font-size: 13px;
 }

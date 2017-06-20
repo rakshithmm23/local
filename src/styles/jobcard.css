@@ -126,9 +126,10 @@
     }
 
     .card-info .job-title {
-        font-family: CenturyGothic;
+        font-family: CenturyGothic_bold;
         font-size: 18px;
-        color: #006FB9;
+        /*color: #006FB9;*/
+        color: #454b51;
         text-transform: capitalize;
         font-weight: 900;
     }
@@ -175,6 +176,7 @@
 
     .job-right-header {
         padding: 15px 10px;
+        border-bottom: 1px solid #eef2f5;
     }
 
     .job-right-header .btn-theme.label {
