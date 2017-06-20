@@ -8,6 +8,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import CustomModal from '../common/CustomModal';
+import { Modal } from 'react-bootstrap';
 
 
 class WashSteps extends Component {
@@ -24,6 +26,7 @@ class WashSteps extends Component {
                     active: false,
                     heading: "Brakes & Exhaust",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -42,12 +45,14 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-5.png'
+                    image: '../../images/auto-service-icons-5.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 2,
                     active: false,
                     heading: "Basic Wash",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -66,12 +71,15 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-2.png'
+                    image: '../../images/auto-service-icons-2.png',
+                    modalText:"Basic Wash Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
+
                 }, {
                     id: 3,
                     active: false,
                     heading: "Awesome Wash & Detail",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -98,12 +106,14 @@ class WashSteps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-4.png'
+                    image: '../../images/auto-service-icons-4.png',
+                    modalText:"Awesome Wash & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 4,
                     active: false,
                     heading: "Wash & Shine",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -130,13 +140,15 @@ class WashSteps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-1.png'
+                    image: '../../images/auto-service-icons-1.png',
+                    modalText:"Wash & Shine Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 5,
                     active: false,
                     heading: "Totally Awesome & Detail",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -155,13 +167,15 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-3.png'
+                    image: '../../images/auto-service-icons-3.png',
+                    modalText:"Totally Awesome & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 6,
                     active: false,
                     heading: "Total detail",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -180,13 +194,15 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-5.png'
+                    image: '../../images/auto-service-icons-5.png',
+                    modalText:"Total detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 7,
                     active: false,
                     heading: "AC Dust Sanitization",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -205,13 +221,15 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-4.png'
+                    image: '../../images/auto-service-icons-4.png',
+                    modalText:"AC Dust Sanitization Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 8,
                     active: false,
                     heading: "Monthly Package",
                     checkedCategoryCount: 0,
+                    showModal:false,
                     categories: [
                         {
                             id: 1,
@@ -230,13 +248,15 @@ class WashSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-2.png'
+                    image: '../../images/auto-service-icons-2.png',
+                    modalText:"Monthly Package Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }
 
             ],
 
         };
         this.handleChange = this.handleChange.bind(this);
+        
     }
     handleChange(date) {
         this.setState({
@@ -264,6 +284,16 @@ class WashSteps extends Component {
         } else if (panel == 'step2') {
             this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
+    }
+    showModal(id){
+        let updateVal=[...this.state.carWashCategories]
+        each(updateVal, function(value) {
+            value.showModal = false;
+            if(value.id == id){
+                value.showModal = !value.showModal;
+            }
+        });
+        this.setState({carWashCategories:updateVal})
     }
 
     chageCheckoxState(e, val) {
@@ -300,7 +330,7 @@ class WashSteps extends Component {
                 rightBlock.push(
                     <div className="sub-collapse-panel" key={key}>
                         <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure>
+                            <figure onClick={this.showModal.bind(this,carWashCategory.id)}>
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
@@ -323,12 +353,19 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
+                        <CustomModal showModal={carWashCategory.showModal} footer="false" title="Delete my audi a6">
+                            <Modal.Body>
+                                <p className="info-text">{carWashCategory.modalText}</p>
+                                
+                            </Modal.Body>
+
+                        </CustomModal>
                     </div>);
             } else {
                 leftBlock.push(
                     <div className="sub-collapse-panel" key={key}>
                         <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure>
+                            <figure onClick={this.showModal.bind(this,carWashCategory.id)}>
                                 <img src={carWashCategory.image} alt="" />
                             </figure>
                             <h4>{carWashCategory.heading}</h4>
@@ -351,6 +388,13 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
+                         <CustomModal showModal={carWashCategory.showModal} footer="false" title="Delete my audi a6">
+                            <Modal.Body>
+                                <p className="info-text">{carWashCategory.modalText}</p>
+                                
+                            </Modal.Body>
+
+                        </CustomModal>
                     </div>);
             }
         });
