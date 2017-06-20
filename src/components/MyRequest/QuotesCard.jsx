@@ -28,7 +28,7 @@ class QuotesCard extends Component {
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="mdi mdi-star-outline"/>
                                 <span className="rating-text">{rating} ({reviews} reviews)</span></div>
-                            <span className="distance">{distance}</span>
+                            <span className="distance">{distance} Km</span>
                         </Media.Body>
                     </Media>
                     <div className="box-footer">
