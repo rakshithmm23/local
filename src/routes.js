@@ -43,7 +43,7 @@ import Favourites from './components/Favourites/Favourites';
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
-    <Route path="dashboard" component={DashboardContainer(Dashboard)} onEnter={isLoggedIn}/>
+    <Route path="dashboard" component={DashboardContainer(Dashboard)} />
     <Route path="mycar-list" component={DashboardContainer(MyCarList)} onEnter={isLoggedIn}/>
     <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />

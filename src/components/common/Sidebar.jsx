@@ -9,27 +9,27 @@ export default class Sidebar extends Component {
       {
         iconName: 'mdi mdi-view-grid',
         name: 'Dashboard',
-        hyperLink: '#'
+        hyperLink: '/dashboard'
       },
       {
         iconName: 'mdi mdi-pencil',
         name: 'Requests',
-        hyperLink: '#'
+        hyperLink: '/request'
       },
       {
         iconName: 'mdi mdi-car',
         name: 'My Cars',
-        hyperLink: '#'
+        hyperLink: '/mycar-list'
       },
       {
         iconName: 'mdi mdi-comment-processing',
         name: 'Messages',
-        hyperLink: '#'
+        hyperLink: '/messages'
       },
       {
         iconName: 'mdi mdi-heart',
         name: 'Favourites',
-        hyperLink: '#'
+        hyperLink: '/favourites'
       },
     ];
 

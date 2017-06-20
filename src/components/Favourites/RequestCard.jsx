@@ -19,6 +19,7 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      filterdropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -135,6 +136,7 @@ export default class RequestCard extends Component {
 
   componentWillMount() {
     this.updateDimensions();
+    document.body.addEventListener('mousedown', this.bodyClick.bind(this));
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -144,7 +146,14 @@ export default class RequestCard extends Component {
     this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
   }
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener();
+  }
+  bodyClick(e){
+    if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+      this.setState({filterdropdown:true})
+    }else if(this.state.filterdropdown){
+      this.setState({filterdropdown:false})
+    }
   }
   updateDimensions() {
     const windowWidth = this.windowWidth();
@@ -322,8 +331,8 @@ export default class RequestCard extends Component {
                           </div>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel">
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
+                              <div className="filterLabel showFilters">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
                               </div>

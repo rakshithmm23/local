@@ -19,6 +19,7 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      filterdropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -135,6 +136,7 @@ export default class RequestCard extends Component {
 
   componentWillMount() {
     this.updateDimensions();
+    document.body.addEventListener('mousedown', this.bodyClick.bind(this));
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -144,7 +146,14 @@ export default class RequestCard extends Component {
     this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
   }
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener();
+  }
+  bodyClick(e){
+    if(e.target.closest('.showFilters')!=null || e.target.closest('.filterCard')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+      this.setState({filterdropdown:true})
+    }else if(this.state.filterdropdown){
+      this.setState({filterdropdown:false})
+    }
   }
   updateDimensions() {
     const windowWidth = this.windowWidth();
@@ -199,7 +208,7 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
-  day(selDay){
+   day(selDay){
     let days={...this.state.daySelected}
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
@@ -222,6 +231,7 @@ export default class RequestCard extends Component {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
     }
+
 
     const jobData = [
       {
@@ -277,7 +287,7 @@ export default class RequestCard extends Component {
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-filter-variant" />
+                                <i className="mdi mdi-swap-horizontal" />
                                 <label>Sort By</label>
                               </div>
                             }>
@@ -321,9 +331,9 @@ export default class RequestCard extends Component {
                           </div>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="large" noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel">
-                                <i className="mdi mdi-swap-horizontal" />
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
+                              <div className="filterLabel showFilters">
+                                <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
                               </div>
                             }>
@@ -378,12 +388,7 @@ export default class RequestCard extends Component {
                                         />
 
                                       </div>
-
-                                    </div>
-                                  </div>
-                                  <div className="col-md-6 right toggleBtn">
-                                    <div className="filterby-wrapper">
-                                      <div className="f-card ">
+                                      <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
                                           checked
@@ -393,6 +398,12 @@ export default class RequestCard extends Component {
                                           }}
                                         />
                                       </div>
+
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
+
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
@@ -402,6 +413,16 @@ export default class RequestCard extends Component {
                                           <span className="mdi mdi-star-outline"></span>
                                           <span className="mdi mdi-star-outline"></span>
                                         </ul>
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Only show favourites</h5>
+                                        <ToggleSwitch
+                                          checked
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
                                       </div>
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
