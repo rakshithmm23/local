@@ -94,7 +94,7 @@ input[type="color"][list] {
   padding-left: 10px;
   display: inline-block;
   outline: 0;
-  background: url(http://web-test.carcility.com/arrow-down.png);
+  background: url('../images/arrow-down.png');
   background-repeat: no-repeat;
   background-position: 92% 12px;
   padding-right: 20px;
@@ -161,13 +161,13 @@ input[type="color"][list] {
     z-index: 999;
     padding: 15px;
     top: -1px;
+    padding-top: 35px;
 }
 .filterCard.Filterby {
   left: 0;
   right: inherit;
   background-color: #fff;
-  width: 900px;
-  padding-top: 40px;
+  width: 1070px;
   left: -190px;
 }
 
@@ -203,8 +203,10 @@ input[type="color"][list] {
   color: #454B51;
 }
 .filterCard .footer{
-  float: right;
-  padding: 0 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    text-align: right;
 }
 .filterCard .footer a,.filterCard .footer button{
 	font-family: CenturyGothic;
@@ -212,13 +214,20 @@ input[type="color"][list] {
 }
 .filterCard .footer a{
 	color: #006FB9;
-  padding-right: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .quotes-view .title .filterSection select::-ms-expand {
   display: none;
 }
 
+.filterCard.sortFilter {
+    padding: 15px 15px 15px;
+}
 
 /*Quotes right*/
 
@@ -610,7 +619,7 @@ input[type="color"][list] {
 
 .f-card h5 {
   display: inline-block;
-  color: #717982;
+  color: #454B51;
   font-size: 16px;
   font-family: CenturyGothic;
   margin: 0px;
@@ -684,7 +693,18 @@ input[type="color"][list] {
 }
 
 .filterSection .dropdown.open button{
-   border-bottom: 2px solid #ed3124 !important;
+  border-bottom: 2px solid #ed3124 !important;
+}
+.filterby-wrapper{
+    padding: 0px 15px 0px 0px;
+}
+.filterCard .right .filterby-wrapper,
+.filterCard .right{
+  padding-right: 0px;
+}
+.filterCard  .f-card:last-child,
+.Filterby .left .f-card h5:last-child {
+    margin-bottom: 0px;
 }
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {

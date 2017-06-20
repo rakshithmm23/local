@@ -16,10 +16,10 @@
     box-shadow: none !important;
     border-bottom: 1px solid #ddd;
     border-radius: 0;
-    padding: 0;
     font-size: 14px;
-    height: 48px;
+    height: 45px;
     margin: 10px 0;
+    padding: 20px 0 0;
 }
 
 .form-group.error .form-input {
@@ -124,7 +124,7 @@ form {
 
 .form-input:focus ~ label,
 .form-input:valid ~ label{
-    top: -5px !important;
+    top: 3px !important;
     font-size: 11px;
     color: #006FBA;
 }

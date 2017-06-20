@@ -1,7 +1,7 @@
 .btn-theme {
   font-family: CenturyGothic;
   font-size: 15px;
-  border-radius: 3px;
+  border-radius: 4px !important;
   height: 42px;
   text-align: center;
   color: #fff !important;
