@@ -1,9 +1,6 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
-import {decryptCookie} from '../helpers';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
 export function setCarProfileAction(carData){
   return (dispatch) => {
@@ -11,11 +8,11 @@ export function setCarProfileAction(carData){
 
   let mandateFields = ['name', 'make', 'model', 'year', 'regNo'];
 
-  Object.keys(carData).map((value, key)=>{
+  Object.keys(carData).map((value)=>{
     if(carData[value] && mandateFields.indexOf(value) !== -1) {
       formData.append(value, carData[value]);
     }
-  })
+  });
 
   axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
       headers: {
