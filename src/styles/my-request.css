@@ -161,6 +161,7 @@ input[type="color"][list] {
     z-index: 999;
     padding: 15px;
     top: -1px;
+    padding-top: 35px;
 }
 .filterCard.Filterby {
   left: 0;
@@ -203,7 +204,9 @@ input[type="color"][list] {
 }
 .filterCard .footer{
     padding-top: 15px;
-    border-top:1px solid #ddd;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    text-align: right;
 }
 .filterCard .footer a,.filterCard .footer button{
 	font-family: CenturyGothic;
@@ -220,6 +223,9 @@ input[type="color"][list] {
   display: none;
 }
 
+.filterCard.sortFilter {
+    padding: 15px 15px 15px;
+}
 
 /*Quotes right*/
 
@@ -690,7 +696,15 @@ input[type="color"][list] {
   border-radius: 0;
 }
 .filterby-wrapper{
-    padding: 25px 15px 20px 0px;
+    padding: 0px 15px 0px 0px;
+}
+.filterCard .right .filterby-wrapper,
+.filterCard .right{
+  padding-right: 0px;
+}
+.filterCard  .f-card:last-child,
+.Filterby .left .f-card h5:last-child {
+    margin-bottom: 0px;
 }
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {
