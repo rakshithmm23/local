@@ -685,7 +685,8 @@ input[type="color"][list] {
 }
 
 .filterSection .dropdown.open button{
-   border-bottom: 2px solid #ed3124 !important;
+  border-bottom: 2px solid #ed3124 !important;
+  border-radius: 0;
 }
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {
