@@ -180,7 +180,7 @@ export default class Search extends Component {
 
                 <div className={searchView.length > 0?"searchFill active":"searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} onToggle={searchView.length > 0 ? true : false}  noCaret title={
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} open={searchView.length > 0 ? true : false}  noCaret title={
                             <div >
                                 <input value={this.state.seachedValue} placeholder="Search"
                                     onChange={(e) => this.setState({ seachedValue: e.target.value })} />

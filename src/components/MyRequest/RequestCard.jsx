@@ -21,6 +21,7 @@ export default class RequestCard extends Component {
     this.state = {
       filterSort : "low-high",
       filterdropdown:false, 
+      sortBydropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -148,7 +149,10 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    if(curr!=undefined){
+      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    }
+    
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -159,6 +163,11 @@ export default class RequestCard extends Component {
       this.setState({filterdropdown:true});
     }else if(this.state.filterdropdown){
       this.setState({filterdropdown:false});
+    }
+    if(e.target.closest('.showSortBy')!=null || e.target.closest('.sortFilter')!=null){
+      this.setState({sortBydropdown:true})
+    }else{
+      this.setState({sortBydropdown:false})
     }
   }
   updateDimensions() {
@@ -221,7 +230,7 @@ export default class RequestCard extends Component {
       daySelected:days
     })
   }
-  filterSort(val){
+  filterOption(val){
     debugger
     this.setState({filterSort:val})
   }
@@ -373,16 +382,16 @@ export default class RequestCard extends Component {
                         <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
-                            <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
-                              <div className="filterLabel ">
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
+                              <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-horizontal" />
                                 <label>Sort by</label>
-                                <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
+                                <i className={this.state.sortBydropdown?"mdi mdi-chevron-down downIcon downAlign pull-right":"mdi mdi-chevron-up downIcon downAlign pull-right"} />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                  <li onClick={()=>{this.filterSort("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
+                                  <li onClick={()=>this.setState({filterSort:"near-far"})} className={this.state.filterSort == "near-far"?"active":""}>
                                     <label>
                                       Distance - Near to Far
                                     </label>
@@ -390,7 +399,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li className="active" onClick={()=>{this.filterSort("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
+                                  <li className="active" onClick={()=>this.setState({filterSort:"far-near"})} className={this.state.filterSort == "far-near"?"active":""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
@@ -398,7 +407,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
+                                  <li onClick={()=>this.setState({filterSort:"high-low"})} className={this.state.filterSort == "high-low"?"active":""}>
                                     <label>
                                       Distance - Highest to Lowest
                                     </label>
@@ -406,7 +415,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
+                                  <li onClick={()=>this.setState({filterSort:"low-high"})} className={this.state.filterSort == "low-high"?"active":""}>
                                     <label>
                                       Distance - Lowest to Highest
                                     </label>
@@ -423,7 +432,7 @@ export default class RequestCard extends Component {
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
-                                <i className="mdi mdi-chevron-down downIcon pull-right" />
+                                <i className={this.state.filterdropdown?"mdi mdi-chevron-up downIcon pull-right":"mdi mdi-chevron-down downIcon pull-right"} />
                               </div>
                             }>
                               <div className="Filterby filterCard filter-dropdown">
@@ -555,7 +564,7 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a>Clear</a>
+                                    <a onClick={()=>this.setState({filterdropdown:false})}>Clear</a>
                                     <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
                                 </div>
