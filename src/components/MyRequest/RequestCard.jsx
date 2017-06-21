@@ -231,8 +231,7 @@ export default class RequestCard extends Component {
     })
   }
   filterOption(val){
-    debugger
-    this.setState({filterSort:val})
+    this.setState({filterSort:val,sortBydropdown:false})
   }
 
   render() {
@@ -391,7 +390,7 @@ export default class RequestCard extends Component {
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                  <li onClick={()=>this.setState({filterSort:"near-far"})} className={this.state.filterSort == "near-far"?"active":""}>
+                                  <li onClick={()=>(this.filterOption("near-far"))} className={this.state.filterSort == "near-far"?"active":""}>
                                     <label>
                                       Distance - Near to Far
                                     </label>
@@ -399,7 +398,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li className="active" onClick={()=>this.setState({filterSort:"far-near"})} className={this.state.filterSort == "far-near"?"active":""}>
+                                  <li className="active" onClick={()=>(this.filterOption("far-near"))} className={this.state.filterSort == "far-near"?"active":""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
@@ -407,7 +406,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>this.setState({filterSort:"high-low"})} className={this.state.filterSort == "high-low"?"active":""}>
+                                  <li onClick={()=>(this.filterOption("high-low"))} className={this.state.filterSort == "high-low"?"active":""}>
                                     <label>
                                       Distance - Highest to Lowest
                                     </label>
@@ -415,7 +414,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>this.setState({filterSort:"low-high"})} className={this.state.filterSort == "low-high"?"active":""}>
+                                  <li onClick={()=>(this.filterOption("low-high"))} className={this.state.filterSort == "low-high"?"active":""}>
                                     <label>
                                       Distance - Lowest to Highest
                                     </label>
