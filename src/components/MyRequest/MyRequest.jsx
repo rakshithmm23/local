@@ -12,6 +12,8 @@ import MobileNotification from '../common/MobileNotification';
 import { serviceTypes } from '../../constants/staticData';
 import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
+import TextInput from '../common/TextInput';
+
 
 export default class MyRequest extends Component {
     constructor(props, context) {
@@ -20,8 +22,8 @@ export default class MyRequest extends Component {
         this.state = {
             notificationVisible: false,
             showModal: false,
-            max_chars:100,
-            chars_left:100
+            max_chars:200,
+            chars_left:0
         };
     }
     toggleNotification(isVisible) {
@@ -51,8 +53,8 @@ export default class MyRequest extends Component {
                             <h4>My Request</h4>
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() => this.setState({ showModal: true })}>Delete</MenuItem>
+                                    <MenuItem eventKey="Edit">Edit Request</MenuItem>
+                                    <MenuItem eventKey="Cancel" onClick={() => this.setState({ showModal: true })}>Cancel Request</MenuItem>
 
                                 </DropdownButton>
                             </div>
@@ -72,8 +74,13 @@ export default class MyRequest extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                        <input type="text" placeholder="Comments" onChange={this.handleChange.bind(this)}/>
-                                        <span className="text-limit">{this.state.chars_left}/100</span>
+                                        <TextInput
+                                            type="text"
+                                            label="Comments"
+                                            name="Comments"
+                                            onChange={this.handleChange.bind(this)}
+                                        />
+                                        <span className="text-limit">{this.state.chars_left}/200</span>
                                     </div>
                                 </Modal.Body>
 

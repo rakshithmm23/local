@@ -5,6 +5,10 @@
     border-radius: 3px;
     margin-bottom: 15px;
 }
+.quotes-view .jobcard.box:hover{
+    cursor: pointer;
+    border: 1px solid #006FBA;
+}
 .quotes-view .jobcard.box .media{
     padding: 15px;
 }
@@ -14,7 +18,7 @@
 
 .quotes-view .jobcard.box .box-content .media-left img {
     width: 100px;
-    height: 70px;
+    height: 75px;
     border-radius: 5px;
 }
 
@@ -104,7 +108,6 @@
     font-family: CenturyGothic_bold;
     font-size: 14px;
     margin-right: 15px;
-    font-weight: bold;
     display: inline-block;
     padding: 10px 0;
     float: right;

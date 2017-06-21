@@ -292,7 +292,7 @@ export default class RequestCard extends Component {
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
                               <div className="filterLabel">
-                                <i className="mdi mdi-swap-horizontal" />
+                                <i className="mdi mdi-swap-vertical" />
                                 <label>Sort By</label>
                                 <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
                               </div>
@@ -679,7 +679,7 @@ export default class RequestCard extends Component {
                               <div className="quotes-message-footer">
                                 <FormGroup>
                                   <InputGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl type="text" placeholder="Type your message here..." />
                                     <InputGroup.Addon>
                                       <i className="mdi mdi-send" />
                                     </InputGroup.Addon>

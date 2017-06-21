@@ -74,7 +74,7 @@
 }
 
 .welcome-banner h4 span {
-    font-weight: 900;
+    font-family: CenturyGothic_bold;
     color: #000;
 }
 
@@ -93,7 +93,7 @@
     border-radius: 3px;
     text-transform: uppercase;
     font-size: 14px;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
 }
 
 
@@ -113,8 +113,7 @@
 .welcome-banner.empty h4 {
     color: #717982;
     font-size: 20px;
-    font-family: CenturyGothic;
-    font-weight: 900;
+    font-family: CenturyGothic_bold;
 }
 
 .welcome-banner.empty p {

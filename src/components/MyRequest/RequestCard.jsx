@@ -384,8 +384,9 @@ export default class RequestCard extends Component {
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
                               <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-horizontal" />
+
                                 <label>Sort by</label>
-                                <i className={this.state.sortBydropdown?"mdi mdi-chevron-down downIcon downAlign pull-right":"mdi mdi-chevron-up downIcon downAlign pull-right"} />
+                                <i className={this.state.sortBydropdown?"mdi mdi-chevron-up downIcon downAlign pull-right":"mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
@@ -765,7 +766,7 @@ export default class RequestCard extends Component {
                               <div className="quotes-message-footer">
                                 <FormGroup>
                                   <InputGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl type="text" placeholder="Type your message here..." />
                                     <InputGroup.Addon>
                                       <i className="mdi mdi-send" />
                                     </InputGroup.Addon>

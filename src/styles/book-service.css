@@ -52,8 +52,7 @@
 
 .myCar-card-footer li h4 {
     font-size: 14px;
-    font-weight: 900;
-    font-family: CenturyGothic;
+    font-family: CenturyGothic_bold;
 }
 
 .myCar-card-footer li:last-child {
@@ -79,10 +78,9 @@
 }
 
 .myCar-card-caption h5 {
-    font-family: "CenturyGothic";
     color: #4C4C4C;
     font-size: 18px;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
     line-height: 22px;
 }
 
