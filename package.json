@@ -52,6 +52,7 @@
     "react-slick": "0.14.11",
     "react-smooth-scrollbar": "7.2.2",
     "react-sticky": "6.0.1",
+    "react-toggle-switch": "2.1.4",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
     "smoothscroll": "0.3.0",
