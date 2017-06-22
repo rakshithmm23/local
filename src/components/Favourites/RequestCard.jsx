@@ -19,11 +19,12 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      filterSort : "low-high",
-      filterdropdown:false,
-      daySelected:{
-      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
-    },
+      filterSort: "low-high",
+      filterdropdown: false,
+      sortBydropdown: false,
+      daySelected: {
+        "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
+      },
       open: false,
       jobUpdates: "quotes",
       currentWidth: '',
@@ -134,7 +135,6 @@ export default class RequestCard extends Component {
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
-
   componentWillMount() {
     this.updateDimensions();
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
@@ -144,17 +144,24 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    if (curr != undefined) {
+      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    }
   }
   componentWillUnmount() {
     window.removeEventListener();
   }
-  bodyClick(e){
+  bodyClick(e) {
 
-    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
-      this.setState({filterdropdown:true})
-    }else if(this.state.filterdropdown){
-      this.setState({filterdropdown:false})
+    if (e.target.closest('.filter-dropdown') != null || e.target.closest('.showFilters') != null || e.target.closest('.rc-time-picker-panel') != null) {
+      this.setState({ filterdropdown: true, sortBydropdown: false })
+    } else if (this.state.filterdropdown) {
+      this.setState({ filterdropdown: false, sortBydropdown: false })
+    }
+    if (e.target.closest('.showSortBy') != null || e.target.closest('.sortFilter') != null) {
+      this.setState({ sortBydropdown: true, filterdropdown: false })
+    } else if (this.state.sortBydropdown) {
+      this.setState({ sortBydropdown: false, filterdropdown: false })
     }
   }
   updateDimensions() {
@@ -210,16 +217,15 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: !this.state.quotation, messages: !this.state.messages })
   }
-   day(selDay){
-    let days={...this.state.daySelected}
+  day(selDay) {
+    let days = { ...this.state.daySelected }
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
-      daySelected:days
+      daySelected: days
     })
   }
-  filterSort(val){
-    debugger
-    this.setState({filterSort:val})
+  filterOption(val) {
+    this.setState({ filterSort: val, sortBydropdown: false })
   }
 
   render() {
@@ -291,16 +297,16 @@ export default class RequestCard extends Component {
                           <span>5 Results Found</span>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
-                              <div className="filterLabel">
-                                <i className="mdi mdi-swap-vertical" />
-                                <label>Sort By</label>
-                                <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
+                              <div className="filterLabel showSortBy">
+                                <i className="mdi mdi-swap-horizontal" />
+                                <label>Sort by</label>
+                                <i className={this.state.sortBydropdown ? "mdi mdi-chevron-up downIcon downAlign pull-right" : "mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                  <li onClick={()=>{this.filterSort("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
+                                  <li onClick={() => { this.filterOption("near-far") }} className={this.state.filterSort == "near-far" ? "active" : ""}>
                                     <label>
                                       Distance - Near to Far
                                     </label>
@@ -308,7 +314,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li className="active" onClick={()=>{this.filterSort("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
+                                  <li className="active" onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
@@ -316,7 +322,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
+                                  <li onClick={() => { this.filterOption("high-low") }} className={this.state.filterSort == "high-low" ? "active" : ""}>
                                     <label>
                                       Distance - Highest to Lowest
                                     </label>
@@ -324,7 +330,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
+                                  <li onClick={() => { this.filterOption("low-high") }} className={this.state.filterSort == "low-high" ? "active" : ""}>
                                     <label>
                                       Distance - Lowest to Highest
                                     </label>
@@ -339,10 +345,10 @@ export default class RequestCard extends Component {
                           <div className="filterSection">
 
                             <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
-                              <div className="filterLabel showFilters">
+                              <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
-                                <i className="mdi mdi-chevron-down downIcon pull-right" />
+                                <i className={this.state.filterdropdown ? "mdi mdi-chevron-up downIcon pull-right" : "mdi mdi-chevron-down downIcon pull-right"} />
                               </div>
                             }>
                               <div className="Filterby filterCard filter-dropdown">
@@ -371,13 +377,13 @@ export default class RequestCard extends Component {
                                       <div className="f-card">
                                         <h5>Open Between</h5>
                                         <ul className="list-unstyled">
-                                          <li className={this.state.daySelected["sunday"]?'active':''} onClick={this.day.bind(this,"sunday")}>SUN</li>
-                                          <li className={this.state.daySelected["monday"]?'active':''} onClick={this.day.bind(this,"monday")}>MON</li>
-                                          <li className={this.state.daySelected["tuesday"]?'active':''} onClick={this.day.bind(this,"tuesday")}>TUE</li>
-                                          <li className={this.state.daySelected["wednesday"]?'active':''} onClick={this.day.bind(this,"wednesday")}>wed</li>
-                                          <li className={this.state.daySelected["thrusday"]?'active':''} onClick={this.day.bind(this,"thrusday")}>thu</li>
-                                          <li className={this.state.daySelected["friday"]?'active':''} onClick={this.day.bind(this,"friday")}>fri</li>
-                                          <li className={this.state.daySelected["saturday"]?'active':''} onClick={this.day.bind(this,"saturday")}>sat</li>
+                                          <li className={this.state.daySelected["sunday"] ? 'active' : ''} onClick={this.day.bind(this, "sunday")}>SUN</li>
+                                          <li className={this.state.daySelected["monday"] ? 'active' : ''} onClick={this.day.bind(this, "monday")}>MON</li>
+                                          <li className={this.state.daySelected["tuesday"] ? 'active' : ''} onClick={this.day.bind(this, "tuesday")}>TUE</li>
+                                          <li className={this.state.daySelected["wednesday"] ? 'active' : ''} onClick={this.day.bind(this, "wednesday")}>wed</li>
+                                          <li className={this.state.daySelected["thrusday"] ? 'active' : ''} onClick={this.day.bind(this, "thrusday")}>thu</li>
+                                          <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
+                                          <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
                                           placeholder="Time"
@@ -686,7 +692,7 @@ export default class RequestCard extends Component {
                                     </InputGroup.Addon>
                                   </InputGroup>
                                 </FormGroup>
-                              </div>
+                              </div> 
                             </div>
                           </Scrollbars>
                         </div>

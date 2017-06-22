@@ -21,6 +21,7 @@ export default class RequestCard extends Component {
     this.state = {
       filterSort : "low-high",
       filterdropdown:false,
+      sortBydropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -144,16 +145,23 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
+    if(curr!=undefined){
     this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    }
   }
   componentWillUnmount() {
     window.removeEventListener();
   }
   bodyClick(e){
     if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
-      this.setState({filterdropdown:true})
+      this.setState({filterdropdown:true,sortBydropdown:false})
     }else if(this.state.filterdropdown){
-      this.setState({filterdropdown:false})
+      this.setState({filterdropdown:false,sortBydropdown:false})
+    }
+    if(e.target.closest('.showSortBy')!=null || e.target.closest('.sortFilter')!=null){
+      this.setState({sortBydropdown:true,filterdropdown:false})
+    }else if(this.state.sortBydropdown){
+      this.setState({sortBydropdown:false,filterdropdown:false})
     }
   }
   updateDimensions() {
@@ -216,9 +224,8 @@ export default class RequestCard extends Component {
       daySelected:days
     })
   }
-  filterSort(val){
-    debugger
-    this.setState({filterSort:val})
+  filterOption(val){
+    this.setState({filterSort:val,sortBydropdown:false})
   }
 
   render() {
@@ -290,16 +297,16 @@ export default class RequestCard extends Component {
                           <span>5 Results Found</span>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
-                              <div className="filterLabel">
-                                <i className="mdi mdi-swap-vertical" />
-                                <label>Sort By</label>
-                                <i className="mdi mdi-chevron-down downIcon downAlign pull-right" />
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
+                              <div className="filterLabel showSortBy">
+                                <i className="mdi mdi-swap-horizontal" />
+                                <label>Sort by</label>
+                                <i className={this.state.sortBydropdown?"mdi mdi-chevron-up downIcon downAlign pull-right":"mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
                             }>
                               <div className="sortFilter filterCard">
                                 <ul className="list-unstyled">
-                                  <li onClick={()=>{this.filterSort("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
+                                  <li onClick={()=>{this.filterOption("near-far")}} className={this.state.filterSort == "near-far"?"active":""}>
                                     <label>
                                       Distance - Near to Far
                                     </label>
@@ -307,7 +314,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li className="active" onClick={()=>{this.filterSort("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
+                                  <li className="active" onClick={()=>{this.filterOption("far-near")}} className={this.state.filterSort == "far-near"?"active":""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
@@ -315,7 +322,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
+                                  <li onClick={()=>{this.filterOption("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
                                     <label>
                                       Distance - Highest to Lowest
                                     </label>
@@ -323,7 +330,7 @@ export default class RequestCard extends Component {
                                       <i className="mdi mdi-check" />
                                     </span>
                                   </li>
-                                  <li onClick={()=>{this.filterSort("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
+                                  <li onClick={()=>{this.filterOption("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
                                     <label>
                                       Distance - Lowest to Highest
                                     </label>
@@ -341,7 +348,7 @@ export default class RequestCard extends Component {
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
-                                <i className="mdi mdi-chevron-down downIcon pull-right" />
+                                <i className={this.state.filterdropdown?"mdi mdi-chevron-up downIcon pull-right":"mdi mdi-chevron-down downIcon pull-right"} />
                               </div>
                             }>
                               <div className="Filterby filterCard filter-dropdown">

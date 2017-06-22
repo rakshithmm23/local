@@ -384,7 +384,6 @@ export default class RequestCard extends Component {
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
                               <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-horizontal" />
-
                                 <label>Sort by</label>
                                 <i className={this.state.sortBydropdown?"mdi mdi-chevron-up downIcon downAlign pull-right":"mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
@@ -484,10 +483,6 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                       </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-md-6 right toggleBtn">
-                                    <div className="filterby-wrapper">
                                       <div className="f-card ">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
@@ -498,6 +493,11 @@ export default class RequestCard extends Component {
                                           }}
                                         />
                                       </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
+                                      
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
