@@ -23,9 +23,19 @@ export default class MyRequest extends Component {
             notificationVisible: false,
             showModal: false,
             max_chars:200,
-            chars_left:0
-        };
+            chars_left:0,
+            requestType: ''
+        };        
     }
+    
+    componentWillMount() {
+        if (window.location.search.indexOf('type=waiting') > -1 ) {
+         this.setState({'requestType': 'waiting'});   
+        } else if (window.location.search.indexOf('type=success') > -1 ) {
+         this.setState({'requestType': 'success'});   
+        }
+    }
+    
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -38,6 +48,7 @@ export default class MyRequest extends Component {
     }
 
     render() {
+        console.log(this.state.requestType);
         return (
             <div className="jobUpdate">
                 {/*Header*/}

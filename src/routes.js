@@ -37,9 +37,10 @@ import CarRepair from './components/CarRepair/CarRepair';
 import CarWash from './components/CarWash/CarWash';
 import CarService from './components/CarService/CarService';
 import Messages from './components/Messages/Messages';
-import SearchResult from './components/SearchResult/SearchResult.jsx';
+import SearchResult from './components/SearchResult/SearchResult';
 import Notification from './components/Notification/Notification';
 import Favourites from './components/Favourites/Favourites';
+import VendorProfile from './components/VendorProfile/VendorProfile';
 
 export default (
   <Route path="/" component={Home}>
@@ -63,5 +64,6 @@ export default (
     <Route path="search-result" component={AuthContainer(SearchResult)} />
     <Route path="notification" component={AuthContainer(Notification)}  />
     <Route path="favourites" component={AuthContainer(Favourites)}  />
+    <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
   </Route>
 );
