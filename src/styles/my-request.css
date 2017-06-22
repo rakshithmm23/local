@@ -654,17 +654,21 @@ input[type="color"][list] {
 .f-card .toggle-switch---switch---3EchW {
   float: right;
 }
-.f-card .checkbox-inline{
+.f-card .checkbox-style{
   display: block;
   margin: 0 !important;
 }
-.f-card .checkbox-inline:first-child{
+.f-card .checkbox-style:first-child{
   padding-bottom: 20px;
 }
-.f-card .checkbox-inline{
+.f-card .checkbox-style{
 	color: #454B51 !important;
 	font-family: CenturyGothic;
 	font-size: 13px;
+}
+.f-card .checkbox-style input:checked {
+    background-color: #ED3124;
+    border: 1px solid #ED3124;
 }
 
 .f-card ul li {

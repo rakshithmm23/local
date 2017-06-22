@@ -18,7 +18,9 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
+        this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:false,byCreditcard:false}
     this.state = {
+      switched: false,
       filterSort: "low-high",
       filterdropdown: false,
       sortBydropdown: false,
@@ -151,12 +153,15 @@ export default class RequestCard extends Component {
   componentWillUnmount() {
     window.removeEventListener();
   }
-  bodyClick(e){
-    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters'))&&(!this.state.filterdropdown) ) {
+   bodyClick(e){
+    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters') )&&(!this.state.filterdropdown) ) {
       this.setState({filterdropdown:true,sortBydropdown:false})
     }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
       this.setState({sortBydropdown:true,filterdropdown:false})
-    }else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null){
+    }else if(e.target.closest('.rc-time-picker-panel')){
+      this.setState({filterdropdown:true,sortBydropdown:false})
+    }
+    else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null ){
       this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
@@ -223,6 +228,11 @@ export default class RequestCard extends Component {
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
+  switch(val){
+    this.toggleSwitchVal[val]=!this.toggleSwitchVal[val];
+    this.setState({switched:!this.state.switched})
+  }
+
 
   render() {
     //console.log(this.state.currentWidth)
@@ -386,12 +396,12 @@ export default class RequestCard extends Component {
                                       <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
-                                          checked
+                                          checked={this.toggleSwitchVal.Open24_7}
                                           size="small"
+                                          onChange={this.switch.bind(this,'Open24_7')}
                                           ref={(node) => {
                                             this.toggleSwitch = node;
-                                          }}
-                                        />
+                                          }}/>
                                       </div>
 
                                     </div>
@@ -413,7 +423,9 @@ export default class RequestCard extends Component {
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
                                         <ToggleSwitch
-                                          checked
+                                          checked={this.toggleSwitchVal.authorizedBusinesses}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'authorizedBusinesses')}
                                           size="small"
                                           ref={(node) => {
                                             this.toggleSwitch = node;
@@ -423,11 +435,13 @@ export default class RequestCard extends Component {
                                       <div className="f-card ">
                                         <h5>Only show Businesses with Deals & Offers</h5>
                                         <ToggleSwitch
-                                          checked
+                                          checked={this.toggleSwitchVal.dealsOffers}
                                           size="small"
+                                          onChange={this.switch.bind(this,'dealsOffers')}
                                           ref={(node) => {
                                             this.toggleSwitch = node;
                                           }}
+                                        />
                                         />
                                       </div>
                                       <div className="f-card payment-type">
@@ -435,8 +449,9 @@ export default class RequestCard extends Component {
                                         <div className="holder">
                                           <span className="pad0">Pay by cash</span>
                                           <ToggleSwitch
-                                            checked
-                                            size="small"
+                                            checked={this.toggleSwitchVal.byCash}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'byCash')}
                                             ref={(node) => {
                                               this.toggleSwitch = node;
                                             }}
@@ -445,8 +460,9 @@ export default class RequestCard extends Component {
                                         <div className="holder">
                                           <span className="">Pay by credit card</span>
                                           <ToggleSwitch
-                                            checked
+                                            checked={this.toggleSwitchVal.byCreditcard}
                                             size="small"
+                                            onChange={this.switch.bind(this,'byCreditcard')}
                                             ref={(node) => {
                                               this.toggleSwitch = node;
                                             }}
