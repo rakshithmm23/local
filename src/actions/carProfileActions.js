@@ -22,10 +22,17 @@ export function setCarProfileAction(carData){
     })
     .then((response) => {
       if(response.status === 200){
-        dispatch({
-          type: types.SET_CAR_PROFILE,
-          carData: response.data
-        });
+        if (typeof(response.data) == 'string' && response.data.indexOf('<!DOCTYPE html>') > -1) {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred"
+          });
+        } else {
+          dispatch({
+            type: types.SET_CAR_PROFILE,
+            carData: response.data
+          });
+        }
       }
 
     }).catch((err) => {
