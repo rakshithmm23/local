@@ -1,0 +1,133 @@
+.vendor-cover {
+    background: #fff;
+    position: relative;
+}
+
+.cover-photo {
+    height: 330px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.cover-photo img {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.vendor-profile-pic {
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    border: 3px solid #FFFFFF;
+    border-radius: 3px;
+    background-color: #E9EAF1;
+    margin-top: -20px;
+    position: absolute;
+    bottom: -40px;
+    left: 40px;
+    text-align: center;
+}
+
+.vendor-profile-pic img {
+    width: 170px;
+    height: 170px;
+}
+
+.vendor-base-header {
+    height: 60px;
+    background-color: #FFFFFF;
+}
+
+.vendor-base-header ul {
+    margin-left: 230px;
+}
+
+.vendor-base-header ul li {
+    display: inline-block;
+    width: 160px;
+}
+
+.vendor-base-header ul li a {
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    text-decoration: none;
+    outline: 0;
+    border-bottom: 2px solid transparent;
+    padding: 18px;
+    display: inline-block;
+}
+
+.vendor-base-header ul li.active a,
+.vendor-base-header ul li:hover a,
+.vendor-base-header ul li:active a,
+.vendor-base-header ul li:focus a {
+    font-family: CenturyGothic_bold;
+    color: #454B51;
+    border-bottom-color: #ED3124
+}
+
+.profile-pic-upload {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 15px;
+    line-height: 18px;
+    background: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 5px 15px;
+    text-decoration: none !important;
+    outline: 0;
+}
+
+.vendor-profile-section {
+    background: #fff;
+    margin: 15px 0;
+    padding: 20px 0;
+}
+
+.vendor-profile-section h4 {
+    color: #454B51;
+    font-family: CenturyGothic_bold;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+.vendor-description{
+    margin-bottom: 40px;
+}
+.vendor-description p,
+.vendor-description li {
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 15px;
+    line-height: 25px;
+}
+.vendor-description ul{
+    margin-left: 18px;
+    width: 500px;
+    clear: both;
+}
+.vendor-description li {
+    list-style: disc;
+    width: 250px;
+    float: left;
+    margin: 5px 0px;
+}
+.vendor-services ul{
+    width: 150px;
+    margin: 0;
+}
+.vendor-services li{
+    width: auto;
+    float: none;
+    list-style: none;
+    margin: 0;
+    text-align: center;
+}
