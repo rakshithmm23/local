@@ -20,7 +20,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       filterSort : "low-high",
-      filterdropdown:false, 
+      filterdropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -222,7 +222,6 @@ export default class RequestCard extends Component {
     })
   }
   filterSort(val){
-    debugger
     this.setState({filterSort:val})
   }
 

@@ -108,6 +108,8 @@ export default class SignIn extends Component {
                             <div className="or-text">
                                 <span>OR</span>
                             </div>
+                            <form>
+
                             <div className="login-panel-body">
                             {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
                               <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
@@ -129,8 +131,9 @@ export default class SignIn extends Component {
                             </div>
                             <div className="login-panel-footer">
                                 <a onClick={(e) => {e.preventDefault(); router.push('forgot-password')}} className="blue-text">Forget Password ?</a>
-                                <Button btnCallBack={this.signInAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Sign In"/>
+                                <Button btnCallBack={this.signInAction.bind(this)} isSubmitBtn={true} btnType="gmail" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
+                                </form>
                         </div>
                       </Scrollbars>
                   </div>

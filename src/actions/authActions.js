@@ -267,6 +267,8 @@ export function logout(router) {
     })
     .catch((err) => {
         console.log(err);
+        localStorage.clear();
+        router.push('/');
     });
   };
 }

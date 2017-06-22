@@ -6,7 +6,7 @@ export default class Button extends Component {
     }
 
     render() {
-        const { btnType, btnSize, disabled, fontSize, label, btnCallBack, iconName, customClass, backgroundColor } = this.props;
+        const { btnType, btnSize, disabled, fontSize, label, btnCallBack, iconName, customClass, backgroundColor, isSubmitBtn } = this.props;
         const btnProperties = {};
         let btnClass = 'btn btn-theme ';
         let customStyle = {};
@@ -23,6 +23,9 @@ export default class Button extends Component {
         }
         if (disabled) {
           btnProperties.disabled = disabled;
+        }
+        if (isSubmitBtn) {
+          btnProperties.type = "submit";
         }
         return (
           <button {...btnProperties}>
