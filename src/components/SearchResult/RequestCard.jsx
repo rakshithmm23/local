@@ -134,7 +134,7 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
-  
+
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
@@ -143,7 +143,7 @@ export default class RequestCard extends Component {
     this.updateDimensions();
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
   }
-  componentDidMount() {    
+  componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
   componentDidUpdate() {
@@ -227,10 +227,6 @@ export default class RequestCard extends Component {
       daySelected:days
     })
   }
-<<<<<<< HEAD
-  filterSort(val){
-    this.setState({filterSort:val})
-=======
   filterOption(val){
     this.setState({filterSort:val,sortBydropdown:false})
   }
@@ -242,7 +238,6 @@ export default class RequestCard extends Component {
       this.toggleSwitchVal.byCash = false;
     }
     this.setState({ switched: !this.state.switched })
->>>>>>> 92110020297364641bf328c3f74e185b6549d7e2
   }
 
   render() {
@@ -383,7 +378,7 @@ export default class RequestCard extends Component {
                                             <label className="checkbox-style"><input type="checkbox" value="" />Car Service</label>
                                             <label className="checkbox-style"><input type="checkbox" value="" />Car Repair</label>
                                           </div>
-                                          
+
                                         </div>
                                       </div>
                                       <div className="f-card">
@@ -424,7 +419,7 @@ export default class RequestCard extends Component {
                                         />
                                         <i className="mdi mdi-chevron-down time-to" />
                                       </div>
-                                      
+
 
                                     </div>
                                   </div>

@@ -23,12 +23,8 @@ export default class RequestCard extends Component {
     this.state = {
       switched: false,
       filterSort : "low-high",
-<<<<<<< HEAD
       filterdropdown:false,
-=======
-      filterdropdown:false, 
       sortBydropdown:false,
->>>>>>> 92110020297364641bf328c3f74e185b6549d7e2
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -159,7 +155,7 @@ export default class RequestCard extends Component {
     if(curr!=undefined){
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
     }
-    
+
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -237,10 +233,6 @@ export default class RequestCard extends Component {
       daySelected:days
     })
   }
-<<<<<<< HEAD
-  filterSort(val){
-    this.setState({filterSort:val})
-=======
   filterOption(val){
     this.setState({filterSort:val,sortBydropdown:false})
   }
@@ -252,7 +244,6 @@ export default class RequestCard extends Component {
       this.toggleSwitchVal.byCash = false;
     }
     this.setState({ switched: !this.state.switched })
->>>>>>> 92110020297364641bf328c3f74e185b6549d7e2
   }
 
 
@@ -521,7 +512,7 @@ export default class RequestCard extends Component {
                                   </div>
                                   <div className="col-md-6 right toggleBtn">
                                     <div className="filterby-wrapper">
-                                      
+
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">

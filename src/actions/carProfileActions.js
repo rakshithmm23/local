@@ -4,6 +4,9 @@ import axios from 'axios';
 
 export function setCarProfileAction(carData){
   return (dispatch) => {
+    dispatch({
+      type: types.HIDE_ERROR_MESSAGE
+    });
     const formData = new FormData();
 
   let mandateFields = ['name', 'make', 'model', 'year', 'regNo'];
@@ -28,6 +31,12 @@ export function setCarProfileAction(carData){
             statusMessage: "Unknown error occurred"
           });
         } else {
+          let carProfiles = localStorage.getItem('carProfiles');
+          if (!carProfiles) {
+            carProfiles = [];
+          }
+          carProfiles.push(response.data);
+          localStorage.setItem('carProfiles', JSON.stringify(carProfiles));
           dispatch({
             type: types.SET_CAR_PROFILE,
             carData: response.data

@@ -15,7 +15,7 @@ export default function CarProfileContainer(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return {carProfileReducer: state.carProfileReducer};
+    return {carProfileReducer: state.carProfileReducer, authReducer: state.authReducer};
   }
 
   function mapDispatchToProps(dispatch) {

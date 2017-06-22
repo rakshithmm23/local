@@ -225,10 +225,6 @@ export default class RequestCard extends Component {
       daySelected: days
     })
   }
-<<<<<<< HEAD
-  filterSort(val){
-    this.setState({filterSort:val})
-=======
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
@@ -240,7 +236,6 @@ export default class RequestCard extends Component {
       this.toggleSwitchVal.byCash = false;
     }
     this.setState({ switched: !this.state.switched })
->>>>>>> 92110020297364641bf328c3f74e185b6549d7e2
   }
 
 
