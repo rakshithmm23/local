@@ -6,13 +6,37 @@ import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
 import Button from '../common/Button';
 import BookServiceBox from './BookServiceBox';
+import { concat } from 'lodash';
 
 export default class BookService extends Component {
     constructor(props, context) {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
+        let carProfiles = localStorage.getItem('carProfiles');
+        if (!carProfiles) {
+          carProfiles = [];
+        }
+        carProfiles = concat(JSON.parse(carProfiles), [
+          {
+            make: "abc",
+            model: "Red",
+            regNo: "B 509234",
+            name: "My Nissan GT-R",
+            year: 2015
+          },
+          {
+            make: "abc",
+            model: "Red",
+            regNo: "B 509234",
+            name: "My Nissan GT-R",
+            year: 2015
+          }
+        ]
+        );
+        console.log(carProfiles)
         this.state = {
-            notificationVisible: false
+            notificationVisible: false,
+            carProfiles: carProfiles
         };
     }
     toggleNotification(isVisible) {
@@ -41,9 +65,9 @@ export default class BookService extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
-                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
-                                    <BookServiceBox date="17 April 16" model="Red 2016" place="B 509234 Dubai" name="My Nissan GT-R" />
+                                    {this.state.carProfiles && this.state.carProfiles.map((profile, index) => {
+                                      return (<BookServiceBox date="17 April 16" year={profile.year} model={profile.model} regNo={profile.regNo} name={profile.name} key={index}/>);
+                                    })}
                                 </div>
                             </div>
                         </div>

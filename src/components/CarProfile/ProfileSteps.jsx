@@ -288,13 +288,6 @@ class ProfileSteps extends Component {
                             <Scrollbars className="img-container">
                                 {carListView}
                             </Scrollbars>
-                            <div className="next-button">
-                                <Button disabled={this.state.activeLogo ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next"
-                                    btnCallBack={(e) => {
-                                        e.preventDefault(); this.tabOpen('modelTabVisible');
-                                        this.setState({ 'modelTabIsUnlocked': this.state.activeLogo ? true : false });
-                                    }} />
-                            </div>
                         </div>}
                 </section>
                 <section className="collapse-panel selectModal">
@@ -323,9 +316,6 @@ class ProfileSteps extends Component {
                                 <div className="img-container">
                                     {carModelView}
                                 </div>
-                            </div>
-                            <div className="next-button">
-                                <Button disabled={this.state.activeModel ? false : true} btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={(e) => { e.preventDefault(); this.tabOpen('otherDetailsTabVisible'); this.setState({ 'otherDetailsTabIsUnlocked': this.state.activeModel ? true : false }) }} />
                             </div>
                         </div>}
                 </section>

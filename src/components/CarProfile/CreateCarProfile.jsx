@@ -5,6 +5,7 @@ import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
 import ProfileSteps from './ProfileSteps';
 import MobileNotification from '../common/MobileNotification';
+import AlertDismissable from '../common/AlertDismissable';
 
 export default class NewCarProfile extends Component {
     constructor(props) {
@@ -21,8 +22,12 @@ export default class NewCarProfile extends Component {
     onSubmit(carProfileData){
       this.props.actions.setCarProfileAction(carProfileData);
     }
+    componentWillUnmount() {
+      this.props.actions.hideErrorMessage();
+    }
 
     render() {
+      const {authReducer} = this.props;
         return (
             <div>
                 {/*Header*/}
@@ -41,6 +46,9 @@ export default class NewCarProfile extends Component {
 
                     <div className="inSection">
                         <div className="padwrapper">
+                            {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                              <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                            </AlertDismissable>}
                             {/*Job Updates*/}
                             <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} />
                         </div>

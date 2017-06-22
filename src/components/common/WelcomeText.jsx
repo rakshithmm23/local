@@ -4,6 +4,7 @@ import Button from '../common/Button';
 export default class WelcomeText extends Component {
 
     render() {
+      const {router} = this.props;
         return (
            <div className="welcome-banner">
                <div className="container-fluid">
@@ -13,7 +14,7 @@ export default class WelcomeText extends Component {
                             It’s great to see that you have signed up with Carcility.
                                 To get started, let’s create your car profile
                         </p>
-                        <Button btnType="label" btnSize="lg" fontSize={16} label="Create a car profile" />
+                        <Button btnType="label" btnSize="lg" fontSize={16} label="Create a car profile" btnCallBack={() => {router.push('/car-profile')}}/>
 
                     </div>
                     <div className="col-md-4 col-sm-4 col-xs-12">

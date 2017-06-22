@@ -53,14 +53,14 @@ class BookServiceBox extends Component {
                                 <li>
                                     <span>
                                         <h4>model</h4>
-                                        <span>{this.props.model}</span>
+                                        <span>{this.props.model} {this.props.year}</span>
                                     </span>
                                 </li>
                             </ul>
                         </div>
                     </figure>
                     <figcaption className="myCar-card-caption">
-                        <h4>{this.props.place}</h4>
+                        <h4>{this.props.regNo} Dubai</h4>
                         <h5>{this.props.name}</h5>
                         <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={() => this.setState({ showModal: true })} />
                     </figcaption>

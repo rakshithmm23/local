@@ -79,7 +79,7 @@ export default class Dashboard extends Component {
                     <div className="topSection">
                         <div className="padwrapper">
                             {/*Welcome Text*/}
-                            <WelcomeText />
+                            <WelcomeText router={this.props.router}/>
                             {/*Service List*/}
                             <div className="service-list text-center row">
                                 {serviceTypesView}
