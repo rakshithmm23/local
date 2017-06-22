@@ -46,6 +46,13 @@
   font-size: 14px;
 }
 
+.btn-alert{
+    background: transparent;
+    border: 1px solid #ED3124;
+    color: #ED3124 !important;
+    font-family: CenturyGothic_bold;
+    height: 42px;
+}
 @media screen and (max-width: 767px) {
   .btn-theme {
     height: 35px;

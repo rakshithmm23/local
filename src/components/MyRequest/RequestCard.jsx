@@ -13,6 +13,7 @@ import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import AcceptedQuotes from './AcceptedQuotes';
 
 
 export default class RequestCard extends Component {
@@ -20,7 +21,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.state = {
       filterSort : "low-high",
-      filterdropdown:false, 
+      filterdropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     },
@@ -370,7 +371,7 @@ export default class RequestCard extends Component {
                   {this.state.jobUpdates == "quotes" && <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
-                        <div className="title">
+                        <div className="title hide">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
                             <DropdownButton bsSize="small" id="dropdown-size-small" noCaret title={
@@ -570,7 +571,7 @@ export default class RequestCard extends Component {
                             renderTrackVertical={this.renderTrackVertical}
                             renderThumbVertical={this.renderThumbVertical}
                           >
-                            <div className="wrapper" ref={'quotesList'}>
+                            <div className="wrapper hide" ref={'quotesList'}>
 
                               <div>
                                 {map(this.state.jobCardDetails, (val, key) => {
@@ -581,6 +582,9 @@ export default class RequestCard extends Component {
                                 })}
                               </div>
                               {/*}*/}
+                            </div>
+                            <div>
+                              <AcceptedQuotes />
                             </div>
                           </Scrollbars>
                         </div>
@@ -598,9 +602,6 @@ export default class RequestCard extends Component {
                             containerElement={<div style={{ height: 100 + '%' }} />}
                             mapElement={<div style={{ height: 100 + '%' }} />}
                           />
-
-
-
                         </div>
                       </div>
                       <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
