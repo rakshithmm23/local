@@ -18,7 +18,7 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
-        this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:false,byCreditcard:false}
+    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
       switched: false,
       filterSort: "low-high",
@@ -153,16 +153,16 @@ export default class RequestCard extends Component {
   componentWillUnmount() {
     window.removeEventListener();
   }
-   bodyClick(e){
-    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters') )&&(!this.state.filterdropdown) ) {
-      this.setState({filterdropdown:true,sortBydropdown:false})
-    }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
-      this.setState({sortBydropdown:true,filterdropdown:false})
-    }else if(e.target.closest('.rc-time-picker-panel')){
-      this.setState({filterdropdown:true,sortBydropdown:false})
+  bodyClick(e) {
+    if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
+      this.setState({ filterdropdown: true, sortBydropdown: false })
+    } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
+      this.setState({ sortBydropdown: true, filterdropdown: false })
+    } else if (e.target.closest('.rc-time-picker-panel')) {
+      this.setState({ filterdropdown: true, sortBydropdown: false })
     }
-    else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null ){
-      this.setState({filterdropdown:false,sortBydropdown:false})
+    else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
+      this.setState({ filterdropdown: false, sortBydropdown: false })
     }
   }
   updateDimensions() {
@@ -228,9 +228,14 @@ export default class RequestCard extends Component {
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
-  switch(val){
-    this.toggleSwitchVal[val]=!this.toggleSwitchVal[val];
-    this.setState({switched:!this.state.switched})
+  switch(val) {
+    this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
+    if (val == 'byCash') {
+      this.toggleSwitchVal.byCreditcard = false;
+    } else if (val == 'byCreditcard') {
+      this.toggleSwitchVal.byCash = false;
+    }
+    this.setState({ switched: !this.state.switched })
   }
 
 
@@ -305,7 +310,7 @@ export default class RequestCard extends Component {
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
                               <div className="filterLabel showSortBy">
-                                <i className="mdi mdi-swap-horizontal" />
+                                <i className="mdi mdi-swap-vertical" />
                                 <label>Sort by</label>
                                 <i className={this.state.sortBydropdown ? "mdi mdi-chevron-up downIcon downAlign pull-right" : "mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
@@ -391,24 +396,41 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
+                                        <TimePicker
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatFrom}
+                                          use12Hours
+                                        />
+                                        <i className="mdi mdi-chevron-down time-from" />
+                                        <span className="time-to-time">to</span>
+                                        <TimePicker
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatTo}
+                                          use12Hours
+                                        />
+                                        <i className="mdi mdi-chevron-down time-to" />
 
                                       </div>
-                                      <div className="f-card toggleBtn">
-                                        <h5>Open 24/7</h5>
-                                        <ToggleSwitch
-                                          checked={this.toggleSwitchVal.Open24_7}
-                                          size="small"
-                                          onChange={this.switch.bind(this,'Open24_7')}
-                                          ref={(node) => {
-                                            this.toggleSwitch = node;
-                                          }}/>
-                                      </div>
+
 
                                     </div>
                                   </div>
                                   <div className="col-md-6 right toggleBtn">
                                     <div className="filterby-wrapper">
-
+                                      <div className="f-card toggleBtn">
+                                        <h5>Open 24/7</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.Open24_7}
+                                          size="small"
+                                          onChange={this.switch.bind(this, 'Open24_7')}
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }} />
+                                      </div>
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
@@ -419,13 +441,13 @@ export default class RequestCard extends Component {
                                           <span className="mdi mdi-star-outline"></span>
                                         </ul>
                                       </div>
-                                      
+
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
                                         <ToggleSwitch
                                           checked={this.toggleSwitchVal.authorizedBusinesses}
                                           size="small"
-                                          onChange={this.switch.bind(this,'authorizedBusinesses')}
+                                          onChange={this.switch.bind(this, 'authorizedBusinesses')}
                                           size="small"
                                           ref={(node) => {
                                             this.toggleSwitch = node;
@@ -437,7 +459,7 @@ export default class RequestCard extends Component {
                                         <ToggleSwitch
                                           checked={this.toggleSwitchVal.dealsOffers}
                                           size="small"
-                                          onChange={this.switch.bind(this,'dealsOffers')}
+                                          onChange={this.switch.bind(this, 'dealsOffers')}
                                           ref={(node) => {
                                             this.toggleSwitch = node;
                                           }}
@@ -450,8 +472,8 @@ export default class RequestCard extends Component {
                                           <span className="pad0">Pay by cash</span>
                                           <ToggleSwitch
                                             checked={this.toggleSwitchVal.byCash}
-                                          size="small"
-                                          onChange={this.switch.bind(this,'byCash')}
+                                            size="small"
+                                            onChange={this.switch.bind(this, 'byCash')}
                                             ref={(node) => {
                                               this.toggleSwitch = node;
                                             }}
@@ -462,7 +484,7 @@ export default class RequestCard extends Component {
                                           <ToggleSwitch
                                             checked={this.toggleSwitchVal.byCreditcard}
                                             size="small"
-                                            onChange={this.switch.bind(this,'byCreditcard')}
+                                            onChange={this.switch.bind(this, 'byCreditcard')}
                                             ref={(node) => {
                                               this.toggleSwitch = node;
                                             }}
@@ -680,7 +702,7 @@ export default class RequestCard extends Component {
                                     </InputGroup.Addon>
                                   </InputGroup>
                                 </FormGroup>
-                              </div> 
+                              </div>
                             </div>
                           </Scrollbars>
                         </div>

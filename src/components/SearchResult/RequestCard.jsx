@@ -18,7 +18,7 @@ import Switch from 'react-toggle-switch'
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
-    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:false,byCreditcard:false}
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
       switched: false,
       filterSort : "low-high",
@@ -230,9 +230,14 @@ export default class RequestCard extends Component {
   filterOption(val){
     this.setState({filterSort:val,sortBydropdown:false})
   }
-  switch(val){
-    this.toggleSwitchVal[val]=!this.toggleSwitchVal[val];
-    this.setState({switched:!this.state.switched})
+   switch(val) {
+    this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
+    if (val == 'byCash') {
+      this.toggleSwitchVal.byCreditcard = false;
+    } else if (val == 'byCreditcard') {
+      this.toggleSwitchVal.byCash = false;
+    }
+    this.setState({ switched: !this.state.switched })
   }
 
   render() {
@@ -306,7 +311,7 @@ export default class RequestCard extends Component {
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
                               <div className="filterLabel showSortBy">
-                                <i className="mdi mdi-swap-horizontal" />
+                                <i className="mdi mdi-swap-vertical" />
                                 <label>Sort by</label>
                                 <i className={this.state.sortBydropdown?"mdi mdi-chevron-up downIcon downAlign pull-right":"mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
@@ -403,6 +408,7 @@ export default class RequestCard extends Component {
                                           format={formatFrom}
                                           use12Hours
                                         />
+                                        <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
                                           placeholder="Time"
@@ -411,7 +417,7 @@ export default class RequestCard extends Component {
                                           format={formatTo}
                                           use12Hours
                                         />
-
+                                        <i className="mdi mdi-chevron-down time-to" />
                                       </div>
                                       
 

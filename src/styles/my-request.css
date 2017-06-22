@@ -615,6 +615,22 @@ input[type="color"][list] {
 
 .f-card {
   margin-bottom: 30px;
+  position: relative;
+}
+.f-card .time-from{
+  position: absolute;
+	color: #717982;
+	font-size: 18px;
+      bottom: 20px;
+    left: 110px;
+}
+.f-card .time-to{
+  position: absolute;
+	color: #717982;
+	font-size: 18px;
+      bottom: 20px;
+     right: 191px;
+
 }
 
 .f-card .input-range {
