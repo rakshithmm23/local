@@ -47,7 +47,7 @@ export default class BookService extends Component {
         return (
             <div>
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions}/>
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
@@ -82,7 +82,7 @@ export default class BookService extends Component {
                             <CustomModal showModal={this.state.showModal} footer="true" title="Delete my audi a6">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
-                                    
+
                                 </Modal.Body>
 
                             </CustomModal>

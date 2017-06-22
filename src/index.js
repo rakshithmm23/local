@@ -42,6 +42,7 @@ import './styles/messages.css';
 import './styles/search-result.css';
 import './styles/notification.css';
 import './styles/vendor-profile.css';
+import './styles/vendordetail.css';
 
 export const store = configureStore();
 

@@ -218,7 +218,6 @@ export default class RequestCard extends Component {
     })
   }
   filterSort(val){
-    debugger
     this.setState({filterSort:val})
   }
 

@@ -14,7 +14,7 @@ export default class Header extends Component {
     }
 
     render() {
-        const { authActions, router, notificationCount, profileName, notificationCallBack } = this.props;
+        const { actions, router, notificationCount, profileName, notificationCallBack } = this.props;
         const messagesThread = [
             {
                 messageFrom: "Shine Works",
@@ -152,7 +152,7 @@ export default class Header extends Component {
                                         <span className="no-notify"></span>
                                     </div>} >
                                     <MenuItem eventKey="Messages">
-                                        Messages 
+                                        Messages
                                         <a href="" className="view_all">View All</a>
                                     </MenuItem>
 
@@ -162,7 +162,7 @@ export default class Header extends Component {
                         </li>
 
                         <li className="profile-header">
-                            <Dropdown authActions={authActions} router={router} />
+                            <Dropdown actions={actions} router={router} />
                         </li>
                     </ul>
                 </div>

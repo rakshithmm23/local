@@ -62,7 +62,6 @@ class ProfileSteps extends Component {
         this.formData['model'] = name;
     }
     tabOpen(val) {
-        debugger
         if (val == 'manufacturerTabVisible') {
             this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' ) {
@@ -116,7 +115,7 @@ class ProfileSteps extends Component {
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
-                <div className="upload-box-wrapper box-shadow">
+                <div className="upload-box-wrapper box-shadow" key={index}>
                     <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
                         <i className="mdi mdi-close" />
                     </span>

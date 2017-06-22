@@ -9,7 +9,7 @@ import Footer from '../common/Footer';
 import RequestCard from './RequestCard';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
-import {serviceTypes} from '../../constants/staticData'; 
+import {serviceTypes} from '../../constants/staticData';
 
 export default class SearchResult extends Component {
     constructor(props, context) {
@@ -27,7 +27,7 @@ export default class SearchResult extends Component {
         return (
             <div className="jobUpdate">
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} />
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions}/>
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}

@@ -29,7 +29,7 @@ export default class Dropdown extends Component {
                 <MenuItem eventKey="3">
                     <i className="mdi mdi-settings" /> Settings
                 </MenuItem>
-                <MenuItem onClick={() => {this.props.authActions.logout(this.props.router)}} eventKey="4" className="active">
+                <MenuItem onClick={() => {this.props.actions.logout(this.props.router)}} eventKey="4" className="active">
                     <i className="mdi mdi-power" /> Sign Out
                 </MenuItem>
             </DropdownButton>
