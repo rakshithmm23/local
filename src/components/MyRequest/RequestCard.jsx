@@ -158,18 +158,15 @@ export default class RequestCard extends Component {
     window.removeEventListener("resize", this.updateDimensions);
   }
   bodyClick(e){
-
-    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
-      this.setState({filterdropdown:true});
-    }else if(this.state.filterdropdown){
-      this.setState({filterdropdown:false});
-    }
-    if(e.target.closest('.showSortBy')!=null || e.target.closest('.sortFilter')!=null){
-      this.setState({sortBydropdown:true})
-    }else{
-      this.setState({sortBydropdown:false})
+    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters'))&&(!this.state.filterdropdown) ) {
+      this.setState({filterdropdown:true,sortBydropdown:false})
+    }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
+      this.setState({sortBydropdown:true,filterdropdown:false})
+    }else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null){
+      this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
+
   updateDimensions() {
     const windowWidth = this.windowWidth();
     this.setState({ 'currentWidth': windowWidth });
@@ -483,7 +480,7 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                       </div>
-                                      <div className="f-card ">
+                                      <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
                                           checked

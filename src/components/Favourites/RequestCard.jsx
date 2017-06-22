@@ -151,17 +151,13 @@ export default class RequestCard extends Component {
   componentWillUnmount() {
     window.removeEventListener();
   }
-  bodyClick(e) {
-
-    if (e.target.closest('.filter-dropdown') != null || e.target.closest('.showFilters') != null || e.target.closest('.rc-time-picker-panel') != null) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
-    } else if (this.state.filterdropdown) {
-      this.setState({ filterdropdown: false, sortBydropdown: false })
-    }
-    if (e.target.closest('.showSortBy') != null || e.target.closest('.sortFilter') != null) {
-      this.setState({ sortBydropdown: true, filterdropdown: false })
-    } else if (this.state.sortBydropdown) {
-      this.setState({ sortBydropdown: false, filterdropdown: false })
+  bodyClick(e){
+    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters'))&&(!this.state.filterdropdown) ) {
+      this.setState({filterdropdown:true,sortBydropdown:false})
+    }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
+      this.setState({sortBydropdown:true,filterdropdown:false})
+    }else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null){
+      this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
   updateDimensions() {
@@ -385,21 +381,6 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
-                                        <TimePicker
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatFrom}
-                                          use12Hours
-                                        />
-                                        <span className="time-to-time">to</span>
-                                        <TimePicker
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatTo}
-                                          use12Hours
-                                        />
 
                                       </div>
                                       <div className="f-card toggleBtn">
@@ -428,16 +409,7 @@ export default class RequestCard extends Component {
                                           <span className="mdi mdi-star-outline"></span>
                                         </ul>
                                       </div>
-                                      <div className="f-card">
-                                        <h5>Only show favourites</h5>
-                                        <ToggleSwitch
-                                          checked
-                                          size="small"
-                                          ref={(node) => {
-                                            this.toggleSwitch = node;
-                                          }}
-                                        />
-                                      </div>
+                                      
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
                                         <ToggleSwitch

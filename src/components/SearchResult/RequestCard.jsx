@@ -13,12 +13,14 @@ import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import Switch from 'react-toggle-switch'
 
 
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
+      switched: false,
       filterSort : "low-high",
       filterdropdown:false,
       sortBydropdown:false,
@@ -132,6 +134,7 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
+  
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
@@ -153,15 +156,12 @@ export default class RequestCard extends Component {
     window.removeEventListener();
   }
   bodyClick(e){
-    if(e.target.closest('.filter-dropdown')!=null|| e.target.closest('.showFilters')!=null || e.target.closest('.rc-time-picker-panel')!=null) {
+    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters'))&&(!this.state.filterdropdown) ) {
       this.setState({filterdropdown:true,sortBydropdown:false})
-    }else if(this.state.filterdropdown){
-      this.setState({filterdropdown:false,sortBydropdown:false})
-    }
-    if(e.target.closest('.showSortBy')!=null || e.target.closest('.sortFilter')!=null){
+    }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
       this.setState({sortBydropdown:true,filterdropdown:false})
-    }else if(this.state.sortBydropdown){
-      this.setState({sortBydropdown:false,filterdropdown:false})
+    }else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null){
+      this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
   updateDimensions() {
@@ -356,6 +356,20 @@ export default class RequestCard extends Component {
                                   <div className="col-md-6 left">
                                     <div className="filterby-wrapper">
                                       <div className="f-card">
+                                        <h5>Service Type</h5>
+                                        <div className="row">
+                                          <div className="col-md-6 pad0">
+                                            <label className="checkbox-inline"><input type="checkbox" value="" />All</label>
+                                            <label className="checkbox-inline"><input type="checkbox" value="" />Car Wash</label>
+                                          </div>
+                                          <div className="col-md-6">
+                                            <label className="checkbox-inline"><input type="checkbox" value="" />Car Service</label>
+                                            <label className="checkbox-inline"><input type="checkbox" value="" />Car Repair</label>
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div className="f-card">
                                         <h5>Distance</h5>
                                         <InputRange
                                           formatLabel={distValue => `${distValue}km`}
@@ -363,16 +377,6 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
-
-                                      </div>
-                                      <div className="f-card">
-                                        <h5>Price</h5>
-                                        <InputRange
-                                          formatLabel={priceValue => `${priceValue}AED`}
-                                          minValue={0}
-                                          maxValue={100}
-                                          value={this.state.priceValue}
-                                          onChange={priceValue => this.setState({ priceValue })} />
                                       </div>
                                       <div className="f-card">
                                         <h5>Open Between</h5>
@@ -402,6 +406,12 @@ export default class RequestCard extends Component {
                                         />
 
                                       </div>
+                                      
+
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
                                       <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
                                         <ToggleSwitch
@@ -412,12 +422,6 @@ export default class RequestCard extends Component {
                                           }}
                                         />
                                       </div>
-
-                                    </div>
-                                  </div>
-                                  <div className="col-md-6 right toggleBtn">
-                                    <div className="filterby-wrapper">
-
                                       <div className="f-card">
                                         <h5>Rating</h5>
                                         <ul className="rating">
