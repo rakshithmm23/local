@@ -237,6 +237,12 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
+  clearFilter(){
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
+    this.setState({filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
+    }})
+  }
 
 
   render() {
@@ -494,7 +500,7 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a>Clear</a>
+                                    <a onClick={this.clearFilter.bind(this)}>Clear</a>
                                     <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
                                 </div>

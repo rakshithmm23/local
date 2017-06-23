@@ -154,6 +154,7 @@
     }
 
     .card-info .job-details li .btn-theme {
+        font-size: 12px;
         padding: 0;
         margin: 0;
         color: #F48021 !important;
