@@ -90,7 +90,7 @@ class ProfileSteps extends Component {
                 imageUploaded: this.state.imageUploaded.concat(files),
                 uploadImgSize: fileImgSize + this.state.uploadImgSize,
             });
-            this.formData['file'] = this.state.imageUploaded;
+            this.formData['file'] = this.state.imageUploaded.concat(files);
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -111,6 +111,7 @@ class ProfileSteps extends Component {
         deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
         array.splice(val, 1);
         this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
+        this.formData['file'] = array;
     }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
