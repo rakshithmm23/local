@@ -22,7 +22,7 @@ class ServiceSteps extends Component {
             rationCard: [],
             drivingLicence: [],
             PrefferedLocation: 'Select Location',
-            startDate: moment(),
+            // startDate: moment(),
             step1Panel: true,
             step2Panel: false,
             carWashCategories: [
@@ -374,7 +374,7 @@ class ServiceSteps extends Component {
                                     <div className="row date-time">
                                         <div className="col-md-6 padLeft0">
                                             <DatePicker
-                                                // selected={this.state.startDate}
+                                                selected={this.state.startDate}
                                                 onChange={this.handleChange}
                                                 placeholderText="Date"
                                             />

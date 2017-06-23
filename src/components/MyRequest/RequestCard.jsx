@@ -19,7 +19,7 @@ import AcceptedQuotes from './AcceptedQuotes';
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
-        this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
       switched: false,
       filterSort : "low-high",
@@ -235,6 +235,13 @@ export default class RequestCard extends Component {
   }
   filterOption(val){
     this.setState({filterSort:val,sortBydropdown:false})
+  }
+  clearFilter(){
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
+    this.setState({filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
+    }})
+    
   }
    switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
@@ -582,7 +589,8 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a onClick={()=>this.setState({filterdropdown:false})}>Clear</a>
+                                    {/*{()=>this.setState({filterdropdown:false})}*/}
+                                    <a onClick={this.clearFilter.bind(this)}>Clear</a>
                                     <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
                                   </div>
                                 </div>
