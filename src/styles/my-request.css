@@ -623,6 +623,7 @@ input[type="color"][list] {
 	font-size: 18px;
       bottom: 20px;
     left: 110px;
+    z-index: -1;
 }
 .f-card .time-to{
   position: absolute;
