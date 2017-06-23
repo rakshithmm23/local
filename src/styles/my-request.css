@@ -470,13 +470,13 @@ input[type="color"][list] {
 }
 
 .quotes-chat-area .c-message .delivered-details {
-  margin-left: 55px;
+  margin-left: 45px;
   margin-top: 5px;
   margin-bottom: 20px;
 }
 
 .quotes-chat-area .c-message.message-in.chain-msg .delivered-details {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .quotes-chat-area .c-message .delivered-details label {
@@ -628,9 +628,9 @@ input[type="color"][list] {
   position: absolute;
 	color: #717982;
 	font-size: 18px;
-      bottom: 20px;
-     right: 191px;
-
+  bottom: 20px;
+  right: 191px;
+  z-index: -1;
 }
 
 .f-card .input-range {
@@ -661,6 +661,8 @@ input[type="color"][list] {
   border: 1px solid #CCD2D7;
   border-radius: 3px;
   background-color: #FFFFFF;
+  cursor: pointer;
+  background: transparent;
 }
 
 .f-card .time-to-time {
@@ -754,6 +756,9 @@ input[type="color"][list] {
 }
 .downIcon.downAlign{
      top: 1px;
+}
+.openAlign{
+  margin-bottom: 15px;
 }
 @media screen and (max-width: 1100px) {
   .quotes-view .title span {

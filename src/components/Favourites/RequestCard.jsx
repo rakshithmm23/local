@@ -13,8 +13,6 @@ import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
-
-
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
@@ -34,7 +32,7 @@ export default class RequestCard extends Component {
       activelongitue: '',
       jobCardDetails: [
         {
-          name: "Shine Works",
+          name: "1. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -87,7 +85,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Works",
+          name: "2. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -95,7 +93,7 @@ export default class RequestCard extends Component {
           longitude: 77.29058570000007,
           isActive: false
         }, {
-          name: "Shine Works2",
+          name: "3. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -103,7 +101,7 @@ export default class RequestCard extends Component {
           longitude: 77.59058570000002,
           isActive: false
         }, {
-          name: "Shine Works3",
+          name: "4. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -112,7 +110,7 @@ export default class RequestCard extends Component {
           isActive: false
         },
         {
-          name: "Shine Works4",
+          name: "5. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -335,7 +333,7 @@ export default class RequestCard extends Component {
                                   </li>
                                   <li onClick={() => { this.filterOption("high-low") }} className={this.state.filterSort == "high-low" ? "active" : ""}>
                                     <label>
-                                      Distance - Highest to Lowest
+                                      Rating - Highest to Lowest
                                     </label>
                                     <span>
                                       <i className="mdi mdi-check" />
@@ -343,7 +341,7 @@ export default class RequestCard extends Component {
                                   </li>
                                   <li onClick={() => { this.filterOption("low-high") }} className={this.state.filterSort == "low-high" ? "active" : ""}>
                                     <label>
-                                      Distance - Lowest to Highest
+                                      Rating - Lowest to Highest
                                     </label>
                                     <span>
                                       <i className="mdi mdi-check" />
@@ -514,7 +512,7 @@ export default class RequestCard extends Component {
                               <div>
                                 {map(this.state.jobCardDetails, (val, key) => {
                                   return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key + 1} rating={val.rating} distance={val.distance} reviews={val.review}
+                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name}  rating={val.rating} distance={val.distance} reviews={val.review}
                                       viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                   );
                                 })}
@@ -537,9 +535,6 @@ export default class RequestCard extends Component {
                             containerElement={<div style={{ height: 100 + '%' }} />}
                             mapElement={<div style={{ height: 100 + '%' }} />}
                           />
-
-
-
                         </div>
                       </div>
                       <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
@@ -582,7 +577,7 @@ export default class RequestCard extends Component {
                               <div className="quotation-details">
                                 {map(this.state.jobCardDetails, (value, jobCardKey) => {
                                   return (
-                                    <div className="quotation-block" key={jobCardKey}>
+                                    value.quotationDetails!= undefined && <div className="quotation-block" key={jobCardKey}>
                                       {map(value.quotationDetails, (val, quotationKey) => {
                                         return (
                                           <div>
