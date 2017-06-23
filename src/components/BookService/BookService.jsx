@@ -15,8 +15,10 @@ export default class BookService extends Component {
         let carProfiles = localStorage.getItem('carProfiles');
         if (!carProfiles) {
           carProfiles = [];
+        } else {
+            carProfiles = JSON.parse(carProfiles);
         }
-        carProfiles = concat(JSON.parse(carProfiles), [
+        carProfiles = concat(carProfiles, [
           {
             make: "abc",
             model: "Red",
@@ -33,7 +35,6 @@ export default class BookService extends Component {
           }
         ]
         );
-        console.log(carProfiles)
         this.state = {
             notificationVisible: false,
             carProfiles: carProfiles

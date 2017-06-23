@@ -50,11 +50,14 @@ export default class VendorProfile extends Component {
                             <CoverPhoto />
                             <BaseHeader />
                             <div className="vendor-profile-section row">
-                                <div className="col-md-6 vp_left">
+                                <div className="col-md-8 vp_left">
                                     <Description />
                                     <Services />
                                 </div>
-                                <div className="col-md-6 vp_right">
+                                <div className="col-md-4 vp_right">
+                                    <Photos />
+                                    <Address />
+                                    <Offers />
                                 </div>
                             </div>
                         </div>

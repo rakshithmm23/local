@@ -89,7 +89,7 @@
 .vendor-profile-section {
     background: #fff;
     margin: 15px 0;
-    padding: 20px 0;
+    padding: 20px 10px;
 }
 
 .vendor-profile-section h4 {
@@ -97,11 +97,13 @@
     font-family: CenturyGothic_bold;
     font-size: 20px;
     line-height: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
-.vendor-description{
+
+.vendor-description {
     margin-bottom: 40px;
 }
+
 .vendor-description p,
 .vendor-description li {
     color: #717982;
@@ -109,25 +111,83 @@
     font-size: 15px;
     line-height: 25px;
 }
-.vendor-description ul{
+
+.vendor-description ul {
     margin-left: 18px;
-    width: 500px;
     clear: both;
 }
+
 .vendor-description li {
     list-style: disc;
-    width: 250px;
+    width: 50%;
     float: left;
     margin: 5px 0px;
 }
-.vendor-services ul{
+
+.vendor-services #vendorServices {
+    height: 515px;
+    border: 1px solid #E2E2E2;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+}
+
+.vendor-services ul {
     width: 150px;
     margin: 0;
+    display: inline-block;
+    vertical-align: top;
 }
-.vendor-services li{
+
+.vendor-services li {
     width: auto;
     float: none;
     list-style: none;
     margin: 0;
     text-align: center;
+    cursor: pointer;
+}
+
+.vendor-services .nav-tabs {
+    border: 0;
+}
+
+.vendor-services .nav-tabs>li>a {
+    outline: 0 !important;
+    text-decoration: none;
+    border-radius: 0;
+    padding: 50.5px 0;
+    border: 1px solid #EAEAEA;
+    border-left: 0;
+    border-bottom: 0;
+    background: #F9FBFB;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 15px;
+}
+.vendor-services .nav-tabs>li:first-child a{
+    border-top: 0 !important;
+}
+
+.vendor-services .nav-tabs>li.active>a,
+.vendor-services .nav-tabs>li.active>a:focus,
+.vendor-services .nav-tabs>li.active>a:hover {
+    color: #454B51;
+    font-family: CenturyGothic_bold;
+    background-color: #fff;
+    border-top: 1px solid #EAEAEA;
+    border: 1px solid #EAEAEA;
+    border-color: transparent;
+    border-top: 1px solid #EAEAEA;
+}
+
+.vendor-services .nav-tabs>li>a:hover {
+    background: #fafafa;
+}
+
+.vendor-services .tab-content {
+    display: inline-block;
+    vertical-align: top;
+    height: 515px;
+    overflow: auto;
+    padding: 15px;
 }

@@ -699,6 +699,9 @@ export default class RequestCard extends Component {
                                   <label>Total</label>
                                   <span>195 AED</span>
                                 </div>
+                                <div className="quotation-accept-btn pull-right">
+                                  <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" />
+                                </div>
                               </div>
                             </div>
                             {/*ChatBox*/}
