@@ -146,6 +146,16 @@
 .agreelabel{
   font-size:14px;
 }
+
+.textAlign{
+    border: 0;
+    border-bottom: 1px solid #C8D4DE;
+    box-shadow: none !important;
+    resize: none;
+    border-radius: 0px;
+    padding-left: 0px;
+    outline: 0 !important;
+}
 @media screen and (max-width: 767px) {
     .input-icon {
         right: 10px;
