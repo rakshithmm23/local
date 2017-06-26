@@ -19,7 +19,9 @@ export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
+    this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
     this.state = {
+      checkBoxVal:false,
       switched: false,
       filterSort : "low-high",
       filterdropdown:false,
@@ -167,6 +169,24 @@ export default class RequestCard extends Component {
       this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
+  changeCheckbox(val){
+    if(val=="all"){
+      if(this.checkBox.all==false){
+        this.checkBox={all:true,carService:true,carWash:true,carRepair:true}
+      }else{
+        this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
+      }
+    }else{
+      this.checkBox["all"]=false
+      this.checkBox[val]=!this.checkBox[val]
+    }
+    // if(val=="all" && this.checkBox.all){
+    //   this.checkBox={all:true,carService:true,carWash:true,carRepair:true}
+    // }else if(val=="all" && this.checkBox.all==false){
+    //   this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
+    // }
+    this.setState({checkBoxVal:!this.state.checkBoxVal})
+  }
   updateDimensions() {
     const windowWidth = this.windowWidth();
     this.setState({ 'currentWidth': windowWidth });
@@ -241,7 +261,8 @@ export default class RequestCard extends Component {
   }
   clearFilter(){
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+    this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
+    this.setState({distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
   }
@@ -378,12 +399,12 @@ export default class RequestCard extends Component {
                                         <h5>Service Type</h5>
                                         <div className="row">
                                           <div className="col-md-6 pad0">
-                                            <label className="checkbox-style"><input type="checkbox" value="" />All</label>
-                                            <label className="checkbox-style"><input type="checkbox" value="" />Car Wash</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.all} onChange={this.changeCheckbox.bind(this,'all')}/>All</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carWash} onChange={this.changeCheckbox.bind(this,'carWash')}/>Car Wash</label>
                                           </div>
                                           <div className="col-md-6">
-                                            <label className="checkbox-style"><input type="checkbox" value="" />Car Service</label>
-                                            <label className="checkbox-style"><input type="checkbox" value="" />Car Repair</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carService} onChange={this.changeCheckbox.bind(this,"carService")}/>Car Service</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carRepair} onChange={this.changeCheckbox.bind(this,"carRepair")}/>Car Repair</label>
                                           </div>
 
                                         </div>
