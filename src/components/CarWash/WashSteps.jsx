@@ -17,7 +17,7 @@ class WashSteps extends Component {
         super(props);
         this.state = {
             PrefferedLocation:'Select Location',
-            startDate: moment(),
+            // startDate: moment(),
             step1Panel: true,
             step2Panel: false,
             carWashCategories: [
