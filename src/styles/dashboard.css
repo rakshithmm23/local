@@ -107,7 +107,7 @@
 
 .welcome-banner.empty .btn-theme {
     background: #ED3124;
-    margin: 0;
+    margin: 0 !important;
 }
 
 .welcome-banner.empty h4 {

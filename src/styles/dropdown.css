@@ -135,7 +135,7 @@
 .three-dots-icon .dropdown-menu {
     right: 47px;
     width: auto;
-    min-width: inherit;
+    min-width: 125px;
     top: 30px;
 }
 

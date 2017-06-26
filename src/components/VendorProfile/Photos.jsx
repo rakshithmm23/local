@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
 
 export default class Photos extends Component {
     render() {

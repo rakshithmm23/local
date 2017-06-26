@@ -132,7 +132,7 @@
 }
 
 .vendor-services ul {
-    width: 150px;
+    width: 20%;
     margin: 0;
     display: inline-block;
     vertical-align: top;
@@ -164,7 +164,8 @@
     font-family: CenturyGothic;
     font-size: 15px;
 }
-.vendor-services .nav-tabs>li:first-child a{
+
+.vendor-services .nav-tabs>li:first-child a {
     border-top: 0 !important;
 }
 
@@ -187,7 +188,57 @@
 .vendor-services .tab-content {
     display: inline-block;
     vertical-align: top;
+    width: 80%;
     height: 515px;
+    overflow: hidden;
+}
+
+.vendor-service-container {
+    height: 512px !important;
     overflow: auto;
+}
+
+.vendor-service-list {
+    width: 100% !important;
     padding: 15px;
+}
+
+.vendor-service-list li {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 33%;
+    text-align: center;
+}
+
+.vendor-service-list .img-circle {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #EEF2F5;
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    position: relative;
+    margin: 0 auto;
+}
+
+.vendor-service-list .img-circle.active {
+    border: 1px solid #ED3124;
+}
+
+.vendor-service-list .img-circle img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.vendor-service-list li h6 {
+    color: #303030;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 15px;
 }
