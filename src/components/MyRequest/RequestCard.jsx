@@ -44,6 +44,7 @@ export default class RequestCard extends Component {
           latitude: 12.9952672,
           longitude: 77.59058570000002,
           isActive: false,
+          vendorId: 1,
           quotationDetails: [
             {
               startTime: "11:30 AM on Jan 5 2017",
@@ -96,6 +97,7 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.7952672,
           longitude: 77.29058570000007,
+          vendorId: 2,
           isActive: false
         }, {
           name: "3. Shine Works",
@@ -104,6 +106,7 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.4952672,
           longitude: 77.59058570000002,
+          vendorId: 3,
           isActive: false
         }, {
           name: "4. Shine Works",
@@ -112,6 +115,7 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.4952672,
           longitude: 77.1105857,
+          vendorId: 4,
           isActive: false
         },
         {
@@ -121,6 +125,7 @@ export default class RequestCard extends Component {
           review: 23,
           latitude: 12.4952672,
           longitude: 77.98705857000004,
+          vendorId: 5,
           isActive: false
         },
       ],
@@ -133,7 +138,170 @@ export default class RequestCard extends Component {
       svgEnd: '</text>%0A</svg>',
       distValue: { min: 2, max: 10 },
       priceValue: { min: 10, max: 70 },
-
+      messageList: {
+        1: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
+        ],
+        2: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
+        ],
+        3: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
+        ],
+        4: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
+        ],
+        5: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
+        ]
+      },
+      selectedVendorId: undefined,
+      quotesMessage: ''
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -187,7 +355,7 @@ export default class RequestCard extends Component {
   }
   viewMessaging() {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
-  }
+}
   mapClick(map) {
     let update, newDetails = [];
 
@@ -203,7 +371,7 @@ export default class RequestCard extends Component {
       jobCardDetails: newDetails,
     });
   }
-  ClickedQuoteCard(key) {
+  ClickedQuoteCard(key, vendorId) {
     let update, newArray = []
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
@@ -214,7 +382,8 @@ export default class RequestCard extends Component {
       newArray.push(update)
     })
     this.setState({
-      jobCardDetails: newArray
+      jobCardDetails: newArray,
+      selectedVendorId: vendorId
     })
   }
   closeChat() {
@@ -241,7 +410,7 @@ export default class RequestCard extends Component {
     this.setState({distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
-    
+
   }
    switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
@@ -253,6 +422,54 @@ export default class RequestCard extends Component {
     this.setState({ switched: !this.state.switched })
   }
 
+  renderMessages(selectedVendorMessageList){
+    const messageView = selectedVendorMessageList.map((messageObj, index) => {
+      let messageClass = 'c-message';
+      let showTimeStamp = true, showAvatar = true;
+      messageClass += messageObj.type == 'sender' ? ' message-in' : ' message-out';
+      if (index > 0 && selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index-1]['type']) {
+        showAvatar = false;
+        messageClass += ' chain-msg';
+      }
+      if ((index + 1) < selectedVendorMessageList.length) {
+        if (selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index+1]['type']){
+          showTimeStamp = false;
+          messageClass += ' message-continuation';
+        }
+      }
+      return (
+        <div className={messageClass} key={index}>
+          <div className="profile-head">
+            <span>
+              <img src="../images/pic.png" alt="" />
+            </span>
+          </div>
+          <div className="c-chat">
+            <p>{messageObj.message}</p>
+          </div>
+          <div className="delivered-details">
+            <label>{messageObj.timestamp}</label>
+          </div>
+        </div>
+      )
+    });
+    return messageView;
+  }
+
+  sendNewMessage(message){
+    if (this.state.selectedVendorId && message) {
+      let currentTime = new Date();
+      currentTime = currentTime.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+      const newMessage = {
+         type: 'receiver',
+         message: message,
+         timestamp: currentTime
+      }
+      const messageList = this.state.messageList;
+      messageList[this.state.selectedVendorId].push(newMessage);
+      this.setState({'messageList': messageList, 'quotesMessage': ''})
+    }
+  }
 
   render() {
     let jobLeftGridValue = "";
@@ -299,7 +516,7 @@ export default class RequestCard extends Component {
     })
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
-
+    const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
     const jobDataList = map(jobData, (item, key) => {
       return (
         <div key={key}>
@@ -611,7 +828,7 @@ export default class RequestCard extends Component {
                                 {map(this.state.jobCardDetails, (val, key) => {
                                   return (
                                     <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} rating={val.rating} distance={val.distance} reviews={val.review}
-                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key,  }, val.vendorId)} />
                                   );
                                 })}
                               </div>
@@ -710,95 +927,19 @@ export default class RequestCard extends Component {
                             {/*ChatBox*/}
                             <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                               <div className="quotes-chat-area">
-
-                                <div className="c-message message-in">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
+                                {messagesView}
                               </div>
                               <div className="quotes-message-footer">
-                                <FormGroup>
-                                  <InputGroup>
-                                    <FormControl type="text" placeholder="Type your message here..." />
-                                    <InputGroup.Addon>
-                                      <i className="mdi mdi-send" />
-                                    </InputGroup.Addon>
-                                  </InputGroup>
-                                </FormGroup>
+                                <form onSubmit={(e) => {e.preventDefault(); this.sendNewMessage(this.state.quotesMessage);}}>
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <FormControl value={this.state.quotesMessage} type="text" placeholder="Type your message here..." onChange={(e) => {e.preventDefault(); this.setState({'quotesMessage': e.target.value})}}/>
+                                      <InputGroup.Addon onClick={(e) => {e.preventDefault(); this.sendNewMessage(this.state.quotesMessage);}}>
+                                        <i className="mdi mdi-send" />
+                                      </InputGroup.Addon>
+                                    </InputGroup>
+                                  </FormGroup>
+                                </form>
                               </div>
                             </div>
                           </Scrollbars>
