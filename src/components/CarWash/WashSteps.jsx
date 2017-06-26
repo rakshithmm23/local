@@ -353,7 +353,7 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title="Delete my audi a6">
+                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 

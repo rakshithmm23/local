@@ -92,6 +92,17 @@
     height: 42px;
     width: 110px !important;
 }
+.bookService-modal .modal-body{
+    padding: 0;
+}
+.bookService-modal li{
+    padding: 20px 0;
+    border-bottom: 1px solid #DAE1E7;
+    cursor: pointer;
+}
+.bookService-modal li:last-child{
+    border: 0;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1170px) {
     .myCar-card-caption button {

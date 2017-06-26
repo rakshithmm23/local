@@ -34,7 +34,7 @@ export default class RequestCard extends Component {
       activelongitue: '',
       jobCardDetails: [
         {
-          name: "Shine Works",
+          name: "1.Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -87,7 +87,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
-          name: "Shine Works",
+          name: "2. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -95,7 +95,7 @@ export default class RequestCard extends Component {
           longitude: 77.29058570000007,
           isActive: false
         }, {
-          name: "Shine Works2",
+          name: "3. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -103,7 +103,7 @@ export default class RequestCard extends Component {
           longitude: 77.59058570000002,
           isActive: false
         }, {
-          name: "Shine Works3",
+          name: "4. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -112,7 +112,7 @@ export default class RequestCard extends Component {
           isActive: false
         },
         {
-          name: "Shine Works4",
+          name: "5. Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -336,7 +336,7 @@ export default class RequestCard extends Component {
                                   </li>
                                   <li onClick={()=>{this.filterOption("high-low")}} className={this.state.filterSort == "high-low"?"active":""}>
                                     <label>
-                                      Distance - Highest to Lowest
+                                      Rating - Highest to Lowest
                                     </label>
                                     <span>
                                       <i className="mdi mdi-check" />
@@ -344,7 +344,7 @@ export default class RequestCard extends Component {
                                   </li>
                                   <li onClick={()=>{this.filterOption("low-high")}} className={this.state.filterSort == "low-high"?"active":""}>
                                     <label>
-                                      Distance - Lowest to Highest
+                                      Rating - Lowest to Highest
                                     </label>
                                     <span>
                                       <i className="mdi mdi-check" />
@@ -390,7 +390,7 @@ export default class RequestCard extends Component {
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
                                       </div>
-                                      <div className="f-card">
+                                      <div className="f-card openAlign">
                                         <h5>Open Between</h5>
                                         <ul className="list-unstyled">
                                           <li className={this.state.daySelected["sunday"]?'active':''} onClick={this.day.bind(this,"sunday")}>SUN</li>
@@ -528,7 +528,7 @@ export default class RequestCard extends Component {
                               <div>
                                 {map(this.state.jobCardDetails, (val, key) => {
                                   return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} index={key + 1} rating={val.rating} distance={val.distance} reviews={val.review}
+                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} rating={val.rating} distance={val.distance} reviews={val.review}
                                       viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                   );
                                 })}
@@ -596,6 +596,7 @@ export default class RequestCard extends Component {
                               <div className="quotation-details">
                                 {map(this.state.jobCardDetails, (value, jobCardKey) => {
                                   return (
+                                    value.quotationDetails!= undefined &&
                                     <div className="quotation-block" key={jobCardKey}>
                                       {map(value.quotationDetails, (val, quotationKey) => {
                                         return (

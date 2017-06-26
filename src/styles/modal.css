@@ -8,6 +8,7 @@
 
 .modal-header {
     padding: 25px 20px;
+    box-shadow: 0 0 4px 0 rgba(182,182,182,0.5);
 }
 
 .modal-header span {
@@ -29,10 +30,10 @@
 }
 
 .modal-body .info-text {
-    color: #525252;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    line-height: 20px;
+    color: #717982;	
+    font-family: CenturyGothic;	
+    font-size: 14px;	
+    line-height: 24px;
 }
 
 .modal-body .info-heading {

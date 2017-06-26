@@ -10,7 +10,7 @@ import RequestCard from './RequestCard';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
 import { serviceTypes } from '../../constants/staticData';
-import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
 import TextInput from '../common/TextInput';
 
@@ -25,23 +25,23 @@ export default class MyRequest extends Component {
             max_chars:200,
             chars_left:0,
             requestType: ''
-        };        
+        };
     }
-    
+
     componentWillMount() {
         if (window.location.search.indexOf('type=waiting') > -1 ) {
-         this.setState({'requestType': 'waiting'});   
+         this.setState({'requestType': 'waiting'});
         } else if (window.location.search.indexOf('type=success') > -1 ) {
-         this.setState({'requestType': 'success'});   
+         this.setState({'requestType': 'success'});
         }
     }
-    
+
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
     handleChange(event) {
         let input=null
-        input = event.target.value;
+        input = event
         this.setState({
             chars_left: this.state.max_chars - input.length
         });
@@ -94,7 +94,6 @@ export default class MyRequest extends Component {
                                         <span className="text-limit">{this.state.chars_left}/200</span>
                                     </div>
                                 </Modal.Body>
-
                             </CustomModal>
                         </div>
 

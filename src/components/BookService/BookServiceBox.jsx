@@ -16,17 +16,17 @@ class BookServiceBox extends Component {
             {
                 image: "../../images/book-service-1.png",
                 title: "Car Wash"
-            },{
+            }, {
                 image: "../../images/book-service-2.png",
                 title: "Car Service"
-            },{
+            }, {
                 image: "../../images/book-service-3.png",
                 title: "Car Repair"
             }
         ]
         const bookServiceOptionView = map(bookServiceOption, (service, key) => {
             return (
-                <Modal.Body key={key}>
+                <li key={key}>
                     <Media>
                         <Media.Left>
                             <img width={69} height={69} src={service.image} alt="Image" />
@@ -36,7 +36,7 @@ class BookServiceBox extends Component {
                             <i className="mdi mdi-chevron-right" />
                         </Media.Body>
                     </Media>
-                </Modal.Body>
+                </li>
             );
         });
         return (
@@ -64,8 +64,12 @@ class BookServiceBox extends Component {
                         <h5>{this.props.name}</h5>
                         <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={() => this.setState({ showModal: true })} />
                     </figcaption>
-                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service">
-                        {bookServiceOptionView}
+                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal">
+                        <Modal.Body>
+                            <ul>
+                                {bookServiceOptionView}
+                            </ul>
+                        </Modal.Body>
                     </CustomModal>
                 </div>
 
