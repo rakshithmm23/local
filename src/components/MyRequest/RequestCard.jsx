@@ -336,6 +336,7 @@ export default class RequestCard extends Component {
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('mousedown', this.bodyClick.bind(this))
   }
    bodyClick(e){
     if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters') )&&(!this.state.filterdropdown) ) {
