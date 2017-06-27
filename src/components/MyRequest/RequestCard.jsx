@@ -384,7 +384,6 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key, vendorId) {
-   debugger
     let update, newArray = [], centerLat=undefined,centerLng=undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {

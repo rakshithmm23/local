@@ -21,6 +21,8 @@ export default class RequestCard extends Component {
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
     this.state = {
+      setCenter:false,
+      mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
       TimePickerTo:"",
       switched: false,
@@ -226,17 +228,20 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key) {
-    let update, newArray = []
+    let update, newArray = [], centerLat=undefined,centerLng=undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
         update = { ...val, isActive: true, pinImage: this.state.activeSvg + index + this.state.svgEnd }
+        centerLat = val.latitude, centerLng=val.longitude
       } else {
         update = { ...val, isActive: false, pinImage: this.state.svg + index + this.state.svgEnd }
       }
       newArray.push(update)
     })
     this.setState({
-      jobCardDetails: newArray
+      jobCardDetails: newArray,
+      mapsCenter:{ lat: centerLat, lng: centerLng },
+      setCenter:true
     })
   }
   closeChat() {
@@ -584,8 +589,9 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
+                          setCenter={this.state.setCenter}
+                            center={this.state.mapsCenter}
                             infoPopUp={true}
-                            center={{ lat: 12.9952672, lng: 77.5905857 }}
                             markers={{ jobCardLocation }}
                             markerClick={this.mapClick.bind(this)}
                             zoom={9}
