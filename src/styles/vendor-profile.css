@@ -65,9 +65,9 @@
     margin-right: 30px;
 }
 .vendor-cover-header span{
-    color: #FFFFFF;	
-    font-family: CenturyGothic;	
-    font-size: 15px;	
+    color: #FFFFFF;
+    font-family: CenturyGothic;
+    font-size: 15px;
     line-height: 18px;
 }
 
@@ -86,6 +86,7 @@
 }
 
 .vendor-base-header ul li a {
+    cursor: pointer;
     color: #717982;
     font-family: CenturyGothic;
     font-size: 18px;
