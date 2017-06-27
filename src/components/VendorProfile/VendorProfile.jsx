@@ -9,7 +9,6 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import CoverPhoto from './CoverPhoto';
 import Address from './Address';
 import BaseHeader from './BaseHeader';
-import Comments from './Comments';
 import Description from './Description';
 import Offers from './Offers';
 import Photos from './Photos';
