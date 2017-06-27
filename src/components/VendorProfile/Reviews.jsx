@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProgressBar, Media } from 'react-bootstrap';
+import { ProgressBar, Media, DropdownButton, MenuItem } from 'react-bootstrap';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class Reviews extends Component {
@@ -8,6 +8,9 @@ export default class Reviews extends Component {
             <div className="vendor-services">
                 <div className="vendor-description">
                     <h4>21 Reviews</h4>
+                    <div className="filterSection">
+                        
+                    </div>
                     <div className="vendor-review-section">
                         <div className="row">
                             <div className="col-md-12 pad0">

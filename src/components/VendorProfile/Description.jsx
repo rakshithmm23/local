@@ -8,9 +8,10 @@ export default class Description extends Component {
                     <h4>Description</h4>
                     <p>
                         Lorem ipsum dolor sit amet, augue admodum suscipiantur per ei, partem nostrud denique usu ea.
-                    Clita possim civibus at per. Cum id accumsan epicurei torquatos,
-                    nostro dolores et ius, hinc noster duo ad. Sonet congue nec in, sed eu elit viderer corpora.
-                </p>
+                        Clita possim civibus at per. Cum id accumsan epicurei torquatos,
+                        nostro dolores et ius, hinc noster duo ad. Sonet congue nec in, sed eu elit viderer corpora.
+                    </p>
+                    <label className="read_more">Read More</label>
                 </div>
                 <div className="row vendor-description">
                     <h4>Facilities</h4>
