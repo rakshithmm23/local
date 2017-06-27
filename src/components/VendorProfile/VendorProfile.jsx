@@ -53,6 +53,7 @@ export default class VendorProfile extends Component {
                                 <div className="col-md-8 vp_left">
                                     <Description />
                                     <Services />
+                                    <Reviews />
                                 </div>
                                 <div className="col-md-4 vp_right">
                                     <Photos />

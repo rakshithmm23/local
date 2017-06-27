@@ -35,20 +35,18 @@ export default class MyRequest extends Component {
          this.setState({'requestType': 'success'});
         }
     }
-
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
     handleChange(event) {
-        let input=null
+        let input = null
         input = event
+        const val = event.target.value;
         this.setState({
-            chars_left: this.state.max_chars - input.length
+            chars_left: this.state.max_chars - val.length
         });
     }
-
     render() {
-        console.log(this.state.requestType);
         return (
             <div className="jobUpdate">
                 {/*Header*/}
@@ -85,12 +83,19 @@ export default class MyRequest extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                        <TextInput
+                                        {/*<TextInput
                                             type="text"
                                             label="Comments"
                                             name="Comments"
                                             onChange={this.handleChange.bind(this)}
-                                        />
+                                        />*/}
+                                        <FormGroup>
+                                          <FormControl
+                                              className="textAlign"
+                                              componentClass="textarea"
+                                              placeholder="Comments"
+                                              onChange={this.handleChange.bind(this)} />
+                                          </FormGroup>
                                         <span className="text-limit">{this.state.chars_left}/200</span>
                                     </div>
                                 </Modal.Body>

@@ -23,6 +23,7 @@
 }
 
 .messageCard {
+    cursor: pointer;
     padding: 15px;
     border-bottom: 1px solid #EEF2F5;
 }

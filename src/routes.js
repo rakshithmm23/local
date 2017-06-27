@@ -28,7 +28,6 @@ export const isLoggedIn = (nextState, replace) => {
 
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
-import MyCarList from './components/MyCarList';
 import MyRequest from './components/MyRequest/MyRequest';
 import CreateCarProfile from './components/CarProfile/CreateCarProfile';
 import BookService from './components/BookService/BookService';
@@ -46,7 +45,6 @@ export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
     <Route path="dashboard" component={DashboardContainer(Dashboard)} />
-    <Route path="mycar-list" component={DashboardContainer(MyCarList)}/>
     <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
     <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />

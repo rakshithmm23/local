@@ -61,7 +61,7 @@ export default class AcceptedQuotes extends Component {
                 <h4>Photos</h4>
                 {map(item.vdPhoto, (item, key) => {
                   return(
-                    <div className="upload-images">
+                    <div className="upload-images" key={key}>
                       <img src={item.photo} alt=""/>
                     </div>
                   );

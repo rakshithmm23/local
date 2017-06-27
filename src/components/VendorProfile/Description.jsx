@@ -14,7 +14,7 @@ export default class Description extends Component {
                 </div>
                 <div className="row vendor-description">
                     <h4>Facilities</h4>
-                    <ul>
+                    <ul className="vendor-facilities">
                         <li>Basic Wash</li>
                         <li>Interior Cleaning</li>
                         <li>Wash & Shine</li>
