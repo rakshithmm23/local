@@ -21,6 +21,8 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
+      TimePickerFrom: "",
+      TimePickerTo:"",
       switched: false,
       filterSort : "low-high",
       filterdropdown:false,
@@ -141,6 +143,13 @@ export default class RequestCard extends Component {
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
+  TimePickerChange (type,value) {
+    if(type=="timeFrom"){
+      this.setState({ TimePickerFrom:value });
+    }else{
+      this.setState({ TimePickerTo:value });
+    }
+  }
 
   componentWillMount() {
     this.updateDimensions();
@@ -238,10 +247,9 @@ export default class RequestCard extends Component {
   }
   clearFilter(){
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+    this.setState({TimePickerFrom: undefined,TimePickerTo: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
-    
   }
    switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
@@ -488,15 +496,20 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["saturday"]?'active':''} onClick={this.day.bind(this,"saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
+                                          value={this.state.TimePickerFrom}                                        
+                                          onChange={this.TimePickerChange.bind(this,"timeFrom")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
                                           use12Hours
+                                          clearText	
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
+                                        value={this.state.TimePickerTo}                                        
+                                          onChange={this.TimePickerChange.bind(this,"timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
