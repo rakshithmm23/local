@@ -9,7 +9,27 @@ export default class Reviews extends Component {
                 <div className="vendor-description">
                     <h4>21 Reviews</h4>
                     <div className="filterSection">
-                        
+                        <DropdownButton bsSize="small" id="dropdown-size-small"   noCaret title={
+                              <div className="filterLabel showSortBy">
+                                <i className="mdi mdi-swap-vertical" />
+                                <label>Sort by</label>
+                                
+                              </div>
+                            }>
+                              <div className="sortFilter filterCard">
+                                <ul className="list-unstyled">
+                                  <li >
+                                    <label>
+                                      Distance - Near to Far
+                                    </label>
+                                    <span>
+                                      <i className="mdi mdi-check" />
+                                    </span>
+                                  </li>
+                                  
+                                </ul>
+                              </div>
+                            </DropdownButton>
                     </div>
                     <div className="vendor-review-section">
                         <div className="row">
