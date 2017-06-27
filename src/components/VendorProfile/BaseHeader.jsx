@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-scroll';
 
 export default class BaseHeader extends Component {
     render() {
@@ -6,16 +7,16 @@ export default class BaseHeader extends Component {
             <div className="vendor-base-header">
                 <ul>
                     <li className="active">
-                        <a href="">Overview</a>
+                      <Link to="overview"> Overview</Link>
                     </li>
                     <li>
-                        <a href="">18 Services</a>
+                      <Link to="services"> Services</Link>
                     </li>
                     <li>
-                        <a href="">21 Reviews</a>
+                      <Link to="reviews"> Reviews</Link>
                     </li>
                     <li>
-                        <a href="">2 Offers</a>
+                      <Link to="offers"> Offers</Link>
                     </li>
                 </ul>
             </div>

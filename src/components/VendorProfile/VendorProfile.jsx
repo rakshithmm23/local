@@ -14,7 +14,7 @@ import Offers from './Offers';
 import Photos from './Photos';
 import Reviews from './Reviews';
 import Services from './Services';
-
+import {Element} from 'react-scroll';
 
 export default class VendorProfile extends Component {
     constructor(props, context) {
@@ -27,7 +27,6 @@ export default class VendorProfile extends Component {
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
-
     render() {
         return (
             <div>
@@ -50,14 +49,22 @@ export default class VendorProfile extends Component {
                             <BaseHeader />
                             <div className="vendor-profile-section row">
                                 <div className="col-md-8 vp_left">
-                                    <Description />
-                                    <Services />
-                                    <Reviews />
+                                    <Element name="overview">
+                                      <Description />
+                                    </Element>
+                                    <Element name="services">
+                                      <Services />
+                                    </Element>
+                                    <Element name="reviews">
+                                      <Reviews />
+                                    </Element>
                                 </div>
                                 <div className="col-md-4 vp_right">
                                     <Photos />
                                     <Address />
-                                    <Offers />
+                                    <Element  name="offers">
+                                      <Offers />
+                                    </Element>
                                 </div>
                             </div>
                         </div>
