@@ -21,6 +21,10 @@ export default class CoverPhoto extends Component {
                     </div>
                     <h1>Buddy's Car Care</h1>
                     <span>Car Wash, Car Repair, Car Services</span>
+                    <div className="vendor-share-profile">
+                        <i className="mdi mdi-share-variant"/>
+                        Share Profile
+                    </div>
                 </div>
             </div>
         );
