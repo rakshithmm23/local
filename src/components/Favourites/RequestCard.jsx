@@ -13,6 +13,7 @@ import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+// import moment from 'moment';
 
 
 export default class RequestCard extends Component {
@@ -20,6 +21,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
+      value: "",
       switched: false,
       filterSort: "low-high",
       filterdropdown: false,
@@ -134,6 +136,10 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
+  handleValueChange (value) {
+    console.log(value && value.format('HH:mm:ss'));
+    this.setState({ value });
+  }
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
@@ -239,9 +245,11 @@ export default class RequestCard extends Component {
   }
   clearFilter(){
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+    this.setState({value: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
+    console.log(this.state.value)
+    
   }
 
 
@@ -403,11 +411,14 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
+                                          value={this.state.value}                                        
+                                          onChange={this.handleValueChange.bind(this)}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
                                           use12Hours
+                                          clearText	
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
