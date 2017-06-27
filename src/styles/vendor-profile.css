@@ -75,17 +75,25 @@
     line-height: 18px;
 }
 
+.vendor-cover-header .rating span,
+.vendor-customer-ratings .rating span,
+.vendor-comments-section .rating span {
+    cursor: default;
+}
+
 .vendor-share-profile {
     float: right;
     margin-right: 20px;
     color: #FFFFFF;
     font-family: CenturyGothic;
     font-size: 15px;
+    margin-top: 15px;
 }
 
 .vendor-share-profile i {
-    font-size: 20px;
-    margin-left: 10px;
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
 }
 
 .vendor-base-header {
@@ -156,11 +164,13 @@
 }
 
 .vendor-description p,
-.vendor-description li {
+.vendor-description li,
+.vendor-description li span a {
     color: #717982;
     font-family: CenturyGothic;
     font-size: 15px;
     line-height: 25px;
+    text-decoration: none;
 }
 
 .vendor-description .read_more {
@@ -260,6 +270,7 @@
     margin-bottom: 20px;
     width: 33%;
     text-align: center;
+    cursor: pointer;
 }
 
 .vendor-service-list .img-circle {
@@ -293,6 +304,72 @@
     font-size: 14px;
     line-height: 14px;
     margin-top: 15px;
+}
+
+
+/*Sort By*/
+
+.vendor-description .filterSection {
+    float: right;
+    margin-top: -56px;
+}
+
+.vendor-description .filterSection .btn {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none;
+}
+
+.vendor-description .filterSection .dropdown.open button {
+    border: 0 !important;
+}
+
+.vendor-description .filterSection .filterLabel {
+    box-shadow: none;
+}
+
+.vendor-description .filterSection .filterLabel label {
+    font-size: 16px;
+    color: #454B51;
+}
+
+.vendor-description .filterSection .filterLabel .mdi-chevron-down {
+    color: #717982;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.vendor-description .filterSection .dropdown.open .filterLabel .mdi-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.vendor-description .filterSection .dropdown-menu {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.vendor-description .filterSection .filterCard {
+    width: 300px;
+    right: 53px;
+}
+
+.vendor-description .filterSection .filterCard.sortFilter {
+    padding: 10px 15px;
+}
+
+.vendor-description .filterSection .filterCard li {
+    padding: 10px 0px;
+}
+
+.vendor-description .filterSection .filterCard li span {
+    top: auto;
 }
 
 
@@ -335,6 +412,7 @@
     font-size: 20px;
     color: #949DA5;
     margin-right: 15px;
+    vertical-align: middle;
 }
 
 .vendor-icon-label ul {
@@ -365,6 +443,7 @@
     border-radius: 3px;
     overflow: hidden;
     margin: 10px 0;
+    cursor: pointer;
 }
 
 .vendor-profile-offers .offers-container img {
@@ -455,7 +534,7 @@
 
 .vendor-comments-section {
     font-family: CenturyGothic;
-    padding: 30px 0;
+    padding-top: 30px;
 }
 
 .vendor-comments-container {

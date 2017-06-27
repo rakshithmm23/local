@@ -8,91 +8,94 @@ export default class Services extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeCarWash: 1,
+            activeCarWash: 0,
             carWashList: [
                 {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a3',
-                    manufacturerId: 1
+                    washId: 1
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a6',
-                    manufacturerId: 2
+                    washId: 2
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a5',
-                    manufacturerId: 3
+                    washId: 3
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a7',
-                    manufacturerId: 4
+                    washId: 4
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a8',
-                    manufacturerId: 5
+                    washId: 5
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a9',
-                    manufacturerId: 6
+                    washId: 6
                 }
 
             ],
+            activeCarRepair: 0,
             carRepairList: [
                 {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a3',
-                    manufacturerId: 1
+                    repairId: 1
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a6',
-                    manufacturerId: 2
+                    repairId: 2
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a5',
-                    manufacturerId: 3
+                    repairId: 3
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a7',
-                    manufacturerId: 4
+                    repairId: 4
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a8',
-                    manufacturerId: 5
+                    repairId: 5
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a9',
-                    manufacturerId: 6
+                    repairId: 6
                 }
 
             ],
+            activeCarService: 0,
             carServiceList: [
                 {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a3',
-                    manufacturerId: 1
+                    serviceId: 1
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a6',
-                    manufacturerId: 2
+                    serviceId: 2
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a5',
-                    manufacturerId: 3
+                    serviceId: 3
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a7',
-                    manufacturerId: 4
+                    serviceId: 4
                 }, {
                     logo: '../../images/audi-a3.png',
                     name: 'audi a8',
-                    manufacturerId: 5
+                    serviceId: 5
                 }, {
                     logo: '../../images/audi-a6.png',
                     name: 'audi a9',
-                    manufacturerId: 6
+                    serviceId: 6
                 }
 
             ],
+            activeCarManufacturers: 0,
             carManufacturersList: [
                 {
                     logo: '../../images/Acura-logo.png',
@@ -197,8 +200,8 @@ export default class Services extends Component {
     renderCarWash() {
         const carWashListView = map(this.state.carWashList, (carItem, key) => {
             return (
-                <li key={key} onClick={() => { this.setState({ 'activeCarWash': carItem.manufacturerId }); }}>
-                    <div className={carItem.manufacturerId == this.state.activeCarWash ? 'img-circle active' : 'img-circle'}>
+                <li key={key} onClick={() => { this.setState({ 'activeCarWash': carItem.washId }); }}>
+                    <div className={carItem.washId == this.state.activeCarWash ? 'img-circle active' : 'img-circle'}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -216,8 +219,8 @@ export default class Services extends Component {
     renderCarRepair() {
         const carRepairListView = map(this.state.carRepairList, (carItem, key) => {
             return (
-                 <li key={key} onClick={() => { this.setState({ 'activeCarWash': carItem.manufacturerId }); }}>
-                    <div className={carItem.manufacturerId == this.state.activeCarWash ? 'img-circle active' : 'img-circle'}>
+                 <li key={key} onClick={() => { this.setState({ 'activeCarRepair': carItem.repairId }); }}>
+                    <div className={carItem.repairId == this.state.activeCarRepair ? 'img-circle active' : 'img-circle'}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -235,8 +238,8 @@ export default class Services extends Component {
     renderCarService() {
         const carServiceListView = map(this.state.carServiceList, (carItem, key) => {
             return (
-                <li key={key} onClick={() => { this.setState({ 'activeCarWash': carItem.manufacturerId }); }}>
-                    <div className={carItem.manufacturerId == this.state.activeCarWash ? 'img-circle active' : 'img-circle'}>
+                <li key={key} onClick={() => { this.setState({ 'activeCarService': carItem.serviceId }); }}>
+                    <div className={carItem.serviceId == this.state.activeCarService ? 'img-circle active' : 'img-circle'}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -254,8 +257,8 @@ export default class Services extends Component {
     renderSupportedManufacturers() {
         const carManufacturersListView = map(this.state.carManufacturersList, (carItem, key) => {
             return (
-                <li key={key} onClick={() => { this.setState({ 'activeCarWash': carItem.manufacturerId }); }}>
-                    <div className={carItem.manufacturerId == this.state.activeCarWash ? 'img-circle active' : 'img-circle'}>
+                <li key={key}>
+                    <div className="img-circle">
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -282,7 +285,7 @@ export default class Services extends Component {
                         <Tab eventKey={2} title="Car Repair">
                             {this.renderCarRepair()}
                         </Tab>
-                        <Tab eventKey={3} title="Car Servicing">
+                        <Tab eventKey={3} title="Car Service">
                             {this.renderCarService()}
                         </Tab>
                         <Tab eventKey={4} title="Supported Manufacturers">

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 export default class CoverPhoto extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isFavouriteVisible: false,
+        };
+    }
     render() {
         return (
             <div className="vendor-cover">
@@ -22,8 +28,8 @@ export default class CoverPhoto extends Component {
                     <h1>Buddy's Car Care</h1>
                     <span>Car Wash, Car Repair, Car Services</span>
                     <div className="vendor-share-profile">
-                        <i className="mdi mdi-share-variant"/>
-                        Share Profile
+                        <i className={this.state.isFavouriteVisible ? "mdi mdi-heart" : "mdi mdi-heart-outline"} onClick={(e) => { e.preventDefault(); this.setState({ 'isFavouriteVisible': !this.state.isFavouriteVisible }); }} />
+                        <i className="mdi mdi-share-variant" />
                     </div>
                 </div>
             </div>

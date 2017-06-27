@@ -48,7 +48,7 @@ export default (
     <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
     <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
-    <Route path="send-otp" component={AuthContainer(SendOTP)} onEnter={isLoggedIn}/>
+    <Route path="send-otp" component={AuthContainer(SendOTP)}/>
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
     <Route path="request" component={AuthContainer(MyRequest)} />
     <Route path="book-service" component={AuthContainer(BookService)} />

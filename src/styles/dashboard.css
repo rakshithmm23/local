@@ -16,6 +16,7 @@
 
 .service-data img {
     width: 100%;
+    border-radius: 10px;
 }
 
 .service-list {
@@ -37,6 +38,7 @@
     box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.06);
     cursor: pointer;
     position: relative;
+    border-radius: 10px;
 }
 
 .service-data:hover {
@@ -44,19 +46,16 @@
 }
 
 .service-data label {
-    font-family: CenturyGothic;
-    font-size: 16px;
+    font-family: CenturyGothic_bold;
+    font-size: 18px;
     text-align: center;
-    color: #fff;
-    margin-top: 15px;
+    color: #454B51;
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     width: 100%;
-    background: #261a9d;
     left: 0;
     padding: 8px 0;
     margin-bottom: 0;
-    border-radius: 0px 0px 5px 5px;
 }
 
 
