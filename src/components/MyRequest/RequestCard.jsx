@@ -14,6 +14,7 @@ import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
+const {  LatLngBounds,LatLng }  = google.maps;
 
 
 export default class RequestCard extends Component {
@@ -21,6 +22,8 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
+      setCenter:false,
+      mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
       TimePickerTo:"",
       switched: false,
@@ -29,7 +32,7 @@ export default class RequestCard extends Component {
       sortBydropdown:false,
       daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
-    },
+      },
       changedWeek:false,
       filterType: "",
       open: false,
@@ -325,7 +328,6 @@ export default class RequestCard extends Component {
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
-
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
@@ -382,10 +384,12 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key, vendorId) {
-    let update, newArray = []
+   debugger
+    let update, newArray = [], centerLat=undefined,centerLng=undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
         update = { ...val, isActive: true, pinImage: this.state.activeSvg + index + this.state.svgEnd }
+        centerLat = val.latitude, centerLng=val.longitude
       } else {
         update = { ...val, isActive: false, pinImage: this.state.svg + index + this.state.svgEnd }
       }
@@ -393,7 +397,10 @@ export default class RequestCard extends Component {
     })
     this.setState({
       jobCardDetails: newArray,
-      selectedVendorId: vendorId
+      selectedVendorId: vendorId,
+      mapsCenter:{ lat: centerLat, lng: centerLng },
+      setCenter:true
+
     })
   }
   closeChat() {
@@ -479,6 +486,18 @@ export default class RequestCard extends Component {
       this.setState({'messageList': messageList, 'quotesMessage': ''})
     }
   }
+  // mapRef(e){
+  //   debugger
+  //   let bounds = new google.maps.LatLngBounds();
+  //   let points =[]
+  //   each(this.state.jobCardDetails, function(value, key) {
+  //     let position=[]
+  //     position.push(value.latitude,value.longitude)
+  //     points.push(position)
+  //   });
+  //   bounds.extend(points)
+  //   e.fitBounds(bounds);
+  // }
 
   render() {
     let jobLeftGridValue = "";
@@ -860,7 +879,8 @@ export default class RequestCard extends Component {
                         <div className="quotes-right-body">
                           <Gmaps
                             infoPopUp={true}
-                            center={{ lat: 12.9952672, lng: 77.5905857 }}
+                            setCenter={this.state.setCenter}
+                            center={this.state.mapsCenter}
                             markers={{ jobCardLocation }}
                             markerClick={this.mapClick.bind(this)}
                             zoom={9}
