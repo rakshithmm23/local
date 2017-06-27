@@ -49,7 +49,6 @@ class Gmaps extends Component {
                 <GoogleMap
                     {...mapSettings}
                 >
-
                     {markers}
                     {this.props.markers ? map(mapRes, (val, i) => {
                         if (i == this.state.activeInfoWindow) {
@@ -74,14 +73,9 @@ class Gmaps extends Component {
                                         </Media.Body>
                                     </Media>
                                 </InfoWindow>:""
-                                
                             )
                         }
-
-
                     }) : ""}
-
-
                 </GoogleMap>
             </div>
         );
