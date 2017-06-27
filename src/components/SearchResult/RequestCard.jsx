@@ -269,12 +269,7 @@ export default class RequestCard extends Component {
   }
   clearFilter(){
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-<<<<<<< HEAD
-    this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
-    this.setState({distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
-=======
     this.setState({TimePickerFrom: undefined,TimePickerTo: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
->>>>>>> amogh
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
   }
