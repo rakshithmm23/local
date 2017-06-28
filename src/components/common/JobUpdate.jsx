@@ -37,7 +37,7 @@ export default class JobUpdate extends Component {
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
   collapseCard(){
-
+    
   }
   render() {
     debugger
@@ -235,7 +235,39 @@ export default class JobUpdate extends Component {
         {/*{jobDataList}*/}
         {map(jobData, (val, key) => {
           return (
-            
+            <div className={"job-updates " + val.statusIndicator}>
+              <div className="row">
+                <div className="col-md-12 col-sm-12 col-xs-12 pad0">
+                  <div className="col-md-5 col-sm-12 col-xs-12 pad0">
+                    <div className="job-left">
+                      <div className="job-card">
+                        <div className="card-img"><img src="../../images/car.jpg" alt="Ayaz's Buick" /></div>
+                        <div className="card-info">
+                          <div className="job-name">{val.customerName}</div>
+                          <div className="job-title">{val.serviceTypes}</div>
+                          <div className="job-details">
+                            <ul>
+                              <li>
+                                <label>Order ID :</label><span>{val.customeId}</span></li>
+                              <li>
+                                <label>Start :</label><span>{val.startDate}</span></li>
+                              <li>
+                                {val.statusPopup && <li>
+                                    <li>
+                                      <button className="btn btn-theme sm label" onClick={this.collapseCard.bind(this)}>
+                                        <i className="mdi mdi-chevron-up"></i>
+                                          Collapse Timeline
+                                      </button>
+                                    </li>
+                                  </li>}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <CarType type={val.statusIndicator} notes={val.jobInfoMessage} vendorName={val.vendorDetails?val.vendorDetails.vendor:""}
                           address={val.vendorDetails?val.vendorDetails.vendorPlace:""} phoneNumber={val.vendorDetails?val.vendorDetails.vendorMobile:""}
                           price={val.vendorDetails?val.vendorDetails.quote:""}/>
