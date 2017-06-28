@@ -7,7 +7,7 @@ export default class Address extends Component {
         return (
             <div className="vendor-services">
                 <div className="vendor-description">
-                    <h4>Address</h4>
+                    <h4>Details</h4>
                     <div className="vendor-address-map">
                         <div className="gmaps">
                             <Gmaps
