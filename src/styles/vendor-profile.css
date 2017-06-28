@@ -113,7 +113,7 @@
     cursor: pointer;
     color: #717982;
     font-family: CenturyGothic;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     text-align: center;
     text-decoration: none;
@@ -271,6 +271,10 @@
     width: 33%;
     text-align: center;
     cursor: pointer;
+}
+
+.vendor-services .tab-content .tab-pane:last-child li{
+    cursor: default;
 }
 
 .vendor-service-list .img-circle {

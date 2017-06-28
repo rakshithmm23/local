@@ -10,13 +10,13 @@ export default class BaseHeader extends Component {
                       <Link to="overview"> Overview</Link>
                     </li>
                     <li>
-                      <Link to="services"> Services</Link>
+                      <Link to="services"> <span>18</span> Services</Link>
                     </li>
                     <li>
-                      <Link to="reviews"> Reviews</Link>
+                      <Link to="reviews"> <span>21</span> Reviews</Link>
                     </li>
                     <li>
-                      <Link to="offers"> Offers</Link>
+                      <Link to="offers"> <span>2</span> Offers</Link>
                     </li>
                 </ul>
             </div>

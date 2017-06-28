@@ -25,7 +25,7 @@ export default class Sidebar extends Component {
       },
       {
         iconName: 'mdi mdi-pencil',
-        name: 'Requests',
+        name: 'My Requests',
         hyperLink: '/request'
       },
       {
