@@ -6,6 +6,7 @@ import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
 import EmptyUpdates from './EmptyUpdates';
+import CarType from './CarType'
 
 export default class JobUpdate extends Component {
   constructor(...args) {
@@ -35,7 +36,11 @@ export default class JobUpdate extends Component {
       body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
+  collapseCard(){
+
+  }
   render() {
+    debugger
     // console.log(this.state.currentWidth)
     const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
     let jobLeftGridValue = "";
@@ -55,7 +60,7 @@ export default class JobUpdate extends Component {
     const jobData = [
       {
         carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani',
+        customerName: 'Bala Subramani1',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
@@ -71,7 +76,7 @@ export default class JobUpdate extends Component {
       },
       {
         carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani',
+        customerName: 'Bala Subramani2',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
@@ -102,7 +107,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Messages',
           }
         ],
-        vendorDetails: [
+        vendorDetails: 
           {
             vendor: 'Buddy’s Car Service',
             vendorPlace: '3916 Address Tower, Street Name, Dubai',
@@ -110,7 +115,7 @@ export default class JobUpdate extends Component {
             quote: '200 AED',
             totalTask: '8 Tasks',
           }
-        ],
+        ,
         statusStep: true,
         statusPopup: [
           {
@@ -134,7 +139,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Messages',
           }
         ],
-        vendorDetails: [
+        vendorDetails: 
           {
             vendor: 'Buddy’s Car Service',
             vendorPlace: '3916 Address Tower, Street Name, Dubai',
@@ -142,7 +147,7 @@ export default class JobUpdate extends Component {
             quote: '200 AED',
             totalTask: '8 Tasks',
           }
-        ],
+        ,
         statusStep: true,
         statusPopup: [
           {
@@ -166,7 +171,7 @@ export default class JobUpdate extends Component {
             iconLabel: 'Review',
           }
         ],
-        vendorDetails: [
+        vendorDetails: 
           {
             vendor: 'Buddy’s Car Service',
             vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
@@ -174,7 +179,7 @@ export default class JobUpdate extends Component {
             quote: '200 AED',
             totalTask: '8 Tasks',
           }
-        ],
+        ,
         statusStep: true,
         statusPopup: [
           {
@@ -222,144 +227,24 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.',
       }
     ];
-    const jobDataList = map(jobData, (item, key) => {
-      const jobSubList = map(item.statusPopup, (subItem, subKey) => {
-        return (
-          <div className={statusClass + ' ' + (statusType ? statusType : '')} key={subKey}>
-            <span className="statusPopup-arrow" />
-            <div className="iconHolder">
-              <span className={subItem.imgClassName} />
-            </div>
-            <div className="statusDescription">
-              <h4>{subItem.statusDescription}</h4>
-              <span>{subItem.statusTime}</span>
-              <span className="status-process">{subItem.statusMessage}</span>
-              <a href="" className="view-worklog pull-right">View Worklog</a>
-            </div>
-          </div>
-        );
-      });
-      const vendorDetailsView = item.vendorDetails ? item.vendorDetails.map((item, key) => {
-        return (
-          <ul key={key}>
-            <li>
-              <label>
-                Vendor
-              </label>
-              <span>
-                {item.vendor}
-              </span>
-              <span className="vendor-place">
-                {item.vendorPlace}
-              </span>
-              <span className="vendor-mobile">
-                {item.vendorMobile}
-              </span>
-            </li>
-            <li>
-              <label>
-                Quote
-              </label>
-              <span>
-                {item.quote}
-              </span>
-            </li>
-          </ul>
-        );
-      }) : '';
-      return (
-        <div key={key}>
-          <div className={"job-updates " + item.statusIndicator}>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-left">
-                    <div className="job-card">
-                      <div className="card-img">
-                        <img src={item.carImage} alt="Ayaz's Buick" />
-                      </div>
-                      <div className="card-info">
-                        <div className="job-name">{item.customerName}</div>
-                        <div className="job-title">{item.serviceTypes}</div>
-                        <div className="job-details">
-                          <ul>
-                            <li>
-                              <label>Order ID :</label>
-                              <span>{item.customeId}</span>
-                            </li>
-                            <li>
-                              <label>Start :</label>
-                              <span>{item.startDate}</span>
-                            </li>
-                            <li>
-                              {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <Button iconName={this.state.open ? 'chevron-up' : 'chevron-down'} btnCallBack={() => this.setState({ open: !this.state.open })}
-                                btnType="label"
-                                btnSize="sm"
-                                fontSize={11}
-                                label={this.state.open ? 'Collapse Timeline' : 'Expand Timeline'}
-                              />}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-right">
-                    <div className="job-right-header">
-                      <Badge badgeType={item.statusIndicator} fontSize={14}>
-                        {item.statusIndicator}
-                      </Badge>
-                      {item.jobIcons && item.jobIcons.length > 0 && item.jobIcons.map((jobIcon, key) => {
-                        return (<IconNotification
-                          key={key}
-                          iconType={jobIcon.iconType}
-                          iconLabel={jobIcon.iconLabel}
-                          notifyClass="notification" />);
-                      })}
-                    </div>
-                    <div>
-                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage ?
-                        <div className="jr-body">
-                          <div className={infoClass}>
-                            <p>
-                              {item.jobInfoMessage}
-                            </p>
-                          </div>
-                        </div> :
-                        <div className="vendor-quote">
-                          {vendorDetailsView}
-                        </div>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <div className={this.state.open?"job-footer active":"job-footer"}>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                  <Collapse in={this.state.open}>
-                    <div>
-                      <h1 className="job-footer-title">Job Progress</h1>
-                      {jobSubList}
-                      {item.statusStep && <Status taskDone={4} taskPending={8} />}
-                      <span className="job-start-point">Job started</span>
-                      <span className="job-end-point">Car ready</span>
-                    </div>
-                  </Collapse>
-                </div>
-              </div>
-            </div>}
-          </div>
-        </div>
-      );
-    });
+
     return (
       <div>
         <h4 className="job-update-title">Job Updates</h4>
         <EmptyUpdates />
-        {jobDataList}
+        {/*{jobDataList}*/}
+        {map(jobData, (val, key) => {
+          return (
+            
+                    <CarType type={val.statusIndicator} notes={val.jobInfoMessage} vendorName={val.vendorDetails?val.vendorDetails.vendor:""}
+                          address={val.vendorDetails?val.vendorDetails.vendorPlace:""} phoneNumber={val.vendorDetails?val.vendorDetails.vendorMobile:""}
+                          price={val.vendorDetails?val.vendorDetails.quote:""}/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
     );
   }
