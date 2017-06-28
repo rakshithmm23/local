@@ -40,6 +40,7 @@ import SearchResult from './components/SearchResult/SearchResult';
 import Notification from './components/Notification/Notification';
 import Favourites from './components/Favourites/Favourites';
 import VendorProfile from './components/VendorProfile/VendorProfile';
+import Terms from './components/Terms/Terms.jsx'
 
 export default (
   <Route path="/" component={Home}>
@@ -63,5 +64,6 @@ export default (
     <Route path="notification" component={AuthContainer(Notification)}  />
     <Route path="favourites" component={AuthContainer(Favourites)}  />
     <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
+    <Route path="terms" component={AuthContainer(Terms)}  />
   </Route>
 );

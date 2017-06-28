@@ -66,6 +66,9 @@
     .inline-disp{
         display: inline-block !important;
     }
+    .marginTop0{
+        margin-top: 0 !important;
+    }
     /*commom wrapper*/
 
     .main-wrapper {
