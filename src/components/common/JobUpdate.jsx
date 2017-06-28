@@ -36,11 +36,10 @@ export default class JobUpdate extends Component {
       body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
   }
-  collapseCard(){
-    
+  collapseCard() {
+
   }
   render() {
-    debugger
     // console.log(this.state.currentWidth)
     const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
     let jobLeftGridValue = "";
@@ -65,12 +64,6 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'waiting',
-        jobIcons: [
-          {
-            iconType: 'pencil',
-            iconLabel: 'Edit',
-          }
-        ],
         jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
         'currently assessing your application and will get back with their quotes soon.',
       },
@@ -81,16 +74,6 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'active',
-        jobIcons: [
-          {
-            iconType: 'comment-processing-outline',
-            iconLabel: 'Messages',
-          },
-          {
-            iconType: 'file-outline',
-            iconLabel: 'Quotes',
-          }
-        ],
         jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
         'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
@@ -101,20 +84,14 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'accepted',
-        jobIcons: [
-          {
-            iconType: 'comment-processing-outline',
-            iconLabel: 'Messages',
-          }
-        ],
-        vendorDetails: 
-          {
-            vendor: 'Buddy’s Car Service',
-            vendorPlace: '3916 Address Tower, Street Name, Dubai',
-            vendorMobile: '+971 919 233 470',
-            quote: '200 AED',
-            totalTask: '8 Tasks',
-          }
+        vendorDetails:
+        {
+          vendor: 'Buddy’s Car Service',
+          vendorPlace: '3916 Address Tower, Street Name, Dubai',
+          vendorMobile: '+971 919 233 470',
+          quote: '200 AED',
+          totalTask: 8,
+        }
         ,
         statusStep: true,
         statusPopup: [
@@ -133,20 +110,14 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'inProgress',
-        jobIcons: [
-          {
-            iconType: 'comment-processing-outline',
-            iconLabel: 'Messages',
-          }
-        ],
-        vendorDetails: 
-          {
-            vendor: 'Buddy’s Car Service',
-            vendorPlace: '3916 Address Tower, Street Name, Dubai',
-            vendorMobile: '+971 919 233 470',
-            quote: '200 AED',
-            totalTask: '8 Tasks',
-          }
+        vendorDetails:
+        {
+          vendor: 'Buddy’s Car Service',
+          vendorPlace: '3916 Address Tower, Street Name, Dubai',
+          vendorMobile: '+971 919 233 470',
+          quote: '200 AED',
+          totalTask: 8,
+        }
         ,
         statusStep: true,
         statusPopup: [
@@ -165,21 +136,14 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'finished',
-        jobIcons: [
-          {
-            iconType: 'star-outline',
-            iconLabel: 'Review',
-          }
-        ],
-        vendorDetails: 
-          {
-            vendor: 'Buddy’s Car Service',
-            vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
-            vendorMobile: '+971 919 233 470',
-            quote: '200 AED',
-            totalTask: '8 Tasks',
-          }
-        ,
+        vendorDetails:
+        {
+          vendor: 'Buddy’s Car Service',
+          vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
+          vendorMobile: '+971 919 233 470',
+          quote: '200 AED',
+          totalTask: 8,
+        },
         statusStep: true,
         statusPopup: [
           {
@@ -197,12 +161,6 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'cancelled',
-        jobIcons: [
-          {
-            iconType: 'help',
-            iconLabel: 'Help',
-          }
-        ],
         jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
@@ -213,16 +171,6 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'expired',
-        jobIcons: [
-          {
-            iconType: 'help',
-            iconLabel: 'Help',
-          },
-          {
-            iconType: 'refresh',
-            iconLabel: 'Rebook',
-          }
-        ],
         jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
         'Kindly re-book the request and give us a chance to serve you to our best capacity.',
       }
@@ -233,50 +181,15 @@ export default class JobUpdate extends Component {
         <h4 className="job-update-title">Job Updates</h4>
         <EmptyUpdates />
         {/*{jobDataList}*/}
-        {map(jobData, (val, key) => {
+        {map(jobData, (cardDetails, key) => {
           return (
-            <div className={"job-updates " + val.statusIndicator}>
-              <div className="row">
-                <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                  <div className="col-md-5 col-sm-12 col-xs-12 pad0">
-                    <div className="job-left">
-                      <div className="job-card">
-                        <div className="card-img"><img src="../../images/car.jpg" alt="Ayaz's Buick" /></div>
-                        <div className="card-info">
-                          <div className="job-name">{val.customerName}</div>
-                          <div className="job-title">{val.serviceTypes}</div>
-                          <div className="job-details">
-                            <ul>
-                              <li>
-                                <label>Order ID :</label><span>{val.customeId}</span></li>
-                              <li>
-                                <label>Start :</label><span>{val.startDate}</span></li>
-                              <li>
-                                {val.statusPopup && <li>
-                                    <li>
-                                      <button className="btn btn-theme sm label" onClick={this.collapseCard.bind(this)}>
-                                        <i className="mdi mdi-chevron-up"></i>
-                                          Collapse Timeline
-                                      </button>
-                                    </li>
-                                  </li>}
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-7 col-sm-12 col-xs-12 pad0">
-                    <CarType type={val.statusIndicator} notes={val.jobInfoMessage} vendorName={val.vendorDetails?val.vendorDetails.vendor:""}
-                          address={val.vendorDetails?val.vendorDetails.vendorPlace:""} phoneNumber={val.vendorDetails?val.vendorDetails.vendorMobile:""}
-                          price={val.vendorDetails?val.vendorDetails.quote:""}/>
-                  </div>
-                </div>
-              </div>
+            <div>
+              {<CarType key={key} cardDetails={cardDetails}/>}
             </div>
+            
           )
         })}
+        
       </div>
     );
   }
