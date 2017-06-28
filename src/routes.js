@@ -40,7 +40,9 @@ import SearchResult from './components/SearchResult/SearchResult';
 import Notification from './components/Notification/Notification';
 import Favourites from './components/Favourites/Favourites';
 import VendorProfile from './components/VendorProfile/VendorProfile';
-import Terms from './components/Terms/Terms.jsx'
+import Terms from './components/Terms/Terms.jsx';
+import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
+
 
 export default (
   <Route path="/" component={Home}>
@@ -65,5 +67,6 @@ export default (
     <Route path="favourites" component={AuthContainer(Favourites)}  />
     <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
     <Route path="terms" component={AuthContainer(Terms)}  />
+    <Route path="404" component={AuthContainer(pageNotFound)}  />
   </Route>
 );
