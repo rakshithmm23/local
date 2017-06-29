@@ -15,6 +15,7 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
 const {  LatLngBounds,LatLng }  = google.maps;
+import CarType from '../common/CarType'
 
 
 export default class RequestCard extends Component {
@@ -513,23 +514,124 @@ export default class RequestCard extends Component {
       jobRightGridValue = "col-md-7";
     }
 
-    const jobData = [ 
+    const jobData = [
       {
         carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani',
-        serviceTypes: 'Car Repair',
+        customerName: 'Bala Subramani1',
+        serviceTypes: 'Car Wash',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'waiting',
-        jobIcons: [
-          {
-            iconType: 'pencil',
-            iconLabel: 'Edit',
-          }
-        ],
+        statusIndicator: 'active',
         jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
         'currently assessing your application and will get back with their quotes soon.',
       },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani2',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'active',
+      //   jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
+      //   'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'accepted',
+      //   vendorDetails:
+      //   {
+      //     vendor: 'Buddy’s Car Service',
+      //     vendorPlace: '3916 Address Tower, Street Name, Dubai',
+      //     vendorMobile: '+971 919 233 470',
+      //     quote: '200 AED',
+      //     totalTask: 8,
+      //   }
+      //   ,
+      //   statusStep: true,
+      //   statusPopup: [
+      //     {
+      //       imgClassName: 'statusIcon',
+      //       statusDescription: 'Door Locking Mechanisms and Windows',
+      //       statusTime: '09 Mar 15 11:00 AM',
+      //       statusMessage: 'On going'
+      //     }
+      //   ],
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'inProgress',
+      //   vendorDetails:
+      //   {
+      //     vendor: 'Buddy’s Car Service',
+      //     vendorPlace: '3916 Address Tower, Street Name, Dubai',
+      //     vendorMobile: '+971 919 233 470',
+      //     quote: '200 AED',
+      //     totalTask: 8,
+      //   }
+      //   ,
+      //   statusStep: true,
+      //   statusPopup: [
+      //     {
+      //       imgClassName: 'statusIcon',
+      //       statusDescription: 'Door Locking Mechanisms and Windows',
+      //       statusTime: '09 Mar 15 11:00 AM',
+      //       statusMessage: 'On going'
+      //     }
+      //   ]
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'finished',
+      //   vendorDetails:
+      //   {
+      //     vendor: 'Buddy’s Car Service',
+      //     vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
+      //     vendorMobile: '+971 919 233 470',
+      //     quote: '200 AED',
+      //     totalTask: 8,
+      //   },
+      //   statusStep: true,
+      //   statusPopup: [
+      //     {
+      //       imgClassName: 'statusIcon',
+      //       statusDescription: 'Door Locking Mechanisms and Windows',
+      //       statusTime: '09 Mar 15 11:00 AM',
+      //       statusMessage: 'On going'
+      //     }
+      //   ]
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'cancelled',
+      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
+      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.'
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'expired',
+      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
+      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.',
+      // }
     ];
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
@@ -548,71 +650,14 @@ export default class RequestCard extends Component {
       return (
         <div key={key}>
 
-          <div className={"job-updates myRequest " + item.statusIndicator}>
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-left">
-                    <div className="job-card">
-                      <div className="card-img">
-                        <img src={item.carImage} alt="Ayaz's Buick" />
-                      </div>
-                      <div className="card-info">
-                        <div className="job-name">{item.customerName}</div>
-                        <div className="job-title">{item.serviceTypes}</div>
-                        <div className="job-details">
-                          <ul>
-                            <li>
-                              <label>Request ID :</label>
-                              <span>{item.customeId}</span>
-                            </li>
-                            <li>
-                              <label>Start :</label>
-                              <span>{item.startDate}</span>
-                            </li>
-                            <li>
-                              {item.statusStep && item.statusPopup && item.statusPopup.length > 0 && <Button iconName={this.state.open ? 'chevron-up' : 'chevron-down'} btnCallBack={() => this.setState({ open: !this.state.open })}
-                                btnType="label"
-                                btnSize="sm"
-                                fontSize={11}
-                                label={this.state.open ? 'Collapse Timeline' : 'Expand Timeline'}
-                              />}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
-                  <div className="job-right">
-                    <div className="job-right-header">
-                      <Badge badgeType={item.statusIndicator} fontSize={14}>
-                        {item.statusIndicator}
-                      </Badge>
-                      {item.jobIcons && item.jobIcons.length > 0 && item.jobIcons.map((jobIcon, key) => {
-                        return (<IconNotification
-                          key={key}
-                          iconType={jobIcon.iconType}
-                          iconLabel={jobIcon.iconLabel}
-                          notifyClassName="notification" />);
-                      })}
-                    </div>
-                    <div>
-                      {!(item.vendorDetails && item.vendorDetails.length > 0) && item.jobInfoMessage &&
-                        <div className="jr-body">
-                          <div className={infoClass}>
-                            <p>
-                              {item.jobInfoMessage}
-                            </p>
-                          </div>
-                        </div>}
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {map(jobData, (cardDetails, key) => {
+          return (
+            <div>
+              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
             </div>
-          </div>
+            
+          )
+        })}
           <div className="requestSection">
             <div className="row">
               <div className="request-summary">
@@ -634,9 +679,11 @@ export default class RequestCard extends Component {
                 </div>
                 <div className="row request-summary-body">
                   {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
-                    <JobDetails />
+                    <JobDetails serviceTypes={jobData[0].serviceTypes} statusIndicator={jobData[0].statusIndicator}/>
                   </div>}
-                  {this.state.jobUpdates == "quotes" && <div className="tab-quotes ">
+                  {this.state.jobUpdates == "quotes" && jobData[0].serviceTypes=="Car Wash" && jobData[0].statusIndicator=="active" &&
+                  
+                  <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
                         <div className="title">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class JobDetails extends Component {
     render() {
-
+    debugger
         return (
             <div>
                 <div className="data-time col-md-12">
@@ -27,7 +27,7 @@ class JobDetails extends Component {
                 </div>
                 <div className="col-md-12 repair-detail">
                     <div className="col-md-6 repair-category">
-                        <title>Accidental Car Repair Categories:</title>
+                        {this.props.serviceTypes=="Car Wash" && <title>Car Wash Categories:</title>}
                         <ul className="category-list">
                             <li>
                                 <span className="interior-clean"/>
@@ -40,7 +40,7 @@ class JobDetails extends Component {
                         </ul>
                     </div>
                     <div className="col-md-6 more-details">
-                        <title>More Details:</title>
+                        {this.props.serviceTypes=="Car Wash" && <title>Special Instructions:</title>}
                         <p>In hac habitasse platea dictumst.
                         Vivamus adipiscing fermentum quam volutpat aliquam.
                         Integer et elit eget elit facilisis tristique.
@@ -49,7 +49,7 @@ class JobDetails extends Component {
                         Brakes & Exhaust</p>
                     </div>
                 </div>
-                <div className="col-md-12 uploads">
+                {this.props.serviceTypes=="Active" && <div className="col-md-12 uploads">
                     <title>Uploads:</title>
                     <div className="col-md-6 images">
                          <div className="figure no-top-padding">
@@ -84,7 +84,7 @@ class JobDetails extends Component {
                          </div>
                     </div>
 
-                </div>
+                </div>}
             </div>
         );
     }
