@@ -4,7 +4,7 @@
     height: 100vh;
     position: fixed;
     left: 0;
-    top: 90px;
+    top: 80px;
     z-index: 99;
     text-align: center;
     box-shadow: 2px 0 6px 0 rgba(104,111,145,0.2);
@@ -25,6 +25,7 @@
 .sidebar ul li a label {
     font-size: 21px;
     margin-bottom: 0;
+    cursor: pointer;
 }
 
 .sidebar ul li span {

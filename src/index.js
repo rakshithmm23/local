@@ -43,6 +43,8 @@ import './styles/search-result.css';
 import './styles/notification.css';
 import './styles/vendor-profile.css';
 import './styles/vendordetail.css';
+import './styles/terms.css';
+import './styles/pageNotFound.css';
 
 export const store = configureStore();
 
