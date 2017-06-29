@@ -121,6 +121,7 @@
     border-bottom: 2px solid transparent;
     padding: 18px;
     display: inline-block;
+    text-transform: uppercase;
 }
 
 .vendor-base-header ul li.active a,
@@ -539,11 +540,6 @@
 .vendor-comments-section {
     font-family: CenturyGothic;
     padding-top: 30px;
-}
-
-.vendor-comments-container {
-    height: 500px !important;
-    overflow: auto;
 }
 
 .vendor-comments-section li {

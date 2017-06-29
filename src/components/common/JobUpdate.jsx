@@ -5,7 +5,6 @@ import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
-import EmptyUpdates from './EmptyUpdates';
 
 export default class JobUpdate extends Component {
   constructor(...args) {
@@ -357,8 +356,8 @@ export default class JobUpdate extends Component {
     });
     return (
       <div>
-        <h4 className="job-update-title">Job Updates</h4>
-        <EmptyUpdates />
+        <h4 className="job-update-title">Job Status</h4>
+        <a className="jobUpdate-viewall">View All</a>
         {jobDataList}
       </div>
     );

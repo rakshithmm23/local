@@ -1,39 +1,50 @@
 .deals-section {
-  margin: 70px 0px !important;
+    margin: 30px 0px !important;
 }
 
 .deals-heading h5 {
-  font-size: 20px;
-  line-height: 26px;
-  color: #000000;
-  font-family: CenturyGothic;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    font-family: CenturyGothic;
 }
 
 .deals-heading p {
-  font-size: 16px;
-  line-height: 20px;
-  color: #4C4C4C;
-  font-family: CenturyGothic;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4C4C4C;
+    font-family: CenturyGothic;
 }
 
 .Deals-layout {
-  padding: 0px;
-  margin-top: 30px;
+    padding: 0px;
+    margin-top: 30px;
 }
 
 .deal-img img {
-  width: 100%;
+    width: 100%;
+}
+
+.slick-dots li {
+    width: 10px;
+}
+
+.slick-dots li button {
+    color: #ED3124;
+}
+
+.slick-dots li button:before {
+    color: #ED3124 !important;
 }
 
 @media screen and (max-width: 991px) {
-  .deals-section{
-    margin: 30px 0 !important;
-  }
-  .deals-heading p{
-    padding: 0px 10px;
-  }
-  .deal-img {
-    margin-bottom: 15px;
-  }
+    .deals-section {
+        margin: 30px 0 !important;
+    }
+    .deals-heading p {
+        padding: 0px 10px;
+    }
+    .deal-img {
+        margin-bottom: 15px;
+    }
 }
-

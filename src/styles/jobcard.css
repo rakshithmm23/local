@@ -3,13 +3,25 @@
         clear: both;
         background: #fff;
         border-radius: 4px;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.08);
     }
 
     .job-updates .row {
         margin: 0;
     }
     /*Job Update Status */
+
+    .jobUpdate-viewall {
+        color: #F48021 !important;
+        font-family: CenturyGothic;
+        font-size: 14px;
+        text-decoration: none !important;
+        outline: 0;
+        float: right;
+        cursor: pointer;
+        margin-top: -40px;
+        margin-right: 2px;
+    }
 
     .job-updates {
         border: 1px solid transparent;
@@ -83,7 +95,7 @@
     }
 
     .job-update-title {
-       font-family: CenturyGothic_bold;
+        font-family: CenturyGothic_bold;
         margin-left: 0;
         margin-bottom: 20px;
         font-size: 18px;
