@@ -44,12 +44,12 @@ class CardType extends Component {
     }
     render() {
 
-        const { cardDetails } = this.props;
+        const { cardDetails,jobLeftGridValue,jobRightGridValue } = this.props;
         return (
             <div className={"job-updates " + cardDetails.statusIndicator}>
                 <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                        <div className="col-md-5 col-sm-12 col-xs-12 pad0">
+                        <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-left">
                                 <div className="job-card">
                                     <div className="card-img"><img src="../../images/car.jpg" alt="Ayaz's Buick" /></div>
@@ -83,7 +83,7 @@ class CardType extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-7 col-sm-12 col-xs-12 pad0">
+                        <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
                                     <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator}</div>

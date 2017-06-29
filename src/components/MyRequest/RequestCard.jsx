@@ -513,7 +513,7 @@ export default class RequestCard extends Component {
       jobRightGridValue = "col-md-7";
     }
 
-    const jobData = [
+    const jobData = [ 
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
