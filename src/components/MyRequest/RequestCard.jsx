@@ -540,10 +540,10 @@ export default class RequestCard extends Component {
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
-        serviceTypes: 'Car Repair',
+        serviceTypes: 'Car Wash',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'inProgress',
+        statusIndicator: 'accepted',
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
@@ -683,7 +683,7 @@ export default class RequestCard extends Component {
                   {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
                     <JobDetails serviceTypes={jobData[0].serviceTypes} statusIndicator={jobData[0].statusIndicator}/>
                   </div>}
-                  {this.state.jobUpdates == "quotes"  &&
+                  {this.state.jobUpdates == "quotes" && jobData[0].statusIndicator!="waiting" &&
                   
                   <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
@@ -951,7 +951,7 @@ export default class RequestCard extends Component {
                               <li className={this.state.quotation == true ? "active" : ""} onClick={() => this.viewQuotation()}>Quote</li>
                               <li className={this.state.messages == true ? "active" : ""} onClick={() => this.viewMessages()}>Message</li>
                             </ul>
-                            {/*<a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>*/}
+                            {jobData[0].statusIndicator=="active" && <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>}
                           </div>
                         </div>
                         <div className="quotes-right-body">
