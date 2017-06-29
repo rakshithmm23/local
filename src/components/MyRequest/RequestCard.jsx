@@ -543,7 +543,7 @@ export default class RequestCard extends Component {
         serviceTypes: 'Car Wash',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'accepted',
+        statusIndicator: 'inProgress',
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
@@ -1005,7 +1005,7 @@ export default class RequestCard extends Component {
                                   <label>Total</label>
                                   <span>195 AED</span>
                                 </div>
-                                {jobData[0].statusIndicator!="completed" && jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
+                                {jobData[0].statusIndicator=="active" && jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
                                   <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" />
                                 </div>:""}
                               </div>
