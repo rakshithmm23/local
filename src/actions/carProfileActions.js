@@ -56,6 +56,6 @@ export function setCarProfileAction(carData){
           statusMessage: 'System error, please try later'
         });
       }
-    })
-  }
+    });
+  };
 }

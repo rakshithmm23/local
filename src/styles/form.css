@@ -26,7 +26,7 @@
     border-color: red;
 }
 
-.form-group .error-text{
+.form-group .error-text {
     color: red;
     font-size: 12px;
     font-family: CenturyGothic;
@@ -36,7 +36,8 @@
     position: absolute;
     bottom: -28px;
 }
-.note-text .error-text{
+
+.note-text .error-text {
     color: red;
     font-size: 13px;
     font-family: CenturyGothic;
@@ -47,7 +48,7 @@
 }
 
 .form-group.error .error-text,
-.note-text.error .error-text{
+.note-text.error .error-text {
     visibility: visible;
 }
 
@@ -80,20 +81,12 @@
     width: 300px;
     display: inline-block;
     margin-right: 30px;
+    vertical-align: top;
 }
 
 .otp-input input {
     font-size: 18px;
 }
-
-/*form {
-    box-sizing: border-box;
-    width: 260px;
-    margin: 100px auto 0;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
-    padding-bottom: 40px;
-    border-radius: 3px;
-}*/
 
 .form-group {
     position: relative;
@@ -122,32 +115,34 @@
     border-color: #006FBA;
 }
 
-.form-input:focus ~ label,
-.form-input:valid ~ label{
+.form-input:focus~label,
+.form-input:valid~label {
     top: 3px !important;
     font-size: 11px;
     color: #006FBA;
 }
 
-.form-group.error label{
+.form-group.error label {
     color: #999;
 }
 
-.auth-footer-text{
-   margin: 30px 0;
+.auth-footer-text {
+    margin: 30px 0;
 }
 
-.forget-input .form-input{
-  margin-top: 0px;
+.forget-input .form-input {
+    margin-top: 0px;
 }
+
 .forget-panel-header.login-panel-header .note-text {
     margin-bottom: 15px;
 }
-.agreelabel{
-  font-size:14px;
+
+.agreelabel {
+    font-size: 14px;
 }
 
-.textAlign{
+.textAlign {
     border: 0;
     border-bottom: 1px solid #C8D4DE;
     box-shadow: none !important;
@@ -156,6 +151,14 @@
     padding-left: 0px;
     outline: 0 !important;
 }
+
+@media screen and (min-width: 1075px) and (max-width: 1175px) {
+    .otp-input {
+        width: 290px;
+        margin-right: 0;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .input-icon {
         right: 10px;

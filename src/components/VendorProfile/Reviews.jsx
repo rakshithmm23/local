@@ -163,7 +163,7 @@ export default class Reviews extends Component {
                         </div>
                     </div>
                     <div className="vendor-comments-section">
-                        <Scrollbars className="vendor-comments-container">
+                        <div className="vendor-comments-container">
                             <ul>
                                 <li>
                                     <Media>
@@ -304,7 +304,7 @@ export default class Reviews extends Component {
                                 </p>
                                 </li>
                             </ul>
-                        </Scrollbars>
+                        </div>
                     </div>
                 </div>
             </div>

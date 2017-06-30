@@ -5,8 +5,7 @@ import Badge from '../common/Badge';
 import Status from '../common/Status';
 import Button from '../common/Button';
 import { Collapse } from 'react-bootstrap';
-import EmptyUpdates from './EmptyUpdates';
-import CarType from './CarType'
+import CarType from './CarType';
 
 export default class JobUpdate extends Component {
   constructor(...args) {
@@ -178,18 +177,16 @@ export default class JobUpdate extends Component {
 
     return (
       <div>
-        <h4 className="job-update-title">Job Updates</h4>
-        <EmptyUpdates />
-        {/*{jobDataList}*/}
+        <h4 className="job-update-title">Job Status</h4>
+        <a className="jobUpdate-viewall">View All</a>
+        
         {map(jobData, (cardDetails, key) => {
           return (
             <div>
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
             </div>
-            
           )
         })}
-        
       </div>
     );
   }

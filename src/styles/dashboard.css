@@ -4,14 +4,27 @@
     margin-bottom: 4px;
 }
 
-.main-wrapper .inSection {
-    background-color: rgb(249, 252, 251);
-     padding: 40px 0 70px 0;
+.main-wrapper .topSection.empty {
+    box-shadow: none;
+    border-bottom: 1px solid #f3f3f3;
 }
 
+.main-wrapper .inSection {
+    background-color: rgb(249, 252, 251);
+    padding: 40px 0;
+}
+
+.bottomSection{
+    background: rgb(249, 252, 251);
+    padding-bottom: 70px;
+}
 .padwrapper {
     padding: 0px 40px;
     position: relative;
+}
+
+.inSection.dash-jobupdate-bg {
+    background: #fff;
 }
 
 .service-data img {
@@ -99,9 +112,7 @@
 /*Empty Updates*/
 
 .welcome-banner.empty {
-    background: #f9fcfb;
     border-bottom: 0;
-    padding: 0 0 50px;
 }
 
 .welcome-banner.empty .btn-theme {

@@ -18,13 +18,13 @@ export default class Deals extends Component {
         dealImg: '../../images/deals2.png',
       }, {
         dealImg: '../../images/deals3.png',
-      },{
+      }, {
         dealImg: '../../images/img1.png',
       }, {
         dealImg: '../../images/img2.png',
       }, {
         dealImg: '../../images/img3.png',
-      },{
+      }, {
         dealImg: '../../images/deals1.png',
       }, {
         dealImg: '../../images/img2.png',
@@ -42,15 +42,17 @@ export default class Deals extends Component {
       );
     });
     return (
-      <div className="row deals-section">
-        <div className="deals-heading text-center">
-          <h5>Deals and Offers</h5>
-          <p>Enjoy the best offers and discounts exclusively selected for your car needs.</p>
-        </div>
-        <div className="col-md-12 Deals-layout">
-          <Slider {...settings}>
-            {dealList}
-          </Slider>
+      <div className="row">
+        <div className="deals-section">
+          <div className="deals-heading text-center">
+            <h5>Deals and Offers</h5>
+            <p>Enjoy the best offers and discounts exclusively selected for your car needs.</p>
+          </div>
+          <div className="col-md-12 Deals-layout">
+            <Slider {...settings}>
+              {dealList}
+            </Slider>
+          </div>
         </div>
       </div>
     );
