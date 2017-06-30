@@ -204,8 +204,7 @@ export function fetchCurrentUserInfo(router){
         });
       }
     })
-    .catch((err) => {
-        console.log(err);
+    .catch(() => {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
           statusMessage: 'System error, please try later'
@@ -237,8 +236,7 @@ export function resendOTP(phoneNumber){
         });
       }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
       dispatch({
         type: types.SHOW_ERROR_MESSAGE,
         statusMessage: 'Unknown error occurred please try again'
@@ -265,8 +263,7 @@ export function logout(router) {
         router.push('/');
       }
     })
-    .catch((err) => {
-        console.log(err);
+    .catch(() => {
         localStorage.clear();
         router.push('/');
     });

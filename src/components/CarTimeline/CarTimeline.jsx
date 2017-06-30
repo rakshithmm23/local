@@ -87,12 +87,13 @@ export default class BookService extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} footer="true" title="Delete my audi a6" className="deleteCarProfile-modal" onHide={() => {this.setState({ showModal: false });}}>
+                            <CustomModal showModal={this.state.showModal} footer="true" title="Delete my audi a6" 
+                            className="deleteCarProfile-modal" 
+                            onHide={() => {this.setState({ showModal: false });}}
+                            saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
-
                                 </Modal.Body>
-
                             </CustomModal>
                         </div>
                     </div>

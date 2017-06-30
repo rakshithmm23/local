@@ -11,4 +11,4 @@ export const LOGOUT = 'LOGOUT';
 export const HIDE_ERROR_MESSAGE = 'HIDE_ERROR_MESSAGE';
 
 /* car profile action types */
-export const SET_CAR_PROFILE = 'SET_CAR_PROFILE'
+export const SET_CAR_PROFILE = 'SET_CAR_PROFILE';
