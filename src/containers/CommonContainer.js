@@ -3,11 +3,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../actions/';
 
-export default function CarProfileContainer(ComposedComponent) {
-  class CarProfileContainer extends Component {
+export default function CommonContainer(ComposedComponent) {
+  class CommonContainer extends Component {
     constructor(props) {
       super(props);
     }
+
     render() {
       return (<ComposedComponent {...this.props}/>);
     }
@@ -22,9 +23,9 @@ export default function CarProfileContainer(ComposedComponent) {
       actions: bindActionCreators(ActionCreators, dispatch)
     };
   }
-  return connect(mapStateToProps, mapDispatchToProps)(CarProfileContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(CommonContainer);
 }
 
-CarProfileContainer.contextTypes = {
+CommonContainer.contextTypes = {
   router: React.PropTypes.object
 };

@@ -410,7 +410,6 @@ export default class RequestCard extends Component {
     this.setState({ quotation: true, messages: false })
   }
   viewMessages() {
-    debugger
     this.setState({ quotation: false, messages: true })
   }
   day(selDay){
@@ -488,7 +487,6 @@ export default class RequestCard extends Component {
     }
   }
   // mapRef(e){
-  //   debugger
   //   let bounds = new google.maps.LatLngBounds();
   //   let points =[]
   //   each(this.state.jobCardDetails, function(value, key) {
@@ -501,7 +499,6 @@ export default class RequestCard extends Component {
   // }
 
   render() {
-    debugger
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -657,7 +654,7 @@ export default class RequestCard extends Component {
             <div>
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
             </div>
-            
+
           )
         })}
           <div className="requestSection">
@@ -684,7 +681,7 @@ export default class RequestCard extends Component {
                     <JobDetails serviceTypes={jobData[0].serviceTypes} statusIndicator={jobData[0].statusIndicator}/>
                   </div>}
                   {this.state.jobUpdates == "quotes" && jobData[0].statusIndicator!="waiting" &&
-                  
+
                   <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
@@ -778,19 +775,19 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["saturday"]?'active':''} onClick={this.day.bind(this,"saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
-                                          value={this.state.TimePickerFrom}                                        
+                                          value={this.state.TimePickerFrom}
                                           onChange={this.TimePickerChange.bind(this,"timeFrom")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
                                           use12Hours
-                                          clearText	
+                                          clearText
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
-                                        value={this.state.TimePickerTo}                                        
+                                        value={this.state.TimePickerTo}
                                           onChange={this.TimePickerChange.bind(this,"timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
@@ -913,9 +910,9 @@ export default class RequestCard extends Component {
                                     );
                                   })}
                                 </div>
-                            
+
                             </div>}
-                            
+
                             {jobData[0].statusIndicator=="accepted" || jobData[0].statusIndicator=="inProgress" ||jobData[0].statusIndicator=="completed" ? <div>
                               <AcceptedQuotes />
                             </div>:""}
