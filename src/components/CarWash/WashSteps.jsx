@@ -357,7 +357,7 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
+                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 
@@ -392,7 +392,7 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
+                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 

@@ -24,15 +24,15 @@ class CustomModal extends Component {
         this.setState({ showModal: false });
     }
     render() {
-        const { children, footer, className } = this.props;
+        const { children, footer, className, closeIcon } = this.props;
         return (
             <div>
                 <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
-                        <label className="close-modal" btnCallBack={() => this.props.onHide ? this.props.onHide() : ''}>
+                        {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>
                           <i className="mdi mdi-close"/>
-                        </label>
+                        </label>}
                     </Modal.Header>
                     {children}
                     {footer=="true" && <Modal.Footer>
