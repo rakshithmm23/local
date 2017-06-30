@@ -191,6 +191,14 @@ export default class Services extends Component {
                     manufacturerId: 124
                 }
             ],
+            vendorAddress: {
+              address: '29 Airport Road, Doha 00150, Qatar',
+              phone: '055 456876',
+              emailID: 'contact@buddyscarcare.com',
+              website: 'www.buddyscarcare.com',
+              paymentType: 'Cash & Credit Cards Accepted',
+              
+            }
         };
         this.renderCarWash = this.renderCarWash.bind(this);
         this.renderCarRepair = this.renderCarRepair.bind(this);
