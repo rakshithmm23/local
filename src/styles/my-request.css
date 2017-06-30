@@ -57,6 +57,7 @@ input[type="color"][list] {
 .quotes-view {
   padding: 0 15px;
   padding-right: 5px;
+  padding-bottom:20px;
 }
 
 .quotes-view .title span {
