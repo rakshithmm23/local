@@ -24,34 +24,34 @@ export default class Dashboard extends Component {
             notificationVisible: false
         };
     }
-    // componentWillMount() {
-    //     this.props.actions.fetchCurrentUserInfo(this.props.router);
-    //     const signedUserDataCookie = cookies.get('carauth');
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else if (!signedUserDataCookie) {
-    //         this.props.router.push('/');
-    //     }
-    // }
-    // componentWillReceiveProps() {
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else {
-    //         this.props.router.push('/');
-    //     }
-    // }
+    componentWillMount() {
+        this.props.actions.fetchCurrentUserInfo(this.props.router);
+        const signedUserDataCookie = cookies.get('carauth');
+        if (localStorage && localStorage.authData) {
+            const authData = JSON.parse(localStorage.authData);
+            if (!authData.phone) {
+                this.props.router.push('send-otp');
+            } else if (!authData.phoneVerified) {
+                this.props.router.push('verify-otp');
+            }
+        }
+        else if (!signedUserDataCookie) {
+            this.props.router.push('/');
+        }
+    }
+    componentWillReceiveProps() {
+        if (localStorage && localStorage.authData) {
+            const authData = JSON.parse(localStorage.authData);
+            if (!authData.phone) {
+                this.props.router.push('send-otp');
+            } else if (!authData.phoneVerified) {
+                this.props.router.push('verify-otp');
+            }
+        }
+        else {
+            this.props.router.push('/');
+        }
+    }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
