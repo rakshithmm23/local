@@ -10,7 +10,7 @@ class CustomModal extends Component {
         };
         // this.propTypes = {
         //     showModal: React.PropTypes.bool.isRequired,
-        // }    
+        // }
     }
     componentWillReceiveProps(nextProps) {
         const { showModal } = nextProps;
@@ -19,17 +19,20 @@ class CustomModal extends Component {
                 showModal: nextProps
             });
         }
-    }    
+    }
     close() {
         this.setState({ showModal: false });
     }
     render() {
-        const { children, footer, className } = this.props;
-        return (            
+        const { children, footer, className, closeIcon } = this.props;
+        return (
             <div>
                 <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
+                        {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>
+                          <i className="mdi mdi-close"/>
+                        </label>}
                     </Modal.Header>
                     {children}
                     {footer=="true" && <Modal.Footer>

@@ -49,8 +49,9 @@ export default class Search extends Component {
         document.body.removeEventListener()
     }
     bodyClick(e) {
+        debugger
         if ((e.target.closest('.searchFill') == null)) {
-            this.setState({ seachedValue: "" });
+            // this.setState({ seachedValue: "" });
         }
         if (e.target.className != "saveLocation") {
             this.setState({ addLocationModal: false });
@@ -218,10 +219,10 @@ export default class Search extends Component {
                         <div>
                             <h5 className="caption">Location Label</h5>
                             <div className="row">
-                                <div className="col-md-10 pad0">
+                                <div className="col-md-10 col-xs-10 pad0">
                                     <input type="text" className="plain-input" />
                                 </div>
-                                <div className="col-md-2">
+                                <div className="col-md-2 col-xs-2">
                                     <span className="delete-text">Delete</span>
                                 </div>
                             </div>
@@ -236,11 +237,10 @@ export default class Search extends Component {
                             center={{ lat: this.state.locationSearch[0].lat, lng: this.state.locationSearch[0].lng }}
                             markers={jobCardLocation}
                             zoom={9}
-                            containerElement={<div style={{ height: 562 + 'px',width:'auto' }} />}
-                            mapElement={<div style={{ height: 562 + 'px' ,width:'auto'}} />}
+                            containerElement={<div style={{ height: 562 + 'px',width:'auto' }}  className="locationPopup"/>}
+                            mapElement={<div style={{ height: 562 + 'px' ,width:'auto' }} className="locationPopup" />}
                         />
                     </Modal.Body>
-
                 </CustomModal>
             </div>
 
