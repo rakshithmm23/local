@@ -191,7 +191,6 @@ class ServiceSteps extends Component {
     }
 
     chageCheckoxState(e, val) {
-        debugger
         let updateVal = [...this.state.carWashCategories], checkedCount = 0;
 
         find(updateVal, (washCategory) => {
@@ -298,7 +297,7 @@ class ServiceSteps extends Component {
                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
-                                
+
                             </Modal.Body>
 
                         </CustomModal>
@@ -333,7 +332,7 @@ class ServiceSteps extends Component {
                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
-                                
+
                             </Modal.Body>
 
                         </CustomModal>
