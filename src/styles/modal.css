@@ -165,6 +165,8 @@
     font-family: "CenturyGothic";
     font-size: 12px;
     cursor: pointer;
+    position: relative;
+    top: 6px;
 }
 
 .map-modal .modal-dialog {
