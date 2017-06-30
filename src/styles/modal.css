@@ -30,9 +30,9 @@
 }
 
 .modal-body .info-text {
-    color: #717982;	
-    font-family: CenturyGothic;	
-    font-size: 14px;	
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 14px;
     line-height: 24px;
 }
 
@@ -205,4 +205,31 @@
 
 .map-modal .btn-theme.submit {
     width: 220px !important;
+}
+.locationPopup{
+  height: 75vh !important;
+}
+.close-modal{
+    position: absolute;
+    right: 23px;
+    top: 23px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+.close-modal i{
+    font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  .modal-dialog {
+      width: 100% !important;
+      margin:0px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .map-modal .btn-theme.sm {
+      width: 40%;
+  }
+  .map-modal .btn-theme.submit {
+     width: 50% !important;
+  }
 }

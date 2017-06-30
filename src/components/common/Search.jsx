@@ -236,11 +236,10 @@ export default class Search extends Component {
                             center={{ lat: this.state.locationSearch[0].lat, lng: this.state.locationSearch[0].lng }}
                             markers={jobCardLocation}
                             zoom={9}
-                            containerElement={<div style={{ height: 562 + 'px',width:'auto' }} />}
-                            mapElement={<div style={{ height: 562 + 'px' ,width:'auto'}} />}
+                            containerElement={<div style={{ height: 562 + 'px',width:'auto' }}  className="locationPopup"/>}
+                            mapElement={<div style={{ height: 562 + 'px' ,width:'auto' }} className="locationPopup" />}
                         />
                     </Modal.Body>
-
                 </CustomModal>
             </div>
 
