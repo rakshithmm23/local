@@ -49,8 +49,9 @@ export default class Search extends Component {
         document.body.removeEventListener()
     }
     bodyClick(e) {
+        debugger
         if ((e.target.closest('.searchFill') == null)) {
-            this.setState({ seachedValue: "" });
+            // this.setState({ seachedValue: "" });
         }
         if (e.target.className != "saveLocation") {
             this.setState({ addLocationModal: false });
