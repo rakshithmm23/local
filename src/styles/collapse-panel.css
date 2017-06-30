@@ -293,6 +293,7 @@
 
 .sub-collapse-panel {
     margin-bottom: 10px;
+    position: relative;
 }
 
 .sub-collapse-panel .sub-collapse-panel-head {
@@ -326,7 +327,7 @@
     font-size: 14px;
     line-height: 14px;
     text-transform: capitalize;
-    margin-left: 33px;
+    margin-left: 50px;
     display: inline-block;
 }
 
@@ -340,16 +341,18 @@
     line-height: 14px;
 }
 
-.sub-collapse-panel .sub-collapse-panel-head figure {
-    display: inline-block;
-    margin-top: -8px;
-    vertical-align: middle;
+
+.sub-collapse-panel figure {
+    position: absolute;
+    z-index: 9;
+    top: 15px;
+    left: 22px;
 }
 
-.sub-collapse-panel .sub-collapse-panel-head figure img {
+/*.sub-collapse-panel .sub-collapse-panel-head figure img {
     height: 21px;
     width: 20px;
-}
+}*/
 
 .sub-collapse-panel .sub-collapse-panel-body {
     border: 1px solid rgba(218, 225, 231, 0.4);
