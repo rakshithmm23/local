@@ -14,7 +14,7 @@ export default class Header extends Component {
     }
 
     render() {
-        const { actions, router, notificationCount, profileName, notificationCallBack } = this.props;
+        const { actions, router, notificationCount, profileName, notificationCallBack, messageCallBack } = this.props;
         const messagesThread = [
             {
                 messageFrom: "Shine Works",
@@ -114,20 +114,21 @@ export default class Header extends Component {
                         <li className="search-mobile">
                             <i className="mdi mdi-magnify" aria-hidden="true" />
                         </li>
-                        <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
+
+                        <li className="notification-menu mobile-view" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
                             <label>
                                 <i className="mdi mdi-bell" aria-hidden="true" />
                                 <span className="no-notify"></span>
                             </label>
                         </li>
-                        <li className="notification-menu mobile-view hide" onClick={(e) => { e.preventDefault(); notificationCallBack(true); }}>
+                        <li className="notification-menu mobile-view" onClick={(e) => { e.preventDefault(); messageCallBack(true); }}>
                             <label>
                                 <i className="mdi mdi-message-processing" aria-hidden="true" />
                                 <span className="no-notify"></span>
                             </label>
                         </li>
 
-                        <li className={this.state.notificationSelected ? "notification-menu active" : "notification-menu"}>
+                        <li className={this.state.notificationSelected ? "notification-menu desktop-view active" : "notification-menu desktop-view"}>
                             <div className="text-dropdown notify" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({ notificationSelected: !this.state.notificationSelected }) }} title={
                                     <div className="">
@@ -144,7 +145,7 @@ export default class Header extends Component {
                                 </DropdownButton>
                             </div>
                         </li>
-                        <li className={this.state.messageSelected ? "notification-menu active" : "notification-menu"}>
+                        <li className={this.state.messageSelected ? "notification-menu desktop-view active" : "notification-menu desktop-view"}>
                             <div className="text-dropdown notify" >
                                 <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onToggle={() => { this.setState({ messageSelected: !this.state.messageSelected }) }} title={
                                     <div className="d-inline-block">
