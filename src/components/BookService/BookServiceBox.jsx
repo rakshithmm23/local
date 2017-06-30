@@ -64,7 +64,7 @@ class BookServiceBox extends Component {
                         <h5>{this.props.name}</h5>
                         <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={() => this.setState({ showModal: true })} />
                     </figcaption>
-                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal">
+                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true">
                         <Modal.Body>
                             <ul>
                                 {bookServiceOptionView}
