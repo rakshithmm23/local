@@ -218,10 +218,10 @@ export default class Search extends Component {
                         <div>
                             <h5 className="caption">Location Label</h5>
                             <div className="row">
-                                <div className="col-md-10 pad0">
+                                <div className="col-md-10 col-xs-10 pad0">
                                     <input type="text" className="plain-input" />
                                 </div>
-                                <div className="col-md-2">
+                                <div className="col-md-2 col-xs-2">
                                     <span className="delete-text">Delete</span>
                                 </div>
                             </div>
