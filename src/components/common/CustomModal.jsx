@@ -30,7 +30,7 @@ class CustomModal extends Component {
                 <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
-                        <label className="close-modal" btnCallBack={() => this.props.onHide ? this.props.onHide() : ''}>
+                        <label className="close-modal" onClick={this.close.bind(this)}>
                           <i className="mdi mdi-close"/>
                         </label>
                     </Modal.Header>
