@@ -6,7 +6,7 @@ const cookies = new Cookies();
 // Containers
 import DashboardContainer from './containers/DashboardContainer';
 import AuthContainer from './containers/AuthContainer';
-import CarProfileContainer from './containers/CarProfileContainer'
+import CarProfileContainer from './containers/CarProfileContainer';
 
 // Auth Components
 import SignIn from './components/Auth/SignIn';
@@ -67,6 +67,6 @@ export default (
     <Route path="favourites" component={AuthContainer(Favourites)}  />
     <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
     <Route path="terms" component={AuthContainer(Terms)}  />
-    <Route path="404" component={AuthContainer(pageNotFound)}  />
+    <Route path="*" component={pageNotFound} />
   </Route>
 );
