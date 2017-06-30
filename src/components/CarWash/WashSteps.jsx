@@ -269,8 +269,10 @@ class WashSteps extends Component {
             let cat = { ...category };
             if (category.id == id) {
                 cat.active = !cat.active;
+                cat.showModal = false;
             } else {
                 cat.active = false;
+                cat.showModal = false;
             }
             newCat.push(cat);
         })
@@ -285,7 +287,8 @@ class WashSteps extends Component {
             this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
     }
-    showModal(id){
+    showModal(e,id){
+        e.preventDefault();
         let updateVal=[...this.state.carWashCategories]
         each(updateVal, function(value) {
             value.showModal = false;
@@ -296,7 +299,7 @@ class WashSteps extends Component {
         this.setState({carWashCategories:updateVal})
     }
 
-    chageCheckoxState(e, val) {
+    chageCheckoxState(e,val) {
         let updateVal = [...this.state.carWashCategories], checkedCount = 0;
 
         find(updateVal, (washCategory) => {
@@ -329,10 +332,11 @@ class WashSteps extends Component {
             if (key % 2 == 0) {
                 rightBlock.push(
                     <div className="sub-collapse-panel" key={key}>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure onClick={this.showModal.bind(this,carWashCategory.id)}>
+                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
                                 <img src={carWashCategory.image} alt="" />
-                            </figure>
+                        </figure>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
+                            
                             <h4>{carWashCategory.heading}</h4>
                             {carWashCategory.checkedCategoryCount == 0 ?
                                 <span className="sub-category-count">
@@ -364,10 +368,10 @@ class WashSteps extends Component {
             } else {
                 leftBlock.push(
                     <div className="sub-collapse-panel" key={key}>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure onClick={this.showModal.bind(this,carWashCategory.id)}>
+                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
                                 <img src={carWashCategory.image} alt="" />
-                            </figure>
+                        </figure>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
                             <h4>{carWashCategory.heading}</h4>
                             {carWashCategory.checkedCategoryCount == 0 ?
                                 <span className="sub-category-count">
@@ -388,7 +392,7 @@ class WashSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                         <CustomModal showModal={carWashCategory.showModal} footer="false" title="Delete my audi a6">
+                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 

@@ -9,6 +9,8 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
+import CustomModal from '../common/CustomModal';
+import { Modal } from 'react-bootstrap';
 
 
 class RepairSteps extends Component {
@@ -51,7 +53,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-5.png'
+                    image: '../../images/auto-service-icons-5.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 2,
                     active: false,
@@ -75,7 +78,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-3.png'
+                    image: '../../images/auto-service-icons-3.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 3,
                     active: false,
@@ -107,7 +111,8 @@ class RepairSteps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-4.png'
+                    image: '../../images/auto-service-icons-4.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 4,
                     active: false,
@@ -139,7 +144,8 @@ class RepairSteps extends Component {
                             name: "subcategory 6",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-1.png'
+                    image: '../../images/auto-service-icons-1.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 5,
@@ -164,7 +170,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-3.png'
+                    image: '../../images/auto-service-icons-3.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 6,
@@ -189,7 +196,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-5.png'
+                    image: '../../images/auto-service-icons-5.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 7,
@@ -214,7 +222,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-4.png'
+                    image: '../../images/auto-service-icons-4.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 },
                 {
                     id: 8,
@@ -239,7 +248,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-2.png'
+                    image: '../../images/auto-service-icons-2.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }, {
                     id: 8,
                     active: false,
@@ -263,7 +273,8 @@ class RepairSteps extends Component {
                             name: "I am not sure",
                             checked: false
                         }],
-                    image: '../../images/auto-service-icons-3.png'
+                    image: '../../images/auto-service-icons-3.png',
+                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
                 }
 
             ],
@@ -285,14 +296,27 @@ class RepairSteps extends Component {
             let cat = { ...category };
             if (category.id == id) {
                 cat.active = !cat.active;
+                cat.showModal = false;
             } else {
                 cat.active = false;
+                cat.showModal = false;
             }
             newCat.push(cat);
         })
         this.setState({
             carWashCategories: newCat
         });
+    }
+    showModal(e,id){
+        e.preventDefault();
+        let updateVal=[...this.state.carWashCategories]
+        each(updateVal, function(value) {
+            value.showModal = false;
+            if(value.id == id){
+                value.showModal = !value.showModal;
+            }
+        });
+        this.setState({carWashCategories:updateVal})
     }
     hidePanel(panel) {
         if (panel == 'step1') {
@@ -535,10 +559,10 @@ class RepairSteps extends Component {
             if (key % 2 != 0) {
                 rightBlock.push(
                     <div className="sub-collapse-panel" key={key}>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure>
+                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
                                 <img src={carWashCategory.image} alt="" />
-                            </figure>
+                        </figure>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
                             <h4>{carWashCategory.heading}</h4>
                             {carWashCategory.checkedCategoryCount == 0 ?
                                 <span className="sub-category-count">
@@ -559,14 +583,21 @@ class RepairSteps extends Component {
                                 </div>);
                             })}
                         </div>
+                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
+                            <Modal.Body>
+                                <p className="info-text">{carWashCategory.modalText}</p>
+                                
+                            </Modal.Body>
+
+                        </CustomModal>
                     </div>);
             } else {
                 leftBlock.push(
                     <div className="sub-collapse-panel" key={key}>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={() => { this.openCategory(carWashCategory.id); }}>
-                            <figure>
+                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
                                 <img src={carWashCategory.image} alt="" />
-                            </figure>
+                        </figure>
+                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
                             <h4>{carWashCategory.heading}</h4>
                             {carWashCategory.checkedCategoryCount == 0 ?
                                 <span className="sub-category-count">
@@ -587,6 +618,13 @@ class RepairSteps extends Component {
                                 </div>);
                             })}
                         </div>
+                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading}>
+                            <Modal.Body>
+                                <p className="info-text">{carWashCategory.modalText}</p>
+                                
+                            </Modal.Body>
+
+                        </CustomModal>
                     </div>);
             }
         });
