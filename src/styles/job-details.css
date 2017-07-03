@@ -175,3 +175,25 @@
     object-fit: cover;
     height: 100%;
 }
+
+@media screen and (max-width: 991px) {
+    .request-summary-body .data-time .margin-correction {
+        padding: 20px;
+        padding-left: 0px;
+    }
+    .request-summary-body .data-time .margin-correction .wrapper {
+        border-right:none;
+    }
+    .request-summary-body .tab-jobDetails {
+        margin-top: 0px;
+    }
+    .request-summary-body .data-time {
+        padding: 0px;
+    }
+    .request-summary-body .repair-detail {
+        padding-left: 10px !important;
+    }
+    .request-summary-body .more-details{
+        border-left:none;
+    }
+}

@@ -773,10 +773,38 @@ input[type="color"][list] {
   .quotes-view .title .filterSection {
     float: none;
     margin-top: 0;
-    margin-bottom: 25px
+    margin-bottom: 10px
   }
   .quotes-view .title .filterSection select {
     margin-left: 0;
     margin-right: 10px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .quotes-view .title span {
+      display: block;
+  }
+  .quotes-view .title .filterSection {
+    display:inline-block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .quotes-right-header {
+    padding-bottom: 0px;
+  }
+  .quotes-right-tabs {
+    float: none;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .request-summary .title span {
+    font-size: 13px;
+  }
+  .quotes-view {
+    padding: 0 10px;
+  }
+  .quotes-view .title .filterSection {
+    margin-right: 5px;
   }
 }

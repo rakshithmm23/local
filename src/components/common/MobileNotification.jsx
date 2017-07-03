@@ -7,9 +7,11 @@ export default class MobileNotification extends Component {
         const {isVisible, backBtnCallBack} = this.props;
         return (
             <div className={isVisible ? 'mobileNotification': 'mobileNotification hide'}>
-                <div className="notificationHead" onClick={(e) => {e.preventDefault(); backBtnCallBack(false);}}>
-                    <div className="back-option"><img src="../../images/back-arrow.png" /></div>
-                    <h4>Notification Title</h4>
+                <div className="notificationHead">
+                    <div className="back-option" onClick={(e) => {e.preventDefault(); backBtnCallBack(false);}}>
+                        <img src="../../images/back-arrow.png" />
+                    </div>
+                    <h4>Notifications</h4>
                 </div>
                 <ul className="notificationList">
                     <li>

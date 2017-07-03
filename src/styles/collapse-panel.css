@@ -646,6 +646,61 @@
   .collapse-panel .search-box {
     width: 32%;
   }
+  .sub-collapse-panel .sub-collapse-panel-head i {
+    float: right;
+    margin-top: -15px;
+  }
+  .sub-collapse-panel .sub-collapse-panel-head h4 {
+    display: block;
+    margin: 0px;
+    margin-left: 20px;
+  }
+  .sub-collapse-panel .sub-collapse-panel-head .sub-category-count {
+    position: static;
+    margin-left: 20px;
+  }
+  .sub-collapse-panel .sub-collapse-panel-head h4{
+    width:200px;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    }
+  .panel-content .padRight0 {
+    padding-left: 0;
+  }
+  .panel-content .padLeft0 {
+    padding-right: 0;
+  }
+  .sub-collapse-panel figure {
+    left: 12px;
+    cursor: pointer;
+  }
+  .sub-collapse-panel .sub-collapse-panel-body .options {
+    padding-left: 35px;
+  }
+  .car-wash .collapse-panel .left {
+    border-right: none;
+  }
+  .car-wash .collapse-panel .right {
+    padding-left: 0px;
+  }
+  .panel-content .form-section {
+    margin-bottom: 25px;
+  }
+  .panel-head {
+    padding: 11px 10px;
+  }
+  .panel-head h4 {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .panel-head h4 {
+    font-size: 12px;
+  }
+  .sub-collapse-panel .sub-collapse-panel-head h4 {
+    width: 140px;
+  }
 }
 
 

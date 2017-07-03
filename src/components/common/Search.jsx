@@ -261,7 +261,6 @@ export default class Search extends Component {
                     </Modal.Body>
                 </CustomModal>
             </div>
-
         );
     }
 }
