@@ -350,7 +350,7 @@ class WashSteps extends Component {
                         </div>
                         <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" index={index}>
+                                return (<div className="options" key={index}>
                                     <span className="checkbox-style">
                                         <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.checked} {category.name}</label>
                                     </span>
@@ -385,7 +385,7 @@ class WashSteps extends Component {
                         </div>
                         <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
                             {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" index={index}>
+                                return (<div className="options" key={index}>
                                     <span className="checkbox-style">
                                         <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
                                     </span>

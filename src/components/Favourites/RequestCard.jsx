@@ -137,17 +137,7 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
-  TimePickerChange (type,value) {
-    if(type=="timeFrom"){
-      this.setState({ TimePickerFrom:value });
-    }else{
-      this.setState({ TimePickerTo:value });
-    }
-  }
-  
-  jobDetail(val) {
-    this.setState({ jobUpdates: val });
-  }
+ 
   componentWillMount() {
     this.updateDimensions();
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
@@ -163,6 +153,17 @@ export default class RequestCard extends Component {
   }
   componentWillUnmount() {
     window.removeEventListener();
+  }
+   TimePickerChange (type,value) {
+    if(type=="timeFrom"){
+      this.setState({ TimePickerFrom:value });
+    }else{
+      this.setState({ TimePickerTo:value });
+    }
+  }
+  
+  jobDetail(val) {
+    this.setState({ jobUpdates: val });
   }
   bodyClick(e) {
     if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
@@ -423,8 +424,7 @@ export default class RequestCard extends Component {
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
-                                          use12Hours
-                                          clearText	
+                                          use12Hours                                      	
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
@@ -537,9 +537,9 @@ export default class RequestCard extends Component {
                             <div className="wrapper" ref={'quotesList'}>
 
                               <div>
-                                {map(this.state.jobCardDetails, (val, key) => {
+                                {map(this.state.jobCardDetails, (details, key) => {
                                   return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name}  rating={val.rating} distance={val.distance} reviews={val.review}
+                                    <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name}  rating={details.rating} distance={details.distance} reviews={details.review}
                                       viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                   );
                                 })}
@@ -603,19 +603,19 @@ export default class RequestCard extends Component {
                                 </ul>
                               </div>
                               <div className="quotation-details">
-                                {map(this.state.jobCardDetails, (value, jobCardKey) => {
+                                {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
                                   return (
-                                    value.quotationDetails!= undefined && <div className="quotation-block" key={jobCardKey}>
-                                      {map(value.quotationDetails, (val, quotationKey) => {
+                                    cardValue.quotationDetails!= undefined && <div className="quotation-block" key={jobCardKey}>
+                                      {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
                                         return (
                                           <div>
-                                            <h4 key={quotationKey}>{val.serviceIndex}. {val.serviceName}</h4>
+                                            <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
                                             <ul>
-                                              {map(val.Accessories, (v, accessoriesKey) => {
+                                              {map(quoteVal.Accessories, (quoteAcc, accessoriesKey) => {
                                                 return (
                                                   <li key={accessoriesKey}>
-                                                    <label>{v.name}</label>
-                                                    <span>{v.cost} {v.currency}</span>
+                                                    <label>{quoteAcc.name}</label>
+                                                    <span>{quoteAcc.cost} {quoteAcc.currency}</span>
                                                   </li>
                                                 )
                                               })}
