@@ -783,7 +783,6 @@ export default class RequestCard extends Component {
                                           className="xxx"
                                           format={formatFrom}
                                           use12Hours
-                                          clearText
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
@@ -904,10 +903,10 @@ export default class RequestCard extends Component {
                             {jobData[0].statusIndicator=="active" && <div className="wrapper" ref={'quotesList'}>
 
                                 <div>
-                                  {map(this.state.jobCardDetails, (val, key) => {
+                                  {map(this.state.jobCardDetails, (details, key) => {
                                     return (
-                                      <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} rating={val.rating} distance={val.distance} reviews={val.review}
-                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key,  }, val.vendorId)} />
+                                      <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
+                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key,  }, details.vendorId)} />
                                     );
                                   })}
                                 </div>
@@ -974,20 +973,20 @@ export default class RequestCard extends Component {
                                 </ul>
                               </div>
                               <div className="quotation-details">
-                                {map(this.state.jobCardDetails, (value, jobCardKey) => {
+                                {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
                                   return (
-                                    value.quotationDetails!= undefined &&
+                                    cardValue.quotationDetails!= undefined &&
                                     <div className="quotation-block" key={jobCardKey}>
-                                      {map(value.quotationDetails, (val, quotationKey) => {
+                                      {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
                                         return (
                                           <div>
-                                            <h4 key={quotationKey}>{val.serviceIndex}. {val.serviceName}</h4>
+                                            <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
                                             <ul>
-                                              {map(val.Accessories, (v, accessoriesKey) => {
+                                              {map(quoteVal.Accessories, (carAcc, accessoriesKey) => {
                                                 return (
                                                   <li key={accessoriesKey}>
-                                                    <label>{v.name}</label>
-                                                    <span>{v.cost} {v.currency}</span>
+                                                    <label>{carAcc.name}</label>
+                                                    <span>{carAcc.cost} {carAcc.currency}</span>
                                                   </li>
                                                 )
                                               })}

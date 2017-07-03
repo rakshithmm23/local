@@ -450,7 +450,6 @@ export default class RequestCard extends Component {
                                           className="xxx"
                                           format={formatFrom}
                                           use12Hours
-                                          clearText	
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
@@ -641,20 +640,20 @@ export default class RequestCard extends Component {
                                 </ul>
                               </div>
                               <div className="quotation-details">
-                                {map(this.state.jobCardDetails, (value, jobCardKey) => {
+                                {map(this.state.jobCardDetails, (CardValue, jobCardKey) => {
                                   return (
-                                    value.quotationDetails!= undefined &&
+                                    CardValue.quotationDetails!= undefined &&
                                     <div className="quotation-block" key={jobCardKey}>
-                                      {map(value.quotationDetails, (val, quotationKey) => {
+                                      {map(CardValue.quotationDetails, (cardvQuote, quotationKey) => {
                                         return (
                                           <div>
-                                            <h4 key={quotationKey}>{val.serviceIndex}. {val.serviceName}</h4>
+                                            <h4 key={quotationKey}>{cardvQuote.serviceIndex}. {cardvQuote.serviceName}</h4>
                                             <ul>
-                                              {map(val.Accessories, (v, accessoriesKey) => {
+                                              {map(cardvQuote.Accessories, (carAcc, accessoriesKey) => {
                                                 return (
                                                   <li key={accessoriesKey}>
-                                                    <label>{v.name}</label>
-                                                    <span>{v.cost} {v.currency}</span>
+                                                    <label>{carAcc.name}</label>
+                                                    <span>{carAcc.cost} {carAcc.currency}</span>
                                                   </li>
                                                 )
                                               })}

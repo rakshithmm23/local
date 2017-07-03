@@ -182,7 +182,7 @@ export default class JobUpdate extends Component {
         
         {map(jobData, (cardDetails, key) => {
           return (
-            <div>
+            <div key={key}>
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
             </div>
           )
