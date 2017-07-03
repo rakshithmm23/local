@@ -9,6 +9,7 @@ import Footer from '../common/Footer';
 import RequestCard from './RequestCard';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
+import MobileMessage from '../common/MobileMessage';
 import { serviceTypes } from '../../constants/staticData';
 import { DropdownButton, MenuItem, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
@@ -21,6 +22,7 @@ export default class MyRequest extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
+            messageVisible: false,
             showModal: false,
             max_chars:200,
             chars_left:0,
@@ -38,6 +40,9 @@ export default class MyRequest extends Component {
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
+    toggleMessage(isVisible) {
+        this.setState({ 'messageVisible': isVisible });
+    }
     handleChange(event) {
         let input = null
         input = event
@@ -50,8 +55,9 @@ export default class MyRequest extends Component {
         return (
             <div className="jobUpdate">
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions}/>
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
+                <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
                     <Sidebar />

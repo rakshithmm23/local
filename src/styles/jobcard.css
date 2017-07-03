@@ -383,7 +383,7 @@
 
     @media screen and (max-width: 640px) {
         .status-label {
-            width: 100px;
+            width: auto;
             padding: 8px 5px;
             font-size: 12px !important;
         }
@@ -391,7 +391,7 @@
             font-size: 12px !important;
         }
         .job-icon {
-            margin: 5px 8px;
+            margin: 3px 5px;
         }
         .job-icon .mdi {
             font-size: 16px !important;

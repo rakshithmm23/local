@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import IconNotification from '../common/IconNotification';
 
-export default class MobileNotification extends Component {
+export default class MobileMessage extends Component {
 
     render() {
         const {isVisible, backBtnCallBack} = this.props;
@@ -9,7 +9,7 @@ export default class MobileNotification extends Component {
             <div className={isVisible ? 'mobileNotification': 'mobileNotification hide'}>
                 <div className="notificationHead" onClick={(e) => {e.preventDefault(); backBtnCallBack(false);}}>
                     <div className="back-option"><img src="../../images/back-arrow.png" /></div>
-                    <h4>Notifications</h4>
+                    <h4>Messages</h4>
                 </div>
                 <ul className="notificationList">
                     <li>

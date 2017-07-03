@@ -4,14 +4,14 @@ import Sidebar from '../common/Sidebar';
 import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
+import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
-import { Modal } from 'react-bootstrap';
 
 
 export default class BookService extends Component {
@@ -20,6 +20,7 @@ export default class BookService extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
+            messageVisible: false,
             timelineUpdate: "timeline",
             myCarDropdownIcon: true,
             selectedCar: "My Nissan GT-R",
@@ -27,9 +28,15 @@ export default class BookService extends Component {
 
         };
     }
+
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
+
+    toggleMessage(isVisible) {
+        this.setState({ 'messageVisible': isVisible });
+    }
+
     timelineDetail(val) {
         this.setState({ timelineUpdate: val });
     }
@@ -47,8 +54,9 @@ export default class BookService extends Component {
         return (
             <div>
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions}/>
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
+                <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
                     <Sidebar />

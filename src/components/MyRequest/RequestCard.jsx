@@ -487,7 +487,6 @@ export default class RequestCard extends Component {
     }
   }
   // mapRef(e){
-  //   debugger
   //   let bounds = new google.maps.LatLngBounds();
   //   let points =[]
   //   each(this.state.jobCardDetails, function(value, key) {

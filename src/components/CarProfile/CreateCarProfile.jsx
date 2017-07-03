@@ -5,6 +5,7 @@ import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
 import ProfileSteps from './ProfileSteps';
 import MobileNotification from '../common/MobileNotification';
+import MobileMessage from '../common/MobileMessage';
 import AlertDismissable from '../common/AlertDismissable';
 
 export default class NewCarProfile extends Component {
@@ -12,18 +13,25 @@ export default class NewCarProfile extends Component {
         super(props);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
-            notificationVisible: false
+            notificationVisible: false,
+            messageVisible: false            
         };
     }
-    toggleNotification(isVisible) {
-        this.setState({ 'notificationVisible': isVisible });
+
+    componentWillUnmount() {
+      this.props.actions.hideErrorMessage();
     }
 
     onSubmit(carProfileData){
       this.props.actions.setCarProfileAction(carProfileData);
     }
-    componentWillUnmount() {
-      this.props.actions.hideErrorMessage();
+
+    toggleNotification(isVisible) {
+        this.setState({ 'notificationVisible': isVisible });
+    }
+
+    toggleMessage(isVisible) {
+        this.setState({ 'messageVisible': isVisible });
     }
 
     render() {
@@ -31,8 +39,9 @@ export default class NewCarProfile extends Component {
         return (
             <div>
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions}/>
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
+                <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
                     <Sidebar />

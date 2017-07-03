@@ -8,6 +8,7 @@ import AppLink from '../common/AppLink';
 import Footer from '../common/Footer';
 import WelcomeText from '../common/WelcomeText';
 import MobileNotification from '../common/MobileNotification';
+import MobileMessage from '../common/MobileMessage';
 import { serviceTypes } from '../../constants/staticData';
 
 export default class Terms extends Component {
@@ -15,19 +16,24 @@ export default class Terms extends Component {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
-            notificationVisible: false
+            notificationVisible: false,
+            messageVisible: false
         };
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
+    }
+    toggleMessage(isVisible) {
+        this.setState({ 'messageVisible': isVisible });
     }
 
     render() {
         return (
             <div className="jobUpdate">
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} router={this.props.router} actions={this.props.actions} />
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
+                <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
                     <Sidebar />
