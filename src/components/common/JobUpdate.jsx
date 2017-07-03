@@ -58,26 +58,6 @@ export default class JobUpdate extends Component {
     const jobData = [
       {
         carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani1',
-        serviceTypes: 'Emergency Service',
-        customeId: '12345678',
-        startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'waiting',
-        jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
-        'currently assessing your application and will get back with their quotes soon.',
-      },
-      {
-        carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani2',
-        serviceTypes: 'Emergency Service',
-        customeId: '12345678',
-        startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'active',
-        jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
-        'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
-      },
-      {
-        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -99,9 +79,82 @@ export default class JobUpdate extends Component {
             statusDescription: 'Door Locking Mechanisms and Windows',
             statusTime: '09 Mar 15 11:00 AM',
             statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          },{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
           }
+          
+          
         ],
       },
+      {
+        carImage: '../../images/car.jpg',
+        customerName: 'Bala Subramani1',
+        serviceTypes: 'Emergency Service',
+        customeId: '12345678',
+        startDate: '09 Mar17, 11:00 AM',
+        statusIndicator: 'waiting',
+        jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
+        'currently assessing your application and will get back with their quotes soon.',
+      },
+      {
+        carImage: '../../images/car.jpg',
+        customerName: 'Bala Subramani2',
+        serviceTypes: 'Emergency Service',
+        customeId: '12345678',
+        startDate: '09 Mar17, 11:00 AM',
+        statusIndicator: 'active',
+        jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
+        'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
+      },
+      
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',

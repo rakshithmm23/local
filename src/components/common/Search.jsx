@@ -94,7 +94,6 @@ export default class Search extends Component {
 
 
     render() {
-        debugger
         const style = {
             textBold: {
                 fontFamily: "CenturyGothic_bold",
