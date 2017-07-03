@@ -179,10 +179,10 @@ export default class JobUpdate extends Component {
       <div>
         <h4 className="job-update-title">Job Status</h4>
         <a className="jobUpdate-viewall">View All</a>
-        
+
         {map(jobData, (cardDetails, key) => {
           return (
-            <div>
+            <div key={key}>
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
             </div>
           )
