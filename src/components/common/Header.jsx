@@ -9,12 +9,12 @@ export default class Header extends Component {
         super(props);
         this.state = {
             notificationSelected: false,
-            messageSelected: false
+            messageSelected: false            
         }
     }
 
     render() {
-        const { actions, router, notificationCount, profileName, notificationCallBack, messageCallBack } = this.props;
+        const { actions, router, notificationCount, profileName, notificationCallBack, messageCallBack, searchCallBack } = this.props;
         const messagesThread = [
             {
                 messageFrom: "Shine Works",
@@ -111,7 +111,7 @@ export default class Header extends Component {
                 </div>
                 <div className="header-right">
                     <ul className="list-unstyled">
-                        <li className="search-mobile">
+                        <li className="search-mobile" onClick={(e) => { e.preventDefault(); searchCallBack(true); }}>
                             <i className="mdi mdi-magnify" aria-hidden="true" />
                         </li>
 

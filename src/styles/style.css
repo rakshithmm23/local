@@ -185,13 +185,23 @@
             margin-bottom: 20px;
         }
     }
-
+    @media screen and (max-width: 991px) {
+        .page-sec-header {
+            padding: 0px 0;
+        }
+        .main-wrapper .inSection {
+            padding: 0px 0;
+        }
+        .three-dots-icon .dropdown-toggle {
+            margin-top: 15px;
+        }
+    }
     @media screen and (max-width: 767px) {
         .mpad-0 {
             padding: 0;
         }
         .page-sec-header {
-            padding: 10px 0;
+            padding: 0px 0;
         }
         .page-sec-header h4 {
             font-size: 16px;

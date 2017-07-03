@@ -11,7 +11,7 @@ import WelcomeText from './common/WelcomeText';
 import EmptyUpdates from './common/EmptyUpdates';
 import MobileNotification from './common/MobileNotification';
 import MobileMessage from './common/MobileMessage';
-// import MobileSearch from './common/MobileSearch';
+import MobileSearch from './common/MobileSearch';
 import { serviceTypes } from '../constants/staticData';
 import { decryptCookie } from '../helpers';
 import Cookies from 'universal-cookie';
@@ -23,7 +23,8 @@ export default class Dashboard extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
-            messageVisible: false
+            messageVisible: false,
+            searchVisible: false
         };
     }
     // componentWillMount() {
@@ -62,6 +63,10 @@ export default class Dashboard extends Component {
         this.setState({ 'messageVisible': isVisible });
     }
 
+    toggleSearch(isVisible) {
+        this.setState({ 'searchVisible': isVisible });
+    }
+
     render() {
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
@@ -76,9 +81,10 @@ export default class Dashboard extends Component {
         return (
             <div>
                 {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
+                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} searchCallBack={this.toggleSearch.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
+                <MobileSearch isVisible={this.state.searchVisible} backBtnCallBack={this.toggleSearch.bind(this)} />
 
                 <div className="main-wrapper">
                     {/*Sidebar*/}

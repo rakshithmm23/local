@@ -1,4 +1,6 @@
-.mobileNotification {
+.mobileNotification,
+.mobileMessage,
+.mobileSearch {
     z-index: 99999;
     position: fixed;
     background: #fff;
