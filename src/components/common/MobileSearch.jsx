@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import IconNotification from '../common/IconNotification';
-import { map, filter, merge, forEach } from "lodash";
+import { map, filter } from "lodash";
 
 export default class MobileSearch extends Component {
     constructor() {
@@ -11,8 +10,6 @@ export default class MobileSearch extends Component {
     }
 
     render() {
-debugger
-
         const { callBackBtn } = this.props;
         let searchView = filter(this.props.dropdownList, (val) => {
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {

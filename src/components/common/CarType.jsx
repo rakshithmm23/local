@@ -105,21 +105,19 @@ class CardType extends Component {
                                                     <label>Order ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                <li>
-                                                    {cardDetails.statusPopup && <li>
-                                                        <li onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
-                                                            {this.state.showTimeLine ?<button className="btn btn-theme sm label" >
-                                                                <i className="mdi mdi-chevron-down" />
-                                                                Collapse Timeline
-                                                            </button>:
-                                                            <button className="btn btn-theme sm label" >
-                                                                <i className="mdi mdi-chevron-up" />
-                                                                Expand Timeline
-                                                            </button>
-                                                            }
-                                                        </li>
-                                                    </li>}
-                                                </li>
+                                                {cardDetails.statusPopup && 
+                                                    <li onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
+                                                        {this.state.showTimeLine ?<button className="btn btn-theme sm label" >
+                                                            <i className="mdi mdi-chevron-down" />
+                                                            Collapse Timeline
+                                                        </button>:
+                                                        <button className="btn btn-theme sm label" >
+                                                            <i className="mdi mdi-chevron-up" />
+                                                            Expand Timeline
+                                                        </button>
+                                                        }
+                                                    
+                                                </li>}
                                             </ul>
                                         </div>
                                     </div>
