@@ -1,4 +1,4 @@
-.status-label{
+.status-label {
     background: #fff;
     font-family: CenturyGothic_bold;
     text-transform: capitalize;
@@ -7,34 +7,56 @@
     letter-spacing: 0.9px;
     font-size: 15px;
 }
-.job-right-header .waiting{
+
+.job-right-header .waiting {
     color: #FFBE2C;
 }
-.job-right-header .active{
+
+.job-right-header .active {
     color: #7294FE;
 }
-.job-right-header .accepted{
+
+.job-right-header .accepted {
     color: #9553B5;
 }
-.job-right-header .inProgress{
+
+.job-right-header .inProgress {
     color: #1EC1DC;
 }
-.job-right-header .finished{
+
+.job-right-header .finished {
     color: #195E8D;
 }
-.job-right-header .cancelled{
+
+.job-right-header .cancelled {
     color: #FF8A78;
 }
-.job-right-header .expired{
+
+.job-right-header .expired {
     color: #A5A5A5;
 }
-.status-label.basic{
+
+.status-label.basic {
     border: 1px solid #DAE1E7;
     padding: 3px 0;
     border-radius: 3px;
     color: #8F9397;
     font-family: CenturyGothic;
-    height: 27px;	
+    height: 27px;
     min-width: 63px;
     text-align: center;
+}
+
+@media screen and (max-width:767px) {
+    .status-label {
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width:640px) {
+    .status-label {
+        width: auto;
+        padding: 8px 5px;
+        font-size: 12px !important;
+    }
 }

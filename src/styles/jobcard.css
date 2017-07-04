@@ -165,7 +165,8 @@
         color: #55595B;
     }
 
-    .card-info .job-details li .btn-theme {
+    .card-info .job-details li.desktop-expand-timeline .btn-theme,
+    .mobile-expand-timeline .btn-theme {
         font-size: 12px;
         padding: 0;
         margin: 0;
@@ -174,6 +175,13 @@
         text-align: left;
         height: 30px;
         margin-top: 5px;
+    }
+
+    .mobile-expand-timeline {
+        display: none;
+        border-top: 1px solid #eef2f5;
+        padding: 5px 10px;
+        text-align: center;
     }
     /*Job Right Header*/
 
@@ -355,6 +363,12 @@
         .vendor-quote ul li {
             padding: 15px;
         }
+        .mobile-expand-timeline {
+            display: block;
+        }
+        .desktop-expand-timeline {
+            display: none;
+        }
     }
 
     @media screen and (max-width: 767px) {
@@ -377,16 +391,11 @@
             font-size: 12px;
         }
         .job-footer {
-            padding: 0 15px;
+            padding: 0 15px !important;
         }
     }
 
     @media screen and (max-width: 640px) {
-        .status-label {
-            width: auto;
-            padding: 8px 5px;
-            font-size: 12px !important;
-        }
         .job-icon .commentLabel {
             font-size: 12px !important;
         }

@@ -366,7 +366,7 @@
     }
     .status-popup {
         width: 100%;
-        left: 0;
+        left: 0 !important;
         min-width: auto;
         padding: 10px;
     }
@@ -396,5 +396,8 @@
         display: block;
         margin-top: 10px;
         font-size: 10px;
+    }
+    .job-start-point, .job-end-point{
+        display: none; 
     }
 }
