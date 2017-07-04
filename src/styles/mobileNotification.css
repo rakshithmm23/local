@@ -9,10 +9,30 @@
     overflow: scroll;
     top: 0;
 }
+.mobileSearch .search-input{
+    padding:10px 45px;
+}
+.mobileSearch .input-group-addon{
+    border-radius: 0;
+}
+.mobileSearch .input-group input{
+    box-shadow: none;
+    outline: none;
+        border: 1px solid #DAE1E7 !important;
+    background-color: #fff !important;
+}
+.mobileSearch .input-group .mdi-magnify{
+    position: absolute;
+    right: 8px;
+    z-index: 9;
+    top: 7px;
+
+}
 
 .notificationHead {
     border-bottom: 1px solid #ddd;
-    padding: 10px 15px 0;
+
+  
 }
 
 .notificationHead h4 {
@@ -28,6 +48,9 @@
 .notificationHead .back-option {
     display: inline-block;
     cursor: pointer;
+    position: absolute;
+        top: 15px;
+    left: 6px;
 }
 
 .notificationList li{

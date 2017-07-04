@@ -3,13 +3,28 @@ import Dropdown from '../common/Dropdown';
 import Search from '../common/Search';
 import { DropdownButton, MenuItem, Media } from 'react-bootstrap';
 import { map } from 'lodash';
+import MobileSearch from '../common/MobileSearch'
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
+        this.savedLocation = [
+            {
+                address: "kr market",
+                name: "home"
+            },
+            {
+                address: "551, Mg Road",
+                name: "work"
+            }, {
+                address: "mysore road"
+            }
+        ]
+        this.dropdownList= ["Audi", "Renault", "BMW", "Benz"],
         this.state = {
             notificationSelected: false,
-            messageSelected: false            
+            messageSelected: false,
+            mobileSearch:false,            
         }
     }
 
@@ -63,6 +78,7 @@ export default class Header extends Component {
             }
 
         ]
+        
         const viewMessages = map(messagesThread, (message, key) => {
             return (
                 <MenuItem eventKey={message.key} key={key}>
@@ -107,11 +123,18 @@ export default class Header extends Component {
                     <img src="../../images/logo-new.png" alt="" className="logo-img" />
                 </div>
                 <div className="header-search">
-                    <Search />
+                    <Search savedLocation={this.savedLocation} dropdownList={this.dropdownList}/>
+                </div>
+                <div className="mobile-search">
+                    {this.state.mobileSearch && <MobileSearch 
+                    dropdownList={this.dropdownList}
+                    savedLocation={this.savedLocation}
+                    callBackBtn={() => this.setState({mobileSearch:false})} 
+                    />}
                 </div>
                 <div className="header-right">
                     <ul className="list-unstyled">
-                        <li className="search-mobile" onClick={(e) => { e.preventDefault(); searchCallBack(true); }}>
+                        <li className="search-mobile" onClick={() => this.setState({mobileSearch:true})}>
                             <i className="mdi mdi-magnify" aria-hidden="true" />
                         </li>
 
