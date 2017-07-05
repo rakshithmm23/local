@@ -12,12 +12,13 @@ class StatusBar extends Component {
         };
     }
 
-    componentWillMount() {
-        let totalWidth = (1075 / (this.props.statusCount - 1)) - 14;
+    componentDidMount() {
+        let divWidth = document.getElementById('custom-dots').offsetWidth
+        let totalWidth = (divWidth / (this.props.statusCount - 1)) - 14;
         this.setState({ margin: totalWidth })
     }
     stepClick(e,key) {
-        if (e.clientX > 1000) {
+        if (e.clientX > 690) {
             this.setState({ statusPopupPosition: e.clientX - 550, statusPopupArrow: 80 + '%',activeButton:key })
         } else if (e.clientX < 350) {
             this.setState({ statusPopupPosition: e.clientX - 260, statusPopupArrow: 11 + '%',activeButton:key })
@@ -51,7 +52,7 @@ class StatusBar extends Component {
                     <div className="statusDescription">
                         <h4>Door Locking Mechanisms and Windows</h4><span>09 Mar 15 11:00 AM</span><span className="status-process">On going</span><a href="" className="view-worklog pull-right">View Worklog</a></div>
                 </div>
-                <div className="custom-dots ">
+                <div className="custom-dots" id="custom-dots">
                     <div className="main-line" />
                     <div>
                         <span className={this.state.activeButton==0?"dots active":"dots"} onClick={(e) => { this.stepClick(e,0) }} />

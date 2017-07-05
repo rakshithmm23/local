@@ -400,7 +400,7 @@
 }
 
 .custom-dots {
-  width: 1075px;
+  width: 94.5%;
   margin: 0 auto;
   margin-bottom: 15px;
   margin-top: 15px;
@@ -410,7 +410,7 @@
 .custom-dots .main-line {
   margin-bottom: 40px;
   position: relative;
-  width: 1075px;
+  /*width: 94.5%;*/
   border-top: 2px solid red;
   background-color: red;
   margin-bottom: -13px;
