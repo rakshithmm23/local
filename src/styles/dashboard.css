@@ -135,9 +135,9 @@
     max-width: 100%;
 }
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1170px) {
     .padwrapper {
-        max-width: 1366px;
+        max-width: 1170px;
         margin: 0 auto;
     }
 }

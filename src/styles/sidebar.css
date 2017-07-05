@@ -64,7 +64,7 @@
     }
     .sidebar ul li:hover a,
     .sidebar ul li.active a {
-        font-weight: normal;
+        font-family: CenturyGothic;
     }
     .sidebar ul li a label {
         font-size: 15px;

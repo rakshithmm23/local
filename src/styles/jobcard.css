@@ -3,7 +3,6 @@
         clear: both;
         background: #fff;
         border-radius: 4px;
-        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.08);
     }
 
     .job-updates .row {
@@ -24,7 +23,7 @@
     }
 
     .job-updates {
-        border: 1px solid transparent;
+        border: 1px solid #eef2f5;
         border-left-width: 4px;
     }
 
@@ -72,8 +71,8 @@
     }
 
     .card-img {
-        width: 200px;
-        height: 150px;
+        width: 170px;
+        height: 135px;
         border-radius: 5px;
         overflow: hidden;
         display: inline-block;
