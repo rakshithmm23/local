@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
 import { map } from 'lodash';
-<<<<<<< HEAD
-
-class CardType extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            statusPopupPosition: -40000,
-            statusPopupArrow: -4000,
-=======
 import StatusBar from '../common/StatusBar';
 
 class CardType extends Component {
     constructor() {
         super();
         this.state = {
->>>>>>> 6773e9c75065d3668aa4bfa6e6a15355f4ee0f28
             showTimeLine: false
         };
     }
@@ -174,30 +163,6 @@ class CardType extends Component {
                             </div>}
                         </div>
                     </div>
-<<<<<<< HEAD
-                    </div>
-                    {/*///////*/}
-                    {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
-                        <div className="row">
-                            <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                                <div className="collapse in">
-                                    <h1 className="job-footer-title">Job Progress</h1>
-                                    <div className="status-popup " style={style.popupPos}><span className="statusPopup-arrow" style={style.popupArrow}></span>
-                                        <div className="iconHolder"><span className="statusIcon"></span></div>
-                                        <div className="statusDescription">
-                                            <h4>Door Locking Mechanisms and Windows</h4><span>09 Mar 15 11:00 AM</span><span className="status-process">On going</span><a href="" className="view-worklog pull-right">View Worklog</a></div>
-                                    </div>
-                                    <div>
-                                        <div className="row bs-wizard">
-                                            {stepCount}
-                                        </div>
-                                    </div><span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
-                            </div>
-                        </div>
-                    </div>}
-                </div>
-                );
-=======
                 </div>
                 {/*///////*/}
                 {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
@@ -213,7 +178,6 @@ class CardType extends Component {
                 </div>}
             </div>
         );
->>>>>>> 6773e9c75065d3668aa4bfa6e6a15355f4ee0f28
     }
 }
 

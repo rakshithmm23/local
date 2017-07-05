@@ -624,7 +624,7 @@
         display: none;
     }
     .mobile-search{
-        display: block;
+        display: none;
     }
     .padwrapper {
         padding: 15px !important;
@@ -668,6 +668,10 @@
         border: 0;
     }
     .header-right li:nth-child(3) {
+        display: none;
+    }
+    .profile-header .mdi-chevron-down,
+    .profile-header .mdi-chevron-up{
         display: none;
     }
 }

@@ -31,15 +31,14 @@
 
 .notificationHead {
     border-bottom: 1px solid #ddd;
-
-  
+    padding: 10px;
 }
 
 .notificationHead h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 40px;
     font-family: CenturyGothic;
     color: rgba(0,0,0,0.8);
     font-size: 16px;
@@ -49,8 +48,8 @@
     display: inline-block;
     cursor: pointer;
     position: absolute;
-        top: 15px;
-    left: 6px;
+    top: 13px;
+    left: 15px;
 }
 
 .notificationList li{
