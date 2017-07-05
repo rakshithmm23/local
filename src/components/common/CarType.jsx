@@ -1,93 +1,53 @@
 import React, { Component } from 'react';
-import {map} from 'lodash';
+import { map } from 'lodash';
+import StatusBar from '../common/StatusBar';
 
 class CardType extends Component {
     constructor() {
-        super()
-        
+        super();
         this.state = {
-            statusPopupPosition:-40000,
-            statusPopupArrow:-4000,
             showTimeLine: false
-        }
+        };
     }
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
                 <span className="mdi mdi-pencil"></span>
                 <span className="commentLabel">Edit</span>
-            </div>)
+            </div>);
         } else if (val == "active") {
             return (
                 <div>
                     <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-file-outline"></span><span className="notifyTag"></span><span className="commentLabel">Quotes</span></div>
                 </div>
-            )
+            );
         } else if (val == "accepted" || val == "inProgress") {
             return (
                 <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
-            )
+            );
         } else if (val == "finished") {
             return (
                 <div className="job-icon  notification"><span className="mdi mdi-star-outline"></span><span className="commentLabel">Review</span></div>
-            )
+            );
         } else if (val == "cancelled") {
             return (
-
                 <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-            )
+            );
         } else if (val == "expired") {
             return (
                 <div >
                     <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
                 </div>
-            )
+            );
         }
-    }
-    stepClick(e,key,len){
-        debugger
-        // if(key+1 == len){
-        //      this.setState({statusPopupPosition:e.clientX-360,statusPopupArrow:35+'%'})
-        // }else if(key == 0){
-        //     this.setState({statusPopupPosition:-5,statusPopupArrow:35+'%'})
-        // }
-        // else{
-            if(e.clientX>1000){
-                this.setState({statusPopupPosition:e.clientX-550,statusPopupArrow:80+'%'})
-            }else if(e.clientX<300){
-                this.setState({statusPopupPosition:e.clientX-260,statusPopupArrow:11+'%'})
-            }
-            else{
-            this.setState({statusPopupPosition:e.clientX-360,statusPopupArrow:35+'%'})
-        }
-
     }
     
 
+
     render() {
-        
-        debugger
-        const style = {
-            popupPos:{
-                left:this.state.statusPopupPosition
-            },popupArrow:{
-                left:this.state.statusPopupArrow
-            }
-        }
-        const { cardDetails,jobLeftGridValue,jobRightGridValue } = this.props;
-        const stepCount = map(cardDetails.statusPopup,(stepVal,key)=>{
-            return(
-                <div className={cardDetails.statusPopup.length==key+1?"bs-wizard-step active":"bs-wizard-step complete"} key={key} >
-                    <div className="text-center bs-wizard-stepnum">Step 1</div>
-                    <div className="progress">
-                        <div className="progress-bar"></div>
-                    </div>
-                    <a  className="bs-wizard-dot" onClick={(e)=>{this.stepClick(e,key,cardDetails.statusPopup.length)}}></a>
-                </div>
-            )
-        })
+        const { cardDetails, jobLeftGridValue, jobRightGridValue } = this.props;
         return (
             <div className={"job-updates " + cardDetails.statusIndicator}>
                 <div className="row">
@@ -105,19 +65,19 @@ class CardType extends Component {
                                                     <label>Order ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup && 
+                                                {cardDetails.statusPopup &&
                                                     <li onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
-                                                        {this.state.showTimeLine ?<button className="btn btn-theme sm label" >
+                                                        {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-down" />
                                                             Collapse Timeline
-                                                        </button>:
-                                                        <button className="btn btn-theme sm label" >
-                                                            <i className="mdi mdi-chevron-up" />
-                                                            Expand Timeline
+                                                        </button> :
+                                                            <button className="btn btn-theme sm label" >
+                                                                <i className="mdi mdi-chevron-up" />
+                                                                Expand Timeline
                                                         </button>
                                                         }
-                                                    
-                                                </li>}
+
+                                                    </li>}
                                             </ul>
                                         </div>
                                     </div>
@@ -156,33 +116,18 @@ class CardType extends Component {
                     </div>
                 </div>
                 {/*///////*/}
-                 {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
+                {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
                     <div className="row">
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="collapse in">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                <div className="status-popup " style={style.popupPos}><span className="statusPopup-arrow" style={style.popupArrow}></span>
-                                    <div className="iconHolder"><span className="statusIcon"></span></div>
-                                    <div className="statusDescription">
-                                        <h4>Door Locking Mechanisms and Windows</h4><span>09 Mar 15 11:00 AM</span><span className="status-process">On going</span><a href="" className="view-worklog pull-right">View Worklog</a></div>
-                                </div>
-                                <div>
-                                    <div className="row bs-wizard">
-                                        {stepCount}
-                                       
-                                        
-                                        
-                                    </div>
-                                </div><span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
+                                    <StatusBar statusCount={cardDetails.totalTask} />
+                                    
+                                <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
                 </div>}
-
             </div>
-
-
-
-
         );
     }
 }
