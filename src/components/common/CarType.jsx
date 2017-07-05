@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { map } from 'lodash';
+<<<<<<< HEAD
 
 class CardType extends Component {
     constructor() {
@@ -8,42 +9,49 @@ class CardType extends Component {
         this.state = {
             statusPopupPosition: -40000,
             statusPopupArrow: -4000,
+=======
+import StatusBar from '../common/StatusBar';
+
+class CardType extends Component {
+    constructor() {
+        super();
+        this.state = {
+>>>>>>> 6773e9c75065d3668aa4bfa6e6a15355f4ee0f28
             showTimeLine: false
-        }
+        };
     }
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
                 <span className="mdi mdi-pencil"></span>
                 <span className="commentLabel">Edit</span>
-            </div>)
+            </div>);
         } else if (val == "active") {
             return (
                 <div>
                     <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-file-outline"></span><span className="notifyTag"></span><span className="commentLabel">Quotes</span></div>
                 </div>
-            )
+            );
         } else if (val == "accepted" || val == "inProgress") {
             return (
                 <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
-            )
+            );
         } else if (val == "finished") {
             return (
                 <div className="job-icon  notification"><span className="mdi mdi-star-outline"></span><span className="commentLabel">Review</span></div>
-            )
+            );
         } else if (val == "cancelled") {
             return (
-
                 <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-            )
+            );
         } else if (val == "expired") {
             return (
                 <div >
                     <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
                 </div>
-            )
+            );
         }
     }
     stepClick(e, key, len) {
@@ -63,6 +71,7 @@ class CardType extends Component {
         }
 
     }
+
 
 
     render() {
@@ -102,20 +111,19 @@ class CardType extends Component {
                                                     <label>Order ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                <li className="desktop-expand-timeline">
-                                                    {cardDetails.statusPopup &&
-                                                        <div onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
-                                                            {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                                                <i className="mdi mdi-chevron-down" />
-                                                                Collapse Timeline
-                                                            </button> :
-                                                                <button className="btn btn-theme sm label" >
-                                                                    <i className="mdi mdi-chevron-up" />
-                                                                    Expand Timeline
-                                                            </button>
-                                                            }
-                                                        </div>}
-                                                </li>
+                                                {cardDetails.statusPopup &&
+                                                    <li className="desktop-expand-timeline" onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
+                                                        {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
+                                                            <i className="mdi mdi-chevron-down" />
+                                                            Collapse Timeline
+                                                        </button> :
+                                                            <button className="btn btn-theme sm label" >
+                                                                <i className="mdi mdi-chevron-up" />
+                                                                Expand Timeline
+                                                        </button>
+                                                        }
+
+                                                    </li>}
                                             </ul>
                                         </div>
                                     </div>
@@ -166,6 +174,7 @@ class CardType extends Component {
                             </div>}
                         </div>
                     </div>
+<<<<<<< HEAD
                     </div>
                     {/*///////*/}
                     {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
@@ -188,6 +197,23 @@ class CardType extends Component {
                     </div>}
                 </div>
                 );
+=======
+                </div>
+                {/*///////*/}
+                {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12 col-xs-12 pad0">
+                            <div className="collapse in">
+                                <h1 className="job-footer-title">Job Progress</h1>
+                                    <StatusBar statusCount={cardDetails.totalTask} />
+                                    
+                                <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
+                        </div>
+                    </div>
+                </div>}
+            </div>
+        );
+>>>>>>> 6773e9c75065d3668aa4bfa6e6a15355f4ee0f28
     }
 }
 

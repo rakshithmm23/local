@@ -583,6 +583,10 @@
     color: #006FBA;
     padding-left: 3px;
 }
+.mobile-search{
+        display: none;
+        
+    }
 
 
 /*responsive*/
@@ -618,6 +622,9 @@
     .header-search,
     .profile-desc span {
         display: none;
+    }
+    .mobile-search{
+        display: block;
     }
     .padwrapper {
         padding: 15px !important;

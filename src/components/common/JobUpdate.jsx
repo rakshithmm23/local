@@ -63,13 +63,13 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'accepted',
+        totalTask: 14,
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
           vendorPlace: '3916 Address Tower, Street Name, Dubai',
           vendorMobile: '+971 919 233 470',
           quote: '200 AED',
-          totalTask: 8,
         }
         ,
         statusStep: true,
@@ -79,52 +79,12 @@ export default class JobUpdate extends Component {
             statusDescription: 'Door Locking Mechanisms and Windows',
             statusTime: '09 Mar 15 11:00 AM',
             statusMessage: 'On going'
-          },{
+          }, {
             imgClassName: 'statusIcon',
             statusDescription: 'Door Locking Mechanisms and Windows',
             statusTime: '09 Mar 15 11:00 AM',
             statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          },{
+          }, {
             imgClassName: 'statusIcon',
             statusDescription: 'Door Locking Mechanisms and Windows',
             statusTime: '09 Mar 15 11:00 AM',
@@ -162,6 +122,7 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'inProgress',
+        totalTask: 4,
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
@@ -188,13 +149,14 @@ export default class JobUpdate extends Component {
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'finished',
+        totalTask: 7,
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
           vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
           vendorMobile: '+971 919 233 470',
           quote: '200 AED',
-          totalTask: 8,
+          
         },
         statusStep: true,
         statusPopup: [

@@ -19,7 +19,7 @@ export default class Search extends Component {
             }],
             showResults: false,
             seachedValue: "",
-            dropdownList: ["Audi", "Renault", "BMW", "Benz"],
+            
             seachedResult: [],
             location: "",
             addLocationModal: false,
@@ -52,7 +52,7 @@ export default class Search extends Component {
     }
     bodyClick(e) {
         if ((e.target.closest('.searchFill') == null)) {
-            // this.setState({ seachedValue: "" });
+            this.setState({ seachedValue: "" });
         }
         if (e.target.className != "saveLocation") {
             this.setState({ addLocationModal: false });
@@ -111,24 +111,13 @@ export default class Search extends Component {
                 lat: loc.latitude, lng: loc.longitude, pinImage: loc.pinImage
             }
         })
-        let searchView = filter(this.state.dropdownList, (val) => {
+        let searchView = filter(this.props.dropdownList, (val) => {
             if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
                 return val;
             }
         });
-        const savedLocation = [
-            {
-                address: "kr market",
-                name: "home"
-            },
-            {
-                address: "551, Mg Road",
-                name: "work"
-            }, {
-                address: "mysore road"
-            }
-        ]
-        let locationFilterView = filter(savedLocation, (val) => {
+        
+        let locationFilterView = filter(this.props.savedLocation, (val) => {
             if (this.state.location != "" && val.address.toLowerCase().indexOf(this.state.location) != -1) {
 
                 return val;
@@ -189,13 +178,15 @@ export default class Search extends Component {
 
                 <div className={searchView.length > 0 ? "searchFill active" : "searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} open={searchView.length > 0 ? true : false} noCaret title={
-                            <div >
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} 
+                            open={searchView.length > 0 ? true : false} 
+                            noCaret title={
+                            <div>
                                 <input value={this.state.seachedValue} placeholder="Search"
                                     onChange={(e) => this.setState({ seachedValue: e.target.value })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
                                 <span className="no-notify" />
-                            </div>} >
+                            </div>}>
                             {map(searchView, (searchRes, key) => {
 
                                 let resLower = searchRes.toLocaleLowerCase()
