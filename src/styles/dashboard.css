@@ -159,6 +159,9 @@
     .main-wrapper .inSection {
         padding: 15px 0;
     }
+    .padwrapper {
+        padding: 10px !important;
+    }
     .service-data {
         margin: 5px;
     }
@@ -176,7 +179,7 @@
         font-size: 13px !important;
     }
     .service-list {
-        padding: 10px;
+        padding: 10px !important;
     }
     .welcome-banner.empty img {
         margin-top: 0px;
@@ -193,8 +196,5 @@
 @media screen and (max-width: 640px) {
     .service-data label {
         font-size: 13px;
-    }
-    .service-list {
-        padding: 10px 15px;
     }
 }

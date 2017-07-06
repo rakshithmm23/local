@@ -111,7 +111,6 @@ class CardType extends Component {
                                                                 Expand Timeline
                                                         </button>
                                                         }
-
                                                     </li>}
                                             </ul>
                                         </div>
@@ -147,20 +146,6 @@ class CardType extends Component {
                                     </ul>
                                 </div>}
                             </div>
-                            {cardDetails.statusPopup &&
-                                <div className="mobile-expand-timeline">
-                                    <div onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
-                                        {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                            <i className="mdi mdi-chevron-down" />
-                                            Collapse Timeline
-                                                            </button> :
-                                            <button className="btn btn-theme sm label" >
-                                                <i className="mdi mdi-chevron-up" />
-                                                Expand Timeline
-                                            </button>
-                                        }
-                                    </div>
-                            </div>}
                         </div>
                     </div>
                 </div>
@@ -170,8 +155,7 @@ class CardType extends Component {
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="collapse in">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                    <StatusBar statusCount={cardDetails.totalTask} />
-                                    
+                                <StatusBar statusCount={cardDetails.totalTask} />
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
