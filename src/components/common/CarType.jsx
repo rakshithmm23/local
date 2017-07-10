@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { map } from 'lodash';
 import StatusBar from '../common/StatusBar';
+import CustomModal from '../common/CustomModal';
+import { DropdownButton, MenuItem, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class CardType extends Component {
     constructor() {
         super();
         this.state = {
-            showTimeLine: false
+            showTimeLine: false,
+            saveModal: false,
+            max_chars: 200,
+            chars_left: 0,
         };
     }
     getIcons(jobType, val) {
@@ -28,7 +33,10 @@ class CardType extends Component {
             );
         } else if (val == "finished") {
             return (
-                <div className="job-icon  notification"><span className="mdi mdi-star-outline"></span><span className="commentLabel">Review</span></div>
+                <div className="job-icon  notification" onClick={() => this.setState({ saveModal: true })}>
+                    <span className="mdi mdi-star-outline"></span>
+                    <span className="commentLabel">Reviewwww</span>
+                </div>
             );
         } else if (val == "cancelled") {
             return (
@@ -60,7 +68,14 @@ class CardType extends Component {
         }
 
     }
-
+    handleChange(event) {
+        let input = null
+        input = event
+        const val = event.target.value;
+        this.setState({
+            chars_left: this.state.max_chars - val.length
+        });
+    }
 
 
     render() {
@@ -160,7 +175,7 @@ class CardType extends Component {
                                             </button>
                                         }
                                     </div>
-                            </div>}
+                                </div>}
                         </div>
                     </div>
                 </div>
@@ -170,12 +185,39 @@ class CardType extends Component {
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="collapse in">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                    <StatusBar statusCount={cardDetails.totalTask} />
-                                    
+                                <StatusBar statusCount={cardDetails.totalTask} />
+
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
                 </div>}
+
+                <CustomModal footer="true" showModal={this.state.saveModal} className="rating-modal" closeIcon="true">
+                    <Modal.Body>
+                        <div className="image-holder">
+                            <img src="../../images/test.jpg" alt="" />
+                            <h4>Jaidah Automotive</h4>
+                            <span className="sub-text">Basic Car Wash</span>
+                            <span className="sub-text">120 AED</span>
+                        </div>
+                        <div className="comments">
+                            {/*<TextInput
+                                            type="text"
+                                            label="Comments"
+                                            name="Comments"
+                                            onChange={this.handleChange.bind(this)}
+                                        />*/}
+                            <FormGroup>
+                                <FormControl
+                                    className="textAlign"
+                                    componentClass="textarea"
+                                    placeholder="Comments"
+                                    onChange={this.handleChange.bind(this)} />
+                            </FormGroup>
+                            <span className="text-limit">{this.state.chars_left}/200</span>
+                        </div>
+                    </Modal.Body>
+                </CustomModal>
             </div>
         );
     }

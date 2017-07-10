@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import CustomModal from '../common/CustomModal';
+import { Modal, Media } from 'react-bootstrap';
 
 class JobStatus extends Component {
+    constructor(){
+        super()
+        this.state={
+            saveModal:false
+        }
+    }
+    openModal(){
+        debugger
+    }
     render() {
         return (
             <div>
@@ -75,7 +86,10 @@ class JobStatus extends Component {
                     <div className="job-right">
                         <div className="job-right-header">
                             <div className="status-label finished" style="font-size: 14px;">finished</div>
-                            <div className="job-icon  notification"><span className="mdi mdi-star-outline"></span><span className="commentLabel">Review</span></div>
+                            <div className="job-icon  notification" >
+                                <span className="mdi mdi-star-outline"></span>
+                                <span className="commentLabel">Review</span>
+                           </div>
                         </div>
                         <div>
                             <div className="vendor-quote">
@@ -89,7 +103,7 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
-                {this.props.status=="finished" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
+                {/*{this.props.status=="finished" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
                             <div className="status-label cancelled" style="font-size: 14px;">cancelled</div>
@@ -103,7 +117,7 @@ class JobStatus extends Component {
                             </div>
                         </div>
                     </div>
-                </div> : ""}
+                </div> : ""}*/}
                 {this.props.status=="cancelled" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
@@ -135,6 +149,13 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
+                <CustomModal showModal={this.state.saveModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true">
+                        <Modal.Body>
+                            hello
+                        </Modal.Body>
+                    </CustomModal>
+
+
             </div>
         );
     }

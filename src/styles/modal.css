@@ -221,6 +221,34 @@
 .close-modal i{
     font-size: 20px;
 }
+.rating-modal .image-holder{
+    text-align: center;
+    margin-top: 62px;
+}
+.rating-modal .image-holder img{
+	height: 75px;
+	width: 75px;
+	border-radius: 3px;
+        object-fit: cover;
+
+}
+.rating-modal .image-holder h4{
+   
+	color: #525252;
+	font-family: CenturyGothic;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 20px;
+}
+.rating-modal .image-holder .sub-text{
+	color: #525252;
+	font-family: CenturyGothic;
+	font-size: 12px;
+	line-height: 15px;
+    display: block;
+    padding-bottom: 4px;
+}
+
 @media screen and (max-width: 768px) {
   .modal-dialog {
       width: 100% !important;
