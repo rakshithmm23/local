@@ -168,10 +168,6 @@ class CardType extends Component {
                             <div className="collapse in">
                                 <h1 className="job-footer-title">Job Progress</h1>
                                 <StatusBar statusCount={cardDetails.totalTask} />
-<<<<<<< HEAD
-=======
-
->>>>>>> amogh
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
