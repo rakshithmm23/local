@@ -168,11 +168,7 @@ class CardType extends Component {
                             <div className="collapse in">
                                 <h1 className="job-footer-title">Job Progress</h1>
                                 <StatusBar statusCount={cardDetails.totalTask} />
-<<<<<<< HEAD
-=======
-
->>>>>>> amogh
-                                <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
+                               <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
                 </div>}
@@ -190,7 +186,7 @@ class CardType extends Component {
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
                                 fractions={2}
-                                
+
                             />
                         </div>
                         <div className="comments">
