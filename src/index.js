@@ -31,6 +31,7 @@ import '../node_modules/react-datepicker/dist/react-datepicker.css';
 import '../node_modules/rc-time-picker/assets/index.css';
 import '../node_modules/@trendmicro/react-toggle-switch/dist/react-toggle-switch.css';
 import '../node_modules/react-input-range/lib/css/index.css';
+import '../node_modules/css-star-rating/dist/css/star-rating.css'
 import './styles/JobUpdateCard.css';
 import './styles/gmaps.css';
 import './styles/job-details.css';
