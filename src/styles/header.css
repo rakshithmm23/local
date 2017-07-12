@@ -168,6 +168,10 @@
     display: block;
 }
 
+.header-search .dropdown-menu li:hover span {
+    color: #006FB9;
+}
+
 .header-search .dropdown-menu li label span {
     text-transform: capitalize;
     display: inline-block;
