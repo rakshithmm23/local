@@ -1,160 +1,162 @@
 .job-updates.myRequest {
-  margin-bottom: 0 !important;
-  border: 1px solid #eef2f5 !important;
+    margin-bottom: 0 !important;
+    border: 1px solid #eef2f5 !important;
 }
-.job-updates.myRequest:hover{
-  cursor: default !important;
-  border: 1px solid #eef2f5 !important;
+
+.job-updates.myRequest:hover {
+    cursor: default !important;
+    border: 1px solid #eef2f5 !important;
 }
 
 .requestSection {
-  background: #fff;
+    background: #fff;
 }
 
 .request-summary {
-  border-top: 2px solid #F9FCFB;
+    border-top: 2px solid #F9FCFB;
 }
 
 .requestSection .row {
-  margin: 0;
+    margin: 0;
 }
 
 select,
 input[type="color"][list] {
-  height: 30px;
-  width: 100px;
-  background-color: #EEF4F6;
+    height: 30px;
+    width: 100px;
+    background-color: #EEF4F6;
 }
 
 .request-summary .request-summary-tab .title {
-  padding-top: 22px;
-  padding-bottom: 22px;
-  cursor: pointer;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    cursor: pointer;
 }
 
 .request-summary .title span {
-  color: #454B51;
-  font-family: 'CenturyGothic';
-  font-size: 18px;
-  line-height: 22px;
-  display: block;
-  text-align: center;
+    color: #454B51;
+    font-family: 'CenturyGothic';
+    font-size: 18px;
+    line-height: 22px;
+    display: block;
+    text-align: center;
 }
 
 .request-summary .request-summary-tab .title.active {
-  border-bottom: 2px solid #E50000;
+    border-bottom: 2px solid #E50000;
 }
 
 .request-summary .request-summary-tab .title.active span {
-  font-family: 'CenturyGothic_bold';
+    font-family: 'CenturyGothic_bold';
 }
 
 .request-summary .left {
-  border-right: 2px solid #F9FCFB;
-  padding: 0;
+    border-right: 2px solid #F9FCFB;
+    padding: 0;
 }
 
 .quotes-view {
-  padding: 0 15px;
-  padding-right: 5px;
-  padding-bottom:20px;
+    padding: 0 15px;
+    padding-right: 5px;
+    padding-bottom: 20px;
 }
 
 .quotes-view .title span {
-  color: #717982;
-  display: inline-block;
-  text-align: left;
-  padding: 33px 0;
-  font-size: 14px;
-  line-height: 17px;
-  vertical-align: middle;
+    color: #717982;
+    display: inline-block;
+    text-align: left;
+    padding: 33px 0;
+    font-size: 14px;
+    line-height: 17px;
+    vertical-align: middle;
 }
 
 .quotes-view .title .filterSection {
-  position: relative;
-  float: right;
-  margin-top: 24px;
-  margin-right: 10px;
+    position: relative;
+    float: right;
+    margin-top: 24px;
+    margin-right: 10px;
 }
 
 .quotes-view .title .filterSection .dropdown-toggle {
-  padding: 0;
-  border-color: transparent;
-  background-color: transparent;
-  box-shadow:none;
+    padding: 0;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
 }
-.quotes-view .title .filterSection .dropdown-menu{
-  border: 0;
+
+.quotes-view .title .filterSection .dropdown-menu {
+    border: 0;
 }
 
 .filterSection .filterLabel {
-  height: 30px;
-  border-radius: 3px;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  color: #55595B;
-  position: relative;
-  box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
-  width: 125px;
-  padding: 5px;
-  padding-left: 10px;
-  display: inline-block;
-  outline: 0;
-  /*background: url('../images/arrow-down.png');*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: 92% 12px;*/
-  /*padding-right: 20px;*/
-  border: none;
-  cursor: pointer;
-  text-align: left;
+    height: 30px;
+    border-radius: 3px;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    color: #55595B;
+    position: relative;
+    box-shadow: 0 0 4px 0 rgba(134, 134, 134, 0.5);
+    width: 125px;
+    padding: 5px;
+    padding-left: 10px;
+    display: inline-block;
+    outline: 0;
+    /*background: url('../images/arrow-down.png');*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: 92% 12px;*/
+    /*padding-right: 20px;*/
+    border: none;
+    cursor: pointer;
+    text-align: left;
 }
 
 .filterSection .filterLabel label {
-  padding-left: 10px;
-  cursor: pointer;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 .input-range__label--min,
 .input-range__label--max {
-  display: none !important;
+    display: none !important;
 }
 
 .f-card .input-range__slider {
-  top: 0 !important;
+    top: 0 !important;
 }
 
 .f-card .input-range__label {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .f-card .input-range__track {
-  height: 2px !important;
+    height: 2px !important;
 }
 
 .f-card .input-range__label-container {
-  color: #717982 !important;
-  font-family: CenturyGothic !important;
-  font-size: 14px !important;
-  margin-left: 19px !important;
+    color: #717982 !important;
+    font-family: CenturyGothic !important;
+    font-size: 14px !important;
+    margin-left: 19px !important;
 }
 
 .f-card .input-range__track.input-range__track--active {
-  background-color: #ED3124;
+    background-color: #ED3124;
 }
 
 .f-card .input-range__slider {
-  height: 14px;
-  background: #fff;
-  border: 1px solid #ED3124;
-  width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 1px solid #ED3124;
+    width: 14px;
 }
 
 .filterSection .mdi-filter-variant {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .filterSection .mdi-swap-vertical {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .filterCard {
@@ -168,58 +170,62 @@ input[type="color"][list] {
     top: -1px;
     padding-top: 35px;
 }
-.filterCard.Filterby {
-  left: 0;
-  right: inherit;
-  background-color: #fff;
-  width: 1070px;
-  left: -190px;
-}
 
+.filterCard.Filterby {
+    left: 0;
+    right: inherit;
+    background-color: #fff;
+    width: 1070px;
+    left: -190px;
+}
 
 .filterCard li.active label,
 .filterCard li.active span i {
-  color: #ED3124;
+    color: #ED3124;
 }
 
 .filterCard li {
-  position: relative;
-  padding: 20px 0px;
-  cursor: pointer;
+    position: relative;
+    padding: 20px 0px;
+    cursor: pointer;
 }
 
 .filterCard li label {
-  color: #454B51;
-  font-size: 16px;
-  font-family: CenturyGothic;
-  margin-bottom: 0px;
-  cursor: pointer;
+    color: #454B51;
+    font-size: 16px;
+    font-family: CenturyGothic;
+    margin-bottom: 0px;
+    cursor: pointer;
 }
 
 .filterCard li span {
-  position: absolute;
-  right: 20px;
-  top: 25px;
-  padding: 0px !important;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    padding: 0px !important;
 }
 
 .filterCard li span i {
-  font-size: 20px;
-  color: #454B51;
+    font-size: 20px;
+    color: #454B51;
 }
-.filterCard .footer{
+
+.filterCard .footer {
     padding-top: 15px;
     border-top: 1px solid #ddd;
     margin-top: 40px;
     text-align: right;
     padding-right: 0px;
 }
-.filterCard .footer a,.filterCard .footer button{
-	font-family: CenturyGothic;
-	font-size: 14px;
+
+.filterCard .footer a,
+.filterCard .footer button {
+    font-family: CenturyGothic;
+    font-size: 14px;
 }
-.filterCard .footer a{
-	color: #006FB9;
+
+.filterCard .footer a {
+    color: #006FB9;
     padding-right: 25px;
     cursor: pointer;
     text-decoration: none;
@@ -228,73 +234,74 @@ input[type="color"][list] {
 }
 
 .quotes-view .title .filterSection select::-ms-expand {
-  display: none;
+    display: none;
 }
 
 .filterCard.sortFilter {
     padding: 15px 15px 15px;
 }
 
+
 /*Quotes right*/
 
 .request-summary-header {
-  background: #fff;
-  border-bottom: 2px solid #F9FCFB;
+    background: #fff;
+    border-bottom: 2px solid #F9FCFB;
 }
 
 .quotes-right-body,
 .quotes-left-body {
-  position: relative;
+    position: relative;
 }
 
 .requestQuotesScroll {
-  height: 70vh !important;
+    height: 70vh !important;
 }
 
 .quotes-right-header {
-  padding: 15px;
-  background: #fff;
-  border-bottom: 1px solid #F9FCFB;
-  z-index: 99;
-  position: relative;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #F9FCFB;
+    z-index: 99;
+    position: relative;
 }
 
 .profile-head {
-  display: inline-block;
+    display: inline-block;
 }
 
 .profile-head span img {
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-  margin-right: 8px;
-  border-radius: 3px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 3px;
 }
 
 .quotes-right-header .profile-head span img {
-  width: 36px;
-  height: 36px;
+    width: 36px;
+    height: 36px;
 }
 
 .profile-head label {
-  font-size: 17px;
-  font-family: CenturyGothic;
-  color: #454B51;
-  margin: 0;
-  margin-left: 10px;
-  font-weight: normal;
+    font-size: 17px;
+    font-family: CenturyGothic;
+    color: #454B51;
+    margin: 0;
+    margin-left: 10px;
+    font-weight: normal;
 }
 
 .quotes-right-tabs {
-  float: right;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  color: #454B51;
+    float: right;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    color: #454B51;
 }
 
 .quotes-right-tabs ul {
-  display: inline-block;
-  margin-right: 15px;
+    display: inline-block;
+    margin-right: 15px;
 }
 
 .quotes-right-tabs li {
@@ -305,94 +312,94 @@ input[type="color"][list] {
 }
 
 .quotes-right-tabs li.active {
-  border-bottom-color: #E50000;
-  font-family: CenturyGothic_bold;
+    border-bottom-color: #E50000;
+    font-family: CenturyGothic_bold;
 }
 
 .close-Tab {
-  font-size: 20px;
-  color: #717982;
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
+    font-size: 20px;
+    color: #717982;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 .quotes-message-Section {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: table;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: table;
 }
 
 .quotes-message-footer {
-  height: 64px;
-  width: 100%;
-  border-radius: 0 0 4px 0;
-  background-color: #FFFFFF;
-  box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5);
-  padding: 14px 10px;
-  clear: both;
-  position: absolute;
-  width: 100%;
-  bottom: -10px;
-  left: 0;
+    height: 64px;
+    width: 100%;
+    border-radius: 0 0 4px 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5);
+    padding: 14px 10px;
+    clear: both;
+    position: absolute;
+    width: 100%;
+    bottom: -10px;
+    left: 0;
 }
 
 .thumb {
-  background: transparent;
-  background-color: transparent;
+    background: transparent;
+    background-color: transparent;
 }
 
 .quotes-message-footer .form-group {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .quotes-message-footer input {
-  margin: 0;
-  outline: 0 !important;
-  box-shadow: none !important;
-  font-family: CenturyGothic;
-  font-size: 15px;
-  border: 0;
-  border: 0;
-  border-radius: 0;
-  border-color: #DAE1E7;
-  color: #9BA1A5;
+    margin: 0;
+    outline: 0 !important;
+    box-shadow: none !important;
+    font-family: CenturyGothic;
+    font-size: 15px;
+    border: 0;
+    border: 0;
+    border-radius: 0;
+    border-color: #DAE1E7;
+    color: #9BA1A5;
 }
 
 .quotes-message-footer .input-group-addon {
-  background-color: #fff;
-  padding: 0px 10px 0px;
-  border-radius: 0;
-  border: 0;
-  cursor: pointer;
-  font-size: 24px;
-  color: #9BA1A5;
+    background-color: #fff;
+    padding: 0px 10px 0px;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    color: #9BA1A5;
 }
 
 .mapSection .quotes-right-body {
-  overflow: hidden;
-  height: 77.7vh;
+    overflow: hidden;
+    height: 77.7vh;
 }
 
 
 /*Message Section*/
 
 .chat-container {
-  margin: 0px;
+    margin: 0px;
 }
 
 
 /*chat same user message*/
 
 .message-in.chain-msg {
-  position: relative;
-  left: 40px;
+    position: relative;
+    left: 40px;
 }
 
 .message-out.chain-msg {
-  position: relative;
-  right: 40px;
+    position: relative;
+    right: 40px;
 }
 
 
@@ -402,57 +409,57 @@ input[type="color"][list] {
 .quotes-left-body .wrapper,
 .quotes-quotation-Section,
 {
-  position: absolute;
-  height: 100%;
-  overflow: auto;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
 }
 
 .quotes-left-body .wrapper {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 .quotes-quotation-Section {
-  width: 100%;
+    width: 100%;
 }
 
 .quotes-chat-area {
-  position: absolute;
-  display: table-cell;
-  vertical-align: bottom;
-  bottom: 55px;
-  padding-top: 100px;
-  overflow: auto;
-  height: 100%;
-  width: 100%;
+    position: absolute;
+    display: table-cell;
+    vertical-align: bottom;
+    bottom: 55px;
+    padding-top: 100px;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .quotes-chat-area .c-message {
-  width: 75%;
-  clear: both;
-  padding: 5px 20px;
+    width: 75%;
+    clear: both;
+    padding: 5px 20px;
 }
 
 .quotes-chat-area .c-message .c-chat {
-  background-color: #cfe7f7;
-  border-radius: 0 5px 5px 5px;
-  padding: 10px;
-  display: inline-block;
-  max-width: 80%;
-  vertical-align: top;
-  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
-  margin-left: 5px;
-  position: relative;
+    background-color: #cfe7f7;
+    border-radius: 0 5px 5px 5px;
+    padding: 10px;
+    display: inline-block;
+    max-width: 80%;
+    vertical-align: top;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    margin-left: 5px;
+    position: relative;
 }
 
 .quotes-chat-area .c-message.message-in .c-chat:before {
-  content: '';
-  border-top: 10px solid #cfe7f7;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid transparent;
-  position: absolute;
-  top: 0px;
-  left: -10px;
+    content: '';
+    border-top: 10px solid #cfe7f7;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0px;
+    left: -10px;
 }
 
 .quotes-chat-area .c-message.message-in.chain-msg .c-chat:before,
@@ -460,351 +467,376 @@ input[type="color"][list] {
 .quotes-chat-area .c-message.message-in.chain-msg .profile-head,
 .quotes-chat-area .c-message.message-out.chain-msg .profile-head,
 {
-  display: none;
+    display: none;
 }
 
 .quotes-chat-area .c-message .c-chat p {
-  font-size: 15px;
-  font-family: CenturyGothic;
-  color: #454B51;
-  margin-bottom: 0px;
+    font-size: 15px;
+    font-family: CenturyGothic;
+    color: #454B51;
+    margin-bottom: 0px;
 }
 
 .quotes-chat-area .c-message .delivered-details {
-  margin-left: 45px;
-  margin-top: 5px;
-  margin-bottom: 20px;
+    margin-left: 45px;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .quotes-chat-area .c-message.message-in.chain-msg .delivered-details {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 .quotes-chat-area .c-message .delivered-details label {
-  font-family: CenturyGothic;
-  color: #838383;
-  font-size: 12px;
-  font-weight: normal;
+    font-family: CenturyGothic;
+    color: #838383;
+    font-size: 12px;
+    font-weight: normal;
 }
 
 .quotes-chat-area .c-message.message-out {
-  float: right;
+    float: right;
 }
 
 .quotes-chat-area .c-message.message-out .profile-head {
-  float: right;
+    float: right;
 }
 
 .quotes-chat-area .c-message.message-out .c-chat {
-  border-radius: 5px 0px 5px 5px;
-  background-color: #fafafa;
-  float: right;
-  margin-right: 10px;
-  position: relative;
+    border-radius: 5px 0px 5px 5px;
+    background-color: #fafafa;
+    float: right;
+    margin-right: 10px;
+    position: relative;
 }
 
 .quotes-chat-area .c-message.message-out .c-chat:after {
-  content: '';
-  border-top: 10px solid #fafafa;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid transparent;
-  position: absolute;
-  top: 0px;
-  right: -10px;
+    content: '';
+    border-top: 10px solid #fafafa;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0px;
+    right: -10px;
 }
 
 .quotes-chat-area .c-message.message-out .c-chat p {
-  color: #000;
+    color: #000;
 }
 
 .quotes-chat-area .c-message.message-out .p-img {
-  float: right;
+    float: right;
 }
 
 .quotes-chat-area .c-message.message-out .delivered-details {
-  float: right;
-  margin-right: 60px;
-  display: block;
-  clear: both;
-  position: relative;
+    float: right;
+    margin-right: 60px;
+    display: block;
+    clear: both;
+    position: relative;
 }
 
 .quotes-chat-area .c-message.message-out.chain-msg .delivered-details {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .quotes-chat-area .c-message.message-continuation .delivered-details {
-  display: none;
+    display: none;
 }
 
 
 /*quotation Section*/
 
 .quotation-head {
-  height: 80px;
-  border-radius: 3px;
-  background-color: #F9FBFB;
-  margin: 20px 15px;
-  padding: 18px 15px;
+    height: 80px;
+    border-radius: 3px;
+    background-color: #F9FBFB;
+    margin: 20px 15px;
+    padding: 18px 15px;
 }
 
 .quotation-head ul li label {
-  min-width: 150px;
+    min-width: 150px;
 }
 
 .quotation-head ul li {
-  padding: 3px 0;
+    padding: 3px 0;
 }
 
 .quotation-head ul li span,
 .quotation-head ul li label {
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  font-weight: normal;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 .quotation-block {
-  padding: 10px 20px;
+    padding: 10px 20px;
 }
 
 .quotation-block h4,
 .quotation-total label {
-  color: #454B51;
-  font-family: CenturyGothic_bold;
-  font-size: 16px;
-  margin-bottom: 15px;
+    color: #454B51;
+    font-family: CenturyGothic_bold;
+    font-size: 16px;
+    margin-bottom: 15px;
 }
 
 .quotation-block li {
-  padding: 3px 18px;
+    padding: 3px 18px;
 }
 
 .quotation-block li label {
-  color: #717982;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  font-weight: normal;
+    color: #717982;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 .quotation-total {
-  margin: 30px 38px;
-  margin-right: 35px;
-  border-top: 1px solid rgba(113, 121, 130, 0.2);
-  border-bottom: 1px solid rgba(113, 121, 130, 0.2);
-  padding: 15px 0 0;
+    margin: 30px 38px;
+    margin-right: 35px;
+    border-top: 1px solid rgba(113, 121, 130, 0.2);
+    border-bottom: 1px solid rgba(113, 121, 130, 0.2);
+    padding: 15px 0 0;
 }
 
 .quotation-total label {
-  color: #454B51;
-  font-family: CenturyGothic_bold;
+    color: #454B51;
+    font-family: CenturyGothic_bold;
 }
 
-.quotation-accept-btn{
-  margin-right: 30px;
+.quotation-accept-btn {
+    margin-right: 30px;
 }
 
 .quotation-block li span,
 .quotation-total span {
-  float: right;
-  color: #717982;
-  font-size: 14px;
-  font-family: CenturyGothic;
+    float: right;
+    color: #717982;
+    font-size: 14px;
+    font-family: CenturyGothic;
 }
 
 .quotation-total span {
- font-family: CenturyGothic_bold;
-  font-size: 16px;
+    font-family: CenturyGothic_bold;
+    font-size: 16px;
 }
 
 .f-card {
-  margin-bottom: 30px;
-  position: relative;
+    margin-bottom: 30px;
+    position: relative;
 }
-.f-card .time-from{
-  position: absolute;
-	color: #717982;
-	font-size: 18px;
-      bottom: 20px;
+
+.f-card .time-from {
+    position: absolute;
+    color: #717982;
+    font-size: 18px;
+    bottom: 20px;
     left: 110px;
     z-index: -1;
 }
-.f-card .time-to{
-  position: absolute;
-	color: #717982;
-	font-size: 18px;
-  bottom: 20px;
-  right: 191px;
-  z-index: -1;
+
+.f-card .time-to {
+    position: absolute;
+    color: #717982;
+    font-size: 18px;
+    bottom: 20px;
+    right: 191px;
+    z-index: -1;
 }
 
 .f-card .input-range {
-  width: 98% !important;
-  margin-left: 5px !important;
-  margin-bottom: 55px;
+    width: 98% !important;
+    margin-left: 5px !important;
+    margin-bottom: 55px;
 }
 
 .f-card h5 {
-  display: inline-block;
-  color: #454B51;
-  font-size: 16px;
-  font-family: CenturyGothic;
-  margin: 0px;
+    display: inline-block;
+    color: #454B51;
+    font-size: 16px;
+    font-family: CenturyGothic;
+    margin: 0px;
 }
 
 .Filterby .left .f-card h5 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .f-card .rc-time-picker {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
 .f-card .rc-time-picker input {
-  height: 38px;
-  width: 130px;
-  border: 1px solid #CCD2D7;
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  cursor: pointer;
-  background: transparent;
+    height: 38px;
+    width: 130px;
+    border: 1px solid #CCD2D7;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    background: transparent;
 }
 
 .f-card .time-to-time {
-  padding: 0 20px !important;
+    padding: 0 20px !important;
 }
 
 .f-card .toggle-switch---switch---3EchW {
-  float: right;
+    float: right;
 }
-.f-card .checkbox-style{
-  display: block;
-  margin: 0 !important;
+
+.f-card .checkbox-style {
+    display: block;
+    margin: 0 !important;
 }
-.f-card .checkbox-style:first-child{
-  padding-bottom: 20px;
+
+.f-card .checkbox-style:first-child {
+    padding-bottom: 20px;
 }
-.f-card .checkbox-style{
-	color: #454B51 !important;
-	font-family: CenturyGothic;
-	font-size: 13px;
+
+.f-card .checkbox-style {
+    color: #454B51 !important;
+    font-family: CenturyGothic;
+    font-size: 13px;
 }
+
 .f-card .checkbox-style input:checked {
     background-color: #ED3124;
     border: 1px solid #ED3124;
 }
 
 .f-card ul li {
-  text-transform: uppercase;
-  height: 37px;
-  width: 37px;
-  border-radius: 100%;
-  border: 1px solid #EF2E24;
-  color: #ED3124;
-  font-family: CenturyGothic;
-  font-size: 12px;
-  padding: 10px 0px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 20px;
+    text-transform: uppercase;
+    height: 37px;
+    width: 37px;
+    border-radius: 100%;
+    border: 1px solid #EF2E24;
+    color: #ED3124;
+    font-family: CenturyGothic;
+    font-size: 12px;
+    padding: 10px 0px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
 }
 
-
 .f-card.payment-type h5 {
-  padding-bottom: 12px;
+    padding-bottom: 12px;
 }
 
 .f-card.payment-type .holder {
-  padding: 8px 0;
+    padding: 8px 0;
 }
 
 .f-card.payment-type span {
-  padding: 0!important;
-  color: #717982 !important;
-  font-family: CenturyGothic;
-  font-size: 14px !important;
+    padding: 0!important;
+    color: #717982 !important;
+    font-family: CenturyGothic;
+    font-size: 14px !important;
 }
 
 .f-card ul li.active {
-  background-color: #ED3124;
-  color: #fff;
+    background-color: #ED3124;
+    color: #fff;
 }
 
 .f-card .rating span {
-  padding: 0;
-  padding-top: 10px;
-  font-size: 24px;
+    padding: 0;
+    padding-top: 10px;
+    font-size: 24px;
 }
 
-.filterSection .dropdown.open button{
-  border-bottom: 2px solid #ed3124 !important;
-  border-radius: 0;
+.filterSection .dropdown.open button {
+    border-bottom: 2px solid #ed3124 !important;
+    border-radius: 0;
 }
-.filterby-wrapper{
+
+.filterby-wrapper {
     padding: 0px 15px 0px 0px;
 }
+
 .filterCard .right .filterby-wrapper,
-.filterCard .right{
-  padding-right: 0px;
+.filterCard .right {
+    padding-right: 0px;
 }
-.filterCard  .f-card:last-child,
+
+.filterCard .f-card:last-child,
 .Filterby .left .f-card h5:last-child {
     margin-bottom: 0px;
 }
-.downIcon{
+
+.downIcon {
     font-size: 20px;
     color: #55595b;
     position: absolute;
     top: 2px;
     right: 3px;
 }
-.downIcon.downAlign{
-     top: 1px;
+
+.downIcon.downAlign {
+    top: 1px;
 }
-.openAlign{
-  margin-bottom: 15px;
+
+.openAlign {
+    margin-bottom: 15px;
 }
+
 @media screen and (max-width: 1100px) {
-  .quotes-view .title span {
-    padding-bottom: 20px
-  }
-  .quotes-view .title .filterSection {
-    float: none;
-    margin-top: 0;
-    margin-bottom: 10px
-  }
-  .quotes-view .title .filterSection select {
-    margin-left: 0;
-    margin-right: 10px;
-  }
+    .quotes-view .title span {
+        padding-bottom: 20px
+    }
+    .quotes-view .title .filterSection {
+        float: none;
+        margin-top: 0;
+        margin-bottom: 10px
+    }
+    .quotes-view .title .filterSection select {
+        margin-left: 0;
+        margin-right: 10px;
+    }
 }
+
 @media screen and (max-width: 991px) {
-  .quotes-view .title span {
-      display: block;
-  }
-  .quotes-view .title .filterSection {
-    display:inline-block;
-  }
+    .quotes-view .title span {
+        display: block;
+    }
+    .quotes-view .title .filterSection {
+        display: inline-block;
+    }
 }
+
 @media screen and (max-width: 768px) {
-  .quotes-right-header {
-    padding-bottom: 0px;
-  }
-  .quotes-right-tabs {
-    float: none;
-    margin-top: 20px;
-  }
+    .quotes-right-header {
+        padding-bottom: 0px;
+    }
+    .quotes-right-tabs {
+        float: none;
+        margin-top: 20px;
+    }
 }
+
 @media screen and (max-width: 460px) {
-  .request-summary .title span {
-    font-size: 13px;
-  }
-  .quotes-view {
-    padding: 0 10px;
-  }
-  .quotes-view .title .filterSection {
-    margin-right: 5px;
-  }
+    .request-summary .title span {
+        font-size: 13px;
+    }
+    .quotes-view {
+        padding: 0 10px;
+    }
+    .quotes-view .title .filterSection {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .quotes-chat-area .c-message {
+        width: 100%;
+        padding: 5px 10px;
+    }
+    .quotes-chat-area .c-message .c-chat p {
+        font-size: 12px;
+    }
 }

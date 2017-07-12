@@ -207,6 +207,9 @@
     .app-right .input-group .btn{
         font-size: 12px;
     }
+    .quickLink-section{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 580px) {

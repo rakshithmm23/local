@@ -12,6 +12,10 @@
     width: 110px;
     vertical-align: top;
 }
+.header-section .logo-section img{
+    height: 43.06px;
+    width: 42.18px;
+}
 
 .header-search {
     padding: 15px 40px;
@@ -626,9 +630,6 @@
     .mobile-search{
         display: none;
     }
-    .padwrapper {
-        padding: 10px !important;
-    }
     .service-data {
         margin-bottom: 15px;
     }
@@ -636,11 +637,11 @@
         width: 40px;
     }
     .header-right ul li {
-        padding: 6px 0;
+        padding: 10px 5px;
     }
     .profile-header .btn-default span img {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
     .header-right ul li.notification-menu {
         margin-right: 0;

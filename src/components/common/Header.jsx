@@ -144,12 +144,12 @@ export default class Header extends Component {
                                 <span className="no-notify"></span>
                             </label>
                         </li>
-                        <li className="notification-menu mobile-view" onClick={(e) => { e.preventDefault(); messageCallBack(true); }}>
+                        {/*<li className="notification-menu mobile-view" onClick={(e) => { e.preventDefault(); messageCallBack(true); }}>
                             <label>
                                 <i className="mdi mdi-message-processing" aria-hidden="true" />
                                 <span className="no-notify"></span>
                             </label>
-                        </li>
+                        </li>*/}
 
                         <li className={this.state.notificationSelected ? "notification-menu desktop-view active" : "notification-menu desktop-view"}>
                             <div className="text-dropdown notify" >
