@@ -11,7 +11,8 @@
 
 .inboxContainer {
     border-right: 1px solid #EEF2F5;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden
 }
 
 .messageBot .quotes-chat-area {

@@ -182,18 +182,23 @@
         padding-left: 0px;
     }
     .request-summary-body .data-time .margin-correction .wrapper {
-        border-right:none;
+        border-right: none;
+        padding: 0 10px;
     }
     .request-summary-body .tab-jobDetails {
         margin-top: 0px;
     }
     .request-summary-body .data-time {
         padding: 0px;
+        background: #fff;
     }
     .request-summary-body .repair-detail {
         padding-left: 10px !important;
     }
-    .request-summary-body .more-details{
-        border-left:none;
+    .request-summary-body .more-details {
+        border-left: none;
+    }
+    .vendorDetails{
+        padding: 0;
     }
 }

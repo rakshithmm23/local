@@ -69,6 +69,7 @@
     left: 0;
     padding: 8px 0;
     margin-bottom: 0;
+        text-transform: uppercase;
 }
 
 
@@ -195,6 +196,7 @@
 
 @media screen and (max-width: 640px) {
     .service-data label {
-        font-size: 13px;
+        font-size: 12px;
+        bottom: 0;
     }
 }

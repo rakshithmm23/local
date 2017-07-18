@@ -190,7 +190,8 @@
             padding: 0px 0;
         }
         .main-wrapper .inSection {
-            padding: 0px 0;
+            /*padding: 40px 0 20px;*/
+            padding: 0;
         }
         .three-dots-icon .dropdown-toggle {
             margin-top: 15px;
