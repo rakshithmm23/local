@@ -36,6 +36,7 @@ export default class MyRequest extends Component {
         } else if (window.location.search.indexOf('type=success') > -1 ) {
          this.setState({'requestType': 'success'});
         }
+        
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
@@ -89,12 +90,7 @@ export default class MyRequest extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                        {/*<TextInput
-                                            type="text"
-                                            label="Comments"
-                                            name="Comments"
-                                            onChange={this.handleChange.bind(this)}
-                                        />*/}
+                                       
                                         <FormGroup>
                                           <FormControl
                                               className="textAlign"

@@ -20,6 +20,7 @@ import CarType from '../common/CarType'
 
 export default class RequestCard extends Component {
   constructor(...args) {
+    
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
@@ -311,6 +312,125 @@ export default class RequestCard extends Component {
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
+    this.jobData = [
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani1',
+      //   serviceTypes: 'Car Wash',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'waiting',
+      //   jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
+      //   'currently assessing your application and will get back with their quotes soon.',
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani2',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'active',
+      //   jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
+      //   'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
+      // },
+      {
+        carImage: '../../images/car.jpg',
+        customerName: 'Bala Subramani',
+        serviceTypes: 'Car Wash',
+        customeId: '12345678',
+        startDate: '09 Mar17, 11:00 AM',
+        statusIndicator: 'inProgress',
+        vendorDetails:
+        {
+          vendor: 'Buddy’s Car Service',
+          vendorPlace: '3916 Address Tower, Street Name, Dubai',
+          vendorMobile: '+971 919 233 470',
+          quote: '200 AED',
+          totalTask: 8,
+        }
+        ,
+        statusStep: true,
+        statusPopup: [
+          {
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          }
+        ],
+      },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'inProgress',
+      //   vendorDetails:
+      //   {
+      //     vendor: 'Buddy’s Car Service',
+      //     vendorPlace: '3916 Address Tower, Street Name, Dubai',
+      //     vendorMobile: '+971 919 233 470',
+      //     quote: '200 AED',
+      //     totalTask: 8,
+      //   }
+      //   ,
+      //   statusStep: true,
+      //   statusPopup: [
+      //     {
+      //       imgClassName: 'statusIcon',
+      //       statusDescription: 'Door Locking Mechanisms and Windows',
+      //       statusTime: '09 Mar 15 11:00 AM',
+      //       statusMessage: 'On going'
+      //     }
+      //   ]
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'completed',
+      //   vendorDetails:
+      //   {
+      //     vendor: 'Buddy’s Car Service',
+      //     vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
+      //     vendorMobile: '+971 919 233 470',
+      //     quote: '200 AED',
+      //     totalTask: 8,
+      //   },
+      //   statusStep: true,
+      //   statusPopup: [
+      //     {
+      //       imgClassName: 'statusIcon',
+      //       statusDescription: 'Door Locking Mechanisms and Windows',
+      //       statusTime: '09 Mar 15 11:00 AM',
+      //       statusMessage: 'On going'
+      //     }
+      //   ]
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'completed',
+      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
+      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.'
+      // },
+      // {
+      //   carImage: '../../images/car.jpg',
+      //   customerName: 'Bala Subramani',
+      //   serviceTypes: 'Emergency Service',
+      //   customeId: '12345678',
+      //   startDate: '09 Mar17, 11:00 AM',
+      //   statusIndicator: 'expired',
+      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
+      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.',
+      // }
+    ];
   }
   jobDetail(val) {
     this.setState({ jobUpdates: val });
@@ -326,6 +446,14 @@ export default class RequestCard extends Component {
   componentWillMount() {
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
+    let queryParms = window.location.search.substring(1);
+    debugger
+    if(queryParms==""){
+      this.jobData[0].statusIndicator="inProgress";
+    }else{
+      this.jobData[0].statusIndicator=queryParms;
+    }
+    // this.jobData[0].statusIndicator=
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -513,125 +641,7 @@ export default class RequestCard extends Component {
       jobRightGridValue = "col-md-7";
     }
 
-    const jobData = [
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani1',
-      //   serviceTypes: 'Car Wash',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'waiting',
-      //   jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
-      //   'currently assessing your application and will get back with their quotes soon.',
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani2',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'active',
-      //   jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
-      //   'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
-      // },
-      {
-        carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani',
-        serviceTypes: 'Car Wash',
-        customeId: '12345678',
-        startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'inProgress',
-        vendorDetails:
-        {
-          vendor: 'Buddy’s Car Service',
-          vendorPlace: '3916 Address Tower, Street Name, Dubai',
-          vendorMobile: '+971 919 233 470',
-          quote: '200 AED',
-          totalTask: 8,
-        }
-        ,
-        statusStep: true,
-        statusPopup: [
-          {
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          }
-        ],
-      },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'inProgress',
-      //   vendorDetails:
-      //   {
-      //     vendor: 'Buddy’s Car Service',
-      //     vendorPlace: '3916 Address Tower, Street Name, Dubai',
-      //     vendorMobile: '+971 919 233 470',
-      //     quote: '200 AED',
-      //     totalTask: 8,
-      //   }
-      //   ,
-      //   statusStep: true,
-      //   statusPopup: [
-      //     {
-      //       imgClassName: 'statusIcon',
-      //       statusDescription: 'Door Locking Mechanisms and Windows',
-      //       statusTime: '09 Mar 15 11:00 AM',
-      //       statusMessage: 'On going'
-      //     }
-      //   ]
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'completed',
-      //   vendorDetails:
-      //   {
-      //     vendor: 'Buddy’s Car Service',
-      //     vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
-      //     vendorMobile: '+971 919 233 470',
-      //     quote: '200 AED',
-      //     totalTask: 8,
-      //   },
-      //   statusStep: true,
-      //   statusPopup: [
-      //     {
-      //       imgClassName: 'statusIcon',
-      //       statusDescription: 'Door Locking Mechanisms and Windows',
-      //       statusTime: '09 Mar 15 11:00 AM',
-      //       statusMessage: 'On going'
-      //     }
-      //   ]
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'completed',
-      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
-      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.'
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'expired',
-      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
-      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.',
-      // }
-    ];
+    
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
         lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key + 1) + this.state.svgEnd : this.state.svg + (key + 1) + this.state.svgEnd,
@@ -640,16 +650,16 @@ export default class RequestCard extends Component {
         distance: val.distance,
         review: val.review,
 
-      }
-    })
+      };
+    });
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
     const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
-    const jobDataList = map(jobData, (item, key) => {
+    const jobDataList = map(this.jobData, (item, key) => {
       return (
         <div key={key}>
 
-          {map(jobData, (cardDetails, key) => {
+          {map(this.jobData, (cardDetails, key) => {
           return (
             <div>
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
@@ -670,7 +680,7 @@ export default class RequestCard extends Component {
                       </div>
                       <div className="col-md-6 col-sm-6 col-xs-6">
                         <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>{jobData[0].statusIndicator=="accepted" || jobData[0].statusIndicator=="inProgress" ||jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
+                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
                         </div>
                       </div>
                     </div>
@@ -678,9 +688,9 @@ export default class RequestCard extends Component {
                 </div>
                 <div className="row request-summary-body">
                   {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
-                    <JobDetails serviceTypes={jobData[0].serviceTypes} statusIndicator={jobData[0].statusIndicator}/>
+                    <JobDetails serviceTypes={this.jobData[0].serviceTypes} statusIndicator={this.jobData[0].statusIndicator}/>
                   </div>}
-                  {this.state.jobUpdates == "quotes" && jobData[0].statusIndicator!="waiting" &&
+                  {this.state.jobUpdates == "quotes" && this.jobData[0].statusIndicator!="waiting" &&
 
                   <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
@@ -899,7 +909,7 @@ export default class RequestCard extends Component {
                             renderTrackVertical={this.renderTrackVertical}
                             renderThumbVertical={this.renderThumbVertical}
                           >
-                            {jobData[0].statusIndicator=="active" && <div className="wrapper" ref={'quotesList'}>
+                            {this.jobData[0].statusIndicator=="active" && <div className="wrapper" ref={'quotesList'}>
 
                                 <div>
                                   {map(this.state.jobCardDetails, (details, key) => {
@@ -912,7 +922,7 @@ export default class RequestCard extends Component {
 
                             </div>}
 
-                            {jobData[0].statusIndicator=="accepted" || jobData[0].statusIndicator=="inProgress" ||jobData[0].statusIndicator=="completed" ? <div>
+                            {this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ? <div>
                               <AcceptedQuotes />
                             </div>:""}
                           </Scrollbars>
@@ -920,7 +930,7 @@ export default class RequestCard extends Component {
                       </div>
                     </div>
                     <div className="col-md-6 clearfix right pad0">
-                      {jobData[0].statusIndicator=="active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
+                      {this.jobData[0].statusIndicator=="active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
                             infoPopUp={true}
@@ -947,7 +957,7 @@ export default class RequestCard extends Component {
                               <li className={this.state.quotation == true ? "active" : ""} onClick={() => this.viewQuotation()}>Quote</li>
                               <li className={this.state.messages == true ? "active" : ""} onClick={() => this.viewMessages()}>Message</li>
                             </ul>
-                            {jobData[0].statusIndicator=="active" && <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>}
+                            {this.jobData[0].statusIndicator=="active" && <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>}
                           </div>
                         </div>
                         <div className="quotes-right-body">
@@ -1001,7 +1011,7 @@ export default class RequestCard extends Component {
                                   <label>Total</label>
                                   <span>195 AED</span>
                                 </div>
-                                {jobData[0].statusIndicator=="active" && jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
+                                {this.jobData[0].statusIndicator=="active" && this.jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
                                   <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" />
                                 </div>:""}
                               </div>
