@@ -448,11 +448,11 @@ export default class RequestCard extends Component {
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     let queryParms = window.location.search.substring(1);
     debugger
-    if(queryParms==""){
-      this.jobData[0].statusIndicator="inProgress";
-    }else{
-      this.jobData[0].statusIndicator=queryParms;
-    }
+    // if(queryParms==""){
+    //   this.jobData[0].statusIndicator="inProgress";
+    // }else{
+    //   this.jobData[0].statusIndicator=queryParms;
+    // }
     // this.jobData[0].statusIndicator=
   }
   componentDidMount() {
