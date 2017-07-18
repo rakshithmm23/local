@@ -70,7 +70,7 @@ export default class Dashboard extends Component {
     render() {
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
-                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key}>
+                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={()=>this.props.router.push(service.hyperlink)}>
                     <div className="service-data">
                         <img src={service.serviceImage} alt="" />
                         <label>{service.name}</label>
@@ -108,7 +108,7 @@ export default class Dashboard extends Component {
                     <div className="topSection empty">
                         <div className="padwrapper">
                             {/*Empty Text*/}
-                            <EmptyUpdates />
+                            <EmptyUpdates router={this.props.router}/>
                         </div>
                     </div>
 

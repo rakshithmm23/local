@@ -50,6 +50,7 @@ export default class BookService extends Component {
     }
 
     render() {
+        const {router} = this.props;
         return (
             <div>
                 {/*Header*/}
@@ -64,7 +65,7 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Cars</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car" />
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profile')}}/>
                         </div>
                     </div>
                     <div className="inSection">
@@ -73,7 +74,12 @@ export default class BookService extends Component {
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
                                     {this.state.carProfiles && this.state.carProfiles.map((profile, index) => {
-                                      return (<BookServiceBox date="17 April 16" year={profile.year} model={profile.model} regNo={profile.regNo} name={profile.name} key={index}/>);
+                                      return (
+                                          <BookServiceBox date="17 April 16" year={profile.year} 
+                                            model={profile.model} regNo={profile.regNo} name={profile.name} key={index}
+                                            router={router}
+                                      
+                                      />);
                                     })}
                                 </div>
                             </div>

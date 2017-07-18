@@ -12,21 +12,25 @@ class BookServiceBox extends Component {
         };
     }
     render() {
+        const {router}= this.props
         const bookServiceOption = [
             {
                 image: "../../images/book-service-1.png",
-                title: "Car Wash"
+                title: "Car Wash",
+                url:"/car-wash"
             }, {
                 image: "../../images/book-service-2.png",
-                title: "Car Service"
+                title: "Car Service",
+                url:"/car-service"
             }, {
                 image: "../../images/book-service-3.png",
-                title: "Car Repair"
+                title: "Car Repair",
+                url:"/car-repair"
             }
         ]
         const bookServiceOptionView = map(bookServiceOption, (service, key) => {
             return (
-                <li key={key}>
+                <li key={key} onClick={()=>router.push(service.url)}>
                     <Media>
                         <Media.Left>
                             <img width={69} height={69} src={service.image} alt="Image" />

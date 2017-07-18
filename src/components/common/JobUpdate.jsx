@@ -193,7 +193,8 @@ export default class JobUpdate extends Component {
     return (
       <div>
         <h4 className="job-update-title">Job Status</h4>
-        <a className="jobUpdate-viewall">View All</a>
+        <a className="jobUpdate-viewall">View All</a> 
+        {/* https://projects.invisionapp.com/d/main#/console/10950794/238371645/preview */}
 
         {map(jobData, (cardDetails, key) => {
           return (

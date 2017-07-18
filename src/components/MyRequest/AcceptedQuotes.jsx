@@ -55,7 +55,8 @@ export default class AcceptedQuotes extends Component {
                 <label>{item.vdEmail}</label>
                 <label>{item.vdPhone}</label>
                 <Button btnType="btn-alert alert-margin" btnSize="sm" customClass="timeline" fontSize={14} label="Get Directions" />
-                <Button btnType="btn-alert" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />
+                <Button btnType="btn-alert" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />{/* vendor profile */}
+
             </div>
             <div className="figure no-top-padding">
                 <h4>Photos</h4>
