@@ -40,7 +40,7 @@ export default class JobUpdate extends Component {
   }
   render() {
     // console.log(this.state.currentWidth)
-    const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
+    const { infoStatus, statusType, statusTitle, statusTime, statusProcess,router } = this.props;
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -64,17 +64,14 @@ export default class JobUpdate extends Component {
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'accepted',
         totalTask: 14,
-        vendorDetails:
-        {
+        vendorDetails:{
           vendor: 'Buddy’s Car Service',
           vendorPlace: '3916 Address Tower, Street Name, Dubai',
           vendorMobile: '+971 919 233 470',
           quote: '200 AED',
-        }
-        ,
+        },
         statusStep: true,
-        statusPopup: [
-          {
+        statusPopup: [{
             imgClassName: 'statusIcon',
             statusDescription: 'Door Locking Mechanisms and Windows',
             statusTime: '09 Mar 15 11:00 AM',
@@ -93,8 +90,10 @@ export default class JobUpdate extends Component {
           
           
         ],
+        route:"/request"
       },
       {
+        // route:"/request",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani1',
         serviceTypes: 'Emergency Service',
@@ -105,6 +104,7 @@ export default class JobUpdate extends Component {
         'currently assessing your application and will get back with their quotes soon.',
       },
       {
+        route:"/request",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani2',
         serviceTypes: 'Emergency Service',
@@ -116,6 +116,7 @@ export default class JobUpdate extends Component {
       },
       
       {
+        route:"/request",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -179,6 +180,7 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
+        route:"/book-service",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -199,7 +201,7 @@ export default class JobUpdate extends Component {
         {map(jobData, (cardDetails, key) => {
           return (
             <div key={key}>
-              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
+              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{console.log('dsdsad');router.push(cardDetails.route)}}/>}
             </div>
           )
         })}

@@ -56,7 +56,7 @@ export default (
     <Route path="request" component={AuthContainer(MyRequest)} />
     <Route path="book-service" component={AuthContainer(BookService)} />
     <Route path="car-profile" component={CarProfileContainer(CreateCarProfile)} />
-    <Route path="car-list" component={AuthContainer(BookService)} />
+    {/* <Route path="car-list" component={AuthContainer(BookService)} /> */}
     <Route path="timeline" component={AuthContainer(CarTimeline)} />
     <Route path="car-repair" component={AuthContainer(CarRepair)} />
     <Route path="car-wash" component={AuthContainer(CarWash)} />

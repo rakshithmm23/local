@@ -3,7 +3,12 @@
         clear: both;
         background: #fff;
         border-radius: 4px;
+        
     }
+    .myCar-body .job-updates .row{
+        cursor: default ;
+    }
+
 
     .job-updates .row {
         margin: 0;

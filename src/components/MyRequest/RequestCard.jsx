@@ -495,7 +495,7 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
   }
   viewMessaging() {
-    this.setState({ mapView: false, quotationView: true, quotation: false, messages: true })
+    this.setState({ mapView: false, quotationView: true, quotation: false, messages: true,jobUpdates : "quotes" })
 }
   mapClick(map) {
     let update, newDetails = [];
@@ -662,7 +662,7 @@ export default class RequestCard extends Component {
           {map(this.jobData, (cardDetails, key) => {
           return (
             <div>
-              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
+              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageClick={this.viewMessaging.bind(this)}/>}
             </div>
 
           )

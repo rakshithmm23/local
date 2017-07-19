@@ -15,6 +15,12 @@ class CardType extends Component {
             chars_left: 0,
         };
     }
+    goTopage(e,url){
+        debugger
+        e.stopPropagation()
+        e.preventDefault()
+        this.props.router.push(url)
+    }
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
@@ -24,13 +30,13 @@ class CardType extends Component {
         } else if (val == "active") {
             return (
                 <div>
-                    <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+                    <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-file-outline"></span><span className="notifyTag"></span><span className="commentLabel">Quotes</span></div>
                 </div>
             );
         } else if (val == "accepted" || val == "inProgress") {
             return (
-                <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+                <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
             );
         } else if (val == "finished") {
             return (
@@ -63,19 +69,24 @@ class CardType extends Component {
         }
     }
     handleChange(event) {
-        let input = null
-        input = event
+        // let input = null
+        // input = event
         const val = event.target.value;
         this.setState({
             chars_left: this.state.max_chars - val.length
         });
     }
+    showTimeline(e){
+        e.stopPropagation();
+        e.preventDefault();
+        this.setState({ showTimeLine: !this.state.showTimeLine })
+    }
 
 
     render() {
-        const { cardDetails, jobLeftGridValue, jobRightGridValue } = this.props;
+        const { cardDetails, jobLeftGridValue, jobRightGridValue,messageRoute } = this.props;
         return (
-            <div className={"job-updates " + cardDetails.statusIndicator}>
+            <div className={"job-updates " + cardDetails.statusIndicator} onClick={messageRoute}>
                 <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                         <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
@@ -92,12 +103,12 @@ class CardType extends Component {
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
                                                 {cardDetails.statusPopup &&
-                                                    <li className="desktop-expand-timeline" onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
+                                                    <li className="desktop-expand-timeline" onClick={(e) => {this.showTimeline(e)}}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-down" />
                                                             Collapse Timeline
                                                         </button> :
-                                                            <button className="btn btn-theme sm label" >
+                                                            <button className="btn btn-theme sm label">
                                                                 <i className="mdi mdi-chevron-up" />
                                                                 Expand Timeline
                                                         </button>
@@ -139,7 +150,7 @@ class CardType extends Component {
                             </div>
                             {cardDetails.statusPopup &&
                                 <div className="mobile-expand-timeline">
-                                    <div onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
+                                    <div onClick={(e) => this.showTimeline(e)}>
                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                             <i className="mdi mdi-chevron-down" />
                                             Collapse Timeline

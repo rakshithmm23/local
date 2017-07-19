@@ -115,7 +115,7 @@ export default class Dashboard extends Component {
                     <div className="inSection dash-jobupdate-bg">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <JobUpdate />
+                            <JobUpdate router={this.props.router}/>
                         </div>
                     </div>
                     <div className="bottomSection">

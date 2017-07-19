@@ -24,7 +24,8 @@ export default class BookService extends Component {
             timelineUpdate: "timeline",
             myCarDropdownIcon: true,
             selectedCar: "My Nissan GT-R",
-            showModal: false
+            showModal: false,
+            deleteModal:false
 
         };
     }
@@ -64,9 +65,9 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" />
+                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={()=>this.props.router.push('/book-service')}/>
                             <div className="text-dropdown add-new" >
-                                <DropdownButton bsSize="large" id="dropdown-size-large" noCaret onSelect={(e) => { this.carSelection(e) }} onToggle={() => { this.myCarDropdown() }} title={
+                                <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={(e) => { this.carSelection(e) }} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
                                         <h4>{this.state.selectedCar}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
@@ -81,15 +82,15 @@ export default class BookService extends Component {
                             </div>
 
                             <div className="three-dots-icon">
-                                <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
+                                <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() =>  this.setState({ showModal: true })}>Delete</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() =>  this.setState({ deleteModal: true })}>Delete</MenuItem>
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} footer="true" title="Delete my audi a6" 
+                            <CustomModal showModal={this.state.deleteModal} footer="true" title="Delete my audi a6" 
                             className="deleteCarProfile-modal" 
-                            onHide={() => {this.setState({ showModal: false });}}
+                            onHide={() => {this.setState({ deleteModal: !this.state.deleteModal });}}
                             saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
