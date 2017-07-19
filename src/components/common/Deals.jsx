@@ -10,7 +10,6 @@ export default class Deals extends Component {
   }
 
   componentDidMount() {
-    debugger
     let width = document.getElementById('deals-section').offsetWidth;
     if(width<640){
       this.setState({slidesToShow:1});

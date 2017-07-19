@@ -19,12 +19,12 @@ class StatusBar extends Component {
     }
     stepClick(e,key) {
         if (e.clientX > 690) {
-            this.setState({ statusPopupPosition: e.clientX - 550, statusPopupArrow: 80 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%',activeButton:key })
         } else if (e.clientX < 350) {
-            this.setState({ statusPopupPosition: e.clientX - 260, statusPopupArrow: 11 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%',activeButton:key })
         }
         else {
-            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 35 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%',activeButton:key })
         }
     }
     render() {

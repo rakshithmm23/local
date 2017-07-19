@@ -52,22 +52,15 @@ class CardType extends Component {
             );
         }
     }
-    stepClick(e, key, len) {
-        // if(key+1 == len){
-        //      this.setState({statusPopupPosition:e.clientX-360,statusPopupArrow:35+'%'})
-        // }else if(key == 0){
-        //     this.setState({statusPopupPosition:-5,statusPopupArrow:35+'%'})
-        // }
-        // else{
-        if (e.clientX > 1000) {
-            this.setState({ statusPopupPosition: e.clientX - 550, statusPopupArrow: 80 + '%' })
-        } else if (e.clientX < 300) {
-            this.setState({ statusPopupPosition: e.clientX - 260, statusPopupArrow: 11 + '%' })
+    stepClick(e,key) {
+        if (e.clientX > 690) {
+            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%',activeButton:key })
+        } else if (e.clientX < 350) {
+            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%',activeButton:key })
         }
         else {
-            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 35 + '%' })
+            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%',activeButton:key })
         }
-
     }
     handleChange(event) {
         let input = null
