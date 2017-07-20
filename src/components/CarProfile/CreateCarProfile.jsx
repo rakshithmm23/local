@@ -44,7 +44,7 @@ export default class NewCarProfile extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">

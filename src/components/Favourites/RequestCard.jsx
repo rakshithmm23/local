@@ -152,7 +152,7 @@ export default class RequestCard extends Component {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener();
+    window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
    TimePickerChange (type,value) {
     if(type=="timeFrom"){

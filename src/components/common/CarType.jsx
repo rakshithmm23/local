@@ -15,12 +15,7 @@ class CardType extends Component {
             chars_left: 0,
         };
     }
-    goTopage(e,url){
-        debugger
-        e.stopPropagation()
-        e.preventDefault()
-        this.props.router.push(url)
-    }
+    
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
@@ -86,8 +81,8 @@ class CardType extends Component {
     render() {
         const { cardDetails, jobLeftGridValue, jobRightGridValue,messageRoute } = this.props;
         return (
-            <div className={"job-updates " + cardDetails.statusIndicator} onClick={messageRoute}>
-                <div className="row">
+            <div className={"job-updates " + cardDetails.statusIndicator} >
+                <div className="row" onClick={messageRoute}>
                     <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                         <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-left">

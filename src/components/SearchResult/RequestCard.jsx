@@ -159,13 +159,13 @@ export default class RequestCard extends Component {
     window.addEventListener("resize", this.updateDimensions);
   }
   componentDidUpdate() {
-    const curr = this.currentTopEle
+    const curr = this.currentTopEle;
     if(curr!=undefined){
-    this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop;
     }
   }
   componentWillUnmount() {
-    window.removeEventListener();
+    window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
   bodyClick(e){
     if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters') )&&(!this.state.filterdropdown) ) {
