@@ -122,9 +122,10 @@
     margin-left: 15px;
 }
 
-.login-panel-header .gmail{
-  float: right;
+.login-panel-header .gmail {
+    float: right;
 }
+
 
 /*Checkbox*/
 
@@ -200,11 +201,13 @@
 .gm-scrollbar .thumb:active {
     background-color: rgba(0, 0, 0, 0);
 }
-.edit-mobileno{
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-size:18px;
+
+.edit-mobileno {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 18px;
 }
+
 @media screen and (min-height: 701px) {
     .login-panel {
         justify-content: center;
@@ -274,19 +277,29 @@
     .login-panel-header .btn-theme.facebook {
         margin-right: 10px;
     }
+    .confirmed-reset-panel {
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        height: 100%;
+    }
+    .confirmed-reset-panel .confirmed-reset {
+        text-align: center;
+    }
 }
 
-@media screen and (max-width: 767px){
-    .login-panel-footer a{
+@media screen and (max-width: 767px) {
+    .login-panel-footer a {
         margin-top: 10px;
     }
 }
 
-@media screen and (max-width: 640px){
-    .login-panel .btn-theme.gmail{
+@media screen and (max-width: 640px) {
+    .login-panel .btn-theme.gmail {
         margin-left: 0;
     }
 }
+
 @media screen and (min-width: 581px) and (max-width: 767px) {
     .login-panel-header .btn-theme.lg {
         width: 45%;
