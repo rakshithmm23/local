@@ -70,7 +70,7 @@ export function showVerifyOTPPage(signUpData) {
     axios.post(API_END_POINTS.SIGNUP, JSON.stringify(signUpData), {
       headers: {
         'Accept': 'application/json,',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       withCredentials:true
     })
