@@ -109,7 +109,7 @@ export default class VerifyOTP extends Component {
                                   {authReducer && authReducer.authData && authReducer.authData.phone && <strong><span className="edit-mobileno">{authReducer.authData.phone}</span><i className="mdi mdi-pencil" onClick={(e) => {e.preventDefault(); router.push('send-otp')}}/></strong>}
                                 </p>
                             </div>
-                            <div className="login-panel-body">
+                            <div className="login-panel-body input-button-addon">
                                 <TextInput
                                   label="Enter the OTP code below to continue"
                                   name="otp"

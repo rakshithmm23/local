@@ -59,7 +59,7 @@ export default class Deals extends Component {
     return (
       <div className="row" >
         <div className="deals-section" id="deals-section">
-          <div className="deals-heading text-center">
+          <div className="deals-heading">
             <h5>Deals and Offers</h5>
             <p>Enjoy the best offers and discounts exclusively selected for your car needs.</p>
           </div>

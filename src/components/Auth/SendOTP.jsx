@@ -69,16 +69,15 @@ export default class SendOTP extends Component {
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
                             </div>
-                            <div className="login-panel-body">
-                                <div className="form-group otp-input">
+                            <div className="login-panel-body input-button-addon">
                                 <TextInput
                                   type="phone"
                                   name="phone"
                                   showValidationError={this.errors['phone']}
                                   validationError="Enter a valid mobile number"
                                   label="Enter your phone number to receive an OTP"
-                                  onChange={this.onFieldChange.bind(this)} />
-                                </div>
+                                  onChange={this.onFieldChange.bind(this)} 
+                                  isOTP={true} />
                                 <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
                             </div>
                         </div>

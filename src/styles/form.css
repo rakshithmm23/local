@@ -77,17 +77,6 @@
     padding: 10px 15px;
 }
 
-.otp-input {
-    width: 300px;
-    display: inline-block;
-    margin-right: 30px;
-    vertical-align: top;
-}
-
-.otp-input input {
-    font-size: 18px;
-}
-
 .form-group {
     position: relative;
 }
@@ -150,6 +139,24 @@
     border-radius: 0px;
     padding-left: 0px;
     outline: 0 !important;
+}
+
+/* input-button-addon */
+.input-button-addon .otp-input{
+    width: 320px;
+    display: inline-block;
+    margin-right: 30px;
+    vertical-align: top;
+}
+.input-button-addon .form-group .form-input{
+    height: 34px;
+    padding: 20px 0 12px;
+}
+.input-button-addon .form-group label{
+    top: 15px;
+}
+.input-button-addon .form-group .error-text{
+    bottom: -20px;
 }
 
 @media screen and (min-width: 1075px) and (max-width: 1175px) {

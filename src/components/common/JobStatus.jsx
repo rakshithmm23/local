@@ -82,10 +82,10 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
-                {this.props.status=="finished" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
+                {this.props.status=="completed" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
-                            <div className="status-label finished" style="font-size: 14px;">finished</div>
+                            <div className="status-label completed" style="font-size: 14px;">completed</div>
                             <div className="job-icon  notification" >
                                 <span className="mdi mdi-star-outline"></span>
                                 <span className="commentLabel">Review</span>
@@ -103,7 +103,7 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
-                {/*{this.props.status=="finished" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
+                {/*{this.props.status=="completed" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
                             <div className="status-label cancelled" style="font-size: 14px;">cancelled</div>
