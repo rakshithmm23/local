@@ -3,6 +3,7 @@ import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
 import {decryptCookie} from '../helpers';
 import Cookies from 'universal-cookie';
+import queryString from 'query-string';
 const cookies = new Cookies();
 
 export function signInUser (signInData, dispatch) {
@@ -67,7 +68,7 @@ export function signInAction(signInData, dispatch, fromSignup) {
 
 export function showVerifyOTPPage(signUpData) {
   return (dispatch) => {
-    axios.post(API_END_POINTS.SIGNUP, JSON.stringify(signUpData), {
+    axios.post(API_END_POINTS.SIGNUP, queryString.stringify(signUpData), {
       headers: {
         'Accept': 'application/json,',
         'Content-Type': 'application/x-www-form-urlencoded'
