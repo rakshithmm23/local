@@ -188,7 +188,7 @@ class CardType extends Component {
 
                             />
                         </div>
-                        <div className="comments">
+                        <div className="comments rtg-modal">
                             {/*<TextInput
                                             type="text"
                                             label="Comments"
