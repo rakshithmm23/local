@@ -54,7 +54,7 @@ export default class JobUpdate extends Component {
     } else {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
-    }
+    } 
     const jobData = [
       {
         carImage: '../../images/car.jpg',
@@ -149,7 +149,7 @@ export default class JobUpdate extends Component {
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'finished',
+        statusIndicator: 'completed',
         totalTask: 7,
         vendorDetails:
         {

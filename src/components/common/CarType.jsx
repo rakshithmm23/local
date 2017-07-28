@@ -33,7 +33,7 @@ class CardType extends Component {
             return (
                 <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
             );
-        } else if (val == "finished") {
+        } else if (val == "completed") {
             return (
                 <div className="job-icon  notification" onClick={() => this.setState({ saveModal: true })}>
                     <span className="mdi mdi-star-outline"></span>
@@ -94,7 +94,7 @@ class CardType extends Component {
                                         <div className="job-details">
                                             <ul>
                                                 <li>
-                                                    <label>Order ID :</label><span>{cardDetails.customeId}</span></li>
+                                                    <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
                                                 {cardDetails.statusPopup &&

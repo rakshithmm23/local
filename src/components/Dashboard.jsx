@@ -70,7 +70,7 @@ export default class Dashboard extends Component {
     render() {
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
-                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={()=>this.props.router.push(service.hyperlink)}>
+                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={() => this.props.router.push(service.hyperlink)}>
                     <div className="service-data">
                         <img src={service.serviceImage} alt="" />
                         <label>{service.name}</label>
@@ -87,7 +87,7 @@ export default class Dashboard extends Component {
 
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                        <Sidebar router={this.props.router} />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="topSection">
@@ -99,6 +99,7 @@ export default class Dashboard extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Service List*/}
+                            <h4 className="serviceList-title">Get a Quote</h4>
                             <div className="service-list text-center row">
                                 {serviceTypesView}
                             </div>
@@ -108,14 +109,16 @@ export default class Dashboard extends Component {
                     <div className="topSection empty">
                         <div className="padwrapper">
                             {/*Empty Text*/}
-                            <EmptyUpdates router={this.props.router}/>
+                            <EmptyUpdates router={this.props.router} />
                         </div>
                     </div>
 
                     <div className="inSection dash-jobupdate-bg">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <JobUpdate router={this.props.router}/>
+                            <div className="jobUpdate-padding">
+                            <JobUpdate router={this.props.router} />
+                            </div>
                         </div>
                     </div>
                     <div className="bottomSection">
