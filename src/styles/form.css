@@ -47,6 +47,14 @@
     height: 20px;
 }
 
+.model-select + span.error-text {
+    color: red;
+    font-size: 12px;
+    font-family: CenturyGothic;
+    display: block;
+    height: 20px;
+}
+
 .form-group.error .error-text,
 .note-text.error .error-text {
     visibility: visible;

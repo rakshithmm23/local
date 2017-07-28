@@ -22,19 +22,20 @@ class ProfileSteps extends Component {
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
             submissionError: false,
+            selectError: false
         };
-        this.initialFormData = {
+       this.initialFormData = {
             'make': '',
             'model': '',
             'name': '',
             'year': '',
-            'regNo': '',
-            'travelled': '',
+            'plate_no': '',
+            'mileage': '',
             'insuranceProvider': '',
             'policyNo': '',
             'state': '',
             'additionalDetails': '',
-            'file': ''
+            'photos': ''
         };
         this.formData = {
           ...this.initialFormData
@@ -51,6 +52,12 @@ class ProfileSteps extends Component {
       if (value) {
           this.formData[name] = value;
           this.errors[name] = false;
+      }
+      if(name === 'year'){
+        if(!value) {
+            this.errors[name] = true; 
+            this.setState({'selectError': true}); 
+        } else { this.setState({'selectError': false}); }
       }
     }
     activeLogo(name) {
@@ -71,10 +78,11 @@ class ProfileSteps extends Component {
         }
     }
     fileNameUpload(e) {
-        let files = [], fileImgSize = 0, errFileType = false;
+        let files = [], fileBlob = [], fileImgSize = 0, errFileType = false;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
+            fileBlob.push(val);
             fileImgSize += val.size;
             if (val.type == "image/png" || val.type == "image/jpeg") {
             } else {
@@ -90,7 +98,7 @@ class ProfileSteps extends Component {
                 imageUploaded: this.state.imageUploaded.concat(files),
                 uploadImgSize: fileImgSize + this.state.uploadImgSize,
             });
-            this.formData['file'] = this.state.imageUploaded.concat(files);
+            this.formData['photos'] = this.state.imageUploaded.concat(fileBlob);
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -111,7 +119,7 @@ class ProfileSteps extends Component {
         deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
         array.splice(val, 1);
         this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
-        this.formData['file'] = array;
+        this.formData['photos'] = array;
     }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
@@ -311,6 +319,7 @@ class ProfileSteps extends Component {
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
+                                    {this.errors && this.errors['year'] && <span  className="error-text"> Please Select Year </span> }
                                 </div>
                             </div>
                             <div className="row">
@@ -346,11 +355,11 @@ class ProfileSteps extends Component {
                                         <TextInput label="Car Profile Name" name="name" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="regNo" type="text" validationError="Plate Number cannot be empty"
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty"
                                         onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Kms Travelled*" name="travelled" type="text" validationError="Kms Travelled cannot be empty"
+                                        <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty"
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>

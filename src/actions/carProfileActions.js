@@ -8,22 +8,25 @@ export function setCarProfileAction(carData){
       type: types.HIDE_ERROR_MESSAGE
     });
     const formData = new FormData();
+    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos'];
 
-  let mandateFields = ['name', 'make', 'model', 'year', 'regNo'];
-
-  Object.keys(carData).map((value)=>{
+  Object.keys(carData).map((value)=> {
     if(carData[value] && mandateFields.indexOf(value) !== -1) {
-      formData.append(value, carData[value]);
+      if(value !== 'photos')
+        formData.append(value, carData[value]);
+      else {
+        carData[value].forEach(imgElm => {
+          formData.append(value, imgElm);
+        });
+      }
     }
   });
-
+  
   axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
       withCredentials:true
     })
     .then((response) => {
+      console.log("Resp: ",response);
       if(response.status === 200){
         if (typeof(response.data) == 'string' && response.data.indexOf('<!DOCTYPE html>') > -1) {
           dispatch({
@@ -31,10 +34,9 @@ export function setCarProfileAction(carData){
             statusMessage: "Unknown error occurred"
           });
         } else {
-          let carProfiles = localStorage.getItem('carProfiles');
-          if (!carProfiles) {
-            carProfiles = [];
-          }
+          let carProfiles = localStorage.getItem('carProfiles') && 
+                              JSON.parse(localStorage.getItem('carProfiles')) || [];
+          console.log("carProfiles: ",carProfiles);
           carProfiles.push(response.data);
           localStorage.setItem('carProfiles', JSON.stringify(carProfiles));
           dispatch({
@@ -45,6 +47,7 @@ export function setCarProfileAction(carData){
       }
 
     }).catch((err) => {
+      console.log("Error: ",err);
       if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
