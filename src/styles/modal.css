@@ -73,9 +73,9 @@
 .modal-body .comments {
   padding-top: 10px;
 }
-.modal-body .comments textarea.form-control{
+/* .modal-body .comments textarea.form-control{
   height: 115px !important;
-}
+} */
 
 .modal-body .model-select .mdi-chevron-down {
   position: absolute;
