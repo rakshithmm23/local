@@ -20,35 +20,35 @@ export default class ServiceDetails extends Component {
             <div className="service-details">
                 <Carousel>
                     <Carousel.Item>
-                        <img width={400} height={280} alt="" src="../images/car.jpg" />
+                        <img width={400} height={280} alt="" src="/images/car.jpg" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img width={400} height={280} alt="" src="../images/car.jpg" />
+                        <img width={400} height={280} alt="" src="/images/car.jpg" />
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img width={400} height={280} alt="" src="../images/car.jpg" />
+                        <img width={400} height={280} alt="" src="/images/car.jpg" />
                     </Carousel.Item>
                 </Carousel>
                 <div className="service-car-info">
                     <div className="service-carPlate">
-                        <h6>{this.state.plateNumber}</h6>
-                        <h4>{this.state.brand}</h4>
-                        <span className="car-make">{this.state.color} - {this.state.year}</span>
+                        <h6>{this.props.plateNo} {this.props.state}</h6>
+                        <h4>{this.props.make}</h4>
+                        <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
-                    <div className="service-info">
+                    {this.props.previousService && this.props.upcomingService && <div className="service-info">
                         <Scrollbars className="timelineScroll">
                             <ul>
                                 <li>
                                     <h5>Upcoming Service</h5>
-                                    <span>{this.state.upcomingService} kms</span>
+                                    <span>{this.props.upcomingService} kms</span>
                                 </li>
                                 <li>
                                     <h5>Previous Service</h5>
-                                    <span>Car wash: {this.state.date}, {this.state.previousService} kms</span>
+                                    <span>Car wash: {this.props.date}, {this.props.previousService} kms</span>
                                 </li>
                             </ul>
                         </Scrollbars>
-                    </div>
+                    </div>}
                 </div>
             </div>
         );

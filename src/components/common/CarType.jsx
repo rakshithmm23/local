@@ -15,7 +15,7 @@ class CardType extends Component {
             chars_left: 0,
         };
     }
-    
+
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
@@ -172,7 +172,7 @@ class CardType extends Component {
                     </div>
                 </div>}
 
-                <CustomModal footer="true" showModal={this.state.saveModal} className="rating-modal" closeIcon="true" saveText="Submit">
+                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => {this.setState({saveModal: false})}} className="rating-modal" closeIcon="true" saveText="Submit">
                     <Modal.Body>
                         <div className="image-holder">
                             <img src="../../images/test.jpg" alt="" />

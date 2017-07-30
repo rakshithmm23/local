@@ -16,7 +16,7 @@ export default class EmptyUpdates extends Component {
                             Fortunatelly, it’s easy to create one.
                             The illustration/icon pattern has to be similar to the top
                         </p>
-                        <Button btnType="submit" btnSize="lg" fontSize={16} label="Create a  Request" btnCallBack={() => {router.push('/book-service')}}/> 
+                        <Button btnType="submit" btnSize="lg" fontSize={16} label="Create a  Request" btnCallBack={() => {router.push('/car-profiles')}}/>
                     </div>
                     <div className="col-md-4 col-sm-4 col-xs-12">
                         <img src="../../images/empty.png" alt="" />

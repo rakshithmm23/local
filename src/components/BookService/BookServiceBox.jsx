@@ -43,11 +43,12 @@ class BookServiceBox extends Component {
                 </li>
             );
         });
+        const carPhoto = this.props.photos && this.props.photos.length > 0 ? this.props.photos[0] : '/images/car.jpg';
         return (
             <div className="col-md-4 col-sm-6 col-xs-12">
-                <div className="myCar-card ">
+                <div className="myCar-card " onClick={(e) => {e.preventDefault(); this.props.router.push(`/car-profiles/${this.props.id}/view`)}}>
                     <figure>
-                        <img src="../../images/car.jpg" alt="" />
+                        {carPhoto && <img src={carPhoto} alt="" />}
                         <div className="myCar-card-footer">
                             <ul>
                                 <li>
@@ -64,11 +65,11 @@ class BookServiceBox extends Component {
                         </div>
                     </figure>
                     <figcaption className="myCar-card-caption">
-                        <h4>{this.props.regNo} Dubai</h4>
+                        <h4>{this.props.regNo} {this.props.state}</h4>
                         <h5>{this.props.name}</h5>
-                        <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={() => this.setState({ showModal: true })} />
+                        <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={(e) => {e.stopPropagation(); e.preventDefault(); this.setState({ showModal: true })}} />
                     </figcaption>
-                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true">
+                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({showModal: false})}}>
                         <Modal.Body>
                             <ul>
                                 {bookServiceOptionView}

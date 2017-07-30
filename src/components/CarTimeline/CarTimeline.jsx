@@ -12,24 +12,41 @@ import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
-
+import {find, map} from 'lodash';
 
 export default class BookService extends Component {
     constructor(props, context) {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
+            carProfileId: undefined,
             notificationVisible: false,
             messageVisible: false,
-            timelineUpdate: "timeline",
+            timelineUpdate: "otherDetails",
             myCarDropdownIcon: true,
-            selectedCar: "My Nissan GT-R",
             showModal: false,
-            deleteModal:false
-
+            deleteModal: false
         };
+        this.deleteCarProfile = this.deleteCarProfile.bind(this);
+        this.switchCarProfile = this.switchCarProfile.bind(this);
     }
-
+    componentDidMount() {
+      const routeParams = this.props.routeParams;
+      if (routeParams.id){
+        this.props.actions.getCarProfileDetails(routeParams.id);
+      }
+      const userId = localStorage.getItem('userId');
+      const carProfileId = 'carProfiles-' + userId;
+      let carProfiles = localStorage.getItem(carProfileId);
+      if (!carProfiles) {
+        this.props.actions.getCarProfileList(this.props.router);
+      }
+    }
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.carProfileReducer.currentComponentKey) {
+        this.props.router.push(nextProps.carProfileReducer.currentComponentKey);
+      }
+    }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -51,7 +68,33 @@ export default class BookService extends Component {
     //     this.setState({ showModal: true });
     // }
 
+    deleteCarProfile() {
+      if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id)
+      this.props.actions.deleteCarProfile(this.props.carProfileReducer.currentCarProfile.id);
+    }
+
+    switchCarProfile(carProfileId) {
+      if (carProfileId) {
+        this.props.actions.getCarProfileDetails(carProfileId);
+        this.props.router.push(`/car-profiles/${carProfileId}/view`);
+      } else {
+        this.props.router.push('/car-profiles/new');
+      }
+    }
+
     render() {
+      const { carProfileReducer } = this.props;
+      const userId = localStorage.getItem('userId');
+      const carProfileId = 'carProfiles-' + userId;
+      let carProfiles = localStorage.getItem(carProfileId);
+      const routeParams = this.props.routeParams;
+      let currentCarProfile = undefined;
+      if (carProfiles) {
+        carProfiles = JSON.parse(carProfiles);
+        if (routeParams.id){
+          currentCarProfile = carProfiles[routeParams.id];
+        }
+      }
         return (
             <div>
                 {/*Header*/}
@@ -65,32 +108,32 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={()=>this.props.router.push('/book-service')}/>
-                            <div className="text-dropdown add-new" >
-                                <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={(e) => { this.carSelection(e) }} onToggle={() => { this.myCarDropdown() }} title={
+                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={()=>this.props.router.push('/car-profiles')}/>
+                            <div className="text-dropdown add-new car-profile-header" >
+                                {carProfiles && currentCarProfile && <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
-                                        <h4>{this.state.selectedCar}</h4>
+                                        <h4>{currentCarProfile.name}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
                                         {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
-                                    <MenuItem eventKey="My Nissan GT-R">My Nissan GT-R</MenuItem>
-                                    <MenuItem eventKey="BMW">BMW</MenuItem>
-                                    <MenuItem eventKey="My Audi">My Audi</MenuItem>
-                                    <MenuItem eventKey="Ferrari">Ferrari</MenuItem>
+                                    {map(carProfiles, (carProfile, key) => {
+                                      return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem >);
+                                    })}
                                     <MenuItem eventKey="">Add New</MenuItem>
-                                </DropdownButton>
+                                </DropdownButton>}
                             </div>
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit">Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() =>  this.setState({ deleteModal: true })}>Delete</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} footer="true" title="Delete my audi a6" 
-                            className="deleteCarProfile-modal" 
-                            onHide={() => {this.setState({ deleteModal: !this.state.deleteModal });}}
+                            <CustomModal showModal={this.state.deleteModal} onHide={() => {this.setState({deleteModal: false})}} footer="true" title="Delete my audi a6"
+                            className="deleteCarProfile-modal"
+                            submitCallBack={this.deleteCarProfile}
+                            onHide={() => {this.setState({ deleteModal: false });}}
                             saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
@@ -102,7 +145,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <div className="row timeline-card">
                                 <div className="col-md-3 pad0">
-                                    <ServiceDetails />
+                                    {currentCarProfile && <ServiceDetails {...currentCarProfile}/>}
                                 </div>
                                 <div className="col-md-9 pad0">
                                     <div className="row timeline-summary-header">
@@ -120,7 +163,7 @@ export default class BookService extends Component {
                                     <div className="row timeline-summary-body">
                                         <Scrollbars className="timelineScroll">
                                             {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
-                                                <OtherDetails />
+                                                {currentCarProfile && <OtherDetails {...currentCarProfile}/> }
                                             </div>}
                                             {this.state.timelineUpdate == "timeline" && <div className="tab-timeline ">
                                                 <Timeline />

@@ -14,10 +14,17 @@ export default class NewCarProfile extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
-            messageVisible: false            
+            messageVisible: false,
+            isEditPage: false
         };
     }
-
+    componentWillMount() {
+      const routeParams = this.props.routeParams;
+      if (routeParams && routeParams.id) {
+        this.setState({'isEditPage': true});
+        this.props.actions.getCarProfileDetails(routeParams.id);
+      }
+    }
     componentWillUnmount() {
       this.props.actions.hideErrorMessage();
     }
@@ -35,7 +42,7 @@ export default class NewCarProfile extends Component {
     }
 
     render() {
-      const {authReducer} = this.props;
+      const {authReducer, carProfileReducer} = this.props;
         return (
             <div>
                 {/*Header*/}

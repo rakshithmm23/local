@@ -80,7 +80,10 @@
     cursor: pointer;
     outline: 0 !important;
 }
-
+.car-profile-header .dropdown-menu{
+  height: 250px;
+  overflow: scroll;
+}
 @media screen and (max-width: 991px) {
     .profile-header .dropdown-menu {
         right: 0;

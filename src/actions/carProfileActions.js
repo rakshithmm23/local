@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
+import {keyBy} from 'lodash';
 
 export function setCarProfileAction(carData){
   return (dispatch) => {
@@ -9,19 +10,18 @@ export function setCarProfileAction(carData){
     });
     const formData = new FormData();
 
-  let mandateFields = ['name', 'make', 'model', 'year', 'regNo'];
 
   Object.keys(carData).map((value)=>{
-    if(carData[value] && mandateFields.indexOf(value) !== -1) {
+    if(carData[value]) {
       formData.append(value, carData[value]);
     }
   });
 
   axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'content-type': 'multipart/form-data',
       },
-      withCredentials:true
+      withCredentials: true
     })
     .then((response) => {
       if(response.status === 200){
@@ -31,12 +31,16 @@ export function setCarProfileAction(carData){
             statusMessage: "Unknown error occurred"
           });
         } else {
-          let carProfiles = localStorage.getItem('carProfiles');
+          const userId = localStorage.getItem('userId');
+          const carProfileId = 'carProfiles-' + userId;
+          let carProfiles = localStorage[carProfileId];
           if (!carProfiles) {
             carProfiles = [];
+          } else {
+            carProfiles = JSON.parse(carProfiles);
           }
           carProfiles.push(response.data);
-          localStorage.setItem('carProfiles', JSON.stringify(carProfiles));
+          localStorage[carProfileId] = JSON.stringify(carProfiles);
           dispatch({
             type: types.SET_CAR_PROFILE,
             carData: response.data
@@ -58,4 +62,83 @@ export function setCarProfileAction(carData){
       }
     });
   };
+}
+
+export function getCarProfileList(router) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.LIST_CAR_PROFILES, {withCredentials: true})
+      .then((response) => {
+        if (response.status === 200){
+          const carProfiles = keyBy(response.data, 'id');
+          dispatch({
+            type: types.LIST_CAR_PROFILES,
+            carProfiles: carProfiles
+          })
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: 'Unable to fetch the car list'
+          })
+        }
+      }).catch((err) => {
+        if (err.response.status === 403) {
+          dispatch({
+            type: types.LOGOUT
+          });
+          router.push('/');
+        } else if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: err.response.data
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: 'System error, please try later'
+          });
+        }
+      });
+  }
+}
+
+export function getCarProfileDetails(carProfileID) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.GET_CAR_PROFILE_DETAILS + carProfileID, {withCredentials: true})
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.VIEW_CAR_PROFILE,
+            carProfile: response.data
+          })
+        } else {
+          dispatch({
+            type: types.VIEW_CAR_PROFILE,
+          })
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: types.VIEW_CAR_PROFILE,
+        })
+      });
+  }
+
+}
+
+export function deleteCarProfile(carProfileID) {
+  return (dispatch) => {
+    axios.delete(API_END_POINTS.DELETE_CAR_PROFILE + carProfileID, {withCredentials: true})
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.DELETE_CAR_PROFILE,
+            carProfileID: carProfileID
+          })
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 }
