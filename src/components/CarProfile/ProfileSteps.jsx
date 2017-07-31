@@ -126,8 +126,8 @@ class ProfileSteps extends Component {
             'year': '',
             'plate_no': '',
             'mileage': '',
-            'insuranceProvider': '',
-            'policyNo': '',
+            'insuranceprovider': '',
+            'insurancepolicynumber': '',
             'state': '',
             'additionalDetails': '',
             'photos': ''
