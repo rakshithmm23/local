@@ -12,3 +12,6 @@ export const HIDE_ERROR_MESSAGE = 'HIDE_ERROR_MESSAGE';
 
 /* car profile action types */
 export const SET_CAR_PROFILE = 'SET_CAR_PROFILE';
+export const LIST_CAR_PROFILES = 'LIST_CAR_PROFILES';
+export const VIEW_CAR_PROFILE = 'VIEW_CAR_PROFILE';
+export const DELETE_CAR_PROFILE = 'DELETE_CAR_PROFILE';

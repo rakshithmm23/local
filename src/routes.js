@@ -21,7 +21,8 @@ import Confirmed from './components/Auth/Confirmed';
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
   const signedUserDataCookie = cookies.get('carauth');
-  if (!signedUserDataCookie) {
+  const userId = localStorage.getItem('userId');
+  if (!(signedUserDataCookie && userId)) {
     replace({
       pathname: '/'
     });
@@ -49,7 +50,7 @@ import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
-    <Route path="dashboard" component={DashboardContainer(Dashboard)} />
+    <Route path="dashboard" onEnter={isLoggedIn} component={DashboardContainer(Dashboard)} />
     <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
     <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
@@ -58,8 +59,10 @@ export default (
     <Route path="reset-password" component={AuthContainer(ResetPassword)} />
     <Route path="confirmed" component={AuthContainer(Confirmed)} />
     <Route path="request" component={AuthContainer(MyRequest)} />
-    <Route path="book-service" component={AuthContainer(BookService)} />
-    <Route path="car-profile" component={CarProfileContainer(CreateCarProfile)} />
+    <Route path="car-profiles/create" component={CarProfileContainer(CreateCarProfile)} />
+    <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
+    <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />
+    <Route path="car-profiles/:id/edit" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
     {/* <Route path="car-list" component={AuthContainer(BookService)} /> */}
     <Route path="timeline" component={AuthContainer(CarTimeline)} />
     <Route path="car-repair" component={AuthContainer(CarRepair)} />

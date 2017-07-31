@@ -19,11 +19,12 @@ export function signInUser (signInData, dispatch) {
         const responseData = response.data;
         const authCookie = decryptCookie(response.headers.authorization);
         cookies.set('carauth', authCookie.carauth, {
-          domain: authCookie.Domain,
+          domain: window.location.hostname,
           expires: new Date(authCookie.Expires),
           path: authCookie.Path
         });
         localStorage.setItem('authData', JSON.stringify(responseData));
+        localStorage.setItem('userId', JSON.stringify(responseData.id));
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,

@@ -23,7 +23,7 @@ export default function authenticationReducer(state = initialState, action) {
     case types.SHOW_WELCOME_PAGE:
       return assign({}, state, {currentComponentKey: 'dashboard'});
     case types.SHOW_ERROR_MESSAGE:
-      return assign({}, state, {currentComponentKey: '', showErrorMessage: true, statusMessage: action.statusMessage});
+      return assign({}, state, {currentComponentKey: '', showErrorMessage: true, statusMessage: action.statusMessage, isLoaded: false});
     case types.HIDE_ERROR_MESSAGE:
       return assign({}, state, {currentComponentKey: '', showErrorMessage: false});
     case types.LOGOUT:

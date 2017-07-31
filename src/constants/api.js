@@ -8,3 +8,6 @@ export const REQUEST_OTP = BASE_URL + '/api/users/otp';
 export const CREATE_CAR_PROFILE = BASE_URL + '/api/vehicles';
 export const CURRENT_USER_DETAILS = BASE_URL + '/api/users/me';
 export const LOGOUT = BASE_URL + '/auth/logout';
+export const LIST_CAR_PROFILES = BASE_URL + '/api/vehicles';
+export const GET_CAR_PROFILE_DETAILS = BASE_URL + '/api/vehicles/';
+export const DELETE_CAR_PROFILE = BASE_URL + '/api/vehicles/';
