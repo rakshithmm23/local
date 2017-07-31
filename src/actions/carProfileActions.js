@@ -9,21 +9,25 @@ export function setCarProfileAction(carData){
       type: types.HIDE_ERROR_MESSAGE
     });
     const formData = new FormData();
+    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos'];
 
-
-  Object.keys(carData).map((value)=>{
-    if(carData[value]) {
-      formData.append(value, carData[value]);
+  Object.keys(carData).map((value)=> {
+    if(carData[value] && mandateFields.indexOf(value) !== -1) {
+      if(value !== 'photos')
+        formData.append(value, carData[value]);
+      else {
+        carData[value].forEach(imgElm => {
+          formData.append(value, imgElm);
+        });
+      }
     }
   });
 
   axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-      withCredentials: true
+      withCredentials:true
     })
     .then((response) => {
+      console.log("Resp: ",response);
       if(response.status === 200){
         if (typeof(response.data) == 'string' && response.data.indexOf('<!DOCTYPE html>') > -1) {
           dispatch({
@@ -31,14 +35,9 @@ export function setCarProfileAction(carData){
             statusMessage: "Unknown error occurred"
           });
         } else {
-          const userId = localStorage.getItem('userId');
-          const carProfileId = 'carProfiles-' + userId;
-          let carProfiles = localStorage[carProfileId];
-          if (!carProfiles) {
-            carProfiles = [];
-          } else {
-            carProfiles = JSON.parse(carProfiles);
-          }
+          let carProfiles = localStorage.getItem('carProfiles') &&
+                              JSON.parse(localStorage.getItem('carProfiles')) || [];
+          console.log("carProfiles: ",carProfiles);
           carProfiles.push(response.data);
           localStorage[carProfileId] = JSON.stringify(carProfiles);
           dispatch({
@@ -49,6 +48,7 @@ export function setCarProfileAction(carData){
       }
 
     }).catch((err) => {
+      console.log("Error: ",err);
       if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,

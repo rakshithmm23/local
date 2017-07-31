@@ -24,8 +24,8 @@ class Steps extends Component {
             'model': '',
             'name': '',
             'year': '',
-            'regNo': '',
-            'travelled': '',
+            'plate_no': '',
+            'mileage': '',
             'insuranceProvider': '',
             'policyNo': '',
             'state': '',
@@ -49,7 +49,7 @@ class Steps extends Component {
     }
   }
   onSubmit(){
-    this.props.onSubmit(this.formData);
+    //this.props.onSubmit(this.formData);
   }
     activeLogo(name) {
       this.setState({ activeLogo: name, modelTabIsUnlocked: true})
@@ -218,10 +218,10 @@ class Steps extends Component {
                                         <TextInput label="Car Profile Name" name="name" type="text"  showValidationError={this.errors['text']}  validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Plate Number*" name="regNo" type="text" validationError="Plate Number cannot be empty" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                      <div className="col-md-6 remove-left-padding">
-                                        <TextInput label="Kms Travelled*" name="travelled" type="text" validationError="Kms Travelled cannot be empty" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" onChange={this.onFieldChange.bind(this)}/>
                                     </div>
 
                                 </div>
