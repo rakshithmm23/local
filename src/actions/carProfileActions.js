@@ -38,7 +38,7 @@ export function setCarProfileAction(carData){
                               JSON.parse(localStorage.getItem('carProfiles')) || [];
           console.log("carProfiles: ",carProfiles);
           carProfiles.push(response.data);
-          localStorage[carProfileId] = JSON.stringify(carProfiles);
+          localStorage[response.data.id] = JSON.stringify(carProfiles);
           dispatch({
             type: types.SET_CAR_PROFILE,
             carData: response.data
