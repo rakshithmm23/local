@@ -27,7 +27,6 @@ export function setCarProfileAction(carData){
       withCredentials:true
     })
     .then((response) => {
-      console.log("Resp: ",response);
       if(response.status === 200){
         if (typeof(response.data) == 'string' && response.data.indexOf('<!DOCTYPE html>') > -1) {
           dispatch({

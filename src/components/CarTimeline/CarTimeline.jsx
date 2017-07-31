@@ -78,7 +78,7 @@ export default class BookService extends Component {
         this.props.actions.getCarProfileDetails(carProfileId);
         this.props.router.push(`/car-profiles/${carProfileId}/view`);
       } else {
-        this.props.router.push('/car-profiles/new');
+        this.props.router.push('/car-profiles/create');
       }
     }
 

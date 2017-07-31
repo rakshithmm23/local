@@ -199,7 +199,7 @@ class ProfileSteps extends Component {
     }
     componentWillReceiveProps(nextProps) {
       const {carProfileReducer} = nextProps;
-      if(carProfileReducer.currentComponentKey === 'car-profiles/new'){
+      if(carProfileReducer.currentComponentKey === 'car-profiles/create'){
         this.formData = { ...this.initialFormData };
         this.state = {...this.resetFields};
       } else {

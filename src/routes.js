@@ -59,7 +59,7 @@ export default (
     <Route path="reset-password" component={AuthContainer(ResetPassword)} />
     <Route path="confirmed" component={AuthContainer(Confirmed)} />
     <Route path="request" component={AuthContainer(MyRequest)} />
-    <Route path="car-profiles/new" component={CarProfileContainer(CreateCarProfile)} />
+    <Route path="car-profiles/create" component={CarProfileContainer(CreateCarProfile)} />
     <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
     <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />
     <Route path="car-profiles/:id/edit" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />

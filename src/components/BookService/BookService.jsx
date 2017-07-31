@@ -51,7 +51,7 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Cars</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profiles/new')}}/>
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profiles/create')}}/>
                         </div>
                     </div>
                     <div className="inSection">
