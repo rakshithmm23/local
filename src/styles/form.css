@@ -76,24 +76,13 @@
     text-align: center;
     width: 100%;
     margin: 30px auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .or-text span {
     font-size: 13px;
     background: #fff;
     padding: 10px 15px;
-}
-
-.otp-input {
-    width: 300px;
-    display: inline-block;
-    margin-right: 30px;
-    vertical-align: top;
-}
-
-.otp-input input {
-    font-size: 18px;
 }
 
 .form-group {
@@ -160,23 +149,69 @@
     outline: 0 !important;
 }
 
+
+/* input-button-addon */
+
+.input-button-addon .otp-input {
+    width: 320px;
+    display: inline-block;
+    margin-right: 30px;
+    vertical-align: top;
+}
+
+.input-button-addon .form-group .form-input {
+    height: 34px;
+    padding: 20px 0 12px;
+}
+
+.input-button-addon .form-group label {
+    top: 15px;
+}
+
+.input-button-addon .form-group .error-text {
+    bottom: -20px;
+}
+
 @media screen and (min-width: 1075px) and (max-width: 1175px) {
-    .otp-input {
+    .input-button-addon .otp-input {
         width: 290px;
         margin-right: 0;
     }
 }
 
 @media screen and (max-width: 767px) {
+    .form-group {
+        margin-bottom: 25px;
+    }
     .input-icon {
         right: 10px;
         padding-right: 0;
     }
+    .input-button-addon .otp-input {
+        width: 100%;
+    }
+    .input-button-addon .btn-theme {
+        float: right;
+    }
+    .input-button-addon .note-text{
+        margin-top: 12px;
+    }
 }
 
 @media screen and (max-width: 640px) {
-    .or-text,
-    .otp-input {
+    .or-text{
         width: 100%;
+    }
+    .form-group label {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .input-button-addon .btn-theme {
+        float: none;
+    }
+    .input-button-addon .note-text{
+        margin-top: 20px;
     }
 }

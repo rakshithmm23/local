@@ -266,6 +266,7 @@
     border: 1px solid #DAE1E7 !important;
     background-color: #fff !important;
     box-shadow: none;
+    border-radius: 0px 3px 3px 0px;
 }
 
 .header-search .form-group .dropdown-toggle input {
@@ -369,6 +370,7 @@
     border-right: 0;
     border-left-width: 1px;
     background: #fefefe;
+    border-radius: 3px 0 0 3px;
 }
 
 .header-search input:focus::-webkit-input-placeholder,

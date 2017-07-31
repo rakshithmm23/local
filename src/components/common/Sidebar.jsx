@@ -50,7 +50,8 @@ export default class Sidebar extends Component {
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
       return (
-        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''} onClick={this.goToUrl.bind(this,item.hyperLink)}>
+        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''} 
+        onClick={this.goToUrl.bind(this,item.hyperLink)}>
           <a>
             {item.iconName && <label className={item.iconName}/> }
             <span>{item.name}</span>
