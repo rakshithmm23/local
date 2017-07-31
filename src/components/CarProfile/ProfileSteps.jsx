@@ -122,7 +122,7 @@ class ProfileSteps extends Component {
        this.initialFormData = {
             'make': '',
             'model': '',
-            'name': '',
+            'name': 'test',
             'year': '',
             'plate_no': '',
             'mileage': '',
@@ -142,7 +142,7 @@ class ProfileSteps extends Component {
         this.filterCarModelList = this.filterCarModelList.bind(this);
     }
     onSubmit(){
-      this.props.onSubmit(this.formData);
+      this.props.onSubmit(this.formData, this.props.isEditProfile);
     }
     onFieldChange(value, key, name) {
       if (value) {
@@ -197,15 +197,26 @@ class ProfileSteps extends Component {
             this.formData['photos'] = this.state.imageUploaded.concat(fileBlob);
         }
     }
+    componentWillMount(){
+     if (this.props.isEditProfile && this.props.profileData) {
+      this.setState({
+        'activeLogo': this.props.profileData.make,
+        'activeModel': this.props.profileData.model
+      });
+     }
+    }
     componentWillReceiveProps(nextProps) {
       const {carProfileReducer} = nextProps;
       if(carProfileReducer.currentComponentKey === 'car-profiles/create'){
         this.formData = { ...this.initialFormData };
         this.state = {...this.resetFields};
-      } else {
-        if (carProfileReducer.carProfile){
-        }
       }
+      if (nextProps.isEditProfile && nextProps.profileData) {
+      this.setState({
+        'activeLogo': nextProps.profileData.make,
+        'activeModel': nextProps.profileData.model
+      });
+     }
     }
     cancelImageUpload(val) {
         let deleteSize = 0;
@@ -234,6 +245,11 @@ class ProfileSteps extends Component {
       }
     }
     render() {
+        if (this.props.isEditProfile && this.props.profileData) {
+          each(this.props.profileData, (val, key) => {
+            this.formData[key] = val;
+          })
+        }
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
                 <div className="upload-box-wrapper box-shadow" key={index}>
@@ -272,6 +288,13 @@ class ProfileSteps extends Component {
             }
 
         ];
+        const years = [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ]
         const carList = this.state.filteredCarList ? this.state.filteredCarList : this.state.carList;
         const carListView = map(carList, (carItem, key) => {
             return (
@@ -327,13 +350,13 @@ class ProfileSteps extends Component {
                             <div className="row">
                                 <div className="col-md-6 padLeft0">
                                     <div className="model-select">
-                                        <select className="car-selection " onChange={(e)=>this.onFieldChange(e.target.value, '',e.target.name)} name="year">
-                                            <option value="" selected> Select Launch Year</option>
-                                            <option key={"2013"} value="2013">2013</option>
-                                            <option key={"2014"} value="2014">2014</option>
-                                            <option key={"2015"} value="2015">2015</option>
-                                            <option key={"2016"} value="2016">2016</option>
-                                            <option key={"2017"} value="2017">2017</option>
+                                        <select className="car-selection " value={this.formData && this.formData.year ? this.formData.year : 1} placeholder="Select Launch Year" onChange={(e)=>this.onFieldChange(e.target.value, '',e.target.name)} name="year">
+                                          <option value='1' disabled>Select Launch Year</option>
+                                          {map(years, (year, key) => {
+                                            return (
+                                              <option key={year} value={year}>{year}</option>
+                                            );
+                                          })}
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
@@ -370,34 +393,34 @@ class ProfileSteps extends Component {
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty"
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                                         onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty"
+                                        <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
                                 <div className="row insurance-details">
                                     <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text"
+                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text" value={this.formData.insuranceProvider}
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.policyNo}/>
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
                                     </div>
                                 </div>
                                 <div className="row car-notes">
                                     <h4 className="panel-sub-title">Car Notes (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)} value={this.formData.additionalDetails}/>
                                     </div>
                                 </div>
                                 <div className="next-button">

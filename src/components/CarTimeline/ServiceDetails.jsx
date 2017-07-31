@@ -32,7 +32,7 @@ export default class ServiceDetails extends Component {
                 <div className="service-car-info">
                     <div className="service-carPlate">
                         <h6>{this.props.plateNo} {this.props.state}</h6>
-                        <h4>{this.props.make}</h4>
+                        <h4>{this.props.name}</h4>
                         <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
                     {this.props.previousService && this.props.upcomingService && <div className="service-info">

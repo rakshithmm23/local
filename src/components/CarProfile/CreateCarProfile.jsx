@@ -15,13 +15,13 @@ export default class NewCarProfile extends Component {
         this.state = {
             notificationVisible: false,
             messageVisible: false,
-            isEditPage: false
+            isEditProfile: false
         };
     }
     componentWillMount() {
       const routeParams = this.props.routeParams;
       if (routeParams && routeParams.id) {
-        this.setState({'isEditPage': true});
+        this.setState({'isEditProfile': true, profileId: routeParams.id});
         this.props.actions.getCarProfileDetails(routeParams.id);
       }
     }
@@ -33,8 +33,8 @@ export default class NewCarProfile extends Component {
       	this.props.router.push('car-profiles');
     }
 
-    onSubmit(carProfileData){
-      this.props.actions.setCarProfileAction(carProfileData);
+    onSubmit(carProfileData, isEditProfile){
+      this.props.actions.setCarProfileAction(carProfileData, isEditProfile, this.state.profileId);
     }
 
     toggleNotification(isVisible) {
@@ -70,7 +70,7 @@ export default class NewCarProfile extends Component {
                               <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                             </AlertDismissable>}
                             {/*Job Updates*/}
-                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} />
+                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} isEditProfile={this.state.isEditProfile} profileData={carProfileReducer && carProfileReducer.currentCarProfile ? carProfileReducer.currentCarProfile : undefined }/>
                         </div>
                     </div>
 

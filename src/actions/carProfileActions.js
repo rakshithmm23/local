@@ -3,7 +3,7 @@ import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
 import {keyBy} from 'lodash';
 
-export function setCarProfileAction(carData){
+export function setCarProfileAction(carData, isEditProfile, profileId){
   return (dispatch) => {
     dispatch({
       type: types.HIDE_ERROR_MESSAGE
@@ -22,8 +22,8 @@ export function setCarProfileAction(carData){
       }
     }
   });
-
-  axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
+  const postMethod = (isEditProfile && profileId) ? axios.put : axios.post;
+  postMethod(isEditProfile && profileId? (API_END_POINTS.EDIT_CAR_PROFILES + profileId) : API_END_POINTS.CREATE_CAR_PROFILE, formData, {
       withCredentials:true
     })
     .then((response) => {
