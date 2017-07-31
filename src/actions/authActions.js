@@ -258,6 +258,7 @@ export function logout(router) {
     })
     .then((response) => {
       if (response.status == 200) {
+        document.cookie = "";
         localStorage.clear();
         dispatch({
           type: types.LOGOUT,

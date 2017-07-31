@@ -122,7 +122,7 @@ class ProfileSteps extends Component {
        this.initialFormData = {
             'make': '',
             'model': '',
-            'profileName': '',
+            'name': '',
             'year': '',
             'plate_no': '',
             'mileage': '',
@@ -370,7 +370,7 @@ class ProfileSteps extends Component {
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput showValidationError={this.errors['profileName']} label="Car Profile Name*" name="profileName" type="text" showValidationError={this.errors['profileName']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
                                         <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty"

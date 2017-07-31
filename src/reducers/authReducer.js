@@ -26,8 +26,6 @@ export default function authenticationReducer(state = initialState, action) {
       return assign({}, state, {currentComponentKey: '', showErrorMessage: true, statusMessage: action.statusMessage, isLoaded: false});
     case types.HIDE_ERROR_MESSAGE:
       return assign({}, state, {currentComponentKey: '', showErrorMessage: false});
-    case types.LOGOUT:
-      return assign({}, state, {authData: ''});
     default:
       return state;
   }

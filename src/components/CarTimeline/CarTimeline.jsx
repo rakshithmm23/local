@@ -28,6 +28,7 @@ export default class BookService extends Component {
             deleteModal: false
         };
         this.deleteCarProfile = this.deleteCarProfile.bind(this);
+        this.editCarProfile = this.editCarProfile.bind(this);
         this.switchCarProfile = this.switchCarProfile.bind(this);
     }
     componentDidMount() {
@@ -67,7 +68,11 @@ export default class BookService extends Component {
     // modalVisiblity() {
     //     this.setState({ showModal: true });
     // }
-
+    editCarProfile() {
+      if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id) {
+        this.props.router.push(`/car-profiles/${this.props.carProfileReducer.currentCarProfile.id}/edit`);
+      }
+    }
     deleteCarProfile() {
       if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id)
       this.props.actions.deleteCarProfile(this.props.carProfileReducer.currentCarProfile.id);
@@ -125,7 +130,7 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit">Edit</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
 
                                 </DropdownButton>

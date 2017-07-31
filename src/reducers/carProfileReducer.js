@@ -37,7 +37,6 @@ export default function carProfileReducer(state = {}, action) {
       localStorage[carProfilesById] = JSON.stringify(carProfiles);
       return assign({}, state, {currentComponentKey: '/car-profiles'})
     }
-
     default:
       return state;
   }
