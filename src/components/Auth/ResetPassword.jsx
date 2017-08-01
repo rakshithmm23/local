@@ -6,8 +6,51 @@ import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-class ResetPassword extends Component {
+export default class ResetPassword extends Component {
+
+    constructor(props){
+      super(props);
+      this.initialFormData = {
+        'password': '',
+        'confirmPassword': ''
+      };
+      this.formData = {
+        ...this.initialFormData
+      };
+      this.errors = {
+        'email': false,
+        'confirmPassword': false
+      };
+    }
+    componentWillMount() {
+      const currentRoute = this.props.router.getCurrentLocation();
+      if (currentRoute.query && currentRoute.query.code) {
+        this.setState({'code': currentRoute.query.code})
+      } else {
+        this.props.router.push('/');
+      }
+    }
+    componentWillReceiveProps(nextProps) {
+			if(nextProps.authReducer.currentComponentKey) {
+        this.props.router.push(nextProps.authReducer.currentComponentKey);
+        this.props.actions.clearComponentKey();
+      }
+    }
+    resetPassword() {
+      if (this.state.code) {
+        if (this.formData.password.length && this.formData.confirmPassword.length && (this.formData.password == this.formData.confirmPassword)) {
+          this.props.actions.resetPassword(this.state.code, this.formData.password);
+        }
+      }
+    }
+    onFieldChange(value, key, name) {
+      if (value) {
+        this.formData[name] = value;
+        this.errors[name] = false;
+      }
+    }
     render() {
+      const {authReducer} = this.props;
         return (
             <div className="container-fluid" id="wrapper">
                 <LoginHeader headerTitle="Sign Up" />
@@ -22,19 +65,26 @@ class ResetPassword extends Component {
                                 </p>
                             </div>
                             <div className="login-panel-body">
+                                {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                                </AlertDismissable>}
                                 <TextInput
                                     type="password"
                                     label="Password"
                                     name="password"
+                                    validationError="Password must be atleast 6 characters"
+                                    onChange={this.onFieldChange.bind(this)}
                                 />
                                  <TextInput
                                     type="password"
                                     label="Re-Enter Password"
-                                    name="re-enter password"
+                                    name="confirmPassword"
+                                    validationError="Password must be atleast 6 characters"
+                                    onChange={this.onFieldChange.bind(this)}
                                 />
                             </div>
                             <div className="login-panel-footer">
-                                <Button btnType="gmail" btnSize="sm" fontSize={14} label="Reset" />
+                                <Button btnType="gmail" btnSize="sm" fontSize={14} label="Reset" btnCallBack={this.resetPassword.bind(this)}/>
                             </div>
                         </div>
                     </Scrollbars>
@@ -43,5 +93,3 @@ class ResetPassword extends Component {
         );
     }
 }
-
-export default ResetPassword;

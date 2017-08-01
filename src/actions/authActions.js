@@ -272,3 +272,84 @@ export function logout(router) {
     });
   };
 }
+
+export function forgotPassword(emailId) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.FORGOT_PASSWORD, JSON.stringify({'email': emailId}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.SHOW_RESET_EMAIL_CONFIRMATION,
+            email: emailId
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if(err && err.response && err.response.status == 404) {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Email id not found, enter valid email id"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function resetPassword(verificationCode, password) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.RESET_PASSWORD, JSON.stringify({'code': verificationCode, password: password}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.RESET_PASSWORD_CODE_VERIFIED
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if (err && err.response && err.response.status == '410') {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Verification code expired, please try resetting again"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function clearComponentKey() {
+  return (dispatch) => {
+    dispatch({
+      type: types.CLEAR_COMPONENT_KEY
+    })
+  }
+}

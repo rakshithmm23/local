@@ -27,13 +27,13 @@ export default class TextInput extends Component {
     const {type, onChange, name, limitCharacters} = this.props;
     this.setState({'inputValue': inputValue});
     if ((type == "email" && !validateEmail(inputValue)) || (type == "password" && !validatePassword(inputValue)) || (type == "mobile" && !validateMobile(inputValue))) {
-      return;
+      this.setState({showValidationError: true});
     } else {
       this.setState({showValidationError: false});
     }
     if (onChange) {
       if(limitCharacters && inputValue.length>limitCharacters){
-        return;
+        this.setState({showValidationError: true});
       } else{
         onChange(inputValue, undefined, name);
       }

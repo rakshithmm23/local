@@ -17,6 +17,7 @@ import ForgotPassword from './components/Auth/ForgotPassword';
 import EditMobileNo from './components/Auth/EditMobileNo';
 import ResetPassword from './components/Auth/ResetPassword';
 import Confirmed from './components/Auth/Confirmed';
+import ResetEmailConfirmation from './components/Auth/ResetEmailConfirmation';
 
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
@@ -58,6 +59,7 @@ export default (
     <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
     <Route path="reset-password" component={AuthContainer(ResetPassword)} />
     <Route path="confirmed" component={AuthContainer(Confirmed)} />
+    <Route path="reset-email-confirmation" component={AuthContainer(ResetEmailConfirmation)} />
     <Route path="request" component={AuthContainer(MyRequest)} />
     <Route path="car-profiles/create" component={CarProfileContainer(CreateCarProfile)} />
     <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
