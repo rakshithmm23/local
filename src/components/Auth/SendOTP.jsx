@@ -27,12 +27,10 @@ export default class SendOTP extends Component {
       this.onFieldChange = this.onFieldChange.bind(this);
     }
 
-    onFieldChange(value, key, name) {
-      console.log(validateField)
+    onFieldChange(value, key, name, validationObj) {
       if (value) {
-        const isValidField = validateField(validationObj, value);
         this.formData[name] = value;
-        this.errors[name] = !isValidField;
+        this.errors[name] = false;
       }
     }
     sendOTPAction(e){
@@ -79,8 +77,7 @@ export default class SendOTP extends Component {
                                   showValidationError={this.errors['phone']}
                                   validationError="Enter a valid mobile number"
                                   label="Enter your phone number to receive an OTP"
-                                  onChange={() => {this.onFieldChange(e, a, {validationType: 'email'})}}
-                                  isOTP={true} />
+                                  onChange={this.onFieldChange.bind(this)}/>
                                 <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
                             </div>
                         </div>
