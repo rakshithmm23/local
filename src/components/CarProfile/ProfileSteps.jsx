@@ -122,7 +122,7 @@ class ProfileSteps extends Component {
        this.initialFormData = {
             'make': '',
             'model': '',
-            'name': 'test',
+            'name': '',
             'year': '',
             'plate_no': '',
             'mileage': '',
