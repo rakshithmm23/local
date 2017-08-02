@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Scrollbars } from 'react-custom-scrollbars';
+import {map} from 'lodash';
 
 export default class ServiceDetails extends Component {
     constructor(...args) {
@@ -18,17 +19,15 @@ export default class ServiceDetails extends Component {
     render() {
         return (
             <div className="service-details">
-                <Carousel>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                </Carousel>
+                {(this.props.images && this.props.images.length) ? <Carousel>
+                  {map(this.props.images, (image, key) => {
+                    return (
+                      <Carousel.Item>
+                          <img width={400} height={280} alt="" src={image.medium} />
+                      </Carousel.Item>
+                    )
+                  })}
+                </Carousel> : ''}
                 <div className="service-car-info">
                     <div className="service-carPlate">
                         <h6>{this.props.plateNo} {this.props.state}</h6>
