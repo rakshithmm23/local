@@ -17,6 +17,7 @@ export default class NewCarProfile extends Component {
             messageVisible: false,
             isEditProfile: false
         };
+        this.onSubmit = this.onSubmit.bind(this);
     }
     componentWillMount() {
       const routeParams = this.props.routeParams;
@@ -70,7 +71,7 @@ export default class NewCarProfile extends Component {
                               <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                             </AlertDismissable>}
                             {/*Job Updates*/}
-                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} isEditProfile={this.state.isEditProfile} profileData={carProfileReducer && carProfileReducer.currentCarProfile ? carProfileReducer.currentCarProfile : undefined }/>
+                            <ProfileSteps {...this.props} onSubmit={this.onSubmit} isEditProfile={this.state.isEditProfile} profileData={carProfileReducer && carProfileReducer.currentCarProfile ? carProfileReducer.currentCarProfile : undefined }/>
                         </div>
                     </div>
 

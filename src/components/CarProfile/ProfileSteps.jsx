@@ -141,9 +141,11 @@ class ProfileSteps extends Component {
         this.onFieldChange = this.onFieldChange.bind(this);
         this.filterCarModelList = this.filterCarModelList.bind(this);
     }
-    onSubmit(){
+
+    onSubmit() {
       this.props.onSubmit(this.formData, this.props.isEditProfile);
     }
+    
     onFieldChange(value, key, name) {
       if (value) {
           this.formData[name] = value;
@@ -197,13 +199,13 @@ class ProfileSteps extends Component {
             this.formData['photos'] = this.state.imageUploaded.concat(fileBlob);
         }
     }
-    componentWillMount(){
-     if (this.props.isEditProfile && this.props.profileData) {
-      this.setState({
-        'activeLogo': this.props.profileData.make,
-        'activeModel': this.props.profileData.model
-      });
-     }
+    componentWillMount() {
+        // if (this.props.isEditProfile && this.props.profileData) {
+        //     this.setState({
+        //     'activeLogo': this.props.profileData.make,
+        //     'activeModel': this.props.profileData.model
+        //     });
+        // }
     }
     componentWillReceiveProps(nextProps) {
       const {carProfileReducer} = nextProps;
@@ -216,6 +218,9 @@ class ProfileSteps extends Component {
         'activeLogo': nextProps.profileData.make,
         'activeModel': nextProps.profileData.model
       });
+      each(nextProps.profileData, (val, key) => {
+                this.formData[key] = val;
+            });
      }
     }
     cancelImageUpload(val) {
@@ -244,12 +249,8 @@ class ProfileSteps extends Component {
         this.setState({'filteredCarList': this.state.carList});
       }
     }
+    
     render() {
-        if (this.props.isEditProfile && this.props.profileData) {
-          each(this.props.profileData, (val, key) => {
-            this.formData[key] = val;
-          })
-        }
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
                 <div className="upload-box-wrapper box-shadow" key={index}>
@@ -396,7 +397,7 @@ class ProfileSteps extends Component {
                                         <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plateNo}
                                         onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
