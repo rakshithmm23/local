@@ -31,7 +31,7 @@ export default class NewCarProfile extends Component {
     }
     componentWillReceiveProps(nextProps) {
 			if(nextProps.carProfileReducer.currentComponentKey === 'car-list') {
-      	this.props.router.push('car-profiles');
+      	this.props.router.push('/car-profiles');
       }
     }
 
