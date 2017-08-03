@@ -30,8 +30,9 @@ export default class NewCarProfile extends Component {
       this.props.actions.hideErrorMessage();
     }
     componentWillReceiveProps(nextProps) {
-			if(nextProps.carProfileReducer.currentComponentKey === 'car-list')
+			if(nextProps.carProfileReducer.currentComponentKey === 'car-list') {
       	this.props.router.push('car-profiles');
+      }
     }
 
     onSubmit(carProfileData, isEditProfile){

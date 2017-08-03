@@ -130,7 +130,7 @@ class ProfileSteps extends Component {
             'insurancepolicynumber': '',
             'state': '',
             'carnotes': '',
-            'photos': ''
+            'photos': []
         };
         this.formData = {
           ...this.initialFormData
@@ -155,7 +155,18 @@ class ProfileSteps extends Component {
         if(!value) {
             this.errors[name] = true;
             this.setState({'selectError': true});
-        } else { this.setState({'selectError': false}); }
+        } else {
+          if (this.formData['model'] && !this.props.isEditProfile) {
+            this.setState({
+              'selectError': false,
+              'manufacturerTabVisible': false,
+              'modelTabVisible': false,
+              'otherDetailsTabVisible': true
+            });
+          } else {
+            this.setState({'selectError': false});
+          }
+        }
       }
     }
     activeLogo(name) {
@@ -168,11 +179,15 @@ class ProfileSteps extends Component {
     }
     tabOpen(val) {
         if (val == 'manufacturerTabVisible') {
-            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
+          this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' ) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
         } else if (val == 'otherDetailsTabVisible') {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+            if (!this.formData.year) {
+              this.errors['year'] = true;
+            } else {
+              this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+            }
         }
     }
     fileNameUpload(e) {
@@ -199,14 +214,6 @@ class ProfileSteps extends Component {
             this.formData['photos'] = this.state.imageUploaded.concat(fileBlob);
         }
     }
-    componentWillMount() {
-        // if (this.props.isEditProfile && this.props.profileData) {
-        //     this.setState({
-        //     'activeLogo': this.props.profileData.make,
-        //     'activeModel': this.props.profileData.model
-        //     });
-        // }
-    }
     componentWillReceiveProps(nextProps) {
       const {carProfileReducer} = nextProps;
       if(carProfileReducer.currentComponentKey === 'car-profiles/create'){
@@ -214,10 +221,19 @@ class ProfileSteps extends Component {
         this.state = {...this.resetFields};
       }
       if (nextProps.isEditProfile && nextProps.profileData) {
-      this.setState({
-        'activeLogo': nextProps.profileData.make,
-        'activeModel': nextProps.profileData.model
-      });
+        if (nextProps.profileData.images && nextProps.profileData.images.length && !this.formData.photos.length) {
+          this.formData.photos = nextProps.profileData.images;
+          this.setState({
+            'activeLogo': nextProps.profileData.make,
+            'activeModel': nextProps.profileData.model,
+            'imageUploaded': this.formData.photos
+          });
+        } else {
+          this.setState({
+            'activeLogo': nextProps.profileData.make,
+            'activeModel': nextProps.profileData.model
+          });
+        }
       each(nextProps.profileData, (val, key) => {
                 this.formData[key] = val;
             });
@@ -257,7 +273,7 @@ class ProfileSteps extends Component {
                     <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
                         <i className="mdi mdi-close" />
                     </span>
-                    <img src={img.path} />
+                    <img src={img.original ? img.original : img.path} />
                 </div>
             );
         });
