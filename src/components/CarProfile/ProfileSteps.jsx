@@ -397,7 +397,7 @@ class ProfileSteps extends Component {
                                         <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plateNo}
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                                         onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
