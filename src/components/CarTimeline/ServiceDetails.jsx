@@ -34,20 +34,24 @@ export default class ServiceDetails extends Component {
                         <h4>{this.props.name}</h4>
                         <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
-                    {this.props.previousService && this.props.upcomingService && <div className="service-info">
+                    <div className="service-info">
                         <Scrollbars className="timelineScroll">
                             <ul>
-                                <li>
+                                {this.props.mileage && <li>
+                                    <h5>Mileage</h5>
+                                    <span>{this.props.mileage} kms</span>
+                                </li>}
+                                {this.props.upcomingService && <li>
                                     <h5>Upcoming Service</h5>
                                     <span>{this.props.upcomingService} kms</span>
-                                </li>
-                                <li>
+                                </li>}
+                                {this.props.previousService && <li>
                                     <h5>Previous Service</h5>
                                     <span>Car wash: {this.props.date}, {this.props.previousService} kms</span>
-                                </li>
+                                </li>}
                             </ul>
                         </Scrollbars>
-                    </div>}
+                    </div>
                 </div>
             </div>
         );

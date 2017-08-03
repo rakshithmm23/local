@@ -129,7 +129,7 @@ class ProfileSteps extends Component {
             'insuranceprovider': '',
             'insurancepolicynumber': '',
             'state': '',
-            'additionalDetails': '',
+            'carnotes': '',
             'photos': ''
         };
         this.formData = {
@@ -145,7 +145,7 @@ class ProfileSteps extends Component {
     onSubmit() {
       this.props.onSubmit(this.formData, this.props.isEditProfile);
     }
-    
+
     onFieldChange(value, key, name) {
       if (value) {
           this.formData[name] = value;
@@ -249,7 +249,7 @@ class ProfileSteps extends Component {
         this.setState({'filteredCarList': this.state.carList});
       }
     }
-    
+
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
@@ -408,11 +408,11 @@ class ProfileSteps extends Component {
                                 <div className="row insurance-details">
                                     <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text" value={this.formData.insuranceProvider}
+                                        <TextInput label="Insurance Provider" name="insuranceprovider" type="text" value={this.formData.insuranceprovider}
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.policyNo}/>
+                                        <TextInput label="Insurance Policy Number" name="insurancepolicynumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.insurancepolicynumber}/>
                                     </div>
                                     <div className="col-md-6 padLeft0">
                                         <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
@@ -421,7 +421,7 @@ class ProfileSteps extends Component {
                                 <div className="row car-notes">
                                     <h4 className="panel-sub-title">Car Notes (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)} value={this.formData.additionalDetails}/>
+                                        <TextInput label="Additional Details About The Car (Optional)" name="carnotes" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)} value={this.formData.carnotes}/>
                                     </div>
                                 </div>
                                 <div className="next-button">

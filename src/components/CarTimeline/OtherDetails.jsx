@@ -40,8 +40,8 @@ export default class OtherDetails extends Component {
                         <span>{this.props.state ? this.props.state : '-'}</span>
                     </li>
                     <li>
-                        <label>Registration Number</label>
-                        <span>{this.props.registrationnumber ? this.props.registrationnumber : '-'}</span>
+                        <label>Plate Number</label>
+                        <span>{this.props.plateNo ? this.props.plateNo : '-'}</span>
                     </li>
                     <li>
                         <label>Car Notes</label>

@@ -61,10 +61,8 @@ export default class BookService extends Component {
                                     {/*Job Updates*/}
                                     {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
                                       return (
-                                          <BookServiceBox date="17 April 16" year={profile.year} state={profile.state} photos={profile.photos ? profile.photos : ''}
-                                            model={profile.model} regNo={profile.plateNo} name={profile.name} key={index} id={profile.id}
+                                          <BookServiceBox key={index} {...profile}
                                             router={router}
-
                                       />);
                                     })}
                                 </div>
