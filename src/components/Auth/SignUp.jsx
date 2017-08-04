@@ -97,7 +97,8 @@ export default class SignUp extends Component {
         'email': this.formData.email,
         'phone': this.formData.phone,
         'password': this.formData.password,
-        'type': 'customer'
+        'type': 'customer',
+        'usertype': 'customer'
       })
     }
   }

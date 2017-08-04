@@ -90,6 +90,7 @@ export default class SignIn extends Component {
       this.props.actions.signInAction({
         'email': this.formData.email,
         'password': this.formData.password,
+        'usertype': 'customer'
       });
     }
   }
