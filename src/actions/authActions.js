@@ -47,7 +47,7 @@ export function signInUser (signInData, dispatch) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.status === 401 ? 'Invalid Email/Password' : err.response.data
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? 'Invalid Email/Password' : err.response.data.message
         });
       } else {
         dispatch({
