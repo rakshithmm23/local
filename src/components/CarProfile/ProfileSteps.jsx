@@ -235,8 +235,12 @@ class ProfileSteps extends Component {
           });
         }
       each(nextProps.profileData, (val, key) => {
-                this.formData[key] = val;
-            });
+        if (key == 'plateNo' && val) {
+          this.formData['plate_no'] = val;
+        } else {
+          this.formData[key] = val;
+        }
+      });
      }
     }
     cancelImageUpload(val) {
