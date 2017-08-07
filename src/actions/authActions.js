@@ -59,6 +59,7 @@ export function signInUser (signInData, dispatch) {
 }
 export function signInAction(signInData, dispatch, fromSignup) {
   if (fromSignup) {
+    signInData.usertype = 'customer';
     signInUser(signInData, dispatch);
   } else {
     return (dispatch) => {
