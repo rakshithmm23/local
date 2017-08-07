@@ -7,22 +7,29 @@ import AlertDismissable from '../common/AlertDismissable';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 
-export default class VerifyOTP extends Component {
+export default class ForgotPassword extends Component {
     constructor(props){
       super(props);
       this.state = {
         submissionError: false
       };
       this.initialFormData = {
-        'otp': ''
+        'email': ''
       };
       this.formData = {
         ...this.initialFormData
       };
       this.errors = {
-        'otp': false
+        'email': false
       };
       this.onFieldChange = this.onFieldChange.bind(this);
+      this.forgotPasswordAction = this.forgotPasswordAction.bind(this);
+    }
+    componentWillReceiveProps(nextProps) {
+			if(nextProps.authReducer.currentComponentKey) {
+        this.props.router.push(nextProps.authReducer.currentComponentKey);
+        this.props.actions.clearComponentKey();
+      }
     }
     onFieldChange(value, key, name) {
       if (value) {
@@ -30,30 +37,12 @@ export default class VerifyOTP extends Component {
         this.errors[name] = false;
       }
     }
-    verifyOTPAction(e){
-      e.preventDefault();
-      const {router} = this.props;
-      let formData = {
-        ...this.formData
-      };
-      let validForm = true;
-      for (const key in formData) {
-        if (!formData[key]) {
-          this.errors[key] = true;
-          validForm = false;
-        } else
-          this.errors[key] = false;
-      }
-      if (!validForm) {
-        this.setState({submissionError: true});
-        return;
+    forgotPasswordAction() {
+      if (this.formData.email && this.errors['email'] != true) {
+        this.props.actions.forgotPassword(this.formData.email);
       } else {
-        this.setState({submissionError: false});
-        this.props.actions.showWelcomePage(
-          this.formData.otp,
-          this.props.authReducer && this.props.authReducer.authData && this.props.authReducer.authData.phone ? this.props.authReducer.authData.phone : '',
-          this.props.authReducer && this.props.authReducer.authData && this.props.authReducer.authData.id ? this.props.authReducer.authData.id : ''
-        );
+        this.errors['email'] = true;
+        this.setState({'submissionError': true})
       }
     }
     componentWillUnmount() {
@@ -79,16 +68,18 @@ export default class VerifyOTP extends Component {
                                 </p>
                             </div>
                             <div className="login-panel-body forget-input">
+                                {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                                </AlertDismissable>}
                                 <TextInput
                                   label="Email"
-                                  name="otp"
-                                  type="text"
-                                  showValidationError={this.errors['otp']}
-                                  validationError="Enter your email id"
-                                  limitCharacters={4}
+                                  name="email"
+                                  type="email"
+                                  showValidationError={this.errors['email']}
+                                  validationError="Enter your valid email id"
                                   onChange={this.onFieldChange.bind(this)}
                                   isOTP={true} />
-                                <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
+                                <Button btnCallBack={this.forgotPasswordAction} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
                             </div>
                         </div>
                     </Scrollbars>

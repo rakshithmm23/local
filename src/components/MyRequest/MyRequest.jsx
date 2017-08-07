@@ -36,7 +36,7 @@ export default class MyRequest extends Component {
         } else if (window.location.search.indexOf('type=success') > -1 ) {
          this.setState({'requestType': 'success'});
         }
-        
+
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
@@ -74,7 +74,7 @@ export default class MyRequest extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
+                            <CustomModal showModal={this.state.showModal} onHide={() => {this.setState({showModal: false})}} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
                                 <Modal.Body>
                                     <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
                                     <div className="info-heading">
@@ -90,7 +90,7 @@ export default class MyRequest extends Component {
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                       
+
                                         <FormGroup>
                                           <FormControl
                                               className="textAlign"

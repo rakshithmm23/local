@@ -6,6 +6,7 @@ import TextInput from '../common/TextInput';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
+import {validateField} from '../../helpers/index'
 
 export default class SendOTP extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class SendOTP extends Component {
       this.onFieldChange = this.onFieldChange.bind(this);
     }
 
-    onFieldChange(value, key, name) {
+    onFieldChange(value, key, name, validationObj) {
       if (value) {
         this.formData[name] = value;
         this.errors[name] = false;
@@ -76,8 +77,7 @@ export default class SendOTP extends Component {
                                   showValidationError={this.errors['phone']}
                                   validationError="Enter a valid mobile number"
                                   label="Enter your phone number to receive an OTP"
-                                  onChange={this.onFieldChange.bind(this)} 
-                                  isOTP={true} />
+                                  onChange={this.onFieldChange.bind(this)}/>
                                 <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={16} label="Get OTP" />
                             </div>
                         </div>

@@ -54,7 +54,7 @@ export default class JobUpdate extends Component {
     } else {
       jobLeftGridValue = "col-md-5";
       jobRightGridValue = "col-md-7";
-    } 
+    }
     const jobData = [
       {
         carImage: '../../images/car.jpg',
@@ -87,8 +87,8 @@ export default class JobUpdate extends Component {
             statusTime: '09 Mar 15 11:00 AM',
             statusMessage: 'On going'
           }
-          
-          
+
+
         ],
         route:"/request"
       },
@@ -114,7 +114,7 @@ export default class JobUpdate extends Component {
         jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
         'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
-      
+
       {
         route:"/request",
         carImage: '../../images/car.jpg',
@@ -157,7 +157,7 @@ export default class JobUpdate extends Component {
           vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
           vendorMobile: '+971 919 233 470',
           quote: '200 AED',
-          
+
         },
         statusStep: true,
         statusPopup: [
@@ -180,7 +180,7 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
-        route:"/book-service",
+        route:"/car-profiles",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -195,7 +195,7 @@ export default class JobUpdate extends Component {
     return (
       <div>
         <h4 className="job-update-title">Job Status</h4>
-        <a className="jobUpdate-viewall">View All</a> 
+        <a className="jobUpdate-viewall">View All</a>
         {/* https://projects.invisionapp.com/d/main#/console/10950794/238371645/preview */}
 
         {map(jobData, (cardDetails, key) => {

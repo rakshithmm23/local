@@ -34,7 +34,7 @@ export default class Sidebar extends Component {
       {
         iconName: 'mdi mdi-car',
         name: 'My Cars',
-        hyperLink: '/book-service'
+        hyperLink: '/car-profiles'
       },
       {
         iconName: 'mdi mdi-comment-processing',

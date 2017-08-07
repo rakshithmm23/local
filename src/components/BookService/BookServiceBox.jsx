@@ -3,6 +3,7 @@ import Button from '../common/Button';
 import CustomModal from '../common/CustomModal';
 import { Modal, Media } from 'react-bootstrap';
 import { map } from 'lodash';
+import moment from 'moment';
 
 class BookServiceBox extends Component {
     constructor() {
@@ -12,7 +13,8 @@ class BookServiceBox extends Component {
         };
     }
     render() {
-        const {router}= this.props
+        const {router}= this.props;
+        const formatedDate = this.props.updatedAt ? moment(this.props.updatedAt).format("DD MMM YY") : undefined;
         const bookServiceOption = [
             {
                 image: "../../images/book-service-1.png",
@@ -43,16 +45,17 @@ class BookServiceBox extends Component {
                 </li>
             );
         });
+        const carPhoto = this.props.images && this.props.images.length && this.props.images[0] ? this.props.images[0].original : '/images/Car-Placeholder.jpg';
         return (
             <div className="col-md-4 col-sm-6 col-xs-12">
-                <div className="myCar-card ">
+                <div className="myCar-card " onClick={(e) => {e.preventDefault(); this.props.router.push(`/car-profiles/${this.props.id}/view`)}}>
                     <figure>
-                        <img src="../../images/car.jpg" alt="" />
+                        {carPhoto && <img src={carPhoto} alt="" />}
                         <div className="myCar-card-footer">
                             <ul>
                                 <li>
                                     <h4>upcoming service</h4>
-                                    <span>{this.props.date}</span>
+                                    {formatedDate && <span>{formatedDate}</span>}
                                 </li>
                                 <li>
                                     <span>
@@ -64,11 +67,11 @@ class BookServiceBox extends Component {
                         </div>
                     </figure>
                     <figcaption className="myCar-card-caption">
-                        <h4>{this.props.regNo} Dubai</h4>
+                        <h4>{this.props.plateNo} {this.props.state}</h4>
                         <h5>{this.props.name}</h5>
-                        <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={() => this.setState({ showModal: true })} />
+                        <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={(e) => {e.stopPropagation(); e.preventDefault(); this.setState({ showModal: true })}} />
                     </figcaption>
-                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true">
+                    <CustomModal showModal={this.state.showModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({showModal: false})}}>
                         <Modal.Body>
                             <ul>
                                 {bookServiceOptionView}

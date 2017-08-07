@@ -19,7 +19,7 @@ export default class Search extends Component {
             }],
             showResults: false,
             seachedValue: "",
-            
+
             seachedResult: [],
             location: "",
             addLocationModal: false,
@@ -116,7 +116,7 @@ export default class Search extends Component {
                 return val;
             }
         });
-        
+
         let locationFilterView = filter(this.props.savedLocation, (val) => {
             if (this.state.location != "" && val.address.toLowerCase().indexOf(this.state.location) != -1) {
 
@@ -178,8 +178,8 @@ export default class Search extends Component {
 
                 <div className={searchView.length > 0 ? "searchFill active" : "searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} 
-                            open={searchView.length > 0 ? true : false} 
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }}
+                            open={searchView.length > 0 ? true : false}
                             noCaret title={
                             <div>
                                 <input value={this.state.seachedValue} placeholder="Search"
@@ -207,7 +207,7 @@ export default class Search extends Component {
                     </FormGroup>
 
                 </div>
-                <CustomModal showModal={this.state.addLocationModal} footer="true" title="save location">
+                <CustomModal onHide={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer="true" title="save location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -219,7 +219,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal showModal={this.state.editLocationModal} footer="true" title="edit location">
+                <CustomModal onHide={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer="true" title="edit location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -238,7 +238,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal className="map-modal" showModal={this.state.showLocationModal} footer="true" title="Mark your location" saveText="Select Location">
+                <CustomModal onHide={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer="true" title="Mark your location" saveText="Select Location">
                     <Modal.Body>
                         <span onClick={() => this.setState({ setCenter: true })} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         <Gmaps
