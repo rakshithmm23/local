@@ -90,10 +90,10 @@ export default class JobUpdate extends Component {
 
 
         ],
-        route:"/request"
+        route:"/request/accepted"
       },
       {
-        // route:"/request",
+        route:"/request/waiting",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani1',
         serviceTypes: 'Emergency Service',
@@ -104,7 +104,7 @@ export default class JobUpdate extends Component {
         'currently assessing your application and will get back with their quotes soon.',
       },
       {
-        route:"/request",
+        route:"/request/active",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani2',
         serviceTypes: 'Emergency Service',
@@ -116,7 +116,7 @@ export default class JobUpdate extends Component {
       },
 
       {
-        route:"/request",
+        route:"/request/inProgress",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -144,6 +144,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
+        route:"/request/completed",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -170,6 +171,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
+        route:"/request/cancelled",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -180,7 +182,8 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
-        route:"/car-profiles",
+        
+        route:"/request/expired",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',

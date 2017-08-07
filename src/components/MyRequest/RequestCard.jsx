@@ -24,6 +24,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
+      dataChange:"",
       setCenter:false,
       mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
@@ -456,7 +457,10 @@ export default class RequestCard extends Component {
     // this.jobData[0].statusIndicator=
   }
   componentDidMount() {
+    debugger
     window.addEventListener("resize", this.updateDimensions);
+    this.jobData[0].statusIndicator=this.props.jobType
+    this.setState({dataChange:!this.state.dataChange})
   }
   componentDidUpdate() {
     const curr = this.currentTopEle

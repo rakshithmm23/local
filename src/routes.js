@@ -51,7 +51,7 @@ import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
-    <Route path="dashboard" onEnter={isLoggedIn} component={DashboardContainer(Dashboard)} />
+    <Route path="dashboard"  component={DashboardContainer(Dashboard)} />
     <Route path="sign-in" component={AuthContainer(SignIn)} />
     <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
     <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
@@ -60,7 +60,7 @@ export default (
     <Route path="reset-password" component={AuthContainer(ResetPassword)} />
     <Route path="confirmed" component={AuthContainer(Confirmed)} />
     <Route path="reset-email-confirmation" component={AuthContainer(ResetEmailConfirmation)} />
-    <Route path="request" component={AuthContainer(MyRequest)} />
+    <Route path="request/:requestType" component={AuthContainer(MyRequest)} />
     <Route path="car-profiles/create" component={CarProfileContainer(CreateCarProfile)} />
     <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
     <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />

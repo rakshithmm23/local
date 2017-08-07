@@ -13,8 +13,16 @@ class CardType extends Component {
             saveModal: false,
             max_chars: 200,
             chars_left: 0,
+            collapseTimeline:true
         };
     }
+    // componentDidMount() {
+    //     debugger
+    //     let queryParam = this.props.cardDetails.statusIndicator 
+    //     if(queryParam == "completed"){
+    //         this.setState({collapseTimeline:false})
+    //     }
+    // }
 
     getIcons(jobType, val) {
         if (val == "waiting") {
@@ -97,7 +105,7 @@ class CardType extends Component {
                                                     <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup &&
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator=="accepted" || cardDetails.statusIndicator=="inProgress" || cardDetails.statusIndicator=="completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => {this.showTimeline(e)}}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-down" />
@@ -161,7 +169,7 @@ class CardType extends Component {
                     </div>
                 </div>
                 {/*///////*/}
-                {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
+                {cardDetails.statusPopup && this.state.showTimeLine && this.state.collapseTimeline &&<div className="job-footer active">
                     <div className="row">
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="collapse in">
@@ -197,6 +205,7 @@ class CardType extends Component {
                                         />*/}
                             <FormGroup>
                                 <FormControl
+                                maxLength="200"
                                     className="textAlign"
                                     componentClass="textarea"
                                     placeholder="Comments"
