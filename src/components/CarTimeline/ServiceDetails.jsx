@@ -38,16 +38,9 @@ export default class ServiceDetails extends Component {
                         <Scrollbars className="timelineScroll">
                             <ul>
                                 {this.props.mileage && <li>
-                                    <h5>Mileage</h5>
-                                    <span>{this.props.mileage} kms</span>
-                                </li>}
-                                {this.props.upcomingService && <li>
-                                    <h5>Upcoming Service</h5>
-                                    <span>{this.props.upcomingService} kms</span>
-                                </li>}
-                                {this.props.previousService && <li>
                                     <h5>Previous Service</h5>
-                                    <span>Car wash: {this.props.date}, {this.props.previousService} kms</span>
+                                    <h5>Mileage</h5>
+                                    <span>{this.props.mileage}s</span>
                                 </li>}
                             </ul>
                         </Scrollbars>

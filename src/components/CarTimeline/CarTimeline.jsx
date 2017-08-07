@@ -156,12 +156,12 @@ export default class BookService extends Component {
                                     <div className="row timeline-summary-header">
                                         <div className="col-md-6 pad0">
                                             <div className={this.state.timelineUpdate == "otherDetails" ? "timeline-summary-tab active" : "timeline-summary-tab"} onClick={() => { this.timelineDetail('otherDetails'); }}>
-                                                <span>Other Details</span>
+                                                <span>OVERVIEW</span>
                                             </div>
                                         </div>
                                         <div className="col-md-6 pad0">
                                             <div className={this.state.timelineUpdate == "timeline" ? "timeline-summary-tab active" : "timeline-summary-tab"} onClick={() => { this.timelineDetail('timeline'); }}>
-                                                <span>Timeline</span>
+                                                <span>TIMELINE</span>
                                             </div>
                                         </div>
                                     </div>
