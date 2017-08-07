@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { map, each } from 'lodash';
+import { filter, map, each } from 'lodash';
 import TextInput from '../common/TextInput';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -22,19 +22,115 @@ class ProfileSteps extends Component {
             modelTabIsUnlocked: false,
             otherDetailsTabIsUnlocked: false,
             submissionError: false,
+            selectError: false,
+            carList: [
+              {
+                  logo: '../../images/Acura-logo.png',
+                  name: 'Acura 1',
+                  manufacturerId: 1
+              }, {
+                  logo: '../../images/Alfa-Romeo-logo.png',
+                  name: 'Alfa Romeo 1',
+                  manufacturerId: 2
+              }, {
+                  logo: '../../images/Aston-Martin-logo.png',
+                  name: 'Aston Martin 1',
+                  manufacturerId: 3
+              }, {
+                  logo: '../../images/audi-logo.png',
+                  name: 'Audi 1',
+                  manufacturerId: 4
+              }, {
+                  logo: '../../images/Bentley-logo.png',
+                  name: 'Bentley 1',
+                  manufacturerId: 5
+              }, {
+                  logo: '../../images/bmw-logo.png',
+                  name: 'bmw 1',
+                  manufacturerId: 6
+              }, {
+                  logo: '../../images/bugatti-logo.png',
+                  name: 'bugatti 1',
+                  manufacturerId: 7
+              }, {
+                  logo: '../../images/Buick-Logo.png',
+                  name: 'Buick 1',
+                  manufacturerId: 9
+              }, {
+                  logo: '../../images/Cadillac-Logo.png',
+                  name: 'Cadillac 1',
+                  manufacturerId: 10
+              }, {
+                  logo: '../../images/Chevrolet-Logo.png',
+                  name: 'Chevrolet 1',
+                  manufacturerId: 11
+              }, {
+                  logo: '../../images/Chrysler-log.png',
+                  name: 'Chrysler 1',
+                  manufacturerId: 12
+              }, {
+                  logo: '../../images/citroen-logo.png',
+                  name: 'citroen 1',
+                  manufacturerId: 13
+              }, {
+                  logo: '../../images/Datsun-logo.png',
+                  name: 'Datsun 1',
+                  manufacturerId: 14
+              }, {
+                  logo: '../../images/exagon.png',
+                  name: 'exagon 1',
+                  manufacturerId: 15
+              }, {
+                  logo: '../../images/Acura-logo.png',
+                  name: 'Acura 2',
+                  manufacturerId: 16
+              }, {
+                  logo: '../../images/Alfa-Romeo-logo.png',
+                  name: 'Alfa Romeo 2',
+                  manufacturerId: 17
+              }, {
+                  logo: '../../images/Aston-Martin-logo.png',
+                  name: 'Aston Martin 2',
+                  manufacturerId: 18
+              }, {
+                  logo: '../../images/audi-logo.png',
+                  name: 'Audi 2',
+                  manufacturerId: 19
+              }, {
+                  logo: '../../images/Bentley-logo.png',
+                  name: 'Bentley 2',
+                  manufacturerId: 20
+              }, {
+                  logo: '../../images/bmw-logo.png',
+                  name: 'bmw 2',
+                  manufacturerId: 21
+              }, {
+                  logo: '../../images/bugatti-logo.png',
+                  name: 'bugatti 2',
+                  manufacturerId: 22
+              }, {
+                  logo: '../../images/Buick-Logo.png',
+                  name: 'Buick 2',
+                  manufacturerId: 23
+              }, {
+                  logo: '../../images/Cadillac-Logo.png',
+                  name: 'Cadillac 2',
+                  manufacturerId: 124
+              }
+          ]
         };
-        this.initialFormData = {
+       this.initialFormData = {
             'make': '',
             'model': '',
             'name': '',
             'year': '',
-            'regNo': '',
-            'travelled': '',
-            'insuranceProvider': '',
-            'policyNo': '',
+            'plate_no': '',
+            'mileage': '',
+            'insuranceprovider': '',
+            'insurancepolicynumber': '',
             'state': '',
-            'additionalDetails': '',
-            'file': ''
+            'carnotes': '',
+            'photos': []
         };
         this.formData = {
           ...this.initialFormData
@@ -43,14 +139,34 @@ class ProfileSteps extends Component {
 
         this.resetFields  = Object.assign({}, this.state)
         this.onFieldChange = this.onFieldChange.bind(this);
+        this.filterCarModelList = this.filterCarModelList.bind(this);
     }
-    onSubmit(){
-      this.props.onSubmit(this.formData);
+
+    onSubmit() {
+      this.props.onSubmit(this.formData, this.props.isEditProfile);
     }
+
     onFieldChange(value, key, name) {
       if (value) {
           this.formData[name] = value;
           this.errors[name] = false;
+      }
+      if(name === 'year'){
+        if(!value) {
+            this.errors[name] = true;
+            this.setState({'selectError': true});
+        } else {
+          if (this.formData['model'] && !this.props.isEditProfile) {
+            this.setState({
+              'selectError': false,
+              'manufacturerTabVisible': false,
+              'modelTabVisible': false,
+              'otherDetailsTabVisible': true
+            });
+          } else {
+            this.setState({'selectError': false});
+          }
+        }
       }
     }
     activeLogo(name) {
@@ -63,18 +179,23 @@ class ProfileSteps extends Component {
     }
     tabOpen(val) {
         if (val == 'manufacturerTabVisible') {
-            this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
+          this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' ) {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
         } else if (val == 'otherDetailsTabVisible') {
-            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+            if (!this.formData.year) {
+              this.errors['year'] = true;
+            } else {
+              this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+            }
         }
     }
     fileNameUpload(e) {
-        let files = [], fileImgSize = 0, errFileType = false;
+        let files = [], fileBlob = [], fileImgSize = 0, errFileType = false;
         this.setState({ uploadImageErrText: false });
         each(e.target.files, (val) => {
             files.push({ name: val.name, path: URL.createObjectURL(val), size: val.size });
+            fileBlob.push(val);
             fileImgSize += val.size;
             if (val.type == "image/png" || val.type == "image/jpeg") {
             } else {
@@ -90,14 +211,37 @@ class ProfileSteps extends Component {
                 imageUploaded: this.state.imageUploaded.concat(files),
                 uploadImgSize: fileImgSize + this.state.uploadImgSize,
             });
-            this.formData['file'] = this.state.imageUploaded.concat(files);
+            this.formData['photos'] = this.state.imageUploaded.concat(fileBlob);
         }
     }
     componentWillReceiveProps(nextProps) {
-      if(nextProps.carProfileReducer.currentComponentKey === 'create-car-profile'){
+      const {carProfileReducer} = nextProps;
+      if(carProfileReducer.currentComponentKey === '/car-profiles/create'){
         this.formData = { ...this.initialFormData };
         this.state = {...this.resetFields};
       }
+      if (nextProps.isEditProfile && nextProps.profileData) {
+        if (nextProps.profileData.images && nextProps.profileData.images.length && !this.formData.photos.length) {
+          this.formData.photos = nextProps.profileData.images;
+          this.setState({
+            'activeLogo': nextProps.profileData.make,
+            'activeModel': nextProps.profileData.model,
+            'imageUploaded': this.formData.photos
+          });
+        } else {
+          this.setState({
+            'activeLogo': nextProps.profileData.make,
+            'activeModel': nextProps.profileData.model
+          });
+        }
+      each(nextProps.profileData, (val, key) => {
+        if (key == 'plateNo' && val) {
+          this.formData['plate_no'] = val;
+        } else {
+          this.formData[key] = val;
+        }
+      });
+     }
     }
     cancelImageUpload(val) {
         let deleteSize = 0;
@@ -111,8 +255,21 @@ class ProfileSteps extends Component {
         deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
         array.splice(val, 1);
         this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
-        this.formData['file'] = array;
+        this.formData['photos'] = array;
     }
+    filterCarModelList(e) {
+      const inputValue = e ? e.toLowerCase() : '';
+      if (inputValue) {
+        const carList = filter(this.state.carList, (car) => {
+          const carName = car.name.toLowerCase();
+          return (carName.indexOf(inputValue) > -1);
+        });
+        this.setState({'filteredCarList': carList});
+      } else {
+        this.setState({'filteredCarList': this.state.carList});
+      }
+    }
+
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
@@ -120,105 +277,10 @@ class ProfileSteps extends Component {
                     <span className="cancel-image" onClick={() => { this.cancelImageUpload(index); }}>
                         <i className="mdi mdi-close" />
                     </span>
-                    <img src={img.path} />
+                    <img src={img.original ? img.original : img.path} />
                 </div>
             );
         });
-        const carList = [
-            {
-                logo: '../../images/Acura-logo.png',
-                name: 'Acura 1',
-                manufacturerId: 1
-            }, {
-                logo: '../../images/Alfa-Romeo-logo.png',
-                name: 'Alfa Romeo 1',
-                manufacturerId: 2
-            }, {
-                logo: '../../images/Aston-Martin-logo.png',
-                name: 'Aston Martin 1',
-                manufacturerId: 3
-            }, {
-                logo: '../../images/audi-logo.png',
-                name: 'Audi 1',
-                manufacturerId: 4
-            }, {
-                logo: '../../images/Bentley-logo.png',
-                name: 'Bentley 1',
-                manufacturerId: 5
-            }, {
-                logo: '../../images/bmw-logo.png',
-                name: 'bmw 1',
-                manufacturerId: 6
-            }, {
-                logo: '../../images/bugatti-logo.png',
-                name: 'bugatti 1',
-                manufacturerId: 7
-            }, {
-                logo: '../../images/Buick-Logo.png',
-                name: 'Buick 1',
-                manufacturerId: 9
-            }, {
-                logo: '../../images/Cadillac-Logo.png',
-                name: 'Cadillac 1',
-                manufacturerId: 10
-            }, {
-                logo: '../../images/Chevrolet-Logo.png',
-                name: 'Chevrolet 1',
-                manufacturerId: 11
-            }, {
-                logo: '../../images/Chrysler-log.png',
-                name: 'Chrysler 1',
-                manufacturerId: 12
-            }, {
-                logo: '../../images/citroen-logo.png',
-                name: 'citroen 1',
-                manufacturerId: 13
-            }, {
-                logo: '../../images/Datsun-logo.png',
-                name: 'Datsun 1',
-                manufacturerId: 14
-            }, {
-                logo: '../../images/exagon.png',
-                name: 'exagon 1',
-                manufacturerId: 15
-            }, {
-                logo: '../../images/Acura-logo.png',
-                name: 'Acura 2',
-                manufacturerId: 16
-            }, {
-                logo: '../../images/Alfa-Romeo-logo.png',
-                name: 'Alfa Romeo 2',
-                manufacturerId: 17
-            }, {
-                logo: '../../images/Aston-Martin-logo.png',
-                name: 'Aston Martin 2',
-                manufacturerId: 18
-            }, {
-                logo: '../../images/audi-logo.png',
-                name: 'Audi 2',
-                manufacturerId: 19
-            }, {
-                logo: '../../images/Bentley-logo.png',
-                name: 'Bentley 2',
-                manufacturerId: 20
-            }, {
-                logo: '../../images/bmw-logo.png',
-                name: 'bmw 2',
-                manufacturerId: 21
-            }, {
-                logo: '../../images/bugatti-logo.png',
-                name: 'bugatti 2',
-                manufacturerId: 22
-            }, {
-                logo: '../../images/Buick-Logo.png',
-                name: 'Buick 2',
-                manufacturerId: 23
-            }, {
-                logo: '../../images/Cadillac-Logo.png',
-                name: 'Cadillac 2',
-                manufacturerId: 124
-            }
-        ];
         const carModel = [
             {
                 logo: '../../images/audi-a3.png',
@@ -247,6 +309,14 @@ class ProfileSteps extends Component {
             }
 
         ];
+        const years = [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017
+        ]
+        const carList = this.state.filteredCarList ? this.state.filteredCarList : this.state.carList;
         const carListView = map(carList, (carItem, key) => {
             return (
                 <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); }} key={key}>
@@ -281,7 +351,7 @@ class ProfileSteps extends Component {
                             <div className="row">
                                 <div className="col-md-6 pad0">
                                     <div className="search-box">
-                                        <TextInput label="Search" name="text" type="text" />
+                                        <TextInput label="Search" name="text" type="text" onChange={this.filterCarModelList}/>
                                         <i className="mdi mdi-magnify" />
                                     </div>
                                 </div>
@@ -301,16 +371,17 @@ class ProfileSteps extends Component {
                             <div className="row">
                                 <div className="col-md-6 padLeft0">
                                     <div className="model-select">
-                                        <select className="car-selection " onChange={(e)=>this.onFieldChange(e.target.value, '',e.target.name)} name="year">
-                                            <option value="" selected> Select Launch Year</option>
-                                            <option key={"2013"} value="2013">2013</option>
-                                            <option key={"2014"} value="2014">2014</option>
-                                            <option key={"2015"} value="2015">2015</option>
-                                            <option key={"2016"} value="2016">2016</option>
-                                            <option key={"2017"} value="2017">2017</option>
+                                        <select className="car-selection " value={this.formData && this.formData.year ? this.formData.year : 1} placeholder="Select Launch Year" onChange={(e)=>this.onFieldChange(e.target.value, '',e.target.name)} name="year">
+                                          <option value='1' disabled>Select Launch Year</option>
+                                          {map(years, (year, key) => {
+                                            return (
+                                              <option key={year} value={year}>{year}</option>
+                                            );
+                                          })}
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
+                                    {this.errors && this.errors['year'] && <span  className="error-text"> Please Select Year </span> }
                                 </div>
                             </div>
                             <div className="row">
@@ -343,34 +414,34 @@ class ProfileSteps extends Component {
                                 <div className="row car-profile">
                                     <h4 className="panel-sub-title">car profile</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Car Profile Name" name="name" type="text" showValidationError={this.errors['text']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Plate Number*" name="regNo" type="text" validationError="Plate Number cannot be empty"
+                                        <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                                         onChange={this.onFieldChange.bind(this)} />
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Kms Travelled*" name="travelled" type="text" validationError="Kms Travelled cannot be empty"
+                                        <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                 </div>
                                 <div className="row insurance-details">
                                     <h4 className="panel-sub-title">Insurance Details (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Insurance Provider" name="insuranceProvider" type="text"
+                                        <TextInput label="Insurance Provider" name="insuranceprovider" type="text" value={this.formData.insuranceprovider}
                                           onChange={this.onFieldChange.bind(this)}/>
                                     </div>
                                     <div className="col-md-6 padRight0">
-                                        <TextInput label="Insurance Policy Number" name="policyNo" type="text" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Insurance Policy Number" name="insurancepolicynumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.insurancepolicynumber}/>
                                     </div>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} />
+                                        <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
                                     </div>
                                 </div>
                                 <div className="row car-notes">
                                     <h4 className="panel-sub-title">Car Notes (Optional)</h4>
                                     <div className="col-md-6 padLeft0">
-                                        <TextInput label="Additional Details About The Car (Optional)" name="additionalDetails" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)}/>
+                                        <TextInput label="Additional Details About The Car (Optional)" name="carnotes" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)} value={this.formData.carnotes}/>
                                     </div>
                                 </div>
                                 <div className="next-button">

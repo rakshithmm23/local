@@ -6,7 +6,7 @@ import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-class ResetPassword extends Component {
+export default class ResetEmailConfirmation extends Component {
     render() {
         return (
             <div className="container-fluid" id="wrapper">
@@ -18,7 +18,7 @@ class ResetPassword extends Component {
                             <div className="login-panel-header forget-panel-header">
                                 <h3 className="login-title">Confirmed</h3>
                                 <p className="note-text">
-                                   Your password has been reset , you can login with your new password.
+                                   Your password reset link has been sent to {this.props.authReducer.reset_email}
                                 </p>
                             </div>
                             <div className="login-panel-footer confirmed-reset">
@@ -31,5 +31,3 @@ class ResetPassword extends Component {
         );
     }
 }
-
-export default ResetPassword;

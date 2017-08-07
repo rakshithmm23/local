@@ -37,7 +37,8 @@ export default class SignUp extends Component {
   }
   componentWillMount(){
     const signedUserDataCookie = cookies.get('carauth');
-    if (signedUserDataCookie && localStorage && localStorage.authData){
+    const userId = localStorage.getItem('userId');
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -52,7 +53,8 @@ export default class SignUp extends Component {
   }
   componentWillReceiveProps(nextProps){
     const signedUserDataCookie = cookies.get('carauth');
-    if (signedUserDataCookie && localStorage && localStorage.authData){
+    const userId = localStorage.getItem('userId');
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -95,7 +97,8 @@ export default class SignUp extends Component {
         'email': this.formData.email,
         'phone': this.formData.phone,
         'password': this.formData.password,
-        'type': 'customer'
+        'type': 'customer',
+        'usertype': 'customer'
       })
     }
   }

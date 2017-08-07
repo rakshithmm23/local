@@ -7,40 +7,26 @@ import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import BookServiceBox from './BookServiceBox';
-import { concat } from 'lodash';
+import { concat, map } from 'lodash';
 
 export default class BookService extends Component {
     constructor(props, context) {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
-        let carProfiles = localStorage.getItem('carProfiles');
-        if (!carProfiles) {
-          carProfiles = [];
-        } else {
-            carProfiles = JSON.parse(carProfiles);
-        }
-        carProfiles = concat(carProfiles, [
-          {
-            make: "abc",
-            model: "Red",
-            regNo: "B 509234",
-            name: "My Nissan GT-R",
-            year: 2015
-          },
-          {
-            make: "abc",
-            model: "Red",
-            regNo: "B 509234",
-            name: "My Nissan GT-R",
-            year: 2015
-          }
-        ]
-        );
         this.state = {
             notificationVisible: false,
             messageVisible: false,
-            carProfiles: carProfiles
+            isLoading: false
         };
+    }
+    componentWillMount() {
+      this.setState({'isLoading': true});
+      this.props.actions.getCarProfileList(this.props.router);
+    }
+    componenWillReceiveProps(nextProps) {
+      if (nextProps.carProfileReducer.isLoaded) {
+        this.setState({'isLoading': false});
+      }
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
@@ -50,7 +36,7 @@ export default class BookService extends Component {
     }
 
     render() {
-        const {router} = this.props;
+        const {router, carProfileReducer} = this.props;
         return (
             <div>
                 {/*Header*/}
@@ -65,7 +51,7 @@ export default class BookService extends Component {
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Cars</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profile')}}/>
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profiles/create')}}/>
                         </div>
                     </div>
                     <div className="inSection">
@@ -73,12 +59,10 @@ export default class BookService extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    {this.state.carProfiles && this.state.carProfiles.map((profile, index) => {
+                                    {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
                                       return (
-                                          <BookServiceBox date="17 April 16" year={profile.year} 
-                                            model={profile.model} regNo={profile.regNo} name={profile.name} key={index}
+                                          <BookServiceBox key={index} {...profile}
                                             router={router}
-                                      
                                       />);
                                     })}
                                 </div>

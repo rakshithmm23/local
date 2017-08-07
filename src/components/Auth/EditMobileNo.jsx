@@ -115,7 +115,6 @@ export default class VerifyOTP extends Component {
                                   type="text"
                                   showValidationError={this.errors['otp']}
                                   validationError="Enter your Mobile Number"
-                                  limitCharacters={4}
                                   onChange={this.onFieldChange.bind(this)}
                                   isOTP={true} />
                                 <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="gmail" btnSize="sm" fontSize={14} label="Get OTP" />

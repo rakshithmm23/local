@@ -19,11 +19,12 @@ export function signInUser (signInData, dispatch) {
         const responseData = response.data;
         const authCookie = decryptCookie(response.headers.authorization);
         cookies.set('carauth', authCookie.carauth, {
-          domain: authCookie.Domain,
+          domain: window.location.hostname,
           expires: new Date(authCookie.Expires),
           path: authCookie.Path
         });
         localStorage.setItem('authData', JSON.stringify(responseData));
+        localStorage.setItem('userId', JSON.stringify(responseData.id));
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
@@ -46,7 +47,7 @@ export function signInUser (signInData, dispatch) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.status === 401 ? 'Invalid Email/Password' : err.response.data
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? 'Invalid Email/Password' : err.response.data.message
         });
       } else {
         dispatch({
@@ -58,6 +59,7 @@ export function signInUser (signInData, dispatch) {
 }
 export function signInAction(signInData, dispatch, fromSignup) {
   if (fromSignup) {
+    signInData.usertype = 'customer';
     signInUser(signInData, dispatch);
   } else {
     return (dispatch) => {
@@ -257,6 +259,7 @@ export function logout(router) {
     })
     .then((response) => {
       if (response.status == 200) {
+        document.cookie = "";
         localStorage.clear();
         dispatch({
           type: types.LOGOUT,
@@ -269,4 +272,85 @@ export function logout(router) {
         router.push('/');
     });
   };
+}
+
+export function forgotPassword(emailId) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.FORGOT_PASSWORD, JSON.stringify({'email': emailId}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.SHOW_RESET_EMAIL_CONFIRMATION,
+            email: emailId
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if(err && err.response && err.response.status == 404) {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Email id not found, enter valid email id"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function resetPassword(verificationCode, password) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.RESET_PASSWORD, JSON.stringify({'code': verificationCode, password: password}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.RESET_PASSWORD_CODE_VERIFIED
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if (err && err.response && err.response.status == '410') {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Verification code expired, please try resetting again"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function clearComponentKey() {
+  return (dispatch) => {
+    dispatch({
+      type: types.CLEAR_COMPONENT_KEY
+    })
+  }
 }

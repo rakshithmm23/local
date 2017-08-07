@@ -35,7 +35,8 @@ export default class SignIn extends Component {
   }
   componentWillMount() {
     const signedUserDataCookie = cookies.get('carauth');
-    if (signedUserDataCookie && localStorage && localStorage.authData){
+    const userId = localStorage.getItem('userId');
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -50,7 +51,8 @@ export default class SignIn extends Component {
   }
   componentWillUpdate(nextProps) {
     const signedUserDataCookie = cookies.get('carauth');
-    if (signedUserDataCookie && localStorage && localStorage.authData){
+    const userId = localStorage.getItem('userId');
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -88,6 +90,7 @@ export default class SignIn extends Component {
       this.props.actions.signInAction({
         'email': this.formData.email,
         'password': this.formData.password,
+        'usertype': 'customer'
       });
     }
   }

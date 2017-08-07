@@ -34,7 +34,7 @@ export default class Sidebar extends Component {
       {
         iconName: 'mdi mdi-car',
         name: 'My Cars',
-        hyperLink: '/book-service'
+        hyperLink: '/car-profiles'
       },
       {
         iconName: 'mdi mdi-comment-processing',
@@ -50,7 +50,8 @@ export default class Sidebar extends Component {
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
       return (
-        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''} onClick={this.goToUrl.bind(this,item.hyperLink)}>
+        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''} 
+        onClick={this.goToUrl.bind(this,item.hyperLink)}>
           <a>
             {item.iconName && <label className={item.iconName}/> }
             <span>{item.name}</span>
