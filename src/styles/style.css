@@ -25,11 +25,10 @@
         src: url('../fonts/CenturyGothic.ttf')
     }
 
-     @font-face {
+    @font-face {
         font-family: CenturyGothic_bold;
         src: url('../fonts/CenturyGothic_bold.ttf')
     }
-
 
     ul,
     li {
@@ -63,10 +62,12 @@
     .padRight0 {
         padding-right: 0;
     }
-    .inline-disp{
+
+    .inline-disp {
         display: inline-block !important;
     }
-    .marginTop0{
+
+    .marginTop0 {
         margin-top: 0 !important;
     }
     /*commom wrapper*/
@@ -77,15 +78,16 @@
         overflow: hidden;
     }
     /*Toggle Btn*/
-
     /*.toggleBtn {
         margin: 30px 0;
     }*/
-    .toggleBtn span{
+
+    .toggleBtn span {
         color: #717982;
         font-family: CenturyGothic;
         font-size: 14px;
     }
+
     .toggleBtn a {
         outline: 0;
         display: inline-block;
@@ -118,17 +120,29 @@
     .login-panel .alert {
         margin-top: 30px;
         color: #B4312C;
-        background: rgba(237, 85, 84, 0.25);
-        border: 0.5px solid rgba(180, 49, 44, 0.55);
-       font-family: CenturyGothic_bold;
+        background-color: #FFF5F4;
+        border: 1px solid #ED3124;
+        font-family: CenturyGothic;
         font-size: 12px;
         margin-bottom: 30px;
+        letter-spacing: 0.8px;
     }
 
     .login-panel .alert i {
         margin-right: 10px;
         font-size: 15px;
         vertical-align: middle;
+        color: #B44747;
+        font-size: 16px;
+    }
+
+    .login-panel .alert .close {
+        font-size: 22px;
+        color: #B44747 !important;
+        font-family: CenturyGothic;
+        opacity: 1;
+        text-shadow: none;
+        top: 0 !important;
     }
     /*Page Secition header*/
 
@@ -162,15 +176,15 @@
         font-family: CenturyGothic_bold;
         height: 42px;
     }
-
     /*IE fix*/
+
     input::-ms-clear,
     input::-ms-reveal {
         display: none;
     }
+
     input[type=password]::-ms-reveal,
-    input[type=password]::-ms-clear
-    {
+    input[type=password]::-ms-clear {
         display: none;
     }
     /*responsive*/
@@ -185,6 +199,7 @@
             margin-bottom: 20px;
         }
     }
+
     @media screen and (max-width: 991px) {
         .page-sec-header {
             padding: 0px 0;
@@ -197,6 +212,7 @@
             margin-top: 15px;
         }
     }
+
     @media screen and (max-width: 767px) {
         .mpad-0 {
             padding: 0;
