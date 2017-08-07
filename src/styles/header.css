@@ -14,7 +14,8 @@
 }
 .header-section .logo-section img{
     height: 43.06px;
-    width: 42.18px;
+    max-width: 42.18px;
+    width: 100%;
 }
 
 .header-search {
