@@ -18,7 +18,7 @@ class ResetPassword extends Component {
                             <div className="login-panel-header forget-panel-header">
                                 <h3 className="login-title">Confirmed</h3>
                                 <p className="note-text">
-                                   Your password has been reset , you can login with your new password.
+                                   Your password has been reset, you can login with your new password.
                                 </p>
                             </div>
                             <div className="login-panel-footer confirmed-reset">
