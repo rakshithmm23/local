@@ -208,6 +208,10 @@
     font-size: 18px;
 }
 
+.forget-input .btn-theme.gmail, .otp-input .btn-theme.gmail, .otpbtnAlign{
+    margin-top: -23px;
+}
+
 @media screen and (min-height: 701px) {
     .login-panel {
         justify-content: center;

@@ -47,7 +47,7 @@
     height: 20px;
 }
 
-.model-select + span.error-text {
+.model-select+span.error-text {
     color: red;
     font-size: 12px;
     font-family: CenturyGothic;
@@ -63,10 +63,26 @@
 .input-icon {
     padding: 10px;
     position: absolute;
-    right: 20px;
+    right: 2px;
     z-index: 999;
-    top: 5px;
+    top: 10px;
     cursor: pointer;
+}
+
+.input-icon i {
+    font-size: 16px;
+}
+.input-icon i.mdi-eye{
+    color: #006FB9;
+}
+.input-icon i.mdi-eye-off{
+    color: #454B51;
+}
+
+.otp-input {
+    width: 300px;
+    display: inline-block;
+    margin-right: 30px;
 }
 
 .or-text {
@@ -109,14 +125,20 @@
     box-shadow: none;
     outline: none;
     background-position: 0 0;
-    border-color: #006FBA;
+}
+
+.form-input:focus {
+    border-color: #006FB9;
 }
 
 .form-input:focus~label,
 .form-input:valid~label {
     top: 3px !important;
     font-size: 11px;
-    color: #006FBA;
+}
+
+.form-input:focus~label {
+    color: #006FB9 !important;
 }
 
 .form-group.error label {
@@ -128,7 +150,7 @@
 }
 
 .forget-input .form-input {
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .forget-panel-header.login-panel-header .note-text {
@@ -193,13 +215,13 @@
     .input-button-addon .btn-theme {
         float: right;
     }
-    .input-button-addon .note-text{
+    .input-button-addon .note-text {
         margin-top: 12px;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .or-text{
+    .or-text {
         width: 100%;
     }
     .form-group label {
@@ -207,11 +229,11 @@
     }
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
     .input-button-addon .btn-theme {
         float: none;
     }
-    .input-button-addon .note-text{
-        margin-top: 20px ;
+    .input-button-addon .note-text {
+        margin-top: 20px;
     }
 }

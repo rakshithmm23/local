@@ -102,7 +102,7 @@ export default class VerifyOTP extends Component {
                             <div className="login-panel-header">
                                 <h3 className="login-title">Sign Up</h3>
                                 {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} <i className="mdi mdi-block-helper" /></p>
                                 </AlertDismissable>}
                                 <p className="note-text">
                                    Enter your mobile number to receive an OTP
