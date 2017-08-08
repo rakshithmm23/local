@@ -15,7 +15,8 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
 const {  LatLngBounds,LatLng }  = google.maps;
-import CarType from '../common/CarType'
+import CarType from '../common/CarType';
+import Rating from 'react-rating';
 
 
 export default class RequestCard extends Component {
@@ -309,7 +310,8 @@ export default class RequestCard extends Component {
           }
         ]
       },
-      quotesMessage: ''
+      quotesMessage: '',
+      ratingValue:0,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -457,9 +459,12 @@ export default class RequestCard extends Component {
     // this.jobData[0].statusIndicator=
   }
   componentDidMount() {
-    debugger
     window.addEventListener("resize", this.updateDimensions);
-    this.jobData[0].statusIndicator=this.props.jobType
+    let jobType =this.props.jobType
+    if(!jobType){
+      jobType="waiting"
+    }
+    this.jobData[0].statusIndicator=jobType
     this.setState({dataChange:!this.state.dataChange})
   }
   componentDidUpdate() {
@@ -618,17 +623,10 @@ export default class RequestCard extends Component {
       this.setState({'messageList': messageList, 'quotesMessage': ''})
     }
   }
-  // mapRef(e){
-  //   let bounds = new google.maps.LatLngBounds();
-  //   let points =[]
-  //   each(this.state.jobCardDetails, function(value, key) {
-  //     let position=[]
-  //     position.push(value.latitude,value.longitude)
-  //     points.push(position)
-  //   });
-  //   bounds.extend(points)
-  //   e.fitBounds(bounds);
-  // }
+  ratingOnChange(rating){
+    this.setState({ratingValue:rating})
+
+  }
 
   render() {
     let jobLeftGridValue = "";
@@ -699,7 +697,7 @@ export default class RequestCard extends Component {
                   <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
-                        <div className="title">
+                        {this.jobData[0].statusIndicator!="accepted" && <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
@@ -825,15 +823,15 @@ export default class RequestCard extends Component {
                                   <div className="col-md-6 right toggleBtn">
                                     <div className="filterby-wrapper">
 
-                                      <div className="f-card">
+                                      <div className="f-card star-rating">
                                         <h5>Rating</h5>
-                                        <ul className="rating">
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                        </ul>
+                                        <Rating
+                                            empty="mdi mdi-star-outline "
+                                            full="mdi mdi-star active-star"
+                                            fractions={2}
+                                            initialRate={this.state.ratingValue}
+                                            onChange={(e)=>{this.ratingOnChange(e)}}
+                                        />
                                       </div>
                                       <div className="f-card ">
                                         <h5>Only show Favourites</h5>
@@ -905,7 +903,7 @@ export default class RequestCard extends Component {
                               </div>
                             </DropdownButton>
                           </div>
-                        </div>
+                        </div>}
                         <div className="quotes-left-body">
                           <Scrollbars
                             className="requestQuotesScroll"

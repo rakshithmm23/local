@@ -13,7 +13,8 @@ class CardType extends Component {
             saveModal: false,
             max_chars: 200,
             chars_left: 0,
-            collapseTimeline:true
+            collapseTimeline: true,
+            ratingValue: 0,
         };
     }
     // componentDidMount() {
@@ -23,6 +24,10 @@ class CardType extends Component {
     //         this.setState({collapseTimeline:false})
     //     }
     // }
+    ratingOnChange(rating) {
+        this.setState({ ratingValue: rating })
+
+    }
 
     getIcons(jobType, val) {
         if (val == "waiting") {
@@ -43,7 +48,7 @@ class CardType extends Component {
             );
         } else if (val == "completed") {
             return (
-                <div className="job-icon  notification" onClick={() => this.setState({ saveModal: true })}>
+                <div className="job-icon  notification" onClick={(e) => { e.preventDefault(); e.stopPropagation(); this.setState({ saveModal: true }) }}>
                     <span className="mdi mdi-star-outline"></span>
                     <span className="commentLabel">Review</span>
                 </div>
@@ -61,14 +66,14 @@ class CardType extends Component {
             );
         }
     }
-    stepClick(e,key) {
+    stepClick(e, key) {
         if (e.clientX > 690) {
-            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
         } else if (e.clientX < 350) {
-            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%', activeButton: key })
         }
         else {
-            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%',activeButton:key })
+            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%', activeButton: key })
         }
     }
     handleChange(event) {
@@ -79,7 +84,7 @@ class CardType extends Component {
             chars_left: this.state.max_chars - val.length
         });
     }
-    showTimeline(e){
+    showTimeline(e) {
         e.stopPropagation();
         e.preventDefault();
         this.setState({ showTimeLine: !this.state.showTimeLine })
@@ -87,7 +92,7 @@ class CardType extends Component {
 
 
     render() {
-        const { cardDetails, jobLeftGridValue, jobRightGridValue,messageRoute } = this.props;
+        const { cardDetails, jobLeftGridValue, jobRightGridValue, messageRoute } = this.props;
         return (
             <div className={"job-updates " + cardDetails.statusIndicator} >
                 <div className="row" onClick={messageRoute}>
@@ -105,8 +110,8 @@ class CardType extends Component {
                                                     <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup && (cardDetails.statusIndicator=="accepted" || cardDetails.statusIndicator=="inProgress" || cardDetails.statusIndicator=="completed") &&
-                                                    <li className="desktop-expand-timeline" onClick={(e) => {this.showTimeline(e)}}>
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
+                                                    <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-down" />
                                                             Collapse Timeline
@@ -169,7 +174,7 @@ class CardType extends Component {
                     </div>
                 </div>
                 {/*///////*/}
-                {cardDetails.statusPopup && this.state.showTimeLine && this.state.collapseTimeline &&<div className="job-footer active">
+                {cardDetails.statusPopup && this.state.showTimeLine && this.state.collapseTimeline && <div className="job-footer active">
                     <div className="row">
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="collapse in">
@@ -180,7 +185,7 @@ class CardType extends Component {
                     </div>
                 </div>}
 
-                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => {this.setState({saveModal: false})}} className="rating-modal" closeIcon="true" saveText="Submit">
+                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => { this.setState({ saveModal: false }) }} className="rating-modal" closeIcon="true" saveText="Submit">
                     <Modal.Body>
                         <div className="image-holder">
                             <img src="../../images/test.jpg" alt="" />
@@ -193,7 +198,8 @@ class CardType extends Component {
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
                                 fractions={2}
-
+                                initialRate={this.state.ratingValue}
+                                onChange={(e) => { this.ratingOnChange(e) }}
                             />
                         </div>
                         <div className="comments rtg-modal">
@@ -205,7 +211,7 @@ class CardType extends Component {
                                         />*/}
                             <FormGroup>
                                 <FormControl
-                                maxLength="200"
+                                    maxLength="200"
                                     className="textAlign"
                                     componentClass="textarea"
                                     placeholder="Comments"
