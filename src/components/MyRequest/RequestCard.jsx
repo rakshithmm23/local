@@ -140,7 +140,7 @@ export default class RequestCard extends Component {
       ],
       quotation: true,
       messages: false,
-      mapView: true,
+      mapView: false,
       quotationView: true,
       activeSvg: 'data:image/svg+xml,<svg%20width%3D"36px"%20height%3D"40px"%20viewBox%3D"0%200%2036%2040"%20version%3D"1.1"%20xmlns%3D"http%3A//www.w3.org/2000/svg"%20xmlns%3Axlink%3D"http%3A//www.w3.org/1999/xlink">%0A%20%20%20%20<%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20-->%0A%20%20%20%20<title>location-pin%20copy%209</title>%0A%20%20%20%20<desc>Created%20with%20Sketch.</desc>%0A%20%20%20%20<defs>%0A%20%20%20%20%20%20%20%20<path%20d%3D"M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z"%20id%3D"path-1"></path>%0A%20%20%20%20%20%20%20%20<mask%20id%3D"mask-2"%20maskContentUnits%3D"userSpaceOnUse"%20maskUnits%3D"objectBoundingBox"%20x%3D"0"%20y%3D"0"%20width%3D"36"%20height%3D"40"%20fill%3D"white">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</mask>%0A%20%20%20%20</defs>%0A%20%20%20%20<g%20id%3D"Symbols"%20stroke%3D"none"%20stroke-width%3D"1"%20fill%3D"none"%20fill-rule%3D"evenodd"%20stroke-opacity%3D"0.455219656">%0A%20%20%20%20%20%20%20%20<g%20id%3D"location-pin-copy-9"%20stroke%3D"%23FFFFFF"%20stroke-width%3D"4"%20fill%3D"%2323AE49">%0A%20%20%20%20%20%20%20%20%20%20%20%20<use%20id%3D"Rectangle-10-Copy-3"%20mask%3D"url%28%23mask-2%29"%20xlink%3Ahref%3D"%23path-1"></use>%0A%20%20%20%20%20%20%20%20</g>%0A%20%20%20%20</g>%0A<text%20transform%3D"translate%2819%2018.5%29"%20fill%3D"%23fff"%20style%3D"font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B"%20font-size%3D"12"%20text-anchor%3D"middle">',
       svg: 'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2236px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2036%2040%22%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%0A%20%20%20%20%3C%21--%20Generator%3A%20Sketch%2042%20%2836781%29%20-%20http%3A//www.bohemiancoding.com/sketch%20--%3E%0A%20%20%20%20%3Ctitle%3ERectangle%2010%20Copy%203%3C/title%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C/desc%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z%22%20id%3D%22path-1%22%3E%3C/path%3E%0A%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-2%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2240%22%20fill%3D%22white%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/mask%3E%0A%20%20%20%20%3C/defs%3E%0A%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20stroke-opacity%3D%220.455219656%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22location-pin%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20fill%3D%22%23EE3124%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Rectangle-10-Copy-3%22%20mask%3D%22url%28%23mask-2%29%22%20xlink%3Ahref%3D%22%23path-1%22%3E%3C/use%3E%0A%20%20%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%3C/g%3E%0A%20%20%20%20%3Ctext%20transform%3D%22translate%2819%2018.5%29%22%20fill%3D%22%23fff%22%20style%3D%22font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%3E',
@@ -316,26 +316,7 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
     this.jobData = [
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani1',
-      //   serviceTypes: 'Car Wash',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'waiting',
-      //   jobInfoMessage: 'Your request #9596378 has been placed successfully. Our vendors are ' +
-      //   'currently assessing your application and will get back with their quotes soon.',
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani2',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'active',
-      //   jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
-      //   'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
-      // },
+      
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
@@ -362,77 +343,7 @@ export default class RequestCard extends Component {
           }
         ],
       },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'inProgress',
-      //   vendorDetails:
-      //   {
-      //     vendor: 'Buddy’s Car Service',
-      //     vendorPlace: '3916 Address Tower, Street Name, Dubai',
-      //     vendorMobile: '+971 919 233 470',
-      //     quote: '200 AED',
-      //     totalTask: 8,
-      //   }
-      //   ,
-      //   statusStep: true,
-      //   statusPopup: [
-      //     {
-      //       imgClassName: 'statusIcon',
-      //       statusDescription: 'Door Locking Mechanisms and Windows',
-      //       statusTime: '09 Mar 15 11:00 AM',
-      //       statusMessage: 'On going'
-      //     }
-      //   ]
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'completed',
-      //   vendorDetails:
-      //   {
-      //     vendor: 'Buddy’s Car Service',
-      //     vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
-      //     vendorMobile: '+971 919 233 470',
-      //     quote: '200 AED',
-      //     totalTask: 8,
-      //   },
-      //   statusStep: true,
-      //   statusPopup: [
-      //     {
-      //       imgClassName: 'statusIcon',
-      //       statusDescription: 'Door Locking Mechanisms and Windows',
-      //       statusTime: '09 Mar 15 11:00 AM',
-      //       statusMessage: 'On going'
-      //     }
-      //   ]
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'completed',
-      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
-      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.'
-      // },
-      // {
-      //   carImage: '../../images/car.jpg',
-      //   customerName: 'Bala Subramani',
-      //   serviceTypes: 'Emergency Service',
-      //   customeId: '12345678',
-      //   startDate: '09 Mar17, 11:00 AM',
-      //   statusIndicator: 'expired',
-      //   jobInfoMessage: 'Sorry, your request was cancelled by the vendor. We apologise for the inconvenience caused.' +
-      //   'Kindly re-book the request and give us a chance to serve you to our best capacity.',
-      // }
+      
     ];
   }
   jobDetail(val) {
@@ -451,12 +362,7 @@ export default class RequestCard extends Component {
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     let queryParms = window.location.search.substring(1);
     
-    // if(queryParms==""){
-    //   this.jobData[0].statusIndicator="inProgress";
-    // }else{
-    //   this.jobData[0].statusIndicator=queryParms;
-    // }
-    // this.jobData[0].statusIndicator=
+    
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -629,6 +535,7 @@ export default class RequestCard extends Component {
   }
 
   render() {
+    debugger
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -657,7 +564,9 @@ export default class RequestCard extends Component {
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
     const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
-    const jobDataList = map(this.jobData, (item, key) => {
+
+    return (
+      <div> {map(this.jobData, (item, key) => {
       return (
         <div key={key}>
 
@@ -765,6 +674,9 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
+                                          <span className="range-min">{this.state.distValue.min+" Km"}</span>
+                                          <span className="range-max">{this.state.distValue.max+" Km"}</span>
+                                          
                                       </div>
                                       <div className="f-card">
                                         <h5>Price</h5>
@@ -774,6 +686,8 @@ export default class RequestCard extends Component {
                                           maxValue={100}
                                           value={this.state.priceValue}
                                           onChange={priceValue => this.setState({ priceValue })} />
+                                          <span className="range-min">{this.state.priceValue.min+" AED"}</span>
+                                          <span className="range-max">{this.state.priceValue.max+" AED"}</span>
                                       </div>
                                       <div className="f-card openAlign">
                                         <h5>Open Between</h5>
@@ -1047,9 +961,7 @@ export default class RequestCard extends Component {
           </div>
         </div>
       );
-    });
-    return (
-      <div> {jobDataList} </div>
+    })} </div>
     );
   }
 }
