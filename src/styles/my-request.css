@@ -749,6 +749,17 @@ input[type="color"][list] {
     padding-top: 10px;
     font-size: 24px;
 }
+.f-card.star-rating span{
+    padding: 0;
+    padding-top: 8px;
+    display: block;
+}
+.f-card.star-rating .mdi{
+    font-size: 24px;
+}
+.f-card.star-rating .mdi.active-star{
+    color: #F48021;
+}
 .Filterby .f-card .rating{
     justify-content: left !important;
 }

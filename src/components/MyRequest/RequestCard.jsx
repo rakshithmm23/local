@@ -15,7 +15,8 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
 const {  LatLngBounds,LatLng }  = google.maps;
-import CarType from '../common/CarType'
+import CarType from '../common/CarType';
+import Rating from 'react-rating';
 
 
 export default class RequestCard extends Component {
@@ -828,15 +829,13 @@ export default class RequestCard extends Component {
                                   <div className="col-md-6 right toggleBtn">
                                     <div className="filterby-wrapper">
 
-                                      <div className="f-card">
+                                      <div className="f-card star-rating">
                                         <h5>Rating</h5>
-                                        <ul className="rating">
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                        </ul>
+                                        <Rating
+                                            empty="mdi mdi-star-outline "
+                                            full="mdi mdi-star active-star"
+                                            fractions={2}
+                                        />
                                       </div>
                                       <div className="f-card ">
                                         <h5>Only show Favourites</h5>

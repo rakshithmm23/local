@@ -199,7 +199,6 @@ class CardType extends Component {
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
                                 fractions={2}
-
                             />
                         </div>
                         <div className="comments rtg-modal">
