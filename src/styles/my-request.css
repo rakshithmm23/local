@@ -749,6 +749,9 @@ input[type="color"][list] {
     padding-top: 10px;
     font-size: 24px;
 }
+.Filterby .f-card .rating{
+    justify-content: left !important;
+}
 
 .filterSection .dropdown.open button {
     border-bottom: 2px solid #ed3124 !important;
