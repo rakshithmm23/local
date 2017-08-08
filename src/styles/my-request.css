@@ -35,11 +35,11 @@ input[type="color"][list] {
 
 .request-summary .title span {
     color: #454B51;
-    font-family: 'CenturyGothic';
-    font-size: 18px;
+    font-family: CenturyGothic;
     line-height: 22px;
     display: block;
     text-align: center;
+    font-size: 18px;
 }
 
 .request-summary .request-summary-tab .title.active {
@@ -47,7 +47,7 @@ input[type="color"][list] {
 }
 
 .request-summary .request-summary-tab .title.active span {
-    font-family: 'CenturyGothic_bold';
+    font-weight: bold;
 }
 
 .request-summary .left {
@@ -120,6 +120,16 @@ input[type="color"][list] {
 .input-range__label--max {
     display: none !important;
 }
+.f-card .range-min{
+    position: absolute;
+    top: 27px;
+    left: 0;
+}
+.f-card .range-max{
+    position: absolute;
+    top: 27px;
+    right: 0;
+}
 
 .f-card .input-range__slider {
     top: 0 !important;
@@ -134,10 +144,8 @@ input[type="color"][list] {
 }
 
 .f-card .input-range__label-container {
-    color: #717982 !important;
-    font-family: CenturyGothic !important;
-    font-size: 14px !important;
-    margin-left: 19px !important;
+    display: none !important;
+
 }
 
 .f-card .input-range__track.input-range__track--active {
@@ -636,6 +644,7 @@ input[type="color"][list] {
     font-size: 18px;
     bottom: 20px;
     left: 110px;
+     top: 95px;
     z-index: -1;
 }
 
@@ -644,6 +653,7 @@ input[type="color"][list] {
     color: #717982;
     font-size: 18px;
     bottom: 20px;
+    top: 95px;
     right: 191px;
     z-index: -1;
 }
@@ -671,10 +681,13 @@ input[type="color"][list] {
 }
 
 .f-card .rc-time-picker input {
+    font-family:CenturyGothic;
+    font-size: 14px; 
     height: 38px;
     width: 130px;
-    border: 1px solid #CCD2D7;
-    border-radius: 3px;
+    border:none;
+    border-bottom: 1px solid #CCD2D7;
+    border-radius: 0;
     background-color: #FFFFFF;
     cursor: pointer;
     background: transparent;
@@ -750,6 +763,24 @@ input[type="color"][list] {
     font-size: 24px;
 }
 
+.f-card.star-rating span {
+    padding: 0;
+    padding-top: 8px;
+    display: block;
+}
+
+.f-card.star-rating .mdi {
+    font-size: 24px;
+}
+
+.f-card.star-rating .mdi.active-star {
+    color: #F48021;
+}
+
+.Filterby .f-card .rating {
+    justify-content: left !important;
+}
+
 .filterSection .dropdown.open button {
     border-bottom: 2px solid #ed3124 !important;
     border-radius: 0;
@@ -783,6 +814,11 @@ input[type="color"][list] {
 
 .openAlign {
     margin-bottom: 15px;
+}
+.Filterby .f-card .time-error{
+    display: block;
+    padding: 0;
+    color: #ED3124;
 }
 
 @media screen and (max-width: 1100px) {

@@ -104,7 +104,6 @@
 }
 
 .login-panel-header .note-text {
-    color: #2B2828;
     margin: 20px 0 30px;
 }
 
@@ -116,7 +115,7 @@
 }
 
 .login-panel-header .note-text strong i {
-    color: #006FBA;
+    color: #006FB9;
     display: inline-block;
     cursor: pointer;
     margin-left: 15px;
@@ -177,6 +176,7 @@
     float: left;
     margin-top: 20px;
     cursor: pointer;
+    font-size: 12px;
 }
 
 .gm-scroll-view {

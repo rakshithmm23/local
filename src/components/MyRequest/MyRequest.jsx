@@ -83,6 +83,7 @@ export default class MyRequest extends Component {
                                     </div>
                                     <div className="model-select">
                                         <select className="car-selection ">
+                                            <option value="select">Select Car Brand</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="saab">Saab</option>
                                             <option value="mercedes">Mercedes</option>
