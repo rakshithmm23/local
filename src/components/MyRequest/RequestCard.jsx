@@ -545,7 +545,6 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    debugger
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -731,7 +730,7 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-to" />
-                                        <span className={this.state.inValidTime?"time-error":"time-error hide"} >Invalid time format</span>
+                                        <span className={this.state.inValidTime?"time-error":"time-error"} >Invalid time format</span>
                                       </div>
                                       <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
