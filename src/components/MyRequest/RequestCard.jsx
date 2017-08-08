@@ -697,7 +697,7 @@ export default class RequestCard extends Component {
                   <div className="tab-quotes ">
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
-                        {this.jobData[0].statusIndicator!="accepted" && <div className="title">
+                        {this.jobData[0].statusIndicator=="active" && <div className="title">
                           <span>4 Quotes Received</span>
                           <div className="filterSection">
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
