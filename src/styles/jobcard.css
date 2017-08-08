@@ -3,12 +3,11 @@
         clear: both;
         background: #fff;
         border-radius: 4px;
-        
-    }
-    .myCar-body .job-updates .row{
-        cursor: default ;
     }
 
+    .myCar-body .job-updates .row {
+        cursor: default;
+    }
 
     .job-updates .row {
         margin: 0;
@@ -100,7 +99,8 @@
     }
 
     .job-card {
-        padding: 15px 15px 8px;
+        padding: 15px 0px 12px 15px;
+        ;
     }
 
     .card-img {
@@ -135,7 +135,7 @@
     }
 
     .jobInfo p {
-        color: #454B51;
+        color: #717982;
         font-size: 14px;
         line-height: 24px;
         font-family: CenturyGothic;
@@ -155,7 +155,6 @@
 
     .card-info {
         margin-left: 15px;
-        line-height: 25px;
         display: inline-block;
         vertical-align: top;
     }
@@ -164,15 +163,16 @@
         color: #717982;
         font-size: 13px;
         text-transform: capitalize;
-        font-family: CenturyGothic_bold;
+        font-family: CenturyGothic;
+        font-weight: bold;
     }
 
     .card-info .job-title {
         font-size: 18px;
-        /*color: #006FB9;*/
         color: #454b51;
         text-transform: capitalize;
-        font-family: CenturyGothic_bold;
+        font-family: CenturyGothic;
+        font-weight: bold;
     }
 
     .card-info .job-details {
@@ -187,19 +187,18 @@
     }
 
     .card-info .job-details li label {
-        width: 110px;
-        color: #949DA5;
+        width: 90px;
+        color: #454B51;
         margin-bottom: 0;
-        font-weight: 400;
     }
 
     .card-info .job-details li span {
-        color: #55595B;
+        color: #717982;
     }
 
     .card-info .job-details li.desktop-expand-timeline .btn-theme,
     .mobile-expand-timeline .btn-theme {
-        font-size: 12px;
+        font-size: 12px !important;
         padding: 0;
         margin: 0;
         color: #F48021 !important;
@@ -207,6 +206,7 @@
         text-align: left;
         height: 30px;
         margin-top: 5px;
+        font-weight: normal;
     }
 
     .mobile-expand-timeline {
@@ -219,7 +219,7 @@
 
     .job-right {
         border-left: 1px solid #eef2f5;
-        min-height: 178px;
+        min-height: 167px;
         position: relative;
         overflow: hidden;
     }
@@ -299,40 +299,36 @@
     .vendor-quote ul li {
         display: inline-block;
         width: 49%;
-        padding: 15px 25px;
+        padding: 11px 25px;
         vertical-align: top;
         height: 100%;
     }
 
     .vendor-quote ul li label {
-        color: #9BA1A5;
+        color: #454B51;
         font-size: 14px;
         line-height: 15px;
         display: block;
         font-family: CenturyGothic;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        font-weight: normal;
     }
 
     .vendor-quote ul li span {
-        font-size: 15px;
-        line-height: 17px;
-        color: #454B51;
+        font-size: 14px;
+        color: #717982;
         font-family: CenturyGothic;
         line-height: 25px;
     }
 
     .vendor-quote ul li span.vendor-place {
         color: #006FBA;
-        font-size: 13px;
+        font-size: 14px;
         display: block;
         width: 100%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-    }
-
-    .vendor-quote ul li span.vendor-mobile {
-        font-size: 13px;
     }
 
     .job-footer.active {
@@ -390,7 +386,7 @@
             border: 1px solid #A5A5A5;
             border-left-width: 4px;
         }
-        .job-right{
+        .job-right {
             min-height: 150px;
         }
         .jr-body {

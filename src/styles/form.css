@@ -107,7 +107,7 @@
 
 .form-group label {
     color: #717982;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -139,10 +139,6 @@
 
 .form-input:focus~label {
     color: #006FB9 !important;
-}
-
-.form-group.error label {
-    color: #999;
 }
 
 .auth-footer-text {
@@ -184,10 +180,6 @@
 .input-button-addon .form-group .form-input {
     height: 34px;
     padding: 20px 0 12px;
-}
-
-.input-button-addon .form-group label {
-    top: 15px;
 }
 
 .input-button-addon .form-group .error-text {
