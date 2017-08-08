@@ -208,6 +208,9 @@
         height: 30px;
         margin-top: 5px;
     }
+    .card-info .job-details li.desktop-expand-timeline .btn-theme{
+        width: 140px;
+    }
 
     .mobile-expand-timeline {
         display: none;
