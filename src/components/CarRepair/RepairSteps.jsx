@@ -583,7 +583,7 @@ class RepairSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
+                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 
@@ -618,7 +618,7 @@ class RepairSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
+                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
                                 
