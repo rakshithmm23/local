@@ -25,6 +25,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
+      inValidTime:false,
       dataChange:"",
       setCenter:false,
       mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
@@ -480,6 +481,15 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
+  filterSelect(){
+    if(this.state.TimePickerFrom>this.state.TimePickerTo ){
+      this.setState({inValidTime:true})
+    }else{
+      this.setState({inValidTime:false})
+    }
+  console.log(this.state.TimePickerFrom > console.log(this.state.TimePickerFrom))
+  // console.log(this.state.TimePickerTo)
+  }
 
   renderMessages(selectedVendorMessageList){
     const messageView = selectedVendorMessageList.map((messageObj, index) => {
@@ -535,7 +545,6 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    debugger
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -584,21 +593,21 @@ export default class RequestCard extends Component {
                 <div className="row request-summary-header">
                   <div className="col-md-6 col-sm-12 col-xs-12 pad0">
                     <div className="request-summary-tab">
-                      <div className="col-md-6 col-sm-6 col-xs-6">
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
                           <span>Job Details</span>
                         </div>
                       </div>
-                      <div className="col-md-6 col-sm-6 col-xs-6">
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
+                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quote":"Quotes"}</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="row request-summary-body">
-                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
+                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails">
                     <JobDetails serviceTypes={this.jobData[0].serviceTypes} statusIndicator={this.jobData[0].statusIndicator}/>
                   </div>}
                   {this.state.jobUpdates == "quotes" && this.jobData[0].statusIndicator!="waiting" &&
@@ -712,7 +721,7 @@ export default class RequestCard extends Component {
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
-                                        value={this.state.TimePickerTo}
+                                          value={this.state.TimePickerTo}
                                           onChange={this.TimePickerChange.bind(this,"timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
@@ -721,6 +730,7 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-to" />
+                                        <span className={this.state.inValidTime?"time-error":"time-error hide"} >Invalid time format</span>
                                       </div>
                                       <div className="f-card toggleBtn">
                                         <h5>Open 24/7</h5>
@@ -787,8 +797,8 @@ export default class RequestCard extends Component {
                                           <span className="pad0">Pay by Cash</span>
                                           <ToggleSwitch
                                             checked={this.toggleSwitchVal.byCash}
-                                          size="small"
-                                          onChange={this.switch.bind(this,'byCash')}
+                                            size="small"
+                                            onChange={this.switch.bind(this,'byCash')}
                                             ref={(node) => {
                                               this.toggleSwitch = node;
                                             }}
@@ -811,7 +821,7 @@ export default class RequestCard extends Component {
                                   <div className="col-md-12 footer">
                                     {/*{()=>this.setState({filterdropdown:false})}*/}
                                     <a onClick={this.clearFilter.bind(this)}>Clear</a>
-                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)}/>
                                   </div>
                                 </div>
                               </div>

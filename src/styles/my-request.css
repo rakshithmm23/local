@@ -35,11 +35,11 @@ input[type="color"][list] {
 
 .request-summary .title span {
     color: #454B51;
-    font-family: 'CenturyGothic';
-    font-size: 18px;
+    font-family: CenturyGothic;
     line-height: 22px;
     display: block;
     text-align: center;
+    font-size: 18px;
 }
 
 .request-summary .request-summary-tab .title.active {
@@ -47,7 +47,7 @@ input[type="color"][list] {
 }
 
 .request-summary .request-summary-tab .title.active span {
-    font-family: 'CenturyGothic_bold';
+    font-weight: bold;
 }
 
 .request-summary .left {
@@ -644,6 +644,7 @@ input[type="color"][list] {
     font-size: 18px;
     bottom: 20px;
     left: 110px;
+     top: 95px;
     z-index: -1;
 }
 
@@ -652,6 +653,7 @@ input[type="color"][list] {
     color: #717982;
     font-size: 18px;
     bottom: 20px;
+    top: 95px;
     right: 191px;
     z-index: -1;
 }
@@ -679,6 +681,8 @@ input[type="color"][list] {
 }
 
 .f-card .rc-time-picker input {
+    font-family:CenturyGothic;
+    font-size: 14px; 
     height: 38px;
     width: 130px;
     border:none;
@@ -758,18 +762,22 @@ input[type="color"][list] {
     padding-top: 10px;
     font-size: 24px;
 }
-.f-card.star-rating span{
+
+.f-card.star-rating span {
     padding: 0;
     padding-top: 8px;
     display: block;
 }
-.f-card.star-rating .mdi{
+
+.f-card.star-rating .mdi {
     font-size: 24px;
 }
-.f-card.star-rating .mdi.active-star{
+
+.f-card.star-rating .mdi.active-star {
     color: #F48021;
 }
-.Filterby .f-card .rating{
+
+.Filterby .f-card .rating {
     justify-content: left !important;
 }
 
@@ -806,6 +814,11 @@ input[type="color"][list] {
 
 .openAlign {
     margin-bottom: 15px;
+}
+.Filterby .f-card .time-error{
+    display: block;
+    padding: 0;
+    color: #ED3124;
 }
 
 @media screen and (max-width: 1100px) {

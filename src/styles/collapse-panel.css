@@ -40,6 +40,7 @@
     font-family: CenturyGothic;
     font-size: 18px;
     line-height: 18px;
+    font-weight: normal;
 }
 
 .panel-head i {
@@ -432,7 +433,7 @@
     border-radius: 0;
     padding: 0;
     font-size: 14px;
-    height: 48px;
+    height: 32px;
     margin: 10px 0;
     width: 100%
 }
