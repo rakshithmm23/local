@@ -141,3 +141,21 @@ export function deleteCarProfile(carProfileID) {
       })
   }
 }
+
+
+export function getCarMakeandModels() {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.CAR_MAKE_AND_MODELS, {withCredentials: true})
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.CAR_MAKE_AND_MODELS,
+            carMakeAndModels: response.data
+          })
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+}
