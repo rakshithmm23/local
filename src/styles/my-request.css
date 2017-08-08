@@ -120,6 +120,16 @@ input[type="color"][list] {
 .input-range__label--max {
     display: none !important;
 }
+.f-card .range-min{
+    position: absolute;
+    top: 27px;
+    left: 0;
+}
+.f-card .range-max{
+    position: absolute;
+    top: 27px;
+    right: 0;
+}
 
 .f-card .input-range__slider {
     top: 0 !important;
@@ -134,10 +144,8 @@ input[type="color"][list] {
 }
 
 .f-card .input-range__label-container {
-    color: #717982 !important;
-    font-family: CenturyGothic !important;
-    font-size: 14px !important;
-    margin-left: 19px !important;
+    display: none !important;
+
 }
 
 .f-card .input-range__track.input-range__track--active {
@@ -673,8 +681,9 @@ input[type="color"][list] {
 .f-card .rc-time-picker input {
     height: 38px;
     width: 130px;
-    border: 1px solid #CCD2D7;
-    border-radius: 3px;
+    border:none;
+    border-bottom: 1px solid #CCD2D7;
+    border-radius: 0;
     background-color: #FFFFFF;
     cursor: pointer;
     background: transparent;
