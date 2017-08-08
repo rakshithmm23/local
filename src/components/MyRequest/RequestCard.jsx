@@ -310,7 +310,8 @@ export default class RequestCard extends Component {
           }
         ]
       },
-      quotesMessage: ''
+      quotesMessage: '',
+      ratingValue:0,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -622,17 +623,10 @@ export default class RequestCard extends Component {
       this.setState({'messageList': messageList, 'quotesMessage': ''})
     }
   }
-  // mapRef(e){
-  //   let bounds = new google.maps.LatLngBounds();
-  //   let points =[]
-  //   each(this.state.jobCardDetails, function(value, key) {
-  //     let position=[]
-  //     position.push(value.latitude,value.longitude)
-  //     points.push(position)
-  //   });
-  //   bounds.extend(points)
-  //   e.fitBounds(bounds);
-  // }
+  ratingOnChange(rating){
+    this.setState({ratingValue:rating})
+
+  }
 
   render() {
     let jobLeftGridValue = "";
@@ -835,6 +829,8 @@ export default class RequestCard extends Component {
                                             empty="mdi mdi-star-outline "
                                             full="mdi mdi-star active-star"
                                             fractions={2}
+                                            initialRate={this.state.ratingValue}
+                                            onChange={(e)=>{this.ratingOnChange(e)}}
                                         />
                                       </div>
                                       <div className="f-card ">
