@@ -23,6 +23,12 @@ class CardType extends Component {
     //         this.setState({collapseTimeline:false})
     //     }
     // }
+    ratingModal(e){
+        debugger
+        e.preventDefault();
+        e.stopPropagation();
+        
+    }
 
     getIcons(jobType, val) {
         if (val == "waiting") {
@@ -43,7 +49,7 @@ class CardType extends Component {
             );
         } else if (val == "completed") {
             return (
-                <div className="job-icon  notification" onClick={() => this.setState({ saveModal: true })}>
+                <div className="job-icon  notification" onClick={(e) => {e.preventDefault();e.stopPropagation();this.setState({ saveModal: true })}}>
                     <span className="mdi mdi-star-outline"></span>
                     <span className="commentLabel">Review</span>
                 </div>
