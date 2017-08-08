@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class JobDetails extends Component {
     render() {
+        debugger
         return (
             <div>
                 <div className="data-time col-md-12">
@@ -48,7 +49,7 @@ class JobDetails extends Component {
                         Brakes & Exhaust</p>
                     </div>
                 </div>
-                <div className="col-md-12 uploads">
+                <div className= {this.props.serviceTypes!="Car Wash"?" col-md-12 uploads":"hide"}>
                     <title>{this.props.serviceTypes!="Car Wash"?"Uploads: ":""}</title>
                     {this.props.serviceTypes!="Car Wash"?<div className="col-md-6 images">
                          <div className="figure no-top-padding">
