@@ -99,7 +99,7 @@ export default class Dashboard extends Component {
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Service List*/}
-                            <h4 className="serviceList-title">Get a Quote</h4>
+                            <h4 className="serviceList-title">Pick a Service, to get a quote</h4>
                             <div className="service-list text-center row">
                                 {serviceTypesView}
                             </div>
