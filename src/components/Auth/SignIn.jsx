@@ -133,7 +133,7 @@ export default class SignIn extends Component {
                                 onChange={this.onFieldChange.bind(this)}/>
                             </div>
                             <div className="login-panel-footer">
-                                <a onClick={(e) => {e.preventDefault(); router.push('forgot-password')}} className="blue-text">Forget Password ?</a>
+                                <a onClick={(e) => {e.preventDefault(); router.push('forgot-password')}} className="blue-text">Forgot Password ?</a>
                                 <Button btnCallBack={this.signInAction.bind(this)} isSubmitBtn={true} btnType="gmail" btnSize="sm" fontSize={16} label="Sign In"/>
                             </div>
                                 </form>
