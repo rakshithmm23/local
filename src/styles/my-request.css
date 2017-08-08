@@ -681,8 +681,9 @@ input[type="color"][list] {
 .f-card .rc-time-picker input {
     height: 38px;
     width: 130px;
-    border: 1px solid #CCD2D7;
-    border-radius: 3px;
+    border:none;
+    border-bottom: 1px solid #CCD2D7;
+    border-radius: 0;
     background-color: #FFFFFF;
     cursor: pointer;
     background: transparent;
