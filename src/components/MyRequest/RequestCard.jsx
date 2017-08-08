@@ -459,7 +459,11 @@ export default class RequestCard extends Component {
   componentDidMount() {
     debugger
     window.addEventListener("resize", this.updateDimensions);
-    this.jobData[0].statusIndicator=this.props.jobType
+    let jobType =this.props.jobType
+    if(!jobType){
+      jobType="waiting"
+    }
+    this.jobData[0].statusIndicator=jobType
     this.setState({dataChange:!this.state.dataChange})
   }
   componentDidUpdate() {
