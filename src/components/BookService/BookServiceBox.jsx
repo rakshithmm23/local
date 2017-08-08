@@ -14,7 +14,7 @@ class BookServiceBox extends Component {
     }
     render() {
         const {router}= this.props;
-        const formatedDate = this.props.updatedAt ? moment(this.props.updatedAt).format("DD MMM YY") : undefined;
+        // const formatedDate = this.props.updatedAt ? moment(this.props.updatedAt).format("DD MMM YY") : undefined;
         const bookServiceOption = [
             {
                 image: "../../images/book-service-1.png",
@@ -54,8 +54,8 @@ class BookServiceBox extends Component {
                         <div className="myCar-card-footer">
                             <ul>
                                 <li>
-                                    <h4>upcoming service</h4>
-                                    {formatedDate && <span>{formatedDate}</span>}
+                                    <h4>Upcoming Service</h4>
+                                    <span>Not Available</span>}
                                 </li>
                                 <li>
                                     <span>

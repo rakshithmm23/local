@@ -256,7 +256,7 @@ class WashSteps extends Component {
 
         };
         this.handleChange = this.handleChange.bind(this);
-        
+
     }
     handleChange(date) {
         this.setState({
@@ -336,7 +336,7 @@ class WashSteps extends Component {
                                 <img src={carWashCategory.image} alt="" />
                         </figure>
                         <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            
+
                             <h4>{carWashCategory.heading}</h4>
                             {carWashCategory.checkedCategoryCount == 0 ?
                                 <span className="sub-category-count">
@@ -360,7 +360,7 @@ class WashSteps extends Component {
                         <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
-                                
+
                             </Modal.Body>
 
                         </CustomModal>
@@ -395,7 +395,7 @@ class WashSteps extends Component {
                          <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
-                                
+
                             </Modal.Body>
 
                         </CustomModal>
@@ -413,7 +413,7 @@ class WashSteps extends Component {
                         <div className="row">
                             <div className="col-md-6 pad0">
                                 <div className="search-box">
-                                    <TextInput label="Search" name="text" type="text" />
+                                    <TextInput label="Search" name="text" type="text"/>
                                     <i className="mdi mdi-magnify" />
                                 </div>
                             </div>
@@ -432,7 +432,7 @@ class WashSteps extends Component {
                         <h4>Step 2: Create A Car Wash Request</h4>
                         <i className={this.state.step2Panel ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
                     </div>
-                    {this.state.step2Panel && 
+                    {this.state.step2Panel &&
                     <div className="panel-content">
                         <div className="row">
                             <div className="col-md-6 left padLeft0">
@@ -507,7 +507,7 @@ class WashSteps extends Component {
                         <Button btnType="submit" btnSize="lg" fontSize={14} label="Request For Quotes" />
                     </div>
                     </div>}
-                    
+
                 </section>
             </div>
         );
