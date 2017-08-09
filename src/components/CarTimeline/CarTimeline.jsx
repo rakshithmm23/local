@@ -10,7 +10,7 @@ import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { DropdownButton, MenuItem, Modal } from 'react-bootstrap';
+import { DropdownButton, MenuItem, Modal, Media } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
 import {find, map} from 'lodash';
 
@@ -25,11 +25,13 @@ export default class BookService extends Component {
             timelineUpdate: "otherDetails",
             myCarDropdownIcon: true,
             showModal: false,
-            deleteModal: false
+            deleteModal: false,
+            bookServiceModalVisible: false
         };
         this.deleteCarProfile = this.deleteCarProfile.bind(this);
         this.editCarProfile = this.editCarProfile.bind(this);
         this.switchCarProfile = this.switchCarProfile.bind(this);
+        this.showBookServiceModal = this.showBookServiceModal.bind(this);
     }
     componentDidMount() {
       const routeParams = this.props.routeParams;
@@ -87,13 +89,49 @@ export default class BookService extends Component {
       }
     }
 
+    showBookServiceModal(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setState({'bookServiceModalVisible': !this.state.bookServiceModalVisible})
+    }
+
     render() {
-      const { carProfileReducer } = this.props;
+      const { carProfileReducer, router } = this.props;
       const userId = localStorage.getItem('userId');
       const carProfileId = 'carProfiles-' + userId;
       let carProfiles = localStorage.getItem(carProfileId);
       const routeParams = this.props.routeParams;
       let currentCarProfile = undefined;
+      const bookServiceOption = [
+        {
+            image: "../../images/book-service-1.png",
+            title: "Car Wash",
+            url:"/car-wash"
+        }, {
+            image: "../../images/book-service-2.png",
+            title: "Car Service",
+            url:"/car-service"
+        }, {
+            image: "../../images/book-service-3.png",
+            title: "Car Repair",
+            url:"/car-repair"
+        }
+      ];
+      const bookServiceOptionView = map(bookServiceOption, (service, key) => {
+          return (
+              <li key={key} onClick={()=>router.push(service.url)}>
+                  <Media>
+                      <Media.Left>
+                          <img width={69} height={69} src={service.image} alt="Image" />
+                      </Media.Left>
+                      <Media.Body>
+                          <h5>{service.title}</h5>
+                          <i className="mdi mdi-chevron-right" />
+                      </Media.Body>
+                  </Media>
+              </li>
+          );
+      });
       if (carProfiles) {
         carProfiles = JSON.parse(carProfiles);
         if (routeParams.id){
@@ -113,7 +151,7 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={()=>this.props.router.push('/car-profiles')}/>
+                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal}/>
                             <div className="text-dropdown add-new car-profile-header" >
                                 {carProfiles && currentCarProfile && <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
@@ -143,6 +181,13 @@ export default class BookService extends Component {
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
                                 </Modal.Body>
+                            </CustomModal>
+                            <CustomModal showModal={this.state.bookServiceModalVisible} footer={false} title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({'bookServiceModalVisible': false})}}>
+                              <Modal.Body>
+                                  <ul>
+                                      {bookServiceOptionView}
+                                  </ul>
+                              </Modal.Body>
                             </CustomModal>
                         </div>
                     </div>
