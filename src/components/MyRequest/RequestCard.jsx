@@ -25,7 +25,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
-      inValidTime:false,
+      
       dataChange:"",
       setCenter:false,
       mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
@@ -313,6 +313,7 @@ export default class RequestCard extends Component {
       },
       quotesMessage: '',
       ratingValue:0,
+      inValidTime:false,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -468,7 +469,7 @@ export default class RequestCard extends Component {
   }
   clearFilter(){
     this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({TimePickerFrom: undefined,TimePickerTo: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+    this.setState({ratingValue:0,inValidTime:false,TimePickerFrom: undefined,TimePickerTo: undefined,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
       "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
     }})
   }
@@ -487,7 +488,7 @@ export default class RequestCard extends Component {
     }else{
       this.setState({inValidTime:false})
     }
-  console.log(this.state.TimePickerFrom > console.log(this.state.TimePickerFrom))
+  
   // console.log(this.state.TimePickerTo)
   }
 

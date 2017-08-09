@@ -8,41 +8,37 @@ class CustomModal extends Component {
         this.state = {
             showModal: false
         };
-          this.close = this.close.bind(this);
         // this.propTypes = {
         //     showModal: React.PropTypes.bool.isRequired,
         // }
     }
-    // componentWillReceiveProps(nextProps) {
-    //     const { showModal } = nextProps;
-    //     if(this.state.showModal != showModal && showModal != undefined) {
-    //         this.setState({
-    //             showModal: nextProps
-    //         });
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        const { showModal } = nextProps;
+        if(this.state.showModal != showModal && showModal != undefined) {
+            this.setState({
+                showModal: nextProps
+            });
+        }
+    }
     close() {
-      if (this.props.onHide) {
-        this.props.onHide();
-      }
-
+        this.setState({ showModal: false });
     }
     render() {
-        const { children, footer, className, closeIcon,title } = this.props;
+        const { children, footer, className, closeIcon } = this.props;
         return (
             <div>
-                <Modal className={className} show={this.props.showModal} onHide={this.close}>
-                   {title? <Modal.Header closeButton>
-                        <Modal.Title>{title}</Modal.Title>
-                        {closeIcon && <label className="close-modal" onClick={this.close}>
+                <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{this.props.title}</Modal.Title>
+                        {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>
                           <i className="mdi mdi-close"/>
                         </label>}
-                    </Modal.Header>:""}
+                    </Modal.Header>
                     {children}
-                    {footer? <Modal.Footer>
+                    {footer=="true" && <Modal.Footer>
                         <Button btnType="cancel" btnSize="sm" fontSize={15} label={this.props.cancelText?this.props.cancelText:"Cancel"}  btnCallBack={this.close.bind(this)}/>
-                        <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} btnCallBack={this.props.submitCallBack}/>
-                    </Modal.Footer>:""}
+                        <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} />
+                    </Modal.Footer>}
                 </Modal>
             </div>
         );
