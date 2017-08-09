@@ -14,16 +14,17 @@ import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ChatBox from './ChatBox';
+import Rating from 'react-rating';
 
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
-      setCenter:false,
-      mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
+      setCenter: false,
+      mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
-      TimePickerTo:"",
+      TimePickerTo: "",
       switched: false,
       filterSort: "low-high",
       filterdropdown: false,
@@ -134,11 +135,13 @@ export default class RequestCard extends Component {
       svgEnd: '</text>%0A</svg>',
       distValue: { min: 2, max: 10 },
       priceValue: { min: 10, max: 70 },
+      ratingValue: 0,
+      inValidTime: false,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
- 
+
   componentWillMount() {
     this.updateDimensions();
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
@@ -148,21 +151,21 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    if (curr.refs[curr.props.index].offsetTop ) {
+    if (curr.refs[curr.props.index].offsetTop) {
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
     }
   }
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
-   TimePickerChange (type,value) {
-    if(type=="timeFrom"){
-      this.setState({ TimePickerFrom:value });
-    }else{
-      this.setState({ TimePickerTo:value });
+  TimePickerChange(type, value) {
+    if (type == "timeFrom") {
+      this.setState({ TimePickerFrom: value });
+    } else {
+      this.setState({ TimePickerTo: value });
     }
   }
-  
+
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
@@ -209,11 +212,11 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key) {
-    let update, newArray = [], centerLat=undefined,centerLng=undefined
+    let update, newArray = [], centerLat = undefined, centerLng = undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
         update = { ...val, isActive: true, pinImage: this.state.activeSvg + index + this.state.svgEnd }
-        centerLat = val.latitude, centerLng=val.longitude
+        centerLat = val.latitude, centerLng = val.longitude
       } else {
         update = { ...val, isActive: false, pinImage: this.state.svg + index + this.state.svgEnd }
       }
@@ -221,8 +224,8 @@ export default class RequestCard extends Component {
     })
     this.setState({
       jobCardDetails: newArray,
-      mapsCenter:{ lat: centerLat, lng: centerLng },
-      setCenter:true
+      mapsCenter: { lat: centerLat, lng: centerLng },
+      setCenter: true
     })
   }
   closeChat() {
@@ -253,13 +256,28 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
-  clearFilter(){
-    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({TimePickerFrom: undefined,TimePickerTo: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
-      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
-    }})
-  }
+  clearFilter(e) {
 
+    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
+    this.setState({
+      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, filterdropdown: false, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
+        "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
+      }
+    })
+  }
+  ratingOnChange(rating) {
+    this.setState({ ratingValue: rating })
+
+  }
+  filterSelect() {
+    if (this.state.TimePickerFrom > this.state.TimePickerTo) {
+      this.setState({ inValidTime: true })
+    } else {
+      this.setState({ inValidTime: false })
+    }
+
+    // console.log(this.state.TimePickerTo)
+  }
 
   render() {
     //console.log(this.state.currentWidth)
@@ -419,19 +437,19 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
-                                          value={this.state.TimePickerFrom}                                        
-                                          onChange={this.TimePickerChange.bind(this,"timeFrom")}
+                                          value={this.state.TimePickerFrom}
+                                          onChange={this.TimePickerChange.bind(this, "timeFrom")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
-                                          use12Hours                                      	
+                                          use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
-                                        value={this.state.TimePickerTo}                                        
-                                          onChange={this.TimePickerChange.bind(this,"timeTo")}
+                                          value={this.state.TimePickerTo}
+                                          onChange={this.TimePickerChange.bind(this, "timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
@@ -439,7 +457,7 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-to" />
-
+                                        <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 
 
@@ -457,15 +475,15 @@ export default class RequestCard extends Component {
                                             this.toggleSwitch = node;
                                           }} />
                                       </div>
-                                      <div className="f-card">
+                                      <div className="f-card star-rating">
                                         <h5>Rating</h5>
-                                        <ul className="rating">
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                        </ul>
+                                        <Rating
+                                          empty="mdi mdi-star-outline "
+                                          full="mdi mdi-star active-star"
+                                          fractions={2}
+                                          initialRate={this.state.ratingValue}
+                                          onChange={(e) => { this.ratingOnChange(e) }}
+                                        />
                                       </div>
 
                                       <div className="f-card ">
@@ -520,8 +538,8 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a onClick={this.clearFilter.bind(this)}>Clear</a>
-                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
+                                    <a onClick={(e) => { this.clearFilter(e) }}>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)}/>
                                   </div>
                                 </div>
                               </div>
@@ -540,7 +558,7 @@ export default class RequestCard extends Component {
                               <div>
                                 {map(this.state.jobCardDetails, (details, key) => {
                                   return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name}  rating={details.rating} distance={details.distance} reviews={details.review}
+                                    <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
                                       viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
                                   );
                                 })}
@@ -555,7 +573,7 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
-                          setCenter={this.state.setCenter}
+                            setCenter={this.state.setCenter}
                             center={this.state.mapsCenter}
                             infoPopUp={true}
                             markers={{ jobCardLocation }}
@@ -606,7 +624,7 @@ export default class RequestCard extends Component {
                               <div className="quotation-details">
                                 {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
                                   return (
-                                    cardValue.quotationDetails!= undefined && <div className="quotation-block" key={jobCardKey}>
+                                    cardValue.quotationDetails != undefined && <div className="quotation-block" key={jobCardKey}>
                                       {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
                                         return (
                                           <div>
