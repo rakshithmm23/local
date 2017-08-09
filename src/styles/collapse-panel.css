@@ -113,9 +113,10 @@
     right: 10px;
 }
 
-.collapse-panel .img-container {
-    height: 500px !important;
-}
+/* .collapse-panel .img-container {
+    min-height: 200px !important;
+    max-height: 500px !important;
+} */
 
 .collapse-panel .img-circle {
     cursor: pointer;

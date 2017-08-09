@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { filter, map, each } from 'lodash';
+import { filter, map, each,concat } from 'lodash';
 import TextInput from '../common/TextInput';
-import { Scrollbars } from 'react-custom-scrollbars';
+// import { Scrollbars } from 'react-custom-scrollbars';
 
 
 
@@ -254,9 +254,9 @@ class ProfileSteps extends Component {
                   </div>
                 </div>
               </div>
-              <Scrollbars className="img-container">
+              <div className="img-container row">
                 {carListView}
-              </Scrollbars>
+              </div>
             </div>}
         </section>
         <section className="collapse-panel selectModal">
