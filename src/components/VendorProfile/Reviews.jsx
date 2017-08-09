@@ -172,7 +172,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -195,7 +195,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -218,7 +218,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -241,7 +241,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -264,7 +264,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -287,7 +287,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
