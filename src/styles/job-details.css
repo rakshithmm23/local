@@ -5,10 +5,11 @@
 }
 
 .request-summary-body .data-time {
-    margin-bottom: 30px;
     border-radius: 3px;
     background-color: #F9FBFB;
     font-family: "CenturyGothic";
+    width: 97.2%;
+    margin: 0 15px 30px;
 }
 
 .repair-detail {
@@ -17,16 +18,18 @@
 }
 
 .request-summary-body .data-time title,
-.request-summary-body .data-time span{
+.request-summary-body .data-time span {
     font-family: CenturyGothic;
     font-size: 14px;
     line-height: 14px;
     display: block;
 }
-.request-summary-body .data-time title{
+
+.request-summary-body .data-time title {
     color: #454B51;
 }
-.request-summary-body .data-time span{
+
+.request-summary-body .data-time span {
     color: #717982;
 }
 
@@ -197,7 +200,7 @@
     .request-summary-body .more-details {
         border-left: none;
     }
-    .vendorDetails{
+    .vendorDetails {
         padding: 0;
     }
 }
