@@ -169,7 +169,7 @@
     height: 100px;
     width: 100px;
     display: inline-block;
-    position: relative
+    position: relative;
 }
 
 .request-summary-body .uploads .figure .upload-images img {

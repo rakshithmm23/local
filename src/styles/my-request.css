@@ -321,7 +321,8 @@ input[type="color"][list] {
 
 .quotes-right-tabs li.active {
     border-bottom-color: #E50000;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
+    font-weight: bold;
 }
 
 .close-Tab {
@@ -579,6 +580,9 @@ input[type="color"][list] {
     font-size: 14px;
     font-weight: normal;
 }
+.quotation-head ul li span{
+    color: #717982;
+}
 
 .quotation-block {
     padding: 10px 20px;
@@ -587,7 +591,8 @@ input[type="color"][list] {
 .quotation-block h4,
 .quotation-total label {
     color: #454B51;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
+    font-weight: bold;
     font-size: 16px;
     margin-bottom: 15px;
 }
