@@ -161,7 +161,7 @@ export default class SignUp extends Component {
                       <label htmlFor="agreeCheckbox" className="agreelabel">
                         <input type="checkbox" onChange={(e) => {this.setState({'terms': !e.target.checked}); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }} checked={this.formData.terms}/>
                           By signing up, you agree to the
-                          <a onClick={()=>{this.props.router.push('/terms')}} className="blue-text"> Terms and Conditions </a>, and <a  className="blue-text">Privacy Policy</a>.
+                          <a onClick={()=>{this.props.router.push('/terms')}} className="blue-text"> Terms and Conditions</a>, and <a  className="blue-text">Privacy Policy</a>.
                       </label>
                     </span>
                     <span className="error-text">{'Please agree to the terms and condition'}</span>
