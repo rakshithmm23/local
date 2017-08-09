@@ -58,6 +58,10 @@
     padding-left: 245px;
 }
 
+.vendor-cover-header .rating{
+    justify-content: left;
+}
+
 .vendor-cover-header h1 {
     color: #FFFFFF;
     font-family: CenturyGothic_bold;

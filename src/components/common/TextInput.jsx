@@ -76,7 +76,7 @@ export default class TextInput extends Component {
             onChange={(e) => this.handleInputChange(e, type)}
             required/>
           {type === "password" && <span className="input-icon" onClick={(e) => {e.preventDefault(); this.setState({'passwordVisible': !this.state.passwordVisible})}}>
-            {this.state.passwordVisible ? <i className="mdi mdi-eye" /> : <i className="mdi mdi-eye-off" /> }
+            {this.state.passwordVisible ? <i className="mdi mdi-eye-off" /> : <i className="mdi mdi-eye" /> }
           </span>}
           {this.state.showValidationError && validationError && <span className="error-text">{validationError}</span>}
           <label>{label}</label>

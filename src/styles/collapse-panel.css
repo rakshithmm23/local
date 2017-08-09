@@ -40,6 +40,7 @@
     font-family: CenturyGothic;
     font-size: 18px;
     line-height: 18px;
+    font-weight: normal;
 }
 
 .panel-head i {
@@ -395,9 +396,19 @@
 }
 
 .car-wash .collapse-panel .left {
-    border-right: 1px solid rgba(148, 157, 165, 0.4);
+    /* border-right: 1px solid rgba(148, 157, 165, 0.4); */
     /*margin-top: 44px;*/
     margin-top: 10px;
+    position: relative;
+}
+.car-wash .collapse-panel .left:after{
+    content:'';
+    position: absolute;
+    top: 20px;
+    right: -1px;
+    width: 1px;
+    height: 100%;
+    background: rgba(148, 157, 165, 0.4);
 }
 
 .panel-content .form-section {
@@ -428,7 +439,7 @@
     border-radius: 0;
     padding: 0;
     font-size: 14px;
-    height: 48px;
+    height: 32px;
     margin: 10px 0;
     width: 100%
 }
@@ -437,6 +448,17 @@
     /*margin-top: 53px;*/
     margin-top: 10px;
     padding-left: 20px;
+    position: relative;
+}
+
+.car-wash .collapse-panel .right:before{
+    content:'';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(148, 157, 165, 0.4);
 }
 
 .collapse-panel .panel-sub-title {
@@ -714,7 +736,7 @@
         width: 95px;
     }
     .filterSection .filterLabel label{
-      padding-left: 5px;
+        padding-left: 5px;
     }
 }
 
@@ -724,10 +746,10 @@
 
 /*
 .rc-time-picker-panel {
-  left: 476.5px !important;
-  top: 1188px !important;
+    left: 476.5px !important;
+    top: 1188px !important;
 }
 
 .react-datepicker__tether-element {
-  transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
+    transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
 }*/

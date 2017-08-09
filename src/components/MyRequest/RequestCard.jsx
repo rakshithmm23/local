@@ -594,21 +594,21 @@ export default class RequestCard extends Component {
                 <div className="row request-summary-header">
                   <div className="col-md-6 col-sm-12 col-xs-12 pad0">
                     <div className="request-summary-tab">
-                      <div className="col-md-6 col-sm-6 col-xs-6">
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
                           <span>Job Details</span>
                         </div>
                       </div>
-                      <div className="col-md-6 col-sm-6 col-xs-6">
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
+                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quote":"Quotes"}</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="row request-summary-body">
-                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails container">
+                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails">
                     <JobDetails serviceTypes={this.jobData[0].serviceTypes} statusIndicator={this.jobData[0].statusIndicator}/>
                   </div>}
                   {this.state.jobUpdates == "quotes" && this.jobData[0].statusIndicator!="waiting" &&

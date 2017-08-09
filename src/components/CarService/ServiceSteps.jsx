@@ -294,7 +294,7 @@ class ServiceSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
+                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
 
@@ -329,7 +329,7 @@ class ServiceSteps extends Component {
                                 </div>);
                             })}
                         </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
+                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
                             <Modal.Body>
                                 <p className="info-text">{carWashCategory.modalText}</p>
 
@@ -377,6 +377,7 @@ class ServiceSteps extends Component {
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
+                                            <option value="select">Select Car Brand</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="saab">Saab</option>
                                             <option value="mercedes">Mercedes</option>
@@ -433,10 +434,11 @@ class ServiceSteps extends Component {
                                     <h4 className="panel-sub-title">Preffered location</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
-                                            <option value="volvo">Marathalli</option>
-                                            <option value="saab">Mg Road</option>
-                                            <option value="mercedes">Rajajinagar</option>
-                                            <option value="audi">Mysore Road</option>
+                                            <option value="select">Select Location</option>
+                                            <option value="marathalli">Marathalli</option>
+                                            <option value="mgroad">Mg Road</option>
+                                            <option value="rajajinagar">Rajajinagar</option>
+                                            <option value="mysoreroad">Mysore Road</option>
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
