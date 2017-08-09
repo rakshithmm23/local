@@ -91,7 +91,7 @@ class CardType extends Component {
     }
 
 
-    render() {
+    render() { 
         const { cardDetails, jobLeftGridValue, jobRightGridValue, messageRoute } = this.props;
         return (
             <div className={"job-updates " + cardDetails.statusIndicator} >
