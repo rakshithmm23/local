@@ -151,7 +151,7 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    if (curr) {
+    if (curr.refs[curr.props.index].offsetTop) {
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
     }
   }
@@ -170,16 +170,16 @@ export default class RequestCard extends Component {
     this.setState({ jobUpdates: val });
   }
   bodyClick(e) {
-    // if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
-    //   this.setState({ filterdropdown: true, sortBydropdown: false })
-    // } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
-    //   this.setState({ sortBydropdown: true, filterdropdown: false })
-    // } else if (e.target.closest('.rc-time-picker-panel')) {
-    //   this.setState({ filterdropdown: true, sortBydropdown: false })
-    // }
-    // else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
-    //   this.setState({ filterdropdown: false, sortBydropdown: false })
-    // }
+    if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
+      this.setState({ filterdropdown: true, sortBydropdown: false })
+    } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
+      this.setState({ sortBydropdown: true, filterdropdown: false })
+    } else if (e.target.closest('.rc-time-picker-panel')) {
+      this.setState({ filterdropdown: true, sortBydropdown: false })
+    }
+    else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
+      this.setState({ filterdropdown: false, sortBydropdown: false })
+    }
   }
   updateDimensions() {
     const windowWidth = this.windowWidth();
@@ -256,18 +256,11 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
-  showFilterDropdown() {
-    this.setState({filterdropdown:!this.state.filterdropdown})
-  }
-  sortdropdown(){
-    debugger
-    this.setState({sortBydropdown:!this.state.sortBydropdown})
-  }
-  clearFilter() {
+  clearFilter(e) {
+
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.setState({
-      filterdropdown: true,
-      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
+      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined,  distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       }
     })
@@ -285,7 +278,6 @@ export default class RequestCard extends Component {
 
     // console.log(this.state.TimePickerTo)
   }
-  
 
   render() {
     //console.log(this.state.currentWidth)
@@ -356,7 +348,7 @@ export default class RequestCard extends Component {
                           <span>5 Results Found</span>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="small" id="dropdown-size-small" onToggle={this.sortdropdown.bind(this)} open={this.state.sortBydropdown} noCaret title={
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
                               <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-vertical" />
                                 <label>Sort by</label>
@@ -403,7 +395,7 @@ export default class RequestCard extends Component {
                           </div>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={this.showFilterDropdown.bind(this)} noCaret id="dropdown-size-large" title={
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
@@ -546,8 +538,8 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a onClick={(e) => { e.preventDefault();this.clearFilter(e) }}>Clear</a>
-                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)} />
+                                    <a onClick={(e) => { this.clearFilter(e) }}>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)}/>
                                   </div>
                                 </div>
                               </div>
