@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Media } from "react-bootstrap";
 import { FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import Scroll from 'react-scroll';
 
 export default class ChatBox extends Component {
     constructor(props) {
@@ -105,71 +107,22 @@ export default class ChatBox extends Component {
             }
           ]
         },
-        inboxList: [
-          {
-            vendorName: "Ayaz's Buick",
-            vendorTitle: "Buddy's Car Service",
-            requestType: 'Car Wash',
-            vendorId: 1,
-            message: "Lorem ipsum dolor sit amet, consectetuer",
-            updatedAt: "3 hours ago",
-          },
-          {
-            vendorName: "Ayaz's Buick",
-            vendorTitle: "Buddy's Car Service",
-            requestType: 'Car Wash',
-            vendorId: 2,
-            message: "Lorem ipsum dolor sit amet, consectetuer",
-            updatedAt: "3 hours ago",
-            unreadMessage: 1
-          },
-          {
-            vendorName: "Ayaz's Buick",
-            vendorTitle: "Buddy's Car Service",
-            requestType: 'Car Wash',
-            vendorId: 3,
-            message: "Lorem ipsum dolor sit amet, consectetuer",
-            updatedAt: "3 hours ago",
-            unreadMessage: 0
-          }
-        ],
         selectedVendorId: 1,
         quotesMessage: ''
       };
     }
-    renderQuotes(){
-      const inboxListView =  this.state.inboxList.map((inbox, index) => {
-        return (
-          <div className={inbox.vendorId === this.state.selectedVendorId ? "messageCard active" : "messageCard"} key={index} onClick={(e) => {e.preventDefault(); this.onInboxSwitch(inbox.vendorId)}}>
-            <Media>
-                <Media.Left>
-                    <img width={36} height={36} src="../../images/car.jpg" alt="Image" />
-                </Media.Left>
-                <Media.Body>
-                    <Media.Heading>{inbox.vendorName}</Media.Heading>
-                    <h4 className="messenger-name">{inbox.requestType}</h4>
-                    <span className="messenger-firm">{inbox.vendorTitle}</span>
-                    <p><span>You:</span> {inbox.message}</p>
-                    <div className="option_time">
-                        <div className="three-dots-icon">
-                            <DropdownButton bsSize="xsmall" footer="show" id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                <MenuItem eventKey="Share">Share Offer Details</MenuItem>
-                                <MenuItem eventKey="Vendor Profile">View Vendor Profile</MenuItem>
-                                <MenuItem eventKey="Email Vendor">Email Vendor</MenuItem>
-                            </DropdownButton>
-                            <span className="messageTime">{inbox.updatedAt}</span>
-                        </div>
-                    </div>
-                    {inbox.unreadMessage ? <div className="newMessage_count">
-                        {inbox.unreadMessage}
-                    </div>: ''}
-                </Media.Body>
-            </Media>
-        </div>
-        )
-      });
-      return inboxListView;
+    componentDidMount() {
+        const node = ReactDOM.findDOMNode(this.messagesEnd);
+        node.scrollTop=node.clientHeight;
     }
+    // componentDidUpdate(prevProps, prevState) { 
+    //     console.log(Object.keys(this.state.messageList).length,this.state.messageList)
+    //     if(Object.keys(prevState.messageList).length < Object.keys(this.state.messageList).length){
+    //         debugger
+    //     }
+    // }
+    
+    
     renderMessages(selectedVendorMessageList){
       const messageView = selectedVendorMessageList.map((messageObj, index) => {
         let messageClass = 'c-message';
@@ -185,6 +138,7 @@ export default class ChatBox extends Component {
             messageClass += ' message-continuation';
           }
         }
+        
         return (
           <div className={messageClass} key={index}>
             <div className="profile-head">
@@ -208,6 +162,10 @@ export default class ChatBox extends Component {
     }
     sendNewMessage(message){
       if (this.state.selectedVendorId && message) {
+
+        const node = ReactDOM.findDOMNode(this.messagesEnd);
+        node.scrollTop=node.clientHeight;
+
         let currentTime = new Date();
         currentTime = currentTime.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
         const newMessage = {
@@ -225,9 +183,8 @@ export default class ChatBox extends Component {
         const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
         return (
             <div className="row">
-                
                     <div className={this.props.hide}>
-                        <div className="quotes-chat-area full-width">
+                        <div className="quotes-chat-area" id="quotes-chat-area" ref={(el) => { this.messagesEnd = el; }}>
                           {messagesView}
                         </div>
                         <div className="quotes-message-footer">

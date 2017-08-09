@@ -148,7 +148,7 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    if (curr != undefined) {
+    if (curr.refs[curr.props.index].offsetTop ) {
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
     }
   }
@@ -634,7 +634,7 @@ export default class RequestCard extends Component {
                                 </div>
                               </div>
                             </div>
-                            <ChatBox hide={this.state.messages == true?"quotes-message-Section" : "quotes-message-Section hide"}/>
+                            {this.state.messages && <ChatBox />}
                             {/* <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                               <div className="quotes-chat-area">
 
