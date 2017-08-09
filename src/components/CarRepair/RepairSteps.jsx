@@ -17,6 +17,8 @@ class RepairSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            accidentRadioBtn:true,
+            generalRadioBtn:false,
             uploadImgSize: 0,
             policeReportImgSize: 0,
             rationCardImgSize: 0,
@@ -500,6 +502,8 @@ class RepairSteps extends Component {
 
     }
     render() {
+            debugger
+        
         const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
                 <div className='upload-box-wrapper box-shadow' index={index}>
@@ -679,13 +683,13 @@ class RepairSteps extends Component {
                                     <div className="radio-btn">
                                         <div className="radio-style">
                                             <label>
-                                                <input type="radio" name="radio" />
-                                                <i className="mf-radio-button" /><span>Accident</span>
+                                                <input type="radio" name="radio" checked={this.state.accidentRadioBtn} onChange={()=>this.setState({accidentRadioBtn:true,generalRadioBtn:false})}/>
+                                                <i className="mf-radio-button" /><span>Accident123</span>
                                             </label>
                                         </div>
                                         <div className="radio-style">
                                             <label>
-                                                <input type="radio" name="radio" />
+                                                <input type="radio" name="radio" checked={this.state.generalRadioBtn} onChange={()=>this.setState({accidentRadioBtn:false,generalRadioBtn:true})}/>
                                                 <i className="mf-radio-button" /><span>General</span>
                                             </label>
                                         </div>
@@ -766,56 +770,54 @@ class RepairSteps extends Component {
                                         </div>
                                     </div>
                                     <span className={this.state.uploadImageErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, image exceeds the file size 20mb.
-                                            or you uploaded wrong image type.</p>
+                                        <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
                                     </span>
                                 </div>
 
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">police report</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="policeReport" fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
-                                            {policeReportView}
+                                {this.state.accidentRadioBtn && <div className="clearfix">
+                                    <div className="form-section uploads">
+                                        <div className="row">
+                                            <h4 className="panel-sub-title">police report</h4>
+                                            <div className="model-select upload">
+                                                <Upload id="policeReport" fileUpload={(e) => { this.uploadImage(e, 'policeReport') }} />
+                                                {policeReportView}
+                                            </div>
                                         </div>
+                                        <span className={this.state.policeReportErrText ? "image-upload-error" : "image-upload-error hide"}>
+                                            <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ policeReportErrText: false })} />
+                                        </span>
                                     </div>
-                                    <span className={this.state.policeReportErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, image exceeds the file size 20mb.
-                                            or you uploaded wrong image type.</p>
-                                        <i className="mdi mdi-close" onClick={() => this.setState({ policeReportErrText: false })} />
-                                    </span>
-                                </div>
 
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">ration card</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="rationCard" fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
-                                            {rationCardView}
+                                    <div className="form-section uploads">
+                                        <div className="row">
+                                            <h4 className="panel-sub-title">ration card</h4>
+                                            <div className="model-select upload">
+                                                <Upload id="rationCard" fileUpload={(e) => { this.uploadImage(e, 'rationCard') }} />
+                                                {rationCardView}
+                                            </div>
                                         </div>
+                                        <span className={this.state.rationCardErrText ? "image-upload-error" : "image-upload-error hide"}>
+                                            <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ rationCardErrText: false })} />
+                                        </span>
                                     </div>
-                                    <span className={this.state.rationCardErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, image exceeds the file size 20mb.
-                                            or you uploaded wrong image type.</p>
-                                        <i className="mdi mdi-close" onClick={() => this.setState({ rationCardErrText: false })} />
-                                    </span>
-                                </div>
 
-                                <div className="form-section uploads">
-                                    <div className="row">
-                                        <h4 className="panel-sub-title">driving licence</h4>
-                                        <div className="model-select upload">
-                                            <Upload id="drivingLicence" fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
-                                            {drivingLicenceView}
+                                    <div className="form-section uploads">
+                                        <div className="row">
+                                            <h4 className="panel-sub-title">driving licence</h4>
+                                            <div className="model-select upload">
+                                                <Upload id="drivingLicence" fileUpload={(e) => { this.uploadImage(e, 'drivingLicence') }} />
+                                                {drivingLicenceView}
+                                            </div>
                                         </div>
+                                        <span className={this.state.drivingLicenceErrText ? "image-upload-error" : "image-upload-error hide"}>
+                                            <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
+                                            <i className="mdi mdi-close" onClick={() => this.setState({ drivingLicenceErrText: false })} />
+                                        </span>
                                     </div>
-                                    <span className={this.state.drivingLicenceErrText ? "image-upload-error" : "image-upload-error hide"}>
-                                        <p>Sorry, image exceeds the file size 20mb.
-                                            or you uploaded wrong image type.</p>
-                                        <i className="mdi mdi-close" onClick={() => this.setState({ drivingLicenceErrText: false })} />
-                                    </span>
-                                </div>
+                                </div>}
 
                             </div>
                         </div>
