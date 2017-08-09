@@ -18,6 +18,9 @@
 .messageBot .quotes-chat-area {
     padding-top: 150px;
 }
+/* .messageBot .quotes-chat-area.full-width {
+    padding-top: 0;
+} */
 
 .messageBot .quotes-message-footer {
     bottom: 0;

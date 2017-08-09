@@ -13,6 +13,7 @@ import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import ChatBox from './ChatBox';
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -633,8 +634,8 @@ export default class RequestCard extends Component {
                                 </div>
                               </div>
                             </div>
-                            {/*ChatBox*/}
-                            <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                            <ChatBox hide={this.state.messages == true?"quotes-message-Section" : "quotes-message-Section hide"}/>
+                            {/* <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                               <div className="quotes-chat-area">
 
                                 <div className="c-message message-in">
@@ -726,7 +727,7 @@ export default class RequestCard extends Component {
                                   </InputGroup>
                                 </FormGroup>
                               </div>
-                            </div>
+                            </div> */}
                           </Scrollbars>
                         </div>
                       </div>
