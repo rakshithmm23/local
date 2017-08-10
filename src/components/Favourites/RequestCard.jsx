@@ -33,7 +33,7 @@ export default class RequestCard extends Component {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       },
       open: false,
-      jobUpdates: "quotes",
+      jobUpdates: "details",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',

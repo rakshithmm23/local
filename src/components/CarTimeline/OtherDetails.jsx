@@ -36,6 +36,10 @@ export default class OtherDetails extends Component {
                         <span>{this.props.insurancepolicynumber ? this.props.insurancepolicynumber : '-'}</span>
                     </li>
                     <li>
+                        <label>Vehicle Reg. Number</label>
+                        <span>{this.props.registrationnumber ? this.props.registrationnumber : '-'}</span>
+                    </li>
+                    <li>
                         <label>State</label>
                         <span>{this.props.state ? this.props.state : '-'}</span>
                     </li>

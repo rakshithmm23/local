@@ -9,7 +9,7 @@ export function setCarProfileAction(carData, isEditProfile, profileId){
       type: types.HIDE_ERROR_MESSAGE
     });
     const formData = new FormData();
-    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos', 'insurancepolicynumber', 'insuranceprovider', 'carnotes'];
+    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos', 'insurancepolicynumber', 'insuranceprovider', 'carnotes', 'registrationnumber'];
 
   Object.keys(carData).map((value)=> {
     if(carData[value] && mandateFields.indexOf(value) !== -1) {
