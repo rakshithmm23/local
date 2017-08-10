@@ -70,8 +70,8 @@ class ProfileSteps extends Component {
           this.setState({
             'selectError': false,
             'manufacturerTabVisible': false,
-            'modelTabVisible': false,
-            'otherDetailsTabVisible': true
+            'modelTabVisible': true,
+            'otherDetailsTabVisible': false
           });
         } else {
           this.setState({ 'selectError': false });
@@ -192,9 +192,9 @@ class ProfileSteps extends Component {
         const carYear = car.year;
         return carYear == year;
       });
-      this.setState({ 'filteredCarModelList': carModelList });
+      this.setState({ 'filteredCarModelList': carModelList ,activeModel:null});
     } else {
-      this.setState({ 'filteredCarModelList': this.state.carModel });
+      this.setState({ 'filteredCarModelList': this.state.carModel,activeModel:null });
     }
   }
 
@@ -214,7 +214,7 @@ class ProfileSteps extends Component {
       return (
         <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => {
           this.setState({ carModel: carItem.carmodel, filteredCarModelList: carItem.carmodel });
-          this.formData['year'] = 1;
+          this.formData['year'] = null;
           this.activeLogo(carItem.name);
           this.tabOpen('modelTabVisible');
         }} key={key}>
@@ -325,14 +325,14 @@ class ProfileSteps extends Component {
                 <div className="row car-profile">
                   <h4 className="panel-sub-title">car profile</h4>
                   <div className="col-md-6 padLeft0">
-                    <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} showValidationError={this.errors['name']} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
+                    <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                   </div>
                   <div className="col-md-6 padRight0">
-                    <TextInput label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
+                    <TextInput showValidationError={this.errors['plate_no']} label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                       onChange={this.onFieldChange.bind(this)} />
                   </div>
                   <div className="col-md-6 padLeft0">
-                    <TextInput label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}
+                    <TextInput showValidationError={this.errors['mileage']} label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}
                       onChange={this.onFieldChange.bind(this)} />
                   </div>
                 </div>
@@ -355,7 +355,7 @@ class ProfileSteps extends Component {
                 <div className="row car-notes">
                   <h4 className="panel-sub-title">Car Notes (Optional)</h4>
                   <div className="col-md-6 padLeft0">
-                    <TextInput label="Additional Details About The Car (Optional)" name="carnotes" type="text" validationError="Enter a valid text" onChange={this.onFieldChange.bind(this)} value={this.formData.carnotes} />
+                    <TextInput label="Additional Details About The Car (Optional)" name="carnotes" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.carnotes} />
                   </div>
                 </div>
                 <div className="next-button">
