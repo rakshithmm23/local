@@ -38,7 +38,7 @@ class StatusBar extends Component {
         }
         const { statusCount } = this.props;
         const popoverClick = (
-            <Popover id="popover-trigger-click" bsClass="status-popup">
+            <Popover id="popover-trigger-click-root-close" bsClass="status-popup">
 
                 <div className=" " >
                     <div className="iconHolder"><span className="statusIcon"></span></div>
@@ -50,7 +50,7 @@ class StatusBar extends Component {
         const stepCount = map(range(statusCount - 1), (stepVal, key) => {
             if (key != 0 && key - 1 != statusCount) {
                 return (
-                    <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} key={key}>
+                    <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} key={key}>
                         <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key} onClick={(e)=>{this.stepClick(e)}} />
                     </OverlayTrigger>
                 )
@@ -62,11 +62,11 @@ class StatusBar extends Component {
                 <div className="custom-dots" id="custom-dots">
                     <div className="main-line" />
                     <div>
-                        <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} >
+                        <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} >
                             <span className={this.state.activeButton == 0 ? "dots active" : "dots"}  onClick={(e)=>{this.stepClick(e)}}/>
                         </OverlayTrigger>
                         {stepCount}
-                        <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} >
+                        <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} >
                             <span className={this.state.activeButton == -10 ? "dots active" : "dots"} onClick={(e)=>{this.stepClick(e)}}/>
                         </OverlayTrigger>
                     </div>
