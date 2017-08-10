@@ -141,12 +141,12 @@
   content: "";
   position: absolute;
   left: 48%;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  
-  border-top: 10px solid #f00;
+  border-top: 10px solid #e0e0e0;
+  bottom: -10px;
 }
 
 .iconHolder {
@@ -443,7 +443,7 @@
 
 
 /*.custom-dots .dots:nth-child(2){
-margin-left:0 !important;
+  margin-left:0 !important;
 }*/
 
 .custom-dots .dots:last-child {
