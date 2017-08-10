@@ -24,7 +24,8 @@ class ProfileSteps extends Component {
       submissionError: false,
       selectError: false,
       carList: [],
-      carModel: []
+      carModel: [],
+      isLoading: true
     };
     this.initialFormData = {
       'make': '',
@@ -129,7 +130,7 @@ class ProfileSteps extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.carProfileReducer && nextProps.carProfileReducer.carMakeAndModels) {
-      this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels });
+      this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels, isLoading:false });
     }
     const { carProfileReducer } = nextProps;
     if (carProfileReducer.currentComponentKey === '/car-profiles/create') {
@@ -260,9 +261,15 @@ class ProfileSteps extends Component {
                   </div>
                 </div>
               </div>
+              { !this.state.isLoading ?
               <div className="img-container row">
                 {carListView}
-              </div>
+              </div> :
+              <div className="img-container row">
+                <div className="loader">
+                  <img src="../../images/preloader.gif" alt="" />
+                </div>
+              </div>}
             </div>}
         </section>
         <section className="collapse-panel selectModal">
@@ -341,7 +348,7 @@ class ProfileSteps extends Component {
                   <div className="col-md-6 padLeft0">
                     <TextInput label="Vehicle Reg. Number" name="registrationnumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.registrationnumber}/>
                   </div>
-                  <div className="col-md-6 padLeft0">
+                  <div className="col-md-6 padRight0">
                     <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
                   </div>
                 </div>
