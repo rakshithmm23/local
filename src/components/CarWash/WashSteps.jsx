@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import { each, map, find } from 'lodash';
+import { each, map, filter, size, cloneDeep } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
@@ -20,267 +20,326 @@ class WashSteps extends Component {
             // startDate: moment(),
             step1Panel: true,
             step2Panel: false,
-            showModal: false,
-            carWashCategories: [
-                {
-                    id: 1,
-                    active: false,
-                    heading: "Brakes & Exhaust",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-5.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 2,
-                    active: false,
-                    heading: "Basic Wash",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-2.png',
-                    modalText:"Basic Wash Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-
-                }, {
-                    id: 3,
-                    active: false,
-                    heading: "Awesome Wash & Detail",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-4.png',
-                    modalText:"Awesome Wash & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 4,
-                    active: false,
-                    heading: "Wash & Shine",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-1.png',
-                    modalText:"Wash & Shine Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 5,
-                    active: false,
-                    heading: "Totally Awesome & Detail",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-3.png',
-                    modalText:"Totally Awesome & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 6,
-                    active: false,
-                    heading: "Total detail",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-5.png',
-                    modalText:"Total detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 7,
-                    active: false,
-                    heading: "AC Dust Sanitization",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-4.png',
-                    modalText:"AC Dust Sanitization Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 8,
-                    active: false,
-                    heading: "Monthly Package",
-                    checkedCategoryCount: 0,
-                    showModal:false,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-2.png',
-                    modalText:"Monthly Package Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
+            catDescriptionModalVisible: false,
+            selectedCarCategoryForModel: undefined,
+            carWashCategories: {
+              1: {
+                id: 1,
+                name: "Brakes & Exhaust",
+                image: '../../images/auto-service-icons-5.png',
+                description: "Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  1: {
+                    name: 'Test 1',
+                    id: 1
+                  },
+                  2: {
+                    name: 'Subcategory 2',
+                    id: 2
+                  },
+                  3: {
+                    name: 'abc 3',
+                    id: 3
+                  },
+                  4: {
+                    name: 'test 4',
+                    id: 4
+                  },
+                  5: {
+                    name: 'Subcategory 5',
+                    id: 5
+                  },
+                  6: {
+                    name: 'Subcategory 6',
+                    id: 6
+                  }
                 }
-
-            ],
-
+              },
+              2: {
+                id: 2,
+                name: "Basic Wash",
+                image: '../../images/auto-service-icons-2.png',
+                description: "Basic Wash Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  7: {
+                    name: 'Subcategory 1',
+                    id: 7
+                  },
+                  8: {
+                    name: 'Subcategory 2',
+                    id: 8
+                  },
+                  9: {
+                    name: 'Subcategory 3',
+                    id: 9
+                  },
+                  10: {
+                    name: 'Subcategory 4',
+                    id: 10
+                  },
+                  11: {
+                    name: 'Subcategory 5',
+                    id: 11
+                  },
+                  12: {
+                    name: 'Subcategory 6',
+                    id: 12
+                  }
+                }
+              },
+              3: {
+                id: 3,
+                name: "Awesome Wash & Detail",
+                image: '../../images/auto-service-icons-4.png',
+                description: "Awesome Wash & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  13: {
+                    name: 'Subcategory 1',
+                    id: 13
+                  },
+                  14: {
+                    name: 'Subcategory 2',
+                    id: 14
+                  },
+                  15: {
+                    name: 'Subcategory 3',
+                    id: 15
+                  },
+                  16: {
+                    name: 'Subcategory 4',
+                    id: 16
+                  },
+                  17: {
+                    name: 'Subcategory 5',
+                    id: 17
+                  },
+                  18: {
+                    name: 'Subcategory 6',
+                    id: 18
+                  }
+                }
+              },
+              4: {
+                id: 4,
+                name: "Wash & Shine",
+                image: '../../images/auto-service-icons-1.png',
+                description: "Wash & Shine Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  19: {
+                    name: 'Subcategory 1',
+                    id: 19
+                  },
+                  20: {
+                    name: 'Subcategory 2',
+                    id: 20
+                  },
+                  21: {
+                    name: 'Subcategory 3',
+                    id: 21
+                  },
+                  22: {
+                    name: 'Subcategory 4',
+                    id: 22
+                  },
+                  23: {
+                    name: 'Subcategory 5',
+                    id: 23
+                  },
+                  24: {
+                    name: 'Subcategory 6',
+                    id: 24
+                  }
+                }
+              },
+              5: {
+                id: 5,
+                name: "Totally Awesome & Detail",
+                image: '../../images/auto-service-icons-3.png',
+                description: "Totally Awesome & Detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  25: {
+                    name: 'Subcategory 1',
+                    id: 25
+                  },
+                  26: {
+                    name: 'Subcategory 2',
+                    id: 26
+                  },
+                  27: {
+                    name: 'Subcategory 3',
+                    id: 27
+                  },
+                  28: {
+                    name: 'Subcategory 4',
+                    id: 28
+                  },
+                  29: {
+                    name: 'Subcategory 5',
+                    id: 29
+                  },
+                  30: {
+                    name: 'Subcategory 6',
+                    id: 30
+                  }
+                }
+              },
+              6: {
+                id: 6,
+                name: "Total detail",
+                image: '../../images/auto-service-icons-5.png',
+                description: "Total detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  31: {
+                    name: 'Subcategory 1',
+                    id: 31
+                  },
+                  32: {
+                    name: 'Subcategory 2',
+                    id: 32
+                  },
+                  33: {
+                    name: 'Subcategory 3',
+                    id: 33
+                  },
+                  34: {
+                    name: 'Subcategory 4',
+                    id: 34
+                  },
+                  35: {
+                    name: 'Subcategory 5',
+                    id: 35
+                  },
+                  36: {
+                    name: 'Subcategory 6',
+                    id: 36
+                  }
+                }
+              },
+              7: {
+                id: 7,
+                name: "AC Dust Sanitization",
+                image: '../../images/auto-service-icons-4.png',
+                description: "AC Dust Sanitization Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  37: {
+                    name: 'Subcategory 1',
+                    id: 37
+                  },
+                  38: {
+                    name: 'Subcategory 2',
+                    id: 38
+                  },
+                  39: {
+                    name: 'Subcategory 3',
+                    id: 39
+                  },
+                  40: {
+                    name: 'Subcategory 4',
+                    id: 40
+                  },
+                  41: {
+                    name: 'Subcategory 5',
+                    id: 41
+                  },
+                  42: {
+                    name: 'Subcategory 6',
+                    id: 42
+                  }
+                }
+              },
+              8: {
+                id: 8,
+                name: "Monthly Package",
+                image: '../../images/auto-service-icons-2.png',
+                description: "Monthly Package Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  43: {
+                    name: 'Subcategory 1',
+                    id: 43
+                  },
+                  44: {
+                    name: 'Subcategory 2',
+                    id: 44
+                  },
+                  45: {
+                    name: 'Subcategory 3',
+                    id: 45
+                  },
+                  46: {
+                    name: 'Subcategory 4',
+                    id: 46
+                  },
+                  47: {
+                    name: 'Subcategory 5',
+                    id: 47
+                  },
+                  48: {
+                    name: 'Subcategory 6',
+                    id: 48
+                  }
+                }
+              }
+            },
+            visibleCategory: undefined
         };
         this.handleChange = this.handleChange.bind(this);
 
     }
+
+    componentDidMount() {
+      this.setState({
+        'filteredCarWashCategories': cloneDeep(this.state.carWashCategories)
+      })
+    }
+
+    filterCarType(searchTerm) {
+      const filterKeyword = searchTerm.toLowerCase();
+      if (filterKeyword) {
+        const carCategories = cloneDeep(this.state.carWashCategories);
+        let filteredCarWashCategories = {};
+        each (carCategories, (carDetails) => {
+          const carName = carDetails.name.toLowerCase();
+          if (carName.indexOf(filterKeyword) > -1 ) {
+            filteredCarWashCategories[carDetails.id] = carDetails
+          } else {
+            let modifiedCarDetails = cloneDeep(carDetails);
+            let filteredSubCategory = {};
+            each (carDetails.subCategories, (subCategory) => {
+              const subCategoryName = subCategory.name.toLowerCase();
+              if (subCategory.checked) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              } else if (subCategoryName.indexOf(filterKeyword) > -1) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              }
+            });
+            if (size(filteredSubCategory)) {
+              modifiedCarDetails['subCategories'] = filteredSubCategory;
+              filteredCarWashCategories[carDetails.id] = modifiedCarDetails;
+            }
+          }
+        });
+        this.setState({
+          'filteredCarWashCategories': filteredCarWashCategories
+        })
+      } else {
+        this.setState({
+          'filteredCarWashCategories': cloneDeep(this.state.carWashCategories)
+        })
+      }
+    }
+
     handleChange(date) {
         this.setState({
             startDate: date
         });
     }
+
     openCategory(id) {
-        let newCat = [];
-        map(this.state.carWashCategories, (category) => {
-            let cat = { ...category };
-            if (category.id == id) {
-                cat.active = !cat.active;
-                cat.showModal = false;
-            } else {
-                cat.active = false;
-                cat.showModal = false;
-            }
-            newCat.push(cat);
-        })
-        this.setState({
-            carWashCategories: newCat
-        });
+      this.setState({
+        'visibleCategory': id
+      })
     }
+
     hidePanel(panel) {
         if (panel == 'step1') {
             this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false  });
@@ -288,121 +347,76 @@ class WashSteps extends Component {
             this.setState({ step1Panel: false, step2Panel: !this.state.step2Panel });
         }
     }
-    showModal(e,id){
+
+    showModal(e, categoryDetails){
         e.preventDefault();
-        let updateVal=[...this.state.carWashCategories]
-        each(updateVal, function(value) {
-            value.showModal = false;
-            if(value.id == id){
-                value.showModal = !value.showModal;
-            }
-        });
-        this.setState({carWashCategories:updateVal})
-    }
-
-    chageCheckoxState(e,val) {
-        let updateVal = [...this.state.carWashCategories], checkedCount = 0;
-
-        find(updateVal, (washCategory) => {
-            if (washCategory.active) {
-                find(washCategory.categories, (subCategory) => {
-                    if (subCategory.name == val.name && subCategory.id == val.id) {
-                        subCategory.checked = !subCategory.checked;
-                    }
-                    if (subCategory.checked) {
-                        checkedCount++;
-                    }
-                });
-                washCategory.checkedCategoryCount = checkedCount;
-            }
-        });
         this.setState({
-            carWashCategories: updateVal
-        });
-
+          'selectedCarCategoryForModel': categoryDetails,
+          'catDescriptionModalVisible': true
+        })
     }
+
+    changeCheckboxState(e, categoryId, subCategoryId) {
+      const isChecked = e.target.checked;
+      const filteredCarWashCategories = cloneDeep(this.state.filteredCarWashCategories);
+      filteredCarWashCategories[categoryId]['subCategories'][subCategoryId]['checked'] = isChecked;
+      this.setState({
+        filteredCarWashCategories: filteredCarWashCategories,
+        carWashCategories: filteredCarWashCategories
+      });
+    }
+
     selectedDropdownText(location) {
         this.setState({PrefferedLocation:location});
+    }
+
+    renderCarType(carDetails, key) {
+      const checkedSubCategories = filter(carDetails.subCategories, (data)=>{return (data.checked)});
+      return (
+        <div className="sub-collapse-panel" key={key}>
+          <figure onClick={(e)=>{this.showModal(e, carDetails)}}>
+                  <img src={carDetails.image} alt="" />
+          </figure>
+          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault(); this.openCategory(carDetails.id); }}>
+              <h4>{carDetails.name}</h4>
+              {checkedSubCategories && checkedSubCategories.length > 0 ?
+                  <span className="sub-category-count">
+                      {checkedSubCategories.length}{checkedSubCategories.length == 1 ? " Category Selected" : " Categories Selected"}
+                  </span>
+                   :
+                  <span className="sub-category-count">
+                      {carDetails.subCategories.length} {carDetails.subCategories.length == 1 ? "subcategory" : "subcategories"}
+                  </span>
+              }
+              <i className={carDetails.id == this.state.visibleCategory  ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
+          </div>
+          <div className={carDetails.id == this.state.visibleCategory  ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
+              {map(carDetails.subCategories, (subCategory, index) => {
+                  return (<div className="options" key={index}>
+                      <span className="checkbox-style">
+                          <label className={subCategory.checked?"label active":"label"}><input type="checkbox" checked={subCategory.checked} onChange={(e) => { this.changeCheckboxState(e, carDetails.id, subCategory.id) }} value="" />{subCategory.checked} {subCategory.name}</label>
+                      </span>
+                  </div>);
+              })}
+          </div>
+        </div>
+      )
     }
     render() {
         const format = 'h:mm a';
         const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
-        each(this.state.carWashCategories, (carWashCategory, key) => {
-            if (key % 2 == 0) {
-                rightBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.checked} {category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            } else {
-                leftBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className={category.checked?"label active":"label"}><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                         <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            }
+        let catLength = 0;
+        each(this.state.filteredCarWashCategories, (carDetails) => {
+          catLength += 1;
+          if (catLength % 2 == 0) {
+              rightBlock.push(this.renderCarType(carDetails, catLength));
+          } else {
+              leftBlock.push(this.renderCarType(carDetails, catLength));
+          }
         });
+        const resultsCount = size(this.state.filteredCarWashCategories);
         return (
             <div className="panel-section car-wash">
                 <section className="collapse-panel">
@@ -414,15 +428,18 @@ class WashSteps extends Component {
                         <div className="row">
                             <div className="col-md-6 pad0">
                                 <div className="search-box">
-                                    <TextInput label="Search" name="text" type="text"/>
+                                    <TextInput label="Search" name="text" type="text" onChange={this.filterCarType.bind(this)}/>
                                     <i className="mdi mdi-magnify" />
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-md-6 padLeft0">{rightBlock}</div>
-                            <div className="col-md-6 padRight0">{leftBlock}</div>
+                        {resultsCount > 0 ?
+                          <div className="row">
+                            <div className="col-md-6 padLeft0">{leftBlock}</div>
+                            <div className="col-md-6 padRight0">{rightBlock}</div>
                         </div>
+                        : <div className="row"><h4>No result found</h4></div>
+                        }
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={() => { this.hidePanel('step2'); }}/>
                         </div>
@@ -512,6 +529,11 @@ class WashSteps extends Component {
                     </div>}
 
                 </section>
+                <CustomModal showModal={this.state.catDescriptionModalVisible} title={this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.name} closeIcon={true} closeModalCallBack={() => {this.setState({'catDescriptionModalVisible': false})}}>
+                  <Modal.Body>
+                    <p className="info-text">{this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.description}</p>
+                  </Modal.Body>
+                </CustomModal>}
             </div>
         );
     }
