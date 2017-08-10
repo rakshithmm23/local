@@ -12,6 +12,20 @@ class StatusBar extends Component {
             activeButton: undefined,
         };
     }
+    componentWillMount() {
+        document.body.addEventListener('mousedown', this.bodyClick.bind(this));
+    }
+    componentWillUnmount() {
+        document.body.removeEventListener('mousedown', this.bodyClick.bind(this));
+    }
+    bodyClick(e){
+        debugger
+        if(e.target.className== "dots"||e.target.closest('.status-popup')){
+            return;
+        }else{
+            this.setState({activeButton: undefined})
+        }
+    }
 
     componentDidMount() {
         let divWidth = document.getElementById('custom-dots').offsetWidth
@@ -26,9 +40,7 @@ class StatusBar extends Component {
 
     }
     stepClick(e, key) {
-        if (e.clientX > 335) {
-            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
-        } 
+            this.setState({ activeButton: key })
     }
     render() {
         const style = {
@@ -51,7 +63,7 @@ class StatusBar extends Component {
             if (key != 0 && key - 1 != statusCount) {
                 return (
                     <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} key={key}>
-                        <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key} onClick={(e)=>{this.stepClick(e)}} />
+                        <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key} onClick={(e)=>{this.stepClick(e,key)}} />
                     </OverlayTrigger>
                 )
             }
@@ -63,11 +75,11 @@ class StatusBar extends Component {
                     <div className="main-line" />
                     <div>
                         <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} >
-                            <span className={this.state.activeButton == 0 ? "dots active" : "dots"}  onClick={(e)=>{this.stepClick(e)}}/>
+                            <span className={this.state.activeButton == 0 ? "dots active" : "dots"}  onClick={(e)=>{this.stepClick(e,0)}}/>
                         </OverlayTrigger>
                         {stepCount}
                         <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} >
-                            <span className={this.state.activeButton == -10 ? "dots active" : "dots"} onClick={(e)=>{this.stepClick(e)}}/>
+                            <span className={this.state.activeButton == -10 ? "dots active" : "dots"} onClick={(e)=>{this.stepClick(e,-10)}}/>
                         </OverlayTrigger>
                     </div>
                 </div>
