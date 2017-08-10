@@ -65,9 +65,9 @@ class StatusBar extends Component {
                     <OverlayTrigger rootClose trigger={['click']} placement="top" overlay={popoverClick} key={key}>
                         <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key} onClick={(e)=>{this.stepClick(e,key)}} />
                     </OverlayTrigger>
-                )
+                );
             }
-        })
+        });
         return (
             <div className="custom-dots-holder">
 

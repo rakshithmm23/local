@@ -826,6 +826,17 @@ input[type="color"][list] {
     color: #ED3124;
 }
 
+
+/* My request new Changes  */
+
+.request-wrapper {
+    border: 1px solid rgba(104,111,145,.2);
+}
+.request-wrapper .job-updates{
+    margin: 0 !important;
+    border: 0 !important;
+}
+
 @media screen and (max-width: 1100px) {
     .quotes-view .title span {
         padding-bottom: 20px
