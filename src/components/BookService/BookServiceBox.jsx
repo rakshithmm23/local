@@ -25,7 +25,7 @@ class BookServiceBox extends Component {
                             <ul>
                                 <li>
                                     <h4>Upcoming Service</h4>
-                                    <span>Not Available</span>}
+                                    <span>Not Available</span>
                                 </li>
                                 <li>
                                     <span>

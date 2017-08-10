@@ -336,7 +336,7 @@
 
     .job-footer.active {
         border-top: 1px solid #eef2f5;
-        padding: 0px 50px 15px;
+        padding: 0px 75px 15px;
     }
     /*@media screen and (min-width: 1280px) and (max-width: 1380px) {
         .card-img {

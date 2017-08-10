@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import Upload from '../common/Upload';
-import { filter, map, each,concat } from 'lodash';
+import { filter, map, each, concat } from 'lodash';
 import TextInput from '../common/TextInput';
 // import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -35,6 +35,7 @@ class ProfileSteps extends Component {
       'mileage': '',
       'insuranceprovider': '',
       'insurancepolicynumber': '',
+      'registrationnumber': '',
       'state': '',
       'carnotes': '',
       'photos': []
@@ -89,12 +90,16 @@ class ProfileSteps extends Component {
     if (val == 'manufacturerTabVisible') {
       this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
     } else if (val == 'modelTabVisible') {
-      this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+      if (this.formData.make) {
+        this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+      }
     } else if (val == 'otherDetailsTabVisible') {
       if (!this.formData.year) {
         this.errors['year'] = true;
       } else {
-        this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+        if (this.formData.year && this.formData.model) {
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+        }
       }
     }
   }
@@ -331,6 +336,9 @@ class ProfileSteps extends Component {
                   </div>
                   <div className="col-md-6 padRight0">
                     <TextInput label="Insurance Policy Number" name="insurancepolicynumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.insurancepolicynumber} />
+                  </div>
+                  <div className="col-md-6 padLeft0">
+                    <TextInput label="Vehicle Reg. Number" name="registrationnumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.registrationnumber}/>
                   </div>
                   <div className="col-md-6 padLeft0">
                     <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />

@@ -20,6 +20,7 @@ class WashSteps extends Component {
             // startDate: moment(),
             step1Panel: true,
             step2Panel: false,
+            showModal: false,
             carWashCategories: [
                 {
                     id: 1,
