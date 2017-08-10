@@ -215,8 +215,9 @@ class ProfileSteps extends Component {
           this.setState({ carModel: carItem.carmodel, filteredCarModelList: carItem.carmodel });
           this.formData['year'] = 1;
           this.activeLogo(carItem.name);
+          this.tabOpen('modelTabVisible');
         }} key={key}>
-          <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('modelTabVisible')}>
+          <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
             <img src={carItem.photos} alt="" />
           </div>
           <h6>{carItem.name}</h6>
@@ -233,8 +234,8 @@ class ProfileSteps extends Component {
     const carModelView = map(carModelList, (carItem, key) => {
       return (
         <div className="col-md-2 col-sm-3 col-xs-6 image-view"
-          onClick={() => { this.activeModel(carItem.name) }} key={key}>
-          <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('otherDetailsTabVisible')}>
+          onClick={() => { this.activeModel(carItem.name); this.tabOpen('otherDetailsTabVisible'); }} key={key}>
+          <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"} >
             <img src={carItem.photos} alt="" />
           </div>
           <h6>{carItem.name}</h6>
