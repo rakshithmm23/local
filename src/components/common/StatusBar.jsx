@@ -19,7 +19,6 @@ class StatusBar extends Component {
         document.body.removeEventListener('mousedown', this.bodyClick.bind(this));
     }
     bodyClick(e){
-        debugger
         if(e.target.className== "dots"||e.target.closest('.status-popup')){
             return;
         }else{
