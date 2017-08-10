@@ -16,12 +16,15 @@ class CustomModal extends Component {
         const { showModal } = nextProps;
         if(this.state.showModal != showModal && showModal != undefined) {
             this.setState({
-                showModal: nextProps
+                showModal: showModal
             });
         }
     }
     close() {
         this.setState({ showModal: false });
+        if (this.props.closeModalCallBack){
+          this.props.closeModalCallBack();
+        }
     }
     render() {
         const { children, footer, className, closeIcon } = this.props;
