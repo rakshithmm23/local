@@ -41,7 +41,7 @@ export default class RequestCard extends Component {
       changedWeek:false,
       filterType: "",
       open: false,
-      jobUpdates: "quotes",
+      jobUpdates: "details",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',
