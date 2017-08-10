@@ -533,7 +533,7 @@ class WashSteps extends Component {
                   <Modal.Body>
                     <p className="info-text">{this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.description}</p>
                   </Modal.Body>
-                </CustomModal>}
+                </CustomModal>
             </div>
         );
     }

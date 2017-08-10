@@ -7,7 +7,7 @@ export default class Reviews extends Component {
         super(...args);
         this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
         this.state = {
-            dropDownOpen:false,
+            dropDownOpen: false,
             filterSort: "high-low",
             sortBydropdown: false,
         };
@@ -20,7 +20,7 @@ export default class Reviews extends Component {
 
     //     }
     // }
-    
+
     filterOption(val) {
         this.setState({ filterSort: val, sortBydropdown: false });
     }
@@ -30,7 +30,7 @@ export default class Reviews extends Component {
                 <div className="vendor-description">
                     <h4>21 Reviews</h4>
                     <div className="filterSection">
-                        <DropdownButton bsSize="small" id="dropdown-size-small" onToggle={(isOpen) => {this.setState({'sortBydropdown': isOpen});}} open={this.state.sortBydropdown} noCaret title={
+                        <DropdownButton bsSize="small" id="dropdown-size-small" onToggle={(isOpen) => { this.setState({ 'sortBydropdown': isOpen }); }} open={this.state.sortBydropdown} noCaret title={
                             <div className="filterLabel showSortBy" >
                                 <label>Sort by</label>
                                 <i className="mdi mdi-chevron-down" />
@@ -186,7 +186,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -209,7 +209,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -232,7 +232,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -255,7 +255,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -278,7 +278,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -301,10 +301,11 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                             </ul>
                         </div>
+                        <div className="load-more-comments">Load more</div>
                     </div>
                 </div>
             </div>
