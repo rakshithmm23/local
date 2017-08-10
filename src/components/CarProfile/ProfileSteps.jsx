@@ -411,8 +411,7 @@ class ProfileSteps extends Component {
                                         {imageUploadedView}
                                     </div>
                                     <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
-                                        <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                        <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
                                         <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
                                     </span>
                                 </div>
