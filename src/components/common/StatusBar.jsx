@@ -17,17 +17,19 @@ class StatusBar extends Component {
         let divWidth = document.getElementById('custom-dots').offsetWidth
         let totalWidth = (divWidth / (this.props.statusCount - 1)) - 14;
         this.setState({ margin: totalWidth })
+        // let inSecWidth=document.getElementsByClassName('inSection dash-jobupdate-bg')[0]
+        // let jobHolderWidth=document.getElementsByClassName('jobUpdate-holder')[0]
+        // let widthDiff = inSecWidth.clientWidth - jobHolderWidth.clientWidth;
+        
+        // debugger
+        // console.log(widthDiff)
+
     }
-    // stepClick(e, key) {
-    //     if (e.clientX > 690) {
-    //         this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
-    //     } else if (e.clientX < 350) {
-    //         this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%', activeButton: key })
-    //     }
-    //     else {
-    //         this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%', activeButton: key })
-    //     }
-    // }
+    stepClick(e, key) {
+        if (e.clientX > 335) {
+            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
+        } 
+    }
     render() {
         const style = {
             dotsWidth: {
@@ -49,7 +51,7 @@ class StatusBar extends Component {
             if (key != 0 && key - 1 != statusCount) {
                 return (
                     <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} key={key}>
-                        <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key}  />
+                        <span className={this.state.activeButton == key ? "dots active" : "dots"} style={style.dotsWidth} key={key} onClick={(e)=>{this.stepClick(e)}} />
                     </OverlayTrigger>
                 )
             }
@@ -61,11 +63,11 @@ class StatusBar extends Component {
                     <div className="main-line" />
                     <div>
                         <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} >
-                            <span className={this.state.activeButton == 0 ? "dots active" : "dots"}  />
+                            <span className={this.state.activeButton == 0 ? "dots active" : "dots"}  onClick={(e)=>{this.stepClick(e)}}/>
                         </OverlayTrigger>
                         {stepCount}
                         <OverlayTrigger trigger={['hover']} placement="top" overlay={popoverClick} >
-                            <span className={this.state.activeButton == -10 ? "dots active" : "dots"} />
+                            <span className={this.state.activeButton == -10 ? "dots active" : "dots"} onClick={(e)=>{this.stepClick(e)}}/>
                         </OverlayTrigger>
                     </div>
                 </div>

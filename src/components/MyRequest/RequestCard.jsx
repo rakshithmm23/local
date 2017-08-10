@@ -578,11 +578,11 @@ export default class RequestCard extends Component {
     return (
       <div> {map(this.jobData, (item, key) => {
       return (
-        <div key={key}>
+        <div className="request-card" key={key}>
 
           {map(this.jobData, (cardDetails, key) => {
           return (
-            <div>
+            <div >
               {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageClick={this.viewMessaging.bind(this)}/>}
             </div>
 
