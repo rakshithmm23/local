@@ -61,7 +61,6 @@ export default class AcceptedQuotes extends Component {
       ];
     }
     componentDidMount() {
-      debugger
       if(this.AcceptedQuotes[0].vdPhoto.length>=7){
         this.setState({imagesLeft:true})
         let imagesRemaining = this.AcceptedQuotes[0].vdPhoto.length - 7

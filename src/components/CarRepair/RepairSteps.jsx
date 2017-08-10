@@ -502,7 +502,6 @@ class RepairSteps extends Component {
 
     }
     render() {
-            debugger
         
         const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
