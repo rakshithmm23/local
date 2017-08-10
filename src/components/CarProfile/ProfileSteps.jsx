@@ -130,7 +130,8 @@ class ProfileSteps extends Component {
             'insurancepolicynumber': '',
             'state': '',
             'carnotes': '',
-            'photos': []
+            'photos': [],
+            'registrationnumber': ''
         };
         this.formData = {
           ...this.initialFormData
@@ -181,12 +182,16 @@ class ProfileSteps extends Component {
         if (val == 'manufacturerTabVisible') {
           this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
         } else if (val == 'modelTabVisible' ) {
-          this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+          if (this.formData.make) {
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+          }
         } else if (val == 'otherDetailsTabVisible') {
             if (!this.formData.year) {
               this.errors['year'] = true;
             } else {
-              this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+              if (this.formData.year && this.formData.model) {
+                this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+              }
             }
         }
     }
@@ -319,8 +324,8 @@ class ProfileSteps extends Component {
         const carList = this.state.filteredCarList ? this.state.filteredCarList : this.state.carList;
         const carListView = map(carList, (carItem, key) => {
             return (
-                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); }} key={key}>
-                    <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('modelTabVisible')}>
+                <div className="col-md-2 col-sm-3 col-xs-6 image-view" onClick={() => { this.activeLogo(carItem.name); this.tabOpen('modelTabVisible');}} key={key}>
+                    <div className={carItem.name == this.state.activeLogo ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -330,8 +335,8 @@ class ProfileSteps extends Component {
         const carModelView = map(carModel, (carItem, key) => {
             return (
                 <div className="col-md-2 col-sm-3 col-xs-6 image-view"
-                  onClick={() => { this.activeModel(carItem.name) }} key={key}>
-                    <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"} onClick={() => this.tabOpen('otherDetailsTabVisible')}>
+                  onClick={() => { this.activeModel(carItem.name); this.tabOpen('otherDetailsTabVisible'); }} key={key}>
+                    <div className={carItem.name == this.state.activeModel ? "img-circle active" : "img-circle"}>
                         <img src={carItem.logo} alt="" />
                     </div>
                     <h6>{carItem.name}</h6>
@@ -434,7 +439,10 @@ class ProfileSteps extends Component {
                                     <div className="col-md-6 padRight0">
                                         <TextInput label="Insurance Policy Number" name="insurancepolicynumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.insurancepolicynumber}/>
                                     </div>
-                                    <div className="col-md-6 padLeft0">
+                                     <div className="col-md-6 padLeft0">
+                                        <TextInput label="Vehicle Reg. Number" name="registrationnumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.registrationnumber}/>
+                                    </div>
+                                    <div className="col-md-6 padRight0">
                                         <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
                                     </div>
                                 </div>
