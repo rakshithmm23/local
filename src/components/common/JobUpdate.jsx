@@ -196,7 +196,7 @@ export default class JobUpdate extends Component {
     ];
 
     return (
-      <div>
+      <div className="jobUpdate-holder">
         <h4 className="job-update-title">Job Status</h4>
         <a className="jobUpdate-viewall">View All</a>
         {/* https://projects.invisionapp.com/d/main#/console/10950794/238371645/preview */}
@@ -204,7 +204,7 @@ export default class JobUpdate extends Component {
         {map(jobData, (cardDetails, key) => {
           return (
             <div key={key}>
-              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{console.log('dsdsad');router.push(cardDetails.route)}}/>}
+              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{router.push(cardDetails.route)}}/>}
             </div>
           )
         })}

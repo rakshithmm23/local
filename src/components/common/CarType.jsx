@@ -177,7 +177,7 @@ class CardType extends Component {
                 {cardDetails.statusPopup && this.state.showTimeLine && this.state.collapseTimeline && <div className="job-footer active">
                     <div className="row">
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                            <div className="collapse in">
+                            <div className="job-process">
                                 <h1 className="job-footer-title">Job Progress</h1>
                                 <StatusBar statusCount={cardDetails.totalTask} />
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>

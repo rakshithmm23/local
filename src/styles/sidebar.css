@@ -7,7 +7,7 @@
     top: 80px;
     z-index: 99;
     text-align: center;
-    box-shadow: 2px 0 6px 0 rgba(104,111,145,0.2);
+    border-right: 1px solid rgba(104,111,145,.2);
 }
 
 .sidebar ul li {
@@ -50,7 +50,7 @@
         top: initial !important;
         width: 100% !important;
         height: auto !important;
-        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(104,111,145,.2);
         z-index: 9999;
     }
     .sidebar ul li {
