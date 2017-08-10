@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class JobDetails extends Component {
     render() {
-        debugger
         return (
             <div>
                 <div className="data-time col-md-12">
