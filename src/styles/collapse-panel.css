@@ -113,9 +113,10 @@
     right: 10px;
 }
 
-.collapse-panel .img-container {
-    height: 500px !important;
-}
+/* .collapse-panel .img-container {
+    min-height: 200px !important;
+    max-height: 500px !important;
+} */
 
 .collapse-panel .img-circle {
     cursor: pointer;
@@ -129,6 +130,7 @@
     border-radius: 100%;
     background-color: #FFFFFF;
     margin-bottom: 13px;
+    overflow: hidden;
 }
 
 .collapse-panel .img-circle.active {
@@ -139,7 +141,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    width: 100px;
+    border-radius: 50%;
 }
 
 .panel-section .collapse-panel .btn-theme.submit {

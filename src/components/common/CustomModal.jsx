@@ -16,12 +16,15 @@ class CustomModal extends Component {
         const { showModal } = nextProps;
         if(this.state.showModal != showModal && showModal != undefined) {
             this.setState({
-                showModal: nextProps
+                showModal: showModal
             });
         }
     }
     close() {
         this.setState({ showModal: false });
+        if (this.props.closeModalCallBack){
+          this.props.closeModalCallBack();
+        }
     }
     render() {
         const { children, footer, className, closeIcon } = this.props;
@@ -37,7 +40,7 @@ class CustomModal extends Component {
                     {children}
                     {footer=="true" && <Modal.Footer>
                         <Button btnType="cancel" btnSize="sm" fontSize={15} label={this.props.cancelText?this.props.cancelText:"Cancel"}  btnCallBack={this.close.bind(this)}/>
-                        <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} />
+                        <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} btnCallBack={() => {this.props.submitCallBack && this.props.submitCallBack() }} />
                     </Modal.Footer>}
                 </Modal>
             </div>

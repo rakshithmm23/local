@@ -23,7 +23,7 @@ export default class ServiceDetails extends Component {
                   {map(this.props.images, (image, key) => {
                     return (
                       <Carousel.Item>
-                          <img width={400} height={280} alt="" src={image.medium} />
+                          <img width={400} height={280} alt="" src={image.large} />
                       </Carousel.Item>
                     )
                   })}

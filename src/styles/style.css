@@ -190,6 +190,15 @@
     input[type=password]::-ms-clear {
         display: none;
     }
+    /* loader */
+    .loader{
+        text-align: center;
+        height: 90px;
+        margin-top: 30px;
+    }
+    .loader img{
+        width: 4%;
+    }
     /*responsive*/
 
     @media screen and (max-width: 1024px) {
