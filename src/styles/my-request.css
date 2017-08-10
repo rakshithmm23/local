@@ -58,7 +58,7 @@ input[type="color"][list] {
 .quotes-view {
     padding: 0 15px;
     padding-right: 5px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .quotes-view .title span {
@@ -120,12 +120,14 @@ input[type="color"][list] {
 .input-range__label--max {
     display: none !important;
 }
-.f-card .range-min{
+
+.f-card .range-min {
     position: absolute;
     top: 27px;
     left: 0;
 }
-.f-card .range-max{
+
+.f-card .range-max {
     position: absolute;
     top: 27px;
     right: 0;
@@ -145,7 +147,6 @@ input[type="color"][list] {
 
 .f-card .input-range__label-container {
     display: none !important;
-
 }
 
 .f-card .input-range__track.input-range__track--active {
@@ -341,7 +342,7 @@ input[type="color"][list] {
 }
 
 .quotes-message-footer {
-    height: 64px;
+    height: 60px;
     width: 100%;
     border-radius: 0 0 4px 0;
     background-color: #FFFFFF;
@@ -388,7 +389,10 @@ input[type="color"][list] {
 
 .mapSection .quotes-right-body {
     overflow: hidden;
-    height: 77.7vh;
+    height: 85.5vh;
+}
+.quotesSection .requestQuotesScroll{
+    height: 75vh !important;
 }
 
 
@@ -580,7 +584,8 @@ input[type="color"][list] {
     font-size: 14px;
     font-weight: normal;
 }
-.quotation-head ul li span{
+
+.quotation-head ul li span {
     color: #717982;
 }
 
@@ -649,7 +654,7 @@ input[type="color"][list] {
     font-size: 18px;
     bottom: 20px;
     left: 110px;
-     top: 95px;
+    top: 95px;
     z-index: -1;
 }
 
@@ -686,11 +691,11 @@ input[type="color"][list] {
 }
 
 .f-card .rc-time-picker input {
-    font-family:CenturyGothic;
-    font-size: 14px; 
+    font-family: CenturyGothic;
+    font-size: 14px;
     height: 38px;
     width: 130px;
-    border:none;
+    border: none;
     border-bottom: 1px solid #CCD2D7;
     border-radius: 0;
     background-color: #FFFFFF;
@@ -820,7 +825,8 @@ input[type="color"][list] {
 .openAlign {
     margin-bottom: 15px;
 }
-.Filterby .f-card .time-error{
+
+.Filterby .f-card .time-error {
     display: block;
     padding: 0;
     color: #ED3124;
@@ -830,9 +836,10 @@ input[type="color"][list] {
 /* My request new Changes  */
 
 .request-wrapper {
-    border: 1px solid rgba(104,111,145,.2);
+    border: 1px solid rgba(104, 111, 145, .2);
 }
-.request-wrapper .job-updates{
+
+.request-wrapper .job-updates {
     margin: 0 !important;
     border: 0 !important;
 }
