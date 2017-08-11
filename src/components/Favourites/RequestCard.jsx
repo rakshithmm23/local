@@ -39,6 +39,7 @@ export default class RequestCard extends Component {
       activelongitue: '',
       jobCardDetails: [
         {
+          id:0,
           name: "1. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -92,6 +93,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
+          id:1,
           name: "2. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -100,6 +102,7 @@ export default class RequestCard extends Component {
           longitude: 77.29058570000007,
           isActive: false
         }, {
+          id:2,
           name: "3. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -108,6 +111,7 @@ export default class RequestCard extends Component {
           longitude: 77.59058570000002,
           isActive: false
         }, {
+          id:3,
           name: "4. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -117,6 +121,7 @@ export default class RequestCard extends Component {
           isActive: false
         },
         {
+          id:4,
           name: "5. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -652,7 +657,7 @@ export default class RequestCard extends Component {
                                 </div>
                               </div>
                             </div>
-                            {this.state.messages && <ChatBox />}
+                            {this.state.messages && <ChatBox data={this.state.jobCardDetails}/>}
                             {/* <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                               <div className="quotes-chat-area">
 
