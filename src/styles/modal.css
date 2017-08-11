@@ -37,14 +37,15 @@
 }
 
 .modal-body .info-heading {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .modal-body .info-heading span {
   display: inline-block;
-  color: #006FBA;
+  color: #006FB9;
   font-family: CenturyGothic;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: capitalize;
 }
 
