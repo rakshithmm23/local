@@ -90,12 +90,12 @@ export default class Dashboard extends Component {
                     <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="topSection">
+                    { !JSON.parse(localStorage.getItem('authData')).hasVehicleProfile && <div className="topSection">
                         <div className="padwrapper">
                             {/*Welcome Text*/}
-                            <WelcomeText router={this.props.router} />
+                             <WelcomeText router={this.props.router} />
                         </div>
-                    </div>
+                    </div>}
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Service List*/}
