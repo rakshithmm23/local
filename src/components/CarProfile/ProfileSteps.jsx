@@ -44,7 +44,11 @@ class ProfileSteps extends Component {
     this.formData = {
       ...this.initialFormData
     };
-    this.errors = {};
+    this.errors = {
+      'name': false,
+      'plate_no': false,
+      'mileage': false
+    };
 
     this.resetFields = Object.assign({}, this.state)
     this.onFieldChange = this.onFieldChange.bind(this);
@@ -53,7 +57,30 @@ class ProfileSteps extends Component {
   }
 
   onSubmit() {
-    this.props.onSubmit(this.formData, this.props.isEditProfile);
+    let validFields = ['name', 'plate_no', 'mileage'];
+    let validForm = true;
+    let formData = {
+      ...this.formData
+    }
+    validFields.map((key)=> {
+      if (!formData[key]) {
+        this.errors[key] = true;
+        validForm = false;
+      } else {
+        if (this.errors[key] === true) {
+          validForm = false;
+        } else {
+          this.errors[key] = false;
+        }
+      }
+    })
+    if (validForm) {
+      this.setState({ submissionError: false });
+      this.props.onSubmit(this.formData, this.props.isEditProfile);
+    }else{
+      this.setState({ submissionError: true });
+      return;
+    }
   }
 
   onFieldChange(value, key, name) {
@@ -130,7 +157,7 @@ class ProfileSteps extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.carProfileReducer && nextProps.carProfileReducer.carMakeAndModels) {
-      this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels, isLoading:false });
+      this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels, isLoading: false });
     }
     const { carProfileReducer } = nextProps;
     if (carProfileReducer.currentComponentKey === '/car-profiles/create') {
@@ -192,9 +219,9 @@ class ProfileSteps extends Component {
         const carYear = car.year;
         return carYear == year;
       });
-      this.setState({ 'filteredCarModelList': carModelList ,activeModel:null});
+      this.setState({ 'filteredCarModelList': carModelList, activeModel: null });
     } else {
-      this.setState({ 'filteredCarModelList': this.state.carModel,activeModel:null });
+      this.setState({ 'filteredCarModelList': this.state.carModel, activeModel: null });
     }
   }
 
@@ -261,15 +288,15 @@ class ProfileSteps extends Component {
                   </div>
                 </div>
               </div>
-              { !this.state.isLoading ?
-              <div className="img-container row">
-                {carListView}
-              </div> :
-              <div className="img-container row">
-                <div className="loader">
-                  <img src="../../images/preloader.gif" alt="" />
-                </div>
-              </div>}
+              {!this.state.isLoading ?
+                <div className="img-container row">
+                  {carListView}
+                </div> :
+                <div className="img-container row">
+                  <div className="loader">
+                    <img src="../../images/preloader.gif" alt="" />
+                  </div>
+                </div>}
             </div>}
         </section>
         <section className="collapse-panel selectModal">
@@ -346,7 +373,7 @@ class ProfileSteps extends Component {
                     <TextInput label="Insurance Policy Number" name="insurancepolicynumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.insurancepolicynumber} />
                   </div>
                   <div className="col-md-6 padLeft0">
-                    <TextInput label="Vehicle Reg. Number" name="registrationnumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.registrationnumber}/>
+                    <TextInput label="Vehicle Reg. Number" name="registrationnumber" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.registrationnumber} />
                   </div>
                   <div className="col-md-6 padRight0">
                     <TextInput label="State" name="state" type="text" onChange={this.onFieldChange.bind(this)} value={this.formData.state} />
