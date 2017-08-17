@@ -347,6 +347,47 @@ export function resetPassword(verificationCode, password) {
   }
 }
 
+export function verifyEmail(code) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.VERIFY_EMAIL, {
+      params: {
+        'type': 'email',
+        'code': code
+      },
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json',
+      },
+      withCredentials:true
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: types.EMAIL_VERIFIED,
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (response.status === 401  || response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      }
+    })
+    .catch((err) => {
+      if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.status === 401  || err.response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'System error, please try later'
+        });
+      }
+    });
+  }
+}
+
 export function clearComponentKey() {
   return (dispatch) => {
     dispatch({

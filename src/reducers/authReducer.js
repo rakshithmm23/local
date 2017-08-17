@@ -26,6 +26,8 @@ export default function authenticationReducer(state = initialState, action) {
       return assign({}, state, {currentComponentKey: 'reset-email-confirmation', reset_email: action.email});
     case types.RESET_PASSWORD_CODE_VERIFIED:
       return assign({}, state, {currentComponentKey: 'confirmed'});
+    case types.EMAIL_VERIFIED:
+      return assign({}, state, {'emailVerified': true})
     case types.SHOW_ERROR_MESSAGE:
       return assign({}, state, {currentComponentKey: '', showErrorMessage: true, statusMessage: action.statusMessage, isLoaded: false});
     case types.HIDE_ERROR_MESSAGE:
