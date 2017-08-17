@@ -57,28 +57,28 @@ export default class ForgotPassword extends Component {
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                   <Scrollbars className="customScroll">
-                        <div className="login-panel otp">
-                            <div className="login-panel-header forget-panel-header">
-                                <h3 className="login-title">Forgot Password ?</h3>
-                                <p className="note-text">
-                                    Enter your email address to recieve password reset link.
-                                </p>
-                            </div>
-                            <div className="login-panel-body forget-input">
-                                {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                                  <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-                                </AlertDismissable>}
-                                <TextInput
-                                  label="Email"
-                                  name="email"
-                                  type="email"
-                                  showValidationError={this.errors['email']}
-                                  validationError="Enter your valid email id"
-                                  onChange={this.onFieldChange.bind(this)}
-                                  isOTP={true} />
-                                <Button btnCallBack={this.forgotPasswordAction} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
-                            </div>
-                        </div>
+                    <div className="login-panel otp">
+                      <div className="login-panel-header forget-panel-header">
+                        <h3 className="login-title">Forgot Password ?</h3>
+                        <p className="note-text">
+                            Enter your email address to recieve password reset link.
+                        </p>
+                      </div>
+                      <div className="login-panel-body forget-input">
+                        {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                          <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                        </AlertDismissable>}
+                        <TextInput
+                          label="Email"
+                          name="email"
+                          type="email"
+                          showValidationError={this.errors['email']}
+                          validationError="Enter your valid email id"
+                          onChange={this.onFieldChange.bind(this)}
+                          isOTP={true} />
+                        <Button btnCallBack={this.forgotPasswordAction} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
+                      </div>
+                    </div>
                     </Scrollbars>
                 </div>
             </div>
