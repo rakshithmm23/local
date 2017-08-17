@@ -31,7 +31,7 @@ export default class MyRequest extends Component {
     }
 
     componentWillMount() {
-        
+
         if (window.location.search.indexOf('type=waiting') > -1 ) {
          this.setState({'requestType': 'waiting'});
         } else if (window.location.search.indexOf('type=success') > -1 ) {
@@ -39,6 +39,7 @@ export default class MyRequest extends Component {
         }
 
     }
+
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }

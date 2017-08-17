@@ -22,6 +22,7 @@ import EmailVerified from './components/Auth/EmailVerified';
 
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
+  window.scrollTo(0, 0);
   const signedUserDataCookie = cookies.get('carauth');
   const userId = localStorage.getItem('userId');
   if (!(signedUserDataCookie && userId)) {
@@ -30,6 +31,9 @@ export const isLoggedIn = (nextState, replace) => {
     });
   }
 };
+export const scrollToTop = () => {
+  window.scrollTo(0, 0);
+}
 
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
@@ -52,32 +56,32 @@ import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
-    <Route path="dashboard" component={DashboardContainer(Dashboard)} />
-    <Route path="sign-in" component={AuthContainer(SignIn)} />
-    <Route path="forgot-password" component={AuthContainer(ForgotPassword)} />
-    <Route path="edit-mobileno" component={AuthContainer(EditMobileNo)} />
-    <Route path="send-otp" component={AuthContainer(SendOTP)}/>
-    <Route path="verify-otp" component={AuthContainer(VerifyOTP)} />
-    <Route path="reset-password" component={AuthContainer(ResetPassword)} />
-    <Route path="confirmed" component={AuthContainer(Confirmed)} />
-    <Route path="reset-email-confirmation" component={AuthContainer(ResetEmailConfirmation)} />
-    <Route path="request(/:requestType)" component={AuthContainer(MyRequest)} />
-    <Route path="car-profiles/create" component={CarProfileContainer(CreateCarProfile)} />
-    <Route path="car-profiles" component={CarProfileContainer(BookService)} />
-    <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />
-    <Route path="car-profiles/:id/edit" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
-    {/* <Route path="car-list" component={AuthContainer(BookService)} /> */}
-    <Route path="timeline" component={AuthContainer(CarTimeline)} />
-    <Route path="car-repair" component={AuthContainer(CarRepair)} />
-    <Route path="car-wash" component={AuthContainer(CarWash)} />
-    <Route path="car-service" component={AuthContainer(CarService)} />
-    <Route path="messages" component={AuthContainer(Messages)} />
-    <Route path="search-result" component={AuthContainer(SearchResult)} />
-    <Route path="notification" component={AuthContainer(Notification)}  />
-    <Route path="favourites" component={AuthContainer(Favourites)}  />
-    <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
-    <Route path="terms" component={AuthContainer(Terms)}  />
-    <Route path="verify" component={AuthContainer(EmailVerified)}  />
-    <Route path="*" component={pageNotFound} />
+        <Route path="dashboard" onEnter={scrollToTop} component={DashboardContainer(Dashboard)}/>
+        <Route path="sign-in" onEnter={scrollToTop} component={AuthContainer(SignIn)} />
+        <Route path="forgot-password" onEnter={scrollToTop} component={AuthContainer(ForgotPassword)} />
+        <Route path="edit-mobileno" onEnter={scrollToTop} component={AuthContainer(EditMobileNo)} />
+        <Route path="send-otp" onEnter={scrollToTop} component={AuthContainer(SendOTP)}/>
+        <Route path="verify-otp" onEnter={scrollToTop} component={AuthContainer(VerifyOTP)} />
+        <Route path="reset-password" onEnter={scrollToTop} component={AuthContainer(ResetPassword)} />
+        <Route path="confirmed" onEnter={scrollToTop} component={AuthContainer(Confirmed)} />
+        <Route path="reset-email-confirmation" onEnter={scrollToTop} component={AuthContainer(ResetEmailConfirmation)} />
+        <Route path="request(/:requestType)" onEnter={scrollToTop} component={AuthContainer(MyRequest)} />
+        <Route path="car-profiles/create" onEnter={scrollToTop} component={CarProfileContainer(CreateCarProfile)} />
+        <Route path="car-profiles" onEnter={scrollToTop} component={CarProfileContainer(BookService)} />
+        <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />
+        <Route path="car-profiles/:id/edit" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
+        {/* <Route path="car-list" component={AuthContainer(BookService)} /> */}
+        <Route path="timeline" onEnter={scrollToTop} component={AuthContainer(CarTimeline)} />
+        <Route path="car-repair" onEnter={scrollToTop} component={AuthContainer(CarRepair)} />
+        <Route path="car-wash" onEnter={scrollToTop} component={AuthContainer(CarWash)} />
+        <Route path="car-service" onEnter={scrollToTop} component={AuthContainer(CarService)} />
+        <Route path="messages" onEnter={scrollToTop} component={AuthContainer(Messages)} />
+        <Route path="search-result" onEnter={scrollToTop} component={AuthContainer(SearchResult)} />
+        <Route path="notification" onEnter={scrollToTop} component={AuthContainer(Notification)}  />
+        <Route path="favourites" onEnter={scrollToTop} component={AuthContainer(Favourites)}  />
+        <Route path="vendor-profile" onEnter={scrollToTop} component={AuthContainer(VendorProfile)}  />
+        <Route path="terms" onEnter={scrollToTop} component={AuthContainer(Terms)}  />
+        <Route path="verify" component={AuthContainer(EmailVerified)}  />
+        <Route path="*" onEnter={scrollToTop} component={pageNotFound} />
   </Route>
 );
