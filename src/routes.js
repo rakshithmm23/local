@@ -18,6 +18,7 @@ import EditMobileNo from './components/Auth/EditMobileNo';
 import ResetPassword from './components/Auth/ResetPassword';
 import Confirmed from './components/Auth/Confirmed';
 import ResetEmailConfirmation from './components/Auth/ResetEmailConfirmation';
+import EmailVerified from './components/Auth/EmailVerified';
 
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
@@ -76,6 +77,7 @@ export default (
     <Route path="favourites" component={AuthContainer(Favourites)}  />
     <Route path="vendor-profile" component={AuthContainer(VendorProfile)}  />
     <Route path="terms" component={AuthContainer(Terms)}  />
+    <Route path="verify" component={AuthContainer(EmailVerified)}  />
     <Route path="*" component={pageNotFound} />
   </Route>
 );
