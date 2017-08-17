@@ -22,8 +22,7 @@
       "plugins": [
         "transform-react-constant-elements",
         "transform-react-remove-prop-types",
-        "transform-class-properties",
-        "es6-promise"
+        "transform-class-properties"
       ]
     },
     "test": {
