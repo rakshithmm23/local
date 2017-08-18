@@ -94,7 +94,7 @@ export function showVerifyOTPPage(signUpData) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.data
+          statusMessage: err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
         });
       } else if (err.response.status === 409) {
         dispatch({
