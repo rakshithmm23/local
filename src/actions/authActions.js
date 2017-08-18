@@ -28,6 +28,7 @@ export function signInUser (signInData, dispatch) {
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
+            fromSignIn: true,
             authData: responseData
           });
         } else {

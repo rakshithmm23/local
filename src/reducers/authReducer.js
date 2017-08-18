@@ -11,7 +11,7 @@ export default function authenticationReducer(state = initialState, action) {
     case types.SHOW_SIGNIN_PAGE:
       return assign({}, state, {currentComponentKey: 'sign-in', isLoaded: true, showErrorMessage: false});
     case types.SHOW_VERIFY_OTP_PAGE:
-      return assign({}, state, {currentComponentKey: 'verify-otp', authData: action.authData, isLoaded: true, showErrorMessage: false});
+      return assign({}, state, {currentComponentKey: 'verify-otp', authData: action.authData, isLoaded: true, showErrorMessage: false, fromSignIn: action.fromSignIn});
     case types.SHOW_DASHBOARD:
       return assign({}, state, {currentComponentKey: 'dashboard', authData: action.authData, isLoaded: true, showErrorMessage: false});
     case types.VERIFY_OTP_PAGE:
