@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import queryString from 'query-string';
 const cookies = new Cookies();
 
-export function signInUser (signInData, dispatch) {
+export function signInUser (signInData, dispatch, fromSignup) {
   axios.post(API_END_POINTS.SIGNIN, JSON.stringify(signInData), {
       headers: {
         'Accept': 'application/json,',
@@ -28,7 +28,7 @@ export function signInUser (signInData, dispatch) {
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
-            fromSignIn: true,
+            fromSignIn: fromSignup? false : true,
             authData: responseData
           });
         } else {
@@ -48,7 +48,7 @@ export function signInUser (signInData, dispatch) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: (err.response.status === 400 || err.response.status === 401) ? 'Invalid Email/Password' : err.response.data.message
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? err.response.data && err.response.data.message ? err.response.data.message : 'Invalid Email/Password' : 'Invalid Email/Password'
         });
       } else {
         dispatch({
@@ -61,7 +61,7 @@ export function signInUser (signInData, dispatch) {
 export function signInAction(signInData, dispatch, fromSignup) {
   if (fromSignup) {
     signInData.usertype = 'customer';
-    signInUser(signInData, dispatch);
+    signInUser(signInData, dispatch, fromSignup);
   } else {
     return (dispatch) => {
       signInUser(signInData, dispatch);
