@@ -185,7 +185,7 @@ class CardType extends Component {
                     </div>
                 </div>}
 
-                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => { this.setState({ saveModal: false }) }} className="rating-modal" closeIcon="true" saveText="Submit">
+                <CustomModal header={false} footer={true} showModal={this.state.saveModal} hideModal={() => { this.setState({ saveModal: false,chars_left: 0 }) }} className="rating-modal" closeIcon="true" saveText="Submit">
                     <Modal.Body>
                         <div className="image-holder">
                             <img src="../../images/test.jpg" alt="" />
@@ -197,7 +197,6 @@ class CardType extends Component {
                             <Rating
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
-                                fractions={2}
                                 initialRate={this.state.ratingValue}
                                 onChange={(e) => { this.ratingOnChange(e) }}
                             />

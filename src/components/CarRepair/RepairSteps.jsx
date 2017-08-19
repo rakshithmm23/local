@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import { each, map, find } from 'lodash';
+import { each, map, filter, size, cloneDeep } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
@@ -9,7 +9,6 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
-import CustomModal from '../common/CustomModal';
 import { Modal } from 'react-bootstrap';
 
 
@@ -31,255 +30,299 @@ class RepairSteps extends Component {
             startDate:"",
             step1Panel: true,
             step2Panel: false,
-            carWashCategories: [
-                {
-                    id: 1,
-                    active: false,
-                    heading: "AC Heating & cooling",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-5.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 2,
-                    active: false,
-                    heading: "Brakes & Exhaust",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-3.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 3,
-                    active: false,
-                    heading: "Body Work, Dents & Repair",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-4.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 4,
-                    active: false,
-                    heading: "Engine",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-1.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 5,
-                    active: false,
-                    heading: "Clutch & Gearbox Repair",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-3.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 6,
-                    active: false,
-                    heading: "Total detail",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-5.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 7,
-                    active: false,
-                    heading: "Electrical & Batteries",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-4.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                },
-                {
-                    id: 8,
-                    active: false,
-                    heading: "Monthly Package",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-2.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 8,
-                    active: false,
-                    heading: "Yearly Package",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/auto-service-icons-3.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
+            catDescriptionModalVisible: false,
+            selectedCarCategoryForModel: undefined,
+            carRepairCategories: {
+              1: {
+                id: 1,
+                name: "AC Heating & Cooling",
+                image: '../../images/auto-service-icons-5.png',
+                description: "AC Heating & Cooling Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  1: {
+                    name: 'Test 1',
+                    id: 1
+                  },
+                  2: {
+                    name: 'Subcategory 2',
+                    id: 2
+                  },
+                  3: {
+                    name: 'abc 3',
+                    id: 3
+                  },
+                  4: {
+                    name: 'test 4',
+                    id: 4
+                  },
+                  5: {
+                    name: 'Subcategory 5',
+                    id: 5
+                  },
+                  6: {
+                    name: 'Subcategory 6',
+                    id: 6
+                  }
                 }
-
-            ],
+              },
+              2: {
+                id: 2,
+                name: "Brakes & Exhaust",
+                image: '../../images/auto-service-icons-3.png',
+                description: "Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  7: {
+                    name: 'Subcategory 1',
+                    id: 7
+                  },
+                  8: {
+                    name: 'Subcategory 2',
+                    id: 8
+                  },
+                  9: {
+                    name: 'Subcategory 3',
+                    id: 9
+                  },
+                  10: {
+                    name: 'Subcategory 4',
+                    id: 10
+                  },
+                  11: {
+                    name: 'Subcategory 5',
+                    id: 11
+                  },
+                  12: {
+                    name: 'Subcategory 6',
+                    id: 12
+                  }
+                }
+              },
+              3: {
+                id: 3,
+                name: "Body Work, Dents & Repair",
+                image: '../../images/auto-service-icons-4.png',
+                description: "Body Work, Dents & Repair Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  13: {
+                    name: 'Subcategory 1',
+                    id: 13
+                  },
+                  14: {
+                    name: 'Subcategory 2',
+                    id: 14
+                  },
+                  15: {
+                    name: 'Subcategory 3',
+                    id: 15
+                  },
+                  16: {
+                    name: 'Subcategory 4',
+                    id: 16
+                  },
+                  17: {
+                    name: 'Subcategory 5',
+                    id: 17
+                  },
+                  18: {
+                    name: 'Subcategory 6',
+                    id: 18
+                  }
+                }
+              },
+              4: {
+                id: 4,
+                name: "Engine",
+                image: '../../images/auto-service-icons-1.png',
+                description: "Engine Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  19: {
+                    name: 'Subcategory 1',
+                    id: 19
+                  },
+                  20: {
+                    name: 'Subcategory 2',
+                    id: 20
+                  },
+                  21: {
+                    name: 'Subcategory 3',
+                    id: 21
+                  },
+                  22: {
+                    name: 'Subcategory 4',
+                    id: 22
+                  },
+                  23: {
+                    name: 'Subcategory 5',
+                    id: 23
+                  },
+                  24: {
+                    name: 'Subcategory 6',
+                    id: 24
+                  }
+                }
+              },
+              5: {
+                id: 5,
+                name: "Clutch & Gearbox Repair",
+                image: '../../images/auto-service-icons-3.png',
+                description: "Clutch & Gearbox Repair Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  25: {
+                    name: 'Subcategory 1',
+                    id: 25
+                  },
+                  26: {
+                    name: 'Subcategory 2',
+                    id: 26
+                  },
+                  27: {
+                    name: 'Subcategory 3',
+                    id: 27
+                  },
+                  28: {
+                    name: 'Subcategory 4',
+                    id: 28
+                  },
+                  29: {
+                    name: 'Subcategory 5',
+                    id: 29
+                  },
+                  30: {
+                    name: 'Subcategory 6',
+                    id: 30
+                  }
+                }
+              },
+              6: {
+                id: 6,
+                name: "Total detail",
+                image: '../../images/auto-service-icons-5.png',
+                description: "Total detail Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  31: {
+                    name: 'Subcategory 1',
+                    id: 31
+                  },
+                  32: {
+                    name: 'Subcategory 2',
+                    id: 32
+                  },
+                  33: {
+                    name: 'Subcategory 3',
+                    id: 33
+                  },
+                  34: {
+                    name: 'Subcategory 4',
+                    id: 34
+                  },
+                  35: {
+                    name: 'Subcategory 5',
+                    id: 35
+                  },
+                  36: {
+                    name: 'Subcategory 6',
+                    id: 36
+                  }
+                }
+              },
+              7: {
+                id: 7,
+                name: "Electrical & Batteries",
+                image: '../../images/auto-service-icons-4.png',
+                description: "Electrical & Batteries Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  37: {
+                    name: 'Subcategory 1',
+                    id: 37
+                  },
+                  38: {
+                    name: 'Subcategory 2',
+                    id: 38
+                  },
+                  39: {
+                    name: 'Subcategory 3',
+                    id: 39
+                  },
+                  40: {
+                    name: 'Subcategory 4',
+                    id: 40
+                  },
+                  41: {
+                    name: 'Subcategory 5',
+                    id: 41
+                  },
+                  42: {
+                    name: 'Subcategory 6',
+                    id: 42
+                  }
+                }
+              },
+              8: {
+                id: 8,
+                name: "Monthly Package",
+                image: '../../images/auto-service-icons-2.png',
+                description: "Monthly Package Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  43: {
+                    name: 'Subcategory 1',
+                    id: 43
+                  },
+                  44: {
+                    name: 'Subcategory 2',
+                    id: 44
+                  },
+                  45: {
+                    name: 'Subcategory 3',
+                    id: 45
+                  },
+                  46: {
+                    name: 'Subcategory 4',
+                    id: 46
+                  },
+                  47: {
+                    name: 'Subcategory 5',
+                    id: 47
+                  },
+                  48: {
+                    name: 'Subcategory 6',
+                    id: 48
+                  }
+                }
+              },
+              8: {
+                id: 9,
+                name: "Yearls Package",
+                image: '../../images/auto-service-icons-2.png',
+                description: "Yearls Package Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  49: {
+                    name: 'Subcategory 1',
+                    id: 49
+                  },
+                  50: {
+                    name: 'Subcategory 2',
+                    id: 50
+                  },
+                  51: {
+                    name: 'Subcategory 3',
+                    id: 51
+                  },
+                  52: {
+                    name: 'Subcategory 4',
+                    id: 52
+                  },
+                  53: {
+                    name: 'Subcategory 5',
+                    id: 53
+                  },
+                  54: {
+                    name: 'Subcategory 6',
+                    id: 54
+                  }
+                }
+              }
+            },
+            visibleCategory: undefined,
             uploadImageErrText: false,
             policeReportErrText: false,
             rationCardErrText: false,
@@ -287,39 +330,69 @@ class RepairSteps extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+      this.setState({
+        'filteredCarRepairCategories': cloneDeep(this.state.carRepairCategories)
+      })
+    }
+
+    filterCarType(searchTerm) {
+      const filterKeyword = searchTerm.toLowerCase();
+      if (filterKeyword) {
+        const carCategories = cloneDeep(this.state.carRepairCategories);
+        let filteredCarRepairCategories = {};
+        each (carCategories, (carDetails) => {
+          const carName = carDetails.name.toLowerCase();
+          if (carName.indexOf(filterKeyword) > -1 ) {
+            filteredCarRepairCategories[carDetails.id] = carDetails
+          } else {
+            let modifiedCarDetails = cloneDeep(carDetails);
+            let filteredSubCategory = {};
+            each (carDetails.subCategories, (subCategory) => {
+              const subCategoryName = subCategory.name.toLowerCase();
+              if (subCategory.checked) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              } else if (subCategoryName.indexOf(filterKeyword) > -1) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              }
+            });
+            if (size(filteredSubCategory)) {
+              modifiedCarDetails['subCategories'] = filteredSubCategory;
+              filteredCarRepairCategories[carDetails.id] = modifiedCarDetails;
+            }
+          }
+        });
+        this.setState({
+          'filteredCarRepairCategories': filteredCarRepairCategories
+        })
+      } else {
+        this.setState({
+          'filteredCarRepairCategories': cloneDeep(this.state.carRepairCategories)
+        })
+      }
+    }
+
     handleChange(date) {
         this.setState({
             startDate: date
         });
     }
+
     openCategory(id) {
-        let newCat = [];
-        map(this.state.carWashCategories, (category) => {
-            let cat = { ...category };
-            if (category.id == id) {
-                cat.active = !cat.active;
-                cat.showModal = false;
-            } else {
-                cat.active = false;
-                cat.showModal = false;
-            }
-            newCat.push(cat);
-        })
-        this.setState({
-            carWashCategories: newCat
-        });
+      this.setState({
+        'visibleCategory': id
+      })
     }
-    showModal(e,id){
+
+    showModal(e, categoryDetails){
         e.preventDefault();
-        let updateVal=[...this.state.carWashCategories]
-        each(updateVal, function(value) {
-            value.showModal = false;
-            if(value.id == id){
-                value.showModal = !value.showModal;
-            }
-        });
-        this.setState({carWashCategories:updateVal})
+        this.setState({
+          'selectedCarCategoryForModel': categoryDetails,
+          'catDescriptionModalVisible': true
+        })
     }
+
     hidePanel(panel) {
         if (panel == 'step1') {
             this.setState({ step1Panel: !this.state.step1Panel, step2Panel: false });
@@ -328,27 +401,16 @@ class RepairSteps extends Component {
         }
     }
 
-    chageCheckoxState(e, val) {
-        let updateVal = [...this.state.carWashCategories], checkedCount = 0;
-
-        find(updateVal, (washCategory) => {
-            if (washCategory.active) {
-                find(washCategory.categories, (subCategory) => {
-                    if (subCategory.name == val.name && subCategory.id == val.id) {
-                        subCategory.checked = !subCategory.checked;
-                    }
-                    if (subCategory.checked) {
-                        checkedCount++;
-                    }
-                })
-                washCategory.checkedCategoryCount = checkedCount;
-            }
-        })
-        this.setState({
-            carWashCategories: updateVal
-        })
-
+    changeCheckboxState(e, categoryId, subCategoryId) {
+      const isChecked = e.target.checked;
+      const filteredCarRepairCategories = cloneDeep(this.state.filteredCarRepairCategories);
+      filteredCarRepairCategories[categoryId]['subCategories'][subCategoryId]['checked'] = isChecked;
+      this.setState({
+        filteredCarRepairCategories: filteredCarRepairCategories,
+        carRepairCategories: filteredCarRepairCategories
+      });
     }
+
     selectedDropdownText(location) {
         this.setState({ PrefferedLocation: location });
     }
@@ -501,8 +563,39 @@ class RepairSteps extends Component {
         }
 
     }
+    renderCarType(carDetails, key) {
+      const checkedSubCategories = filter(carDetails.subCategories, (data)=>{return (data.checked)});
+      return (
+        <div className="sub-collapse-panel" key={key}>
+          <figure onClick={(e)=>{this.showModal(e, carDetails)}}>
+                  <img src={carDetails.image} alt="" />
+          </figure>
+          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault(); this.openCategory(carDetails.id); }}>
+              <h4>{carDetails.name}</h4>
+              {checkedSubCategories && checkedSubCategories.length > 0 ?
+                  <span className="sub-category-count">
+                      {checkedSubCategories.length}{checkedSubCategories.length == 1 ? " Category Selected" : " Categories Selected"}
+                  </span>
+                    :
+                  <span className="sub-category-count">
+                      {carDetails.subCategories.length} {carDetails.subCategories.length == 1 ? "subcategory" : "subcategories"}
+                  </span>
+              }
+              <i className={carDetails.id == this.state.visibleCategory  ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
+          </div>
+          <div className={carDetails.id == this.state.visibleCategory  ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
+              {map(carDetails.subCategories, (subCategory, index) => {
+                  return (<div className="options" key={index}>
+                      <span className="checkbox-style">
+                          <label className={subCategory.checked?"label active":"label"}><input type="checkbox" checked={subCategory.checked ? subCategory.checked : false} onChange={(e) => { this.changeCheckboxState(e, carDetails.id, subCategory.id) }} value="" />{subCategory.checked} {subCategory.name}</label>
+                      </span>
+                  </div>);
+              })}
+          </div>
+        </div>
+      )
+    }
     render() {
-        
         const uploadImage = map(this.state.uploadImage, (img, index) => {
             return (
                 <div className='upload-box-wrapper box-shadow' index={index}>
@@ -558,78 +651,14 @@ class RepairSteps extends Component {
         const format = 'h:mm a';
         let leftBlock = [];
         let rightBlock = [];
-        each(this.state.carWashCategories, (carWashCategory, key) => {
-            if (key % 2 != 0) {
-                rightBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-                                
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            } else {
-                leftBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                        <CustomModal showModal={carWashCategory.showModal} title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-                                
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            }
+        let catLength = 0;
+        each(this.state.filteredCarRepairCategories, (carDetails) => {
+          catLength += 1;
+          if (catLength % 2 == 0) {
+              rightBlock.push(this.renderCarType(carDetails, catLength));
+          } else {
+              leftBlock.push(this.renderCarType(carDetails, catLength));
+          }
         });
         return (
             <div className="panel-section car-wash">
@@ -642,7 +671,7 @@ class RepairSteps extends Component {
                         <div className="row">
                             <div className="col-md-6 pad0">
                                 <div className="search-box">
-                                    <TextInput label="Search" name="text" type="text" />
+                                    <TextInput label="Search" name="text" type="text" onChange={this.filterCarType.bind(this)}/>
                                     <i className="mdi mdi-magnify" />
                                 </div>
                             </div>

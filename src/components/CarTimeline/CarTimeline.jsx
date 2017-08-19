@@ -62,7 +62,7 @@ export default class BookService extends Component {
         this.setState({ timelineUpdate: val });
     }
     myCarDropdown() {
-        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon });
+        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon,deleteModal:false });
     }
     carSelection(car) {
         this.setState({ selectedCar: car });
@@ -81,6 +81,7 @@ export default class BookService extends Component {
     }
 
     switchCarProfile(carProfileId) {
+        debugger
       if (carProfileId) {
         this.props.actions.getCarProfileDetails(carProfileId);
         this.props.router.push(`/car-profiles/${carProfileId}/view`);
@@ -171,19 +172,16 @@ export default class BookService extends Component {
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
                                     <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit12</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
-
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} onHide={() => {this.setState({deleteModal: false})}} footer="true" title="Delete my audi a6"
-                            className="deleteCarProfile-modal"
+                            <CustomModal showModal={this.state.deleteModal} title={currentCarProfile.name} className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
                             submitCallBack={this.deleteCarProfile}
-                            
                             saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
                                 </Modal.Body>
                             </CustomModal>
-                            <CustomModal showModal={this.state.bookServiceModalVisible} footer={false} title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({'bookServiceModalVisible': false})}}>
+                            <CustomModal showModal={this.state.bookServiceModalVisible} title="book a service" className="bookService-modal" closeIcon="true" hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
                               <Modal.Body>
                                   <ul>
                                       {bookServiceOptionView}

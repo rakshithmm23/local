@@ -31,7 +31,7 @@ export default class MyRequest extends Component {
     }
 
     componentWillMount() {
-        
+
         if (window.location.search.indexOf('type=waiting') > -1 ) {
          this.setState({'requestType': 'waiting'});
         } else if (window.location.search.indexOf('type=success') > -1 ) {
@@ -39,6 +39,7 @@ export default class MyRequest extends Component {
         }
 
     }
+
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -75,19 +76,18 @@ export default class MyRequest extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} onHide={() => {this.setState({showModal: false})}} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
+                            <CustomModal showModal={this.state.showModal} hideModal={() => {this.setState({showModal: false,chars_left:0})}} footer={true} title="Cancel request" saveText="Confirm" cancelText="Close">
                                 <Modal.Body>
                                     <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
                                     <div className="info-heading">
-                                        <span>reason to cancel</span>
+                                        <span>Reason to cancel</span>
                                     </div>
                                     <div className="model-select">
                                         <select className="car-selection ">
-                                            <option value="select">Select Car Brand</option>
-                                            <option value="volvo">Volvo</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
+                                            <option value="select">I dont want to do it now</option>
+                                            <option value="volvo">Emergency use</option>
+                                            <option value="saab">I will do it later</option>
+                                            <option value="mercedes">Too expensive</option>
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>

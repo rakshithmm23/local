@@ -30,7 +30,7 @@ export default class VerifyOTP extends Component {
         if (authData.phone) {
           if (authData.phoneVerified) {
             this.props.router.push('dashboard');
-          } else {
+          } else if (this.props.authReducer && this.props.authReducer.fromSignIn){
             this.props.actions.resendOTP(authData.phone);
           }
         } else {
@@ -91,6 +91,10 @@ export default class VerifyOTP extends Component {
     }
     render() {
         const { router, authReducer } = this.props;
+        let authData = undefined;
+        if (localStorage && localStorage.authData) {
+          authData = JSON.parse(localStorage.authData);
+        }
         console.log(authReducer);
         return (
             <div className="container-fluid" id="wrapper">
@@ -120,7 +124,7 @@ export default class VerifyOTP extends Component {
                                   isOTP={true} />
                                 <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="gmail" btnSize="lg" fontSize={14} label="Complete sign up" />
                                 <p className="note-text">
-                                    {'Didn\'t get OTP ?'} <a href="" className="blue-text">Resend</a>
+                                    {'Didn\'t get OTP ?'} <a onClick={(e) => {e.preventDefault(); if (authData && authData.phone){this.props.actions.resendOTP(authData.phone);}}} className="blue-text">Resend</a>
                                 </p>
                             </div>
                         </div>

@@ -21,6 +21,7 @@ export default class NewCarProfile extends Component {
     }
     componentWillMount() {
       const routeParams = this.props.routeParams;
+      this.props.actions.getCarMakeandModels();
       if (routeParams && routeParams.id) {
         this.setState({'isEditProfile': true, profileId: routeParams.id});
         this.props.actions.getCarProfileDetails(routeParams.id);

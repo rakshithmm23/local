@@ -120,7 +120,7 @@ export default class Header extends Component {
         return (
             <div className="header-section navbar-fixed-top">
                 <div className="logo-section">
-                    <img src="../../images/logo-new.png" alt="" className="logo-img" />
+                    <img src="../../images/logo-new.jpg" alt="" className="logo-img" />
                 </div>
                 <div className="header-search">
                     <Search savedLocation={this.savedLocation} dropdownList={this.dropdownList}/>

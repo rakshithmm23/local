@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import queryString from 'query-string';
 const cookies = new Cookies();
 
-export function signInUser (signInData, dispatch) {
+export function signInUser (signInData, dispatch, fromSignup) {
   axios.post(API_END_POINTS.SIGNIN, JSON.stringify(signInData), {
       headers: {
         'Accept': 'application/json,',
@@ -28,6 +28,7 @@ export function signInUser (signInData, dispatch) {
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
+            fromSignIn: fromSignup? false : true,
             authData: responseData
           });
         } else {
@@ -47,7 +48,7 @@ export function signInUser (signInData, dispatch) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: (err.response.status === 400 || err.response.status === 401) ? 'Invalid Email/Password' : err.response.data.message
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? err.response.data && err.response.data.message ? err.response.data.message : 'Invalid Email/Password' : 'Invalid Email/Password'
         });
       } else {
         dispatch({
@@ -60,7 +61,7 @@ export function signInUser (signInData, dispatch) {
 export function signInAction(signInData, dispatch, fromSignup) {
   if (fromSignup) {
     signInData.usertype = 'customer';
-    signInUser(signInData, dispatch);
+    signInUser(signInData, dispatch, fromSignup);
   } else {
     return (dispatch) => {
       signInUser(signInData, dispatch);
@@ -94,7 +95,7 @@ export function showVerifyOTPPage(signUpData) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.data
+          statusMessage: err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
         });
       } else if (err.response.status === 409) {
         dispatch({
@@ -344,6 +345,47 @@ export function resetPassword(verificationCode, password) {
           });
         }
       })
+  }
+}
+
+export function verifyEmail(code) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.VERIFY_EMAIL, {
+      params: {
+        'type': 'email',
+        'code': code
+      },
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json',
+      },
+      withCredentials:true
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: types.EMAIL_VERIFIED,
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (response.status === 401  || response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      }
+    })
+    .catch((err) => {
+      if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.status === 401  || err.response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'System error, please try later'
+        });
+      }
+    });
   }
 }
 

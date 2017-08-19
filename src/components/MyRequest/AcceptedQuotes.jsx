@@ -67,7 +67,7 @@ export default class AcceptedQuotes extends Component {
         this.setState({imagesRemaining:imagesRemaining})
       }
     }
-    
+
   render() {
 
     const AcceptedQuotesList = map(this.AcceptedQuotes, (item, key) => {

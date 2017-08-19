@@ -92,10 +92,14 @@ export default class SignUp extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
+      let phone_no = this.formData.phone;
+      if (!phone_no.startsWith("+")) {
+        phone_no = '+' + phone_no;
+      }
       this.props.actions.showVerifyOTPPage({
         'name': this.formData.name,
         'email': this.formData.email,
-        'phone': this.formData.phone,
+        'phone': phone_no,
         'password': this.formData.password,
         'type': 'customer',
         'usertype': 'customer'

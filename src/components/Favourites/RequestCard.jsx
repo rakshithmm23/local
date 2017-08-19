@@ -368,7 +368,7 @@ export default class RequestCard extends Component {
                                       Distance - Near to Far
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li className="active" onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
@@ -376,7 +376,7 @@ export default class RequestCard extends Component {
                                       Distance - Far to Near
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                    <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={() => { this.filterOption("high-low") }} className={this.state.filterSort == "high-low" ? "active" : ""}>
@@ -384,7 +384,7 @@ export default class RequestCard extends Component {
                                       Rating - Highest to Lowest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={() => { this.filterOption("low-high") }} className={this.state.filterSort == "low-high" ? "active" : ""}>
@@ -392,7 +392,7 @@ export default class RequestCard extends Component {
                                       Rating - Lowest to Highest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                 </ul>
@@ -420,6 +420,8 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
+                                          <span className="range-min">{this.state.distValue.min+" Km"}</span>
+                                          <span className="range-max">{this.state.distValue.max+" Km"}</span>
 
                                       </div>
                                       <div className="f-card">
@@ -430,6 +432,8 @@ export default class RequestCard extends Component {
                                           maxValue={100}
                                           value={this.state.priceValue}
                                           onChange={priceValue => this.setState({ priceValue })} />
+                                          <span className="range-min">{this.state.priceValue.min+" AED"}</span>
+                                          <span className="range-max">{this.state.priceValue.max+" AED"}</span>
                                       </div>
                                       <div className="f-card">
                                         <h5>Open Between</h5>
@@ -486,7 +490,6 @@ export default class RequestCard extends Component {
                                         <Rating
                                           empty="mdi mdi-star-outline "
                                           full="mdi mdi-star active-star"
-                                          fractions={2}
                                           initialRate={this.state.ratingValue}
                                           onChange={(e) => { this.ratingOnChange(e) }}
                                         />

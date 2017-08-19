@@ -37,14 +37,15 @@
 }
 
 .modal-body .info-heading {
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .modal-body .info-heading span {
   display: inline-block;
-  color: #006FBA;
+  color: #006FB9;
   font-family: CenturyGothic;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: capitalize;
 }
 
@@ -182,11 +183,12 @@
 }
 
 .map-modal .current-position {
+  bottom: 109px;
   z-index: 1;
   position: absolute;
-  right: 0;
-  height: 40px;
-  width: 40px;
+  right: -6px;
+  height: 30px;
+  width: 30px;
   border-radius: 3px;
   background-color: #FFFFFF;
   box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
@@ -199,7 +201,7 @@
   color: #ED3124;
   font-size: 20px;
   text-align: center;
-  line-height: 39px;
+  line-height: 32px;
 }
 
 .btn-theme.cancel {
