@@ -21,7 +21,7 @@ export default class BookService extends Component {
             isLoading: false,
             bookServiceModalVisible: false,
         };
-        this.showBookServiceModal = this.showBookServiceModal.bind(this);
+        
     }
     componentWillMount() {
       this.setState({'isLoading': true});
@@ -102,11 +102,11 @@ export default class BookService extends Component {
                                     {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
                                       return (
                                           <BookServiceBox key={index} {...profile}
-                                            btnCallBack={this.showBookServiceModal}
+                                            btnCallBack={this.showBookServiceModal.bind(this)}
                                             router={router}
                                       />);
                                     })}
-                                    <CustomModal showModal={this.state.bookServiceModalVisible} footer={false} title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({'bookServiceModalVisible': false})}}>
+                                    <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon={true} hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
                                       <Modal.Body>
                                           <ul>
                                               {bookServiceOptionView}

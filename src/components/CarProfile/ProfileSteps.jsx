@@ -302,7 +302,7 @@ class ProfileSteps extends Component {
         <section className="collapse-panel selectModal">
           <div className="panel-head" onClick={() => { this.tabOpen('modelTabVisible'); }}>
             <h4>Step 2: Select The model</h4>
-            <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
+            <i className={this.state.modelTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
           </div>
           {this.state.modelTabVisible &&
             <div className="panel-content">

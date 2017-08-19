@@ -51,21 +51,21 @@ export default class Search extends Component {
         document.body.removeEventListener()
     }
     bodyClick(e) {
-        if ((e.target.closest('.searchFill') == null)) {
-            this.setState({ seachedValue: "" });
-        }
-        if (e.target.className != "saveLocation") {
-            this.setState({ addLocationModal: false });
-        }
-        if (e.target.className != "editLocation") {
-            this.setState({ editLocationModal: false });
-        }
-        if (e.target.parentNode.className != "my-location") {
-            this.setState({ showLocationModal: false });
-        }
-        if (e.target.className != "current-position" || e.target.className != "mdi mdi-crosshairs-gps") {
-            this.setState({ setCenter: false });
-        }
+        // if ((e.target.closest('.searchFill') == null)) {
+        //     this.setState({ seachedValue: "" });
+        // }
+        // if (e.target.className != "saveLocation") {
+        //     this.setState({ addLocationModal: false });
+        // }
+        // if (e.target.className != "editLocation") {
+        //     this.setState({ editLocationModal: false });
+        // }
+        // if (e.target.parentNode.className != "my-location") {
+        //     this.setState({ showLocationModal: false });
+        // }
+        // if (e.target.className != "current-position" || e.target.className != "mdi mdi-crosshairs-gps") {
+        //     this.setState({ setCenter: false });
+        // }
     }
 
     handleFocus() {
@@ -163,7 +163,7 @@ export default class Search extends Component {
                     <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.dropdownSelect(e) }} title={
                         <div className="input-group">
                             <span className="input-group-addon" id="basic-addon1"><i className="mdi mdi-crosshairs-gps" /></span>
-                            <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value })} aria-describedby="basic-addon1" />
+                            <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value,showLocationModal: false })} aria-describedby="basic-addon1" />
                             <i className="mdi mdi-chevron-down" />
                         </div>}>
                         <MenuItem eventKey="">
@@ -183,7 +183,7 @@ export default class Search extends Component {
                             noCaret title={
                             <div>
                                 <input value={this.state.seachedValue} placeholder="Search"
-                                    onChange={(e) => this.setState({ seachedValue: e.target.value })} />
+                                    onChange={(e) => this.setState({ seachedValue: e.target.value,showLocationModal: false })} />
                                 <i className="mdi mdi-magnify" aria-hidden="true" />
                                 <span className="no-notify" />
                             </div>}>
@@ -207,7 +207,7 @@ export default class Search extends Component {
                     </FormGroup>
 
                 </div>
-                <CustomModal onHide={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer="true" title="save location">
+                <CustomModal hideModal={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer={true} title="save location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -219,7 +219,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal onHide={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer="true" title="edit location">
+                <CustomModal hideModal={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer={true} title="edit location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -238,7 +238,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal onHide={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer="true" title="Mark your location" saveText="Select Location">
+                <CustomModal hideModal={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer={true} title="Mark your location" saveText="Select Location">
                     <Modal.Body>
                         <span onClick={() => this.setState({ setCenter: true })} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         <Gmaps

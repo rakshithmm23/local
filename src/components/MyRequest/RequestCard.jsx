@@ -601,7 +601,7 @@ export default class RequestCard extends Component {
                       </div>
                       <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quote":"Quotes"}</span>
+                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
                         </div>
                       </div>
                     </div>
@@ -633,7 +633,7 @@ export default class RequestCard extends Component {
                                       Distance - Near to Far
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("far-near"))} className={this.state.filterSort == "far-near"?"active":""}>
@@ -641,7 +641,7 @@ export default class RequestCard extends Component {
                                       Distance - Far to Near
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("high-low"))} className={this.state.filterSort == "high-low"?"active":""}>
@@ -649,7 +649,7 @@ export default class RequestCard extends Component {
                                       Rating - Highest to Lowest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("low-high"))} className={this.state.filterSort == "low-high"?"active":""}>
@@ -657,7 +657,7 @@ export default class RequestCard extends Component {
                                       Rating - Lowest to Highest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                 </ul>
@@ -753,7 +753,6 @@ export default class RequestCard extends Component {
                                         <Rating
                                             empty="mdi mdi-star-outline "
                                             full="mdi mdi-star active-star"
-                                            fractions={2}
                                             initialRate={this.state.ratingValue}
                                             onChange={(e)=>{this.ratingOnChange(e)}}
                                         />
