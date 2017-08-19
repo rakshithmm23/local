@@ -106,7 +106,7 @@ export default class BookService extends Component {
                                             router={router}
                                       />);
                                     })}
-                                    <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon="true" hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
+                                    <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon={true} hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
                                       <Modal.Body>
                                           <ul>
                                               {bookServiceOptionView}

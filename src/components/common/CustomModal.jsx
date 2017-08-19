@@ -33,9 +33,9 @@ class CustomModal extends Component {
         return (
             <div>
                 <Modal className={className} show={this.state.showModal} onHide={this.props.hideModal} >
-                    {!header?"":<Modal.Header closeButton>
+                    {header==false?"":<Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
-                        {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>
+                        {closeIcon && <label className="close-modal" onClick={this.props.hideModal}>
                           <i className="mdi mdi-close"/>
                         </label>}
                     </Modal.Header>}
