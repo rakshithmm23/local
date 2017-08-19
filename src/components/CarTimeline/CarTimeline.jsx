@@ -62,7 +62,7 @@ export default class BookService extends Component {
         this.setState({ timelineUpdate: val });
     }
     myCarDropdown() {
-        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon });
+        this.setState({ myCarDropdownIcon: !this.state.myCarDropdownIcon,deleteModal:false });
     }
     carSelection(car) {
         this.setState({ selectedCar: car });
@@ -153,7 +153,8 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal}/>
                             <div className="text-dropdown add-new car-profile-header" >
-                                {carProfiles && currentCarProfile && <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown() }} title={
+                                {carProfiles && currentCarProfile && 
+                                <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown() }} title={
                                     <span>
                                         <h4>{currentCarProfile.name}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
@@ -168,21 +169,19 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
-
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit123</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete12333</MenuItem>
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} onHide={() => {this.setState({deleteModal: false})}} footer="true" title="Delete my audi a6"
-                            className="deleteCarProfile-modal"
+                            <CustomModal showModal={this.state.deleteModal} title="Delete my audi a6" className="deleteCarProfile-modal" onHide={() => {this.setState({deleteModal: false})}} footer="true" 
+                            
                             submitCallBack={this.deleteCarProfile}
-                            onHide={() => {this.setState({ deleteModal: false });}}
                             saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>
                                 </Modal.Body>
                             </CustomModal>
-                            <CustomModal showModal={this.state.bookServiceModalVisible} footer={false} title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({'bookServiceModalVisible': false})}}>
+                            <CustomModal showModal={this.state.bookServiceModalVisible} title="book a service" className="bookService-modal" closeIcon="true" onHide={() => {this.setState({'bookServiceModalVisible': false})}}>
                               <Modal.Body>
                                   <ul>
                                       {bookServiceOptionView}
