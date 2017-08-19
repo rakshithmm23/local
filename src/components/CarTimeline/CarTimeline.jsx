@@ -169,8 +169,8 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit123</MenuItem>
-                                    <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete12333</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
+                                    <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
                             <CustomModal showModal={this.state.deleteModal} title="Delete my audi a6" className="deleteCarProfile-modal" onHide={() => {this.setState({deleteModal: false})}} footer="true" 
