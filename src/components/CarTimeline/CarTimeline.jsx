@@ -81,6 +81,7 @@ export default class BookService extends Component {
     }
 
     switchCarProfile(carProfileId) {
+        debugger
       if (carProfileId) {
         this.props.actions.getCarProfileDetails(carProfileId);
         this.props.router.push(`/car-profiles/${carProfileId}/view`);
@@ -173,7 +174,7 @@ export default class BookService extends Component {
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} title="Delete my audi a6" className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
+                            <CustomModal showModal={this.state.deleteModal} title={currentCarProfile.name} className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
                             
                             submitCallBack={this.deleteCarProfile}
                             saveText="Delete">
