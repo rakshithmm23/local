@@ -197,7 +197,6 @@ class CardType extends Component {
                             <Rating
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
-                                fractions={2}
                                 initialRate={this.state.ratingValue}
                                 onChange={(e) => { this.ratingOnChange(e) }}
                             />

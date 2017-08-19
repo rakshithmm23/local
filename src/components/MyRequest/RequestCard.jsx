@@ -601,7 +601,7 @@ export default class RequestCard extends Component {
                       </div>
                       <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                         <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quote":"Quotes"}</span>
+                          <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span>
                         </div>
                       </div>
                     </div>
@@ -753,7 +753,6 @@ export default class RequestCard extends Component {
                                         <Rating
                                             empty="mdi mdi-star-outline "
                                             full="mdi mdi-star active-star"
-                                            fractions={2}
                                             initialRate={this.state.ratingValue}
                                             onChange={(e)=>{this.ratingOnChange(e)}}
                                         />

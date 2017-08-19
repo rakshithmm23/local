@@ -450,6 +450,8 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
+                                          <span className="range-min">{this.state.distValue.min+" Km"}</span>
+                                          <span className="range-max">{this.state.distValue.max+" Km"}</span>
                                       </div>
                                       <div className="f-card openAlign">
                                         <h5>Open Between</h5>
@@ -507,7 +509,6 @@ export default class RequestCard extends Component {
                                         <Rating
                                           empty="mdi mdi-star-outline "
                                           full="mdi mdi-star active-star"
-                                          fractions={2}
                                           initialRate={this.state.ratingValue}
                                           onChange={(e) => { this.ratingOnChange(e) }}
                                         />
