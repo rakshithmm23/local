@@ -51,7 +51,6 @@ export default class Search extends Component {
         document.body.removeEventListener()
     }
     bodyClick(e) {
-        debugger
         // if ((e.target.closest('.searchFill') == null)) {
         //     this.setState({ seachedValue: "" });
         // }
@@ -208,7 +207,7 @@ export default class Search extends Component {
                     </FormGroup>
 
                 </div>
-                <CustomModal onHide={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer="true" title="save location">
+                <CustomModal hideModal={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer="true" title="save location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -220,7 +219,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal onHide={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer="true" title="edit location">
+                <CustomModal hideModal={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer="true" title="edit location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -239,7 +238,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal onHide={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer="true" title="Mark your location" saveText="Select Location">
+                <CustomModal hideModal={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer="true" title="Mark your location" saveText="Select Location">
                     <Modal.Body>
                         <span onClick={() => this.setState({ setCenter: true })} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         <Gmaps

@@ -20,17 +20,24 @@ class CustomModal extends Component {
             });
         }
     }
+    componentWillMount() {
+        debugger
+    }
+    componentWillUnmount() {
+        debugger
+    }
     close() {
+        debugger
         this.setState({ showModal: false });
-        if (this.props.closeModalCallBack){
-          this.props.closeModalCallBack();
-        }
+        // if (this.props.closeModalCallBack){
+        //   this.props.closeModalCallBack();
+        // }
     }
     render() {
         const { children, footer, className, closeIcon } = this.props;
         return (
             <div>
-                <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
+                <Modal className={className} show={this.state.showModal} onHide={this.props.hideModal} >
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
                         {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>

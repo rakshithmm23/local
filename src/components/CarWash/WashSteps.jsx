@@ -529,7 +529,7 @@ class WashSteps extends Component {
                     </div>}
 
                 </section>
-                <CustomModal showModal={this.state.catDescriptionModalVisible} title={this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.name} closeIcon={true} closeModalCallBack={() => {this.setState({'catDescriptionModalVisible': false})}}>
+                <CustomModal showModal={this.state.catDescriptionModalVisible} title={this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.name} closeIcon={true} hideModal={() => {this.setState({'catDescriptionModalVisible': false})}}>
                   <Modal.Body>
                     <p className="info-text">{this.state.selectedCarCategoryForModel && this.state.selectedCarCategoryForModel.description}</p>
                   </Modal.Body>

@@ -185,7 +185,7 @@ class CardType extends Component {
                     </div>
                 </div>}
 
-                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => { this.setState({ saveModal: false }) }} className="rating-modal" closeIcon="true" saveText="Submit">
+                <CustomModal footer="true" showModal={this.state.saveModal} hideModal={() => { this.setState({ saveModal: false }) }} className="rating-modal" closeIcon="true" saveText="Submit">
                     <Modal.Body>
                         <div className="image-holder">
                             <img src="../../images/test.jpg" alt="" />
