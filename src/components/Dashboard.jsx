@@ -68,7 +68,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const authData = localStorage.getItem('authData');
+        const authData = JSON.parse(localStorage.getItem('authData'));
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
                 <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={() => this.props.router.push(service.hyperlink)}>
