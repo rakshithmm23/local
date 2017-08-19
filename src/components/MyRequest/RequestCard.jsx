@@ -633,7 +633,7 @@ export default class RequestCard extends Component {
                                       Distance - Near to Far
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("far-near"))} className={this.state.filterSort == "far-near"?"active":""}>
@@ -641,7 +641,7 @@ export default class RequestCard extends Component {
                                       Distance - Far to Near
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("high-low"))} className={this.state.filterSort == "high-low"?"active":""}>
@@ -649,7 +649,7 @@ export default class RequestCard extends Component {
                                       Rating - Highest to Lowest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                   <li onClick={()=>(this.filterOption("low-high"))} className={this.state.filterSort == "low-high"?"active":""}>
@@ -657,7 +657,7 @@ export default class RequestCard extends Component {
                                       Rating - Lowest to Highest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
                                 </ul>
