@@ -48,12 +48,12 @@ export function signInUser (signInData, dispatch, fromSignup) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: (err.response.status === 400 || err.response.status === 401) ? err.response.data && err.response.data.message ? err.response.data.message : 'Invalid Email/Password' : 'Invalid Email/Password'
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? err.response.data && err.response.data.message ? err.response.data.message : 'Invalid Email/Password' : 'Unknown error occurred please try again'
         });
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
       }
     });
@@ -105,7 +105,7 @@ export function showVerifyOTPPage(signUpData) {
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
       }
     });
@@ -150,7 +150,7 @@ export function showWelcomePage(otp, phone, userId) {
         } else {
           dispatch({
             type: types.SHOW_ERROR_MESSAGE,
-            statusMessage: 'System error, please try later'
+            statusMessage: 'Unknown error occurred please try again'
           });
         }
       });
@@ -211,7 +211,7 @@ export function fetchCurrentUserInfo(router){
     .catch(() => {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
     });
   };
@@ -269,6 +269,7 @@ export function logout(router) {
       }
     })
     .catch(() => {
+        document.cookie = "";
         localStorage.clear();
         router.push('/');
     });
@@ -382,7 +383,7 @@ export function verifyEmail(code) {
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
       }
     });
