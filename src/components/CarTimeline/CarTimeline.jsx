@@ -153,7 +153,8 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal}/>
                             <div className="text-dropdown add-new car-profile-header" >
-                                {carProfiles && currentCarProfile && <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown() }} title={
+                                {carProfiles && currentCarProfile && 
+                                <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown()}} title={
                                     <span>
                                         <h4>{currentCarProfile.name}</h4>
                                         {this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-down" />}
@@ -162,13 +163,13 @@ export default class BookService extends Component {
                                     {map(carProfiles, (carProfile, key) => {
                                       return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem >);
                                     })}
-                                    <MenuItem eventKey="">Add New</MenuItem>
+                                    <MenuItem >Add New</MenuItem>
                                 </DropdownButton>}
                             </div>
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit12</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
 
                                 </DropdownButton>
@@ -176,7 +177,7 @@ export default class BookService extends Component {
                             <CustomModal showModal={this.state.deleteModal} onHide={() => {this.setState({deleteModal: false})}} footer="true" title="Delete my audi a6"
                             className="deleteCarProfile-modal"
                             submitCallBack={this.deleteCarProfile}
-                            onHide={() => {this.setState({ deleteModal: false });}}
+                            
                             saveText="Delete">
                                 <Modal.Body>
                                     <p className="warning-text">Are you sure you want to delete this profile?</p>

@@ -95,6 +95,7 @@ export default class MyRequest extends Component {
 
                                         <FormGroup>
                                           <FormControl
+                                              maxLength="200"
                                               className="textAlign"
                                               componentClass="textarea"
                                               placeholder="Comments"

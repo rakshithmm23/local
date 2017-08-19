@@ -156,9 +156,9 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    if (curr.refs[curr.props.index].offsetTop) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
-    }
+    // if (curr.refs[curr.props.index].offsetTop) {
+    //   this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    // }
   }
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
@@ -230,7 +230,8 @@ export default class RequestCard extends Component {
     this.setState({
       jobCardDetails: newArray,
       mapsCenter: { lat: centerLat, lng: centerLng },
-      setCenter: true
+      setCenter: true,
+      quotation: true, messages: false
     })
   }
   closeChat() {
