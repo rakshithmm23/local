@@ -173,7 +173,7 @@ export default class BookService extends Component {
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} title="Delete my audi a6" className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer="true" 
+                            <CustomModal showModal={this.state.deleteModal} title="Delete my audi a6" className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
                             
                             submitCallBack={this.deleteCarProfile}
                             saveText="Delete">
