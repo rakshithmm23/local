@@ -4,7 +4,7 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -36,7 +36,7 @@ export default class SignIn extends Component {
   componentWillMount() {
     const signedUserDataCookie = cookies.get('carauth');
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -52,7 +52,7 @@ export default class SignIn extends Component {
   componentWillUpdate(nextProps) {
     const signedUserDataCookie = cookies.get('carauth');
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData){
+    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
       const authData = JSON.parse(localStorage.authData);
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -70,7 +70,7 @@ export default class SignIn extends Component {
   }
   signInAction(e) {
     e.preventDefault();
-    const {router} = this.props;
+    const { router } = this.props;
     let formData = {
       ...this.formData
     }
@@ -83,10 +83,10 @@ export default class SignIn extends Component {
         this.errors[key] = false;
     }
     if (!validForm) {
-      this.setState({submissionError: true});
+      this.setState({ submissionError: true });
       return;
     } else {
-      this.setState({submissionError: false});
+      this.setState({ submissionError: false });
       this.props.actions.signInAction({
         'email': this.formData.email,
         'password': this.formData.password,
@@ -94,53 +94,55 @@ export default class SignIn extends Component {
       });
     }
   }
-    render() {
-        const { router, authReducer } = this.props;
-        return (
-            <div className="container-fluid" id="wrapper">
-                <LoginHeader pageType="signIn" headerClickAction={(e)=>{e.preventDefault();router.push('/')}}/>
-                <CarouselSlider />
-                <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
-                <Scrollbars className="customScroll">
-                        <div className="login-panel signin">
-                            <div className="login-panel-header">
-                                <h3 className="login-title">Sign In</h3>
-                                <Button btnCallBack={(e) =>{e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/facebook?type=customer"}} iconName="facebook" btnType="facebook" btnSize="lg" fontSize={16} label="Facebook" />
-                                <Button btnCallBack={(e) =>{e.preventDefault(); window.location.href="http://api-test.carcility.com/auth/social/google?type=customer"}} iconName="google" btnType="gmail" btnSize="lg" fontSize={16} label="Google" />
-                            </div>
-                            <div className="or-text">
-                                <span>OR</span>
-                            </div>
-                            <form>
+  render() {
+    const { router, authReducer } = this.props;
+    return (
+      <div className="container-fluid" id="wrapper">
+        <LoginHeader pageType="signIn" headerClickAction={(e) => { e.preventDefault(); router.push('/') }} />
+        <CarouselSlider />
+        <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
+          <div className="customScroll">
+            <CustomScroll heightRelativeToParent="calc(100%)">
+              <div className="login-panel signin">
+                <div className="login-panel-header">
+                  <h3 className="login-title">Sign In</h3>
+                  <Button btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-test.carcility.com/auth/social/facebook?type=customer" }} iconName="facebook" btnType="blue" btnSize="lg" label="Facebook" />
+                  <Button btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-test.carcility.com/auth/social/google?type=customer" }} iconName="google" btnType="red" btnSize="lg" label="Google" />
+                </div>
+                <div className="or-text">
+                  <span>OR</span>
+                </div>
+                <form>
 
-                            <div className="login-panel-body">
-                            {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                              <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-                            </AlertDismissable>}
-                              <TextInput
-                                label="Email"
-                                name="email"
-                                type="email"
-                                showValidationError={this.errors['email']}
-                                validationError="Enter a valid email address"
-                                onChange={this.onFieldChange.bind(this)}/>
-                              <TextInput
-                                label="Password"
-                                name="password"
-                                type="password"
-                                showValidationError={this.errors['password']}
-                                validationError="Password should be greater than six digits"
-                                onChange={this.onFieldChange.bind(this)}/>
-                            </div>
-                            <div className="login-panel-footer">
-                                <a onClick={(e) => {e.preventDefault(); router.push('forgot-password')}} className="blue-text">Forgot Password ?</a>
-                                <Button btnCallBack={this.signInAction.bind(this)} isSubmitBtn={true} btnType="gmail" btnSize="sm" fontSize={16} label="Sign In"/>
-                            </div>
-                                </form>
-                        </div>
-                      </Scrollbars>
+                  <div className="login-panel-body">
+                    {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                      <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                    </AlertDismissable>}
+                    <TextInput
+                      label="Email"
+                      name="email"
+                      type="email"
+                      showValidationError={this.errors['email']}
+                      validationError="Enter a valid email address"
+                      onChange={this.onFieldChange.bind(this)} />
+                    <TextInput
+                      label="Password"
+                      name="password"
+                      type="password"
+                      showValidationError={this.errors['password']}
+                      validationError="Password should be greater than six digits"
+                      onChange={this.onFieldChange.bind(this)} />
                   </div>
+                  <div className="login-panel-footer">
+                    <a onClick={(e) => { e.preventDefault(); router.push('forgot-password') }} className="blue-text">Forgot Password ?</a>
+                    <Button btnCallBack={this.signInAction.bind(this)} isSubmitBtn={true} btnType="red" btnSize="sm" label="Sign In" />
+                  </div>
+                </form>
               </div>
-        );
-    }
+            </CustomScroll>
+          </div>
+        </div>
+      </div>
+    );
   }
+}

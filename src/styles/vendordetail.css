@@ -81,17 +81,14 @@
     margin-top: 11px;
 }
 
-.vd-address .btn-alert {
+.vd-address .btn-theme.transparent {
     height: 34px;
     font-size: 11px !important;
-    font-family: CenturyGothic;
-    font-weight: bold;
-    border-radius: 3px;
     margin-top: 7px;
     width: 110px;
 }
 
-.vd-address .btn-alert:first-child {
+.vd-address .btn-theme.transparent:first-child {
     margin-right: 10px;
 }
 

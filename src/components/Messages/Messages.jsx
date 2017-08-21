@@ -6,7 +6,7 @@ import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import MessagesView from './MessagesView';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 
 
 export default class BookService extends Component {

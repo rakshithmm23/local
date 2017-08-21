@@ -3,8 +3,7 @@ import Button from '../common/Button';
 import Upload from '../common/Upload';
 import { filter, map, each, concat } from 'lodash';
 import TextInput from '../common/TextInput';
-// import { Scrollbars } from 'react-custom-scrollbars';
-
+// import CustomScroll from 'react-custom-scroll';
 
 
 class ProfileSteps extends Component {
@@ -115,20 +114,23 @@ class ProfileSteps extends Component {
     this.formData['model'] = name;
   }
   tabOpen(val) {
-    if (val == 'manufacturerTabVisible') {
-      this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
-    } else if (val == 'modelTabVisible') {
-      if (this.formData.make) {
-        this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
-      }
-    } else if (val == 'otherDetailsTabVisible') {
-      if (!this.formData.year) {
-        this.errors['year'] = true;
-      } else {
-        if (this.formData.year && this.formData.model) {
-          this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+    if (!this.props.isEditProfile) {
+      if (val == 'manufacturerTabVisible') {
+        this.setState({ manufacturerTabVisible: true, modelTabVisible: false, otherDetailsTabVisible: false });
+      } else if (val == 'modelTabVisible') {
+        if (this.formData.make) {
+          this.setState({ manufacturerTabVisible: false, modelTabVisible: true, otherDetailsTabVisible: false });
+        }
+      } else if (val == 'otherDetailsTabVisible') {
+        if (!this.formData.year) {
+          this.errors['year'] = true;
+        } else {
+          if (this.formData.year && this.formData.model) {
+            this.setState({ manufacturerTabVisible: false, modelTabVisible: false, otherDetailsTabVisible: true });
+          }
         }
       }
+
     }
   }
   fileNameUpload(e) {
@@ -273,7 +275,7 @@ class ProfileSteps extends Component {
 
     return (
       <div className="panel-section">
-        <section className="collapse-panel">
+        {(!this.props.isEditProfile) && <section className="collapse-panel">
           <div className="panel-head" onClick={() => { this.tabOpen('manufacturerTabVisible') }}>
             <h4>Step 1: Select The Manufacturer</h4>
             <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
@@ -298,8 +300,8 @@ class ProfileSteps extends Component {
                   </div>
                 </div>}
             </div>}
-        </section>
-        <section className="collapse-panel selectModal">
+        </section>}
+        {(!this.props.isEditProfile) && <section className="collapse-panel selectModal">
           <div className="panel-head" onClick={() => { this.tabOpen('modelTabVisible'); }}>
             <h4>Step 2: Select The model</h4>
             <i className={this.state.manufacturerTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
@@ -328,13 +330,13 @@ class ProfileSteps extends Component {
                 </div>
               </div>
             </div>}
-        </section>
+        </section>}
         <section className="collapse-panel">
-          <div className="panel-head" onClick={() => { this.tabOpen('otherDetailsTabVisible'); }}>
+          {!this.props.isEditProfile && <div className="panel-head" onClick={() => { this.tabOpen('otherDetailsTabVisible'); }}>
             <h4>Step 3: Enter Other Details</h4>
             <i className={this.state.otherDetailsTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
-          </div>
-          {this.state.otherDetailsTabVisible &&
+          </div>}
+          {(this.props.isEditProfile || this.state.otherDetailsTabVisible) &&
             <div className="panel-content">
               <div className="wrapper">
                 <div className="row upload-image car-repair">
@@ -356,7 +358,7 @@ class ProfileSteps extends Component {
                   </div>
                   <div className="col-md-6 padRight0">
                     <TextInput showValidationError={this.errors['plate_no']} label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
-                      onChange={this.onFieldChange.bind(this)} />
+                    onChange={this.onFieldChange.bind(this)} disabled={this.props.isEditProfile}/>
                   </div>
                   <div className="col-md-6 padLeft0">
                     <TextInput showValidationError={this.errors['mileage']} label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}

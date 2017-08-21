@@ -714,7 +714,7 @@ class RepairSteps extends Component {
                                         <div className="radio-style">
                                             <label>
                                                 <input type="radio" name="radio" checked={this.state.accidentRadioBtn} onChange={()=>this.setState({accidentRadioBtn:true,generalRadioBtn:false})}/>
-                                                <i className="mf-radio-button" /><span>Accident123</span>
+                                                <i className="mf-radio-button" /><span>Accident</span>
                                             </label>
                                         </div>
                                         <div className="radio-style">

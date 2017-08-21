@@ -63,7 +63,7 @@ export default class NewCarProfile extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>Create A Car Profile</h4>
+                            <h4>{this.state.isEditProfile ? 'Edit Car Profile' : 'Create A Car Profile'}</h4>
                         </div>
                     </div>
 
