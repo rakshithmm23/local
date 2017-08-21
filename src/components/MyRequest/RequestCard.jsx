@@ -363,19 +363,22 @@ export default class RequestCard extends Component {
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     let queryParms = window.location.search.substring(1);
-    
-    
+    // const jobType =this.props.jobType
+    // if(!jobType){
+    //   jobType="waiting"
+    // }
+    // this.jobData[0].statusIndicator=jobType    
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
-    let jobType =this.props.jobType
-    if(!jobType){
-      jobType="waiting"
-    }
-    this.jobData[0].statusIndicator=jobType
-    this.setState({dataChange:!this.state.dataChange})
-  }
-  componentDidUpdate() {
+    // const jobType =this.props.jobType
+    // if(!jobType){
+    //   jobType="waiting"
+    // }
+    // this.jobData[0].statusIndicator=jobType
+    // this.setState({dataChange:!this.state.dataChange})
+  }  
+  componentDidUpdate(prevProps, prevState) {    
     const curr = this.currentTopEle
     if(curr!=undefined){
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
@@ -545,7 +548,13 @@ export default class RequestCard extends Component {
 
   }
 
-  render() {
+  render() {    
+    debugger
+    if(this.props.router.params.requestType) {
+      this.jobData[0].statusIndicator = this.props.router.params.requestType
+    } else {
+      this.jobData[0].statusIndicator = "waiting"
+    }
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -938,7 +947,7 @@ export default class RequestCard extends Component {
                                   <span>195 AED</span>
                                 </div>
                                 {this.jobData[0].statusIndicator=="active" && this.jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
-                                  <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" />
+                                  <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" btnCallBack={()=>{this.props.router.push('/request/accepted')}}/>
                                 </div>:""}
                               </div>
                             </div>

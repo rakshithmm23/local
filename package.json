@@ -47,6 +47,7 @@
     "react-gemini-scrollbar": "2.3.0",
     "react-google-maps": "6.3.0",
     "react-input-range": "1.1.4",
+    "react-keydown": "1.9.2",
     "react-owl-carousel": "0.14.0",
     "react-rating": "0.8.0",
     "react-redux": "5.0.1",
