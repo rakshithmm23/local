@@ -371,7 +371,7 @@ export default class RequestCard extends Component {
                                       <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"}/>
                                     </span>
                                   </li>
-                                  <li className="active" onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
+                                  <li onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
