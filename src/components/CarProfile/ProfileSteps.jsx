@@ -337,7 +337,7 @@ class ProfileSteps extends Component {
             <i className={this.state.otherDetailsTabVisible ? "mdi mdi-chevron-up" : "mdi mdi-chevron-down"} />
           </div>}
           {(this.props.isEditProfile || this.state.otherDetailsTabVisible) &&
-            <div className="panel-content">
+            <div className="panel-content car-profile-edit-panel">
               <div className="wrapper">
                 <div className="row upload-image car-repair">
                   <h4 className="panel-sub-title">Upload images</h4>
@@ -357,7 +357,7 @@ class ProfileSteps extends Component {
                     <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                   </div>
                   <div className="col-md-6 padRight0">
-                    <TextInput showValidationError={this.errors['plate_no']} label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
+                    <TextInput customClass={this.props.isEditProfile ? 'disabledInput' : undefined} showValidationError={this.errors['plate_no']} label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                     onChange={this.onFieldChange.bind(this)} disabled={this.props.isEditProfile}/>
                   </div>
                   <div className="col-md-6 padLeft0">

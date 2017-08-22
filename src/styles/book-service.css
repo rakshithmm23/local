@@ -77,6 +77,10 @@
     font-family: CenturyGothic;
     font-size: 13px;
     font-weight: bold;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .myCar-card-caption h5 {
@@ -85,6 +89,10 @@
     font-family: CenturyGothic;
     font-weight: bold;
     line-height: 22px;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .myCar-card-caption button {
@@ -107,6 +115,10 @@
     border: 0;
 }
 
+.bookService-card{
+    padding-left: 0;
+    padding-right: 30px;
+}
 @media screen and (min-width: 992px) and (max-width: 1170px) {
     .myCar-card-caption button {
         position: relative;

@@ -169,7 +169,7 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit12</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
@@ -210,7 +210,7 @@ export default class BookService extends Component {
                                     </div>
                                     <div className="row timeline-summary-body">
                                         <div className="timelineScroll">
-                                            <CustomScroll heightRelativeToParent="calc(100%)">
+                                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                                                 {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
                                                     {currentCarProfile && <OtherDetails {...currentCarProfile} />}
                                                 </div>}

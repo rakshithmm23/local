@@ -117,7 +117,7 @@ export default class SignUp extends Component {
         <CarouselSlider />
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)">
+            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
               <div className="login-panel signup">
                 <form>
                   <div className="login-panel-header">

@@ -2,12 +2,16 @@
 .btn-theme.timeline {
   right: 70px;
 }
-
-
-
 .timeline-card {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
   background: #fff;
+}
+
+.text-dropdown.car-profile-header .dropdown-toggle h4 {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .service-details .carousel-indicators {
@@ -25,7 +29,7 @@
 }
 
 .service-car-info {
-  padding: 10px 15px;
+  padding: 10px 15px 0;
 }
 
 .service-carPlate {
@@ -62,10 +66,21 @@
   color: #454B51;
   font-family: CenturyGothic;
   font-weight: normal;
-  margin: 20px 0;
+  margin: 20px 0 15px;
+  color: #717982;
 }
-.service-car-info .service-info li h5{
+.service-car-info .service-info li h4{
   letter-spacing: 1px;  
+  font-family: CenturyGothic;
+  font-weight: bold;
+  font-size: 14px;
+  color: #454B51;  
+}
+
+.service-car-info .service-info li h5{
+  font-size: 14px;
+  color: #454B51;
+  margin-top: 20px;
 }
 
 .timeline-summary-header {
@@ -75,6 +90,7 @@
   padding: 20px 0 0;
   text-align: center;
 }
+
 
 .timeline-summary-header .timeline-summary-tab {
   font-size: 18px;
@@ -94,7 +110,7 @@
 }
 
 .timelineScroll {
-  height: 480px !important;
+  height: 500px !important;
 }
 
 .service-info .timelineScroll {
