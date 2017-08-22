@@ -25,8 +25,8 @@ export default class VerifyOTP extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   componentWillMount() {
-    if (localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    const authData = JSON.parse(localStorage.authData);
+    if (authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');
@@ -41,8 +41,8 @@ export default class VerifyOTP extends Component {
     }
   }
   componentWillReceiveProps() {
-    if (localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    const authData = JSON.parse(localStorage.authData);
+    if (authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');

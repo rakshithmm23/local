@@ -5,8 +5,7 @@ import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import FacebookLogin from 'react-facebook-login';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -34,10 +33,9 @@ export default class SignIn extends Component {
     }
   }
   componentWillMount() {
-    const signedUserDataCookie = cookies.get('carauth');
+    const authData = JSON.parse(localStorage.getItem('authData'));
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    if (userId && authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');
@@ -50,10 +48,9 @@ export default class SignIn extends Component {
     }
   }
   componentWillUpdate(nextProps) {
-    const signedUserDataCookie = cookies.get('carauth');
+    const authData = JSON.parse(localStorage.getItem('authData'));
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    if (authData && userId) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');
@@ -94,6 +91,7 @@ export default class SignIn extends Component {
       });
     }
   }
+
   render() {
     const { router, authReducer } = this.props;
     return (

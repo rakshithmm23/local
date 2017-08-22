@@ -4,8 +4,6 @@ import LoginHeader from '../common/LoginHeader';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import CustomScroll from 'react-custom-scroll';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 import { validateField } from '../../helpers/index'
 
 export default class SendOTP extends Component {

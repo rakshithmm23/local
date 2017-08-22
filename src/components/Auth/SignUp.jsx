@@ -6,8 +6,6 @@ import TextInput from '../common/TextInput';
 import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -36,10 +34,9 @@ export default class SignUp extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   componentWillMount() {
-    const signedUserDataCookie = cookies.get('carauth');
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    const authData = JSON.parse(localStorage.getItem('authData'));
+    if (userId && authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');
@@ -52,10 +49,9 @@ export default class SignUp extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const signedUserDataCookie = cookies.get('carauth');
     const userId = localStorage.getItem('userId');
-    if (signedUserDataCookie && userId && localStorage && localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
+    const authData = JSON.parse(localStorage.getItem('authData'));
+    if (userId && authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');

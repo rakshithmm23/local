@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import axios from 'axios';
 
 // Containers
 import DashboardContainer from './containers/DashboardContainer';
@@ -20,12 +19,15 @@ import Confirmed from './components/Auth/Confirmed';
 import ResetEmailConfirmation from './components/Auth/ResetEmailConfirmation';
 import EmailVerified from './components/Auth/EmailVerified';
 
+if (localStorage.accessToken) {
+  axios.defaults.headers.common['x-access-token'] = localStorage.accessToken;
+}
 // Dashboard Components
 export const isLoggedIn = (nextState, replace) => {
   window.scrollTo(0, 0);
-  const signedUserDataCookie = cookies.get('carauth');
   const userId = localStorage.getItem('userId');
-  if (!(signedUserDataCookie && userId)) {
+  const authData = localStorage.getItem('authData');
+  if (!(userId && authData)) {
     replace({
       pathname: '/'
     });
