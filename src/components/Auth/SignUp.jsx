@@ -118,8 +118,8 @@ export default class SignUp extends Component {
                 <form>
                   <div className="login-panel-header">
                     <h3 className="login-title">Sign Up</h3>
-                    <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-test.carcility.com/auth/social/facebook?type=customer" }} btnType="blue" btnSize="lg" label="Facebook" />
-                    <Button iconName="google" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-test.carcility.com/auth/social/google?type=customer" }} btnType="red" btnSize="lg" label="Google" />
+                    <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/facebook?type=customer" }} btnType="blue" btnSize="lg" label="Facebook" />
+                    <Button iconName="google" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/google?type=customer" }} btnType="red" btnSize="lg" label="Google" />
                   </div>
                   <div className="or-text">
                     <span>OR</span>

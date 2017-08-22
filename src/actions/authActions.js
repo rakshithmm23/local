@@ -63,6 +63,7 @@ export function signInAction(signInData, dispatch, fromSignup) {
 }
 
 export function facebookAuth(fbResponse) {
+  console.log(fbResponse);
   // let userProfileData = fbResponse;
   // if (userProfileData.picture && userProfileData.picture.data && userProfileData.picture.data.url) {
   //   userProfileData['profile_photo'] = userProfileData.picture.data.url;
