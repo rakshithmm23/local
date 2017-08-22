@@ -849,7 +849,7 @@ export default class RequestCard extends Component {
                             </div>}
                             <div className="quotes-left-body">
                               <div className="requestQuotesScroll">
-                                <CustomScroll heightRelativeToParent="calc(100%)">
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                                   {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
 
                                     <div>
@@ -904,7 +904,7 @@ export default class RequestCard extends Component {
                             </div>
                             <div className="quotes-right-body">
                               <div className="requestQuotesScroll">
-                                <CustomScroll heightRelativeToParent="calc(100%)">
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                                   {/*Quotation*/}
                                   <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
                                     <div className="quotation-head">

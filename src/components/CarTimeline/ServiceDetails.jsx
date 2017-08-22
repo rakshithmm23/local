@@ -35,16 +35,16 @@ export default class ServiceDetails extends Component {
                         <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
                     <div className="service-info">
-                        <div className="timelineScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)">
-                                <ul>
-                                    {this.props.mileage && <li>
-                                        <h5>Previous Service</h5>
-                                        <h5>Mileage</h5>
-                                        <span>{this.props.mileage}s</span>
-                                    </li>}
-                                </ul>
-                            </CustomScroll>
+                        <div className="service-info-content">
+                            <ul>
+                                {this.props.mileage && <li>
+                                    <h4>Previous Service</h4>
+                                    <h5>Mileage</h5>
+                                    <span>{this.props.mileage} Kms</span>
+                                    <h5>On</h5>
+                                    <span>Car Wash: 17 Mar ‘17, 1097735 Kms</span>
+                                </li>}
+                            </ul>
                         </div>
                     </div>
                 </div>

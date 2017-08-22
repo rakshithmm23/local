@@ -169,7 +169,16 @@
     outline: 0 !important;
 }
 
-
+/* Disabled input */
+.form-group.disabledInput{
+    opacity: 0.6;
+}
+.form-group.disabledInput label{
+    top: 0;
+}
+.form-group.disabledInput .form-control{
+    background: #fff;
+}
 /* input-button-addon */
 
 .input-button-addon .otp-input {

@@ -218,7 +218,7 @@ export default class Services extends Component {
         });
         return (
             <div className="vendor-service-container">
-                <CustomScroll heightRelativeToParent="calc(100%)">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                     <ul className="vendor-service-list">
                         {carWashListView}
                     </ul>
@@ -239,7 +239,7 @@ export default class Services extends Component {
         });
         return (
             <div className="vendor-service-container">
-                <CustomScroll heightRelativeToParent="calc(100%)">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                     <ul className="vendor-service-list">
                         {carRepairListView}
                     </ul>
@@ -260,7 +260,7 @@ export default class Services extends Component {
         });
         return (
             <div className="vendor-service-container">
-                <CustomScroll heightRelativeToParent="calc(100%)">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                     <ul className="vendor-service-list">
                         {carServiceListView}
                     </ul>
@@ -281,7 +281,7 @@ export default class Services extends Component {
         });
         return (
             <div className="vendor-service-container">
-                <CustomScroll heightRelativeToParent="calc(100%)">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                     <ul className="vendor-service-list">
                         {carManufacturersListView}
                     </ul>

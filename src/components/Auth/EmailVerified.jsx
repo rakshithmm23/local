@@ -30,7 +30,7 @@ export default class EmailVerified extends Component {
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                     <div className="customScroll">
-                        <CustomScroll heightRelativeToParent="calc(100%)">
+                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
                             <div className="login-panel confirmed-reset-panel">
                                 <div className="login-panel-header forget-panel-header">
                                     {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>

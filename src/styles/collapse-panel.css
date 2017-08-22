@@ -285,9 +285,13 @@
 }
 
 .upload-image {
-    padding-top: 35px;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     display: block;
+}
+.car-profile-edit-panel .upload-image{
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 .input-values {
@@ -481,7 +485,7 @@
 }
 
 .collapse-panel .panel-content .wrapper .upload-image .panel-sub-title {
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 .car-wash .collapse-panel .panel-text {
