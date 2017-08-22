@@ -6,7 +6,7 @@ import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
 
-class ResetPassword extends Component {
+export default class Confirmed extends Component {
     render() {
         return (
             <div className="container-fluid" id="wrapper">
@@ -14,7 +14,7 @@ class ResetPassword extends Component {
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                     <div className="customScroll">
-                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                             <div className="login-panel confirmed-reset-panel">
                                 <div className="login-panel-header forget-panel-header">
                                     <h3 className="login-title">Confirmed</h3>
@@ -33,5 +33,3 @@ class ResetPassword extends Component {
         );
     }
 }
-
-export default ResetPassword;

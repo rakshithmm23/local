@@ -30,15 +30,15 @@ export default class EmailVerified extends Component {
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                     <div className="customScroll">
-                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                             <div className="login-panel confirmed-reset-panel">
                                 <div className="login-panel-header forget-panel-header">
                                     {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
                                         <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                                     </AlertDismissable>}
-                                    {!authReducer.showErrorMessage && <h3 className="login-title">{authReducer.emailVerified ? 'Verification Success' : this.state.title}</h3>}
-                                    {!authReducer.showErrorMessage && <p className="note-text">
-                                        {authReducer.emailVerified ? 'Email has been successfully verified.' : this.state.caption}
+                                    {!(authReducer && authReducer.showErrorMessage) && <h3 className="login-title">{authReducer.emailVerified ? 'Verification Success' : this.state.title}</h3>}
+                                    {!(authReducer && authReducer.showErrorMessage) && <p className="note-text">
+                                        {authReducer && authReducer.emailVerified ? 'Email has been successfully verified.' : this.state.caption}
                                     </p>}
                                 </div>
                                 <div className="login-panel-footer confirmed-reset">

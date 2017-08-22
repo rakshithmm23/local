@@ -151,17 +151,10 @@ export function showWelcomePage(otp, phone, userId) {
         }
       })
       .catch((err) => {
-        if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
           dispatch({
             type: types.SHOW_ERROR_MESSAGE,
-            statusMessage: (err.response.status === 401  || err.response.status === 410 )? "Wrong verification code" : 'Mobile number not found'
+            statusMessage: err.response && err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
           });
-        } else {
-          dispatch({
-            type: types.SHOW_ERROR_MESSAGE,
-            statusMessage: 'Unknown error occurred please try again'
-          });
-        }
       });
     };
   } else {
@@ -226,7 +219,7 @@ export function fetchCurrentUserInfo(router){
   };
 }
 
-export function resendOTP(phoneNumber){
+export function resendOTP(phoneNumber, userTriggeredAPI){
   return (dispatch) => {
     axios.post(API_END_POINTS.REQUEST_OTP, JSON.stringify({ "phone": phoneNumber}), {
       headers: {
@@ -237,9 +230,12 @@ export function resendOTP(phoneNumber){
     })
     .then((response) => {
       if (response.status === 200) {
+        if (userTriggeredAPI) {
+          window.alert('OTP has been send to ' + phoneNumber);
+        }
         const authData = JSON.parse(localStorage.getItem('authData'));
         dispatch({
-          type: types.VERIFY_OTP,
+          type: types.SHOW_VERIFY_OTP_PAGE,
           authData: authData
         });
       } else {

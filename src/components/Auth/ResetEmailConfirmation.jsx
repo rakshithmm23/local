@@ -15,12 +15,12 @@ export default class ResetEmailConfirmation extends Component {
                 <CarouselSlider />
                 <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
                     <div className="customScroll">
-                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                        <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                             <div className="login-panel confirmed-reset-panel">
                                 <div className="login-panel-header forget-panel-header">
                                     <h3 className="login-title">Confirmed</h3>
                                     <p className="note-text">
-                                        Your password reset link has been sent to {this.props.authReducer.reset_email}
+                                        Your password reset link has been sent to {this.props.authReducer ? this.props.authReducer.reset_email : ''}
                                     </p>
                                 </div>
                                 <div className="login-panel-footer confirmed-reset">

@@ -57,7 +57,7 @@ export default class ForgotPassword extends Component {
         <CarouselSlider />
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
               <div className="login-panel otp">
                 <div className="login-panel-header forget-panel-header">
                   <h3 className="login-title">Forgot Password ?</h3>
@@ -75,8 +75,7 @@ export default class ForgotPassword extends Component {
                     type="email"
                     showValidationError={this.errors['email']}
                     validationError="Enter your valid email id"
-                    onChange={this.onFieldChange.bind(this)}
-                    isOTP={true} />
+                    onChange={this.onFieldChange.bind(this)}/>
                   <Button btnCallBack={this.forgotPasswordAction} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
                 </div>
               </div>

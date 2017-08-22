@@ -557,7 +557,7 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-left-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                               <div className="wrapper" ref={'quotesList'}>
                                 <div>
                                   {map(this.state.jobCardDetails, (details, key) => {
@@ -607,7 +607,7 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-right-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                               {/*Quotation*/}
                               <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
                                 <div className="quotation-head">

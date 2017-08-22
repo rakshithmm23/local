@@ -153,7 +153,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal} />
                             <div className="text-dropdown add-new car-profile-header" >
-                                {carProfiles && currentCarProfile && 
+                                {carProfiles && currentCarProfile &&
                                 <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown()}} title={
                                     <span>
                                         <h4>{currentCarProfile.name}</h4>
@@ -210,7 +210,7 @@ export default class BookService extends Component {
                                     </div>
                                     <div className="row timeline-summary-body">
                                         <div className="timelineScroll">
-                                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+                                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                                 {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
                                                     {currentCarProfile && <OtherDetails {...currentCarProfile} />}
                                                 </div>}

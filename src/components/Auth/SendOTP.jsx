@@ -25,6 +25,13 @@ export default class SendOTP extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
 
+  componentWillMount() {
+    if (localStorage.authData) {
+      const authData = JSON.parse(localStorage.authData);
+      this.formData.phone = authData.phone || '';
+    }
+  }
+
   onFieldChange(value, key, name, validationObj) {
     if (value) {
       this.formData[name] = value;
@@ -53,7 +60,7 @@ export default class SendOTP extends Component {
       const authData = JSON.parse(localStorage.getItem('authData'));
       authData.phone = this.formData.phone;
       localStorage.setItem('authData', JSON.stringify(authData));
-      this.props.router.push('verify-otp');
+      this.props.actions.resendOTP(this.formData.phone);
     }
   }
   render() {
@@ -64,7 +71,7 @@ export default class SendOTP extends Component {
         <CarouselSlider />
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll="true">
+            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
               <div className="login-panel otp">
                 <div className="login-panel-header">
                   <h3 className="login-title">Sign Up</h3>
@@ -75,6 +82,7 @@ export default class SendOTP extends Component {
                     <TextInput
                       type="phone"
                       name="phone"
+                      value={this.formData.phone}
                       showValidationError={this.errors['phone']}
                       validationError="Enter a valid mobile number"
                       label="Mobile Number"
