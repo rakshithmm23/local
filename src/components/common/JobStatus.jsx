@@ -9,8 +9,7 @@ class JobStatus extends Component {
             saveModal:false
         }
     }
-    openModal(){
-    }
+    
     render() {
         return (
             <div>
@@ -148,11 +147,11 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
-                <CustomModal onHide={() => {this.setState({saveModal: false})}} showModal={this.state.saveModal} footer={false} title="book a service" className="bookService-modal" closeIcon="true">
-                        <Modal.Body>
-                            hello
-                        </Modal.Body>
-                    </CustomModal>
+                <CustomModal hideModal={() => {this.setState({saveModal: false})}} showModal={this.state.saveModal} footer={false} title="book a service" className="bookService-modal" closeIcon="true">
+                    <Modal.Body>
+                        hello
+                    </Modal.Body>
+                </CustomModal>
 
 
             </div>

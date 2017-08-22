@@ -20,26 +20,28 @@ class CustomModal extends Component {
             });
         }
     }
-    close() {
-        this.setState({ showModal: false });
-        if (this.props.closeModalCallBack){
-          this.props.closeModalCallBack();
-        }
-    }
+   
+    // close() {
+    //     debugger
+    //     this.setState({ showModal: false });
+    //     // if (this.props.closeModalCallBack){
+    //     //   this.props.closeModalCallBack();
+    //     // }
+    // }
     render() {
-        const { children, footer, className, closeIcon } = this.props;
+        const { children, footer, className, closeIcon,header } = this.props;
         return (
             <div>
-                <Modal className={className} show={this.state.showModal} onHide={this.close.bind(this)}>
-                    <Modal.Header closeButton>
+                <Modal className={className} show={this.state.showModal} onHide={this.props.hideModal} >
+                    {header==false?"":<Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
-                        {closeIcon && <label className="close-modal" onClick={()=>this.setState({showModal: false})}>
+                        {closeIcon && <label className="close-modal" onClick={this.props.hideModal}>
                           <i className="mdi mdi-close"/>
                         </label>}
-                    </Modal.Header>
+                    </Modal.Header>}
                     {children}
-                    {footer=="true" && <Modal.Footer>
-                        <Button btnType="cancel" btnSize="sm" fontSize={15} label={this.props.cancelText?this.props.cancelText:"Cancel"}  btnCallBack={this.close.bind(this)}/>
+                    {footer && <Modal.Footer>
+                        <Button btnType="cancel" btnSize="sm" fontSize={15} label={this.props.cancelText?this.props.cancelText:"Cancel"}  btnCallBack={this.props.hideModal}/>
                         <Button btnType="submit" btnSize="sm" fontSize={15} backgroundColor="red" label={this.props.saveText?this.props.saveText:"Save"} btnCallBack={() => {this.props.submitCallBack && this.props.submitCallBack() }} />
                     </Modal.Footer>}
                 </Modal>

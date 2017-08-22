@@ -7,38 +7,38 @@ import Gmaps from './Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
-import CustomScroll from 'react-custom-scroll';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
-const { LatLngBounds, LatLng } = google.maps;
+const {  LatLngBounds,LatLng }  = google.maps;
 import CarType from '../common/CarType';
 import Rating from 'react-rating';
 
 
 export default class RequestCard extends Component {
   constructor(...args) {
-
+    
     super(...args);
-    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
     this.state = {
-
-      dataChange: "",
-      setCenter: false,
-      mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
+      
+      dataChange:"",
+      setCenter:false,
+      mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
-      TimePickerTo: "",
+      TimePickerTo:"",
       switched: false,
-      filterSort: "low-high",
-      filterdropdown: false,
-      sortBydropdown: false,
-      daySelected: {
-        "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
+      filterSort : "low-high",
+      filterdropdown:false,
+      sortBydropdown:false,
+      daySelected:{
+      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
       },
-      changedWeek: false,
+      changedWeek:false,
       filterType: "",
       open: false,
       jobUpdates: "details",
@@ -312,13 +312,13 @@ export default class RequestCard extends Component {
         ]
       },
       quotesMessage: '',
-      ratingValue: 0,
-      inValidTime: false,
+      ratingValue:0,
+      inValidTime:false,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
     this.jobData = [
-
+      
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
@@ -345,17 +345,17 @@ export default class RequestCard extends Component {
           }
         ],
       },
-
+      
     ];
   }
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
-  TimePickerChange(type, value) {
-    if (type == "timeFrom") {
-      this.setState({ TimePickerFrom: value });
-    } else {
-      this.setState({ TimePickerTo: value });
+  TimePickerChange (type,value) {
+    if(type=="timeFrom"){
+      this.setState({ TimePickerFrom:value });
+    }else{
+      this.setState({ TimePickerTo:value });
     }
   }
 
@@ -363,21 +363,24 @@ export default class RequestCard extends Component {
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     let queryParms = window.location.search.substring(1);
-
-
+    // const jobType =this.props.jobType
+    // if(!jobType){
+    //   jobType="waiting"
+    // }
+    // this.jobData[0].statusIndicator=jobType    
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
-    let jobType = this.props.jobType
-    if (!jobType) {
-      jobType = "waiting"
-    }
-    this.jobData[0].statusIndicator = jobType
-    this.setState({ dataChange: !this.state.dataChange })
-  }
-  componentDidUpdate() {
+    // const jobType =this.props.jobType
+    // if(!jobType){
+    //   jobType="waiting"
+    // }
+    // this.jobData[0].statusIndicator=jobType
+    // this.setState({dataChange:!this.state.dataChange})
+  }  
+  componentDidUpdate(prevProps, prevState) {    
     const curr = this.currentTopEle
-    if (curr != undefined) {
+    if(curr!=undefined){
       this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
     }
 
@@ -386,16 +389,16 @@ export default class RequestCard extends Component {
     window.removeEventListener("resize", this.updateDimensions);
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
   }
-  bodyClick(e) {
-    if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
-    } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
-      this.setState({ sortBydropdown: true, filterdropdown: false })
-    } else if (e.target.closest('.rc-time-picker-panel')) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
+   bodyClick(e){
+    if((e.target.closest('.filter-dropdown')|| e.target.closest('.showFilters') )&&(!this.state.filterdropdown) ) {
+      this.setState({filterdropdown:true,sortBydropdown:false})
+    }else if((e.target.closest('.showSortBy') || e.target.closest('.sortFilter'))&&(!this.state.sortBydropdown)){
+      this.setState({sortBydropdown:true,filterdropdown:false})
+    }else if(e.target.closest('.rc-time-picker-panel')){
+      this.setState({filterdropdown:true,sortBydropdown:false})
     }
-    else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
-      this.setState({ filterdropdown: false, sortBydropdown: false })
+    else if( e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null ){
+      this.setState({filterdropdown:false,sortBydropdown:false})
     }
   }
 
@@ -412,8 +415,8 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: true, messages: false })
   }
   viewMessaging() {
-    this.setState({ mapView: false, quotationView: true, quotation: false, messages: true, jobUpdates: "quotes" })
-  }
+    this.setState({ mapView: false, quotationView: true, quotation: false, messages: true,jobUpdates : "quotes" })
+}
   mapClick(map) {
     let update, newDetails = [];
 
@@ -430,11 +433,11 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key, vendorId) {
-    let update, newArray = [], centerLat = undefined, centerLng = undefined
+    let update, newArray = [], centerLat=undefined,centerLng=undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
         update = { ...val, isActive: true, pinImage: this.state.activeSvg + index + this.state.svgEnd }
-        centerLat = val.latitude, centerLng = val.longitude
+        centerLat = val.latitude, centerLng=val.longitude
       } else {
         update = { ...val, isActive: false, pinImage: this.state.svg + index + this.state.svgEnd }
       }
@@ -443,8 +446,8 @@ export default class RequestCard extends Component {
     this.setState({
       jobCardDetails: newArray,
       selectedVendorId: vendorId,
-      mapsCenter: { lat: centerLat, lng: centerLng },
-      setCenter: true
+      mapsCenter:{ lat: centerLat, lng: centerLng },
+      setCenter:true
 
     })
   }
@@ -457,25 +460,23 @@ export default class RequestCard extends Component {
   viewMessages() {
     this.setState({ quotation: false, messages: true })
   }
-  day(selDay) {
-    let days = { ...this.state.daySelected }
+  day(selDay){
+    let days={...this.state.daySelected}
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
-      daySelected: days
+      daySelected:days
     })
   }
-  filterOption(val) {
-    this.setState({ filterSort: val, sortBydropdown: false })
+  filterOption(val){
+    this.setState({filterSort:val,sortBydropdown:false})
   }
-  clearFilter() {
-    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
-    this.setState({
-      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
-        "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
-      }
-    })
+  clearFilter(){
+    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
+    this.setState({ratingValue:0,inValidTime:false,TimePickerFrom: undefined,TimePickerTo: undefined,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
+      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
+    }})
   }
-  switch(val) {
+   switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
     if (val == 'byCash') {
       this.toggleSwitchVal.byCreditcard = false;
@@ -484,27 +485,36 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
-  filterSelect() {
-    if (this.state.TimePickerFrom > this.state.TimePickerTo) {
-      this.setState({ inValidTime: true })
-    } else {
-      this.setState({ inValidTime: false })
+  filterSelect(){
+    if(this.state.TimePickerFrom>this.state.TimePickerTo ){
+      this.setState({inValidTime:true})
+    }else{
+      this.setState({inValidTime:false})
     }
-
-    // console.log(this.state.TimePickerTo)
+  
+  // console.log(this.state.TimePickerTo)
+  }
+  statusIndicatorFunc(status){
+    if(status=='completed'||status=='accepted'||status=='inProgress'){
+      return "Accepted Quotes"
+    }else if(status=='waiting'){
+      return ""
+    }else{
+      return "Quotes"
+    }
   }
 
-  renderMessages(selectedVendorMessageList) {
+  renderMessages(selectedVendorMessageList){
     const messageView = selectedVendorMessageList.map((messageObj, index) => {
       let messageClass = 'c-message';
       let showTimeStamp = true, showAvatar = true;
       messageClass += messageObj.type == 'sender' ? ' message-in' : ' message-out';
-      if (index > 0 && selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index - 1]['type']) {
+      if (index > 0 && selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index-1]['type']) {
         showAvatar = false;
         messageClass += ' chain-msg';
       }
       if ((index + 1) < selectedVendorMessageList.length) {
-        if (selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index + 1]['type']) {
+        if (selectedVendorMessageList[index]['type'] === selectedVendorMessageList[index+1]['type']){
           showTimeStamp = false;
           messageClass += ' message-continuation';
         }
@@ -528,26 +538,31 @@ export default class RequestCard extends Component {
     return messageView;
   }
 
-  sendNewMessage(message) {
+  sendNewMessage(message){
     if (this.state.selectedVendorId && message) {
       let currentTime = new Date();
-      currentTime = currentTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+      currentTime = currentTime.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
       const newMessage = {
-        type: 'receiver',
-        message: message,
-        timestamp: currentTime
+         type: 'receiver',
+         message: message,
+         timestamp: currentTime
       }
       const messageList = this.state.messageList;
       messageList[this.state.selectedVendorId].push(newMessage);
-      this.setState({ 'messageList': messageList, 'quotesMessage': '' })
+      this.setState({'messageList': messageList, 'quotesMessage': ''})
     }
   }
-  ratingOnChange(rating) {
-    this.setState({ ratingValue: rating })
+  ratingOnChange(rating){
+    this.setState({ratingValue:rating})
 
   }
 
-  render() {
+  render() {    
+    if(this.props.router.params.requestType) {
+      this.jobData[0].statusIndicator = this.props.router.params.requestType
+    } else {
+      this.jobData[0].statusIndicator = "waiting"
+    }
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -562,7 +577,7 @@ export default class RequestCard extends Component {
       jobRightGridValue = "col-md-7";
     }
 
-
+    
     const jobCardLocation = map(this.state.jobCardDetails, (val, key) => {
       return {
         lat: val.latitude, lng: val.longitude, pinImage: val.isActive ? this.state.activeSvg + (key + 1) + this.state.svgEnd : this.state.svg + (key + 1) + this.state.svgEnd,
@@ -579,396 +594,402 @@ export default class RequestCard extends Component {
 
     return (
       <div> {map(this.jobData, (item, key) => {
-        return (
-          <div className="request-card" key={key}>
+      return (
+        <div className="request-card" key={key}>
 
-            {map(this.jobData, (cardDetails, key) => {
-              return (
-                <div >
-                  {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageClick={this.viewMessaging.bind(this)} />}
-                </div>
+          {map(this.jobData, (cardDetails, key) => {
+          return (
+            <div >
+              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageClick={this.viewMessaging.bind(this)}/>}
+            </div>
 
-              )
-            })}
-            <div className="requestSection">
-              <div className="row">
-                <div className="request-summary">
-                  <div className="row request-summary-header">
-                    <div className="col-md-6 col-sm-12 col-xs-12 pad0">
-                      <div className="request-summary-tab">
-                        <div className="col-md-6 col-sm-6 col-xs-6 pad0">
-                          <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
-                            <span>Job Details</span>
-                          </div>
+          )
+        })}
+          <div className="requestSection">
+            <div className="row">
+              <div className="request-summary">
+                <div className="row request-summary-header">
+                  <div className="col-md-6 col-sm-12 col-xs-12 pad0">
+                    <div className="request-summary-tab">
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
+                        <div className={this.state.jobUpdates == "details" ? "title active" : "title"} onClick={() => { this.jobDetail('details') }}>
+                          <span>Job Details</span>
                         </div>
-                        <div className="col-md-6 col-sm-6 col-xs-6 pad0">
-                          <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
-                            <span>{this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? "Accepted Quote" : "Quotes"}</span>
-                          </div>
+                      </div>
+                      <div className="col-md-6 col-sm-6 col-xs-6 pad0">
+                        <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
+                          {/* <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span> */}
+                          <span>{this.statusIndicatorFunc(this.jobData[0].statusIndicator)}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="row request-summary-body">
-                    {this.state.jobUpdates == "details" && <div className="tab-jobDetails">
-                      <JobDetails serviceTypes={this.jobData[0].serviceTypes} statusIndicator={this.jobData[0].statusIndicator} />
-                    </div>}
-                    {this.state.jobUpdates == "quotes" && this.jobData[0].statusIndicator != "waiting" &&
+                </div>
+                <div className="row request-summary-body">
+                  {this.state.jobUpdates == "details" && <div className="tab-jobDetails">
+                    <JobDetails serviceTypes={this.jobData[0].serviceTypes} statusIndicator={this.jobData[0].statusIndicator}/>
+                  </div>}
+                  {this.state.jobUpdates == "quotes" && this.jobData[0].statusIndicator!="waiting" &&
 
-                      <div className="tab-quotes ">
-                        <div className="col-md-6 clearfix left pad0" >
-                          <div className="quotes-view">
-                            {this.jobData[0].statusIndicator == "active" && <div className="title">
-                              <span>4 Quotes Received</span>
-                              <div className="filterSection">
-                                <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
-                                  <div className="filterLabel showSortBy">
-                                    <i className="mdi mdi-swap-vertical" />
-                                    <label>Sort by</label>
-                                    <i className={this.state.sortBydropdown ? "mdi mdi-chevron-up downIcon downAlign pull-right" : "mdi mdi-chevron-down downIcon downAlign pull-right"} />
-                                  </div>
-                                }>
-                                  <div className="sortFilter filterCard">
-                                    <ul className="list-unstyled">
-                                      <li onClick={() => (this.filterOption("near-far"))} className={this.state.filterSort == "near-far" ? "active" : ""}>
-                                        <label>
-                                          Distance - Near to Far
-                                    </label>
-                                        <span>
-                                          <i className="mdi mdi-check" />
-                                        </span>
-                                      </li>
-                                      <li onClick={() => (this.filterOption("far-near"))} className={this.state.filterSort == "far-near" ? "active" : ""}>
-                                        <label>
-                                          Distance - Far to Near
-                                    </label>
-                                        <span>
-                                          <i className="mdi mdi-check" />
-                                        </span>
-                                      </li>
-                                      <li onClick={() => (this.filterOption("high-low"))} className={this.state.filterSort == "high-low" ? "active" : ""}>
-                                        <label>
-                                          Rating - Highest to Lowest
-                                    </label>
-                                        <span>
-                                          <i className="mdi mdi-check" />
-                                        </span>
-                                      </li>
-                                      <li onClick={() => (this.filterOption("low-high"))} className={this.state.filterSort == "low-high" ? "active" : ""}>
-                                        <label>
-                                          Rating - Lowest to Highest
-                                    </label>
-                                        <span>
-                                          <i className="mdi mdi-check" />
-                                        </span>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </DropdownButton>
+                  <div className="tab-quotes ">
+                    <div className="col-md-6 clearfix left pad0" >
+                      <div className="quotes-view">
+                        {this.jobData[0].statusIndicator=="active" && <div className="title">
+                          <span>4 Quotes Received</span>
+                          <div className="filterSection">
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown}  noCaret title={
+                              <div className="filterLabel showSortBy">
+                                <i className="mdi mdi-swap-vertical" />
+                                <label>Sort by</label>
+                                <i className={this.state.sortBydropdown?"mdi mdi-chevron-up downIcon downAlign pull-right":"mdi mdi-chevron-down downIcon downAlign pull-right"} />
                               </div>
-                              <div className="filterSection">
-                                <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
-                                  <div className="filterLabel showFilters ">
-                                    <i className="mdi mdi-filter-variant" />
-                                    <label>Filter</label>
-                                    <i className={this.state.filterdropdown ? "mdi mdi-chevron-up downIcon pull-right" : "mdi mdi-chevron-down downIcon pull-right"} />
-                                  </div>
-                                }>
-                                  <div className="Filterby filterCard filter-dropdown">
-                                    <div className="row">
-                                      <div className="col-md-6 left">
-                                        <div className="filterby-wrapper">
-                                          <div className="f-card">
-                                            <h5>Distance</h5>
-                                            <InputRange
-                                              formatLabel={distValue => `${distValue}km`}
-                                              minValue={0}
-                                              maxValue={20}
-                                              value={this.state.distValue}
-                                              onChange={distValue => this.setState({ distValue })} />
-                                            <span className="range-min">{this.state.distValue.min + " Km"}</span>
-                                            <span className="range-max">{this.state.distValue.max + " Km"}</span>
-
-                                          </div>
-                                          <div className="f-card">
-                                            <h5>Price</h5>
-                                            <InputRange
-                                              formatLabel={priceValue => `${priceValue}AED`}
-                                              minValue={0}
-                                              maxValue={100}
-                                              value={this.state.priceValue}
-                                              onChange={priceValue => this.setState({ priceValue })} />
-                                            <span className="range-min">{this.state.priceValue.min + " AED"}</span>
-                                            <span className="range-max">{this.state.priceValue.max + " AED"}</span>
-                                          </div>
-                                          <div className="f-card openAlign">
-                                            <h5>Open Between</h5>
-                                            <ul className="list-unstyled">
-                                              <li className={this.state.daySelected["sunday"] ? 'active' : ''} onClick={this.day.bind(this, "sunday")}>SUN</li>
-                                              <li className={this.state.daySelected["monday"] ? 'active' : ''} onClick={this.day.bind(this, "monday")}>MON</li>
-                                              <li className={this.state.daySelected["tuesday"] ? 'active' : ''} onClick={this.day.bind(this, "tuesday")}>TUE</li>
-                                              <li className={this.state.daySelected["wednesday"] ? 'active' : ''} onClick={this.day.bind(this, "wednesday")}>wed</li>
-                                              <li className={this.state.daySelected["thrusday"] ? 'active' : ''} onClick={this.day.bind(this, "thrusday")}>thu</li>
-                                              <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
-                                              <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
-                                            </ul>
-                                            <TimePicker
-                                              value={this.state.TimePickerFrom}
-                                              onChange={this.TimePickerChange.bind(this, "timeFrom")}
-                                              placeholder="Time"
-                                              showSecond={false}
-                                              className="xxx"
-                                              format={formatFrom}
-                                              use12Hours
-                                            />
-                                            <i className="mdi mdi-chevron-down time-from" />
-                                            <span className="time-to-time">to</span>
-                                            <TimePicker
-                                              value={this.state.TimePickerTo}
-                                              onChange={this.TimePickerChange.bind(this, "timeTo")}
-                                              placeholder="Time"
-                                              showSecond={false}
-                                              className="xxx"
-                                              format={formatTo}
-                                              use12Hours
-                                            />
-                                            <i className="mdi mdi-chevron-down time-to" />
-                                            <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
-                                          </div>
-                                          <div className="f-card toggleBtn">
-                                            <h5>Open 24/7</h5>
-                                            <ToggleSwitch
-                                              checked={this.toggleSwitchVal.Open24_7}
-                                              size="small"
-                                              onChange={this.switch.bind(this, 'Open24_7')}
-                                              ref={(node) => {
-                                                this.toggleSwitch = node;
-                                              }} />
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-6 right toggleBtn">
-                                        <div className="filterby-wrapper">
-
-                                          <div className="f-card star-rating">
-                                            <h5>Rating</h5>
-                                            <Rating
-                                              empty="mdi mdi-star-outline "
-                                              full="mdi mdi-star active-star"
-                                              fractions={2}
-                                              initialRate={this.state.ratingValue}
-                                              onChange={(e) => { this.ratingOnChange(e) }}
-                                            />
-                                          </div>
-                                          <div className="f-card ">
-                                            <h5>Only show Favourites</h5>
-                                            <ToggleSwitch
-                                              checked={this.toggleSwitchVal.showFavourites}
-                                              size="small"
-                                              onChange={this.switch.bind(this, 'showFavourites')}
-                                              ref={(node) => {
-                                                this.toggleSwitch = node;
-                                              }}
-                                            />
-                                          </div>
-                                          <div className="f-card ">
-                                            <h5>Only show Authorized Businesses</h5>
-                                            <ToggleSwitch
-                                              checked={this.toggleSwitchVal.authorizedBusinesses}
-                                              size="small"
-                                              onChange={this.switch.bind(this, 'authorizedBusinesses')}
-                                              size="small"
-                                              ref={(node) => {
-                                                this.toggleSwitch = node;
-                                              }}
-                                            />
-                                          </div>
-                                          <div className="f-card ">
-                                            <h5>Only show Businesses with Deals & Offers</h5>
-                                            <ToggleSwitch
-                                              checked={this.toggleSwitchVal.dealsOffers}
-                                              size="small"
-                                              onChange={this.switch.bind(this, 'dealsOffers')}
-                                              ref={(node) => {
-                                                this.toggleSwitch = node;
-                                              }}
-                                            />
-                                          </div>
-                                          <div className="f-card payment-type">
-                                            <h5>Payment by</h5>
-                                            <div className="holder">
-                                              <span className="pad0">Pay by Cash</span>
-                                              <ToggleSwitch
-                                                checked={this.toggleSwitchVal.byCash}
-                                                size="small"
-                                                onChange={this.switch.bind(this, 'byCash')}
-                                                ref={(node) => {
-                                                  this.toggleSwitch = node;
-                                                }}
-                                              />
-                                            </div>
-                                            <div className="holder">
-                                              <span className="">Pay by Credit Card</span>
-                                              <ToggleSwitch
-                                                checked={this.toggleSwitchVal.byCreditcard}
-                                                size="small"
-                                                onChange={this.switch.bind(this, 'byCreditcard')}
-                                                ref={(node) => {
-                                                  this.toggleSwitch = node;
-                                                }}
-                                              />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="col-md-12 footer">
-                                        {/*{()=>this.setState({filterdropdown:false})}*/}
-                                        <a onClick={this.clearFilter.bind(this)}>Clear</a>
-                                        <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </DropdownButton>
-                              </div>
-                            </div>}
-                            <div className="quotes-left-body">
-                              <div className="requestQuotesScroll">
-                                <CustomScroll heightRelativeToParent="calc(100%)">
-                                  {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
-
-                                    <div>
-                                      {map(this.state.jobCardDetails, (details, key) => {
-                                        return (
-                                          <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
-                                            viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key, }, details.vendorId)} />
-                                        );
-                                      })}
-                                    </div>
-
-                                  </div>}
-
-                                  {this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? <div>
-                                    <AcceptedQuotes />
-                                  </div> : ""}
-                                </CustomScroll>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-md-6 clearfix right pad0">
-                          {this.jobData[0].statusIndicator == "active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
-                            <div className="quotes-right-body">
-                              <Gmaps
-                                infoPopUp={true}
-                                setCenter={this.state.setCenter}
-                                center={this.state.mapsCenter}
-                                markers={{ jobCardLocation }}
-                                markerClick={this.mapClick.bind(this)}
-                                zoom={9}
-                                containerElement={<div style={{ height: 100 + '%' }} />}
-                                mapElement={<div style={{ height: 100 + '%' }} />}
-                              />
-                            </div>
-                          </div>}
-                          <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
-                            <div className="quotes-right-header">
-                              <div className="profile-head">
-                                <span>
-                                  <img src="../images/pic.png" alt="" />
-                                </span>
-                                <label> Shine Works </label>
-                              </div>
-                              <div className="quotes-right-tabs">
-                                <ul>
-                                  <li className={this.state.quotation == true ? "active" : ""} onClick={() => this.viewQuotation()}>Quote</li>
-                                  <li className={this.state.messages == true ? "active" : ""} onClick={() => this.viewMessages()}>Message</li>
+                            }>
+                              <div className="sortFilter filterCard">
+                                <ul className="list-unstyled">
+                                  <li onClick={()=>(this.filterOption("near-far"))} className={this.state.filterSort == "near-far"?"active":""}>
+                                    <label>
+                                      Distance - Near to Far
+                                    </label>
+                                    <span>
+                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"}/>
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>(this.filterOption("far-near"))} className={this.state.filterSort == "far-near"?"active":""}>
+                                    <label>
+                                      Distance - Far to Near
+                                    </label>
+                                    <span>
+                                      <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"}/>
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>(this.filterOption("high-low"))} className={this.state.filterSort == "high-low"?"active":""}>
+                                    <label>
+                                      Rating - Highest to Lowest
+                                    </label>
+                                    <span>
+                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"}/>
+                                    </span>
+                                  </li>
+                                  <li onClick={()=>(this.filterOption("low-high"))} className={this.state.filterSort == "low-high"?"active":""}>
+                                    <label>
+                                      Rating - Lowest to Highest
+                                    </label>
+                                    <span>
+                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"}/>
+                                    </span>
+                                  </li>
                                 </ul>
-                                {this.jobData[0].statusIndicator == "active" && <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>}
                               </div>
-                            </div>
-                            <div className="quotes-right-body">
-                              <div className="requestQuotesScroll">
-                                <CustomScroll heightRelativeToParent="calc(100%)">
-                                  {/*Quotation*/}
-                                  <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
-                                    <div className="quotation-head">
-                                      <ul>
-                                        <li>
-                                          <label>Job Start Time:</label>
-                                          <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
-                                        </li>
-                                        <li>
-                                          <label>Quote Generated:</label>
-                                          <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                    <div className="quotation-details">
-                                      {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
-                                        return (
-                                          cardValue.quotationDetails != undefined &&
-                                          <div className="quotation-block" key={jobCardKey}>
-                                            {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
-                                              return (
-                                                <div>
-                                                  <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
-                                                  <ul>
-                                                    {map(quoteVal.Accessories, (carAcc, accessoriesKey) => {
-                                                      return (
-                                                        <li key={accessoriesKey}>
-                                                          <label>{carAcc.name}</label>
-                                                          <span>{carAcc.cost} {carAcc.currency}</span>
-                                                        </li>
-                                                      )
-                                                    })}
-                                                  </ul>
-                                                </div>
-                                              );
-                                            })}
-
-                                          </div>
-                                        );
-                                      })}
-                                      <div className="quotation-total">
-                                        <label>Total</label>
-                                        <span>195 AED</span>
-                                      </div>
-                                      {this.jobData[0].statusIndicator == "active" && this.jobData[0].statusIndicator != "expired" ? <div className="quotation-accept-btn pull-right">
-                                        <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" />
-                                      </div> : ""}
-                                    </div>
-                                  </div>
-                                  {/*ChatBox*/}
-                                  <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
-                                    <div className="quotes-chat-area">
-                                      {messagesView}
-                                    </div>
-                                    <div className="quotes-message-footer">
-                                      <form onSubmit={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
-                                        <FormGroup>
-                                          <InputGroup>
-                                            <FormControl value={this.state.quotesMessage} type="text" placeholder="Type your message here..." onChange={(e) => { e.preventDefault(); this.setState({ 'quotesMessage': e.target.value }) }} />
-                                            <InputGroup.Addon onClick={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
-                                              <i className="mdi mdi-send" />
-                                            </InputGroup.Addon>
-                                          </InputGroup>
-                                        </FormGroup>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </CustomScroll>
-                              </div>
-                            </div>
+                            </DropdownButton>
                           </div>
+                          <div className="filterSection">
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
+                              <div className="filterLabel showFilters ">
+                                <i className="mdi mdi-filter-variant" />
+                                <label>Filter</label>
+                                <i className={this.state.filterdropdown?"mdi mdi-chevron-up downIcon pull-right":"mdi mdi-chevron-down downIcon pull-right"} />
+                              </div>
+                            }>
+                              <div className="Filterby filterCard filter-dropdown">
+                                <div className="row">
+                                  <div className="col-md-6 left">
+                                    <div className="filterby-wrapper">
+                                      <div className="f-card">
+                                        <h5>Distance</h5>
+                                        <InputRange
+                                          formatLabel={distValue => `${distValue}km`}
+                                          minValue={0}
+                                          maxValue={20}
+                                          value={this.state.distValue}
+                                          onChange={distValue => this.setState({ distValue })} />
+                                          <span className="range-min">{this.state.distValue.min+" Km"}</span>
+                                          <span className="range-max">{this.state.distValue.max+" Km"}</span>
+                                          
+                                      </div>
+                                      <div className="f-card">
+                                        <h5>Price</h5>
+                                        <InputRange
+                                          formatLabel={priceValue => `${priceValue}AED`}
+                                          minValue={0}
+                                          maxValue={100}
+                                          value={this.state.priceValue}
+                                          onChange={priceValue => this.setState({ priceValue })} />
+                                          <span className="range-min">{this.state.priceValue.min+" AED"}</span>
+                                          <span className="range-max">{this.state.priceValue.max+" AED"}</span>
+                                      </div>
+                                      <div className="f-card openAlign">
+                                        <h5>Open Between</h5>
+                                        <ul className="list-unstyled">
+                                          <li className={this.state.daySelected["sunday"]?'active':''} onClick={this.day.bind(this,"sunday")}>SUN</li>
+                                          <li className={this.state.daySelected["monday"]?'active':''} onClick={this.day.bind(this,"monday")}>MON</li>
+                                          <li className={this.state.daySelected["tuesday"]?'active':''} onClick={this.day.bind(this,"tuesday")}>TUE</li>
+                                          <li className={this.state.daySelected["wednesday"]?'active':''} onClick={this.day.bind(this,"wednesday")}>wed</li>
+                                          <li className={this.state.daySelected["thrusday"]?'active':''} onClick={this.day.bind(this,"thrusday")}>thu</li>
+                                          <li className={this.state.daySelected["friday"]?'active':''} onClick={this.day.bind(this,"friday")}>fri</li>
+                                          <li className={this.state.daySelected["saturday"]?'active':''} onClick={this.day.bind(this,"saturday")}>sat</li>
+                                        </ul>
+                                        <TimePicker
+                                          value={this.state.TimePickerFrom}
+                                          onChange={this.TimePickerChange.bind(this,"timeFrom")}
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatFrom}
+                                          use12Hours
+                                        />
+                                        <i className="mdi mdi-chevron-down time-from" />
+                                        <span className="time-to-time">to</span>
+                                        <TimePicker
+                                          value={this.state.TimePickerTo}
+                                          onChange={this.TimePickerChange.bind(this,"timeTo")}
+                                          placeholder="Time"
+                                          showSecond={false}
+                                          className="xxx"
+                                          format={formatTo}
+                                          use12Hours
+                                        />
+                                        <i className="mdi mdi-chevron-down time-to" />
+                                        <span className={this.state.inValidTime?"time-error":"time-error hide"} >Invalid time format</span>
+                                      </div>
+                                      <div className="f-card toggleBtn">
+                                        <h5>Open 24/7</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.Open24_7}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'Open24_7')}
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}/>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6 right toggleBtn">
+                                    <div className="filterby-wrapper">
+
+                                      <div className="f-card star-rating">
+                                        <h5>Rating</h5>
+                                        <Rating
+                                            empty="mdi mdi-star-outline "
+                                            full="mdi mdi-star active-star"
+                                            initialRate={this.state.ratingValue}
+                                            onChange={(e)=>{this.ratingOnChange(e)}}
+                                        />
+                                      </div>
+                                      <div className="f-card ">
+                                        <h5>Only show Favourites</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.showFavourites}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'showFavourites')}
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                       <div className="f-card ">
+                                        <h5>Only show Authorized Businesses</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.authorizedBusinesses}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'authorizedBusinesses')}
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="f-card ">
+                                        <h5>Only show Businesses with Deals & Offers</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.dealsOffers}
+                                          size="small"
+                                          onChange={this.switch.bind(this,'dealsOffers')}
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
+                                      <div className="f-card payment-type">
+                                        <h5>Payment by</h5>
+                                        <div className="holder">
+                                          <span className="pad0">Pay by Cash</span>
+                                          <ToggleSwitch
+                                            checked={this.toggleSwitchVal.byCash}
+                                            size="small"
+                                            onChange={this.switch.bind(this,'byCash')}
+                                            ref={(node) => {
+                                              this.toggleSwitch = node;
+                                            }}
+                                          />
+                                        </div>
+                                        <div className="holder">
+                                          <span className="">Pay by Credit Card</span>
+                                          <ToggleSwitch
+                                            checked={this.toggleSwitchVal.byCreditcard}
+                                            size="small"
+                                            onChange={this.switch.bind(this,'byCreditcard')}
+                                            ref={(node) => {
+                                              this.toggleSwitch = node;
+                                            }}
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-12 footer">
+                                    {/*{()=>this.setState({filterdropdown:false})}*/}
+                                    <a onClick={this.clearFilter.bind(this)}>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)}/>
+                                  </div>
+                                </div>
+                              </div>
+                            </DropdownButton>
+                          </div>
+                        </div>}
+                        <div className="quotes-left-body">
+                          <Scrollbars
+                            className="requestQuotesScroll"
+                            thumbMinSize={0}
+                            renderTrackVertical={this.renderTrackVertical}
+                            renderThumbVertical={this.renderThumbVertical}
+                          >
+                            {this.jobData[0].statusIndicator=="active" && <div className="wrapper" ref={'quotesList'}>
+
+                                <div>
+                                  {map(this.state.jobCardDetails, (details, key) => {
+                                    return (
+                                      <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
+                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key,  }, details.vendorId)} />
+                                    );
+                                  })}
+                                </div>
+
+                            </div>}
+
+                            {this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ? <div>
+                              <AcceptedQuotes />
+                            </div>:""}
+                          </Scrollbars>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 clearfix right pad0">
+                      {this.jobData[0].statusIndicator=="active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
+                        <div className="quotes-right-body">
+                          <Gmaps
+                            infoPopUp={true}
+                            setCenter={this.state.setCenter}
+                            center={this.state.mapsCenter}
+                            markers={{ jobCardLocation }}
+                            markerClick={this.mapClick.bind(this)}
+                            zoom={9}
+                            containerElement={<div style={{ height: 100 + '%' }} />}
+                            mapElement={<div style={{ height: 100 + '%' }} />}
+                          />
                         </div>
                       </div>}
-                  </div>
+                      <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
+                        <div className="quotes-right-header">
+                          <div className="profile-head">
+                            <span>
+                              <img src="../images/pic.png" alt="" />
+                            </span>
+                            <label> Shine Works </label>
+                          </div>
+                          <div className="quotes-right-tabs">
+                            <ul>
+                              <li className={this.state.quotation == true ? "active" : ""} onClick={() => this.viewQuotation()}>Quote</li>
+                              <li className={this.state.messages == true ? "active" : ""} onClick={() => this.viewMessages()}>Message</li>
+                            </ul>
+                            {this.jobData[0].statusIndicator=="active" && <a className="close-Tab" onClick={() => this.closeChat()}><i className="mdi mdi-close" /></a>}
+                          </div>
+                        </div>
+                        <div className="quotes-right-body">
+                          <Scrollbars
+                            className="requestQuotesScroll"
+                            thumbMinSize={0}
+                            renderTrackVertical={this.renderTrackVertical}
+                            renderThumbVertical={this.renderThumbVertical}
+                          >
+                            {/*Quotation*/}
+                            <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                              <div className="quotation-head">
+                                <ul>
+                                  <li>
+                                    <label>Job Start Time:</label>
+                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
+                                  </li>
+                                  <li>
+                                    <label>Quote Generated:</label>
+                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div className="quotation-details">
+                                {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
+                                  return (
+                                    cardValue.quotationDetails!= undefined &&
+                                    <div className="quotation-block" key={jobCardKey}>
+                                      {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
+                                        return (
+                                          <div>
+                                            <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
+                                            <ul>
+                                              {map(quoteVal.Accessories, (carAcc, accessoriesKey) => {
+                                                return (
+                                                  <li key={accessoriesKey}>
+                                                    <label>{carAcc.name}</label>
+                                                    <span>{carAcc.cost} {carAcc.currency}</span>
+                                                  </li>
+                                                )
+                                              })}
+                                            </ul>
+                                          </div>
+                                        );
+                                      })}
+
+                                    </div>
+                                  );
+                                })}
+                                <div className="quotation-total">
+                                  <label>Total</label>
+                                  <span>195 AED</span>
+                                </div>
+                                {this.jobData[0].statusIndicator=="active" && this.jobData[0].statusIndicator!="expired" ?<div className="quotation-accept-btn pull-right">
+                                  <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" btnCallBack={()=>{this.props.router.push('/request/accepted')}}/>
+                                </div>:""}
+                              </div>
+                            </div>
+                            {/*ChatBox*/}
+                            <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                              <div className="quotes-chat-area">
+                                {messagesView}
+                              </div>
+                              <div className="quotes-message-footer">
+                                <form onSubmit={(e) => {e.preventDefault(); this.sendNewMessage(this.state.quotesMessage);}}>
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <FormControl value={this.state.quotesMessage} type="text" placeholder="Type your message here..." onChange={(e) => {e.preventDefault(); this.setState({'quotesMessage': e.target.value})}}/>
+                                      <InputGroup.Addon onClick={(e) => {e.preventDefault(); this.sendNewMessage(this.state.quotesMessage);}}>
+                                        <i className="mdi mdi-send" />
+                                      </InputGroup.Addon>
+                                    </InputGroup>
+                                  </FormGroup>
+                                </form>
+                              </div>
+                            </div>
+                          </Scrollbars>
+                        </div>
+                      </div>
+                    </div>
+                  </div>}
                 </div>
               </div>
             </div>
           </div>
-        );
-      })} </div>
+        </div>
+      );
+    })} </div>
     );
   }
 }

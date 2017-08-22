@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
-import CustomModal from '../common/CustomModal';
 import { Modal, Media } from 'react-bootstrap';
 import { map } from 'lodash';
 import moment from 'moment';

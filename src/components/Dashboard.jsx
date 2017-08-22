@@ -68,6 +68,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        const authData = JSON.parse(localStorage.getItem('authData'));
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
                 <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={() => this.props.router.push(service.hyperlink)}>
@@ -90,7 +91,7 @@ export default class Dashboard extends Component {
                     <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    { !JSON.parse(localStorage.getItem('authData')).hasVehicleProfile && <div className="topSection">
+                    { !(authData && authData.hasVehicleProfile) && <div className="topSection">
                         <div className="padwrapper">
                             {/*Welcome Text*/}
                              <WelcomeText router={this.props.router} />

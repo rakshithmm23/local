@@ -76,7 +76,7 @@ export default class MyRequest extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} onHide={() => {this.setState({showModal: false})}} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
+                            <CustomModal showModal={this.state.showModal} hideModal={() => {this.setState({showModal: false,chars_left:0})}} footer={true} title="Cancel request" saveText="Confirm" cancelText="Close">
                                 <Modal.Body>
                                     <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
                                     <div className="info-heading">
@@ -113,7 +113,7 @@ export default class MyRequest extends Component {
                             <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RequestCard jobType={this.props.routeParams.requestType}/>
+                                    <RequestCard jobType={this.props.routeParams.requestType} router={this.props.router}/>
                                 </div>
                             </div>
                         </div>

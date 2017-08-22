@@ -113,11 +113,11 @@ class CardType extends Component {
                                                 {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                                            <i className="mdi mdi-chevron-down" />
+                                                            <i className="mdi mdi-chevron-up" />
                                                             Collapse Timeline
                                                         </button> :
                                                             <button className="btn btn-theme sm label">
-                                                                <i className="mdi mdi-chevron-up" />
+                                                                <i className="mdi mdi-chevron-down" />
                                                                 Expand Timeline
                                                         </button>
                                                         }
@@ -160,11 +160,11 @@ class CardType extends Component {
                                 <div className="mobile-expand-timeline">
                                     <div onClick={(e) => this.showTimeline(e)}>
                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                            <i className="mdi mdi-chevron-down" />
+                                            <i className="mdi mdi-chevron-up" />
                                             Collapse Timeline
                                                             </button> :
                                             <button className="btn btn-theme sm label" >
-                                                <i className="mdi mdi-chevron-up" />
+                                                <i className="mdi mdi-chevron-down" />
                                                 Expand Timeline
                                             </button>
                                         }
@@ -185,7 +185,7 @@ class CardType extends Component {
                     </div>
                 </div>}
 
-                <CustomModal footer="true" showModal={this.state.saveModal} onHide={() => { this.setState({ saveModal: false }) }} className="rating-modal" closeIcon="true" saveText="Submit">
+                <CustomModal header={false} footer={true} showModal={this.state.saveModal} hideModal={() => { this.setState({ saveModal: false,chars_left: 0 }) }} className="rating-modal" closeIcon="true" saveText="Submit">
                     <Modal.Body>
                         <div className="image-holder">
                             <img src="../../images/test.jpg" alt="" />
@@ -197,7 +197,6 @@ class CardType extends Component {
                             <Rating
                                 empty="mdi mdi-star-outline "
                                 full="mdi mdi-star active-star"
-                                fractions={2}
                                 initialRate={this.state.ratingValue}
                                 onChange={(e) => { this.ratingOnChange(e) }}
                             />

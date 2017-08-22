@@ -9,7 +9,6 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem,Modal } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
-import CustomModal from '../common/CustomModal';
 
 
 class ServiceSteps extends Component {
