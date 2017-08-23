@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
 import TextInput from '../common/TextInput';
-import { each, map, find, equal } from 'lodash';
+import { each, map, filter, size, cloneDeep } from 'lodash';
 import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
@@ -9,7 +9,6 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem,Modal } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
-import CustomModal from '../common/CustomModal';
 
 
 class ServiceSteps extends Component {
@@ -26,161 +25,201 @@ class ServiceSteps extends Component {
             // startDate: moment(),
             step1Panel: true,
             step2Panel: false,
-            carWashCategories: [
-                {
-                    id: 1,
-                    active: false,
-                    heading: "Regular Service",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 2,
-                    active: false,
-                    heading: "Fuel Economy Service Type",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "Service title one",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "Service title two",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "Service title three",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "I am not sure",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 3,
-                    active: false,
-                    heading: "Full Service",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
-                }, {
-                    id: 4,
-                    active: false,
-                    heading: "Annual Package - Car Care & Dealing",
-                    checkedCategoryCount: 0,
-                    categories: [
-                        {
-                            id: 1,
-                            name: "subcategory 1",
-                            checked: false
-                        }, {
-                            id: 2,
-                            name: "subcategory 2",
-                            checked: false
-                        }, {
-                            id: 3,
-                            name: "subcategory 3",
-                            checked: false
-                        }, {
-                            id: 4,
-                            name: "subcategory 4",
-                            checked: false
-                        }, {
-                            id: 5,
-                            name: "subcategory 5",
-                            checked: false
-                        }, {
-                            id: 6,
-                            name: "subcategory 6",
-                            checked: false
-                        }],
-                    image: '../../images/wash-icon.png',
-                    modalText:"Brakes & Exhaust Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. "
+            catDescriptionModalVisible: false,
+            selectedCarCategoryForModel: undefined,
+            carServiceCategories: {
+              1: {
+                id: 1,
+                name: "Regular Service",
+                image: '../../images/auto-service-icons-5.png',
+                description: "Regular Service Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  1: {
+                    name: 'Test 1',
+                    id: 1
+                  },
+                  2: {
+                    name: 'Subcategory 2',
+                    id: 2
+                  },
+                  3: {
+                    name: 'abc 3',
+                    id: 3
+                  },
+                  4: {
+                    name: 'test 4',
+                    id: 4
+                  },
+                  5: {
+                    name: 'Subcategory 5',
+                    id: 5
+                  },
+                  6: {
+                    name: 'Subcategory 6',
+                    id: 6
+                  }
                 }
-            ],
-
+              },
+              2: {
+                id: 2,
+                name: "Fuel Economy Service Type",
+                image: '../../images/auto-service-icons-3.png',
+                description: "Fuel Economy Service Type Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  7: {
+                    name: 'Subcategory 1',
+                    id: 7
+                  },
+                  8: {
+                    name: 'Subcategory 2',
+                    id: 8
+                  },
+                  9: {
+                    name: 'Subcategory 3',
+                    id: 9
+                  },
+                  10: {
+                    name: 'Subcategory 4',
+                    id: 10
+                  },
+                  11: {
+                    name: 'Subcategory 5',
+                    id: 11
+                  },
+                  12: {
+                    name: 'Subcategory 6',
+                    id: 12
+                  }
+                }
+              },
+              3: {
+                id: 3,
+                name: "Full Service",
+                image: '../../images/auto-service-icons-4.png',
+                description: "Full Service Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  13: {
+                    name: 'Subcategory 1',
+                    id: 13
+                  },
+                  14: {
+                    name: 'Subcategory 2',
+                    id: 14
+                  },
+                  15: {
+                    name: 'Subcategory 3',
+                    id: 15
+                  },
+                  16: {
+                    name: 'Subcategory 4',
+                    id: 16
+                  },
+                  17: {
+                    name: 'Subcategory 5',
+                    id: 17
+                  },
+                  18: {
+                    name: 'Subcategory 6',
+                    id: 18
+                  }
+                }
+              },
+              4: {
+                id: 4,
+                name: "Annual Package - Car Care & Dealing",
+                image: '../../images/auto-service-icons-1.png',
+                description: "Annual Package - Car Care & Dealing Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                subCategories: {
+                  19: {
+                    name: 'Subcategory 1',
+                    id: 19
+                  },
+                  20: {
+                    name: 'Subcategory 2',
+                    id: 20
+                  },
+                  21: {
+                    name: 'Subcategory 3',
+                    id: 21
+                  },
+                  22: {
+                    name: 'Subcategory 4',
+                    id: 22
+                  },
+                  23: {
+                    name: 'Subcategory 5',
+                    id: 23
+                  },
+                  24: {
+                    name: 'Subcategory 6',
+                    id: 24
+                  }
+                }
+              }
+            },
+            visibleCategory: undefined
         };
         this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+      this.setState({
+        'filteredCarServiceCategories': cloneDeep(this.state.carServiceCategories)
+      })
+    }
+
+    filterCarType(searchTerm) {
+      const filterKeyword = searchTerm.toLowerCase();
+      if (filterKeyword) {
+        const carCategories = cloneDeep(this.state.carServiceCategories);
+        let filteredCarServiceCategories = {};
+        each (carCategories, (carDetails) => {
+          const carName = carDetails.name.toLowerCase();
+          if (carName.indexOf(filterKeyword) > -1 ) {
+            filteredCarServiceCategories[carDetails.id] = carDetails
+          } else {
+            let modifiedCarDetails = cloneDeep(carDetails);
+            let filteredSubCategory = {};
+            each (carDetails.subCategories, (subCategory) => {
+              const subCategoryName = subCategory.name.toLowerCase();
+              if (subCategory.checked) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              } else if (subCategoryName.indexOf(filterKeyword) > -1) {
+                filteredSubCategory[subCategory.id] = subCategory;
+              }
+            });
+            if (size(filteredSubCategory)) {
+              modifiedCarDetails['subCategories'] = filteredSubCategory;
+              filteredCarServiceCategories[carDetails.id] = modifiedCarDetails;
+            }
+          }
+        });
+        this.setState({
+          'filteredCarServiceCategories': filteredCarServiceCategories
+        })
+      } else {
+        this.setState({
+          'filteredCarServiceCategories': cloneDeep(this.state.carServiceCategories)
+        })
+      }
+    }
+
     handleChange(date) {
         this.setState({
             startDate: date
         });
     }
     openCategory(id) {
-        let newCat = [];
-        map(this.state.carWashCategories, (category) => {
-            let cat = { ...category };
-            if (category.id == id) {
-                cat.active = !cat.active;
-                cat.showModal = false;
-            } else {
-                cat.active = false;
-                cat.showModal = false;
-            }
-            newCat.push(cat);
-        })
-        this.setState({
-            carWashCategories: newCat
-        });
+      this.setState({
+        'visibleCategory': id
+      })
     }
-    showModal(e,id){
+    showModal(e, categoryDetails){
         e.preventDefault();
-        let updateVal=[...this.state.carWashCategories]
-        each(updateVal, function(value) {
-            value.showModal = false;
-            if(value.id == id){
-                value.showModal = !value.showModal;
-            }
-        });
-        this.setState({carWashCategories:updateVal})
+        this.setState({
+          'selectedCarCategoryForModel': categoryDetails,
+          'catDescriptionModalVisible': true
+        })
     }
     hidePanel(panel) {
         if (panel == 'step1') {
@@ -190,28 +229,16 @@ class ServiceSteps extends Component {
         }
     }
 
-    chageCheckoxState(e, val) {
-        let updateVal = [...this.state.carWashCategories], checkedCount = 0;
-
-        find(updateVal, (washCategory) => {
-            washCategory.showModal=false;
-            if (washCategory.active) {
-                find(washCategory.categories, (subCategory) => {
-                    if (subCategory.name == val.name && subCategory.id == val.id) {
-                        subCategory.checked = !subCategory.checked;
-                    }
-                    if (subCategory.checked) {
-                        checkedCount++
-                    }
-                })
-                washCategory.checkedCategoryCount = checkedCount;
-            }
-        })
-        this.setState({
-            carWashCategories: updateVal
-        })
-
+    changeCheckboxState(e, categoryId, subCategoryId) {
+      const isChecked = e.target.checked;
+      const filteredCarServiceCategories = cloneDeep(this.state.filteredCarServiceCategories);
+      filteredCarServiceCategories[categoryId]['subCategories'][subCategoryId]['checked'] = isChecked;
+      this.setState({
+        filteredCarServiceCategories: filteredCarServiceCategories,
+        carServiceCategories: filteredCarServiceCategories
+      });
     }
+
     selectedDropdownText(location) {
         this.setState({ PrefferedLocation: location });
     }
@@ -250,6 +277,38 @@ class ServiceSteps extends Component {
         array.splice(val, 1);
         this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
     }
+    renderCarType(carDetails, key) {
+      const checkedSubCategories = filter(carDetails.subCategories, (data)=>{return (data.checked)});
+      return (
+        <div className="sub-collapse-panel" key={key}>
+          <figure onClick={(e)=>{this.showModal(e, carDetails)}}>
+                  <img src={carDetails.image} alt="" />
+          </figure>
+          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault(); this.openCategory(carDetails.id); }}>
+              <h4>{carDetails.name}</h4>
+              {checkedSubCategories && checkedSubCategories.length > 0 ?
+                  <span className="sub-category-count">
+                      {checkedSubCategories.length}{checkedSubCategories.length == 1 ? " Category Selected" : " Categories Selected"}
+                  </span>
+                    :
+                  <span className="sub-category-count">
+                      {carDetails.subCategories.length} {carDetails.subCategories.length == 1 ? "subcategory" : "subcategories"}
+                  </span>
+              }
+              <i className={carDetails.id == this.state.visibleCategory  ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
+          </div>
+          <div className={carDetails.id == this.state.visibleCategory  ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
+              {map(carDetails.subCategories, (subCategory, index) => {
+                  return (<div className="options" key={index}>
+                      <span className="checkbox-style">
+                          <label className={subCategory.checked?"label active":"label"}><input type="checkbox" checked={subCategory.checked ? subCategory.checked : false} onChange={(e) => { this.changeCheckboxState(e, carDetails.id, subCategory.id) }} value="" />{subCategory.checked} {subCategory.name}</label>
+                      </span>
+                  </div>);
+              })}
+          </div>
+        </div>
+      )
+    }
     render() {
         const imageUploadedView = map(this.state.imageUploaded, (img, index) => {
             return (
@@ -266,78 +325,14 @@ class ServiceSteps extends Component {
         const now = moment().hour(0).minute(0);
         let leftBlock = [];
         let rightBlock = [];
-        each(this.state.carWashCategories, (carWashCategory, key) => {
-            if (key % 2 == 0) {
-                rightBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            } else {
-                leftBlock.push(
-                    <div className="sub-collapse-panel" key={key}>
-                        <figure onClick={(e)=>{this.showModal(e,carWashCategory.id)}}>
-                                <img src={carWashCategory.image} alt="" />
-                        </figure>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault();this.openCategory(carWashCategory.id); }}>
-                            <h4>{carWashCategory.heading}</h4>
-                            {carWashCategory.checkedCategoryCount == 0 ?
-                                <span className="sub-category-count">
-                                    {carWashCategory.categories.length} {carWashCategory.categories.length == 1 ? "subcategory" : "subcategories"}
-                                </span> :
-                                <span className="sub-category-count">
-                                    {carWashCategory.checkedCategoryCount}{carWashCategory.checkedCategoryCount == 1 ? " Category Selected" : " Categories Selected"}
-                                </span>
-                            }
-                            <i className={carWashCategory.active ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-                        </div>
-                        <div className={carWashCategory.active ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-                            {map(carWashCategory.categories, (category, index) => {
-                                return (<div className="options" key={index}>
-                                    <span className="checkbox-style">
-                                        <label className="label"><input type="checkbox" checked={category.checked} onChange={(e) => { this.chageCheckoxState(e, category, index) }} value="" />{category.name}</label>
-                                    </span>
-                                </div>);
-                            })}
-                        </div>
-                        <CustomModal showModal={carWashCategory.showModal} footer="false" title={carWashCategory.heading} closeIcon="true">
-                            <Modal.Body>
-                                <p className="info-text">{carWashCategory.modalText}</p>
-
-                            </Modal.Body>
-
-                        </CustomModal>
-                    </div>);
-            }
+        let catLength = 0;
+        each(this.state.filteredCarServiceCategories, (carDetails) => {
+          catLength += 1;
+          if (catLength % 2 == 0) {
+              rightBlock.push(this.renderCarType(carDetails, catLength));
+          } else {
+              leftBlock.push(this.renderCarType(carDetails, catLength));
+          }
         });
         return (
             <div className="panel-section car-wash">
@@ -350,14 +345,14 @@ class ServiceSteps extends Component {
                         <div className="row">
                             <div className="col-md-6 pad0">
                                 <div className="search-box">
-                                    <TextInput label="Search" name="text" type="text" />
+                                    <TextInput label="Search" name="text" type="text" onChange={this.filterCarType.bind(this)}/>
                                     <i className="mdi mdi-magnify" />
                                 </div>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6 padLeft0">{rightBlock}</div>
-                            <div className="col-md-6 padRight0">{leftBlock}</div>
+                            <div className="col-md-6 padLeft0">{leftBlock}</div>
+                            <div className="col-md-6 padRight0">{rightBlock}</div>
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
@@ -377,6 +372,7 @@ class ServiceSteps extends Component {
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
+                                            <option value="select">Select Car Brand</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="saab">Saab</option>
                                             <option value="mercedes">Mercedes</option>
@@ -433,10 +429,11 @@ class ServiceSteps extends Component {
                                     <h4 className="panel-sub-title">Preffered location</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
-                                            <option value="volvo">Marathalli</option>
-                                            <option value="saab">Mg Road</option>
-                                            <option value="mercedes">Rajajinagar</option>
-                                            <option value="audi">Mysore Road</option>
+                                            <option value="select">Select Location</option>
+                                            <option value="marathalli">Marathalli</option>
+                                            <option value="mgroad">Mg Road</option>
+                                            <option value="rajajinagar">Rajajinagar</option>
+                                            <option value="mysoreroad">Mysore Road</option>
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
@@ -457,8 +454,7 @@ class ServiceSteps extends Component {
                                             {imageUploadedView}
                                         </div>
                                         <span className={this.state.uploadImageErrText ? "image-upload-error padLeft15" : "image-upload-error padLeft15 hide"}>
-                                            <p>Sorry, your image exceeds the file size limit of 20mb.
-                                            Try again with another image.</p>
+                                            <p>Sorry, your image format is wrong or image size exceeds the limit of 20mb. Try again with another image</p>
                                             <i className="mdi mdi-close" onClick={() => this.setState({ uploadImageErrText: false })} />
                                         </span>
                                     </div>

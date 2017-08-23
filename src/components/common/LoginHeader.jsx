@@ -10,7 +10,7 @@ export default class Header extends Component {
         return (
             <div className="header-section navbar-fixed-top">
                 <div className="logo-section">
-                    <img src="../../images/logo-new.png" alt="" className="logo-img" />
+                    <img src="../../images/logo.svg" alt="" className="logo-img" />
                 </div>
                 <div className="header-right authNav-right">
                     <ul className="list-unstyled">

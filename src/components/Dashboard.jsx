@@ -11,11 +11,8 @@ import WelcomeText from './common/WelcomeText';
 import EmptyUpdates from './common/EmptyUpdates';
 import MobileNotification from './common/MobileNotification';
 import MobileMessage from './common/MobileMessage';
-import MobileSearch from './common/MobileSearch';
+
 import { serviceTypes } from '../constants/staticData';
-import { decryptCookie } from '../helpers';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
 export default class Dashboard extends Component {
     constructor(props, context) {
@@ -27,34 +24,6 @@ export default class Dashboard extends Component {
             searchVisible: false
         };
     }
-    // componentWillMount() {
-    //     this.props.actions.fetchCurrentUserInfo(this.props.router);
-    //     const signedUserDataCookie = cookies.get('carauth');
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else if (!signedUserDataCookie) {
-    //         this.props.router.push('/');
-    //     }
-    // }
-    // componentWillReceiveProps() {
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else {
-    //         this.props.router.push('/');
-    //     }
-    // }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -68,9 +37,10 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        const authData = JSON.parse(localStorage.getItem('authData'));
         const serviceTypesView = map(serviceTypes, (service, key) => {
             return (
-                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key}>
+                <div className="col-md-3 col-sm-3 col-xs-6 mpad-0" key={key} onClick={() => this.props.router.push(service.hyperlink)}>
                     <div className="service-data">
                         <img src={service.serviceImage} alt="" />
                         <label>{service.name}</label>
@@ -84,22 +54,22 @@ export default class Dashboard extends Component {
                 <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} searchCallBack={this.toggleSearch.bind(this)} router={this.props.router} actions={this.props.actions} />
                 <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
-                <MobileSearch isVisible={this.state.searchVisible} backBtnCallBack={this.toggleSearch.bind(this)} />
 
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="topSection">
+                    { !(authData && authData.hasVehicleProfile) && <div className="topSection">
                         <div className="padwrapper">
                             {/*Welcome Text*/}
-                            <WelcomeText router={this.props.router} />
+                             <WelcomeText router={this.props.router} />
                         </div>
-                    </div>
+                    </div>}
                     <div className="inSection">
                         <div className="padwrapper">
                             {/*Service List*/}
+                            <h4 className="serviceList-title">Pick a Service, to get a quote</h4>
                             <div className="service-list text-center row">
                                 {serviceTypesView}
                             </div>
@@ -109,14 +79,16 @@ export default class Dashboard extends Component {
                     <div className="topSection empty">
                         <div className="padwrapper">
                             {/*Empty Text*/}
-                            <EmptyUpdates />
+                            <EmptyUpdates router={this.props.router} />
                         </div>
                     </div>
 
                     <div className="inSection dash-jobupdate-bg">
                         <div className="padwrapper">
                             {/*Job Updates*/}
-                            <JobUpdate />
+                            <div className="jobUpdate-padding">
+                            <JobUpdate router={this.props.router} />
+                            </div>
                         </div>
                     </div>
                     <div className="bottomSection">

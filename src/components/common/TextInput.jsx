@@ -5,10 +5,19 @@ export default class TextInput extends Component {
     super(props);
     this.state = {
       'passwordVisible': false,
-      'showValidationError': false
+      'showValidationError': false,
+      'inputValue': ''
+    }
+  }
+  componentDidMount() {
+    if (this.props.value) {
+      this.setState({'inputValue': this.props.value});
     }
   }
   componentWillReceiveProps(nextProps) {
+    if (nextProps.value) {
+      this.setState({'inputValue': nextProps.value});
+    }
     if (nextProps.showValidationError) {
       this.setState({showValidationError: nextProps.showValidationError})
     }
@@ -16,14 +25,15 @@ export default class TextInput extends Component {
   handleInputChange(e) {
     const inputValue = e.target.value;
     const {type, onChange, name, limitCharacters} = this.props;
+    this.setState({'inputValue': inputValue});
     if ((type == "email" && !validateEmail(inputValue)) || (type == "password" && !validatePassword(inputValue)) || (type == "mobile" && !validateMobile(inputValue))) {
-      return;
+      this.setState({showValidationError: true});
     } else {
       this.setState({showValidationError: false});
     }
     if (onChange) {
       if(limitCharacters && inputValue.length>limitCharacters){
-        return;
+        this.setState({showValidationError: true});
       } else{
         onChange(inputValue, undefined, name);
       }
@@ -32,6 +42,7 @@ export default class TextInput extends Component {
   handleOnBlur(e) {
     const inputValue = e.target.value;
     const {type, name} = this.props;
+    this.setState({'inputValue': inputValue});
     if (!testSpaces(inputValue)) {
         this.setState({showValidationError: true});
     } else {
@@ -43,9 +54,9 @@ export default class TextInput extends Component {
       }
   }
   render() {
-    const {label, isOTP, validationError, isNumber, type} = this.props;
+    const {label, isOTP, validationError, isNumber, type, value, disabled, customClass} = this.props;
     let inputClass = 'form-group ';
-    if (this.state.showValidationError) {
+    if (this.state.showValidationError && validationError) {
       inputClass += 'error ';
     }
     if (isOTP) {
@@ -53,10 +64,12 @@ export default class TextInput extends Component {
     }
     return type === "password" ?
     (
-      <div className={inputClass}>
+      <div className={`${inputClass} ${customClass}`}>
           <input
             type={type == "password" ? this.state.passwordVisible ? "text" : "password" : type}
             className="form-control form-input"
+            value={this.state.inputValue}
+            disabled={this.props.disabled ? 'disabled' : ''}
             onBlur={this
               .handleOnBlur
               .bind(this)
@@ -64,17 +77,19 @@ export default class TextInput extends Component {
             onChange={(e) => this.handleInputChange(e, type)}
             required/>
           {type === "password" && <span className="input-icon" onClick={(e) => {e.preventDefault(); this.setState({'passwordVisible': !this.state.passwordVisible})}}>
-            {this.state.passwordVisible ? <img src="../../images/eye-active.png" alt="" /> : <img src="../../images/eye.png" alt="" /> }
+            {this.state.passwordVisible ? <i className="mdi mdi-eye-off" /> : <i className="mdi mdi-eye" /> }
           </span>}
           {this.state.showValidationError && validationError && <span className="error-text">{validationError}</span>}
           <label>{label}</label>
       </div>
     ) :
     (
-      <div className={inputClass}>
+      <div className={`${inputClass} ${customClass}`}>
           <input
             type={type == 'email' ? 'text': type == 'mobile' ? 'number' : 'text'}
             className="form-control form-input"
+            value={this.state.inputValue}
+            disabled={this.props.disabled ? 'disabled' : ''}
             onBlur={this
               .handleOnBlur
               .bind(this)

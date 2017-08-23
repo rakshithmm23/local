@@ -16,8 +16,9 @@ export default class Photos extends Component {
                         <li className="upload-images">
                             <img src="../../images/test.jpg" alt="" />
                         </li>
-                        <li className="upload-images">
+                        <li className="upload-images wrap-photo">
                             <img src="../../images/test.jpg" alt="" />
+                            <span className="more-photos">+ 10 more</span>
                         </li>
                     </ul>
                 </div>

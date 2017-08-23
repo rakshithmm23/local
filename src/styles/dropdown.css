@@ -80,7 +80,10 @@
     cursor: pointer;
     outline: 0 !important;
 }
-
+.car-profile-header .dropdown-menu{
+  height: 250px;
+  overflow: scroll;
+}
 @media screen and (max-width: 991px) {
     .profile-header .dropdown-menu {
         right: 0;
@@ -271,7 +274,7 @@
 
 .text-dropdown.notify .media-body .notify-time {
     position: absolute;
-    top: 0;
+    top: 21px;
     right: 0px;
     color: #717982;
     font-family: "CenturyGothic";

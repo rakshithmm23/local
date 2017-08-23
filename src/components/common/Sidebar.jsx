@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {map} from 'lodash';
 import '../../styles/sidebar.css';
-import { Router } from 'react-router'
 
 export default class Sidebar extends Component {
   componentWillMount(){
@@ -16,39 +15,43 @@ export default class Sidebar extends Component {
      currentPath: currentPath
    };
   }
+  goToUrl(url){
+    this.props.router.push(url);
+  }
   render() {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
         iconName: 'mdi mdi-view-grid',
         name: 'Dashboard',
-        hyperLink: 'dashboard'
+        hyperLink: '/dashboard'
       },
       {
         iconName: 'mdi mdi-pencil',
         name: 'My Requests',
-        hyperLink: 'request'
+        hyperLink: '/request'
       },
       {
         iconName: 'mdi mdi-car',
         name: 'My Cars',
-        hyperLink: 'car-list'
+        hyperLink: '/car-profiles'
       },
       {
         iconName: 'mdi mdi-comment-processing',
         name: 'Messages',
-        hyperLink: 'messages'
+        hyperLink: '/messages'
       },
       {
         iconName: 'mdi mdi-heart',
         name: 'Favourites',
-        hyperLink: 'favourites'
+        hyperLink: '/favourites'
       },
     ];
 
     const sideBarCardList = map(sidebarItems, (item, key) => {
       return (
-        <li key={key} className={this.state.currentPath.indexOf(item.hyperLink) > -1 ? 'active': ''} onClick={(e) => {e.preventDefault(); window.location.href=item.hyperLink}} href={item.hyperLink}>
+        <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''}
+        onClick={this.goToUrl.bind(this,item.hyperLink)}>
           <a>
             {item.iconName && <label className={item.iconName}/> }
             <span>{item.name}</span>

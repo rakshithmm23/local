@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import { Media } from 'react-bootstrap';
 import { map, each, includes } from 'lodash';
 
 export default class AcceptedQuotes extends Component {
-  render() {
-     const AcceptedQuotes = [
+  constructor(){
+    super();
+    this.state={
+      imagesLeft:false,
+      imagesRemaining:0
+    }
+      this.AcceptedQuotes = [
         {
           vdImage: '../../images/car.jpg',
           vdName:'1. Shine Works',
@@ -25,13 +30,47 @@ export default class AcceptedQuotes extends Component {
               },
               {
                   photo :'../../images/test.jpg',
+              },
+                {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
+              },
+              {
+                  photo :'../../images/test.jpg',
               }
           ],
           PhotoDesc :'Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota el..',
         }
-     ]
+      ];
+    }
+    componentDidMount() {
+      if(this.AcceptedQuotes[0].vdPhoto.length>=7){
+        this.setState({imagesLeft:true})
+        let imagesRemaining = this.AcceptedQuotes[0].vdPhoto.length - 7
+        this.setState({imagesRemaining:imagesRemaining})
+      }
+    }
 
-    const AcceptedQuotesList = map(AcceptedQuotes, (item, key) => {
+  render() {
+
+    const AcceptedQuotesList = map(this.AcceptedQuotes, (item, key) => {
       return(
         <div className="vendorDetails" key={key}>
             <div className="vd-heading">
@@ -54,18 +93,26 @@ export default class AcceptedQuotes extends Component {
                 <label>{item.vdAddress}</label>
                 <label>{item.vdEmail}</label>
                 <label>{item.vdPhone}</label>
-                <Button btnType="btn-alert alert-margin" btnSize="sm" customClass="timeline" fontSize={14} label="Get Directions" />
-                <Button btnType="btn-alert" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />
+                <Button btnType="btn-theme transparent alert-margin" btnSize="sm" customClass="timeline" fontSize={14} label="Get Directions" />
+                <Button btnType="btn-theme transparent" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />{/* vendor profile */}
+
             </div>
             <div className="figure no-top-padding">
                 <h4>Photos</h4>
+              <div className="photos-row">
                 {map(item.vdPhoto, (item, key) => {
                   return(
                     <div className="upload-images" key={key}>
                       <img src={item.photo} alt=""/>
+                      <span className="more-photos">+ 10 more</span>
                     </div>
                   );
                 })}
+              </div>
+               {this.state.imagesLeft && <div className="upload-images wrap-photo" key={key}>
+                      <img src="../../images/test.jpg" alt=""/>
+                      <span className="more-photos">{"+ "+this.state.imagesRemaining+" more"}</span>
+                    </div>}
                 <p>{item.PhotoDesc}</p>
                 <label className="read_more">Read More</label>
             </div>

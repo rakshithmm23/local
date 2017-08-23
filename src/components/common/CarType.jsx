@@ -1,53 +1,101 @@
 import React, { Component } from 'react';
+import { map } from 'lodash';
+import StatusBar from '../common/StatusBar';
+import CustomModal from '../common/CustomModal';
+import { DropdownButton, MenuItem, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import Rating from 'react-rating';
 
 class CardType extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            showTimeLine: false
-        }
+            showTimeLine: false,
+            saveModal: false,
+            max_chars: 200,
+            chars_left: 0,
+            collapseTimeline: true,
+            ratingValue: 0,
+        };
     }
+    // componentDidMount() {
+    //     debugger
+    //     let queryParam = this.props.cardDetails.statusIndicator 
+    //     if(queryParam == "completed"){
+    //         this.setState({collapseTimeline:false})
+    //     }
+    // }
+    ratingOnChange(rating) {
+        this.setState({ ratingValue: rating })
+
+    }
+
     getIcons(jobType, val) {
         if (val == "waiting") {
             return (<div className="job-icon  notification">
                 <span className="mdi mdi-pencil"></span>
                 <span className="commentLabel">Edit</span>
-            </div>)
+            </div>);
         } else if (val == "active") {
             return (
                 <div>
-                    <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+                    <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-file-outline"></span><span className="notifyTag"></span><span className="commentLabel">Quotes</span></div>
                 </div>
-            )
+            );
         } else if (val == "accepted" || val == "inProgress") {
             return (
-                <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
-            )
-        } else if (val == "finished") {
+                <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+            );
+        } else if (val == "completed") {
             return (
-                <div className="job-icon  notification"><span className="mdi mdi-star-outline"></span><span className="commentLabel">Review</span></div>
-            )
+                <div className="job-icon  notification" onClick={(e) => { e.preventDefault(); e.stopPropagation(); this.setState({ saveModal: true }) }}>
+                    <span className="mdi mdi-star-outline"></span>
+                    <span className="commentLabel">Review</span>
+                </div>
+            );
         } else if (val == "cancelled") {
             return (
-
                 <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-            )
+            );
         } else if (val == "expired") {
             return (
                 <div >
                     <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
+                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Re-book</span></div>
                 </div>
-            )
+            );
         }
     }
-    render() {
+    stepClick(e, key) {
+        if (e.clientX > 690) {
+            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
+        } else if (e.clientX < 350) {
+            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%', activeButton: key })
+        }
+        else {
+            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%', activeButton: key })
+        }
+    }
+    handleChange(event) {
+        // let input = null
+        // input = event
+        const val = event.target.value;
+        this.setState({
+            chars_left: this.state.max_chars - val.length
+        });
+    }
+    showTimeline(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.setState({ showTimeLine: !this.state.showTimeLine })
+    }
 
-        const { cardDetails,jobLeftGridValue,jobRightGridValue } = this.props;
+
+    render() { 
+        const { cardDetails, jobLeftGridValue, jobRightGridValue, messageRoute } = this.props;
         return (
-            <div className={"job-updates " + cardDetails.statusIndicator}>
-                <div className="row">
+            <div className={"job-updates " + cardDetails.statusIndicator} >
+                <div className="row" onClick={messageRoute}>
                     <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                         <div className={jobLeftGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-left">
@@ -59,24 +107,21 @@ class CardType extends Component {
                                         <div className="job-details">
                                             <ul>
                                                 <li>
-                                                    <label>Order ID :</label><span>{cardDetails.customeId}</span></li>
+                                                    <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                <li>
-                                                    {cardDetails.statusPopup && <li>
-                                                        <li onClick={() => this.setState({ showTimeLine: !this.state.showTimeLine })}>
-                                                            {this.state.showTimeLine ?<button className="btn btn-theme sm label" >
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
+                                                    <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
+                                                        {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
+                                                            <i className="mdi mdi-chevron-up" />
+                                                            Collapse Timeline
+                                                        </button> :
+                                                            <button className="btn btn-theme sm label">
                                                                 <i className="mdi mdi-chevron-down" />
-                                                                Collapse Timeline
-                                                            </button>:
-                                                            <button className="btn btn-theme sm label" >
-                                                                <i className="mdi mdi-chevron-up" />
                                                                 Expand Timeline
-                                                            </button>
-                                                            }
-                                                        </li>
+                                                        </button>
+                                                        }
                                                     </li>}
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -86,7 +131,7 @@ class CardType extends Component {
                         <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
-                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator}</div>
+                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inProgress"?"In Progress":cardDetails.statusIndicator}</div>
                                     <div className="job-icon notification">
                                         {this.getIcons(this, cardDetails.statusIndicator)}
                                     </div>
@@ -111,117 +156,71 @@ class CardType extends Component {
                                     </ul>
                                 </div>}
                             </div>
+                            {cardDetails.statusPopup &&
+                                <div className="mobile-expand-timeline">
+                                    <div onClick={(e) => this.showTimeline(e)}>
+                                        {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
+                                            <i className="mdi mdi-chevron-up" />
+                                            Collapse Timeline
+                                                            </button> :
+                                            <button className="btn btn-theme sm label" >
+                                                <i className="mdi mdi-chevron-down" />
+                                                Expand Timeline
+                                            </button>
+                                        }
+                                    </div>
+                                </div>}
                         </div>
                     </div>
                 </div>
                 {/*///////*/}
-                 {cardDetails.statusPopup && this.state.showTimeLine && <div className="job-footer active">
+                {cardDetails.statusPopup && this.state.showTimeLine && this.state.collapseTimeline && <div className="job-footer active">
                     <div className="row">
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
-                            <div className="collapse in">
+                            <div className="job-process">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                <div className="status-popup "><span className="statusPopup-arrow"></span>
-                                    <div className="iconHolder"><span className="statusIcon"></span></div>
-                                    <div className="statusDescription">
-                                        <h4>Door Locking Mechanisms and Windows</h4><span>09 Mar 15 11:00 AM</span><span className="status-process">On going</span><a href="" className="view-worklog pull-right">View Worklog</a></div>
-                                </div>
-                                <div>
-                                    <div className="row bs-wizard">
-                                        <div className="bs-wizard-step complete">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step complete">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step complete">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step complete">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step active">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                        <div className="bs-wizard-step disabled">
-                                            <div className="text-center bs-wizard-stepnum">Step 1</div>
-                                            <div className="progress">
-                                                <div className="progress-bar"></div>
-                                            </div>
-                                            <a href="#" className="bs-wizard-dot"></a>
-                                        </div>
-                                    </div>
-                                </div><span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
+                                <StatusBar statusCount={cardDetails.totalTask} />
+                                <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>
                 </div>}
 
+                <CustomModal header={false} footer={true} showModal={this.state.saveModal} hideModal={() => { this.setState({ saveModal: false,chars_left: 0 }) }} className="rating-modal" closeIcon="true" saveText="Submit">
+                    <Modal.Body>
+                        <div className="image-holder">
+                            <img src="../../images/test.jpg" alt="" />
+                            <h4>Jaidah Automotive</h4>
+                            <span className="sub-text">Basic Car Wash</span>
+                            <span className="sub-text">120 AED</span>
+                        </div>
+                        <div className="stars">
+                            <Rating
+                                empty="mdi mdi-star-outline "
+                                full="mdi mdi-star active-star"
+                                initialRate={this.state.ratingValue}
+                                onChange={(e) => { this.ratingOnChange(e) }}
+                            />
+                        </div>
+                        <div className="comments rtg-modal">
+                            {/*<TextInput
+                                            type="text"
+                                            label="Comments"
+                                            name="Comments"
+                                            onChange={this.handleChange.bind(this)}
+                                        />*/}
+                            <FormGroup>
+                                <FormControl
+                                    maxLength="200"
+                                    className="textAlign"
+                                    componentClass="textarea"
+                                    placeholder="Comments"
+                                    onChange={this.handleChange.bind(this)} />
+                            </FormGroup>
+                            <span className="text-limit">{this.state.chars_left}/200</span>
+                        </div>
+                    </Modal.Body>
+                </CustomModal>
             </div>
-
-
-
-
         );
     }
 }

@@ -3,22 +3,22 @@ export const serviceTypes = [
     name: 'Wash',
     className: 'wash',
     serviceImage: '../images/wash.png',
-    hyperlink: ''
+    hyperlink: '/car-wash'
   },
   {
-    name: 'Servicing',
+    name: 'Service',
     className: 'servicing',
     serviceImage: '../images/service.png',
-    hyperlink: ''
+    hyperlink: '/car-service'
   },
   {
     name: 'Repair',
     className: 'repair',
     serviceImage: '../images/repair.png',
-    hyperlink: ''
+    hyperlink: '/car-repair'
   },
   {
-    name: 'Emergency Service',
+    name: 'Emergency',
     className: 'emergency',
     serviceImage: '../images/emergency.png',
     hyperlink: ''

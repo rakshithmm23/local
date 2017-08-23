@@ -6,7 +6,7 @@ import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import CoverPhoto from './CoverPhoto';
 import Address from './Address';
 import BaseHeader from './BaseHeader';
@@ -41,7 +41,7 @@ export default class VendorProfile extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">

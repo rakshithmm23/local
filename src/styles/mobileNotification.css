@@ -9,17 +9,36 @@
     overflow: scroll;
     top: 0;
 }
+.mobileSearch .search-input{
+    padding:10px 45px;
+}
+.mobileSearch .input-group-addon{
+    border-radius: 0;
+}
+.mobileSearch .input-group input{
+    box-shadow: none;
+    outline: none;
+        border: 1px solid #DAE1E7 !important;
+    background-color: #fff !important;
+}
+.mobileSearch .input-group .mdi-magnify{
+    position: absolute;
+    right: 8px;
+    z-index: 9;
+    top: 7px;
+
+}
 
 .notificationHead {
     border-bottom: 1px solid #ddd;
-    padding: 10px 15px 0;
+    padding: 10px;
 }
 
 .notificationHead h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 40px;
     font-family: CenturyGothic;
     color: rgba(0,0,0,0.8);
     font-size: 16px;
@@ -28,6 +47,9 @@
 .notificationHead .back-option {
     display: inline-block;
     cursor: pointer;
+    position: absolute;
+    top: 13px;
+    left: 15px;
 }
 
 .notificationList li{

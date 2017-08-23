@@ -1,5 +1,5 @@
 .note-text{
-    color: #3E4244;
+    color: #454B51;
     font-size: 13px;
     font-family: CenturyGothic;
     margin-top: 20px;
@@ -19,5 +19,11 @@
 .blue-text,
 .blue-text:hover,
 .blue-text:focus{
-    color: #006FBA;
+    color: #006FB9;
+}
+
+@media screen and (max-width: 640px) {
+    .login-panel-body .note-text.tc-text{
+        margin-top: 35px;
+    }
 }

@@ -31,12 +31,15 @@ export default class MyRequest extends Component {
     }
 
     componentWillMount() {
+
         if (window.location.search.indexOf('type=waiting') > -1 ) {
          this.setState({'requestType': 'waiting'});
         } else if (window.location.search.indexOf('type=success') > -1 ) {
          this.setState({'requestType': 'success'});
         }
+
     }
+
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -60,7 +63,7 @@ export default class MyRequest extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
@@ -73,30 +76,26 @@ export default class MyRequest extends Component {
 
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.showModal} footer="true" title="Cancel request" saveText="Confirm" cancelText="Close">
+                            <CustomModal showModal={this.state.showModal} hideModal={() => {this.setState({showModal: false,chars_left:0})}} footer={true} title="Cancel request" saveText="Confirm" cancelText="Close">
                                 <Modal.Body>
                                     <p className="info-text">Please let us know why you would like to cancel this request from the options below</p>
                                     <div className="info-heading">
-                                        <span>reason to cancel</span>
+                                        <span>Reason to cancel</span>
                                     </div>
                                     <div className="model-select">
                                         <select className="car-selection ">
-                                            <option value="volvo">Volvo</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
+                                            <option value="select">I dont want to do it now</option>
+                                            <option value="volvo">Emergency use</option>
+                                            <option value="saab">I will do it later</option>
+                                            <option value="mercedes">Too expensive</option>
                                         </select>
                                         <i className="mdi mdi-chevron-down" />
                                     </div>
                                     <div className="comments">
-                                        {/*<TextInput
-                                            type="text"
-                                            label="Comments"
-                                            name="Comments"
-                                            onChange={this.handleChange.bind(this)}
-                                        />*/}
+
                                         <FormGroup>
                                           <FormControl
+                                              maxLength="200"
                                               className="textAlign"
                                               componentClass="textarea"
                                               placeholder="Comments"
@@ -111,10 +110,10 @@ export default class MyRequest extends Component {
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
-                            <div className="myCar-list">
+                            <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RequestCard />
+                                    <RequestCard jobType={this.props.routeParams.requestType} router={this.props.router}/>
                                 </div>
                             </div>
                         </div>

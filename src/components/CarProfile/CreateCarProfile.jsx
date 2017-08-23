@@ -14,16 +14,30 @@ export default class NewCarProfile extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
-            messageVisible: false            
+            messageVisible: false,
+            isEditProfile: false
         };
+        this.onSubmit = this.onSubmit.bind(this);
     }
-
+    componentWillMount() {
+      const routeParams = this.props.routeParams;
+      this.props.actions.getCarMakeandModels();
+      if (routeParams && routeParams.id) {
+        this.setState({'isEditProfile': true, profileId: routeParams.id});
+        this.props.actions.getCarProfileDetails(routeParams.id);
+      }
+    }
     componentWillUnmount() {
       this.props.actions.hideErrorMessage();
     }
+    componentWillReceiveProps(nextProps) {
+			if(nextProps.carProfileReducer.currentComponentKey === 'car-list') {
+      	this.props.router.push('/car-profiles');
+      }
+    }
 
-    onSubmit(carProfileData){
-      this.props.actions.setCarProfileAction(carProfileData);
+    onSubmit(carProfileData, isEditProfile){
+      this.props.actions.setCarProfileAction(carProfileData, isEditProfile, this.state.profileId);
     }
 
     toggleNotification(isVisible) {
@@ -35,7 +49,7 @@ export default class NewCarProfile extends Component {
     }
 
     render() {
-      const {authReducer} = this.props;
+      const {authReducer, carProfileReducer} = this.props;
         return (
             <div>
                 {/*Header*/}
@@ -44,12 +58,12 @@ export default class NewCarProfile extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>Create A Car Profile</h4>
+                            <h4>{this.state.isEditProfile ? 'Edit Car Profile' : 'Create A Car Profile'}</h4>
                         </div>
                     </div>
 
@@ -59,7 +73,7 @@ export default class NewCarProfile extends Component {
                               <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                             </AlertDismissable>}
                             {/*Job Updates*/}
-                            <ProfileSteps {...this.props} onSubmit={this.onSubmit.bind(this)} />
+                            <ProfileSteps {...this.props} onSubmit={this.onSubmit} isEditProfile={this.state.isEditProfile} profileData={carProfileReducer && carProfileReducer.currentCarProfile ? carProfileReducer.currentCarProfile : undefined }/>
                         </div>
                     </div>
 

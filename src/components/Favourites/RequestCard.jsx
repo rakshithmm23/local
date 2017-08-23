@@ -7,22 +7,24 @@ import Gmaps from '../MyRequest/Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
-import { Scrollbars } from 'react-custom-scrollbars';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import ChatBox from './ChatBox';
+import Rating from 'react-rating';
+import CustomScroll from 'react-custom-scroll';
 
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
-      setCenter:false,
-      mapsCenter:{ lat: 12.9952672, lng: 77.5905857 },
+      setCenter: false,
+      mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
-      TimePickerTo:"",
+      TimePickerTo: "",
       switched: false,
       filterSort: "low-high",
       filterdropdown: false,
@@ -37,6 +39,7 @@ export default class RequestCard extends Component {
       activelongitue: '',
       jobCardDetails: [
         {
+          id: 0,
           name: "1. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -90,6 +93,7 @@ export default class RequestCard extends Component {
             },
           ]
         }, {
+          id: 1,
           name: "2. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -98,6 +102,7 @@ export default class RequestCard extends Component {
           longitude: 77.29058570000007,
           isActive: false
         }, {
+          id: 2,
           name: "3. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -106,6 +111,7 @@ export default class RequestCard extends Component {
           longitude: 77.59058570000002,
           isActive: false
         }, {
+          id: 3,
           name: "4. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -115,6 +121,7 @@ export default class RequestCard extends Component {
           isActive: false
         },
         {
+          id: 4,
           name: "5. Shine Works",
           rating: 4,
           distance: 3.2,
@@ -133,11 +140,13 @@ export default class RequestCard extends Component {
       svgEnd: '</text>%0A</svg>',
       distValue: { min: 2, max: 10 },
       priceValue: { min: 10, max: 70 },
+      ratingValue: 0,
+      inValidTime: false,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
   }
- 
+
   componentWillMount() {
     this.updateDimensions();
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
@@ -147,21 +156,21 @@ export default class RequestCard extends Component {
   }
   componentDidUpdate() {
     const curr = this.currentTopEle
-    if (curr != undefined) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
-    }
+    // if (curr.refs[curr.props.index].offsetTop) {
+    //   this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
+    // }
   }
   componentWillUnmount() {
-    window.removeEventListener();
+    window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
-   TimePickerChange (type,value) {
-    if(type=="timeFrom"){
-      this.setState({ TimePickerFrom:value });
-    }else{
-      this.setState({ TimePickerTo:value });
+  TimePickerChange(type, value) {
+    if (type == "timeFrom") {
+      this.setState({ TimePickerFrom: value });
+    } else {
+      this.setState({ TimePickerTo: value });
     }
   }
-  
+
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
@@ -208,11 +217,11 @@ export default class RequestCard extends Component {
     });
   }
   ClickedQuoteCard(key) {
-    let update, newArray = [], centerLat=undefined,centerLng=undefined
+    let update, newArray = [], centerLat = undefined, centerLng = undefined
     this.state.jobCardDetails.map((val, index) => {
       if (index == key.key) {
         update = { ...val, isActive: true, pinImage: this.state.activeSvg + index + this.state.svgEnd }
-        centerLat = val.latitude, centerLng=val.longitude
+        centerLat = val.latitude, centerLng = val.longitude
       } else {
         update = { ...val, isActive: false, pinImage: this.state.svg + index + this.state.svgEnd }
       }
@@ -220,8 +229,9 @@ export default class RequestCard extends Component {
     })
     this.setState({
       jobCardDetails: newArray,
-      mapsCenter:{ lat: centerLat, lng: centerLng },
-      setCenter:true
+      mapsCenter: { lat: centerLat, lng: centerLng },
+      setCenter: true,
+      quotation: true, messages: false
     })
   }
   closeChat() {
@@ -252,13 +262,28 @@ export default class RequestCard extends Component {
     }
     this.setState({ switched: !this.state.switched })
   }
-  clearFilter(){
-    this.toggleSwitchVal={Open24_7:false,showFavourites:false,authorizedBusinesses:false,dealsOffers:false,byCash:true,byCreditcard:false}
-    this.setState({TimePickerFrom: undefined,TimePickerTo: undefined,filterdropdown:false,distValue: { min: 2, max: 10 },priceValue: { min: 10, max: 70 },daySelected:{
-      "sunday":false,"monday":false,"tuesday":false,"wednesday":false,"thrusday":false,"friday":false,"saturday":false
-    }})
-  }
+  clearFilter(e) {
 
+    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
+    this.setState({
+      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
+        "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
+      }
+    })
+  }
+  ratingOnChange(rating) {
+    this.setState({ ratingValue: rating })
+
+  }
+  filterSelect() {
+    if (this.state.TimePickerFrom > this.state.TimePickerTo) {
+      this.setState({ inValidTime: true })
+    } else {
+      this.setState({ inValidTime: false })
+    }
+
+    // console.log(this.state.TimePickerTo)
+  }
 
   render() {
     //console.log(this.state.currentWidth)
@@ -343,15 +368,15 @@ export default class RequestCard extends Component {
                                       Distance - Near to Far
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"} />
                                     </span>
                                   </li>
-                                  <li className="active" onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
+                                  <li onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
                                     <label>
                                       Distance - Far to Near
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"} />
                                     </span>
                                   </li>
                                   <li onClick={() => { this.filterOption("high-low") }} className={this.state.filterSort == "high-low" ? "active" : ""}>
@@ -359,7 +384,7 @@ export default class RequestCard extends Component {
                                       Rating - Highest to Lowest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"} />
                                     </span>
                                   </li>
                                   <li onClick={() => { this.filterOption("low-high") }} className={this.state.filterSort == "low-high" ? "active" : ""}>
@@ -367,7 +392,7 @@ export default class RequestCard extends Component {
                                       Rating - Lowest to Highest
                                     </label>
                                     <span>
-                                      <i className="mdi mdi-check" />
+                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"} />
                                     </span>
                                   </li>
                                 </ul>
@@ -395,6 +420,8 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
+                                        <span className="range-min">{this.state.distValue.min + " Km"}</span>
+                                        <span className="range-max">{this.state.distValue.max + " Km"}</span>
 
                                       </div>
                                       <div className="f-card">
@@ -405,6 +432,8 @@ export default class RequestCard extends Component {
                                           maxValue={100}
                                           value={this.state.priceValue}
                                           onChange={priceValue => this.setState({ priceValue })} />
+                                        <span className="range-min">{this.state.priceValue.min + " AED"}</span>
+                                        <span className="range-max">{this.state.priceValue.max + " AED"}</span>
                                       </div>
                                       <div className="f-card">
                                         <h5>Open Between</h5>
@@ -418,19 +447,19 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
                                         <TimePicker
-                                          value={this.state.TimePickerFrom}                                        
-                                          onChange={this.TimePickerChange.bind(this,"timeFrom")}
+                                          value={this.state.TimePickerFrom}
+                                          onChange={this.TimePickerChange.bind(this, "timeFrom")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
                                           format={formatFrom}
-                                          use12Hours                                      	
+                                          use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-from" />
                                         <span className="time-to-time">to</span>
                                         <TimePicker
-                                        value={this.state.TimePickerTo}                                        
-                                          onChange={this.TimePickerChange.bind(this,"timeTo")}
+                                          value={this.state.TimePickerTo}
+                                          onChange={this.TimePickerChange.bind(this, "timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
                                           className="xxx"
@@ -438,7 +467,7 @@ export default class RequestCard extends Component {
                                           use12Hours
                                         />
                                         <i className="mdi mdi-chevron-down time-to" />
-
+                                        <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 
 
@@ -456,15 +485,14 @@ export default class RequestCard extends Component {
                                             this.toggleSwitch = node;
                                           }} />
                                       </div>
-                                      <div className="f-card">
+                                      <div className="f-card star-rating">
                                         <h5>Rating</h5>
-                                        <ul className="rating">
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                          <span className="mdi mdi-star-outline"></span>
-                                        </ul>
+                                        <Rating
+                                          empty="mdi mdi-star-outline "
+                                          full="mdi mdi-star active-star"
+                                          initialRate={this.state.ratingValue}
+                                          onChange={(e) => { this.ratingOnChange(e) }}
+                                        />
                                       </div>
 
                                       <div className="f-card ">
@@ -519,8 +547,8 @@ export default class RequestCard extends Component {
                                     </div>
                                   </div>
                                   <div className="col-md-12 footer">
-                                    <a onClick={this.clearFilter.bind(this)}>Clear</a>
-                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" />
+                                    <a onClick={(e) => { this.clearFilter(e) }}>Clear</a>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)} />
                                   </div>
                                 </div>
                               </div>
@@ -528,25 +556,21 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-left-body">
-                          <Scrollbars
-                            className="requestQuotesScroll"
-                            thumbMinSize={0}
-                            renderTrackVertical={this.renderTrackVertical}
-                            renderThumbVertical={this.renderThumbVertical}
-                          >
-                            <div className="wrapper" ref={'quotesList'}>
-
-                              <div>
-                                {map(this.state.jobCardDetails, (details, key) => {
-                                  return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name}  rating={details.rating} distance={details.distance} reviews={details.review}
-                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
-                                  );
-                                })}
+                          <div className="requestQuotesScroll">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                              <div className="wrapper" ref={'quotesList'}>
+                                <div>
+                                  {map(this.state.jobCardDetails, (details, key) => {
+                                    return (
+                                      <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
+                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                    );
+                                  })}
+                                </div>
+                                {/*}*/}
                               </div>
-                              {/*}*/}
-                            </div>
-                          </Scrollbars>
+                            </CustomScroll>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -554,7 +578,7 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
-                          setCenter={this.state.setCenter}
+                            setCenter={this.state.setCenter}
                             center={this.state.mapsCenter}
                             infoPopUp={true}
                             markers={{ jobCardLocation }}
@@ -582,152 +606,56 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-right-body">
-                          <Scrollbars
-                            className="requestQuotesScroll"
-                            thumbMinSize={0}
-                            renderTrackVertical={this.renderTrackVertical}
-                            renderThumbVertical={this.renderThumbVertical}
-                          >
-                            {/*Quotation*/}
-                            <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
-                              <div className="quotation-head">
-                                <ul>
-                                  <li>
-                                    <label>Job Start Time:</label>
-                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
-                                  </li>
-                                  <li>
-                                    <label>Quote Generated:</label>
-                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div className="quotation-details">
-                                {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
-                                  return (
-                                    cardValue.quotationDetails!= undefined && <div className="quotation-block" key={jobCardKey}>
-                                      {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
-                                        return (
-                                          <div>
-                                            <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
-                                            <ul>
-                                              {map(quoteVal.Accessories, (quoteAcc, accessoriesKey) => {
-                                                return (
-                                                  <li key={accessoriesKey}>
-                                                    <label>{quoteAcc.name}</label>
-                                                    <span>{quoteAcc.cost} {quoteAcc.currency}</span>
-                                                  </li>
-                                                )
-                                              })}
-                                            </ul>
-                                          </div>
-                                        );
-                                      })}
+                          <div className="requestQuotesScroll">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                              {/*Quotation*/}
+                              <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                                <div className="quotation-head">
+                                  <ul>
+                                    <li>
+                                      <label>Job Start Time:</label>
+                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
+                                    </li>
+                                    <li>
+                                      <label>Quote Generated:</label>
+                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="quotation-details">
+                                  {map(this.state.jobCardDetails, (cardValue, jobCardKey) => {
+                                    return (
+                                      cardValue.quotationDetails != undefined && <div className="quotation-block" key={jobCardKey}>
+                                        {map(cardValue.quotationDetails, (quoteVal, quotationKey) => {
+                                          return (
+                                            <div>
+                                              <h4 key={quotationKey}>{quoteVal.serviceIndex}. {quoteVal.serviceName}</h4>
+                                              <ul>
+                                                {map(quoteVal.Accessories, (quoteAcc, accessoriesKey) => {
+                                                  return (
+                                                    <li key={accessoriesKey}>
+                                                      <label>{quoteAcc.name}</label>
+                                                      <span>{quoteAcc.cost} {quoteAcc.currency}</span>
+                                                    </li>
+                                                  )
+                                                })}
+                                              </ul>
+                                            </div>
+                                          );
+                                        })}
 
-                                    </div>
-                                  );
-                                })}
-                                <div className="quotation-total">
-                                  <label>Total</label>
-                                  <span>195 AED</span>
-                                </div>
-                              </div>
-                            </div>
-                            {/*ChatBox*/}
-                            <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
-                              <div className="quotes-chat-area">
-
-                                <div className="c-message message-in">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
+                                      </div>
+                                    );
+                                  })}
+                                  <div className="quotation-total">
+                                    <label>Total</label>
+                                    <span>195 AED</span>
                                   </div>
                                 </div>
                               </div>
-                              <div className="quotes-message-footer">
-                                <FormGroup>
-                                  <InputGroup>
-                                    <FormControl type="text" placeholder="Type your message here..." />
-                                    <InputGroup.Addon>
-                                      <i className="mdi mdi-send" />
-                                    </InputGroup.Addon>
-                                  </InputGroup>
-                                </FormGroup>
-                              </div>
-                            </div>
-                          </Scrollbars>
+                              {this.state.messages && <ChatBox data={this.state.jobCardDetails} />}
+                            </CustomScroll>
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -1,237 +1,285 @@
 .modal-dialog {
-    width: 468px;
-    /*position: absolute;
+  width: 468px;
+  /*position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) !important;*/
 }
 
 .modal-header {
-    padding: 25px 20px;
-    box-shadow: 0 0 4px 0 rgba(182,182,182,0.5);
+  padding: 25px 20px;
+  box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
 }
 
 .modal-header span {
-    display: none;
+  display: none;
 }
 
 .modal-title {
-    text-transform: capitalize;
-    color: #454B51;
-    font-family: CenturyGothic_bold !important;
-    font-size: 20px;
-    line-height: 24px;
+  text-transform: capitalize;
+  color: #454B51;
+  font-family: CenturyGothic_bold !important;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .modal-body {
-    padding: 20px 0;
-    margin: 0 20px;
-    /*border-bottom: 1px solid #DAE1E7;*/
+  padding: 20px 0;
+  margin: 0 20px;
+  /*border-bottom: 1px solid #DAE1E7;*/
 }
 
 .modal-body .info-text {
-    color: #717982;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    line-height: 24px;
+  color: #717982;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .modal-body .info-heading {
-    margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .modal-body .info-heading span {
-    display: inline-block;
-    color: #006FBA;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    text-transform: capitalize;
+  display: inline-block;
+  color: #006FB9;
+  font-family: CenturyGothic;
+  font-size: 13px;
+  text-transform: capitalize;
 }
 
 .modal-body select,
 .modal-body .comments input {
-    z-index: 9;
-    cursor: pointer;
-    position: relative;
-    font-family: "CenturyGothic";
-    color: #868D91;
-    font-size: 13px;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #C8D4DE;
-    border-radius: 0;
-    -webkit-appearance: none;
-    outline: none;
+  z-index: 9;
+  cursor: pointer;
+  position: relative;
+  font-family: "CenturyGothic";
+  color: #868D91;
+  font-size: 13px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
 }
 
 .modal-body .comments input {
-    font-size: 16px;
-    border-color: #C8D4DE;
+  font-size: 16px;
+  border-color: #C8D4DE;
 }
 
 .modal-body .comments {
-    padding-top: 10px;
+  padding-top: 10px;
 }
+/* .modal-body .comments textarea.form-control{
+  height: 115px !important;
+} */
 
 .modal-body .model-select .mdi-chevron-down {
-    position: absolute;
-    right: 1px;
-    font-size: 18px;
-    color: #717982;
-    margin-top: 4px;
+  position: absolute;
+  right: 1px;
+  font-size: 18px;
+  color: #717982;
+  margin-top: 4px;
 }
 
 .modal-body .caption {
-    color: #454B51;
-    font-family: "CenturyGothic";
-    font-size: 16px;
+  color: #454B51;
+  font-family: "CenturyGothic";
+  font-size: 16px;
 }
 
 .modal-body .caption-result {
-    color: #9B9B9B;
-    font-family: CenturyGothic;
-    font-size: 14px;
-    line-height: 14px;
-    margin-bottom: 15px;
-    display: inline-block;
+  color: #9B9B9B;
+  font-family: CenturyGothic;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
 }
 
 .modal-body .media-body h5 {
-    color: #454B51;
-    font-family: CenturyGothic_bold;
-    font-size: 14px;
-    line-height: 17px;
-    display: inline-block;
-    padding-left: 20px;
+  color: #454B51;
+  font-family: CenturyGothic_bold;
+  font-size: 14px;
+  line-height: 17px;
+  display: inline-block;
+  padding-left: 20px;
 }
 
 .media-body {
-    position: relative;
-    vertical-align: middle;
+  position: relative;
+  vertical-align: middle;
 }
 
 .modal-body .text-limit {
-    color: #717982;
-    font-family: CenturyGothic;
-    font-size: 10px;
-    float: right;
-    display: inline-block;
-    margin-top: -25px;
-    letter-spacing: 2px;
+  color: #717982;
+  font-family: CenturyGothic;
+  font-size: 10px;
+  float: right;
+  display: inline-block;
+  margin-top: -25px;
+  letter-spacing: 2px;
 }
 
 .media-body .mdi.mdi-chevron-right {
-    position: absolute;
-    right: 0;
-    top: 25px;
-    color: #454B51;
-    font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  color: #454B51;
+  font-size: 24px;
 }
 
 .warning-text {
-    padding: 10px 0 20px 0;
-    color: #717982;
-    font-family: CenturyGothic;
-    font-size: 16px;
-    line-height: 16px;
+  padding: 10px 0 20px 0;
+  color: #717982;
+  font-family: CenturyGothic;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .modal-content {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 .modal-content .modal-footer {
-    border-top: 0;
-    padding: 20px 15px;
+  border-top: 0;
+  padding: 20px 15px;
 }
 
 .plain-input {
-    position: relative;
-    font-family: "CenturyGothic";
-    color: #868D91;
-    font-size: 14px;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #C8D4DE;
-    border-radius: 0;
-    -webkit-appearance: none;
-    outline: none;
+  position: relative;
+  font-family: "CenturyGothic";
+  color: #868D91;
+  font-size: 14px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
 }
 
 .delete-text {
-    color: #EF2E24;
-    font-family: "CenturyGothic";
-    font-size: 12px;
-    cursor: pointer;
-    position: relative;
-    top: 6px;
+  color: #EF2E24;
+  font-family: "CenturyGothic";
+  font-size: 12px;
+  cursor: pointer;
+  position: relative;
+  top: 6px;
 }
 
 .map-modal .modal-dialog {
-    width: 836px;
+  width: 836px;
 }
 
 .map-modal .modal-body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .map-modal .current-position {
-    z-index: 1;
-    position: absolute;
-    right: 0;
-    height: 40px;
-    width: 40px;
-    border-radius: 3px;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
-    text-align: center;
-    margin: 15px;
-    cursor: pointer;
+  bottom: 109px;
+  z-index: 1;
+  position: absolute;
+  right: -6px;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(182, 182, 182, 0.5);
+  text-align: center;
+  margin: 15px;
+  cursor: pointer;
 }
 
 .map-modal .current-position i {
-    color: #ED3124;
-    font-size: 20px;
-    text-align: center;
-    line-height: 39px;
+  color: #ED3124;
+  font-size: 20px;
+  text-align: center;
+  line-height: 32px;
 }
 
 .btn-theme.cancel {
-    border: 1px solid #ED3124;
-    color: #ED3124 !important;
-    background: transparent;
+  border: 1px solid #ED3124;
+  color: #ED3124 !important;
+  background: transparent;
 }
 
 .map-modal .btn-theme.submit {
-    width: 220px !important;
+  width: 220px !important;
 }
-.locationPopup{
+
+.locationPopup {
   height: 75vh !important;
 }
-.close-modal{
-    position: absolute;
-    right: 23px;
-    top: 23px;
-    margin-bottom: 0px;
-    cursor: pointer;
+
+.close-modal {
+  position: absolute;
+  right: 23px;
+  top: 23px;
+  margin-bottom: 0px;
+  cursor: pointer;
 }
-.close-modal i{
-    font-size: 20px;
+
+.close-modal i {
+  font-size: 20px;
 }
+
+.rating-modal .image-holder {
+  text-align: center;
+  margin-top: 42px;
+}
+
+.rating-modal .image-holder img {
+  height: 75px;
+  width: 75px;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.rating-modal .image-holder h4 {
+  color: #525252;
+  font-family: CenturyGothic_bold;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.rating-modal .image-holder .sub-text {
+  color: #525252;
+  font-family: CenturyGothic;
+  font-size: 12px;
+  line-height: 15px;
+  display: block;
+  padding-bottom: 4px;
+}
+.rating-modal .stars{
+    text-align: center;
+    font-size: 30px;
+    color: #9C9C9C;
+        margin-top: 21px;
+}
+.rating-modal .stars .active-star{
+      color: #F48021
+}
+
 @media screen and (max-width: 768px) {
   .modal-dialog {
-      width: 100% !important;
-      margin:0px;
+    width: 100% !important;
+    margin: 0px;
   }
 }
+
 @media screen and (max-width: 420px) {
   .map-modal .btn-theme.sm {
-      width: 40%;
+    width: 40%;
   }
   .map-modal .btn-theme.submit {
-     width: 50% !important;
+    width: 50% !important;
   }
 }

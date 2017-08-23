@@ -7,40 +7,30 @@ import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import BookServiceBox from './BookServiceBox';
-import { concat } from 'lodash';
+import { concat, map } from 'lodash';
+import CustomModal from '../common/CustomModal';
+import { Modal, Media } from 'react-bootstrap';
 
 export default class BookService extends Component {
     constructor(props, context) {
         super(props, context);
         this.toggleNotification = this.toggleNotification.bind(this);
-        let carProfiles = localStorage.getItem('carProfiles');
-        if (!carProfiles) {
-          carProfiles = [];
-        } else {
-            carProfiles = JSON.parse(carProfiles);
-        }
-        carProfiles = concat(carProfiles, [
-          {
-            make: "abc",
-            model: "Red",
-            regNo: "B 509234",
-            name: "My Nissan GT-R",
-            year: 2015
-          },
-          {
-            make: "abc",
-            model: "Red",
-            regNo: "B 509234",
-            name: "My Nissan GT-R",
-            year: 2015
-          }
-        ]
-        );
         this.state = {
             notificationVisible: false,
             messageVisible: false,
-            carProfiles: carProfiles
+            isLoading: false,
+            bookServiceModalVisible: false,
         };
+        
+    }
+    componentWillMount() {
+      this.setState({'isLoading': true});
+      this.props.actions.getCarProfileList(this.props.router);
+    }
+    componenWillReceiveProps(nextProps) {
+      if (nextProps.carProfileReducer.isLoaded) {
+        this.setState({'isLoading': false});
+      }
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
@@ -49,7 +39,44 @@ export default class BookService extends Component {
         this.setState({ 'messageVisible': isVisible });
     }
 
+    showBookServiceModal(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setState({'bookServiceModalVisible': !this.state.bookServiceModalVisible})
+    }
+
     render() {
+        const {router, carProfileReducer} = this.props;
+        const bookServiceOption = [
+            {
+                image: "../../images/book-service-1.png",
+                title: "Car Wash",
+                url:"/car-wash"
+            }, {
+                image: "../../images/book-service-2.png",
+                title: "Car Service",
+                url:"/car-service"
+            }, {
+                image: "../../images/book-service-3.png",
+                title: "Car Repair",
+                url:"/car-repair"
+            }
+        ];
+        const bookServiceOptionView = map(bookServiceOption, (service, key) => {
+            return (
+                <li key={key} onClick={()=>router.push(service.url)}>
+                    <Media>
+                        <Media.Left>
+                            <img width={69} height={69} src={service.image} alt="Image" />
+                        </Media.Left>
+                        <Media.Body>
+                            <h5>{service.title}</h5>
+                            <i className="mdi mdi-chevron-right" />
+                        </Media.Body>
+                    </Media>
+                </li>
+            );
+        });
         return (
             <div>
                 {/*Header*/}
@@ -58,13 +85,13 @@ export default class BookService extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
                             <h4>My Cars</h4>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car" />
+                            <Button btnType="" btnSize="sm" fontSize={13} label="Add New Car"  btnCallBack={() => {router.push('/car-profiles/create')}}/>
                         </div>
                     </div>
                     <div className="inSection">
@@ -72,9 +99,20 @@ export default class BookService extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    {this.state.carProfiles && this.state.carProfiles.map((profile, index) => {
-                                      return (<BookServiceBox date="17 April 16" year={profile.year} model={profile.model} regNo={profile.regNo} name={profile.name} key={index}/>);
+                                    {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
+                                      return (
+                                          <BookServiceBox key={index} {...profile}
+                                            btnCallBack={this.showBookServiceModal.bind(this)}
+                                            router={router}
+                                      />);
                                     })}
+                                    <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon={true} hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
+                                      <Modal.Body>
+                                          <ul>
+                                              {bookServiceOptionView}
+                                          </ul>
+                                      </Modal.Body>
+                                    </CustomModal>
                                 </div>
                             </div>
                         </div>

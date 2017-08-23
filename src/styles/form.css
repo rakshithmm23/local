@@ -47,18 +47,44 @@
     height: 20px;
 }
 
+.model-select+span.error-text {
+    color: red;
+    font-size: 12px;
+    font-family: CenturyGothic;
+    display: block;
+    height: 20px;
+}
+
 .form-group.error .error-text,
 .note-text.error .error-text {
     visibility: visible;
 }
 
 .input-icon {
-    padding: 10px;
+    padding: 10px 3px;
     position: absolute;
-    right: 20px;
+    right: 0;
     z-index: 999;
-    top: 5px;
+    top: 10px;
     cursor: pointer;
+}
+
+.input-icon i {
+    font-size: 16px;
+}
+
+.input-icon i.mdi-eye {
+    color: #006FB9;
+}
+
+.input-icon i.mdi-eye-off {
+    color: #454B51;
+}
+
+.otp-input {
+    width: 300px;
+    display: inline-block;
+    margin-right: 30px;
 }
 
 .or-text {
@@ -68,7 +94,7 @@
     text-align: center;
     width: 100%;
     margin: 30px auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .or-text span {
@@ -77,24 +103,13 @@
     padding: 10px 15px;
 }
 
-.otp-input {
-    width: 300px;
-    display: inline-block;
-    margin-right: 30px;
-    vertical-align: top;
-}
-
-.otp-input input {
-    font-size: 18px;
-}
-
 .form-group {
     position: relative;
 }
 
 .form-group label {
     color: #717982;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -112,18 +127,20 @@
     box-shadow: none;
     outline: none;
     background-position: 0 0;
-    border-color: #006FBA;
+}
+
+.form-input:focus {
+    border-color: #006FB9;
 }
 
 .form-input:focus~label,
 .form-input:valid~label {
     top: 3px !important;
     font-size: 11px;
-    color: #006FBA;
 }
 
-.form-group.error label {
-    color: #999;
+.form-input:focus~label {
+    color: #006FB9 !important;
 }
 
 .auth-footer-text {
@@ -131,7 +148,7 @@
 }
 
 .forget-input .form-input {
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .forget-panel-header.login-panel-header .note-text {
@@ -152,23 +169,78 @@
     outline: 0 !important;
 }
 
+/* Disabled input */
+.form-group.disabledInput{
+    opacity: 0.6;
+}
+.form-group.disabledInput label{
+    top: 0;
+}
+.form-group.disabledInput .form-control{
+    background: #fff;
+}
+/* input-button-addon */
+
+.input-button-addon .otp-input {
+    width: 320px;
+    display: inline-block;
+    margin-right: 30px;
+    vertical-align: top;
+}
+
+.input-button-addon .form-group .form-input {
+    height: 34px;
+    padding: 20px 0 12px;
+}
+
+.input-button-addon .form-group .error-text {
+    bottom: -20px;
+}
+
 @media screen and (min-width: 1075px) and (max-width: 1175px) {
-    .otp-input {
+    .input-button-addon .otp-input {
         width: 290px;
         margin-right: 0;
     }
 }
 
 @media screen and (max-width: 767px) {
+    .form-group {
+        margin-bottom: 25px;
+    }
     .input-icon {
         right: 10px;
         padding-right: 0;
     }
+    .input-button-addon .otp-input {
+        width: 100%;
+    }
+    .input-button-addon .btn-theme {
+        float: right;
+    }
+    .input-button-addon .note-text {
+        margin-top: 12px;
+    }
+    .form-group .error-text{
+        font-size: 11px;
+        bottom: -22px
+    }
 }
 
 @media screen and (max-width: 640px) {
-    .or-text,
-    .otp-input {
+    .or-text {
         width: 100%;
+    }
+    .form-group label {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .input-button-addon .btn-theme {
+        float: none;
+    }
+    .input-button-addon .note-text {
+        margin-top: 20px;
     }
 }

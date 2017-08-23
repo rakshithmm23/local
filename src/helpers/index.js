@@ -3,7 +3,7 @@ export function validateEmail(email) {
     return re.test(email);
 }
 export function validateMobile(mobile) {
-  const mob = /^[+]*[0-9][+0-9]{9,14}$/;
+  const mob = /^[+]*[0-9][+0-9]{11,14}$/;
 
 
   if (mob.test(mobile)) {
@@ -65,14 +65,4 @@ export function windowWidth() {
     let docElemProp = window.document.documentElement.clientWidth,
         body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
-}
-
-export function decryptCookie(cookieString) {
-  const cookie = unescape(cookieString);
-  let output = {};
-  cookie.split(/\s*;\s*/).forEach(function(pair) {
-    pair = pair.split(/\s*=\s*/);
-    output[pair[0]] = pair.splice(1).join('=');
-  });
-  return output;
 }

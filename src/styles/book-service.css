@@ -52,7 +52,8 @@
 
 .myCar-card-footer li h4 {
     font-size: 14px;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
+    font-weight: bold;
 }
 
 .myCar-card-footer li:last-child {
@@ -73,24 +74,34 @@
 
 .myCar-card-caption h4 {
     color: #717982;
-    font-family: "CenturyGothic";
+    font-family: CenturyGothic;
     font-size: 13px;
+    font-weight: bold;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .myCar-card-caption h5 {
     color: #4C4C4C;
     font-size: 18px;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
+    font-weight: bold;
     line-height: 22px;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .myCar-card-caption button {
     position: absolute;
     right: 15px;
-    top: 18px;
-    background: #ED3124;
+    top: 22px;
+    background: #ed3124;
     height: 42px;
-    width: 110px !important;
+    width: 115px!important;
 }
 .bookService-modal .modal-body{
     padding: 0;
@@ -104,6 +115,10 @@
     border: 0;
 }
 
+.bookService-card{
+    padding-left: 0;
+    padding-right: 30px;
+}
 @media screen and (min-width: 992px) and (max-width: 1170px) {
     .myCar-card-caption button {
         position: relative;

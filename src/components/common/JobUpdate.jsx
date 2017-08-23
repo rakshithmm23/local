@@ -40,7 +40,7 @@ export default class JobUpdate extends Component {
   }
   render() {
     // console.log(this.state.currentWidth)
-    const { infoStatus, statusType, statusTitle, statusTime, statusProcess } = this.props;
+    const { infoStatus, statusType, statusTitle, statusTime, statusProcess,router } = this.props;
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -58,6 +58,43 @@ export default class JobUpdate extends Component {
     const jobData = [
       {
         carImage: '../../images/car.jpg',
+        customerName: 'Bala Subramani',
+        serviceTypes: 'Emergency Service',
+        customeId: '12345678',
+        startDate: '09 Mar17, 11:00 AM',
+        statusIndicator: 'accepted',
+        totalTask: 14,
+        vendorDetails:{
+          vendor: 'Buddy’s Car Service',
+          vendorPlace: '3916 Address Tower, Street Name, Dubai',
+          vendorMobile: '+971 919 233 470',
+          quote: '200 AED',
+        },
+        statusStep: true,
+        statusPopup: [{
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          }, {
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          }, {
+            imgClassName: 'statusIcon',
+            statusDescription: 'Door Locking Mechanisms and Windows',
+            statusTime: '09 Mar 15 11:00 AM',
+            statusMessage: 'On going'
+          }
+
+
+        ],
+        route:"/request/accepted"
+      },
+      {
+        route:"/request/waiting",
+        carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani1',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
@@ -67,6 +104,7 @@ export default class JobUpdate extends Component {
         'currently assessing your application and will get back with their quotes soon.',
       },
       {
+        route:"/request/active",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani2',
         serviceTypes: 'Emergency Service',
@@ -76,39 +114,16 @@ export default class JobUpdate extends Component {
         jobInfoMessage: 'You have received 2 new quotes and 3 new messages.' +
         'Start a chat with the vendors to define the scope of work and negotiate the quotation.'
       },
+
       {
-        carImage: '../../images/car.jpg',
-        customerName: 'Bala Subramani',
-        serviceTypes: 'Emergency Service',
-        customeId: '12345678',
-        startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'accepted',
-        vendorDetails:
-        {
-          vendor: 'Buddy’s Car Service',
-          vendorPlace: '3916 Address Tower, Street Name, Dubai',
-          vendorMobile: '+971 919 233 470',
-          quote: '200 AED',
-          totalTask: 8,
-        }
-        ,
-        statusStep: true,
-        statusPopup: [
-          {
-            imgClassName: 'statusIcon',
-            statusDescription: 'Door Locking Mechanisms and Windows',
-            statusTime: '09 Mar 15 11:00 AM',
-            statusMessage: 'On going'
-          }
-        ],
-      },
-      {
+        route:"/request/inProgress",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
         statusIndicator: 'inProgress',
+        totalTask: 4,
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
@@ -129,19 +144,21 @@ export default class JobUpdate extends Component {
         ]
       },
       {
+        route:"/request/completed",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
         customeId: '12345678',
         startDate: '09 Mar17, 11:00 AM',
-        statusIndicator: 'finished',
+        statusIndicator: 'completed',
+        totalTask: 7,
         vendorDetails:
         {
           vendor: 'Buddy’s Car Service',
           vendorPlace: '3916 Address Tower, Street Name, Dubai, 3916 Address Tower, Street Name, Dubai',
           vendorMobile: '+971 919 233 470',
           quote: '200 AED',
-          totalTask: 8,
+
         },
         statusStep: true,
         statusPopup: [
@@ -154,6 +171,7 @@ export default class JobUpdate extends Component {
         ]
       },
       {
+        route:"/request/cancelled",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -164,6 +182,8 @@ export default class JobUpdate extends Component {
         'Kindly re-book the request and give us a chance to serve you to our best capacity.'
       },
       {
+        
+        route:"/request/expired",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
@@ -176,14 +196,15 @@ export default class JobUpdate extends Component {
     ];
 
     return (
-      <div>
+      <div className="jobUpdate-holder">
         <h4 className="job-update-title">Job Status</h4>
         <a className="jobUpdate-viewall">View All</a>
+        {/* https://projects.invisionapp.com/d/main#/console/10950794/238371645/preview */}
 
         {map(jobData, (cardDetails, key) => {
           return (
             <div key={key}>
-              {<CarType key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue}/>}
+              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{router.push(cardDetails.route)}}/>}
             </div>
           )
         })}

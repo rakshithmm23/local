@@ -78,7 +78,7 @@
     display: -ms-flexbox;
     display: flex;
     /*height: 100vh;*/
-    margin-top: 115px;
+    padding-top: 115px;
     flex-direction: column;
 }
 
@@ -99,12 +99,7 @@
     margin-right: 15px;
 }
 
-.login-panel-header .btn-theme.lg {
-    width: 47%;
-}
-
 .login-panel-header .note-text {
-    color: #2B2828;
     margin: 20px 0 30px;
 }
 
@@ -116,15 +111,16 @@
 }
 
 .login-panel-header .note-text strong i {
-    color: #006FBA;
+    color: #006FB9;
     display: inline-block;
     cursor: pointer;
     margin-left: 15px;
 }
 
-.login-panel-header .gmail{
-  float: right;
+.login-panel-header .gmail {
+    float: right;
 }
+
 
 /*Checkbox*/
 
@@ -178,33 +174,18 @@
     cursor: pointer;
 }
 
-.gm-scroll-view {
-    overflow: auto;
+.edit-mobileno {
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 18px;
 }
 
-.gm-scrollbar {
-    visibility: hidden;
+.forget-input .btn-theme.red,
+.otp-input .btn-theme.red,
+.otpbtnAlign {
+    margin-top: -23px;
 }
 
-.gm-scrollbar.-vertical {
-    width: 0;
-    visibility: hidden;
-}
-
-.gm-scrollbar .thumb {
-    background-color: rgba(0, 0, 0, 0);
-    visibility: hidden;
-}
-
-.gm-scrollbar .thumb:hover,
-.gm-scrollbar .thumb:active {
-    background-color: rgba(0, 0, 0, 0);
-}
-.edit-mobileno{
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-size:18px;
-}
 @media screen and (min-height: 701px) {
     .login-panel {
         justify-content: center;
@@ -213,7 +194,7 @@
 
 @media screen and (min-width: 1076px) and (max-width: 1280px) {
     .login-panel {
-        width: 80%;
+        width: 480px;
     }
 }
 
@@ -234,6 +215,17 @@
 }
 
 @media screen and (max-width: 1075px) {
+    .login-title {
+        font-size: 20px;
+    }
+    .login-panel-footer a {
+        margin-top: 15px;
+        float: none;
+        display: block
+    }
+    .login-panel-footer {
+        text-align: left;
+    }
     .logo {
         width: 90px;
         height: 90px;
@@ -255,9 +247,9 @@
         width: 100% !important;
     }
     .login-panel {
-        width: 80%;
+        width: 640px;
         justify-content: initial;
-        margin-top: 70px;
+        padding-top: 100px;
         margin-bottom: 20px;
     }
     .login-title.mobile {
@@ -274,34 +266,26 @@
     .login-panel-header .btn-theme.facebook {
         margin-right: 10px;
     }
-}
-
-@media screen and (max-width: 767px){
-    .login-panel-footer a{
-        margin-top: 10px;
+    .confirmed-reset-panel {
+        text-align: center;
+        justify-content: center;
+        margin-top: 0;
+        height: 100%;
     }
-}
-
-@media screen and (max-width: 640px){
-    .login-panel .btn-theme.gmail{
-        margin-left: 0;
+    .confirmed-reset-panel .confirmed-reset {
+        text-align: center;
     }
 }
 @media screen and (min-width: 581px) and (max-width: 767px) {
-    .login-panel-header .btn-theme.lg {
-        width: 45%;
-        font-size: 13px !important;
+    .login-panel {
+        width: 500px;
+        padding: 80px 20px 0;
     }
 }
 
 @media screen and (max-width: 580px) {
     .login-panel {
         width: 100%;
-        height: 100%;
-        padding: 0 20px;
-    }
-    .login-panel-header .btn-theme.lg {
-        width: 43%;
-        font-size: 13px !important;
+        padding: 80px 20px 0;
     }
 }

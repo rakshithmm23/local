@@ -6,7 +6,7 @@
 
 .main-wrapper .topSection.empty {
     box-shadow: none;
-    border-bottom: 1px solid #f3f3f3;
+    /* border-bottom: 1px solid #f3f3f3; */
 }
 
 .main-wrapper .inSection {
@@ -14,10 +14,11 @@
     padding: 40px 0;
 }
 
-.bottomSection{
+.bottomSection {
     background: rgb(249, 252, 251);
     padding-bottom: 70px;
 }
+
 .padwrapper {
     padding: 0px 40px;
     position: relative;
@@ -47,15 +48,23 @@
     font-family: CenturyGothic;
 }
 
+.serviceList-title {
+    color: #454B51;
+    font-family: CenturyGothic_bold;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 15px;
+}
+
 .service-data {
-    box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.06); */
     cursor: pointer;
     position: relative;
     border-radius: 10px;
 }
 
 .service-data:hover {
-    box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.15); */
 }
 
 .service-data label {
@@ -69,6 +78,7 @@
     left: 0;
     padding: 8px 0;
     margin-bottom: 0;
+    text-transform: uppercase;
 }
 
 
@@ -102,7 +112,6 @@
     color: #ED3124 !important;
     border: 1px solid #ED3124;
     border-radius: 3px;
-    text-transform: uppercase;
     font-size: 14px;
     font-family: CenturyGothic_bold;
 }
@@ -112,6 +121,8 @@
 
 .welcome-banner.empty {
     border-bottom: 0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .welcome-banner.empty .btn-theme {
@@ -135,9 +146,13 @@
     max-width: 100%;
 }
 
-@media screen and (min-width: 1441px) {
+.jobUpdate-padding{
+    padding: 0 15px;
+}
+
+@media screen and (min-width: 1170px) {
     .padwrapper {
-        max-width: 1366px;
+        max-width: 1170px;
         margin: 0 auto;
     }
 }
@@ -159,6 +174,9 @@
     .main-wrapper .inSection {
         padding: 15px 0;
     }
+    .padwrapper {
+        padding: 10px !important;
+    }
     .service-data {
         margin: 5px;
     }
@@ -176,7 +194,7 @@
         font-size: 13px !important;
     }
     .service-list {
-        padding: 10px;
+        padding: 10px !important;
     }
     .welcome-banner.empty img {
         margin-top: 0px;
@@ -185,13 +203,14 @@
     .welcome-banner.empty h4 {
         font-size: 16px;
     }
+    .bottomSection {
+        padding-bottom: 20px;
+    }
 }
 
 @media screen and (max-width: 640px) {
     .service-data label {
-        font-size: 13px;
-    }
-    .service-list {
-        padding: 10px 15px;
+        font-size: 12px;
+        bottom: 0;
     }
 }

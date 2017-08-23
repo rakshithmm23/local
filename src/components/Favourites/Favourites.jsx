@@ -39,7 +39,7 @@ export default class Favourites extends Component {
                 <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
                 <div className="main-wrapper">
                     {/*Sidebar*/}
-                    <Sidebar />
+                    <Sidebar router={this.props.router} />
                     {/*message*/}
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
@@ -49,7 +49,7 @@ export default class Favourites extends Component {
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
-                            <div className="myCar-list">
+                            <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
                                     <RequestCard />

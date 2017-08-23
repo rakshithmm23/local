@@ -11,12 +11,16 @@
 
 .inboxContainer {
     border-right: 1px solid #EEF2F5;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden
 }
 
 .messageBot .quotes-chat-area {
     padding-top: 150px;
 }
+/* .messageBot .quotes-chat-area.full-width {
+    padding-top: 0;
+} */
 
 .messageBot .quotes-message-footer {
     bottom: 0;
