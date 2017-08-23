@@ -154,7 +154,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal}/>
                             <div className="text-dropdown add-new car-profile-header" >
-                                {carProfiles && currentCarProfile && 
+                                {carProfiles && currentCarProfile &&
                                 <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown()}} title={
                                     <span>
                                         <h4>{currentCarProfile.name}</h4>
@@ -170,7 +170,7 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit12</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
