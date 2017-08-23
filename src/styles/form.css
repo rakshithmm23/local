@@ -17,9 +17,9 @@
     border-bottom: 1px solid #ddd;
     border-radius: 0;
     font-size: 14px;
-    height: 45px;
+    /* height: 45px; */
     margin: 10px 0;
-    padding: 20px 0 0;
+    padding: 30px 0 12px;
 }
 
 .form-group.error .form-input {
@@ -85,6 +85,12 @@
     width: 300px;
     display: inline-block;
     margin-right: 30px;
+}
+.send-otpbtn-align{
+    display: inline-block;
+}
+.send-otpbtn-align .otp-input{
+    display: block;
 }
 
 .or-text {

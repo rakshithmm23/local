@@ -23,7 +23,7 @@ export default class Confirmed extends Component {
                                 </p>
                                 </div>
                                 <div className="login-panel-footer confirmed-reset">
-                                    <Button btnType="gmail" btnSize="sm" fontSize={14} label="Login" btnCallBack={(e) => { e.preventDefault(); this.props.router.push('/sign-in') }} />
+                                    <Button btnType="red" btnSize="sm" fontSize={14} label="Login" btnCallBack={(e) => { e.preventDefault(); this.props.router.push('/sign-in') }} />
                                 </div>
                             </div>
                         </CustomScroll>
