@@ -34,12 +34,15 @@
 
 .figure .upload-images {
     height: 54px;
-    width: 54px;
+    width: 12%;
     display: inline-block;
     position: relative;
     margin-right: 9px;
 }
 
+.figure .upload-images.wrap-photo{
+    margin-left: -5px;
+}
 .figure .upload-images img {
     width: 100%;
     -o-object-fit: cover;
