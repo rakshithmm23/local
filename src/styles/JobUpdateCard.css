@@ -96,6 +96,7 @@
 }
 
 .quotes-view .jobcard.box .distance {
+    padding-left: 3px;  
     color: #717982;
     font-family: CenturyGothic;
     font-size: 13px;
