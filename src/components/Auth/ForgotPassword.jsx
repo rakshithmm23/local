@@ -70,13 +70,15 @@ export default class ForgotPassword extends Component {
                     <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
                   </AlertDismissable>}
                   <TextInput
+                    customClass="otp-input"
                     label="Email"
                     name="email"
                     type="email"
                     showValidationError={this.errors['email']}
                     validationError="Enter your valid email id"
-                    onChange={this.onFieldChange.bind(this)}/>
-                  <Button btnCallBack={this.forgotPasswordAction} btnType="gmail" btnSize="sm" fontSize={14} label="Email Link" />
+                    onChange={this.onFieldChange.bind(this)}
+                    />
+                  <Button btnCallBack={this.forgotPasswordAction} btnType="red" btnSize="sm" fontSize={14} label="Email Link" />
                 </div>
               </div>
             </CustomScroll>
