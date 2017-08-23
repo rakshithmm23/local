@@ -161,9 +161,8 @@ export default class BookService extends Component {
                                         {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
                                     {map(carProfiles, (carProfile, key) => {
-                                        return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem >);
+                                        return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem>);
                                     })}
-                                    <MenuItem >Add New</MenuItem>
                                 </DropdownButton>}
                             </div>
 
@@ -173,7 +172,7 @@ export default class BookService extends Component {
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
-                            <CustomModal showModal={this.state.deleteModal} title={currentCarProfile.name} className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
+                            <CustomModal showModal={this.state.deleteModal} title={"Delete "+currentCarProfile.name} className="deleteCarProfile-modal" hideModal={() => {this.setState({deleteModal: false})}} footer={true}
                             submitCallBack={this.deleteCarProfile}
                             saveText="Delete">
                                 <Modal.Body>

@@ -312,7 +312,7 @@ class ProfileSteps extends Component {
                 <div className="col-md-6 padLeft0">
                   <div className="model-select">
                     <select className="car-selection " value={this.formData && this.formData.year ? this.formData.year : 1} placeholder="Select Launch Year" onChange={(e) => { this.onFieldChange(e.target.value, '', e.target.name); this.filterCarModelListByYear(e.target.value); }} name="year">
-                      <option value='1' disabled>Select Launch Year</option>
+                      <option value="1" disabled>Select Launch Year</option>
                       {map(years, (year, key) => {
                         return (
                           <option key={year} value={year}>{year}</option>

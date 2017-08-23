@@ -70,7 +70,7 @@
 	
 } */
 .quotes-view .jobcard.box .rating-text{
-	padding-left: 10px;
+	padding-left: 5px;
 }
 .quotes-view .jobcard.box .rating span{
 	color: #717982;
@@ -133,9 +133,10 @@
     height: 40px;
     font-family: CenturyGothic_bold;
     margin: 0;
-    border: 1px solid #ED3124;
     border-radius: 3px;
     background-color: #FFFFFF;
     float: right;
-    color: #ED3124 !important;
+}
+.quotes-view .jobcard.box .footer-container .btn-theme.lg{
+    width: 130px;
 }
