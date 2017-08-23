@@ -2,7 +2,8 @@ import * as types from '../actions/actionTypes';
 import { assign } from 'lodash';
 
 const initialState = {
-  signUpModalVisible: false
+  signUpModalVisible: false,
+  showErrorMessage:''
 };
 export default function authenticationReducer(state = initialState, action) {
   switch (action.type) {

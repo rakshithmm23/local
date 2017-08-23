@@ -97,39 +97,41 @@ export default class VerifyOTP extends Component {
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle='Sign Up' />
         <CarouselSlider />
-        <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
-          <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-              <div className="login-panel otp">
-                <div className="login-panel-header">
-                  <h3 className="login-title">Sign Up</h3>
-                  {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                    <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-                  </AlertDismissable>}
-                  <p className="note-text">
-                    A One Time Password has been sent on your registered mobile number.
-                                  {authData && authData.phone && <strong><span className="edit-mobileno">{authData.phone}</span><i className="mdi mdi-pencil" onClick={(e) => { e.preventDefault(); router.push('send-otp') }} /></strong>}
-                  </p>
+        <form>
+          <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
+            <div className="customScroll">
+              <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                <div className="login-panel otp">
+                  <div className="login-panel-header">
+                    <h3 className="login-title">Sign Up</h3>
+                    {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                      <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                    </AlertDismissable>}
+                    <p className="note-text">
+                      A One Time Password has been sent on your registered mobile number.
+                                    {authData && authData.phone && <strong><span className="edit-mobileno">{authData.phone}</span><i className="mdi mdi-pencil" onClick={(e) => { e.preventDefault(); router.push('send-otp') }} /></strong>}
+                    </p>
+                  </div>
+                  <div className="login-panel-body input-button-addon">
+                    <p className="note-text input-title">Enter the OTP code below to continue</p>
+                    <TextInput
+                      customClass="otp-input"
+                      name="otp"
+                      type="text"
+                      showValidationError={this.errors['otp']}
+                      validationError="Enter your OTP to continue"
+                      onChange={this.onFieldChange.bind(this)}
+                      isOTP={true} />
+                    <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="red" btnSize="lg" fontSize={14} label="Complete sign up" />
+                    <p className="note-text">
+                      {'Didn\'t get OTP ?'} <a onClick={(e) => {e.preventDefault(); this.props.actions.resendOTP(authData.phone, true)}} className="blue-text">Resend</a>
+                    </p>
+                  </div>
                 </div>
-                <div className="login-panel-body input-button-addon">
-                  <p className="note-text input-title">Enter the OTP code below to continue</p>
-                  <TextInput
-                    customClass="otp-input"
-                    name="otp"
-                    type="text"
-                    showValidationError={this.errors['otp']}
-                    validationError="Enter your OTP to continue"
-                    onChange={this.onFieldChange.bind(this)}
-                    isOTP={true} />
-                  <Button btnCallBack={this.verifyOTPAction.bind(this)} btnType="red" btnSize="lg" fontSize={14} label="Complete sign up" />
-                  <p className="note-text">
-                    {'Didn\'t get OTP ?'} <a onClick={(e) => {e.preventDefault(); this.props.actions.resendOTP(authData.phone, true)}} className="blue-text">Resend</a>
-                  </p>
-                </div>
-              </div>
-            </CustomScroll>
+              </CustomScroll>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

@@ -111,7 +111,6 @@ export default class SignIn extends Component {
                   <span>OR</span>
                 </div>
                 <form>
-
                   <div className="login-panel-body">
                     {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
                       <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>

@@ -69,33 +69,35 @@ export default class SendOTP extends Component {
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle='Sign Up' />
         <CarouselSlider />
-        <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
-          <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-              <div className="login-panel otp">
-                <div className="login-panel-header">
-                  <h3 className="login-title">Sign Up</h3>
-                </div>
-                <div className="login-panel-body">
-                <p className="note-text input-title">Enter your phone number to receive an OTP</p>
-                  <div className="form-group otp-input">
-                    <TextInput
-                      customClass="otp-input"
-                      type="phone"
-                      name="phone"
-                      value={this.formData.phone}
-                      showValidationError={this.errors['phone']}
-                      validationError="Enter a valid mobile number"
-                      label="Mobile Number"
-                      onChange={this.onFieldChange.bind(this)}
-                    />
+        <form>
+          <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
+            <div className="customScroll">
+              <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                <div className="login-panel otp">
+                  <div className="login-panel-header">
+                    <h3 className="login-title">Sign Up</h3>
                   </div>
-                  <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="red otpbtnAlign" btnSize="sm" fontSize={16} label="Get OTP" />
+                  <div className="login-panel-body">
+                  <p className="note-text input-title">Enter your phone number to receive an OTP</p>
+                    <div className="form-group otp-input">
+                      <TextInput
+                        customClass="otp-input"
+                        type="phone"
+                        name="phone"
+                        value={this.formData.phone}
+                        showValidationError={this.errors['phone']}
+                        validationError="Enter a valid mobile number"
+                        label="Mobile Number"
+                        onChange={this.onFieldChange.bind(this)}
+                      />
+                    </div>
+                    <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="red otpbtnAlign" btnSize="sm" fontSize={16} label="Get OTP" />
+                  </div>
                 </div>
-              </div>
-            </CustomScroll>
+              </CustomScroll>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }
