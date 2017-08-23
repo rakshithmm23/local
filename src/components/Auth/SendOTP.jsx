@@ -80,6 +80,7 @@ export default class SendOTP extends Component {
                 <p className="note-text input-title">Enter your phone number to receive an OTP</p>
                   <div className="form-group otp-input">
                     <TextInput
+                      customClass="otp-input"
                       type="phone"
                       name="phone"
                       value={this.formData.phone}

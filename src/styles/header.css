@@ -6,7 +6,7 @@
 
 .header-section .logo-section {
     display: inline-block;
-    padding: 18px 0px;
+    padding: 14px 0px;
     margin: 0 auto;
     text-align: center;
     width: 110px;
@@ -14,8 +14,8 @@
 }
 
 .header-section .logo-section img {
-    height: 43.06px;
-    max-width: 42.18px;
+    height: 55px;
+    max-width: 55px;
     width: 100%;
 }
 

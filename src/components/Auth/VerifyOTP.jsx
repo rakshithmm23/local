@@ -114,6 +114,7 @@ export default class VerifyOTP extends Component {
                 <div className="login-panel-body input-button-addon">
                   <p className="note-text input-title">Enter the OTP code below to continue</p>
                   <TextInput
+                    customClass="otp-input"
                     name="otp"
                     type="text"
                     showValidationError={this.errors['otp']}

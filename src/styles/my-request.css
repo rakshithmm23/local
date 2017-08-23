@@ -267,7 +267,7 @@ input[type="color"][list] {
 }
 
 .requestQuotesScroll {
-    height: 567px !important;
+    height: 555px !important;
 }
 
 .quotes-right-header {
@@ -390,13 +390,17 @@ input[type="color"][list] {
     color: #9BA1A5;
 }
 
+.input-group input:focus .input-group-addon{
+    color: red;
+}
+
 .mapSection .quotes-right-body {
     overflow: hidden;
     height: 567px;
 }
 
 .quotesSection .requestQuotesScroll {
-    height: 500px !important;
+    height: 580px !important;
 }
 
 

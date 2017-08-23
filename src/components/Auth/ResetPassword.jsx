@@ -85,7 +85,7 @@ export default class ResetPassword extends Component {
                   />
                 </div>
                 <div className="login-panel-footer">
-                  <Button btnType="gmail" btnSize="sm" fontSize={14} label="Reset" btnCallBack={this.resetPassword.bind(this)} />
+                  <Button btnType="red" btnSize="sm" fontSize={14} label="Reset" btnCallBack={this.resetPassword.bind(this)} />
                 </div>
               </div>
             </CustomScroll>
