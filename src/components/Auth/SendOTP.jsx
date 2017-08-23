@@ -69,7 +69,8 @@ export default class SendOTP extends Component {
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle='Sign Up' />
         <CarouselSlider />
-        <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
+        <form>
+          <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <div className="customScroll">
             <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
               <div className="login-panel otp">
@@ -77,25 +78,25 @@ export default class SendOTP extends Component {
                   <h3 className="login-title">Sign Up</h3>
                 </div>
                 <div className="login-panel-body">
-                <p className="note-text input-title">Enter your phone number to receive an OTP</p>
-                  <div className="send-otpbtn-align">
-                    <TextInput
-                      customClass="otp-input"
-                      type="phone"
-                      name="phone"
-                      value={this.formData.phone}
-                      showValidationError={this.errors['phone']}
-                      validationError="Enter a valid mobile number"
-                      label="Mobile Number"
-                      onChange={this.onFieldChange.bind(this)}
-                    />
-                  </div>
-                  <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="red otpbtnAlign" btnSize="sm" fontSize={16} label="Get OTP" />
+                  <p className="note-text input-title">Enter your phone number to receive an OTP</p>
+                    <div className="send-otpbtn-align">
+                      <TextInput
+                        customClass="otp-input"
+                        type="phone"
+                        name="phone"
+                        value={this.formData.phone}
+                        showValidationError={this.errors['phone']}
+                        validationError="Enter a valid mobile number"
+                        label="Mobile Number"
+                        onChange={this.onFieldChange.bind(this)}
+                      />
+                    </div>
                 </div>
-              </div>
-            </CustomScroll>
+                </div>
+              </CustomScroll>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

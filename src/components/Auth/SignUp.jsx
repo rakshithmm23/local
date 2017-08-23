@@ -115,7 +115,6 @@ export default class SignUp extends Component {
           <div className="customScroll">
             <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
               <div className="login-panel signup">
-                <form>
                   <div className="login-panel-header">
                     <h3 className="login-title">Sign Up</h3>
                     <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/facebook?type=customer" }} btnType="blue" btnSize="lg" label="Facebook" />
@@ -124,54 +123,55 @@ export default class SignUp extends Component {
                   <div className="or-text">
                     <span>OR</span>
                   </div>
-                  <div className="login-panel-body">
-                    {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                      <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-                    </AlertDismissable>}
-                    <TextInput
-                      type="text"
-                      label="Name"
-                      name="name"
-                      validationError={'Enter your name'}
-                      showValidationError={this.errors['name']}
-                      validationError="Enter your name"
-                      onChange={this.onFieldChange.bind(this)} />
-                    <TextInput
-                      type="email"
-                      label="Email"
-                      name="email"
-                      validationError="Please enter your email id"
-                      showValidationError={this.errors['email']}
-                      onChange={this.onFieldChange.bind(this)} />
-                    <TextInput
-                      type="phone"
-                      label="Mobile Number"
-                      name="phone"
-                      showValidationError={this.errors['phone']}
-                      validationError="Enter a valid mobile number"
-                      onChange={this.onFieldChange.bind(this)} />
-                    <TextInput
-                      type="password"
-                      label="Password"
-                      name="password"
-                      showValidationError={this.errors['password']}
-                      validationError="Password should be greater than six digits"
-                      onChange={this.onFieldChange.bind(this)} />
-                    <p className={this.errors.terms ? "note-text tc-text error" : "note-text tc-text"}>
-                      <span className="checkbox-style">
-                        <label htmlFor="agreeCheckbox" className="agreelabel">
-                          <input type="checkbox" onChange={(e) => { this.setState({ 'terms': !e.target.checked }); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }} checked={this.formData.terms} />
-                          By signing up, you agree to the
-                          <a onClick={() => { this.props.router.push('/terms') }} className="blue-text"> Terms & Conditions</a>, and <a className="blue-text">Privacy Policy</a>.
-                      </label>
-                      </span>
-                      <span className="error-text">{'Please agree to the terms and condition'}</span>
-                    </p>
-                  </div>
+                  <form>
+                    <div className="login-panel-body">
+                      {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                        <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                      </AlertDismissable>}
+                      <TextInput
+                        type="text"
+                        label="Name"
+                        name="name"
+                        validationError={'Enter your name'}
+                        showValidationError={this.errors['name']}
+                        validationError="Enter your name"
+                        onChange={this.onFieldChange.bind(this)} />
+                      <TextInput
+                        type="email"
+                        label="Email"
+                        name="email"
+                        validationError="Please enter your email id"
+                        showValidationError={this.errors['email']}
+                        onChange={this.onFieldChange.bind(this)} />
+                      <TextInput
+                        type="phone"
+                        label="Mobile Number"
+                        name="phone"
+                        showValidationError={this.errors['phone']}
+                        validationError="Enter a valid mobile number"
+                        onChange={this.onFieldChange.bind(this)} />
+                      <TextInput
+                        type="password"
+                        label="Password"
+                        name="password"
+                        showValidationError={this.errors['password']}
+                        validationError="Password should be greater than six digits"
+                        onChange={this.onFieldChange.bind(this)} />
+                      <p className={this.errors.terms ? "note-text tc-text error" : "note-text tc-text"}>
+                        <span className="checkbox-style">
+                          <label htmlFor="agreeCheckbox" className="agreelabel">
+                            <input type="checkbox" onChange={(e) => { this.setState({ 'terms': !e.target.checked }); this.formData.terms = e.target.checked; this.errors.terms = !e.target.checked }} checked={this.formData.terms} />
+                            By signing up, you agree to the
+                            <a onClick={() => { this.props.router.push('/terms') }} className="blue-text"> Terms & Conditions</a>, and <a className="blue-text">Privacy Policy</a>.
+                        </label>
+                        </span>
+                        <span className="error-text">{'Please agree to the terms and condition'}</span>
+                      </p>
+                    </div>
+                  </form>
                   <div className="login-panel-footer">
                     <Button btnCallBack={this.sendOTPAction.bind(this)} isSubmitBtn={true} btnType="red" btnSize="sm" label="Get OTP" />
                   </div>
-                </form>
               </div>
             </CustomScroll>
           </div>

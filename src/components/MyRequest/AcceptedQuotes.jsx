@@ -13,6 +13,7 @@ export default class AcceptedQuotes extends Component {
       imagesRemaining:0,
       isVendorDescTruncated: true
     }
+
       this.AcceptedQuotes = [
         {
           vdImage: '../../images/car.jpg',
@@ -57,7 +58,7 @@ export default class AcceptedQuotes extends Component {
               {
                   photo :'../../images/test.jpg',
               }
-          ],
+          ]
         }
       ];
     }
@@ -68,7 +69,13 @@ export default class AcceptedQuotes extends Component {
         this.setState({imagesRemaining:imagesRemaining})
       }
     }
-
+    showText(val){
+      if(val=="more"){
+      this.setState({readMore:false})
+      }else{
+      this.setState({readMore:true})
+      }
+    }
   render() {
     const vendorDesc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus ut nibh ut lacinia. Nullam sit amet est in nisl tincidunt convallis. Donec consequat molestie dolor nec fringilla. Aliquam erat volutpat. Aenean imperdiet tellus in dolor commodo porttitor. Aenean auctor velit auctor, consectetur orci at, luctus tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis eleifend odio nulla, non tincidunt turpis tincidunt sed.';
     const truncatedvendorDesc = this.state.isVendorDescTruncated ? truncate(vendorDesc, {length: 130}) : vendorDesc;
@@ -100,7 +107,7 @@ export default class AcceptedQuotes extends Component {
 
             </div>
             <div className="figure no-top-padding">
-                <h4>Photos</h4>
+              <h4>Photos</h4>
               <div className="photos-row">
                 {map(item.vdPhoto, (item, key) => {
                   return(
@@ -111,7 +118,7 @@ export default class AcceptedQuotes extends Component {
                   );
                 })}
               </div>
-               {this.state.imagesLeft && <div className="upload-images wrap-photo" key={key}>
+                {this.state.imagesLeft && <div className="upload-images wrap-photo" key={key}>
                       <img src="../../images/test.jpg" alt=""/>
                       <span className="more-photos">{"+ "+this.state.imagesRemaining+" more"}</span>
                     </div>}

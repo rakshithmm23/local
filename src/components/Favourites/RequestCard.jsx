@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map, each, includes } from 'lodash';
+import { map, forEach,remove,cloneDeep } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import QuotesCard from './QuotesCard';
@@ -40,7 +40,7 @@ export default class RequestCard extends Component {
       jobCardDetails: [
         {
           id: 0,
-          name: "1. Shine Works",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -94,7 +94,7 @@ export default class RequestCard extends Component {
           ]
         }, {
           id: 1,
-          name: "2. Shine Works",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -103,7 +103,7 @@ export default class RequestCard extends Component {
           isActive: false
         }, {
           id: 2,
-          name: "3. Shine Works",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -112,7 +112,7 @@ export default class RequestCard extends Component {
           isActive: false
         }, {
           id: 3,
-          name: "4. Shine Works",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -122,7 +122,7 @@ export default class RequestCard extends Component {
         },
         {
           id: 4,
-          name: "5. Shine Works",
+          name: "Shine Works",
           rating: 4,
           distance: 3.2,
           review: 23,
@@ -284,8 +284,20 @@ export default class RequestCard extends Component {
 
     // console.log(this.state.TimePickerTo)
   }
+  removeFav(event, key){
+    event.stopPropagation();
+    event.preventDefault();
+    let cardData =[];
+    forEach(this.state.jobCardDetails, function(product) {
+      if(key!=product.id){
+        cardData.push(product);
+      }
+    });
+    this.setState({jobCardDetails:cardData});
+  }
 
   render() {
+    debugger
     //console.log(this.state.currentWidth)
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
@@ -563,7 +575,7 @@ export default class RequestCard extends Component {
                                   {map(this.state.jobCardDetails, (details, key) => {
                                     return (
                                       <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
-                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} quoteKey={key} removeFavourite={this.removeFav.bind(this)}/>
                                     );
                                   })}
                                 </div>
@@ -614,11 +626,11 @@ export default class RequestCard extends Component {
                                   <ul>
                                     <li>
                                       <label>Job Start Time:</label>
-                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
+                                      <span>11:30 AM on Jan 5 2017 (Rescheduled)</span>
                                     </li>
                                     <li>
                                       <label>Quote Generated:</label>
-                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
+                                      <span>Jan 2, 2017</span>
                                     </li>
                                   </ul>
                                 </div>

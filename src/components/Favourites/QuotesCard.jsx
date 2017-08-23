@@ -11,10 +11,10 @@ class QuotesCard extends Component {
         };
     }
     render() {
-        const { index, vendorName, rating, distance, reviews } = this.props;
+        const { index, vendorName, rating, distance, reviews, quoteKey } = this.props;
         return (
             <div>
-                {this.state.isFavouriteVisible && <div className={this.props.activeClass == "active" ? "jobcard box active" : "jobcard box"} onClick={this.props.ClickedQuoteCard} ref={index}>
+                 <div className={this.props.activeClass == "active" ? "jobcard box active" : "jobcard box"} onClick={this.props.ClickedQuoteCard} ref={index}>
                     <div className="box-content">
                         <Media>
                             <Media.Left>
@@ -22,7 +22,7 @@ class QuotesCard extends Component {
                             </Media.Left>
                             <Media.Body>
                                 <Media.Heading>{index} {vendorName}
-                                    <span className="mdi mdi-heart" onClick={(e) => {console.log(this.state.isFavouriteVisible); e.stopPropagation(); e.preventDefault(); this.setState({ 'isFavouriteVisible': !this.state.isFavouriteVisible }); }} />
+                                    <span className="mdi mdi-heart" onClick={(e) => this.props.removeFavourite(e, quoteKey)} />
                                 </Media.Heading>
                                 <div className="rating rating-left">
                                     <span className={this.state.starSelected ? "mdi mdi-star" : "mdi mdi-star-outline"} />
@@ -46,7 +46,7 @@ class QuotesCard extends Component {
 
                         </div>
                     </div>
-                </div>}
+                </div>
             </div>
         );
     }
