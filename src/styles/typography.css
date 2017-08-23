@@ -20,6 +20,7 @@
 .blue-text:hover,
 .blue-text:focus{
     color: #006FB9;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 640px) {
