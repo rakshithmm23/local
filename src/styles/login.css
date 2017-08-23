@@ -196,6 +196,9 @@
     .login-panel {
         width: 480px;
     }
+    .login-panel-header .btn-theme.lg{
+        width: 46% !important;
+    }
 }
 
 @media screen and (min-width: 1076px) {
