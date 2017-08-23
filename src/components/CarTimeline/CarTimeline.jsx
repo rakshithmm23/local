@@ -9,10 +9,10 @@ import Button from '../common/Button';
 import OtherDetails from './OtherDetails';
 import ServiceDetails from './ServiceDetails';
 import Timeline from './Timeline';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import { DropdownButton, MenuItem, Modal, Media } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
-import {find, map} from 'lodash';
+import { find, map } from 'lodash';
 
 export default class BookService extends Component {
     constructor(props, context) {
@@ -34,21 +34,21 @@ export default class BookService extends Component {
         this.showBookServiceModal = this.showBookServiceModal.bind(this);
     }
     componentDidMount() {
-      const routeParams = this.props.routeParams;
-      if (routeParams.id){
-        this.props.actions.getCarProfileDetails(routeParams.id);
-      }
-      const userId = localStorage.getItem('userId');
-      const carProfileId = 'carProfiles-' + userId;
-      let carProfiles = localStorage.getItem(carProfileId);
-      if (!carProfiles) {
-        this.props.actions.getCarProfileList(this.props.router);
-      }
+        const routeParams = this.props.routeParams;
+        if (routeParams.id) {
+            this.props.actions.getCarProfileDetails(routeParams.id);
+        }
+        const userId = localStorage.getItem('userId');
+        const carProfileId = 'carProfiles-' + userId;
+        let carProfiles = localStorage.getItem(carProfileId);
+        if (!carProfiles) {
+            this.props.actions.getCarProfileList(this.props.router);
+        }
     }
     componentWillReceiveProps(nextProps) {
-      if (nextProps.carProfileReducer.currentComponentKey) {
-        this.props.router.push(nextProps.carProfileReducer.currentComponentKey);
-      }
+        if (nextProps.carProfileReducer.currentComponentKey) {
+            this.props.router.push(nextProps.carProfileReducer.currentComponentKey);
+        }
     }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
@@ -71,74 +71,73 @@ export default class BookService extends Component {
     //     this.setState({ showModal: true });
     // }
     editCarProfile() {
-      if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id) {
-        this.props.router.push(`/car-profiles/${this.props.carProfileReducer.currentCarProfile.id}/edit`);
-      }
+        if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id) {
+            this.props.router.push(`/car-profiles/${this.props.carProfileReducer.currentCarProfile.id}/edit`);
+        }
     }
     deleteCarProfile() {
-      if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id)
-      this.props.actions.deleteCarProfile(this.props.carProfileReducer.currentCarProfile.id);
+        if (this.props.carProfileReducer.currentCarProfile && this.props.carProfileReducer.currentCarProfile.id)
+            this.props.actions.deleteCarProfile(this.props.carProfileReducer.currentCarProfile.id);
     }
 
     switchCarProfile(carProfileId) {
-        debugger
-      if (carProfileId) {
-        this.props.actions.getCarProfileDetails(carProfileId);
-        this.props.router.push(`/car-profiles/${carProfileId}/view`);
-      } else {
-        this.props.router.push('/car-profiles/create');
-      }
+        if (carProfileId) {
+            this.props.actions.getCarProfileDetails(carProfileId);
+            this.props.router.push(`/car-profiles/${carProfileId}/view`);
+        } else {
+            this.props.router.push('/car-profiles/create');
+        }
     }
 
     showBookServiceModal(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      this.setState({'bookServiceModalVisible': !this.state.bookServiceModalVisible})
+        e.stopPropagation();
+        e.preventDefault();
+        this.setState({ 'bookServiceModalVisible': !this.state.bookServiceModalVisible })
     }
 
     render() {
-      const { carProfileReducer, router } = this.props;
-      const userId = localStorage.getItem('userId');
-      const carProfileId = 'carProfiles-' + userId;
-      let carProfiles = localStorage.getItem(carProfileId);
-      const routeParams = this.props.routeParams;
-      let currentCarProfile = undefined;
-      const bookServiceOption = [
-        {
-            image: "../../images/book-service-1.png",
-            title: "Car Wash",
-            url:"/car-wash"
-        }, {
-            image: "../../images/book-service-2.png",
-            title: "Car Service",
-            url:"/car-service"
-        }, {
-            image: "../../images/book-service-3.png",
-            title: "Car Repair",
-            url:"/car-repair"
+        const { carProfileReducer, router } = this.props;
+        const userId = localStorage.getItem('userId');
+        const carProfileId = 'carProfiles-' + userId;
+        let carProfiles = localStorage.getItem(carProfileId);
+        const routeParams = this.props.routeParams;
+        let currentCarProfile = undefined;
+        const bookServiceOption = [
+            {
+                image: "../../images/book-service-1.png",
+                title: "Car Wash",
+                url: "/car-wash"
+            }, {
+                image: "../../images/book-service-2.png",
+                title: "Car Service",
+                url: "/car-service"
+            }, {
+                image: "../../images/book-service-3.png",
+                title: "Car Repair",
+                url: "/car-repair"
+            }
+        ];
+        const bookServiceOptionView = map(bookServiceOption, (service, key) => {
+            return (
+                <li key={key} onClick={() => router.push(service.url)}>
+                    <Media>
+                        <Media.Left>
+                            <img width={69} height={69} src={service.image} alt="Image" />
+                        </Media.Left>
+                        <Media.Body>
+                            <h5>{service.title}</h5>
+                            <i className="mdi mdi-chevron-right" />
+                        </Media.Body>
+                    </Media>
+                </li>
+            );
+        });
+        if (carProfiles) {
+            carProfiles = JSON.parse(carProfiles);
+            if (routeParams.id) {
+                currentCarProfile = carProfiles[routeParams.id];
+            }
         }
-      ];
-      const bookServiceOptionView = map(bookServiceOption, (service, key) => {
-          return (
-              <li key={key} onClick={()=>router.push(service.url)}>
-                  <Media>
-                      <Media.Left>
-                          <img width={69} height={69} src={service.image} alt="Image" />
-                      </Media.Left>
-                      <Media.Body>
-                          <h5>{service.title}</h5>
-                          <i className="mdi mdi-chevron-right" />
-                      </Media.Body>
-                  </Media>
-              </li>
-          );
-      });
-      if (carProfiles) {
-        carProfiles = JSON.parse(carProfiles);
-        if (routeParams.id){
-          currentCarProfile = carProfiles[routeParams.id];
-        }
-      }
         return (
             <div>
                 {/*Header*/}
@@ -152,9 +151,9 @@ export default class BookService extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal}/>
+                            <Button btnType="" btnSize="sm" customClass="timeline" fontSize={14} label="Book Service" btnCallBack={this.showBookServiceModal} />
                             <div className="text-dropdown add-new car-profile-header" >
-                                {carProfiles && currentCarProfile && 
+                                {carProfiles && currentCarProfile &&
                                 <DropdownButton bsSize="large" id="dropdown-large" noCaret onSelect={this.switchCarProfile} onToggle={() => { this.myCarDropdown()}} title={
                                     <span>
                                         <h4>{currentCarProfile.name}</h4>
@@ -162,7 +161,7 @@ export default class BookService extends Component {
                                         {!this.state.myCarDropdownIcon && <i className="mdi mdi-chevron-up" />}
                                     </span>} >
                                     {map(carProfiles, (carProfile, key) => {
-                                      return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem >);
+                                        return (<MenuItem eventKey={carProfile.id} key={key}>{carProfile.name}</MenuItem >);
                                     })}
                                     <MenuItem >Add New</MenuItem>
                                 </DropdownButton>}
@@ -170,7 +169,7 @@ export default class BookService extends Component {
 
                             <div className="three-dots-icon">
                                 <DropdownButton bsSize="xsmall"  id="dropdown-size-extra-small" title={<i className="mdi mdi-dots-vertical" />} noCaret pullRight>
-                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit12</MenuItem>
+                                    <MenuItem eventKey="Edit" onClick={this.editCarProfile}>Edit</MenuItem>
                                     <MenuItem eventKey="Delete" onClick={() => {this.setState({ deleteModal: true })}}>Delete</MenuItem>
                                 </DropdownButton>
                             </div>
@@ -194,7 +193,7 @@ export default class BookService extends Component {
                         <div className="padwrapper">
                             <div className="row timeline-card">
                                 <div className="col-md-3 pad0">
-                                    {currentCarProfile && <ServiceDetails {...currentCarProfile}/>}
+                                    {currentCarProfile && <ServiceDetails {...currentCarProfile} />}
                                 </div>
                                 <div className="col-md-9 pad0">
                                     <div className="row timeline-summary-header">
@@ -210,14 +209,16 @@ export default class BookService extends Component {
                                         </div>
                                     </div>
                                     <div className="row timeline-summary-body">
-                                        <Scrollbars className="timelineScroll">
-                                            {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
-                                                {currentCarProfile && <OtherDetails {...currentCarProfile}/> }
-                                            </div>}
-                                            {this.state.timelineUpdate == "timeline" && <div className="tab-timeline ">
-                                                <Timeline />
-                                            </div>}
-                                        </Scrollbars>
+                                        <div className="timelineScroll">
+                                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                                {this.state.timelineUpdate == "otherDetails" && <div className="tab-otherDetails">
+                                                    {currentCarProfile && <OtherDetails {...currentCarProfile} />}
+                                                </div>}
+                                                {this.state.timelineUpdate == "timeline" && <div className="tab-timeline ">
+                                                    <Timeline />
+                                                </div>}
+                                            </CustomScroll>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

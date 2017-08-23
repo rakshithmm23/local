@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../common/Button';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import { Media } from 'react-bootstrap';
 import { map, each, includes } from 'lodash';
 
@@ -93,8 +93,8 @@ export default class AcceptedQuotes extends Component {
                 <label>{item.vdAddress}</label>
                 <label>{item.vdEmail}</label>
                 <label>{item.vdPhone}</label>
-                <Button btnType="btn-alert alert-margin" btnSize="sm" customClass="timeline" fontSize={14} label="Get Directions" />
-                <Button btnType="btn-alert" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />{/* vendor profile */}
+                <Button btnType="btn-theme transparent alert-margin" btnSize="sm" customClass="timeline" fontSize={14} label="Get Directions" />
+                <Button btnType="btn-theme transparent" btnSize="sm" customClass="timeline" fontSize={14} label="View Profile" />{/* vendor profile */}
 
             </div>
             <div className="figure no-top-padding">

@@ -61,7 +61,7 @@ class CardType extends Component {
             return (
                 <div >
                     <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
+                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Re-book</span></div>
                 </div>
             );
         }

@@ -7,7 +7,7 @@ import Gmaps from '../MyRequest/Gmaps';
 import IconNotification from '../common/IconNotification';
 import { FormGroup, InputGroup, FormControl, Media } from 'react-bootstrap';
 import JobDetails from './JobDetails';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
@@ -576,7 +576,7 @@ export default class RequestCard extends Component {
                                   </div>
                                   <div className="col-md-12 footer">
                                     <a onClick={this.clearFilter.bind(this)}>Clear</a>
-                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)}/>
+                                    <Button backgroundColor="red" btnType="submit" btnSize="sm" fontSize={15} label="Apply" btnCallBack={this.filterSelect.bind(this)} />
                                   </div>
                                 </div>
                               </div>
@@ -584,25 +584,22 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-left-body">
-                          <Scrollbars
-                            className="requestQuotesScroll"
-                            thumbMinSize={0}
-                            renderTrackVertical={this.renderTrackVertical}
-                            renderThumbVertical={this.renderThumbVertical}
-                          >
-                            <div className="wrapper" ref={'quotesList'}>
+                          <div className="requestQuotesScroll">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                              <div className="wrapper" ref={'quotesList'}>
 
-                              <div>
-                                {map(this.state.jobCardDetails, (val, key) => {
-                                  return (
-                                    <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} rating={val.rating} distance={val.distance} reviews={val.review}
-                                      viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
-                                  );
-                                })}
+                                <div>
+                                  {map(this.state.jobCardDetails, (val, key) => {
+                                    return (
+                                      <QuotesCard key={key} ref={(quotesCard) => { val.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={val.isActive ? "active" : ""} vendorName={val.name} rating={val.rating} distance={val.distance} reviews={val.review}
+                                        viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} />
+                                    );
+                                  })}
+                                </div>
+                                {/*}*/}
                               </div>
-                              {/*}*/}
-                            </div>
-                          </Scrollbars>
+                            </CustomScroll>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -641,153 +638,150 @@ export default class RequestCard extends Component {
                           </div>
                         </div>
                         <div className="quotes-right-body">
-                          <Scrollbars
-                            className="requestQuotesScroll"
-                            thumbMinSize={0}
-                            renderTrackVertical={this.renderTrackVertical}
-                            renderThumbVertical={this.renderThumbVertical}
-                          >
-                            {/*Quotation*/}
-                            <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
-                              <div className="quotation-head">
-                                <ul>
-                                  <li>
-                                    <label>Job Start Time:</label>
-                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
-                                  </li>
-                                  <li>
-                                    <label>Quote Generated:</label>
-                                    <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div className="quotation-details">
-                                {map(this.state.jobCardDetails, (CardValue, jobCardKey) => {
-                                  return (
-                                    CardValue.quotationDetails != undefined &&
-                                    <div className="quotation-block" key={jobCardKey}>
-                                      {map(CardValue.quotationDetails, (cardvQuote, quotationKey) => {
-                                        return (
-                                          <div>
-                                            <h4 key={quotationKey}>{cardvQuote.serviceIndex}. {cardvQuote.serviceName}</h4>
-                                            <ul>
-                                              {map(cardvQuote.Accessories, (carAcc, accessoriesKey) => {
-                                                return (
-                                                  <li key={accessoriesKey}>
-                                                    <label>{carAcc.name}</label>
-                                                    <span>{carAcc.cost} {carAcc.currency}</span>
-                                                  </li>
-                                                )
-                                              })}
-                                            </ul>
-                                          </div>
-                                        );
-                                      })}
+                          <div className="requestQuotesScroll">
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                              {/*Quotation*/}
+                              <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                                <div className="quotation-head">
+                                  <ul>
+                                    <li>
+                                      <label>Job Start Time:</label>
+                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].startTime} ({this.state.jobCardDetails[0].quotationDetails[0].schedule})</span>
+                                    </li>
+                                    <li>
+                                      <label>Quote Generated:</label>
+                                      <span>{this.state.jobCardDetails[0].quotationDetails[0].generatedTime}</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="quotation-details">
+                                  {map(this.state.jobCardDetails, (CardValue, jobCardKey) => {
+                                    return (
+                                      CardValue.quotationDetails != undefined &&
+                                      <div className="quotation-block" key={jobCardKey}>
+                                        {map(CardValue.quotationDetails, (cardvQuote, quotationKey) => {
+                                          return (
+                                            <div>
+                                              <h4 key={quotationKey}>{cardvQuote.serviceIndex}. {cardvQuote.serviceName}</h4>
+                                              <ul>
+                                                {map(cardvQuote.Accessories, (carAcc, accessoriesKey) => {
+                                                  return (
+                                                    <li key={accessoriesKey}>
+                                                      <label>{carAcc.name}</label>
+                                                      <span>{carAcc.cost} {carAcc.currency}</span>
+                                                    </li>
+                                                  )
+                                                })}
+                                              </ul>
+                                            </div>
+                                          );
+                                        })}
 
+                                      </div>
+                                    );
+                                  })}
+                                  <div className="quotation-total">
+                                    <label>Total</label>
+                                    <span>195 AED</span>
+                                  </div>
+                                </div>
+                              </div>
+                              {/*ChatBox*/}
+                              <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                                <div className="quotes-chat-area">
+
+                                  <div className="c-message message-in">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
                                     </div>
-                                  );
-                                })}
-                                <div className="quotation-total">
-                                  <label>Total</label>
-                                  <span>195 AED</span>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                  <div className="c-message message-out message-continuation">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
+                                    </div>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                  <div className="c-message message-out chain-msg">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
+                                    </div>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                  <div className="c-message message-in message-continuation">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
+                                    </div>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                  <div className="c-message message-in chain-msg message-continuation">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
+                                    </div>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                  <div className="c-message message-in chain-msg">
+                                    <div className="profile-head">
+                                      <span>
+                                        <img src="../images/pic.png" alt="" />
+                                      </span>
+                                    </div>
+                                    <div className="c-chat">
+                                      <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
+                                    </div>
+                                    <div className="delivered-details">
+                                      <label>2:44 PM</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="quotes-message-footer">
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <FormControl type="text" placeholder="Type your message here..." />
+                                      <InputGroup.Addon>
+                                        <i className="mdi mdi-send" />
+                                      </InputGroup.Addon>
+                                    </InputGroup>
+                                  </FormGroup>
                                 </div>
                               </div>
-                            </div>
-                            {/*ChatBox*/}
-                            <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
-                              <div className="quotes-chat-area">
-
-                                <div className="c-message message-in">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-out chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg message-continuation">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                                <div className="c-message message-in chain-msg">
-                                  <div className="profile-head">
-                                    <span>
-                                      <img src="../images/pic.png" alt="" />
-                                    </span>
-                                  </div>
-                                  <div className="c-chat">
-                                    <p>Lorem ipsum dolor sit amet, et tamquam docendi deleniti est</p>
-                                  </div>
-                                  <div className="delivered-details">
-                                    <label>2:44 PM</label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="quotes-message-footer">
-                                <FormGroup>
-                                  <InputGroup>
-                                    <FormControl type="text" placeholder="Type your message here..." />
-                                    <InputGroup.Addon>
-                                      <i className="mdi mdi-send" />
-                                    </InputGroup.Addon>
-                                  </InputGroup>
-                                </FormGroup>
-                              </div>
-                            </div>
-                          </Scrollbars>
+                            </CustomScroll>
+                          </div>
                         </div>
                       </div>
                     </div>

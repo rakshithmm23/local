@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ProgressBar, Media, DropdownButton, MenuItem } from 'react-bootstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 
 export default class Reviews extends Component {
     constructor(...args) {

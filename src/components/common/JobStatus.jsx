@@ -136,7 +136,7 @@ class JobStatus extends Component {
                         <div className="job-right-header">
                             <div className="status-label expired" style="font-size: 14px;">expired</div>
                             <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-                            <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
+                            <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Re-book</span></div>
                         </div>
                         <div>
                             <div className="jr-body">
