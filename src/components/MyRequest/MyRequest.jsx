@@ -113,7 +113,7 @@ export default class MyRequest extends Component {
                             <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RequestCard jobType={this.props.routeParams.requestType}/>
+                                    <RequestCard jobType={this.props.routeParams.requestType} router={this.props.router}/>
                                 </div>
                             </div>
                         </div>

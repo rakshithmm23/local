@@ -21,3 +21,9 @@
 .blue-text:focus{
     color: #006FB9;
 }
+
+@media screen and (max-width: 640px) {
+    .login-panel-body .note-text.tc-text{
+        margin-top: 35px;
+    }
+}

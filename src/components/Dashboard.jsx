@@ -13,9 +13,6 @@ import MobileNotification from './common/MobileNotification';
 import MobileMessage from './common/MobileMessage';
 
 import { serviceTypes } from '../constants/staticData';
-import { decryptCookie } from '../helpers';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
 export default class Dashboard extends Component {
     constructor(props, context) {
@@ -27,34 +24,6 @@ export default class Dashboard extends Component {
             searchVisible: false
         };
     }
-    // componentWillMount() {
-    //     this.props.actions.fetchCurrentUserInfo(this.props.router);
-    //     const signedUserDataCookie = cookies.get('carauth');
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else if (!signedUserDataCookie) {
-    //         this.props.router.push('/');
-    //     }
-    // }
-    // componentWillReceiveProps() {
-    //     if (localStorage && localStorage.authData) {
-    //         const authData = JSON.parse(localStorage.authData);
-    //         if (!authData.phone) {
-    //             this.props.router.push('send-otp');
-    //         } else if (!authData.phoneVerified) {
-    //             this.props.router.push('verify-otp');
-    //         }
-    //     }
-    //     else {
-    //         this.props.router.push('/');
-    //     }
-    // }
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }

@@ -66,13 +66,3 @@ export function windowWidth() {
         body = window.document.body;
     return window.document.compatMode === "CSS1Compat" && docElemProp || body && body.clientWidth || docElemProp;
 }
-
-export function decryptCookie(cookieString) {
-  const cookie = unescape(cookieString);
-  let output = {};
-  cookie.split(/\s*;\s*/).forEach(function(pair) {
-    pair = pair.split(/\s*=\s*/);
-    output[pair[0]] = pair.splice(1).join('=');
-  });
-  return output;
-}

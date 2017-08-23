@@ -61,7 +61,7 @@ class CardType extends Component {
             return (
                 <div >
                     <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
+                    <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Re-book</span></div>
                 </div>
             );
         }
@@ -113,11 +113,11 @@ class CardType extends Component {
                                                 {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                                            <i className="mdi mdi-chevron-down" />
+                                                            <i className="mdi mdi-chevron-up" />
                                                             Collapse Timeline
                                                         </button> :
                                                             <button className="btn btn-theme sm label">
-                                                                <i className="mdi mdi-chevron-up" />
+                                                                <i className="mdi mdi-chevron-down" />
                                                                 Expand Timeline
                                                         </button>
                                                         }
@@ -131,7 +131,7 @@ class CardType extends Component {
                         <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
-                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator}</div>
+                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inProgress"?"In Progress":cardDetails.statusIndicator}</div>
                                     <div className="job-icon notification">
                                         {this.getIcons(this, cardDetails.statusIndicator)}
                                     </div>
@@ -160,11 +160,11 @@ class CardType extends Component {
                                 <div className="mobile-expand-timeline">
                                     <div onClick={(e) => this.showTimeline(e)}>
                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
-                                            <i className="mdi mdi-chevron-down" />
+                                            <i className="mdi mdi-chevron-up" />
                                             Collapse Timeline
                                                             </button> :
                                             <button className="btn btn-theme sm label" >
-                                                <i className="mdi mdi-chevron-up" />
+                                                <i className="mdi mdi-chevron-down" />
                                                 Expand Timeline
                                             </button>
                                         }

@@ -61,9 +61,9 @@
 }
 
 .input-icon {
-    padding: 10px;
+    padding: 10px 3px;
     position: absolute;
-    right: 2px;
+    right: 0;
     z-index: 999;
     top: 10px;
     cursor: pointer;
@@ -72,10 +72,12 @@
 .input-icon i {
     font-size: 16px;
 }
-.input-icon i.mdi-eye{
+
+.input-icon i.mdi-eye {
     color: #006FB9;
 }
-.input-icon i.mdi-eye-off{
+
+.input-icon i.mdi-eye-off {
     color: #454B51;
 }
 
@@ -167,7 +169,16 @@
     outline: 0 !important;
 }
 
-
+/* Disabled input */
+.form-group.disabledInput{
+    opacity: 0.6;
+}
+.form-group.disabledInput label{
+    top: 0;
+}
+.form-group.disabledInput .form-control{
+    background: #fff;
+}
 /* input-button-addon */
 
 .input-button-addon .otp-input {
@@ -209,6 +220,10 @@
     }
     .input-button-addon .note-text {
         margin-top: 12px;
+    }
+    .form-group .error-text{
+        font-size: 11px;
+        bottom: -22px
     }
 }
 

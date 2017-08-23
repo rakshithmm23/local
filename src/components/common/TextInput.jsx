@@ -54,9 +54,9 @@ export default class TextInput extends Component {
       }
   }
   render() {
-    const {label, isOTP, validationError, isNumber, type, value} = this.props;
+    const {label, isOTP, validationError, isNumber, type, value, disabled, customClass} = this.props;
     let inputClass = 'form-group ';
-    if (this.state.showValidationError) {
+    if (this.state.showValidationError && validationError) {
       inputClass += 'error ';
     }
     if (isOTP) {
@@ -64,11 +64,12 @@ export default class TextInput extends Component {
     }
     return type === "password" ?
     (
-      <div className={inputClass}>
+      <div className={`${inputClass} ${customClass}`}>
           <input
             type={type == "password" ? this.state.passwordVisible ? "text" : "password" : type}
             className="form-control form-input"
             value={this.state.inputValue}
+            disabled={this.props.disabled ? 'disabled' : ''}
             onBlur={this
               .handleOnBlur
               .bind(this)
@@ -83,11 +84,12 @@ export default class TextInput extends Component {
       </div>
     ) :
     (
-      <div className={inputClass}>
+      <div className={`${inputClass} ${customClass}`}>
           <input
             type={type == 'email' ? 'text': type == 'mobile' ? 'number' : 'text'}
             className="form-control form-input"
             value={this.state.inputValue}
+            disabled={this.props.disabled ? 'disabled' : ''}
             onBlur={this
               .handleOnBlur
               .bind(this)

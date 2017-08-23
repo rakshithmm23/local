@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
-import {map} from 'lodash';
+import CustomScroll from 'react-custom-scroll';
+import { map } from 'lodash';
 
 export default class ServiceDetails extends Component {
     constructor(...args) {
@@ -20,13 +20,13 @@ export default class ServiceDetails extends Component {
         return (
             <div className="service-details">
                 {(this.props.images && this.props.images.length) ? <Carousel>
-                  {map(this.props.images, (image, key) => {
-                    return (
-                      <Carousel.Item>
-                          <img width={400} height={280} alt="" src={image.large} />
-                      </Carousel.Item>
-                    )
-                  })}
+                    {map(this.props.images, (image, key) => {
+                        return (
+                            <Carousel.Item>
+                                <img width={400} height={280} alt="" src={image.large} />
+                            </Carousel.Item>
+                        )
+                    })}
                 </Carousel> : ''}
                 <div className="service-car-info">
                     <div className="service-carPlate">
@@ -35,15 +35,17 @@ export default class ServiceDetails extends Component {
                         <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
                     <div className="service-info">
-                        <Scrollbars className="timelineScroll">
+                        <div className="service-info-content">
                             <ul>
                                 {this.props.mileage && <li>
-                                    <h5>Previous Service</h5>
+                                    <h4>Previous Service</h4>
                                     <h5>Mileage</h5>
-                                    <span>{this.props.mileage}s</span>
+                                    <span>{this.props.mileage} Kms</span>
+                                    <h5>On</h5>
+                                    <span>Car Wash: 17 Mar ‘17, 1097735 Kms</span>
                                 </li>}
                             </ul>
-                        </Scrollbars>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import Footer from '../common/Footer';
 import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 import CoverPhoto from './CoverPhoto';
 import Address from './Address';
 import BaseHeader from './BaseHeader';

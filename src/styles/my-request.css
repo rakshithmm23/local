@@ -39,7 +39,8 @@ input[type="color"][list] {
     line-height: 22px;
     display: block;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
 .request-summary .request-summary-tab .title.active {
@@ -66,9 +67,10 @@ input[type="color"][list] {
     display: inline-block;
     text-align: left;
     padding: 33px 0;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 17px;
     vertical-align: middle;
+    text-transform: capitalize;
 }
 
 .quotes-view .title .filterSection {
@@ -109,6 +111,7 @@ input[type="color"][list] {
     border: none;
     cursor: pointer;
     text-align: left;
+    line-height: 22px;
 }
 
 .filterSection .filterLabel label {
@@ -264,7 +267,7 @@ input[type="color"][list] {
 }
 
 .requestQuotesScroll {
-    height: 70vh !important;
+    height: 567px !important;
 }
 
 .quotes-right-header {
@@ -318,12 +321,12 @@ input[type="color"][list] {
     border-bottom: 2px solid transparent;
     padding: 10px 25px 20px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .quotes-right-tabs li.active {
     border-bottom-color: #E50000;
-    font-family: CenturyGothic;
-    font-weight: bold;
+    font-family: CenturyGothic_bold;
 }
 
 .close-Tab {
@@ -335,10 +338,10 @@ input[type="color"][list] {
 }
 
 .quotes-message-Section {
-    position: absolute;
+    /* position: absolute;  */
     width: 100%;
-    height: 100%;
-    display: table;
+    /* height: 100%; */
+    /* display: table; */
 }
 
 .quotes-message-footer {
@@ -351,7 +354,7 @@ input[type="color"][list] {
     clear: both;
     position: absolute;
     width: 100%;
-    bottom: -10px;
+    bottom: 0;
     left: 0;
 }
 
@@ -389,10 +392,11 @@ input[type="color"][list] {
 
 .mapSection .quotes-right-body {
     overflow: hidden;
-    height: 85.5vh;
+    height: 567px;
 }
-.quotesSection .requestQuotesScroll{
-    height: 75vh !important;
+
+.quotesSection .requestQuotesScroll {
+    height: 500px !important;
 }
 
 
@@ -422,9 +426,9 @@ input[type="color"][list] {
 .quotes-left-body .wrapper,
 .quotes-quotation-Section,
 {
-    position: absolute;
-    height: 100%;
-    overflow: auto;
+    /* position: absolute; */
+    /* height: 100%; */
+    /* overflow: auto; */
 }
 
 .quotes-left-body .wrapper {
@@ -436,14 +440,15 @@ input[type="color"][list] {
 }
 
 .quotes-chat-area {
-    position: absolute;
+    /* position: absolute;  */
     display: table-cell;
     vertical-align: bottom;
     bottom: 55px;
-    padding-top: 100px;
+    padding-top: 20px;
     overflow: auto;
     height: 100%;
     width: 100%;
+    padding-bottom: 80px;
 }
 
 .quotes-chat-area .c-message {
@@ -814,12 +819,12 @@ input[type="color"][list] {
     font-size: 20px;
     color: #55595b;
     position: absolute;
-    top: 2px;
+    top: 5px;
     right: 3px;
 }
 
 .downIcon.downAlign {
-    top: 1px;
+    top: 5px;
 }
 
 .openAlign {

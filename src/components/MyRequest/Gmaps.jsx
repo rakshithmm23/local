@@ -61,7 +61,7 @@ class Gmaps extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>{val.name}</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star-outline" />
                                                 <span className="mdi mdi-star-outline" />
                                                 <span className="mdi mdi-star-outline" />
