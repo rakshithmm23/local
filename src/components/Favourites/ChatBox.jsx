@@ -57,7 +57,6 @@ export default class ChatBox extends Component {
   }
 
   componentWillMount() {
-    debugger
     let messagesVal = {};
     map(this.props.data, (chatMsg, key) => {
       messagesVal[key] = this.defaultChatMessage;
@@ -67,7 +66,6 @@ export default class ChatBox extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    debugger
      this.chatHeight(); 
   }
  
@@ -120,7 +118,6 @@ export default class ChatBox extends Component {
     this.setState({ 'selectedVendorId': vendorId });
   }
   sendNewMessage(message) {
-    debugger
     if (this.state.selectedVendorId && message) {
       let currentTime = new Date();
       currentTime = currentTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });

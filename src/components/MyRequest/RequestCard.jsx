@@ -40,7 +40,7 @@ export default class RequestCard extends Component {
       changedWeek: false,
       filterType: "",
       open: false,
-      jobUpdates: "details",
+      jobUpdates: "quotes",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',
@@ -361,7 +361,12 @@ export default class RequestCard extends Component {
   componentWillMount() {
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
-    let queryParms = window.location.search.substring(1);
+    if(this.props.router.params.requestType=='waiting' || this.props.router.params.requestType==undefined){
+      this.setState({jobUpdates: "details"})
+    }
+    if(this.props.router.params.requestType=='active'){
+      this.setState({mapView: true,quotationView:false})
+    }
     // const jobType =this.props.jobType
     // if(!jobType){
     //   jobType="waiting"
@@ -370,6 +375,12 @@ export default class RequestCard extends Component {
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
+    if(this.props.router.params.requestType=='waiting' || this.props.router.params.requestType==undefined){
+      this.setState({jobUpdates: "details"})
+    }
+    if(this.props.router.params.requestType=='active'){
+      this.setState({mapView: true,quotationView:false})
+    }
     // const jobType =this.props.jobType
     // if(!jobType){
     //   jobType="waiting"

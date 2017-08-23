@@ -61,7 +61,7 @@ import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
 export default (
   <Route path="/" component={Home}>
     <IndexRoute component={AuthContainer(SignUp)}/>
-        <Route path="dashboard" onEnter={scrollToTop} component={DashboardContainer(Dashboard)}/>
+        <Route path="dashboard" onEnter={isLoggedIn} component={DashboardContainer(Dashboard)}/>
         <Route path="sign-in" onEnter={scrollToTop} component={AuthContainer(SignIn)} />
         <Route path="forgot-password" onEnter={scrollToTop} component={AuthContainer(ForgotPassword)} />
         <Route path="edit-mobileno" onEnter={scrollToTop} component={AuthContainer(EditMobileNo)} />
