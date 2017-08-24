@@ -874,7 +874,7 @@ export default class RequestCard extends Component {
 
                                   </div>}
 
-                                  {this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? <div>
+                                  {this.jobData[0].statusIndicator != "waiting" || this.jobData[0].statusIndicator != "active"  ? <div>
                                     <AcceptedQuotes />
                                   </div> : ""}
                                 </CustomScroll>
