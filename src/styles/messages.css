@@ -1,6 +1,7 @@
 .messageBody {
     background: #fff;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08); */
+    border: 1px solid rgba(0,0,0,0.08);
     overflow: hidden
 }
 
@@ -11,7 +12,7 @@
 
 .inboxContainer {
     border-right: 1px solid #EEF2F5;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     overflow-x: hidden
 }
 

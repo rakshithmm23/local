@@ -49,7 +49,7 @@ export default class OtherDetails extends Component {
                     </li>
                     <li>
                         <label>Car Notes</label>
-                         <span>
+                         <span className="car-notes-content">
                            <p contentEditable={this.state.contentEditable ? "true" : "false"}>
                               {this.props.carnotes ? this.props.carnotes : '-'}
                           </p>
