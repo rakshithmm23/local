@@ -509,8 +509,6 @@ export default class RequestCard extends Component {
   statusIndicatorFunc(status) {
     if (status == 'completed' || status == 'accepted' || status == 'inProgress') {
       return "Accepted Quotes"
-    } else if (status == 'waiting') {
-      return ""
     } else {
       return "Quotes"
     }
@@ -570,6 +568,7 @@ export default class RequestCard extends Component {
   }
 
   render() {
+    debugger
     if (this.props.router.params.requestType) {
       this.jobData[0].statusIndicator = this.props.router.params.requestType
     } else {
@@ -628,12 +627,12 @@ export default class RequestCard extends Component {
                             <span>Job Details</span>
                           </div>
                         </div>
-                        <div className="col-md-6 col-sm-6 col-xs-6 pad0">
+                        {this.jobData[0].statusIndicator != "waiting" && <div className="col-md-6 col-sm-6 col-xs-6 pad0">
                           <div className={this.state.jobUpdates == "quotes" ? "title active" : "title"} onClick={() => { this.jobDetail('quotes') }}>
                             {/* <span>{this.jobData[0].statusIndicator=="accepted" || this.jobData[0].statusIndicator=="inProgress" ||this.jobData[0].statusIndicator=="completed" ?"Accepted Quotes":"Quotes"}</span> */}
                             <span>{this.statusIndicatorFunc(this.jobData[0].statusIndicator)}</span>
                           </div>
-                        </div>
+                        </div>}
                       </div>
                     </div>
                   </div>
