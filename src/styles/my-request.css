@@ -55,6 +55,9 @@ input[type="color"][list] {
     border-right: 2px solid #F9FCFB;
     padding: 0;
 }
+.Filterby .left .filterby-wrapper .f-card:last-child{
+    padding-top: 13px;
+}
 
 .quotes-view {
     padding: 0 15px;
@@ -656,6 +659,9 @@ input[type="color"][list] {
     margin-bottom: 30px;
     position: relative;
 }
+.f-card .rc-time-picker.fav-time{
+    margin-top:10px;
+}
 
 .f-card .time-from {
     position: absolute;
@@ -663,7 +669,6 @@ input[type="color"][list] {
     font-size: 18px;
     bottom: 20px;
     left: 110px;
-    top: 95px;
     z-index: -1;
 }
 
@@ -672,10 +677,10 @@ input[type="color"][list] {
     color: #717982;
     font-size: 18px;
     bottom: 20px;
-    top: 95px;
     right: 191px;
     z-index: -1;
 }
+
 
 .f-card .input-range {
     width: 98% !important;
@@ -714,6 +719,9 @@ input[type="color"][list] {
 
 .f-card .time-to-time {
     padding: 0 20px !important;
+    text-transform: lowercase !important;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 .f-card .toggle-switch---switch---3EchW {

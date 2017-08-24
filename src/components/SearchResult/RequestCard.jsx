@@ -194,11 +194,7 @@ export default class RequestCard extends Component {
       this.checkBox["all"] = false
       this.checkBox[val] = !this.checkBox[val]
     }
-    // if(val=="all" && this.checkBox.all){
-    //   this.checkBox={all:true,carService:true,carWash:true,carRepair:true}
-    // }else if(val=="all" && this.checkBox.all==false){
-    //   this.checkBox={all:false,carService:false,carWash:false,carRepair:false}
-    // }
+  
     this.setState({ checkBoxVal: !this.state.checkBoxVal })
   }
   updateDimensions() {
@@ -279,13 +275,13 @@ export default class RequestCard extends Component {
 
   clearFilter(e) {
 
+    this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.setState({
       ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       }
     })
-    this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
   }
   ratingOnChange(rating) {
     this.setState({ ratingValue: rating })
