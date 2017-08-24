@@ -14,6 +14,10 @@
     padding: 40px 0 70px;
 }
 
+.main-wrapper .inSection.dash-inSec{
+    padding-bottom: 40px;
+}
+
 .bottomSection {
     background: rgb(249, 252, 251);
     padding-bottom: 70px;

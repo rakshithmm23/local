@@ -27,7 +27,7 @@ export default class ServiceDetails extends Component {
                             </Carousel.Item>
                         )
                     })}
-                </Carousel> : ''}
+                </Carousel> : <div className="placeholderImg"><img src="/images/placeholder.png" alt=""/></div>}
                 <div className="service-car-info">
                     <div className="service-carPlate">
                         <h6>{this.props.plateNo} {this.props.state}</h6>

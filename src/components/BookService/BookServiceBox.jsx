@@ -15,7 +15,7 @@ class BookServiceBox extends Component {
         const {router}= this.props;
         // const formatedDate = this.props.updatedAt ? moment(this.props.updatedAt).format("DD MMM YY") : undefined;
         let coverImage = find(this.props.images, (img) => { return img.isCover == true });
-        const carPhoto = coverImage ? coverImage.original : '/images/Car-Placeholder.jpg';
+        const carPhoto = coverImage ? coverImage.original : '/images/placeholder.png';
         return (
             <div className="col-md-4 col-sm-6 col-xs-12 bookService-card">
                 <div className="myCar-card " onClick={(e) => {e.preventDefault(); this.props.router.push(`/car-profiles/${this.props.id}/view`)}}>

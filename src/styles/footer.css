@@ -1,5 +1,7 @@
 .footerSection {
     background: #363738;
+    padding-left: 110px;
+    /* margin-top: 30px; */
 }
 
 
@@ -86,10 +88,6 @@
 
 
 /*Footer*/
-
-.footerSection {
-    padding-left: 110px;
-}
 
 .quickLink-section {
     padding: 30px 0px;
@@ -188,7 +186,7 @@
     .footer-link h5 {
         font-size: 13px;
     }
-    .app-right ul li{
+    .app-right ul li {
         width: 140px;
     }
     .app-right ul li:last-child {
@@ -204,10 +202,10 @@
         height: auto;
         padding: 20px 0;
     }
-    .app-right .input-group .btn{
+    .app-right .input-group .btn {
         font-size: 12px;
     }
-    .quickLink-section{
+    .quickLink-section {
         display: none;
     }
 }

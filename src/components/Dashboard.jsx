@@ -66,7 +66,7 @@ export default class Dashboard extends Component {
                              <WelcomeText router={this.props.router} />
                         </div>
                     </div>}
-                    <div className="inSection">
+                    <div className="inSection dash-inSec">
                         <div className="padwrapper">
                             {/*Service List*/}
                             <h4 className="serviceList-title">Pick a Service, to get a quote</h4>
@@ -83,7 +83,7 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
 
-                    <div className="inSection dash-jobupdate-bg">
+                    <div className="inSection dash-jobupdate-bg dash-inSec">
                         <div className="padwrapper">
                             {/*Job Updates*/}
                             <div className="jobUpdate-padding">

@@ -3,7 +3,8 @@
 }
 
 .timeline-card {
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08); */
+    border: 1px solid rgba(0,0,0,0.08);
     background: #fff;
 }
 
@@ -84,6 +85,10 @@
     font-size: 14px;
     color: #454B51;
     margin-top: 20px;
+}
+
+.placeholderImg img{
+  width: 100%;
 }
 
 .timeline-summary-header {
@@ -244,7 +249,7 @@
 }
 
 .otherDetails-content li span {
-    width: 60%;
+    /* width: 60%; */
     display: inline-block;
     vertical-align: top;
 }
