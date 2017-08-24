@@ -27,6 +27,7 @@ export default class RequestCard extends Component {
       TimePickerTo: "",
       switched: false,
       filterSort: "low-high",
+      filterdropdownVisible:false,
       filterdropdown: false,
       sortBydropdown: false,
       daySelected: {
@@ -175,6 +176,11 @@ export default class RequestCard extends Component {
     this.setState({ jobUpdates: val });
   }
   bodyClick(e) {
+    if(e.target.className=="rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')){
+      this.setState({filterdropdownVisible:true})
+    }else{
+      this.setState({filterdropdownVisible:false})
+    }
     // if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
     //   this.setState({ filterdropdown: true, sortBydropdown: false })
     // } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
@@ -263,7 +269,7 @@ export default class RequestCard extends Component {
     this.setState({ switched: !this.state.switched })
   }
   clearFilter(e) {
-
+    
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.setState({
       ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
@@ -285,7 +291,6 @@ export default class RequestCard extends Component {
     // console.log(this.state.TimePickerTo)
   }
   removeFav(event, selectedkey){
-    debugger
     event.stopPropagation();
     event.preventDefault();
     let updatedVal=[]
@@ -296,6 +301,11 @@ export default class RequestCard extends Component {
       }
     })
     this.setState({jobCardDetails:updatedVal});
+  }
+  filterDropDownFunc(e){
+    if(!this.state.filterdropdownVisible){
+      this.setState({filterdropdown:e})
+    }
   }
 
   render() {
@@ -367,7 +377,7 @@ export default class RequestCard extends Component {
                           <span>51 Results Found</span>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e)=>{this.setState({sortBydropdown:e})}} noCaret title={
                               <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-vertical" />
                                 <label>Sort by</label>
@@ -414,7 +424,7 @@ export default class RequestCard extends Component {
                           </div>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
