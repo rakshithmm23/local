@@ -2,19 +2,20 @@
     box-shadow: none !important;
     border: 0;
     background: none !important;
-    width: 100px;
+    width: 70px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
     margin-top: 4px;
     font-family: CenturyGothic;
+    padding: 6px 0;
 }
 
 .profile-header .btn-default span img {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    border-radius: 5px;
     display: inline-block;
     margin-right: 8px;
 }
@@ -81,7 +82,7 @@
     outline: 0 !important;
 }
 .car-profile-header .dropdown-menu{
-  height: 250px;
+  max-height: 250px;
   overflow: scroll;
 }
 @media screen and (max-width: 991px) {
@@ -180,7 +181,7 @@
     font-size: 26px;
     position: absolute;
     right: -40px;
-    top: 4px;
+    top: 2px;
 }
 
 .text-dropdown .dropdown-menu {
@@ -300,7 +301,7 @@
     overflow: hidden;
 }
 
-.text-dropdown.add-new .dropdown-menu li:last-child {
+/* .text-dropdown.add-new .dropdown-menu li:last-child {
     background: red !important;
     border-radius: 0 0px 5px 5px;
 }
@@ -313,4 +314,4 @@
     line-height: 18px;
     text-align: center;
     border-radius: 0 0px 5px 5px;
-}
+} */

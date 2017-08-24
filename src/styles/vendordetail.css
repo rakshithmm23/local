@@ -100,11 +100,12 @@
 }
 
 .read_more {
-    color: #F48021;
+    color: #006FBA;
     font-size: 11px;
     font-family: CenturyGothic;
     float: right;
-    cursor: pointer
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .km-details {

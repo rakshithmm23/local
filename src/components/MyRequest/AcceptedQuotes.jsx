@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Button from '../common/Button';
 import CustomScroll from 'react-custom-scroll';
 import { Media } from 'react-bootstrap';
-import Dotdotdot from 'react-dotdotdot';
-import { map, each, includes } from 'lodash';
+import { map, each, includes, truncate } from 'lodash';
+
 
 export default class AcceptedQuotes extends Component {
   constructor(){
@@ -11,14 +11,14 @@ export default class AcceptedQuotes extends Component {
     this.state={
       imagesLeft:false,
       imagesRemaining:0,
-      readMore:true
+      isVendorDescTruncated: true
     }
 
       this.AcceptedQuotes = [
         {
           vdImage: '../../images/car.jpg',
           vdName:'1. Shine Works',
-          kmDetails:'2.5kms',
+          kmDetails:'2.5 kms',
           ratingText:3.2,
           TotalRating:3,
           vdAddress:'29 Airport Road, Doha 00150, Qatar',
@@ -58,8 +58,7 @@ export default class AcceptedQuotes extends Component {
               {
                   photo :'../../images/test.jpg',
               }
-          ],
-          PhotoDesc :'Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota el Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota el',
+          ]
         }
       ];
     }
@@ -78,7 +77,8 @@ export default class AcceptedQuotes extends Component {
       }
     }
   render() {
-
+    const vendorDesc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus ut nibh ut lacinia. Nullam sit amet est in nisl tincidunt convallis. Donec consequat molestie dolor nec fringilla. Aliquam erat volutpat. Aenean imperdiet tellus in dolor commodo porttitor. Aenean auctor velit auctor, consectetur orci at, luctus tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis eleifend odio nulla, non tincidunt turpis tincidunt sed.';
+    const truncatedvendorDesc = this.state.isVendorDescTruncated ? truncate(vendorDesc, {length: 130}) : vendorDesc;
     const AcceptedQuotesList = map(this.AcceptedQuotes, (item, key) => {
       return(
         <div className="vendorDetails" key={key}>
@@ -92,12 +92,12 @@ export default class AcceptedQuotes extends Component {
               <h5>{item.vdName}</h5>
               <span className="km-details">{item.kmDetails}</span>
               <div className="rating">
+                <span className="mdi mdi-star" />
+                <span className="mdi mdi-star" />
+                <span className="mdi mdi-star" />
                 <span className="mdi mdi-star-outline" />
                 <span className="mdi mdi-star-outline" />
-                <span className="mdi mdi-star-outline" />
-                <span className="mdi mdi-star-outline" />
-                <span className="mdi mdi-star-outline" />
-                <span className="rating-text">{item.kmDetails} ({item.TotalRating} Reviews)</span>
+                <span className="rating-text">{item.ratingText} ({item.TotalRating} Reviews)</span>
               </div>
                 <label>{item.vdAddress}</label>
                 <label>{item.vdEmail}</label>
@@ -122,13 +122,9 @@ export default class AcceptedQuotes extends Component {
                       <img src="../../images/test.jpg" alt=""/>
                       <span className="more-photos">{"+ "+this.state.imagesRemaining+" more"}</span>
                     </div>}
-                <p>
-                  <Dotdotdot clamp={this.state.readMore?2:1000}>
-                    {item.PhotoDesc}
-                  </Dotdotdot>
-                </p>
-                {this.state.readMore && <label className="read_more" onClick={this.showText.bind(this,'more')}>Read More</label>}
-                {!this.state.readMore &&<label className="read_more" onClick={this.showText.bind(this,'less')}>Read Less</label>}
+                <p>{truncatedvendorDesc}</p>
+                {this.state.isVendorDescTruncated && <label className="read_more" onClick={(e) => {e.preventDefault(); this.setState({'isVendorDescTruncated': false})}}>Read More</label>}
+                {!this.state.isVendorDescTruncated && <label className="read_more" onClick={(e) => {e.preventDefault(); this.setState({'isVendorDescTruncated': true})}}>Read Less</label>}
             </div>
         </div>
       );

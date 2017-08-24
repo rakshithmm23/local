@@ -34,7 +34,7 @@ class QuotesCard extends Component {
                     <div className="box-footer search-result-card">
                         <div className="footer-container">
                             <span className="card-ph-number">+971 919 233 470</span>
-                            <Button btnType="" btnSize="sm" fontSize={13} label="View Quote" btnCallBack={this.props.viewPayment} />
+                            <Button btnType="transparent" btnSize="sm" fontSize={13} label="Request Job" btnCallBack={this.props.viewPayment} />
                             {/*<span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" viewMessaging={this.props.viewMessaging}/>

@@ -50,10 +50,14 @@ export default class OtherDetails extends Component {
                     <li>
                         <label>Car Notes</label>
                          <span>
-                            <p>
-                                {this.props.carnotes ? this.props.carnotes : '-'}
-                            </p>
-                        </span>
+                           <p contentEditable={this.state.contentEditable ? "true" : "false"}>
+                              {this.props.carnotes ? this.props.carnotes : '-'}
+                          </p>
+                          {this.state.contentEditable?
+                              <a onClick={()=>{this.changeIcon('removeEdit');}}><i className="mdi mdi-check"/> Done</a>:
+                              <a onClick={()=>{this.changeIcon('edit');}}><i className="mdi mdi-pencil"/> Edit</a>
+                          }
+                      </span>
                     </li>
                 </ul>
             </div>

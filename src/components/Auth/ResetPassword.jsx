@@ -36,10 +36,13 @@ export default class ResetPassword extends Component {
       this.props.actions.clearComponentKey();
     }
   }
-  resetPassword() {
+  resetPassword(e) {
+    e.preventDefault();
     if (this.state.code) {
       if (this.formData.password.length && this.formData.confirmPassword.length && (this.formData.password == this.formData.confirmPassword)) {
         this.props.actions.resetPassword(this.state.code, this.formData.password);
+      }else{
+        this.props.actions.showErrorMessage("Password and ConfirmPassword should be same");
       }
     }
   }
@@ -55,42 +58,44 @@ export default class ResetPassword extends Component {
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle="Sign Up" />
         <CarouselSlider />
-        <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
-          <div className="customScroll">
-            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-              <div className="login-panel otp">
-                <div className="login-panel-header forget-panel-header">
-                  <h3 className="login-title">Reset Password</h3>
-                  <p className="note-text">
-                    Enter new password to reset.
-                                </p>
+          <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
+            <div className="customScroll">
+              <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                <div className="login-panel otp">
+                  <div className="login-panel-header forget-panel-header">
+                    <h3 className="login-title">Reset Password</h3>
+                    <p className="note-text">
+                      Enter new password to reset.
+                    </p>
+                  </div>
+                  <form>
+                    <div className="login-panel-body">
+                      {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                        <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                      </AlertDismissable>}
+                      <TextInput
+                        type="password"
+                        label="Password"
+                        name="password"
+                        validationError="Password must be atleast 6 characters"
+                        onChange={this.onFieldChange.bind(this)}
+                      />
+                      <TextInput
+                        type="password"
+                        label="Re-Enter Password"
+                        name="confirmPassword"
+                        validationError="Password must be atleast 6 characters"
+                        onChange={this.onFieldChange.bind(this)}
+                      />
+                    </div>
+                    <div className="login-panel-footer">
+                      <Button btnType="red" btnSize="sm" fontSize={14} isSubmitBtn={true} label="Reset" btnCallBack={this.resetPassword.bind(this)} />
+                    </div>
+                  </form>
                 </div>
-                <div className="login-panel-body">
-                  {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
-                    <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
-                  </AlertDismissable>}
-                  <TextInput
-                    type="password"
-                    label="Password"
-                    name="password"
-                    validationError="Password must be atleast 6 characters"
-                    onChange={this.onFieldChange.bind(this)}
-                  />
-                  <TextInput
-                    type="password"
-                    label="Re-Enter Password"
-                    name="confirmPassword"
-                    validationError="Password must be atleast 6 characters"
-                    onChange={this.onFieldChange.bind(this)}
-                  />
-                </div>
-                <div className="login-panel-footer">
-                  <Button btnType="red" btnSize="sm" fontSize={14} label="Reset" btnCallBack={this.resetPassword.bind(this)} />
-                </div>
-              </div>
-            </CustomScroll>
+              </CustomScroll>
+            </div>
           </div>
-        </div>
       </div>
     );
   }

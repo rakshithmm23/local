@@ -166,6 +166,15 @@ export function showWelcomePage(otp, phone, userId) {
   }
 }
 
+export function showErrorMessage(error){
+  return (dispatch) => {
+    dispatch({
+      type: types.SHOW_ERROR_MESSAGE,
+      statusMessage: error,
+    });
+  };
+}
+
 export function hideErrorMessage() {
   return (dispatch) => {
     dispatch({

@@ -37,7 +37,8 @@ export default class ForgotPassword extends Component {
       this.errors[name] = false;
     }
   }
-  forgotPasswordAction() {
+  forgotPasswordAction(e) {
+    e.preventDefault();
     if (this.formData.email && this.errors['email'] != true) {
       this.props.actions.forgotPassword(this.formData.email);
     } else {
@@ -58,6 +59,7 @@ export default class ForgotPassword extends Component {
         <div className="col-md-6 col-sm-12 col-xs-12 pad0 grid-12">
           <div className="customScroll">
             <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+            <form>
               <div className="login-panel otp">
                 <div className="login-panel-header forget-panel-header">
                   <h3 className="login-title">Forgot Password ?</h3>
@@ -81,6 +83,7 @@ export default class ForgotPassword extends Component {
                   <Button btnCallBack={this.forgotPasswordAction} btnType="red" btnSize="sm" fontSize={14} label="Email Link" />
                 </div>
               </div>
+            </form>
             </CustomScroll>
           </div>
         </div>

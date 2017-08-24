@@ -17,6 +17,7 @@ export default class Description extends Component {
                 <h4>Description</h4>
                 <p>{truncatedDescriptionText}</p>
                 {this.state.isDescriptionTruncated && <label className="read_more" onClick={(e) => {e.preventDefault(); this.setState({'isDescriptionTruncated': false})}}>Read More</label>}
+                {!this.state.isDescriptionTruncated && <label className="read_more" onClick={(e) => {e.preventDefault(); this.setState({'isDescriptionTruncated': true})}}>Read Less</label>}
             </div>
             <div className="row vendor-description">
                 <h4>Facilities</h4>

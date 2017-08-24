@@ -859,7 +859,7 @@ export default class RequestCard extends Component {
                               </div>
                             </div>}
                             <div className="quotes-left-body">
-                              <div className="requestQuotesScroll">
+                              <div className={this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed"?"requestQuotesScroll vendor-details-content":"requestQuotesScroll"}>
                                 <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                   {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
 
