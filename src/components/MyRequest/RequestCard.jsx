@@ -24,7 +24,7 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
-
+      filterdropdownVisible:false,
       dataChange: "",
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
@@ -40,7 +40,7 @@ export default class RequestCard extends Component {
       changedWeek: false,
       filterType: "",
       open: false,
-      jobUpdates: "quotes",
+      jobUpdates: "details",
       currentWidth: '',
       activelatitude: '',
       activelongitue: '',
@@ -400,15 +400,15 @@ export default class RequestCard extends Component {
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
   }
   bodyClick(e) {
-    if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
-    } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
-      this.setState({ sortBydropdown: true, filterdropdown: false })
-    } else if (e.target.closest('.rc-time-picker-panel')) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
+    if(e.target.className=="rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')){
+      this.setState({filterdropdownVisible:true})
+    }else{
+      this.setState({filterdropdownVisible:false})
     }
-    else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
-      this.setState({ filterdropdown: false, sortBydropdown: false })
+  }
+  filterDropDownFunc(e){
+    if(!this.state.filterdropdownVisible){
+      this.setState({filterdropdown:e})
     }
   }
 
@@ -428,7 +428,6 @@ export default class RequestCard extends Component {
     this.setState({ mapView: false, quotationView: true, quotation: false, messages: true, jobUpdates: "quotes" })
   }
   mapClick(map) {
-    debugger
     let update, newDetails = [];
 
     this.state.jobCardDetails.map((value, key) => {
@@ -650,7 +649,7 @@ export default class RequestCard extends Component {
                             {this.jobData[0].statusIndicator == "active" && <div className="title">
                               <span>4 Quotes Received</span>
                               <div className="filterSection">
-                                <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
+                                <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e)=>{this.setState({sortBydropdown:e})}} noCaret title={
                                   <div className="filterLabel showSortBy">
                                     <i className="mdi mdi-swap-vertical" />
                                     <label>Sort by</label>
@@ -696,7 +695,7 @@ export default class RequestCard extends Component {
                                 </DropdownButton>
                               </div>
                               <div className="filterSection">
-                                <DropdownButton bsSize="large" open={this.state.filterdropdown} noCaret id="dropdown-size-large" title={
+                                <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
                                   <div className="filterLabel showFilters ">
                                     <i className="mdi mdi-filter-variant" />
                                     <label>Filter</label>
