@@ -5,3 +5,14 @@
 .customScroll .custom-scroll .inner-handle {
     margin-top: 90px;
 }
+.custom-scroll .outer-container{
+    width: 100%;
+    display: block;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .custom-scroll .outer-container{
+        width: 100%;
+        display: block;
+    }
+}
