@@ -19,6 +19,7 @@ import CustomScroll from 'react-custom-scroll';
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
+    this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
       setCenter: false,
@@ -140,7 +141,6 @@ export default class RequestCard extends Component {
       svg: 'data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20width%3D%2236px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2036%2040%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3C!--%20Generator%3A%20Sketch%2042%20(36781)%20-%20http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%20--%3E%0A%20%20%20%20%3Ctitle%3ERectangle%2010%20Copy%203%3C%2Ftitle%3E%0A%20%20%20%20%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%2C3.99742905%20C0%2C1.78970995%201.7852456%2C0%203.99017859%2C0%20L32.0098214%2C0%20C34.2135362%2C0%2036%2C1.78197514%2036%2C3.99742905%20L36%2C25.1917601%20C36%2C27.3994792%2034.4851438%2C30.1580906%2032.6302879%2C31.3444558%20L19.0975342%2C40%20L3.48057588%2C31.1594879%20C1.5583069%2C30.071322%200%2C27.407214%200%2C25.1917601%20L0%2C3.99742905%20Z%22%20id%3D%22path-1%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-2%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%2240%22%20fill%3D%22white%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-1%22%3E%3C%2Fuse%3E%0A%20%20%20%20%20%20%20%20%3C%2Fmask%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20stroke-opacity%3D%220.455219656%22%3E%0A%20%20%20%20%20%20%20%20%3Cg%20id%3D%22location-pin%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20fill%3D%22%23EE3124%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Rectangle-10-Copy-3%22%20mask%3D%22url(%23mask-2)%22%20xlink%3Ahref%3D%22%23path-1%22%3E%3C%2Fuse%3E%0A%20%20%20%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3C%2Fg%3E%0A%20%20%20%20%3Ctext%20transform%3D%22translate(18.5%2021)%22%20fill%3D%22%23fff%22%20style%3D%22font-family%3A%20Arial%2C%20sans-serif%3Bfont-weight%3Abold%3Btext-align%3Acenter%3B%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%3E',
       svgEnd: '</text>%0A</svg>',
       distValue: { min: 2, max: 10 },
-      priceValue: { min: 10, max: 70 },
       ratingValue: 0,
       inValidTime: false,
     };
@@ -256,26 +256,44 @@ export default class RequestCard extends Component {
       daySelected: days
     })
   }
+  changeCheckbox(val) {
+    if (val == "all") {
+      if (this.checkBox.all == false) {
+        this.checkBox = { all: true, carService: true, carWash: true, carRepair: true }
+      } else {
+        this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
+      }
+    } else {
+      this.checkBox["all"] = false
+      this.checkBox[val] = !this.checkBox[val]
+    }
+  
+    this.setState({ checkBoxVal: !this.state.checkBoxVal })
+  }
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
   switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
-    if (val == 'byCash') {
-      this.toggleSwitchVal.byCreditcard = false;
-    } else if (val == 'byCreditcard') {
-      this.toggleSwitchVal.byCash = false;
-    }
     this.setState({ switched: !this.state.switched })
+    // if (val == 'byCash') {
+    //   this.toggleSwitchVal.byCreditcard = false;
+    // } else if (val == 'byCreditcard') {
+    //   this.toggleSwitchVal.byCash = false;
+    // } else if(val == 'onlyFavourites'){
+    //   this.toggleSwitchVal.onlyFavourites= false;
+    // }
+
   }
   clearFilter(e) {
     
-    this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
+    this.toggleSwitchVal = { onlyFavourites:false, Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.setState({
-      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
+      ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, daySelected: {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       }
     })
+    this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
   }
   ratingOnChange(rating) {
     this.setState({ ratingValue: rating })
@@ -423,8 +441,8 @@ export default class RequestCard extends Component {
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
-
-                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
+                          {/* onToggle={(e)=>{this.filterDropDownFunc(e)}} */}
+                            <DropdownButton bsSize="large" open={true}  noCaret id="dropdown-size-large" title={
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
@@ -435,6 +453,20 @@ export default class RequestCard extends Component {
                                 <div className="row">
                                   <div className="col-md-6 left">
                                     <div className="filterby-wrapper">
+                                    <div className="f-card">
+                                        <h5>Service Type</h5>
+                                        <div className="row">
+                                          <div className="col-md-6 pad0">
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.all} onChange={this.changeCheckbox.bind(this, 'all')} />All</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carWash} onChange={this.changeCheckbox.bind(this, 'carWash')} />Car Wash</label>
+                                          </div>
+                                          <div className="col-md-6">
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carService} onChange={this.changeCheckbox.bind(this, "carService")} />Car Service</label>
+                                            <label className="checkbox-style"><input type="checkbox" value="" checked={this.checkBox.carRepair} onChange={this.changeCheckbox.bind(this, "carRepair")} />Car Repair</label>
+                                          </div>
+
+                                        </div>
+                                      </div>
                                       <div className="f-card">
                                         <h5>Distance</h5>
                                         <InputRange
@@ -447,17 +479,7 @@ export default class RequestCard extends Component {
                                         <span className="range-max">{this.state.distValue.max + " Km"}</span>
 
                                       </div>
-                                      <div className="f-card">
-                                        <h5>Price</h5>
-                                        <InputRange
-                                          formatLabel={priceValue => `${priceValue}AED`}
-                                          minValue={0}
-                                          maxValue={100}
-                                          value={this.state.priceValue}
-                                          onChange={priceValue => this.setState({ priceValue })} />
-                                        <span className="range-min">{this.state.priceValue.min + " AED"}</span>
-                                        <span className="range-max">{this.state.priceValue.max + " AED"}</span>
-                                      </div>
+                                      
                                       <div className="f-card">
                                         <h5>Open Between</h5>
                                         <ul className="list-unstyled">
@@ -474,7 +496,7 @@ export default class RequestCard extends Component {
                                           onChange={this.TimePickerChange.bind(this, "timeFrom")}
                                           placeholder="Time"
                                           showSecond={false}
-                                          className="xxx"
+                                          className="fav-time"
                                           format={formatFrom}
                                           use12Hours
                                         />
@@ -485,7 +507,7 @@ export default class RequestCard extends Component {
                                           onChange={this.TimePickerChange.bind(this, "timeTo")}
                                           placeholder="Time"
                                           showSecond={false}
-                                          className="xxx"
+                                          className="fav-time"
                                           format={formatTo}
                                           use12Hours
                                         />
@@ -517,7 +539,18 @@ export default class RequestCard extends Component {
                                           onChange={(e) => { this.ratingOnChange(e) }}
                                         />
                                       </div>
-
+                                      <div className="f-card ">
+                                        <h5>Only show Favourites</h5>
+                                        <ToggleSwitch
+                                          checked={this.toggleSwitchVal.onlyFavourites}
+                                          size="small"
+                                          onChange={this.switch.bind(this, 'onlyFavourites')}
+                                          size="small"
+                                          ref={(node) => {
+                                            this.toggleSwitch = node;
+                                          }}
+                                        />
+                                      </div>
                                       <div className="f-card ">
                                         <h5>Only show Authorized Businesses</h5>
                                         <ToggleSwitch
@@ -539,7 +572,6 @@ export default class RequestCard extends Component {
                                           ref={(node) => {
                                             this.toggleSwitch = node;
                                           }}
-                                        />
                                         />
                                       </div>
                                       <div className="f-card payment-type">
