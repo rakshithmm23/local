@@ -26,8 +26,9 @@ export const isLoggedIn = (nextState, replace) => {
   }
   window.scrollTo(0, 0);
   const userId = localStorage.getItem('userId');
-  const authData = localStorage.getItem('authData');
-  if (!(userId && authData)) {
+  let authData = localStorage.getItem('authData');
+  authData = JSON.parse(authData);
+  if (!(userId && authData && authData.phone && authData.phoneVerified)) {
     replace({
       pathname: '/'
     });
@@ -65,8 +66,8 @@ export default (
         <Route path="sign-in" onEnter={scrollToTop} component={AuthContainer(SignIn)} />
         <Route path="forgot-password" onEnter={scrollToTop} component={AuthContainer(ForgotPassword)} />
         <Route path="edit-mobileno" onEnter={scrollToTop} component={AuthContainer(EditMobileNo)} />
-        <Route path="send-otp" onEnter={isLoggedIn} component={AuthContainer(SendOTP)}/>
-        <Route path="verify-otp" onEnter={isLoggedIn} component={AuthContainer(VerifyOTP)} />
+        <Route path="send-otp" onEnter={scrollToTop} component={AuthContainer(SendOTP)}/>
+        <Route path="verify-otp" onEnter={scrollToTop} component={AuthContainer(VerifyOTP)} />
         <Route path="reset-password" onEnter={scrollToTop} component={AuthContainer(ResetPassword)} />
         <Route path="confirmed" onEnter={scrollToTop} component={AuthContainer(Confirmed)} />
         <Route path="reset-email-confirmation" onEnter={scrollToTop} component={AuthContainer(ResetEmailConfirmation)} />

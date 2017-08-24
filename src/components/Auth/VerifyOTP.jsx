@@ -30,8 +30,6 @@ export default class VerifyOTP extends Component {
       if (authData.phone) {
         if (authData.phoneVerified) {
           this.props.router.push('dashboard');
-        } else if (this.props.authReducer && this.props.authReducer.fromSignIn) {
-          this.props.actions.resendOTP(authData.phone);
         }
       } else {
         this.props.router.push('send-otp');

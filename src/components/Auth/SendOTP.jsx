@@ -26,9 +26,23 @@ export default class SendOTP extends Component {
   }
 
   componentWillMount() {
-    if (localStorage.authData) {
-      const authData = JSON.parse(localStorage.authData);
-      this.formData.phone = authData.phone || '';
+    const authData = JSON.parse(localStorage.authData);
+    if (authData) {
+      if (authData.phone && authData.phoneVerified) {
+        this.props.router.push('dashboard');
+      }
+    } else {
+      this.props.router.push('/');
+    }
+  }
+  componentWillReceiveProps() {
+    const authData = JSON.parse(localStorage.authData);
+    if (authData) {
+      if (authData.phone && authData.phoneVerified) {
+        this.props.router.push('dashboard');
+      }
+    } else {
+      this.props.router.push('/');
     }
   }
 

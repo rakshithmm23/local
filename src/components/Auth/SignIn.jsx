@@ -35,31 +35,15 @@ export default class SignIn extends Component {
   componentWillMount() {
     const authData = JSON.parse(localStorage.getItem('authData'));
     const userId = localStorage.getItem('userId');
-    if (userId && authData) {
-      if (authData.phone) {
-        if (authData.phoneVerified) {
-          this.props.router.push('dashboard');
-        } else {
-          this.props.router.push('verify-otp');
-        }
-      } else {
-        this.props.router.push('send-otp');
-      }
+    if (userId && authData && authData.phone && authData.phoneVerified) {
+      this.props.router.push('dashboard');
     }
   }
   componentWillUpdate(nextProps) {
     const authData = JSON.parse(localStorage.getItem('authData'));
     const userId = localStorage.getItem('userId');
-    if (authData && userId) {
-      if (authData.phone) {
-        if (authData.phoneVerified) {
-          this.props.router.push('dashboard');
-        } else {
-          this.props.router.push('verify-otp');
-        }
-      } else {
-        this.props.router.push('send-otp');
-      }
+    if (userId && authData && authData.phone && authData.phoneVerified) {
+      this.props.router.push('dashboard');
     }
   }
   componentWillUnmount() {

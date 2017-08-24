@@ -36,31 +36,15 @@ export default class SignUp extends Component {
   componentWillMount() {
     const userId = localStorage.getItem('userId');
     const authData = JSON.parse(localStorage.getItem('authData'));
-    if (userId && authData) {
-      if (authData.phone) {
-        if (authData.phoneVerified) {
-          this.props.router.push('dashboard');
-        } else {
-          this.props.router.push('verify-otp');
-        }
-      } else {
-        this.props.router.push('send-otp');
-      }
+    if (userId && authData && authData.phone && authData.phoneVerified) {
+      this.props.router.push('dashboard');
     }
   }
   componentWillReceiveProps(nextProps) {
     const userId = localStorage.getItem('userId');
     const authData = JSON.parse(localStorage.getItem('authData'));
-    if (userId && authData) {
-      if (authData.phone) {
-        if (authData.phoneVerified) {
-          this.props.router.push('dashboard');
-        } else {
-          this.props.router.push('verify-otp');
-        }
-      } else {
-        this.props.router.push('send-otp');
-      }
+    if (userId && authData && authData.phone && authData.phoneVerified) {
+      this.props.router.push('dashboard');
     }
   }
   onFieldChange(value, key, name) {
