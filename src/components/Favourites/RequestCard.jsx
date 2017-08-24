@@ -374,7 +374,7 @@ export default class RequestCard extends Component {
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
                         <div className="title">
-                          <span>51 Results Found</span>
+                          <span>5 Favourites</span>
                           <div className="filterSection">
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e)=>{this.setState({sortBydropdown:e})}} noCaret title={
