@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map, forEach,remove,cloneDeep } from 'lodash';
+import { map, forEach,remove, } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import QuotesCard from './QuotesCard';
@@ -175,16 +175,16 @@ export default class RequestCard extends Component {
     this.setState({ jobUpdates: val });
   }
   bodyClick(e) {
-    if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
-    } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
-      this.setState({ sortBydropdown: true, filterdropdown: false })
-    } else if (e.target.closest('.rc-time-picker-panel')) {
-      this.setState({ filterdropdown: true, sortBydropdown: false })
-    }
-    else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
-      this.setState({ filterdropdown: false, sortBydropdown: false })
-    }
+    // if ((e.target.closest('.filter-dropdown') || e.target.closest('.showFilters')) && (!this.state.filterdropdown)) {
+    //   this.setState({ filterdropdown: true, sortBydropdown: false })
+    // } else if ((e.target.closest('.showSortBy') || e.target.closest('.sortFilter')) && (!this.state.sortBydropdown)) {
+    //   this.setState({ sortBydropdown: true, filterdropdown: false })
+    // } else if (e.target.closest('.rc-time-picker-panel')) {
+    //   this.setState({ filterdropdown: true, sortBydropdown: false })
+    // }
+    // else if (e.target.closest('.Filterby') == null && e.target.closest('.sortFilter') == null) {
+    //   this.setState({ filterdropdown: false, sortBydropdown: false })
+    // }
   }
   updateDimensions() {
     const windowWidth = this.windowWidth();
@@ -284,20 +284,21 @@ export default class RequestCard extends Component {
 
     // console.log(this.state.TimePickerTo)
   }
-  removeFav(event, key){
+  removeFav(event, selectedkey){
+    debugger
     event.stopPropagation();
     event.preventDefault();
-    let cardData =[];
-    forEach(this.state.jobCardDetails, function(product) {
-      if(key!=product.id){
-        cardData.push(product);
+    let updatedVal=[]
+    const cardData = this.state.jobCardDetails;
+    map(cardData,(cardDetails,index)=>{
+      if(selectedkey!=index){
+        updatedVal.push(cardDetails)
       }
-    });
-    this.setState({jobCardDetails:cardData});
+    })
+    this.setState({jobCardDetails:updatedVal});
   }
 
   render() {
-    debugger
     //console.log(this.state.currentWidth)
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
@@ -363,7 +364,7 @@ export default class RequestCard extends Component {
                     <div className="col-md-6 clearfix left pad0" >
                       <div className="quotes-view">
                         <div className="title">
-                          <span>5 Results Found</span>
+                          <span>51 Results Found</span>
                           <div className="filterSection">
 
                             <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} noCaret title={
