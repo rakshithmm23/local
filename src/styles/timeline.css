@@ -4,7 +4,7 @@
 
 .timeline-card {
     /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08); */
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     background: #fff;
 }
 
@@ -87,8 +87,8 @@
     margin-top: 20px;
 }
 
-.placeholderImg img{
-  width: 100%;
+.placeholderImg img {
+    width: 100%;
 }
 
 .timeline-summary-header {
@@ -252,6 +252,10 @@
     /* width: 60%; */
     display: inline-block;
     vertical-align: top;
+}
+
+.otherDetails-content li span.car-notes-content {
+    width: 47%;
 }
 
 .otherDetails-content li span,

@@ -60,6 +60,8 @@
 
 .rating.rating-left {
     justify-content: left;
+    display: block;
+    text-align: left;
 }
 
 .vendor-cover-header h1 {

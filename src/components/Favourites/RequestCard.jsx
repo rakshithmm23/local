@@ -274,16 +274,17 @@ export default class RequestCard extends Component {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
   switch(val) {
+    debugger
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
-    this.setState({ switched: !this.state.switched })
-    // if (val == 'byCash') {
-    //   this.toggleSwitchVal.byCreditcard = false;
-    // } else if (val == 'byCreditcard') {
-    //   this.toggleSwitchVal.byCash = false;
-    // } else if(val == 'onlyFavourites'){
-    //   this.toggleSwitchVal.onlyFavourites= false;
-    // }
+    if (val == 'byCash') {
+      this.toggleSwitchVal.byCreditcard = false;
+      // this.toggleSwitchVal.byCash = true;
+    } else if (val == 'byCreditcard') {
+      this.toggleSwitchVal.byCash = false;
+      // this.toggleSwitchVal.byCreditcard = true;
+    }
 
+    this.setState({ switched: !this.state.switched })
   }
   clearFilter(e) {
     
@@ -441,8 +442,8 @@ export default class RequestCard extends Component {
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
-                          {/* onToggle={(e)=>{this.filterDropDownFunc(e)}} */}
-                            <DropdownButton bsSize="large" open={true}  noCaret id="dropdown-size-large" title={
+                          {/*  */}
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
