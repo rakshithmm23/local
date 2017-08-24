@@ -19,7 +19,8 @@
     font-size: 14px;
     /* height: 45px; */
     margin: 10px 0;
-    padding: 30px 0 12px;
+    /* padding: 30px 0 12px; */
+    padding: 6px 0 0;
 }
 
 .form-group.error .form-input {
@@ -65,7 +66,8 @@
     position: absolute;
     right: 0;
     z-index: 999;
-    top: 10px;
+    /* top: 10px; */
+    top: 0;
     cursor: pointer;
 }
 
@@ -120,7 +122,8 @@
     position: absolute;
     pointer-events: none;
     left: 0px;
-    top: 20px;
+    /* top: 20px; */
+    top: 10px;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -141,7 +144,9 @@
 
 .form-input:focus~label,
 .form-input:valid~label {
-    top: 3px !important;
+    /* top: 3px !important; */
+    /* font-size: 11px; */
+        top: -9px !important;
     font-size: 11px;
 }
 
@@ -201,6 +206,24 @@
 
 .input-button-addon .form-group .error-text {
     bottom: -20px;
+}
+
+/* Safari Autofill icon removal */
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  opacity: 0 !important;
+}
+
+/* IE */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .forget-input .btn-theme.red, .otp-input .btn-theme.red, .otpbtnAlign{
+     margin-top:-8px;
+     vertical-align: top;
+  }
 }
 
 @media screen and (min-width: 1075px) and (max-width: 1175px) {
