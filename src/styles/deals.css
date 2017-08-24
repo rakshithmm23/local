@@ -2,10 +2,11 @@
     margin: 30px 0px !important;
 }
 
-.deals-heading{
+.deals-heading {
     text-align: left;
     padding: 0 15px;
 }
+
 .deals-heading h5 {
     font-size: 20px;
     line-height: 26px;
@@ -23,6 +24,7 @@
 .Deals-layout {
     padding: 0px;
     margin-top: 30px;
+    margin-bottom: 35px;
 }
 
 .deal-img img {
@@ -52,7 +54,7 @@
         margin: 30px 0 !important;
     }
     .deals-heading p {
-        padding: 0px 10px;
+        /* padding: 0px 10px; */
     }
     .deal-img {
         margin-bottom: 15px;
