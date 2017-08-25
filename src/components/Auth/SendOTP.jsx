@@ -28,6 +28,7 @@ export default class SendOTP extends Component {
   componentWillMount() {
     const authData = JSON.parse(localStorage.authData);
     if (authData) {
+      this.formData.phone = authData.phone || '';
       if (authData.phone && authData.phoneVerified) {
         this.props.router.push('dashboard');
       }
