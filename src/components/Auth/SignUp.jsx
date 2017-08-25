@@ -35,14 +35,14 @@ export default class SignUp extends Component {
   }
   componentWillMount() {
     const userId = localStorage.getItem('userId');
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');
     }
   }
   componentWillReceiveProps(nextProps) {
     const userId = localStorage.getItem('userId');
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');
     }

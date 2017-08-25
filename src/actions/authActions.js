@@ -137,7 +137,7 @@ export function showWelcomePage(otp, phone, userId) {
       })
       .then((response) => {
         if (response.status === 200) {
-          const authData = JSON.parse(localStorage.getItem('authData'));
+          const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : {};
           authData.phoneVerified = true;
           localStorage.setItem('authData', JSON.stringify(authData));
           dispatch({
@@ -242,7 +242,7 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
         if (userTriggeredAPI) {
           window.alert('OTP has been send to ' + phoneNumber);
         }
-        const authData = JSON.parse(localStorage.getItem('authData'));
+        const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
         dispatch({
           type: types.SHOW_VERIFY_OTP_PAGE,
           authData: authData

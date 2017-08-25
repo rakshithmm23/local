@@ -33,14 +33,14 @@ export default class SignIn extends Component {
     }
   }
   componentWillMount() {
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     const userId = localStorage.getItem('userId');
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');
     }
   }
   componentWillUpdate(nextProps) {
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     const userId = localStorage.getItem('userId');
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');

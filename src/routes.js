@@ -27,7 +27,7 @@ export const isLoggedIn = (nextState, replace) => {
   window.scrollTo(0, 0);
   const userId = localStorage.getItem('userId');
   let authData = localStorage.getItem('authData');
-  authData = JSON.parse(authData);
+  authData = authData ? JSON.parse(authData) : '';
   if (!(userId && authData && authData.phone && authData.phoneVerified)) {
     replace({
       pathname: '/'
