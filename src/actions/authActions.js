@@ -278,12 +278,12 @@ export function logout(router) {
         dispatch({
           type: types.LOGOUT,
         });
-        router.push('/');
+        window.location.pathname = '';
       }
     })
     .catch(() => {
         localStorage.clear();
-        router.push('/');
+        window.location.pathname = '';
     });
   };
 }

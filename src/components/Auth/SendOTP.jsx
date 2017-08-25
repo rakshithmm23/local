@@ -106,6 +106,7 @@ export default class SendOTP extends Component {
                         onChange={this.onFieldChange.bind(this)}
                       />
                     </div>
+                    <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail otpbtnAlign" btnType="red" btnSize="sm" fontSize={16} label="Get OTP" />
                 </div>
                 </div>
               </CustomScroll>
