@@ -263,7 +263,7 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
   };
 }
 
-export function logout(router) {
+export function logout() {
   return (dispatch) => {
     axios.get(API_END_POINTS.LOGOUT, {
       headers: {
