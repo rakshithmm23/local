@@ -185,7 +185,8 @@
     opacity: 0.6;
 }
 .form-group.disabledInput label{
-    top: 0;
+    top: -8px;
+    font-size: 11px;
 }
 .form-group.disabledInput .form-control{
     background: #fff;
@@ -262,6 +263,12 @@ input::-webkit-contacts-auto-fill-button {
     }
     .form-group label {
         font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 580px){
+    .otp-input {
+        width: 100%;
     }
 }
 

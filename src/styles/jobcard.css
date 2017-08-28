@@ -165,6 +165,10 @@
         text-transform: capitalize;
         font-family: CenturyGothic;
         font-weight: bold;
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .card-info .job-title {
@@ -173,6 +177,10 @@
         text-transform: capitalize;
         font-family: CenturyGothic;
         font-weight: bold;
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .card-info .job-details {
@@ -208,7 +216,8 @@
         margin-top: 5px;
         font-weight: normal;
     }
-    .card-info .job-details li.desktop-expand-timeline .btn-theme{
+
+    .card-info .job-details li.desktop-expand-timeline .btn-theme {
         width: 140px;
     }
 
@@ -242,7 +251,8 @@
     .job-icon {
         float: right;
         cursor: pointer;
-        margin: 0 15px;
+        margin: 0 30px;
+        margin-right: 2px;
     }
 
     .job-icon .mdi {
@@ -439,7 +449,7 @@
             font-size: 12px;
         }
         .card-info .job-details li label {
-            width: 68px;
+            width: 70px;
         }
         .card-time li label {
             width: 140px;
