@@ -65,13 +65,13 @@ export function signInAction(signInData, dispatch, fromSignup) {
   }
 }
 
-export function socialAuth(fbResponse, provider) {
+export function socialAuth(socialResponse, provider) {
   return (dispatch) => {
     const authPostData = {
       "provider": provider,
       "type": "customer",
       "userType": "customer",
-      "accessToken": fbResponse.accessToken
+      "accessToken": socialResponse.accessToken
     };
     axios.post(API_END_POINTS.SOCIAL_AUTH, JSON.stringify(authPostData), {
       headers: {
@@ -107,7 +107,7 @@ export function socialAuth(fbResponse, provider) {
         });
         dispatch({
           type: types.SAVE_LOG,
-          appLog: 'Calling SignIn API ' + API_END_POINTS.SIGNIN + ' Login Success, Response:  ' + responseData
+          appLog: 'Calling SignIn API ' + API_END_POINTS.SIGNIN + ' Login Success, Response:  ' + response.data
         });
       }
     })
