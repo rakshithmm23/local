@@ -65,7 +65,7 @@
 
 .panel-section .collapse-panel .search-box i {
     position: absolute;
-    top: 13px;
+    top: 10px;
     right: 15px;
     font-size: 18px;
     color: #949DA5;
@@ -80,7 +80,6 @@
 }
 
 .panel-section .collapse-panel .search-box .form-group label {
-    top: 15px;
     font-size: 16px;
 }
 

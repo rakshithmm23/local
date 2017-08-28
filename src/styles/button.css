@@ -61,12 +61,14 @@
 .login-panel-header .btn-theme.blue {
     margin-right: 35px;
 }
+
 @media screen and (max-width: 1075px) {
-   .login-panel-footer .btn-theme.red {
+    .login-panel-footer .btn-theme.red {
         float: right;
         margin-top: 15px;
     }
 }
+
 @media screen and (max-width: 640px) {
     .login-panel .btn-theme.red {
         margin-left: 0;
@@ -85,7 +87,7 @@
         height: 35px;
     }
 }
-  
+
 @media screen and (max-width: 580px) {
     .login-panel-header .btn-theme.lg {
         width: 45%;
