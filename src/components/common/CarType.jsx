@@ -131,7 +131,7 @@ class CardType extends Component {
                         <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
-                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inProgress"?"In Progress":cardDetails.statusIndicator}</div>
+                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inprogress"?"In Progress":cardDetails.statusIndicator}</div>
                                     <div className="job-icon notification">
                                         {this.getIcons(this, cardDetails.statusIndicator)}
                                     </div>

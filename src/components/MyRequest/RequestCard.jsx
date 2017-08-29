@@ -317,7 +317,6 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
     this.jobData = [
-
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',

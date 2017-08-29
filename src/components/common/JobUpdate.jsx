@@ -116,7 +116,7 @@ export default class JobUpdate extends Component {
       },
 
       {
-        route:"/request/inProgress",
+        route:"/request/inprogress",
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
         serviceTypes: 'Emergency Service',
