@@ -567,7 +567,7 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    // debugger
+    debugger
     if (this.props.router.params.requestType) {
       this.jobData[0].statusIndicator = this.props.router.params.requestType
     } else {
@@ -905,7 +905,7 @@ export default class RequestCard extends Component {
 
                                   </div>}
 
-                                  {this.jobData[0].statusIndicator != "waiting" || this.jobData[0].statusIndicator != "active" ? <div>
+                                  {this.jobData[0].statusIndicator != "active" ? <div>
                                     <AcceptedQuotes />
                                   </div> : ""}
                                 </CustomScroll>
