@@ -2,6 +2,7 @@
 export const BASE_URL = 'http://api-server-test.carcility.com';
 export const SIGNUP = BASE_URL + '/auth/signup';
 export const SIGNIN = BASE_URL + '/auth/login';
+export const SOCIAL_AUTH = BASE_URL + '/auth/socialsignin';
 export const FORGOT_PASSWORD = BASE_URL + '/auth/forgot-password';
 export const VERIFY_OTP = BASE_URL + '/api/users/verifyotp/';
 export const VERIFY_EMAIL = BASE_URL + '/auth/verifyemail';

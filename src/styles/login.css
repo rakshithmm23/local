@@ -2,7 +2,7 @@
     display: block;
     width: 60px;
     height: 60px;
-    background: url(../images/logo.png);
+    /* background: url(../images/logo.png); */
     background-size: 100%;
     color: transparent;
 }
@@ -174,7 +174,8 @@
     margin-top: 20px;
     cursor: pointer;
 }
-.login-panel-footer a.forgot-pswd{
+
+.login-panel-footer a.forgot-pswd {
     margin-top: 12px;
 }
 
@@ -187,7 +188,7 @@
 .forget-input .btn-theme.red,
 .otp-input .btn-theme.red,
 .otpbtnAlign {
-    margin-top: -23px;
+    margin-top: -18px;
 }
 
 @media screen and (min-height: 701px) {
@@ -200,7 +201,7 @@
     .login-panel {
         width: 480px;
     }
-    .login-panel-header .btn-theme.lg{
+    .login-panel-header .btn-theme.lg {
         width: 46% !important;
     }
 }
@@ -283,6 +284,7 @@
         text-align: center;
     }
 }
+
 @media screen and (min-width: 581px) and (max-width: 767px) {
     .login-panel {
         width: 500px;
@@ -290,9 +292,22 @@
     }
 }
 
+@media screen and (max-width: 640px) {
+    .forget-input .btn-theme.red,
+    .otp-input .btn-theme.red,
+    .otpbtnAlign {
+        margin-top: -12px;
+    }
+}
+
 @media screen and (max-width: 580px) {
     .login-panel {
         width: 100%;
         padding: 80px 20px 0;
+    }
+    .forget-input .btn-theme.red,
+    .otp-input .btn-theme.red,
+    .otpbtnAlign {
+        margin-top: 0;
     }
 }

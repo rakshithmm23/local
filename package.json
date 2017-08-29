@@ -46,6 +46,7 @@
     "react-dom": "15.6.1",
     "react-dotdotdot": "1.1.0",
     "react-facebook-login": "3.6.2",
+    "react-google-login": "2.9.3",
     "react-google-maps": "6.3.0",
     "react-input-range": "1.1.4",
     "react-keydown": "1.9.2",
