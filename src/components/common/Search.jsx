@@ -49,9 +49,6 @@ export default class Search extends Component {
                 this.setState({ seachedValue: this.state.seachedResult[this.state.cursor] });
             }else if (e.keyCode === 40 && this.state.cursor < this.state.seachedResult.length) {
                 this.setState({ seachedValue: this.state.seachedResult[this.state.cursor],cursor: this.state.cursor + 1 });
-            }else if(e.keyCode === 8){
-                debugger
-                this.setState({seachedValue: this.state.seachedResult[0],showSearchDropDown:true});
             }
         }
     }
