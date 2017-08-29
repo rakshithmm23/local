@@ -5,6 +5,7 @@ import Button from '../common/Button';
 import TextInput from '../common/TextInput';
 import CustomScroll from 'react-custom-scroll';
 import { validateField } from '../../helpers/index'
+import AlertDismissable from '../common/AlertDismissable';
 
 export default class SendOTP extends Component {
   constructor(props) {
@@ -46,7 +47,9 @@ export default class SendOTP extends Component {
       this.props.router.push('/');
     }
   }
-
+  componentWillUnmount() {
+    this.props.actions.hideErrorMessage();
+  }
   onFieldChange(value, key, name, validationObj) {
     if (value) {
       this.formData[name] = value;
@@ -79,7 +82,7 @@ export default class SendOTP extends Component {
     }
   }
   render() {
-    const { router } = this.props;
+    const { router, authReducer } = this.props;
     return (
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle='Sign Up' />
@@ -91,6 +94,9 @@ export default class SendOTP extends Component {
               <div className="login-panel otp">
                 <div className="login-panel-header">
                   <h3 className="login-title">Sign Up</h3>
+                  {authReducer && authReducer.showErrorMessage && <AlertDismissable bsStyle="danger" closeLabel="Close alert" closeAction={this.props.actions.hideErrorMessage}>
+                      <p> <i className="mdi mdi-block-helper" /> {authReducer.statusMessage} </p>
+                    </AlertDismissable>}
                 </div>
                 <div className="login-panel-body">
                   <p className="note-text input-title">Enter your phone number to receive an OTP</p>

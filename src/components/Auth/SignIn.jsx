@@ -6,6 +6,7 @@ import TextInput from '../common/TextInput';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -68,11 +69,13 @@ export default class SignIn extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
-      this.props.actions.signInAction({
-        'email': this.formData.email,
-        'password': this.formData.password,
-        'usertype': 'customer'
-      });
+      if (this.formData.password.length >= 6) {
+        this.props.actions.signInAction({
+          'email': this.formData.email,
+          'password': this.formData.password,
+          'usertype': 'customer'
+        });
+      }
     }
   }
 
@@ -88,8 +91,20 @@ export default class SignIn extends Component {
               <div className="login-panel signin">
                 <div className="login-panel-header">
                   <h3 className="login-title">Sign In</h3>
-                  <Button btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/facebook?type=customer" }} iconName="facebook" btnType="blue" btnSize="lg" label="Facebook" />
-                  <Button btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/google?type=customer" }} iconName="google" btnType="red" btnSize="lg" label="Google" />
+                  <FacebookLogin
+                      appId="1931777803704298"
+                      fields="name,email,picture"
+                      cssClass="btn btn-theme lg blue"
+                      textButton="Facebook"
+                      fields="name,email,picture"
+                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'facebook')}}}
+                      icon={<i className="mdi mdi-facebook" />}/>
+                  <GoogleLogin
+                      clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
+                      className="btn btn-theme lg red"
+                      onSuccess={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'google')}}}>
+                      <i className="mdi mdi-google"/>Google
+                  </GoogleLogin>
                 </div>
                 <div className="or-text">
                   <span>OR</span>
