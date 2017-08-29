@@ -7,6 +7,7 @@ import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -77,14 +78,16 @@ export default class SignUp extends Component {
       if (!phone_no.startsWith("+")) {
         phone_no = '+' + phone_no;
       }
-      this.props.actions.showVerifyOTPPage({
-        'name': this.formData.name,
-        'email': this.formData.email,
-        'phone': phone_no,
-        'password': this.formData.password,
-        'type': 'customer',
-        'usertype': 'customer'
-      })
+      if (this.formData.password.length >= 6) {
+        this.props.actions.showVerifyOTPPage({
+          'name': this.formData.name,
+          'email': this.formData.email,
+          'phone': phone_no,
+          'password': this.formData.password,
+          'type': 'customer',
+          'usertype': 'customer'
+        })
+      }
     }
   }
   componentWillUnmount() {
@@ -113,7 +116,8 @@ export default class SignUp extends Component {
                     <GoogleLogin
                       clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
                       className="btn btn-theme lg red"
-                      onSuccess={(socialResponse) => {console.log(socialResponse)}}>
+                      onSuccess={(socialResponse) => {console.log(socialResponse)}}
+                      onFailure={(resp) => {console.log(resp)}}>
                       <i className="mdi mdi-google"/>Google
                     </GoogleLogin>
                   </div>
