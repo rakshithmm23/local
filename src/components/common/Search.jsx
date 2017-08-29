@@ -9,8 +9,7 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showSearchDropDown: false,
-            cursor: 0,
+            searchDropdown:false,
             setCenter: false,
             mapLocationChanged: false,
             showLocationModal: false,
@@ -37,31 +36,17 @@ export default class Search extends Component {
         } else {
             alert("Geolocation is not supported by this browser.");
         }
-        document.body.addEventListener('keydown', this.keyPress.bind(this));
-    }
-    keyPress(e) {
-        
-        if (this.state.seachedResult.length > 0 && this.state.seachedValue != "" ) {
-            if (e.keyCode === 38 && this.state.cursor >= 0) {
-                if (this.state.cursor != 0) {
-                    this.setState({ cursor: this.state.cursor - 1 });
-                }
-                this.setState({ seachedValue: this.state.seachedResult[this.state.cursor] });
-            }else if (e.keyCode === 40 && this.state.cursor < this.state.seachedResult.length) {
-                this.setState({ seachedValue: this.state.seachedResult[this.state.cursor],cursor: this.state.cursor + 1 });
-            }
-        }
+        document.body.addEventListener('mousedown', this.bodyClick.bind(this));
     }
     showPosition(position) {
         let positionVal = [{
             lat: position.coords.latitude,
             lng: position.coords.longitude,
             pinImage: this.state.pinImage
-        }];
+        }]
         this.setState({ locationSearch: positionVal })
 
     }
-
 
     componetWillUnmount() {
         document.body.removeEventListener()
@@ -108,30 +93,8 @@ export default class Search extends Component {
         }
     }
 
-    // handleKeyDown(e) {
-    //     console.log('dasd')
-    //     if (e.keyCode === 38 && this.state.cursor > 0) {
-    //    debugger
-
-    //         this.setState( {cursor: this.state.cursor - 1})
-    //       } else if (e.keyCode === 40 && this.state.cursor < this.state.seachedResult.length ) {
-    //    debugger
-
-    //         this.setState( {cursor: this.state.cursor + 1})
-    //       }
-    // }
-    searchedValFunc(e) {
-        let results = []
-        filter(this.props.dropdownList, (val) => {
-            if (e.target.value != "" && val.toLowerCase().indexOf(e.target.value) != -1) {
-                results.push(val)
-            }
-        });
-        this.setState({ seachedValue: e.target.value, showLocationModal: false, seachedResult: results, showSearchDropDown: true })
-    }
 
     render() {
-        const searchedKey = this.state.seachedValue
         const style = {
             textBold: {
                 fontFamily: "CenturyGothic_bold",
@@ -143,13 +106,17 @@ export default class Search extends Component {
                 textTransform: "lowercase",
                 fontSize: "13px"
             }
-        };
+        }
         const jobCardLocation = forEach(this.state.locationSearch, (loc) => {
             return {
                 lat: loc.latitude, lng: loc.longitude, pinImage: loc.pinImage
-            };
+            }
+        })
+        let searchView = filter(this.props.dropdownList, (val) => {
+            if (this.state.seachedValue != "" && val.toLowerCase().indexOf(this.state.seachedValue) != -1) {
+                return val;
+            }
         });
-
 
         let locationFilterView = filter(this.props.savedLocation, (val) => {
             if (this.state.location != "" && val.address.toLowerCase().indexOf(this.state.location) != -1) {
@@ -197,7 +164,7 @@ export default class Search extends Component {
                     <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.dropdownSelect(e) }} title={
                         <div className="input-group">
                             <span className="input-group-addon" id="basic-addon1"><i className="mdi mdi-crosshairs-gps" /></span>
-                            <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value, showLocationModal: false })} aria-describedby="basic-addon1" />
+                            <input type="text" className="form-control padLeft0" placeholder="Locate Me" value={this.state.location} onChange={(e) => this.setState({ location: e.target.value,showLocationModal: false })} aria-describedby="basic-addon1" />
                             <i className="mdi mdi-chevron-down" />
                         </div>}>
                         <MenuItem eventKey="">
@@ -210,40 +177,38 @@ export default class Search extends Component {
 
                 </div>
 
-                <div className={this.state.seachedResult.length > 0 ? "searchFill active" : "searchFill"}>
+                <div className={searchView.length > 0 ? "searchFill active" : "searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} onToggle={(e) => { this.setState({ showSearchDropDown: e }) }}
-                            open={this.state.showSearchDropDown && this.state.seachedResult.length > 0 ? true : false}
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} onToggle={(e)=>{this.setState({searchDropdown:e})}}
+                            open={this.state.searchDropdown && searchView.length > 0 ? true : false}
                             noCaret title={
-                                <div >
-                                    <input id="inputSearch" value={this.state.seachedValue} placeholder="Search" 
-                                        onChange={(e) => this.searchedValFunc(e)} />
-                                    <i className="mdi mdi-magnify" aria-hidden="true" />
-                                    <span className="no-notify" />
-                                </div>}>
-                            <div className="cus-search-dropdown">
-                                {map(this.state.seachedResult, (searchRes, key) => {
+                            <div>
+                                <input value={this.state.seachedValue} placeholder="Search"
+                                    onChange={(e) => this.setState({ seachedValue: e.target.value,showLocationModal: false })} />
+                                <i className="mdi mdi-magnify" aria-hidden="true" />
+                                <span className="no-notify" />
+                            </div>}>
+                            {map(searchView, (searchRes, key) => {
 
-                                    let resLower = searchRes.toLocaleLowerCase();
-                                    let index = resLower.indexOf(searchedKey.toLowerCase());
-                                    if (index >= 0) {
-                                        resLower = <span>
-                                            <span style={style.textNormal}>{resLower.substring(0, index)}</span>
-                                            <span style={style.textBold}>{resLower.substring(index, index + this.state.seachedValue.length)}</span>
-                                            <span style={style.textNormal}>{resLower.substring(index + this.state.seachedValue.length)}</span>
-                                        </span>;
-                                    }
+                                let resLower = searchRes.toLocaleLowerCase()
+                                let index = resLower.indexOf(this.state.seachedValue);
+                                if (index >= 0) {
+                                    resLower = <span>
+                                        <span style={style.textNormal}>{resLower.substring(0, index)}</span>
+                                        <span style={style.textBold}>{resLower.substring(index, index + this.state.seachedValue.length)}</span>
+                                        <span style={style.textNormal}>{resLower.substring(index + this.state.seachedValue.length)}</span>
+                                    </span>;
+                                }
 
-                                    return (
-                                        <MenuItem key={key} eventKey={searchRes} >{resLower}</MenuItem>
-                                    );
-                                })}
-                            </div>
+                                return (
+                                    <MenuItem key={key} eventKey={searchRes} >{resLower}</MenuItem>
+                                );
+                            })}
                         </DropdownButton>
                     </FormGroup>
 
                 </div>
-                <CustomModal hideModal={() => { this.setState({ addLocationModal: false }) }} showModal={this.state.addLocationModal} footer={true} title="save location">
+                <CustomModal hideModal={() => {this.setState({addLocationModal: false})}} showModal={this.state.addLocationModal} footer={true} title="save location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -255,7 +220,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal hideModal={() => { this.setState({ editLocationModal: false }) }} showModal={this.state.editLocationModal} footer={true} title="edit location">
+                <CustomModal hideModal={() => {this.setState({editLocationModal: false})}} showModal={this.state.editLocationModal} footer={true} title="edit location">
                     <Modal.Body>
                         <div>
                             <h5 className="caption">Address</h5>
@@ -274,7 +239,7 @@ export default class Search extends Component {
                         </div>
                     </Modal.Body>
                 </CustomModal>
-                <CustomModal hideModal={() => { this.setState({ showLocationModal: false }) }} className="map-modal" showModal={this.state.showLocationModal} footer={true} title="Mark your location" saveText="Select Location">
+                <CustomModal hideModal={() => {this.setState({showLocationModal: false})}} className="map-modal" showModal={this.state.showLocationModal} footer={true} title="Mark your location" saveText="Select Location">
                     <Modal.Body>
                         <span onClick={() => this.setState({ setCenter: true })} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         <Gmaps

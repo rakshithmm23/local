@@ -7,6 +7,7 @@ import ProfileSteps from './ProfileSteps';
 import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import AlertDismissable from '../common/AlertDismissable';
+import { forEach } from 'lodash';
 
 export default class NewCarProfile extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class NewCarProfile extends Component {
         };
         this.onSubmit = this.onSubmit.bind(this);
     }
+
     componentWillMount() {
       const routeParams = this.props.routeParams;
       this.props.actions.getCarMakeandModels();
@@ -27,16 +29,22 @@ export default class NewCarProfile extends Component {
         this.props.actions.getCarProfileDetails(routeParams.id);
       }
     }
+
     componentWillUnmount() {
       this.props.actions.hideErrorMessage();
     }
+
     componentWillReceiveProps(nextProps) {
 			if(nextProps.carProfileReducer.currentComponentKey === 'car-list') {
       	this.props.router.push('/car-profiles');
       }
     }
 
-    onSubmit(carProfileData, isEditProfile){
+    onSubmit(carProfileData, isEditProfile,deleteVehicleImage){
+      console.log("carProfileData",carProfileData);
+      forEach(deleteVehicleImage,(value)=> {
+        this.props.actions.deleteVehicleImage(value);
+      });
       this.props.actions.setCarProfileAction(carProfileData, isEditProfile, this.state.profileId);
     }
 

@@ -567,7 +567,6 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    debugger
     if (this.props.router.params.requestType) {
       this.jobData[0].statusIndicator = this.props.router.params.requestType
     } else {
