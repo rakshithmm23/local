@@ -28,10 +28,8 @@ export default class SignIn extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   onFieldChange(value, key, name) {
-    if (value) {
-      this.formData[name] = value;
-      this.errors[name] = false;
-    }
+    this.formData[name] = value;
+    this.errors[name] = value ? false : true;
   }
   componentWillMount() {
     const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';

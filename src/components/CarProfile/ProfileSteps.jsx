@@ -85,13 +85,10 @@ class ProfileSteps extends Component {
   }
 
   onFieldChange(value, key, name) {
-    if (value) {
-      this.formData[name] = value;
-      this.errors[name] = false;
-    }
+    this.formData[name] = value;
+    this.errors[name] = value ? false : true;
     if (name === 'year') {
       if (!value) {
-        this.errors[name] = true;
         this.setState({ 'selectError': true });
       } else {
         if (this.formData['model'] && !this.props.isEditProfile) {

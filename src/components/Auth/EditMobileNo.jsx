@@ -55,10 +55,8 @@ export default class VerifyOTP extends Component {
     }
   }
   onFieldChange(value, key, name) {
-    if (value) {
-      this.formData[name] = value;
-      this.errors[name] = false;
-    }
+    this.formData[name] = value;
+    this.errors[name] = value ? false : true;
   }
   verifyOTPAction(e) {
     e.preventDefault();
