@@ -114,7 +114,7 @@ export function socialAuth(accessToken, provider) {
     .catch((err) => {
       dispatch({
         type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: (err && err.message) ? err.message : "Unable to authenticate using facebook, please try again"
+        statusMessage: (err && err.response && err.response.data && err.response.data.message) ? err.response.data.message : "Unable to authenticate using facebook, please try again"
       });
     })
   }
