@@ -69,11 +69,13 @@ export default class SignIn extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
-      this.props.actions.signInAction({
-        'email': this.formData.email,
-        'password': this.formData.password,
-        'usertype': 'customer'
-      });
+      if (this.formData.password.length >= 6) {
+        this.props.actions.signInAction({
+          'email': this.formData.email,
+          'password': this.formData.password,
+          'usertype': 'customer'
+        });
+      }
     }
   }
 
@@ -95,13 +97,13 @@ export default class SignIn extends Component {
                       cssClass="btn btn-theme lg blue"
                       textButton="Facebook"
                       fields="name,email,picture"
-                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse, 'facebook')}}}
+                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'facebook')}}}
                       icon={<i className="mdi mdi-facebook" />}/>
                   <GoogleLogin
-                    clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
-                    className="btn btn-theme lg red"
-                    onSuccess={(socialResponse) => {console.log(socialResponse)}}>
-                    <i className="mdi mdi-google" />Google
+                      clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
+                      className="btn btn-theme lg red"
+                      onSuccess={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'google')}}}>
+                      <i className="mdi mdi-google"/>Google
                   </GoogleLogin>
                 </div>
                 <div className="or-text">

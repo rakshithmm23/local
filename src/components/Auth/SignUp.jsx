@@ -7,6 +7,7 @@ import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -77,14 +78,16 @@ export default class SignUp extends Component {
       if (!phone_no.startsWith("+")) {
         phone_no = '+' + phone_no;
       }
-      this.props.actions.showVerifyOTPPage({
-        'name': this.formData.name,
-        'email': this.formData.email,
-        'phone': phone_no,
-        'password': this.formData.password,
-        'type': 'customer',
-        'usertype': 'customer'
-      })
+      if (this.formData.password.length >= 6) {
+        this.props.actions.showVerifyOTPPage({
+          'name': this.formData.name,
+          'email': this.formData.email,
+          'phone': phone_no,
+          'password': this.formData.password,
+          'type': 'customer',
+          'usertype': 'customer'
+        })
+      }
     }
   }
   componentWillUnmount() {
@@ -108,12 +111,12 @@ export default class SignUp extends Component {
                       cssClass="btn btn-theme lg blue"
                       textButton="Facebook"
                       fields="name,email,picture"
-                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse, 'facebook')}}}
+                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'facebook')}}}
                       icon={<i className="mdi mdi-facebook" />}/>
                     <GoogleLogin
-                      clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
+                      clientId="325191651728-15hu30acv1oi2907vgl1a16ch3hcuec4.apps.googleusercontent.com"
                       className="btn btn-theme lg red"
-                      onSuccess={(socialResponse) => {console.log(socialResponse)}}>
+                      onSuccess={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'google')}}}>
                       <i className="mdi mdi-google"/>Google
                     </GoogleLogin>
                   </div>

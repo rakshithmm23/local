@@ -1,5 +1,5 @@
 .custom-scroll .inner-handle {
-    height: calc(100%-30%);
+     height: calc(100%); 
     background-color: rgba(0,0,0,0.1);
 }
 .customScroll .custom-scroll .inner-handle {

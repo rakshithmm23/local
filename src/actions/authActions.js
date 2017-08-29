@@ -65,13 +65,13 @@ export function signInAction(signInData, dispatch, fromSignup) {
   }
 }
 
-export function socialAuth(socialResponse, provider) {
+export function socialAuth(accessToken, provider) {
   return (dispatch) => {
     const authPostData = {
       "provider": provider,
       "type": "customer",
       "userType": "customer",
-      "accessToken": socialResponse.accessToken
+      "accessToken": accessToken
     };
     axios.post(API_END_POINTS.SOCIAL_AUTH, JSON.stringify(authPostData), {
       headers: {
@@ -103,7 +103,7 @@ export function socialAuth(socialResponse, provider) {
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: "Unable to authenticate using facebook, please try again"
+          statusMessage: "Unable to authenticate using " +provider + ", please try again"
         });
         dispatch({
           type: types.SAVE_LOG,
@@ -112,10 +112,17 @@ export function socialAuth(socialResponse, provider) {
       }
     })
     .catch((err) => {
-      dispatch({
-        type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: (err && err.message) ? err.message : "Unable to authenticate using facebook, please try again"
-      });
+      if (err && err.response && err.response.status && err.response.status == 400) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.data && err.response.data.message) ? err.response.data.message : "User already exist"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err && err.response && err.response.data && err.response.data.message) ? err.response.data.message : "Unable to authenticate using  " +provider + ", please try again"
+        });
+      }
     })
   }
 }
@@ -292,14 +299,14 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: "Unknown error occurred please try again"
+          statusMessage: response.data && response.data.message ? response.data.message : "Unknown error occurred please try again"
         });
       }
     })
-    .catch(() => {
+    .catch((err) => {
       dispatch({
         type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: 'Unknown error occurred please try again'
+        statusMessage: err && err.response && err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
       });
     });
   };
