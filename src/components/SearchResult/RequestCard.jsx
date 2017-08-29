@@ -22,7 +22,7 @@ export default class RequestCard extends Component {
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.state = {
-      filterdropdownVisible:false,
+      filterdropdownVisible: false,
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
@@ -172,15 +172,15 @@ export default class RequestCard extends Component {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
   bodyClick(e) {
-    if(e.target.className=="rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')){
-      this.setState({filterdropdownVisible:true})
-    }else{
-      this.setState({filterdropdownVisible:false})
+    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
+      this.setState({ filterdropdownVisible: true })
+    } else {
+      this.setState({ filterdropdownVisible: false })
     }
   }
-  filterDropDownFunc(e){
-    if(!this.state.filterdropdownVisible){
-      this.setState({filterdropdown:e})
+  filterDropDownFunc(e) {
+    if (!this.state.filterdropdownVisible) {
+      this.setState({ filterdropdown: e })
     }
   }
   changeCheckbox(val) {
@@ -194,7 +194,7 @@ export default class RequestCard extends Component {
       this.checkBox["all"] = false
       this.checkBox[val] = !this.checkBox[val]
     }
-  
+
     this.setState({ checkBoxVal: !this.state.checkBoxVal })
   }
   updateDimensions() {
@@ -352,7 +352,7 @@ export default class RequestCard extends Component {
         <div key={key}>
 
 
-          <div className="requestSection">
+          <div className="requestSection vendor-list-view">
             <div className="row">
               <div className="request-summary">
 
@@ -367,7 +367,7 @@ export default class RequestCard extends Component {
                           <span>5 Results Found</span>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e)=>{this.setState({sortBydropdown:e})}} noCaret title={
+                            <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e) => { this.setState({ sortBydropdown: e }) }} noCaret title={
                               <div className="filterLabel showSortBy">
                                 <i className="mdi mdi-swap-vertical" />
                                 <label>Sort by</label>
@@ -375,79 +375,79 @@ export default class RequestCard extends Component {
                               </div>
                             }>
                               <div className="sortFilter filterCard">
-                              <ul className="list-unstyled">
-                              <li onClick={() => (this.filterOption("DistNF"))} className={this.state.filterSort == "DistNF" ? "active" : ""}>
-                                <label>
-                                  Distance - Near to Far
+                                <ul className="list-unstyled">
+                                  <li onClick={() => (this.filterOption("DistNF"))} className={this.state.filterSort == "DistNF" ? "active" : ""}>
+                                    <label>
+                                      Distance - Near to Far
                                 </label>
-                                <span>
-                                  <i className={this.state.filterSort == "DistNF" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("DistFN"))} className={this.state.filterSort == "DistFN" ? "active" : ""}>
-                                <label>
-                                  Distance - Far to Near
+                                    <span>
+                                      <i className={this.state.filterSort == "DistNF" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("DistFN"))} className={this.state.filterSort == "DistFN" ? "active" : ""}>
+                                    <label>
+                                      Distance - Far to Near
                                 </label>
-                                <span>
-                                  <i className={this.state.filterSort == "DistFN" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("ratingHL"))} className={this.state.filterSort == "ratingHL" ? "active" : ""}>
-                                <label>
-                                  Rating - Highest to Lowest
+                                    <span>
+                                      <i className={this.state.filterSort == "DistFN" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("ratingHL"))} className={this.state.filterSort == "ratingHL" ? "active" : ""}>
+                                    <label>
+                                      Rating - Highest to Lowest
                                 </label>
-                                <span>
-                                  <i className={this.state.filterSort == "ratingHL" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("ratingLH"))} className={this.state.filterSort == "ratingLH" ? "active" : ""}>
-                                <label>
-                                  Rating - Lowest to Highest
+                                    <span>
+                                      <i className={this.state.filterSort == "ratingHL" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("ratingLH"))} className={this.state.filterSort == "ratingLH" ? "active" : ""}>
+                                    <label>
+                                      Rating - Lowest to Highest
                                 </label>
-                                <span>
-                                  <i className={this.state.filterSort == "ratingLH" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("priceHL"))} className={this.state.filterSort == "priceHL" ? "active" : ""}>
-                                <label>
-                                  Price - Highest to Lowest
+                                    <span>
+                                      <i className={this.state.filterSort == "ratingLH" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("priceHL"))} className={this.state.filterSort == "priceHL" ? "active" : ""}>
+                                    <label>
+                                      Price - Highest to Lowest
                               </label>
-                                <span>
-                                  <i className={this.state.filterSort == "priceHL" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("priceLH"))} className={this.state.filterSort == "priceLH" ? "active" : ""}>
-                                <label>
-                                  Price - Lowest to Highest
+                                    <span>
+                                      <i className={this.state.filterSort == "priceHL" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("priceLH"))} className={this.state.filterSort == "priceLH" ? "active" : ""}>
+                                    <label>
+                                      Price - Lowest to Highest
                               </label>
-                                <span>
-                                  <i className={this.state.filterSort == "priceLH" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("dateNO"))} className={this.state.filterSort == "dateNO" ? "active" : ""}>
-                                <label>
-                                  Date - Newest to Oldest
+                                    <span>
+                                      <i className={this.state.filterSort == "priceLH" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("dateNO"))} className={this.state.filterSort == "dateNO" ? "active" : ""}>
+                                    <label>
+                                      Date - Newest to Oldest
                               </label>
-                                <span>
-                                  <i className={this.state.filterSort == "dateNO" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
-                              <li onClick={() => (this.filterOption("dateON"))} className={this.state.filterSort == "dateON" ? "active" : ""}>
-                                <label>
-                                  Date - Oldest to Newest
+                                    <span>
+                                      <i className={this.state.filterSort == "dateNO" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
+                                  <li onClick={() => (this.filterOption("dateON"))} className={this.state.filterSort == "dateON" ? "active" : ""}>
+                                    <label>
+                                      Date - Oldest to Newest
                               </label>
-                                <span>
-                                  <i className={this.state.filterSort == "dateON" ? "mdi mdi-check active" : "hide"} />
-                                </span>
-                              </li>
+                                    <span>
+                                      <i className={this.state.filterSort == "dateON" ? "mdi mdi-check active" : "hide"} />
+                                    </span>
+                                  </li>
 
-                            </ul>
+                                </ul>
                               </div>
                             </DropdownButton>
                           </div>
                           <div className="filterSection">
 
-                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
+                            <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e) => { this.filterDropDownFunc(e) }} noCaret id="dropdown-size-large" title={
                               <div className="filterLabel showFilters ">
                                 <i className="mdi mdi-filter-variant" />
                                 <label>Filter</label>
@@ -480,8 +480,8 @@ export default class RequestCard extends Component {
                                           maxValue={20}
                                           value={this.state.distValue}
                                           onChange={distValue => this.setState({ distValue })} />
-                                          <span className="range-min">{this.state.distValue.min+" Km"}</span>
-                                          <span className="range-max">{this.state.distValue.max+" Km"}</span>
+                                        <span className="range-min">{this.state.distValue.min + " Km"}</span>
+                                        <span className="range-max">{this.state.distValue.max + " Km"}</span>
                                       </div>
                                       <div className="f-card openAlign">
                                         <h5>Open Between</h5>
@@ -669,9 +669,9 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-right-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-                              {/*Quotation*/}
-                              <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                            {/*Quotation*/}
+                            <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                              <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                 <div className="quotation-head">
                                   <ul>
                                     <li>
@@ -715,10 +715,12 @@ export default class RequestCard extends Component {
                                     <span>195 AED</span>
                                   </div>
                                 </div>
-                              </div>
-                              {/*ChatBox*/}
-                              <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
-                                <div className="quotes-chat-area">
+                              </CustomScroll>
+                            </div>
+                            {/*ChatBox*/}
+                            <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                              <div className="quotes-chat-area">
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
 
                                   <div className="c-message message-in">
                                     <div className="profile-head">
@@ -798,23 +800,23 @@ export default class RequestCard extends Component {
                                       <label>2:44 PM</label>
                                     </div>
                                   </div>
-                                </div>
-                                <div className="quotes-message-footer">
-                                  <FormGroup>
-                                    <InputGroup>
-                                      <FormControl type="text" placeholder="Type your message here..." />
-                                      <InputGroup.Addon>
-                                        <i className="mdi mdi-send" />
-                                      </InputGroup.Addon>
-                                    </InputGroup>
-                                  </FormGroup>
-                                </div>
+                                </CustomScroll>
                               </div>
-                            </CustomScroll>
-                          </div>
+                              <div className="quotes-message-footer">
+                                <FormGroup>
+                                  <InputGroup>
+                                    <FormControl type="text" placeholder="Type your message here..." />
+                                    <InputGroup.Addon>
+                                      <i className="mdi mdi-send" />
+                                    </InputGroup.Addon>
+                                  </InputGroup>
+                                </FormGroup>
+                              </div>
+                            </div>
                         </div>
                       </div>
                     </div>
+                  </div>
                   </div>}
                 </div>
               </div>

@@ -104,6 +104,38 @@ export default class MessagesView extends Component {
             message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
             timestamp: '2:44 PM'
           }
+        ],
+        4: [
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'receiver',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          },
+          {
+            type: 'sender',
+            message: 'Lorem ipsum dolor sit amet, et tamquam docendi deleniti est',
+            timestamp: '2:44 PM'
+          }
         ]
       },
       inboxList: [
@@ -133,38 +165,11 @@ export default class MessagesView extends Component {
           updatedAt: "3 hours ago",
           unreadMessage: 0
         },
-         {
+        {
           vendorName: "Ayaz's Buick",
           vendorTitle: "Buddy's Car Service",
           requestType: 'Car Wash',
-          vendorId: 3,
-          message: "Lorem ipsum dolor sit amet, consectetuer",
-          updatedAt: "3 hours ago",
-          unreadMessage: 0
-        },
-         {
-          vendorName: "Ayaz's Buick",
-          vendorTitle: "Buddy's Car Service",
-          requestType: 'Car Wash',
-          vendorId: 3,
-          message: "Lorem ipsum dolor sit amet, consectetuer",
-          updatedAt: "3 hours ago",
-          unreadMessage: 0
-        },
-         {
-          vendorName: "Ayaz's Buick",
-          vendorTitle: "Buddy's Car Service",
-          requestType: 'Car Wash',
-          vendorId: 3,
-          message: "Lorem ipsum dolor sit amet, consectetuer",
-          updatedAt: "3 hours ago",
-          unreadMessage: 0
-        },
-         {
-          vendorName: "Ayaz's Buick",
-          vendorTitle: "Buddy's Car Service",
-          requestType: 'Car Wash',
-          vendorId: 3,
+          vendorId: 4,
           message: "Lorem ipsum dolor sit amet, consectetuer",
           updatedAt: "3 hours ago",
           unreadMessage: 0
@@ -264,10 +269,10 @@ export default class MessagesView extends Component {
       <div className="row">
         <div className="col-md-6 pad0">
           <div className="inboxContainer">
-          <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-            <div className="inboxMessage">
-              {inboxListView}
-            </div>
+            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+              <div className="inboxMessage">
+                {inboxListView}
+              </div>
             </CustomScroll>
           </div>
         </div>
@@ -282,11 +287,11 @@ export default class MessagesView extends Component {
               </div>
             </div>
             <div className="messageChatBot">
-              <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
-                <div className="quotes-chat-area">
+              <div className="quotes-chat-area">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                   {messagesView}
-                </div>
-              </CustomScroll>
+                </CustomScroll>
+              </div>
             </div>
             <div className="quotes-message-footer">
               <form onSubmit={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>

@@ -70,7 +70,8 @@
     .marginTop0 {
         margin-top: 0 !important;
     }
-    label{
+
+    label {
         font-weight: normal;
     }
     /*commom wrapper*/
@@ -191,14 +192,21 @@
         display: none;
     }
     /* loader */
-    .loader{
+
+    .loader {
         text-align: center;
         height: 90px;
         margin-top: 30px;
     }
-    .loader img{
+
+    .loader img {
         width: 4%;
     }
+
+    select::-ms-expand {
+        display: none;
+    }
+
     /*responsive*/
 
     @media screen and (max-width: 1024px) {

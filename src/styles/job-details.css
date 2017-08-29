@@ -85,7 +85,7 @@
 .request-summary-body .repair-category .interior-clean {
     width: 15px;
     height: 15px;
-    background: url(http://web-test.carcility.com/statusIcon.png);
+    background: url('/images/statusIcon.png');
     display: inline-block;
     background-repeat: no-repeat;
     vertical-align: middle;
@@ -94,7 +94,7 @@
 .request-summary-body .repair-category .wash {
     width: 15px;
     height: 15px;
-    background: url(http://web-test.carcility.com/statusIcon.png);
+    background: url('/images/statusIcon.png');
     display: inline-block;
     background-repeat: no-repeat;
 }

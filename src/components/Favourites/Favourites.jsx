@@ -52,7 +52,7 @@ export default class Favourites extends Component {
                             <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RequestCard />
+                                    <RequestCard router={this.props.router}/>
                                 </div>
                             </div>
                         </div>

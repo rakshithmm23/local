@@ -380,7 +380,7 @@ export default class RequestCard extends Component {
         <div key={key}>
 
 
-          <div className="requestSection">
+          <div className="requestSection vendor-list-view" >
             <div className="row">
               <div className="request-summary">
 
@@ -695,9 +695,9 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-right-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                               {/*Quotation*/}
                               <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                 <div className="quotation-head">
                                   <ul>
                                     <li>
@@ -740,9 +740,9 @@ export default class RequestCard extends Component {
                                     <span>195 AED</span>
                                   </div>
                                 </div>
+                            </CustomScroll>
                               </div>
                               {this.state.messages && <ChatBox data={this.state.jobCardDetails} />}
-                            </CustomScroll>
                           </div>
                         </div>
                       </div>

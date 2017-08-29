@@ -568,7 +568,6 @@ export default class RequestCard extends Component {
   }
 
   render() {
-    // debugger
     if (this.props.router.params.requestType) {
       this.jobData[0].statusIndicator = this.props.router.params.requestType
     } else {
@@ -618,7 +617,7 @@ export default class RequestCard extends Component {
             })}
             <div className="requestSection">
               <div className="row">
-                <div className="request-summary">
+                <div className={this.props.router.params.requestType == "active" ? "request-summary vendor-list-view" : "request-summary"}>
                   <div className="row request-summary-header">
                     <div className="col-md-6 col-sm-12 col-xs-12 pad0">
                       <div className="request-summary-tab">
@@ -947,9 +946,9 @@ export default class RequestCard extends Component {
                             </div>
                             <div className="quotes-right-body">
                               <div className="requestQuotesScroll">
-                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                   {/*Quotation*/}
                                   <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                     <div className="quotation-head">
                                       <ul>
                                         <li>
@@ -996,26 +995,28 @@ export default class RequestCard extends Component {
                                         <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" btnCallBack={() => { this.props.router.push('/request/accepted') }} />
                                       </div> : ""}
                                     </div>
-                                  </div>
-                                  {/*ChatBox*/}
-                                  <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
-                                    <div className="quotes-chat-area">
-                                      {messagesView}
-                                    </div>
-                                    <div className="quotes-message-footer">
-                                      <form onSubmit={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
-                                        <FormGroup>
-                                          <InputGroup>
-                                            <FormControl value={this.state.quotesMessage} type="text" placeholder="Type your message here..." onChange={(e) => { e.preventDefault(); this.setState({ 'quotesMessage': e.target.value }) }} />
-                                            <InputGroup.Addon onClick={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
-                                              <i className="mdi mdi-send" />
-                                            </InputGroup.Addon>
-                                          </InputGroup>
-                                        </FormGroup>
-                                      </form>
-                                    </div>
-                                  </div>
                                 </CustomScroll>
+                                  </div>
+                                {/*ChatBox*/}
+                                <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
+                                  <div className="quotes-chat-area">
+                                    <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                      {messagesView}
+                                    </CustomScroll>
+                                  </div>
+                                  <div className="quotes-message-footer">
+                                    <form onSubmit={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
+                                      <FormGroup>
+                                        <InputGroup>
+                                          <FormControl value={this.state.quotesMessage} type="text" placeholder="Type your message here..." onChange={(e) => { e.preventDefault(); this.setState({ 'quotesMessage': e.target.value }) }} />
+                                          <InputGroup.Addon onClick={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
+                                            <i className="mdi mdi-send" />
+                                          </InputGroup.Addon>
+                                        </InputGroup>
+                                      </FormGroup>
+                                    </form>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>

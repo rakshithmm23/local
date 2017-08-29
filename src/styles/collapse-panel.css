@@ -216,7 +216,7 @@
     width: 110px;
     position: relative;
     display: inline-block;
-    margin: 15px;
+    margin: 5px 15px;
     vertical-align: top;
     border-radius: 3px;
 }
@@ -421,11 +421,11 @@
 }
 
 .panel-content .form-section {
-    margin-bottom: 55px;
+    margin-bottom: 45px;
 }
 
 .panel-content .form-section.uploads {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .panel-content .date-time .form-group,
@@ -507,7 +507,7 @@
 }
 
 .car-wash .collapse-panel .model-select.upload {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {

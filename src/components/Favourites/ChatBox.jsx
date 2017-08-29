@@ -5,6 +5,7 @@ import { FormGroup, InputGroup, FormControl } from 'react-bootstrap';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import Scroll from 'react-scroll';
 import { map, filter } from 'lodash';
+import CustomScroll from 'react-custom-scroll';
 
 export default class ChatBox extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class ChatBox extends Component {
       messageList: {},
       selectedVendorId: 1,
       quotesMessage: '',
-      
+
     };
   }
 
@@ -53,7 +54,7 @@ export default class ChatBox extends Component {
     this.chatHeight();
   }
   componentWillUpdate() {
-    this.chatHeight();  
+    this.chatHeight();
   }
 
   componentWillMount() {
@@ -63,12 +64,13 @@ export default class ChatBox extends Component {
     });
     let id = (filter(this.props.data, { "isActive": true })[0].id)
     this.setState({ messageList: messagesVal, selectedVendorId: id });
+    this.chatHeight();
   }
 
   componentDidUpdate(prevProps, prevState) {
-     this.chatHeight(); 
+    this.chatHeight();
   }
- 
+
   chatHeight() {
     const node = ReactDOM.findDOMNode(this.messagesEnd);
     if (node.scrollHeight) {
@@ -77,7 +79,7 @@ export default class ChatBox extends Component {
   }
 
   renderMessages(selectedVendorMessageList) {
-    
+
     const messageView = selectedVendorMessageList.map((messageObj, index) => {
       let messageClass = 'c-message';
       let showTimeStamp = true, showAvatar = true;
@@ -92,7 +94,7 @@ export default class ChatBox extends Component {
           messageClass += ' message-continuation';
         }
       }
-      
+
 
       return (
         <div className={messageClass} key={index}>
@@ -111,7 +113,7 @@ export default class ChatBox extends Component {
       );
     });
     return messageView;
-    
+
   }
   onInboxSwitch(vendorId) {
     console.log('vendorId')
@@ -140,7 +142,9 @@ export default class ChatBox extends Component {
       <div className="row">
         <div className={this.props.hide}>
           <div className="quotes-chat-area" id="quotes-chat-area" ref={(el) => { this.messagesEnd = el; }}>
-            {messagesView}
+            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+              {messagesView}
+            </CustomScroll>
           </div>
           <div className="quotes-message-footer">
             <form onSubmit={(e) => { e.preventDefault(); this.sendNewMessage(this.state.quotesMessage); }}>
