@@ -9,6 +9,7 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            searchDropdown:false,
             setCenter: false,
             mapLocationChanged: false,
             showLocationModal: false,
@@ -178,8 +179,8 @@ export default class Search extends Component {
 
                 <div className={searchView.length > 0 ? "searchFill active" : "searchFill"}>
                     <FormGroup>
-                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }}
-                            open={searchView.length > 0 ? true : false}
+                        <DropdownButton bsSize="large" id="dropdown-size-large" onSelect={(e) => { this.seachedValue(e); }} onToggle={(e)=>{this.setState({searchDropdown:e})}}
+                            open={this.state.searchDropdown && searchView.length > 0 ? true : false}
                             noCaret title={
                             <div>
                                 <input value={this.state.seachedValue} placeholder="Search"
