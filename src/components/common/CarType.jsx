@@ -111,7 +111,7 @@ class CardType extends Component {
                                                     <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inprogress" || cardDetails.statusIndicator == "completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-up" />
