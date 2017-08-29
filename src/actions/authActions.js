@@ -65,13 +65,13 @@ export function signInAction(signInData, dispatch, fromSignup) {
   }
 }
 
-export function socialAuth(socialResponse, provider) {
+export function socialAuth(accessToken, provider) {
   return (dispatch) => {
     const authPostData = {
       "provider": provider,
       "type": "customer",
       "userType": "customer",
-      "accessToken": socialResponse.accessToken
+      "accessToken": accessToken
     };
     axios.post(API_END_POINTS.SOCIAL_AUTH, JSON.stringify(authPostData), {
       headers: {
@@ -292,14 +292,14 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: "Unknown error occurred please try again"
+          statusMessage: response.data && response.data.message ? response.data.message : "Unknown error occurred please try again"
         });
       }
     })
-    .catch(() => {
+    .catch((err) => {
       dispatch({
         type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: 'Unknown error occurred please try again'
+        statusMessage: err && err.response && err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
       });
     });
   };

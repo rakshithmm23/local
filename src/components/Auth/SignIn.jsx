@@ -102,10 +102,9 @@ export default class SignIn extends Component {
                   <GoogleLogin
                       clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
                       className="btn btn-theme lg red"
-                      onSuccess={(socialResponse) => {console.log(socialResponse)}}
-                      onFailure={(resp) => {console.log(resp)}}>
+                      onSuccess={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'google')}}}>
                       <i className="mdi mdi-google"/>Google
-                    </GoogleLogin>
+                  </GoogleLogin>
                 </div>
                 <div className="or-text">
                   <span>OR</span>
