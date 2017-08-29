@@ -13,6 +13,7 @@ class ProfileSteps extends Component {
       uploadImgSize: 0,
       uploadImageErrText: false,
       imageUploaded: [],
+      deleteVehicleImage: [],
       activeLogo: null,
       activeModel: null,
       manufacturerTabVisible: true,
@@ -75,7 +76,7 @@ class ProfileSteps extends Component {
     })
     if (validForm) {
       this.setState({ submissionError: false });
-      this.props.onSubmit(this.formData, this.props.isEditProfile);
+      this.props.onSubmit(this.formData, this.props.isEditProfile,this.state.deleteVehicleImage);
     }else{
       this.setState({ submissionError: true });
       return;
@@ -189,6 +190,7 @@ class ProfileSteps extends Component {
       });
     }
   }
+
   cancelImageUpload(val) {
     let deleteSize = 0;
     if (this.state.uploadImgSize >= 20000000) {
@@ -196,13 +198,17 @@ class ProfileSteps extends Component {
     } else {
       this.setState({ uploadImageErrText: false });
     }
-
-    const array = this.state.imageUploaded;
+    const delete_id = this.state.imageUploaded[val].id;
+    let deleteArray = [];
+    deleteArray = this.state.deleteVehicleImage;
+    deleteArray.push(delete_id);
+    const array = [...this.state.imageUploaded];
     deleteSize = this.state.uploadImgSize - this.state.imageUploaded[val].size;
     array.splice(val, 1);
-    this.setState({ imageUploaded: array, uploadImgSize: deleteSize });
+    this.setState({ imageUploaded: array, uploadImgSize: deleteSize,deleteVehicleImage: deleteArray });
     this.formData['photos'] = array;
   }
+
   filterCarModelList(e) {
     const inputValue = e ? e.toLowerCase() : '';
     if (inputValue) {
@@ -238,6 +244,7 @@ class ProfileSteps extends Component {
         </div>
       );
     });
+
     const carList = this.state.filteredCarList ? this.state.filteredCarList : this.state.carList;
     const carListView = map(carList, (carItem, key) => {
       return (

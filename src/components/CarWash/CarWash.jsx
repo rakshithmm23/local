@@ -10,20 +10,20 @@ import WashSteps from './WashSteps';
 
 export default class CarWash extends Component {
     constructor(props, context) {
-        super(props, context);
-        this.toggleNotification = this.toggleNotification.bind(this);
-        this.state = {
-            notificationVisible: false,
-            messageVisible: false
-        };
+      super(props, context);
+      this.toggleNotification = this.toggleNotification.bind(this);
+      this.state = {
+          notificationVisible: false,
+          messageVisible: false
+      };
     }
-    
+
     toggleNotification(isVisible) {
-        this.setState({ 'notificationVisible': isVisible });
+      this.setState({ 'notificationVisible': isVisible });
     }
 
     toggleMessage(isVisible) {
-        this.setState({ 'messageVisible': isVisible });
+      this.setState({ 'messageVisible': isVisible });
     }
 
     render() {

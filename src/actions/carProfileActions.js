@@ -4,6 +4,7 @@ import axios from 'axios';
 import {keyBy} from 'lodash';
 
 export function setCarProfileAction(carData, isEditProfile, profileId){
+  console.log("carData",carData);
   return (dispatch) => {
     dispatch({
       type: types.HIDE_ERROR_MESSAGE
@@ -45,7 +46,6 @@ export function setCarProfileAction(carData, isEditProfile, profileId){
           });
         }
       }
-
     }).catch((err) => {
       console.log("Error: ",err);
       if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
@@ -133,13 +133,13 @@ export function deleteCarProfile(carProfileID) {
           dispatch({
             type: types.DELETE_CAR_PROFILE,
             carProfileID: carProfileID
-          })
+          });
         }
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 }
 
 
@@ -151,11 +151,24 @@ export function getCarMakeandModels() {
           dispatch({
             type: types.CAR_MAKE_AND_MODELS,
             carMakeAndModels: response.data
-          })
+          });
         }
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
+}
+
+
+export function deleteVehicleImage(id){
+  return () => {
+    axios.delete(API_END_POINTS.DELETE_VEHICLE_IMAGE + id, {withCredentials: true})
+    .then((response) => {
+      console.log("response",response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
 }

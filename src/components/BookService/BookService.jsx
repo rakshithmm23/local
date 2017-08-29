@@ -21,7 +21,7 @@ export default class BookService extends Component {
             isLoading: false,
             bookServiceModalVisible: false,
         };
-        
+
     }
     componentWillMount() {
       this.setState({'isLoading': true});
