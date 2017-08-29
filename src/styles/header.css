@@ -330,6 +330,9 @@
     padding: 3px 5px !important;
     background-color: transparent !important;
 }
+.header-search .form-group .dropdown-menu li:focus a {
+    background: red !important;
+}
 
 .header-search .form-control::-webkit-input-placeholder {
     color: #55595B

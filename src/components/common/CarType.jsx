@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { map } from 'lodash';
 import StatusBar from '../common/StatusBar';
 import CustomModal from '../common/CustomModal';
+import { findDOMNode } from 'react-dom';
 import { DropdownButton, MenuItem, Modal, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import Rating from 'react-rating';
 
@@ -110,7 +111,7 @@ class CardType extends Component {
                                                     <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inprogress" || cardDetails.statusIndicator == "completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-up" />
@@ -131,7 +132,7 @@ class CardType extends Component {
                         <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
-                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inProgress"?"In Progress":cardDetails.statusIndicator}</div>
+                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inprogress"?"In Progress":cardDetails.statusIndicator}</div>
                                     <div className="job-icon notification">
                                         {this.getIcons(this, cardDetails.statusIndicator)}
                                     </div>
@@ -179,7 +180,7 @@ class CardType extends Component {
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="job-process">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                <StatusBar statusCount={cardDetails.totalTask} />
+                                <StatusBar statusCount={cardDetails.totalTask} jobHolderDom = {this.props.parentRef}/>
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>

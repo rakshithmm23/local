@@ -20,7 +20,7 @@ export default class Header extends Component {
                 address: "mysore road"
             }
         ]
-        this.dropdownList= ["Audi", "Renault", "BMW", "Benz"],
+        this.dropdownList= ["Audi", "Renault", "BMW", "Benz", "Maruthi", "Tesla"],
         this.state = {
             notificationSelected: false,
             messageSelected: false,

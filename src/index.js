@@ -47,6 +47,7 @@ import './styles/vendordetail.css';
 import './styles/terms.css';
 import './styles/pageNotFound.css';
 import '../node_modules/react-custom-scroll/dist/customScroll.css';
+import '../node_modules/react-select/dist/react-select.css';
 import './styles/scrollbar.css';
 
 export const store = configureStore();
