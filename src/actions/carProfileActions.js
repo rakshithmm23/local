@@ -4,11 +4,11 @@ import axios from 'axios';
 import {keyBy} from 'lodash';
 
 export function setCarProfileAction(carData, isEditProfile, profileId){
-  console.log("carData",carData);
   return (dispatch) => {
     dispatch({
       type: types.HIDE_ERROR_MESSAGE
     });
+    debugger;
     const formData = new FormData();
     let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos', 'insurancepolicynumber', 'insuranceprovider', 'carnotes', 'registrationnumber'];
 
@@ -18,7 +18,9 @@ export function setCarProfileAction(carData, isEditProfile, profileId){
         formData.append(value, carData[value]);
       else {
         carData[value].forEach(imgElm => {
-          formData.append(value, imgElm);
+          if (!imgElm.id) {
+            formData.append(value, imgElm);
+          }
         });
       }
     }
@@ -108,11 +110,11 @@ export function getCarProfileDetails(carProfileID) {
           dispatch({
             type: types.VIEW_CAR_PROFILE,
             carProfile: response.data
-          })
+          });
         } else {
           dispatch({
             type: types.VIEW_CAR_PROFILE,
-          })
+          });
         }
       })
       .catch((err) => {

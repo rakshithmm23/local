@@ -49,7 +49,6 @@ class ProfileSteps extends Component {
       'plate_no': false,
       'mileage': false
     };
-
     this.resetFields = Object.assign({}, this.state)
     this.onFieldChange = this.onFieldChange.bind(this);
     this.filterCarModelList = this.filterCarModelList.bind(this);
@@ -59,6 +58,7 @@ class ProfileSteps extends Component {
   onSubmit() {
     let validFields = ['name', 'plate_no', 'mileage'];
     let validForm = true;
+    console.log("formData",this.formData);
     let formData = {
       ...this.formData
     }
@@ -75,6 +75,7 @@ class ProfileSteps extends Component {
       }
     })
     if (validForm) {
+      console.log("formData",this.formData);
       this.setState({ submissionError: false });
       this.props.onSubmit(this.formData, this.props.isEditProfile,this.state.deleteVehicleImage);
     }else{
@@ -131,7 +132,6 @@ class ProfileSteps extends Component {
           }
         }
       }
-
     }
   }
   fileNameUpload(e) {
@@ -159,6 +159,7 @@ class ProfileSteps extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
+    debugger;
     if (nextProps.carProfileReducer && nextProps.carProfileReducer.carMakeAndModels) {
       this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels, isLoading: false });
     }
@@ -184,7 +185,7 @@ class ProfileSteps extends Component {
       each(nextProps.profileData, (val, key) => {
         if (key == 'plateNo' && val) {
           this.formData['plate_no'] = val;
-        } else {
+        } else if (key != 'photos'){
           this.formData[key] = val;
         }
       });

@@ -41,7 +41,7 @@ export default class NewCarProfile extends Component {
     }
 
     onSubmit(carProfileData, isEditProfile,deleteVehicleImage){
-      console.log(deleteVehicleImage);
+      console.log("carProfileData",carProfileData);
       forEach(deleteVehicleImage,(value)=> {
         this.props.actions.deleteVehicleImage(value);
       });
