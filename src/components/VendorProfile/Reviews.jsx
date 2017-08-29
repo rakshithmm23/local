@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ProgressBar, Media, DropdownButton, MenuItem } from 'react-bootstrap';
 import CustomScroll from 'react-custom-scroll';
+import Button from '../common/Button';
 
 export default class Reviews extends Component {
     constructor(...args) {
@@ -305,7 +306,9 @@ export default class Reviews extends Component {
                                 </li>
                             </ul>
                         </div>
-                        <div className="load-more-comments">Load more</div>
+                        <div className="load-more-comments">
+                            <Button btnType="transparent" btnSize="sm" fontSize={13} label="Load More" />
+                        </div>
                     </div>
                 </div>
             </div>

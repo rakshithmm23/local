@@ -12,7 +12,8 @@ export default class JobUpdate extends Component {
     super(...args);
     this.state = {
       open: false,
-      currentWidth: ''
+      currentWidth: '',
+      parentContainer: null
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
@@ -21,7 +22,11 @@ export default class JobUpdate extends Component {
     this.updateDimensions();
   }
   componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
+    window.addEventListener("resize", this.updateDimensions);    
+    if(this.jobHolder)
+      this.setState({
+        parentContainer: this.jobHolder
+      })
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
@@ -196,7 +201,7 @@ export default class JobUpdate extends Component {
     ];
 
     return (
-      <div className="jobUpdate-holder">
+      <div className="jobUpdate-holder" ref={(ref) => this.jobHolder = ref}>
         <h4 className="job-update-title">Job Status</h4>
         <a className="jobUpdate-viewall">View All</a>
         {/* https://projects.invisionapp.com/d/main#/console/10950794/238371645/preview */}
@@ -204,7 +209,7 @@ export default class JobUpdate extends Component {
         {map(jobData, (cardDetails, key) => {
           return (
             <div key={key}>
-              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{router.push(cardDetails.route)}}/>}
+              {<CarType router={this.props.route} key={key} cardDetails={cardDetails} jobLeftGridValue={jobLeftGridValue} jobRightGridValue={jobRightGridValue} messageRoute={()=>{router.push(cardDetails.route)}} parentRef={this.state.parentContainer}/>}
             </div>
           )
         })}
