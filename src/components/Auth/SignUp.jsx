@@ -7,6 +7,7 @@ import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class SignUp extends Component {
   constructor(props) {
