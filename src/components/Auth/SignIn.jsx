@@ -97,7 +97,7 @@ export default class SignIn extends Component {
                       cssClass="btn btn-theme lg blue"
                       textButton="Facebook"
                       fields="name,email,picture"
-                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse, 'facebook')}}}
+                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse.accessToken, 'facebook')}}}
                       icon={<i className="mdi mdi-facebook" />}/>
                   <GoogleLogin
                       clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
