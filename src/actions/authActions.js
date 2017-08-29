@@ -18,6 +18,9 @@ export function signInUser (signInData, dispatch, fromSignup) {
         localStorage.setItem('accessToken', responseData.token);
         localStorage.setItem('authData', JSON.stringify(responseData));
         localStorage.setItem('userId', JSON.stringify(responseData.id));
+        if (responseData.token) {
+          axios.defaults.headers.common['x-access-token'] = responseData.token;
+        }
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
@@ -62,20 +65,59 @@ export function signInAction(signInData, dispatch, fromSignup) {
   }
 }
 
-export function facebookAuth(fbResponse) {
-  console.log(fbResponse);
-  // let userProfileData = fbResponse;
-  // if (userProfileData.picture && userProfileData.picture.data && userProfileData.picture.data.url) {
-  //   userProfileData['profile_photo'] = userProfileData.picture.data.url;
-  //   delete userProfileData['picture'];
-  //   delete userProfileData['first_name'];
-  //   delete userProfileData['last_name'];
-  // }
-  // userProfileData['provider'] = 'facebook';
-  // userProfileData['type'] = 'customer';
-  // userProfileData['usertype'] = 'customer';
-  // userProfileData['token'] = userCredentials.token;
-  // userProfileData['tokenExpirationDate'] = userCredentials.tokenExpirationDate;
+export function socialAuth(socialResponse, provider) {
+  return (dispatch) => {
+    const authPostData = {
+      "provider": provider,
+      "type": "customer",
+      "userType": "customer",
+      "accessToken": socialResponse.accessToken
+    };
+    axios.post(API_END_POINTS.SOCIAL_AUTH, JSON.stringify(authPostData), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        let responseData = response.data.user;
+        responseData['token'] = response.data.token;
+        localStorage.setItem('accessToken', responseData.token);
+        localStorage.setItem('authData', JSON.stringify(responseData));
+        localStorage.setItem('userId', JSON.stringify(responseData.id));
+        if (responseData.token) {
+          axios.defaults.headers.common['x-access-token'] = responseData.token;
+        }
+        if (responseData.phone && (!responseData.phoneVerified)) {
+          dispatch({
+            type: types.SHOW_SEND_OTP_PAGE,
+            authData: responseData
+          });
+        } else {
+          dispatch({
+            type: (responseData.phone && responseData.phoneVerified) ? responseData.hasVehicleProfile ? types.SHOW_DASHBOARD : types.SHOW_WELCOME_PAGE : types.SHOW_SEND_OTP_PAGE,
+            authData: responseData
+          });
+        }
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: "Unable to authenticate using facebook, please try again"
+        });
+        dispatch({
+          type: types.SAVE_LOG,
+          appLog: 'Calling SignIn API ' + API_END_POINTS.SIGNIN + ' Login Success, Response:  ' + response.data
+        });
+      }
+    })
+    .catch((err) => {
+      dispatch({
+        type: types.SHOW_ERROR_MESSAGE,
+        statusMessage: (err && err.message) ? err.message : "Unable to authenticate using facebook, please try again"
+      });
+    })
+  }
 }
 
 export function showVerifyOTPPage(signUpData) {
@@ -137,7 +179,7 @@ export function showWelcomePage(otp, phone, userId) {
       })
       .then((response) => {
         if (response.status === 200) {
-          const authData = JSON.parse(localStorage.getItem('authData'));
+          const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : {};
           authData.phoneVerified = true;
           localStorage.setItem('authData', JSON.stringify(authData));
           dispatch({
@@ -242,7 +284,7 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
         if (userTriggeredAPI) {
           window.alert('OTP has been send to ' + phoneNumber);
         }
-        const authData = JSON.parse(localStorage.getItem('authData'));
+        const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
         dispatch({
           type: types.SHOW_VERIFY_OTP_PAGE,
           authData: authData
@@ -263,7 +305,7 @@ export function resendOTP(phoneNumber, userTriggeredAPI){
   };
 }
 
-export function logout(router) {
+export function logout() {
   return (dispatch) => {
     axios.get(API_END_POINTS.LOGOUT, {
       headers: {
@@ -278,12 +320,12 @@ export function logout(router) {
         dispatch({
           type: types.LOGOUT,
         });
-        router.push('/');
+        window.location.pathname = '';
       }
     })
     .catch(() => {
         localStorage.clear();
-        router.push('/');
+        window.location.pathname = '';
     });
   };
 }

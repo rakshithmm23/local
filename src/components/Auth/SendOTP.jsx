@@ -26,8 +26,9 @@ export default class SendOTP extends Component {
   }
 
   componentWillMount() {
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     if (authData) {
+      this.formData.phone = authData.phone || '';
       if (authData.phone && authData.phoneVerified) {
         this.props.router.push('dashboard');
       }
@@ -36,7 +37,7 @@ export default class SendOTP extends Component {
     }
   }
   componentWillReceiveProps() {
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     if (authData) {
       if (authData.phone && authData.phoneVerified) {
         this.props.router.push('dashboard');
@@ -71,7 +72,7 @@ export default class SendOTP extends Component {
       return;
     } else {
       this.setState({ submissionError: false });
-      const authData = JSON.parse(localStorage.getItem('authData'));
+      const authData = localStorage.authData ? JSON.parse(localStorage.authData) : {};
       authData.phone = this.formData.phone;
       localStorage.setItem('authData', JSON.stringify(authData));
       this.props.actions.resendOTP(this.formData.phone);
@@ -105,6 +106,7 @@ export default class SendOTP extends Component {
                         onChange={this.onFieldChange.bind(this)}
                       />
                     </div>
+                    <Button btnCallBack={this.sendOTPAction.bind(this)} btnType="gmail otpbtnAlign" btnType="red" btnSize="sm" fontSize={16} label="Get OTP" />
                 </div>
                 </div>
               </CustomScroll>

@@ -25,7 +25,7 @@ export default class VerifyOTP extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
   }
   componentWillMount() {
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     if (authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -39,7 +39,7 @@ export default class VerifyOTP extends Component {
     }
   }
   componentWillReceiveProps() {
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     if (authData) {
       if (authData.phone) {
         if (authData.phoneVerified) {
@@ -60,7 +60,7 @@ export default class VerifyOTP extends Component {
   }
   verifyOTPAction(e) {
     e.preventDefault();
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     const { router } = this.props;
     let formData = {
       ...this.formData
@@ -90,7 +90,7 @@ export default class VerifyOTP extends Component {
   }
   render() {
     const { router, authReducer } = this.props;
-    const authData = JSON.parse(localStorage.authData);
+    const authData = localStorage.authData ? JSON.parse(localStorage.authData) : '';
     return (
       <div className="container-fluid" id="wrapper">
         <LoginHeader headerTitle='Sign Up' />

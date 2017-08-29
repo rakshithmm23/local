@@ -6,6 +6,7 @@ import TextInput from '../common/TextInput';
 import { Checkbox } from 'react-bootstrap';
 import AlertDismissable from '../common/AlertDismissable';
 import CustomScroll from 'react-custom-scroll';
+import FacebookLogin from 'react-facebook-login';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -35,14 +36,14 @@ export default class SignUp extends Component {
   }
   componentWillMount() {
     const userId = localStorage.getItem('userId');
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');
     }
   }
   componentWillReceiveProps(nextProps) {
     const userId = localStorage.getItem('userId');
-    const authData = JSON.parse(localStorage.getItem('authData'));
+    const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
     if (userId && authData && authData.phone && authData.phoneVerified) {
       this.props.router.push('dashboard');
     }
@@ -101,8 +102,20 @@ export default class SignUp extends Component {
               <div className="login-panel signup">
                   <div className="login-panel-header">
                     <h3 className="login-title">Sign Up</h3>
-                    <Button iconName="facebook" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/facebook?type=customer" }} btnType="blue" btnSize="lg" label="Facebook" />
-                    <Button iconName="google" btnCallBack={(e) => { e.preventDefault(); window.location.href = "http://api-server-test.carcility.com/auth/social/google?type=customer" }} btnType="red" btnSize="lg" label="Google" />
+                    <FacebookLogin
+                      appId="1931777803704298"
+                      fields="name,email,picture"
+                      cssClass="btn btn-theme lg blue"
+                      textButton="Facebook"
+                      fields="name,email,picture"
+                      callback={(socialResponse) => {if (socialResponse && socialResponse.accessToken) {this.props.actions.socialAuth(socialResponse, 'facebook')}}}
+                      icon={<i className="mdi mdi-facebook" />}/>
+                    <GoogleLogin
+                      clientId="325191651728-3luk3tuh4h0in6svqoh0d74gkkdbb5f5.apps.googleusercontent.com"
+                      className="btn btn-theme lg red"
+                      onSuccess={(socialResponse) => {console.log(socialResponse)}}>
+                      <i className="mdi mdi-google"/>Google
+                    </GoogleLogin>
                   </div>
                   <div className="or-text">
                     <span>OR</span>

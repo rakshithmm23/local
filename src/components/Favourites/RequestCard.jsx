@@ -264,7 +264,7 @@ export default class RequestCard extends Component {
         this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
       }
     } else {
-      this.checkBox["all"] = false
+      this.checkBox["all"] = false;
       this.checkBox[val] = !this.checkBox[val]
     }
   
@@ -274,7 +274,6 @@ export default class RequestCard extends Component {
     this.setState({ filterSort: val, sortBydropdown: false })
   }
   switch(val) {
-    debugger
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
     if (val == 'byCash') {
       this.toggleSwitchVal.byCreditcard = false;
@@ -282,7 +281,7 @@ export default class RequestCard extends Component {
     } else if (val == 'byCreditcard') {
       this.toggleSwitchVal.byCash = false;
       // this.toggleSwitchVal.byCreditcard = true;
-    }
+    } 
 
     this.setState({ switched: !this.state.switched })
   }

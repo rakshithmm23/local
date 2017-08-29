@@ -32,7 +32,7 @@ export default function carProfileReducer(state = {}, action) {
       const userId = localStorage.getItem('userId');
       const carProfilesById = 'carProfiles-' + userId;
       let carProfiles = localStorage[carProfilesById];
-      carProfiles = JSON.parse(carProfiles);
+      carProfiles = carProfiles ? JSON.parse(carProfiles) : {};
       delete carProfiles[action.carProfileID];
       localStorage[carProfilesById] = JSON.stringify(carProfiles);
       return assign({}, state, {currentComponentKey: '/car-profiles'})
