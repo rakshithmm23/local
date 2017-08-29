@@ -65,7 +65,7 @@ class JobStatus extends Component {
                 {this.props.status=="inProgress" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
-                            <div className="status-label inProgress" style="font-size: 14px;">inProgress</div>
+                            <div className="status-label inProgress" style="font-size: 14px;">In Progress</div>
                             <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                         </div>
                         <div>

@@ -317,7 +317,6 @@ export default class RequestCard extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.windowWidth = this.windowWidth.bind(this);
     this.jobData = [
-
       {
         carImage: '../../images/car.jpg',
         customerName: 'Bala Subramani',
@@ -905,7 +904,7 @@ export default class RequestCard extends Component {
 
                                   </div>}
 
-                                  {this.jobData[0].statusIndicator != "waiting" || this.jobData[0].statusIndicator != "active" ? <div>
+                                  {this.jobData[0].statusIndicator != "active" ? <div>
                                     <AcceptedQuotes />
                                   </div> : ""}
                                 </CustomScroll>

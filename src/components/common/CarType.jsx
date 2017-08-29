@@ -111,7 +111,7 @@ class CardType extends Component {
                                                     <label>Request ID :</label><span>{cardDetails.customeId}</span></li>
                                                 <li>
                                                     <label>Start :</label><span>{cardDetails.startDate}</span></li>
-                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inProgress" || cardDetails.statusIndicator == "completed") &&
+                                                {cardDetails.statusPopup && (cardDetails.statusIndicator == "accepted" || cardDetails.statusIndicator == "inprogress" || cardDetails.statusIndicator == "completed") &&
                                                     <li className="desktop-expand-timeline" onClick={(e) => { this.showTimeline(e) }}>
                                                         {this.state.showTimeLine ? <button className="btn btn-theme sm label" >
                                                             <i className="mdi mdi-chevron-up" />
@@ -132,7 +132,7 @@ class CardType extends Component {
                         <div className={jobRightGridValue + " col-sm-12 col-xs-12 pad0"}>
                             <div className="job-right">
                                 <div className="job-right-header">
-                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inProgress"?"In Progress":cardDetails.statusIndicator}</div>
+                                    <div className={"status-label " + cardDetails.statusIndicator} >{cardDetails.statusIndicator=="inprogress"?"In Progress":cardDetails.statusIndicator}</div>
                                     <div className="job-icon notification">
                                         {this.getIcons(this, cardDetails.statusIndicator)}
                                     </div>

@@ -51,10 +51,8 @@ export default class SendOTP extends Component {
     this.props.actions.hideErrorMessage();
   }
   onFieldChange(value, key, name, validationObj) {
-    if (value) {
-      this.formData[name] = value;
-      this.errors[name] = false;
-    }
+    this.formData[name] = value;
+    this.errors[name] = value ? false : true;
   }
   sendOTPAction(e) {
     e.preventDefault();

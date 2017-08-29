@@ -7,7 +7,7 @@ import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import BookServiceBox from './BookServiceBox';
-import { concat, map } from 'lodash';
+import { concat, map, size } from 'lodash';
 import CustomModal from '../common/CustomModal';
 import { Modal, Media } from 'react-bootstrap';
 
@@ -21,7 +21,7 @@ export default class BookService extends Component {
             isLoading: false,
             bookServiceModalVisible: false,
         };
-        
+
     }
     componentWillMount() {
       this.setState({'isLoading': true});
@@ -99,13 +99,13 @@ export default class BookService extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
+                                    {(carProfileReducer.carProfiles && size(carProfileReducer.carProfiles) > 0) ? map(carProfileReducer.carProfiles, (profile, index) => {
                                       return (
                                           <BookServiceBox key={index} {...profile}
                                             btnCallBack={this.showBookServiceModal.bind(this)}
                                             router={router}
                                       />);
-                                    })}
+                                    }) : <h5>No profile found</h5>}
                                     <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon={true} hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
                                       <Modal.Body>
                                           <ul>

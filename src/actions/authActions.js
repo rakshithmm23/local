@@ -103,7 +103,7 @@ export function socialAuth(accessToken, provider) {
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: "Unable to authenticate using facebook, please try again"
+          statusMessage: "Unable to authenticate using " +provider + ", please try again"
         });
         dispatch({
           type: types.SAVE_LOG,
@@ -112,10 +112,17 @@ export function socialAuth(accessToken, provider) {
       }
     })
     .catch((err) => {
-      dispatch({
-        type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: (err && err.message) ? err.message : "Unable to authenticate using facebook, please try again"
-      });
+      if (err && err.response && err.response.status && err.response.status == 400) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.data && err.response.data.message) ? err.response.data.message : "User already exist"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err && err.response && err.response.data && err.response.data.message) ? err.response.data.message : "Unable to authenticate using  " +provider + ", please try again"
+        });
+      }
     })
   }
 }

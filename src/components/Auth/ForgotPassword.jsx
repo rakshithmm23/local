@@ -32,10 +32,8 @@ export default class ForgotPassword extends Component {
     }
   }
   onFieldChange(value, key, name) {
-    if (value) {
-      this.formData[name] = value;
-      this.errors[name] = false;
-    }
+    this.formData[name] = value;
+    this.errors[name] = value ? false : true;
   }
   forgotPasswordAction(e) {
     e.preventDefault();
