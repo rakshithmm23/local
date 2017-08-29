@@ -27,7 +27,7 @@ export default class RequestCard extends Component {
       TimePickerFrom: "",
       TimePickerTo: "",
       switched: false,
-      filterSort: "low-high",
+      filterSort: "DistNF",
       filterdropdownVisible:false,
       filterdropdown: false,
       sortBydropdown: false,
@@ -403,40 +403,73 @@ export default class RequestCard extends Component {
                               </div>
                             }>
                               <div className="sortFilter filterCard">
-                                <ul className="list-unstyled">
-                                  <li onClick={() => { this.filterOption("near-far") }} className={this.state.filterSort == "near-far" ? "active" : ""}>
-                                    <label>
-                                      Distance - Near to Far
-                                    </label>
-                                    <span>
-                                      <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"} />
-                                    </span>
-                                  </li>
-                                  <li onClick={() => { this.filterOption("far-near") }} className={this.state.filterSort == "far-near" ? "active" : ""}>
-                                    <label>
-                                      Distance - Far to Near
-                                    </label>
-                                    <span>
-                                      <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"} />
-                                    </span>
-                                  </li>
-                                  <li onClick={() => { this.filterOption("high-low") }} className={this.state.filterSort == "high-low" ? "active" : ""}>
-                                    <label>
-                                      Rating - Highest to Lowest
-                                    </label>
-                                    <span>
-                                      <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"} />
-                                    </span>
-                                  </li>
-                                  <li onClick={() => { this.filterOption("low-high") }} className={this.state.filterSort == "low-high" ? "active" : ""}>
-                                    <label>
-                                      Rating - Lowest to Highest
-                                    </label>
-                                    <span>
-                                      <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"} />
-                                    </span>
-                                  </li>
-                                </ul>
+                              <ul className="list-unstyled">
+                              <li onClick={() => (this.filterOption("DistNF"))} className={this.state.filterSort == "DistNF" ? "active" : ""}>
+                                <label>
+                                  Distance - Near to Far
+                                </label>
+                                <span>
+                                  <i className={this.state.filterSort == "DistNF" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("DistFN"))} className={this.state.filterSort == "DistFN" ? "active" : ""}>
+                                <label>
+                                  Distance - Far to Near
+                                </label>
+                                <span>
+                                  <i className={this.state.filterSort == "DistFN" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("ratingHL"))} className={this.state.filterSort == "ratingHL" ? "active" : ""}>
+                                <label>
+                                  Rating - Highest to Lowest
+                                </label>
+                                <span>
+                                  <i className={this.state.filterSort == "ratingHL" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("ratingLH"))} className={this.state.filterSort == "ratingLH" ? "active" : ""}>
+                                <label>
+                                  Rating - Lowest to Highest
+                                </label>
+                                <span>
+                                  <i className={this.state.filterSort == "ratingLH" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("priceHL"))} className={this.state.filterSort == "priceHL" ? "active" : ""}>
+                                <label>
+                                  Price - Highest to Lowest
+                              </label>
+                                <span>
+                                  <i className={this.state.filterSort == "priceHL" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("priceLH"))} className={this.state.filterSort == "priceLH" ? "active" : ""}>
+                                <label>
+                                  Price - Lowest to Highest
+                              </label>
+                                <span>
+                                  <i className={this.state.filterSort == "priceLH" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("dateNO"))} className={this.state.filterSort == "dateNO" ? "active" : ""}>
+                                <label>
+                                  Date - Newest to Oldest
+                              </label>
+                                <span>
+                                  <i className={this.state.filterSort == "dateNO" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+                              <li onClick={() => (this.filterOption("dateON"))} className={this.state.filterSort == "dateON" ? "active" : ""}>
+                                <label>
+                                  Date - Oldest to Newest
+                              </label>
+                                <span>
+                                  <i className={this.state.filterSort == "dateON" ? "mdi mdi-check active" : "hide"} />
+                                </span>
+                              </li>
+
+                            </ul>
                               </div>
                             </DropdownButton>
                           </div>

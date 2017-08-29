@@ -24,14 +24,14 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
-      filterdropdownVisible:false,
+      filterdropdownVisible: false,
       dataChange: "",
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
       TimePickerFrom: "",
       TimePickerTo: "",
       switched: false,
-      filterSort: "low-high",
+      filterSort: "DistNF",
       filterdropdown: false,
       sortBydropdown: false,
       daySelected: {
@@ -361,11 +361,11 @@ export default class RequestCard extends Component {
   componentWillMount() {
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
-    if(this.props.router.params.requestType=='waiting' || this.props.router.params.requestType==undefined){
-      this.setState({jobUpdates: "details"})
+    if (this.props.router.params.requestType == 'waiting' || this.props.router.params.requestType == undefined) {
+      this.setState({ jobUpdates: "details" })
     }
-    if(this.props.router.params.requestType=='active'){
-      this.setState({mapView: true,quotationView:false})
+    if (this.props.router.params.requestType == 'active') {
+      this.setState({ mapView: true, quotationView: false })
     }
     // const jobType =this.props.jobType
     // if(!jobType){
@@ -375,11 +375,11 @@ export default class RequestCard extends Component {
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
-    if(this.props.router.params.requestType=='waiting' || this.props.router.params.requestType==undefined){
-      this.setState({jobUpdates: "details"})
+    if (this.props.router.params.requestType == 'waiting' || this.props.router.params.requestType == undefined) {
+      this.setState({ jobUpdates: "details" })
     }
-    if(this.props.router.params.requestType=='active'){
-      this.setState({mapView: true,quotationView:false})
+    if (this.props.router.params.requestType == 'active') {
+      this.setState({ mapView: true, quotationView: false })
     }
     // const jobType =this.props.jobType
     // if(!jobType){
@@ -400,15 +400,15 @@ export default class RequestCard extends Component {
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
   }
   bodyClick(e) {
-    if(e.target.className=="rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')){
-      this.setState({filterdropdownVisible:true})
-    }else{
-      this.setState({filterdropdownVisible:false})
+    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
+      this.setState({ filterdropdownVisible: true })
+    } else {
+      this.setState({ filterdropdownVisible: false })
     }
   }
-  filterDropDownFunc(e){
-    if(!this.state.filterdropdownVisible){
-      this.setState({filterdropdown:e})
+  filterDropDownFunc(e) {
+    if (!this.state.filterdropdownVisible) {
+      this.setState({ filterdropdown: e })
     }
   }
 
@@ -648,7 +648,7 @@ export default class RequestCard extends Component {
                             {this.jobData[0].statusIndicator == "active" && <div className="title">
                               <span>4 Quotes Received</span>
                               <div className="filterSection">
-                                <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e)=>{this.setState({sortBydropdown:e})}} noCaret title={
+                                <DropdownButton bsSize="small" id="dropdown-size-small" open={this.state.sortBydropdown} onToggle={(e) => { this.setState({ sortBydropdown: e }) }} noCaret title={
                                   <div className="filterLabel showSortBy">
                                     <i className="mdi mdi-swap-vertical" />
                                     <label>Sort by</label>
@@ -657,44 +657,77 @@ export default class RequestCard extends Component {
                                 }>
                                   <div className="sortFilter filterCard">
                                     <ul className="list-unstyled">
-                                      <li onClick={() => (this.filterOption("near-far"))} className={this.state.filterSort == "near-far" ? "active" : ""}>
+                                      <li onClick={() => (this.filterOption("DistNF"))} className={this.state.filterSort == "DistNF" ? "active" : ""}>
                                         <label>
                                           Distance - Near to Far
-                                    </label>
+                                        </label>
                                         <span>
-                                          <i className={this.state.filterSort == "near-far" ? "mdi mdi-check active" : "hide"} />
+                                          <i className={this.state.filterSort == "DistNF" ? "mdi mdi-check active" : "hide"} />
                                         </span>
                                       </li>
-                                      <li onClick={() => (this.filterOption("far-near"))} className={this.state.filterSort == "far-near" ? "active" : ""}>
+                                      <li onClick={() => (this.filterOption("DistFN"))} className={this.state.filterSort == "DistFN" ? "active" : ""}>
                                         <label>
                                           Distance - Far to Near
-                                    </label>
+                                        </label>
                                         <span>
-                                          <i className={this.state.filterSort == "far-near" ? "mdi mdi-check active" : "hide"} />
+                                          <i className={this.state.filterSort == "DistFN" ? "mdi mdi-check active" : "hide"} />
                                         </span>
                                       </li>
-                                      <li onClick={() => (this.filterOption("high-low"))} className={this.state.filterSort == "high-low" ? "active" : ""}>
+                                      <li onClick={() => (this.filterOption("ratingHL"))} className={this.state.filterSort == "ratingHL" ? "active" : ""}>
                                         <label>
                                           Rating - Highest to Lowest
-                                    </label>
+                                        </label>
                                         <span>
-                                          <i className={this.state.filterSort == "high-low" ? "mdi mdi-check active" : "hide"} />
+                                          <i className={this.state.filterSort == "ratingHL" ? "mdi mdi-check active" : "hide"} />
                                         </span>
                                       </li>
-                                      <li onClick={() => (this.filterOption("low-high"))} className={this.state.filterSort == "low-high" ? "active" : ""}>
+                                      <li onClick={() => (this.filterOption("ratingLH"))} className={this.state.filterSort == "ratingLH" ? "active" : ""}>
                                         <label>
                                           Rating - Lowest to Highest
-                                    </label>
+                                        </label>
                                         <span>
-                                          <i className={this.state.filterSort == "low-high" ? "mdi mdi-check active" : "hide"} />
+                                          <i className={this.state.filterSort == "ratingLH" ? "mdi mdi-check active" : "hide"} />
                                         </span>
                                       </li>
+                                      <li onClick={() => (this.filterOption("priceHL"))} className={this.state.filterSort == "priceHL" ? "active" : ""}>
+                                        <label>
+                                          Price - Highest to Lowest
+                                      </label>
+                                        <span>
+                                          <i className={this.state.filterSort == "priceHL" ? "mdi mdi-check active" : "hide"} />
+                                        </span>
+                                      </li>
+                                      <li onClick={() => (this.filterOption("priceLH"))} className={this.state.filterSort == "priceLH" ? "active" : ""}>
+                                        <label>
+                                          Price - Lowest to Highest
+                                      </label>
+                                        <span>
+                                          <i className={this.state.filterSort == "priceLH" ? "mdi mdi-check active" : "hide"} />
+                                        </span>
+                                      </li>
+                                      <li onClick={() => (this.filterOption("dateNO"))} className={this.state.filterSort == "dateNO" ? "active" : ""}>
+                                        <label>
+                                          Date - Newest to Oldest
+                                      </label>
+                                        <span>
+                                          <i className={this.state.filterSort == "dateNO" ? "mdi mdi-check active" : "hide"} />
+                                        </span>
+                                      </li>
+                                      <li onClick={() => (this.filterOption("dateON"))} className={this.state.filterSort == "dateON" ? "active" : ""}>
+                                        <label>
+                                          Date - Oldest to Newest
+                                      </label>
+                                        <span>
+                                          <i className={this.state.filterSort == "dateON" ? "mdi mdi-check active" : "hide"} />
+                                        </span>
+                                      </li>
+
                                     </ul>
                                   </div>
                                 </DropdownButton>
                               </div>
                               <div className="filterSection">
-                                <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e)=>{this.filterDropDownFunc(e)}} noCaret id="dropdown-size-large" title={
+                                <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e) => { this.filterDropDownFunc(e) }} noCaret id="dropdown-size-large" title={
                                   <div className="filterLabel showFilters ">
                                     <i className="mdi mdi-filter-variant" />
                                     <label>Filter</label>
@@ -858,7 +891,7 @@ export default class RequestCard extends Component {
                               </div>
                             </div>}
                             <div className="quotes-left-body">
-                              <div className={this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed"?"requestQuotesScroll vendor-details-content":"requestQuotesScroll"}>
+                              <div className={this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? "requestQuotesScroll vendor-details-content" : "requestQuotesScroll"}>
                                 <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                   {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
 
@@ -873,7 +906,7 @@ export default class RequestCard extends Component {
 
                                   </div>}
 
-                                  {this.jobData[0].statusIndicator != "waiting" || this.jobData[0].statusIndicator != "active"  ? <div>
+                                  {this.jobData[0].statusIndicator != "waiting" || this.jobData[0].statusIndicator != "active" ? <div>
                                     <AcceptedQuotes />
                                   </div> : ""}
                                 </CustomScroll>
