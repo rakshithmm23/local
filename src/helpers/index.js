@@ -12,7 +12,15 @@ export function validateMobile(mobile) {
       return false;
   }
 }
+export function validateAlphaNumeric(textInput) {
+  const re = /^[a-zA-Z0-9_-]*$/;
+  return re.test(textInput);
+}
 
+export function validateAlphabets(textInput) {
+  const re = /^[a-zA-Z]*$/;
+  return re.test(textInput);
+}
 export function isNumeric(num){
     return !isNaN(num);
 }
@@ -30,6 +38,31 @@ export function validateField(validationObj, value){
           isValid = value.length >= validationObj.minLength;
         }
         return isValid;
+      }
+      case 'numeric': {
+        return isNumeric(value);
+      }
+      case 'alphanumeric': {
+        if (validationObj.notMandatory) {
+          if (value && value.length) {
+            return validateAlphaNumeric(value);
+          } else {
+            return true;
+          }
+        } else {
+          return validateAlphaNumeric(value);
+        }
+      }
+      case 'alphabets': {
+        if (validationObj.notMandatory) {
+          if (value && value.length) {
+            return validateAlphabets(value);
+          } else {
+            return true;
+          }
+        } else {
+          return validateAlphabets(value);
+        }
       }
       case 'email': {
         return validateEmail(value);

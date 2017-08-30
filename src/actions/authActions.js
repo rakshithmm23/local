@@ -96,7 +96,7 @@ export function socialAuth(accessToken, provider) {
           });
         } else {
           dispatch({
-            type: (responseData.phone && responseData.phoneVerified) ? responseData.hasVehicleProfile ? types.SHOW_DASHBOARD : types.SHOW_WELCOME_PAGE : types.SHOW_SEND_OTP_PAGE,
+            type: (responseData.phone && responseData.phoneVerified) ? responseData.isFirstTimeLoggedin ? types.SHOW_WELCOME_PAGE : types.SHOW_DASHBOARD  : types.SHOW_SEND_OTP_PAGE,
             authData: responseData
           });
         }
