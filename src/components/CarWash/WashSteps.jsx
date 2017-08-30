@@ -18,6 +18,7 @@ class WashSteps extends Component {
         this.state = {
             PrefferedLocation:'Select Location',
             // startDate: moment(),
+            heating:false,
             step1Panel: true,
             step2Panel: false,
             catDescriptionModalVisible: false,
@@ -377,27 +378,13 @@ class WashSteps extends Component {
           <figure onClick={(e)=>{this.showModal(e, carDetails)}}>
                   <img src={carDetails.image} alt="" />
           </figure>
-          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault(); this.openCategory(carDetails.id); }}>
+          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} >
               <h4>{carDetails.name}</h4>
-              {checkedSubCategories && checkedSubCategories.length > 0 ?
-                  <span className="sub-category-count">
-                      {checkedSubCategories.length}{checkedSubCategories.length == 1 ? " Category Selected" : " Categories Selected"}
-                  </span>
-                   :
-                  <span className="sub-category-count">
-                      {carDetails.subCategories.length} {carDetails.subCategories.length == 1 ? "subcategory" : "subcategories"}
-                  </span>
-              }
-              <i className={carDetails.id == this.state.visibleCategory  ? 'mdi mdi-chevron-up' : 'mdi mdi-chevron-down'} />
-          </div>
-          <div className={carDetails.id == this.state.visibleCategory  ? "sub-collapse-panel-body" : "sub-collapse-panel-body hide"}>
-              {map(carDetails.subCategories, (subCategory, index) => {
-                  return (<div className="options" key={index}>
-                      <span className="checkbox-style">
-                          <label className={subCategory.checked?"label active":"label"}><input type="checkbox" checked={subCategory.checked} onChange={(e) => { this.changeCheckboxState(e, carDetails.id, subCategory.id) }} value="" />{subCategory.checked} {subCategory.name}</label>
-                      </span>
-                  </div>);
-              })}
+              <div className="select-type">
+                <span className="checkbox-style">
+                  <input type="checkbox"  checked={this.state.heating} onChange={(e) => { this.payment(e, "heating") }}/>
+                </span>
+              </div>
           </div>
         </div>
       )
@@ -426,7 +413,7 @@ class WashSteps extends Component {
                     </div>
                     {this.state.step1Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6 pad0">
+                            <div className="col-md-9 pad0">
                                 <div className="search-box">
                                     <TextInput label="Search" name="text" type="text" onChange={this.filterCarType.bind(this)}/>
                                     <i className="mdi mdi-magnify" />
@@ -435,8 +422,8 @@ class WashSteps extends Component {
                         </div>
                         {resultsCount > 0 ?
                           <div className="row">
-                            <div className="col-md-6 padLeft0">{leftBlock}</div>
-                            <div className="col-md-6 padRight0">{rightBlock}</div>
+                            <div className="col-md-12 pad0">{leftBlock}</div>
+                            <div className="col-md-12 pad0">{rightBlock}</div>
                         </div>
                         : <div className="row"><h4>No result found</h4></div>
                         }
@@ -453,7 +440,7 @@ class WashSteps extends Component {
                     {this.state.step2Panel &&
                     <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6 left padLeft0">
+                            <div className="col-md-12 pad0">
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
                                     <div className="model-select">
@@ -469,7 +456,7 @@ class WashSteps extends Component {
                                 </div>
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Preffered Time & Date</h4>
-                                    <div className="row date-time">
+                                    <div className="row date-time  model-select">
                                         <div className="col-md-6 padLeft0">
                                             <DatePicker
                                                 selected={this.state.startDate}
@@ -515,7 +502,7 @@ class WashSteps extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 right padRight0">
+                            <div className="col-md-12 pad0">
                                 <h4 className="panel-sub-title">Special Instruction</h4>
                                 <p className="panel-text">
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.
