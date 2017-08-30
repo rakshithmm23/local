@@ -378,7 +378,7 @@ class WashSteps extends Component {
           <figure onClick={(e)=>{this.showModal(e, carDetails)}}>
                   <img src={carDetails.image} alt="" />
           </figure>
-          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} onClick={(event) => { event.preventDefault(); this.openCategory(carDetails.id); }}>
+          <div className={carDetails.id == this.state.visibleCategory ? "sub-collapse-panel-head active" : "sub-collapse-panel-head "} >
               <h4>{carDetails.name}</h4>
               <div className="select-type">
                 <span className="checkbox-style">

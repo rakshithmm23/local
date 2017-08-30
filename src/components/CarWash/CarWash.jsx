@@ -47,11 +47,65 @@ export default class CarWash extends Component {
                         <div className="padwrapper padwrapper-align">
                             <div className="myCar-list row">
                                 <div className="myCar-body col-md-8">
-                                    {/*Job Updates*/}
                                     <WashSteps />
                                 </div>
                                 <div className="myCar-body col-md-4">
-
+                                    {/*Car wash Updates*/}
+                                    <div className="car-summary">
+                                      <h5 className="summary-heading">
+                                        Summary
+                                      </h5>
+                                      <div className="car-wrapper">
+                                        <div className="type-card">
+                                          <div className="type-img">
+                                            <img src="../images/book-service-1.png" alt=""/>
+                                          </div>
+                                          <div className="type-desc">
+                                            <h5>Service Type</h5>
+                                            <label>Car Wash</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="category-wrapper">
+                                         <div className="category-heading">
+                                            <h5>Categories Selected</h5>
+                                            <label>
+                                                <a href="">Edit</a>
+                                            </label>
+                                         </div>
+                                         <div className="category-list">
+                                          <ul className="list-unstyled">
+                                            <li>
+                                                <img src="../../images/auto-service-icons-4.png" alt=""/>
+                                                <label>AC heating & Cooling</label>
+                                            </li>
+                                             <li>
+                                                <img src="../../images/auto-service-icons-4.png" alt=""/>
+                                                <label>AC heating & Cooling</label>
+                                            </li>
+                                          </ul>
+                                         </div>
+                                      </div>
+                                      <div className="car-wrapper">
+                                        <div className="type-card">
+                                          <div className="type-img car-img">
+                                            <img src="../images/car.jpg" alt=""/>
+                                          </div>
+                                          <div className="type-desc">
+                                            <h5>Car Profile</h5>
+                                            <label>My Nissan GT-R</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="car-wrapper">
+                                        <div className="type-card">
+                                          <div className="type-desc only-desc">
+                                            <h5>Vendor</h5>
+                                            <label>Request will be sent to multiple Vendors.</label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
