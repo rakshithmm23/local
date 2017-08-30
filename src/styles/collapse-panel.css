@@ -23,7 +23,7 @@
     border-radius: 2px;
     background-color: #FFFFFF;
     box-shadow: none;
-    border: 1px solid rgba(104, 111, 145, 0.2);
+    box-shadow: 0 0 4px 0 rgba(197,197,197,0.5);
 }
 
 .panel-head {
@@ -32,7 +32,7 @@
     padding: 11px 15px;
     border-radius: 4px 4px 0 0;
     background-color: #FFFFFF;
-    border-bottom: 1px solid rgba(104, 111, 145, 0.2);
+    box-shadow: 0 0 4px 0 rgba(197,197,197,0.5);
 }
 
 .panel-head h4 {
