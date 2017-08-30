@@ -22,27 +22,32 @@ export default class Sidebar extends Component {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
-        iconName: 'mdi mdi-view-grid',
+        icon: '../images/sidebar/dashboard.svg',
+        icon_active: '../../images/sidebar/dashboard_active.svg',
         name: 'Dashboard',
         hyperLink: '/dashboard'
       },
       {
-        iconName: 'mdi mdi-pencil',
+        icon: '../images/sidebar/request.svg',
+        icon_active: '../images/sidebar/request_active.svg',
         name: 'My Requests',
         hyperLink: '/request'
       },
       {
-        iconName: 'mdi mdi-car',
+        icon: '../images/sidebar/car.svg',
+        icon_active: '../images/sidebar/car_active.svg',
         name: 'My Cars',
         hyperLink: '/car-profiles'
       },
       {
-        iconName: 'mdi mdi-comment-processing',
+        icon: '../images/sidebar/message.svg',
+        icon_active: '../images/sidebar/message_active.svg',
         name: 'Messages',
         hyperLink: '/messages'
       },
       {
-        iconName: 'mdi mdi-heart',
+        icon: '../images/sidebar/fav.svg',
+        icon_active: '../images/sidebar/fav_active.svg',
         name: 'Favourites',
         hyperLink: '/favourites'
       },
@@ -53,7 +58,8 @@ export default class Sidebar extends Component {
         <li key={key} className={this.state.currentPath == item.hyperLink ? 'active': ''}
         onClick={this.goToUrl.bind(this,item.hyperLink)}>
           <a>
-            {item.iconName && <label className={item.iconName}/> }
+            {item.icon && <img src={item.icon} className="non_active"/> }
+            {item.icon && <img src={item.icon_active} className="active_icon"/> }
             <span>{item.name}</span>
           </a>
         </li>

@@ -156,7 +156,6 @@ class ProfileSteps extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    debugger;
     if (nextProps.carProfileReducer && nextProps.carProfileReducer.carMakeAndModels) {
       this.setState({ carList: nextProps.carProfileReducer.carMakeAndModels, isLoading: false });
     }

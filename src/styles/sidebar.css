@@ -33,11 +33,17 @@
     display: block;
     margin-top: 7px;
 }
-
-.sidebar ul li:hover a,
 .sidebar ul li.active a {
     color: #ED3124;
     font-family: CenturyGothic_bold;
+}
+.sidebar ul li .active_icon,
+.sidebar ul li.active .non_active{
+  display: none;
+}
+.sidebar ul li.active .active_icon,
+.sidebar ul li .non_active{
+  display: inline;
 }
 
 

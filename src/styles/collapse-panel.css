@@ -450,7 +450,8 @@
     font-size: 14px;
     height: 32px;
     margin: 10px 0;
-    width: 100%
+    width: 100%;
+    font-family: CenturyGothic;
 }
 
 .car-wash .collapse-panel .right {
@@ -492,14 +493,15 @@
     font-size: 16px;
     font-family: CenturyGothic;
     line-height: 28px;
-    margin-top: 20px;
+    margin-top: 35px;
     font-weight: normal;
-    margin-bottom: 35px;
+    margin-bottom: 0px;
 }
 
 .collapse-panel .model-select {
     margin-top: 36px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .collapse-panel .car-service-upload .model-select {
@@ -511,8 +513,9 @@
 }
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {
-    right: 17px;
+    right: 0px;
     color: #949DA5;
+    bottom: -5px;
 }
 
 .form-section .jd-text {
@@ -680,11 +683,11 @@
 .react-datepicker{
     width: 282px;
     height: 240px;
-    font-family: CenturyGothic;  
+    font-family: CenturyGothic;
 }
 .react-datepicker__tether-element-attached-top .react-datepicker__triangle,
-.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle, 
-.react-datepicker__year-read-view--down-arrow, 
+.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
+.react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow{
     left: 50%;
 }
@@ -711,11 +714,11 @@
 }
 .react-datepicker__day--keyboard-selected,
 .react-datepicker__day--keyboard-selected:hover,
-.react-datepicker__day--selected, 
-.react-datepicker__day--in-selecting-range, 
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
 .react-datepicker__day--in-range,
-.react-datepicker__day--selected:hover, 
-.react-datepicker__day--in-selecting-range:hover, 
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-selecting-range:hover,
 .react-datepicker__day--in-range:hover{
     background-color: #ED3124;
     color: #fff;

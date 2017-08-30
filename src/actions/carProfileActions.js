@@ -8,7 +8,6 @@ export function setCarProfileAction(carData, isEditProfile, profileId){
     dispatch({
       type: types.HIDE_ERROR_MESSAGE
     });
-    debugger;
     const formData = new FormData();
     let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos', 'insurancepolicynumber', 'insuranceprovider', 'carnotes', 'registrationnumber'];
 

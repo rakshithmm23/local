@@ -44,11 +44,14 @@ export default class CarWash extends Component {
                         </div>
                     </div>
                     <div className="inSection">
-                        <div className="padwrapper">
-                            <div className="myCar-list">
-                                <div className="myCar-body row">
+                        <div className="padwrapper padwrapper-align">
+                            <div className="myCar-list row">
+                                <div className="myCar-body col-md-8">
                                     {/*Job Updates*/}
                                     <WashSteps />
+                                </div>
+                                <div className="myCar-body col-md-4">
+
                                 </div>
                             </div>
                         </div>
