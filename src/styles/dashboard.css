@@ -261,6 +261,9 @@
   padding-left: 15px;
   font-family: CenturyGothic;
 }
+.sub-collapse-panel-head .checkbox-style input{
+  margin-right: 0px !important;
+}
 @media screen and (min-width: 1170px) {
     .padwrapper {
         max-width: 1170px;
