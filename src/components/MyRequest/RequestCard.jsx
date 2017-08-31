@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -387,13 +388,7 @@ export default class RequestCard extends Component {
     // this.jobData[0].statusIndicator=jobType
     // this.setState({dataChange:!this.state.dataChange})
   }
-  componentDidUpdate(prevProps, prevState) {
-    const curr = this.currentTopEle
-    if (curr != undefined) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
-    }
-
-  }
+  
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
@@ -439,6 +434,9 @@ export default class RequestCard extends Component {
     });
     this.setState({
       jobCardDetails: newDetails,
+    });
+    this.setState({
+      scrollTo: Object.keys(this.currentTopEle).length>0? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top: 0
     });
   }
   ClickedQuoteCard(key, vendorId) {
@@ -890,7 +888,7 @@ export default class RequestCard extends Component {
                             </div>}
                             <div className="quotes-left-body">
                               <div className={this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? "requestQuotesScroll vendor-details-content" : "requestQuotesScroll"}>
-                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true} scrollTo={this.state.scrollTo}>
                                   {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
 
                                     <div>

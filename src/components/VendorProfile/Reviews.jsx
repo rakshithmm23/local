@@ -44,7 +44,7 @@ export default class Reviews extends Component {
                                             Rating - Highest to Lowest
                                     </label>
                                         <span>
-                                            <i className="mdi mdi-check" />
+                                            {this.state.filterSort == "high-low" && <i className="mdi mdi-check" />}
                                         </span>
                                     </li>
                                     <li onClick={() => (this.filterOption("low-high"))} className={this.state.filterSort == "low-high" ? "active" : ""}>
@@ -52,7 +52,7 @@ export default class Reviews extends Component {
                                             Rating - Lowest to Highest
                                     </label>
                                         <span>
-                                            <i className="mdi mdi-check" />
+                                            {this.state.filterSort == "low-high" && <i className="mdi mdi-check" />}
                                         </span>
                                     </li>
                                     <li onClick={() => (this.filterOption("new-old"))} className={this.state.filterSort == "new-old" ? "active" : ""}>
@@ -60,7 +60,7 @@ export default class Reviews extends Component {
                                             Date - Newest to Oldest
                                     </label>
                                         <span>
-                                            <i className="mdi mdi-check" />
+                                            {this.state.filterSort == "new-old" && <i className="mdi mdi-check" />}
                                         </span>
                                     </li>
                                     <li onClick={() => (this.filterOption("old-new"))} className={this.state.filterSort == "old-new" ? "active" : ""}>
@@ -68,7 +68,7 @@ export default class Reviews extends Component {
                                             Date - Oldest to Newest
                                     </label>
                                         <span>
-                                            <i className="mdi mdi-check" />
+                                            {this.state.filterSort == "old-new" && <i className="mdi mdi-check" />}
                                         </span>
                                     </li>
                                 </ul>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -162,12 +163,7 @@ export default class RequestCard extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
-  componentDidUpdate() {
-    const curr = this.currentTopEle;
-    if (curr != undefined) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop;
-    }
-  }
+  
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
@@ -221,6 +217,9 @@ export default class RequestCard extends Component {
     });
     this.setState({
       jobCardDetails: newDetails,
+    });
+    this.setState({
+      scrollTo: Object.keys(this.currentTopEle).length>0? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top: 0
     });
   }
   ClickedQuoteCard(key) {
@@ -611,7 +610,7 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-left-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true} scrollTo={this.state.scrollTo}>
                               <div className="wrapper" ref={'quotesList'}>
 
                                 <div>
