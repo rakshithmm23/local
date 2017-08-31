@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, forEach,remove, } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -19,6 +20,7 @@ import CustomScroll from 'react-custom-scroll';
 export default class RequestCard extends Component {
   constructor(...args) {
     super(...args);
+    this.currentTopEle="";
     this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
@@ -155,12 +157,7 @@ export default class RequestCard extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
-  componentDidUpdate() {
-    const curr = this.currentTopEle
-    // if (curr.refs[curr.props.index].offsetTop) {
-    //   this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
-    // }
-  }
+
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
@@ -219,7 +216,10 @@ export default class RequestCard extends Component {
       newDetails.push(update);
     });
     this.setState({
-      jobCardDetails: newDetails,
+      jobCardDetails: newDetails
+    });
+    this.setState({
+      scrollTo: Object.keys(this.currentTopEle).length>0? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top: 0
     });
   }
   ClickedQuoteCard(key) {
@@ -645,12 +645,12 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-left-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true} scrollTo={this.state.scrollTo}>
                               <div className="wrapper" ref={'quotesList'}>
                                 <div>
                                   {map(this.state.jobCardDetails, (details, key) => {
                                     return (
-                                      <QuotesCard key={key} ref={(quotesCard) => { details.isActive ? this.currentTopEle = quotesCard : '' }} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
+                                      <QuotesCard key={key} ref={(ele)=>{ details.isActive? this.currentTopEle = ele: "" }} index={key+1} activeClass={details.isActive ? "active" : ""} vendorName={details.name} rating={details.rating} distance={details.distance} reviews={details.review}
                                         viewPayment={this.viewPayment.bind(this)} viewMessaging={this.viewMessaging.bind(this)} ClickedQuoteCard={() => this.ClickedQuoteCard({ key })} quoteKey={key} removeFavourite={this.removeFav.bind(this)}/>
                                     );
                                   })}
