@@ -172,11 +172,7 @@ export default class RequestCard extends Component {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
   bodyClick(e) {
-    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
-      this.setState({ filterdropdownVisible: true })
-    } else {
-      this.setState({ filterdropdownVisible: false })
-    }
+    
   }
   filterDropDownFunc(e) {
     if (!this.state.filterdropdownVisible) {
