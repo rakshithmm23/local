@@ -2,7 +2,7 @@
     display: block;
     width: 60px;
     height: 60px;
-    background: url(../images/logo.png);
+    /* background: url(../images/logo.png); */
     background-size: 100%;
     color: transparent;
 }
@@ -78,7 +78,7 @@
     display: -ms-flexbox;
     display: flex;
     /*height: 100vh;*/
-    margin-top: 115px;
+    padding-top: 115px;
     flex-direction: column;
 }
 
@@ -99,12 +99,7 @@
     margin-right: 15px;
 }
 
-.login-panel-header .btn-theme.lg {
-    width: 47%;
-}
-
 .login-panel-header .note-text {
-    color: #2B2828;
     margin: 20px 0 30px;
 }
 
@@ -116,7 +111,7 @@
 }
 
 .login-panel-header .note-text strong i {
-    color: #006FBA;
+    color: #006FB9;
     display: inline-block;
     cursor: pointer;
     margin-left: 15px;
@@ -136,6 +131,8 @@
 
 .checkbox-style input {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
     background-color: #fafafa;
     border: 1px solid #cacece;
     width: 15px;
@@ -150,10 +147,13 @@
     cursor: pointer;
     border-radius: 3px;
 }
+.checkbox-style input::-ms-expand {
+    display: none;
+}
 
 .checkbox-style input:checked {
-    background-color: #23AE49;
-    border: 1px solid #23AE49;
+    background-color: #ED3124;
+    border: 1px solid #ED3124;
     color: #fff;
 }
 
@@ -162,7 +162,7 @@
     font-family: 'Material Design Icons';
     font-size: 13px;
     position: absolute;
-    top: 0px;
+    top: -1px;
     left: 0px;
     color: #fff;
 }
@@ -179,33 +179,24 @@
     cursor: pointer;
 }
 
-.gm-scroll-view {
-    overflow: auto;
-}
-
-.gm-scrollbar {
-    visibility: hidden;
-}
-
-.gm-scrollbar.-vertical {
-    width: 0;
-    visibility: hidden;
-}
-
-.gm-scrollbar .thumb {
-    background-color: rgba(0, 0, 0, 0);
-    visibility: hidden;
-}
-
-.gm-scrollbar .thumb:hover,
-.gm-scrollbar .thumb:active {
-    background-color: rgba(0, 0, 0, 0);
+.login-panel-footer a.forgot-pswd {
+    margin-top: 12px;
 }
 
 .edit-mobileno {
     color: #454B51;
     font-family: CenturyGothic;
     font-size: 18px;
+}
+
+.forget-input .btn-theme.red,
+.otp-input .btn-theme.red,
+.otpbtnAlign {
+    margin-top: -18px;
+}
+
+.quotes-message-footer .input-group .form-control:focus + .input-group-addon{
+    color: #006FB9;
 }
 
 @media screen and (min-height: 701px) {
@@ -216,7 +207,10 @@
 
 @media screen and (min-width: 1076px) and (max-width: 1280px) {
     .login-panel {
-        width: 80%;
+        width: 480px;
+    }
+    .login-panel-header .btn-theme.lg {
+        width: 46% !important;
     }
 }
 
@@ -237,6 +231,17 @@
 }
 
 @media screen and (max-width: 1075px) {
+    .login-title {
+        font-size: 20px;
+    }
+    .login-panel-footer a {
+        margin-top: 15px;
+        float: none;
+        display: block
+    }
+    .login-panel-footer {
+        text-align: left;
+    }
     .logo {
         width: 90px;
         height: 90px;
@@ -258,9 +263,9 @@
         width: 100% !important;
     }
     .login-panel {
-        width: 80%;
+        width: 640px;
         justify-content: initial;
-        margin-top: 70px;
+        padding-top: 100px;
         margin-bottom: 20px;
     }
     .login-title.mobile {
@@ -288,33 +293,29 @@
     }
 }
 
-@media screen and (max-width: 767px) {
-    .login-panel-footer a {
-        margin-top: 10px;
+@media screen and (min-width: 581px) and (max-width: 767px) {
+    .login-panel {
+        width: 500px;
+        padding: 80px 20px 0;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .login-panel .btn-theme.gmail {
-        margin-left: 0;
-    }
-}
-
-@media screen and (min-width: 581px) and (max-width: 767px) {
-    .login-panel-header .btn-theme.lg {
-        width: 45%;
-        font-size: 13px !important;
+    .forget-input .btn-theme.red,
+    .otp-input .btn-theme.red,
+    .otpbtnAlign {
+        margin-top: -12px;
     }
 }
 
 @media screen and (max-width: 580px) {
     .login-panel {
         width: 100%;
-        height: 100%;
-        padding: 0 20px;
+        padding: 80px 20px 0;
     }
-    .login-panel-header .btn-theme.lg {
-        width: 43%;
-        font-size: 13px !important;
+    .forget-input .btn-theme.red,
+    .otp-input .btn-theme.red,
+    .otpbtnAlign {
+        margin-top: 0;
     }
 }

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { ProgressBar, Media, DropdownButton, MenuItem } from 'react-bootstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
+import Button from '../common/Button';
 
 export default class Reviews extends Component {
     constructor(...args) {
         super(...args);
         this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
         this.state = {
-            dropDownOpen:false,
+            dropDownOpen: false,
             filterSort: "high-low",
             sortBydropdown: false,
         };
@@ -20,7 +21,7 @@ export default class Reviews extends Component {
 
     //     }
     // }
-    
+
     filterOption(val) {
         this.setState({ filterSort: val, sortBydropdown: false });
     }
@@ -30,7 +31,7 @@ export default class Reviews extends Component {
                 <div className="vendor-description">
                     <h4>21 Reviews</h4>
                     <div className="filterSection">
-                        <DropdownButton bsSize="small" id="dropdown-size-small" onToggle={(isOpen) => {this.setState({'sortBydropdown': isOpen});}} open={this.state.sortBydropdown} noCaret title={
+                        <DropdownButton bsSize="small" id="dropdown-size-small" onToggle={(isOpen) => { this.setState({ 'sortBydropdown': isOpen }); }} open={this.state.sortBydropdown} noCaret title={
                             <div className="filterLabel showSortBy" >
                                 <label>Sort by</label>
                                 <i className="mdi mdi-chevron-down" />
@@ -172,7 +173,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -186,7 +187,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -195,7 +196,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -209,7 +210,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -218,7 +219,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -232,7 +233,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -241,7 +242,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -255,7 +256,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -264,7 +265,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -278,7 +279,7 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                                 <li>
                                     <Media>
@@ -287,7 +288,7 @@ export default class Reviews extends Component {
                                         </Media.Left>
                                         <Media.Body>
                                             <Media.Heading>Alan Cruz</Media.Heading>
-                                            <div className="rating">
+                                            <div className="rating rating-left">
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star" />
                                                 <span className="mdi mdi-star-outline" />
@@ -301,9 +302,12 @@ export default class Reviews extends Component {
                                     </Media>
                                     <p>
                                         Lorem ipsum dolor sit amet, vim aperiam assentior moderatius an, eum facilisi pericula ea. Pro ut abhorreant intellegam, at est tota elitr…
-                                </p>
+                                    </p>
                                 </li>
                             </ul>
+                        </div>
+                        <div className="load-more-comments">
+                            <Button btnType="transparent" btnSize="sm" fontSize={13} label="Load More" />
                         </div>
                     </div>
                 </div>

@@ -1,26 +1,30 @@
 .messageBody {
     background: #fff;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08); */
+    border: 1px solid rgba(0,0,0,0.08);
     overflow: hidden
 }
 
 .messageBot,
 .inboxContainer {
-    height: 70vh;
+    height: 510px;
 }
 
 .inboxContainer {
-    border-right: 1px solid #EEF2F5;
-    overflow-y: scroll;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    /* overflow-y: scroll; */
     overflow-x: hidden
 }
 
 .messageBot .quotes-chat-area {
-    padding-top: 150px;
+    padding-bottom: 67px;
 }
+/* .messageBot .quotes-chat-area.full-width {
+    padding-top: 0;
+} */
 
-.messageBot .quotes-message-footer {
-    bottom: 0;
+.messageChatBot{
+    height: 386px;
 }
 
 .messageCard {
@@ -115,7 +119,7 @@
     height: 28px;
     width: 28px;
     border-radius: 50%;
-    background-color: #ED3124;
+    background-color: #23AE49;
     text-align: center;
     color: #fff;
     font-family: CenturyGothic;

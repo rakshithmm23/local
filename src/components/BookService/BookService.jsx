@@ -7,7 +7,9 @@ import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import BookServiceBox from './BookServiceBox';
-import { concat, map } from 'lodash';
+import { concat, map, size } from 'lodash';
+import CustomModal from '../common/CustomModal';
+import { Modal, Media } from 'react-bootstrap';
 
 export default class BookService extends Component {
     constructor(props, context) {
@@ -16,8 +18,10 @@ export default class BookService extends Component {
         this.state = {
             notificationVisible: false,
             messageVisible: false,
-            isLoading: false
+            isLoading: false,
+            bookServiceModalVisible: false,
         };
+
     }
     componentWillMount() {
       this.setState({'isLoading': true});
@@ -35,8 +39,44 @@ export default class BookService extends Component {
         this.setState({ 'messageVisible': isVisible });
     }
 
+    showBookServiceModal(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setState({'bookServiceModalVisible': !this.state.bookServiceModalVisible})
+    }
+
     render() {
         const {router, carProfileReducer} = this.props;
+        const bookServiceOption = [
+            {
+                image: "../../images/book-service-1.png",
+                title: "Car Wash",
+                url:"/car-wash"
+            }, {
+                image: "../../images/book-service-2.png",
+                title: "Car Service",
+                url:"/car-service"
+            }, {
+                image: "../../images/book-service-3.png",
+                title: "Car Repair",
+                url:"/car-repair"
+            }
+        ];
+        const bookServiceOptionView = map(bookServiceOption, (service, key) => {
+            return (
+                <li key={key} onClick={()=>router.push(service.url)}>
+                    <Media>
+                        <Media.Left>
+                            <img width={69} height={69} src={service.image} alt="Image" />
+                        </Media.Left>
+                        <Media.Body>
+                            <h5>{service.title}</h5>
+                            <i className="mdi mdi-chevron-right" />
+                        </Media.Body>
+                    </Media>
+                </li>
+            );
+        });
         return (
             <div>
                 {/*Header*/}
@@ -59,14 +99,20 @@ export default class BookService extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    {carProfileReducer.carProfiles && map(carProfileReducer.carProfiles, (profile, index) => {
+                                    {(carProfileReducer.carProfiles && size(carProfileReducer.carProfiles) > 0) ? map(carProfileReducer.carProfiles, (profile, index) => {
                                       return (
-                                          <BookServiceBox date="17 April 16" year={profile.year} state={profile.state} photos={profile.photos ? profile.photos : ''}
-                                            model={profile.model} regNo={profile.plateNo} name={profile.name} key={index} id={profile.id}
+                                          <BookServiceBox key={index} {...profile}
+                                            btnCallBack={this.showBookServiceModal.bind(this)}
                                             router={router}
-
                                       />);
-                                    })}
+                                    }) : <h5>No profile found</h5>}
+                                    <CustomModal showModal={this.state.bookServiceModalVisible}  title="book a service" className="bookService-modal" closeIcon={true} hideModal={() => {this.setState({'bookServiceModalVisible': false})}}>
+                                      <Modal.Body>
+                                          <ul>
+                                              {bookServiceOptionView}
+                                          </ul>
+                                      </Modal.Body>
+                                    </CustomModal>
                                 </div>
                             </div>
                         </div>

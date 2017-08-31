@@ -1,60 +1,99 @@
 .btn-theme {
-  font-size: 15px;
-  border-radius: 4px !important;
-  height: 42px;
-  text-align: center;
-  color: #fff !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  font-family: CenturyGothic_bold;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    height: 42px;
+    text-align: center;
+    color: #fff !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    font-family: CenturyGothic;
+    font-weight: bold;
 }
 
 .btn-theme.lg {
-  width: 220px;
+    width: 220px;
 }
 
 .btn-theme.sm {
-  width: 130px;
+    width: 130px;
 }
 
-.btn-theme.facebook {
-  background: #3D5AA6;
-  margin-right: 10px;
+.btn-theme.blue {
+    background: #3D5AA6;
 }
 
-.btn-theme.gmail {
-  background: #ED3124;
-  margin-left: 10px;
+.btn-theme.red {
+    background: #ED3124;
 }
 
-.btn-theme.submit {
-  background: #23AE49;
-  margin-left: 15px !important;
+.btn-theme.green {
+    background: #23AE49;
 }
 
-.btn-theme i {
-  margin-right: 10px;
-}
-
-.btn-theme.label {
-  background: transparent;
-  color: #454B51 !important;
-}
-
-.btn-theme.label i {
-  float: right;
-  font-size: 14px;
-}
-
-.btn-alert{
+.btn-theme.transparent {
     background: transparent;
     border: 1px solid #ED3124;
     color: #ED3124 !important;
-    font-family: CenturyGothic_bold;
-    height: 42px;
 }
+
+.btn-theme.label {
+    background: transparent;
+    color: #454B51 !important;
+}
+
+.btn-theme i {
+    margin-right: 10px;
+}
+
+.btn-theme.label i {
+    float: right;
+    font-size: 18px;
+    margin-top: -2px;
+}
+
+
+/* Auth screen button styles */
+
+.login-panel-header .btn-theme.lg {
+    width: 47%;
+}
+
+.login-panel-header .btn-theme.blue {
+    margin-right: 35px;
+}
+
+@media screen and (max-width: 1075px) {
+    .login-panel-footer .btn-theme.red {
+        float: right;
+        margin-top: 15px;
+    }
+}
+
 @media screen and (max-width: 640px) {
-  .btn-theme {
-    height: 35px;
-  }
+    .login-panel .btn-theme.red {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 581px) and (max-width: 767px) {
+    .login-panel-header .btn-theme.lg {
+        width: 46%;
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .btn-theme {
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .login-panel-header .btn-theme.lg {
+        width: 45%;
+        font-size: 13px !important;
+    }
+    .login-panel-header .btn-theme.blue {
+        margin-right: 26px;
+    }
 }

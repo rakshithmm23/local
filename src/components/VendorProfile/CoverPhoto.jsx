@@ -18,7 +18,7 @@ export default class CoverPhoto extends Component {
                     <a href="" className="profile-pic-upload">Upload Photo</a>
                 </div>
                 <div className="vendor-cover-header">
-                    <div className="rating">
+                    <div className="rating rating-left">
                         <span className="mdi mdi-star" />
                         <span className="mdi mdi-star" />
                         <span className="mdi mdi-star" />

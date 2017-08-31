@@ -1,114 +1,118 @@
 .vendorDetails {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 .vd-heading h5 {
-  color: #454B51;
-  font-size: 17px;
-  font-family: CenturyGothic;
-  margin: 30px 0px;
+    color: #454B51;
+    font-size: 17px;
+    font-family: CenturyGothic;
+    margin: 30px 0px;
 }
 
 .vd-img {
-  height: 200px;
-  overflow: hidden;
+    height: 200px;
+    overflow: hidden;
 }
 
 .vd-img img {
-  width: 100%;
+    width: 100%;
 }
 
 .vd-address h5 {
-  color: #454B51;
-  font-size: 17px;
-  font-family: CenturyGothic;
-  margin-bottom: 5px;
+    color: #454B51;
+    font-size: 17px;
+    font-family: CenturyGothic;
+    margin-bottom: 5px;
 }
 
 .vd-address label {
-  color: #717982;
-  font-size: 12px;
-  font-family: CenturyGothic;
-  display: block;
+    color: #717982;
+    font-size: 12px;
+    font-family: CenturyGothic;
+    display: block;
 }
 
 .figure .upload-images {
-  height: 54px;
-  width: 54px;
-  display: inline-block;
-  position: relative;
-  margin-right: 9px;
+    height: 54px;
+    width: 12%;
+    display: inline-block;
+    position: relative;
+    margin-right: 9px;
 }
 
+.figure .upload-images.wrap-photo{
+    margin-left: -5px;
+}
 .figure .upload-images img {
-  width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100%;
 }
 
 .figure img {
-  border-radius: 3px;
+    border-radius: 3px;
 }
 
 .vendorDetails .figure h4 {
-  color: #454B51;
-  font-size: 14px;
-  font-family: CenturyGothic;
-  margin: 15px 0px;
+    color: #454B51;
+    font-size: 14px;
+    font-family: CenturyGothic;
+    margin: 15px 0px;
 }
 
 .vendorDetails .figure {
-  border-top: 1px solid #f6f6f6;
+    border-top: 1px solid #f6f6f6;
 }
 
 .vd-address {
-  margin-top: 15px;
-  padding-bottom: 15px;
-  position: relative;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
 }
 
 .vendorDetails .rating {
-  justify-content: flex-start !important;
-  margin-bottom: 5px;
+    justify-content: flex-start !important;
+    margin-bottom: 5px;
 }
 
 .vendorDetails .figure p {
-  color: #717982;
-  font-size: 14px;
-  line-height: 20px;
-  font-family: CenturyGothic;
-  margin-top: 10px;
+    color: #717982;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: CenturyGothic;
+    margin-top: 11px;
 }
 
-.vd-address .btn-alert {
-  height: 32px;
-  font-size: 11px;
-  font-family: CenturyGothic_bold;
-  border-radius: 3px;
-  margin-top: 7px;
+.vd-address .btn-theme.transparent {
+    height: 34px;
+    font-size: 11px !important;
+    margin-top: 7px;
+    width: 110px;
 }
 
-.vd-address .btn-alert:first-child {
-  margin-right: 10px;
+.vd-address .btn-theme.transparent:first-child {
+    margin-right: 10px;
 }
 
 .alert-margin {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .read_more {
-  color: #F48021;
-  font-size: 11px;
-  font-family: CenturyGothic;
-  float: right;
-  cursor: pointer
+    color: #006FBA;
+    font-size: 11px;
+    font-family: CenturyGothic;
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .km-details {
-  position: absolute;
-  right: 10px;
-  color: #454B51;
-  font-family: CenturyGothic;
-  top: 0px;
+    position: absolute;
+    right: 10px;
+    color: #454B51;
+    font-family: CenturyGothic;
+    top: 0px;
+    font-size: 13px;
 }

@@ -42,12 +42,12 @@ export default class SearchResult extends Component {
                     {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
                     <div className="page-sec-header">
                         <div className="padwrapper">
-                            <h4>Search Result</h4>
+                            <h4>Search Results</h4>
                         </div>
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
-                            <div className="myCar-list">
+                            <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
                                     <RequestCard />

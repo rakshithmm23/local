@@ -3,13 +3,13 @@ import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
 import {keyBy} from 'lodash';
 
-export function setCarProfileAction(carData){
+export function setCarProfileAction(carData, isEditProfile, profileId){
   return (dispatch) => {
     dispatch({
       type: types.HIDE_ERROR_MESSAGE
     });
     const formData = new FormData();
-    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos'];
+    let mandateFields = ['name', 'make', 'model', 'year', 'plate_no', 'mileage', 'state', 'photos', 'insurancepolicynumber', 'insuranceprovider', 'carnotes', 'registrationnumber'];
 
   Object.keys(carData).map((value)=> {
     if(carData[value] && mandateFields.indexOf(value) !== -1) {
@@ -17,13 +17,15 @@ export function setCarProfileAction(carData){
         formData.append(value, carData[value]);
       else {
         carData[value].forEach(imgElm => {
-          formData.append(value, imgElm);
+          if (!imgElm.id) {
+            formData.append(value, imgElm);
+          }
         });
       }
     }
   });
-
-  axios.post(API_END_POINTS.CREATE_CAR_PROFILE, formData, {
+  const postMethod = (isEditProfile && profileId) ? axios.put : axios.post;
+  postMethod(isEditProfile && profileId? (API_END_POINTS.EDIT_CAR_PROFILES + profileId) : API_END_POINTS.CREATE_CAR_PROFILE, formData, {
       withCredentials:true
     })
     .then((response) => {
@@ -38,14 +40,13 @@ export function setCarProfileAction(carData){
                               JSON.parse(localStorage.getItem('carProfiles')) || [];
           console.log("carProfiles: ",carProfiles);
           carProfiles.push(response.data);
-          localStorage[carProfileId] = JSON.stringify(carProfiles);
+          localStorage[response.data.id] = JSON.stringify(carProfiles);
           dispatch({
             type: types.SET_CAR_PROFILE,
             carData: response.data
           });
         }
       }
-
     }).catch((err) => {
       console.log("Error: ",err);
       if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
@@ -108,11 +109,11 @@ export function getCarProfileDetails(carProfileID) {
           dispatch({
             type: types.VIEW_CAR_PROFILE,
             carProfile: response.data
-          })
+          });
         } else {
           dispatch({
             type: types.VIEW_CAR_PROFILE,
-          })
+          });
         }
       })
       .catch((err) => {
@@ -133,11 +134,42 @@ export function deleteCarProfile(carProfileID) {
           dispatch({
             type: types.DELETE_CAR_PROFILE,
             carProfileID: carProfileID
-          })
+          });
         }
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+}
+
+
+export function getCarMakeandModels() {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.CAR_MAKE_AND_MODELS, {withCredentials: true})
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.CAR_MAKE_AND_MODELS,
+            carMakeAndModels: response.data
+          });
+        }
       })
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
+
+
+export function deleteVehicleImage(id){
+  return () => {
+    axios.delete(API_END_POINTS.DELETE_VEHICLE_IMAGE + id, {withCredentials: true})
+    .then((response) => {
+      console.log("response",response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
 }

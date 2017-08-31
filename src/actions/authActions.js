@@ -1,12 +1,9 @@
 import * as types from './actionTypes';
 import * as API_END_POINTS from '../constants/api.js';
 import axios from 'axios';
-import {decryptCookie} from '../helpers';
-import Cookies from 'universal-cookie';
 import queryString from 'query-string';
-const cookies = new Cookies();
 
-export function signInUser (signInData, dispatch) {
+export function signInUser (signInData, dispatch, fromSignup) {
   axios.post(API_END_POINTS.SIGNIN, JSON.stringify(signInData), {
       headers: {
         'Accept': 'application/json,',
@@ -16,18 +13,18 @@ export function signInUser (signInData, dispatch) {
     })
     .then((response) => {
       if (response.status === 200) {
-        const responseData = response.data;
-        const authCookie = decryptCookie(response.headers.authorization);
-        cookies.set('carauth', authCookie.carauth, {
-          domain: window.location.hostname,
-          expires: new Date(authCookie.Expires),
-          path: authCookie.Path
-        });
+        let responseData = response.data.user;
+        responseData['token'] = response.data.token;
+        localStorage.setItem('accessToken', responseData.token);
         localStorage.setItem('authData', JSON.stringify(responseData));
         localStorage.setItem('userId', JSON.stringify(responseData.id));
+        if (responseData.token) {
+          axios.defaults.headers.common['x-access-token'] = responseData.token;
+        }
         if (responseData.phone && (!responseData.phoneVerified)) {
           dispatch({
             type: types.SHOW_VERIFY_OTP_PAGE,
+            fromSignIn: fromSignup? false : true,
             authData: responseData
           });
         } else {
@@ -47,23 +44,86 @@ export function signInUser (signInData, dispatch) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.status === 401 ? 'Invalid Email/Password' : err.response.data
+          statusMessage: (err.response.status === 400 || err.response.status === 401) ? err.response.data && err.response.data.message ? err.response.data.message : 'Invalid Email/Password' : 'Unknown error occurred please try again'
         });
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
       }
     });
 }
 export function signInAction(signInData, dispatch, fromSignup) {
   if (fromSignup) {
-    signInUser(signInData, dispatch);
+    signInData.usertype = 'customer';
+    signInUser(signInData, dispatch, fromSignup);
   } else {
     return (dispatch) => {
       signInUser(signInData, dispatch);
     };
+  }
+}
+
+export function socialAuth(accessToken, provider) {
+  return (dispatch) => {
+    const authPostData = {
+      "provider": provider,
+      "type": "customer",
+      "userType": "customer",
+      "accessToken": accessToken
+    };
+    axios.post(API_END_POINTS.SOCIAL_AUTH, JSON.stringify(authPostData), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        let responseData = response.data.user;
+        responseData['token'] = response.data.token;
+        localStorage.setItem('accessToken', responseData.token);
+        localStorage.setItem('authData', JSON.stringify(responseData));
+        localStorage.setItem('userId', JSON.stringify(responseData.id));
+        if (responseData.token) {
+          axios.defaults.headers.common['x-access-token'] = responseData.token;
+        }
+        if (responseData.phone && (!responseData.phoneVerified)) {
+          dispatch({
+            type: types.SHOW_SEND_OTP_PAGE,
+            authData: responseData
+          });
+        } else {
+          dispatch({
+            type: (responseData.phone && responseData.phoneVerified) ? responseData.isFirstTimeLoggedin ? types.SHOW_WELCOME_PAGE : types.SHOW_DASHBOARD  : types.SHOW_SEND_OTP_PAGE,
+            authData: responseData
+          });
+        }
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: "Unable to authenticate using " +provider + ", please try again"
+        });
+        dispatch({
+          type: types.SAVE_LOG,
+          appLog: 'Calling SignIn API ' + API_END_POINTS.SIGNIN + ' Login Success, Response:  ' + response.data
+        });
+      }
+    })
+    .catch((err) => {
+      if (err && err.response && err.response.status && err.response.status == 400) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.data && err.response.data.message) ? err.response.data.message : "User already exist"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err && err.response && err.response.data && err.response.data.message) ? err.response.data.message : "Unable to authenticate using  " +provider + ", please try again"
+        });
+      }
+    })
   }
 }
 
@@ -93,7 +153,7 @@ export function showVerifyOTPPage(signUpData) {
       if (err.response.status === 400 || err.response.status === 401 || err.response.status === 403) {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: err.response.data
+          statusMessage: err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
         });
       } else if (err.response.status === 409) {
         dispatch({
@@ -103,7 +163,7 @@ export function showVerifyOTPPage(signUpData) {
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
       }
     });
@@ -126,7 +186,7 @@ export function showWelcomePage(otp, phone, userId) {
       })
       .then((response) => {
         if (response.status === 200) {
-          const authData = JSON.parse(localStorage.getItem('authData'));
+          const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : {};
           authData.phoneVerified = true;
           localStorage.setItem('authData', JSON.stringify(authData));
           dispatch({
@@ -140,17 +200,10 @@ export function showWelcomePage(otp, phone, userId) {
         }
       })
       .catch((err) => {
-        if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
           dispatch({
             type: types.SHOW_ERROR_MESSAGE,
-            statusMessage: (err.response.status === 401  || err.response.status === 410 )? "Wrong verification code" : 'Mobile number not found'
+            statusMessage: err.response && err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
           });
-        } else {
-          dispatch({
-            type: types.SHOW_ERROR_MESSAGE,
-            statusMessage: 'System error, please try later'
-          });
-        }
       });
     };
   } else {
@@ -160,6 +213,15 @@ export function showWelcomePage(otp, phone, userId) {
       });
     };
   }
+}
+
+export function showErrorMessage(error){
+  return (dispatch) => {
+    dispatch({
+      type: types.SHOW_ERROR_MESSAGE,
+      statusMessage: error,
+    });
+  };
 }
 
 export function hideErrorMessage() {
@@ -209,13 +271,13 @@ export function fetchCurrentUserInfo(router){
     .catch(() => {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: 'System error, please try later'
+          statusMessage: 'Unknown error occurred please try again'
         });
     });
   };
 }
 
-export function resendOTP(phoneNumber){
+export function resendOTP(phoneNumber, userTriggeredAPI){
   return (dispatch) => {
     axios.post(API_END_POINTS.REQUEST_OTP, JSON.stringify({ "phone": phoneNumber}), {
       headers: {
@@ -226,28 +288,31 @@ export function resendOTP(phoneNumber){
     })
     .then((response) => {
       if (response.status === 200) {
-        const authData = JSON.parse(localStorage.getItem('authData'));
+        if (userTriggeredAPI) {
+          window.alert('OTP has been send to ' + phoneNumber);
+        }
+        const authData = localStorage.getItem('authData') ? JSON.parse(localStorage.getItem('authData')) : '';
         dispatch({
-          type: types.VERIFY_OTP,
+          type: types.SHOW_VERIFY_OTP_PAGE,
           authData: authData
         });
       } else {
         dispatch({
           type: types.SHOW_ERROR_MESSAGE,
-          statusMessage: "Unknown error occurred please try again"
+          statusMessage: response.data && response.data.message ? response.data.message : "Unknown error occurred please try again"
         });
       }
     })
-    .catch(() => {
+    .catch((err) => {
       dispatch({
         type: types.SHOW_ERROR_MESSAGE,
-        statusMessage: 'Unknown error occurred please try again'
+        statusMessage: err && err.response && err.response.data && err.response.data.message ? err.response.data.message : 'Unknown error occurred please try again'
       });
     });
   };
 }
 
-export function logout(router) {
+export function logout() {
   return (dispatch) => {
     axios.get(API_END_POINTS.LOGOUT, {
       headers: {
@@ -262,12 +327,134 @@ export function logout(router) {
         dispatch({
           type: types.LOGOUT,
         });
-        router.push('/');
+        window.location.pathname = '';
       }
     })
     .catch(() => {
         localStorage.clear();
-        router.push('/');
+        window.location.pathname = '';
     });
   };
+}
+
+export function forgotPassword(emailId) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.FORGOT_PASSWORD, JSON.stringify({'email': emailId}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.SHOW_RESET_EMAIL_CONFIRMATION,
+            email: emailId
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if(err && err.response && err.response.status == 404) {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Email id not found, enter valid email id"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function resetPassword(verificationCode, password) {
+  return (dispatch) => {
+    axios.post(API_END_POINTS.RESET_PASSWORD, JSON.stringify({'code': verificationCode, password: password}), {
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          dispatch({
+            type: types.RESET_PASSWORD_CODE_VERIFIED
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+      .catch((err) => {
+        if (err && err.response && err.response.status == '410') {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Verification code expired, please try resetting again"
+          });
+        } else {
+          dispatch({
+            type: types.SHOW_ERROR_MESSAGE,
+            statusMessage: "Unknown error occurred please try again"
+          });
+        }
+      })
+  }
+}
+
+export function verifyEmail(code) {
+  return (dispatch) => {
+    axios.get(API_END_POINTS.VERIFY_EMAIL, {
+      params: {
+        'type': 'email',
+        'code': code
+      },
+      headers: {
+        'Accept': 'application/json,',
+        'Content-Type': 'application/json',
+      },
+      withCredentials:true
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: types.EMAIL_VERIFIED,
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (response.status === 401  || response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      }
+    })
+    .catch((err) => {
+      if (err.response.status === 404 || err.response.status === 401 || err.response.status === 410) {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: (err.response.status === 401  || err.response.status === 410 )? "Wrong verification code" : "Unable to verify email id, please try again"
+        });
+      } else {
+        dispatch({
+          type: types.SHOW_ERROR_MESSAGE,
+          statusMessage: 'Unknown error occurred please try again'
+        });
+      }
+    });
+  }
+}
+
+export function clearComponentKey() {
+  return (dispatch) => {
+    dispatch({
+      type: types.CLEAR_COMPONENT_KEY
+    })
+  }
 }

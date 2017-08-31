@@ -20,11 +20,11 @@ export default class Header extends Component {
                 address: "mysore road"
             }
         ]
-        this.dropdownList= ["Audi", "Renault", "BMW", "Benz"],
+        this.dropdownList= ["Audi", "Renault", "BMW", "Benz", "Maruthi", "Tesla"],
         this.state = {
             notificationSelected: false,
             messageSelected: false,
-            mobileSearch:false,            
+            mobileSearch:false,
         }
     }
 
@@ -78,7 +78,7 @@ export default class Header extends Component {
             }
 
         ]
-        
+
         const viewMessages = map(messagesThread, (message, key) => {
             return (
                 <MenuItem eventKey={message.key} key={key}>
@@ -120,16 +120,16 @@ export default class Header extends Component {
         return (
             <div className="header-section navbar-fixed-top">
                 <div className="logo-section">
-                    <img src="../../images/logo-new.png" alt="" className="logo-img" />
+                    <img src="../../images/logo.svg" alt="" className="logo-img" />
                 </div>
                 <div className="header-search">
                     <Search savedLocation={this.savedLocation} dropdownList={this.dropdownList}/>
                 </div>
                 <div className="mobile-search">
-                    {this.state.mobileSearch && <MobileSearch 
+                    {this.state.mobileSearch && <MobileSearch
                     dropdownList={this.dropdownList}
                     savedLocation={this.savedLocation}
-                    callBackBtn={() => this.setState({mobileSearch:false})} 
+                    callBackBtn={() => this.setState({mobileSearch:false})}
                     />}
                 </div>
                 <div className="header-right">
@@ -162,7 +162,7 @@ export default class Header extends Component {
                                     </div>} >
                                     <MenuItem eventKey="Notifications">
                                         Notifications
-                                        <a href="" className="view_all">View All</a>
+                                        <a onClick={(e) => {e.preventDefault(); router.push('/notification')}} className="view_all">View All</a>
                                     </MenuItem>
                                     {viewNotifications}
                                 </DropdownButton>

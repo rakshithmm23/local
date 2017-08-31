@@ -21,7 +21,7 @@ class QuotesCard extends Component {
                         </Media.Left>
                         <Media.Body>
                             <Media.Heading>{index} {vendorName} <span className={this.state.isFavouriteVisible?"mdi mdi-heart":"mdi mdi-heart-outline"} onClick={(e) => {e.preventDefault(); this.setState({'isFavouriteVisible': !this.state.isFavouriteVisible});}}/></Media.Heading>
-                            <div className="rating">
+                            <div className="rating rating-left">
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
                                 <span className={this.state.starSelected?"mdi mdi-star":"mdi mdi-star-outline"} />
@@ -33,7 +33,7 @@ class QuotesCard extends Component {
                     </Media>
                     <div className="box-footer">
                         <div className="footer-container">
-                            <Button btnType="" btnSize="sm" fontSize={13}  label="View Quote" btnCallBack={this.props.viewPayment} />
+                            <Button btnType="transparent" btnSize="sm" fontSize={13}  label="View Quote" btnCallBack={this.props.viewPayment} />
                             <span className="quotes-cost">120 AED</span>
                             <div className="box-message">
                                 <IconNotification iconType="comment-processing-outline" iconLabel="Messages" notifyClass="notification" viewMessaging={this.props.viewMessaging}/>

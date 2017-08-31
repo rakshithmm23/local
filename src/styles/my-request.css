@@ -35,11 +35,12 @@ input[type="color"][list] {
 
 .request-summary .title span {
     color: #454B51;
-    font-family: 'CenturyGothic';
-    font-size: 18px;
+    font-family: CenturyGothic;
     line-height: 22px;
     display: block;
     text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
 .request-summary .request-summary-tab .title.active {
@@ -47,7 +48,7 @@ input[type="color"][list] {
 }
 
 .request-summary .request-summary-tab .title.active span {
-    font-family: 'CenturyGothic_bold';
+    font-weight: bold;
 }
 
 .request-summary .left {
@@ -55,10 +56,14 @@ input[type="color"][list] {
     padding: 0;
 }
 
+.Filterby .left .filterby-wrapper .f-card:last-child {
+    padding-top: 13px;
+}
+
 .quotes-view {
     padding: 0 15px;
     padding-right: 5px;
-    padding-bottom: 20px;
+    /* padding-bottom: 10px; */
 }
 
 .quotes-view .title span {
@@ -66,9 +71,10 @@ input[type="color"][list] {
     display: inline-block;
     text-align: left;
     padding: 33px 0;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 17px;
     vertical-align: middle;
+    text-transform: capitalize;
 }
 
 .quotes-view .title .filterSection {
@@ -109,6 +115,7 @@ input[type="color"][list] {
     border: none;
     cursor: pointer;
     text-align: left;
+    line-height: 22px;
 }
 
 .filterSection .filterLabel label {
@@ -119,6 +126,18 @@ input[type="color"][list] {
 .input-range__label--min,
 .input-range__label--max {
     display: none !important;
+}
+
+.f-card .range-min {
+    position: absolute;
+    top: 27px;
+    left: 0;
+}
+
+.f-card .range-max {
+    position: absolute;
+    top: 27px;
+    right: 0;
 }
 
 .f-card .input-range__slider {
@@ -134,10 +153,7 @@ input[type="color"][list] {
 }
 
 .f-card .input-range__label-container {
-    color: #717982 !important;
-    font-family: CenturyGothic !important;
-    font-size: 14px !important;
-    margin-left: 19px !important;
+    display: none !important;
 }
 
 .f-card .input-range__track.input-range__track--active {
@@ -186,7 +202,7 @@ input[type="color"][list] {
 
 .filterCard li {
     position: relative;
-    padding: 20px 0px;
+    padding: 10px 0px;
     cursor: pointer;
 }
 
@@ -255,7 +271,16 @@ input[type="color"][list] {
 }
 
 .requestQuotesScroll {
-    height: 70vh !important;
+    height: 510px !important;
+}
+
+.vendor-list-view .quotes-right-body .requestQuotesScroll {
+    height: 526px !important;
+}
+
+.requestQuotesScroll.vendor-details-content {
+    height: 575px !important;
+    padding-bottom: 10px;
 }
 
 .quotes-right-header {
@@ -309,6 +334,7 @@ input[type="color"][list] {
     border-bottom: 2px solid transparent;
     padding: 10px 25px 20px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .quotes-right-tabs li.active {
@@ -325,24 +351,27 @@ input[type="color"][list] {
 }
 
 .quotes-message-Section {
-    position: absolute;
+    /* position: absolute;  */
     width: 100%;
-    height: 100%;
-    display: table;
+    /* height: 100%; */
+    /* display: table; */
 }
 
 .quotes-message-footer {
-    height: 64px;
+    height: 60px;
     width: 100%;
     border-radius: 0 0 4px 0;
     background-color: #FFFFFF;
-    box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5);
+    /* box-shadow: 0 0 4px 0 rgba(192, 190, 190, 0.5); */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-width: 1px 0px 0px 0;
     padding: 14px 10px;
     clear: both;
     position: absolute;
     width: 100%;
-    bottom: -10px;
+    bottom: 0;
     left: 0;
+    z-index: 9;
 }
 
 .thumb {
@@ -377,9 +406,13 @@ input[type="color"][list] {
     color: #9BA1A5;
 }
 
+.input-group input:focus .input-group-addon {
+    color: red;
+}
+
 .mapSection .quotes-right-body {
     overflow: hidden;
-    height: 77.7vh;
+    height: 593px;
 }
 
 
@@ -409,9 +442,9 @@ input[type="color"][list] {
 .quotes-left-body .wrapper,
 .quotes-quotation-Section,
 {
-    position: absolute;
-    height: 100%;
-    overflow: auto;
+    /* position: absolute; */
+    /* height: 100%; */
+    /* overflow: auto; */
 }
 
 .quotes-left-body .wrapper {
@@ -420,17 +453,29 @@ input[type="color"][list] {
 
 .quotes-quotation-Section {
     width: 100%;
+    height: 510px;
+}
+.vendor-list-view .quotes-right-body .quotes-quotation-Section{
+    height: 526px;
 }
 
 .quotes-chat-area {
-    position: absolute;
-    display: table-cell;
-    vertical-align: bottom;
-    bottom: 55px;
-    padding-top: 100px;
-    overflow: auto;
-    height: 100%;
+    height: 450px !important;
+}
+.vendor-list-view .quotes-right-body .quotes-chat-area{
+    height: 466px !important;
+}
+
+.quotes-chat-area {
+    /* position: absolute;  */
+    /* display: table-cell; */
+    /* vertical-align: bottom; */
+    /* bottom: 55px; */
+    padding-top: 20px;
+    /* overflow: auto; */
+    /* height: 100%; */
     width: 100%;
+    padding-bottom: 0;
 }
 
 .quotes-chat-area .c-message {
@@ -572,6 +617,10 @@ input[type="color"][list] {
     font-weight: normal;
 }
 
+.quotation-head ul li span {
+    color: #717982;
+}
+
 .quotation-block {
     padding: 10px 20px;
 }
@@ -579,7 +628,8 @@ input[type="color"][list] {
 .quotation-block h4,
 .quotation-total label {
     color: #454B51;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
+    font-weight: bold;
     font-size: 16px;
     margin-bottom: 15px;
 }
@@ -610,6 +660,7 @@ input[type="color"][list] {
 
 .quotation-accept-btn {
     margin-right: 30px;
+    margin-bottom: 15px;
 }
 
 .quotation-block li span,
@@ -628,6 +679,10 @@ input[type="color"][list] {
 .f-card {
     margin-bottom: 30px;
     position: relative;
+}
+
+.f-card .rc-time-picker.fav-time {
+    margin-top: 10px;
 }
 
 .f-card .time-from {
@@ -671,10 +726,13 @@ input[type="color"][list] {
 }
 
 .f-card .rc-time-picker input {
+    font-family: CenturyGothic;
+    font-size: 14px;
     height: 38px;
     width: 130px;
-    border: 1px solid #CCD2D7;
-    border-radius: 3px;
+    border: none;
+    border-bottom: 1px solid #CCD2D7;
+    border-radius: 0;
     background-color: #FFFFFF;
     cursor: pointer;
     background: transparent;
@@ -682,6 +740,9 @@ input[type="color"][list] {
 
 .f-card .time-to-time {
     padding: 0 20px !important;
+    text-transform: lowercase !important;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 .f-card .toggle-switch---switch---3EchW {
@@ -750,6 +811,24 @@ input[type="color"][list] {
     font-size: 24px;
 }
 
+.f-card.star-rating span {
+    padding: 0;
+    padding-top: 8px;
+    display: block;
+}
+
+.f-card.star-rating .mdi {
+    font-size: 24px;
+}
+
+.f-card.star-rating .mdi.active-star {
+    color: #F48021;
+}
+
+.Filterby .f-card .rating {
+    justify-content: left !important;
+}
+
 .filterSection .dropdown.open button {
     border-bottom: 2px solid #ed3124 !important;
     border-radius: 0;
@@ -773,19 +852,37 @@ input[type="color"][list] {
     font-size: 20px;
     color: #55595b;
     position: absolute;
-    top: 2px;
+    top: 5px;
     right: 3px;
 }
 
 .downIcon.downAlign {
-    top: 1px;
+    top: 5px;
 }
 
 .openAlign {
     margin-bottom: 15px;
 }
 
-@media screen and (max-width: 1100px) {
+.Filterby .f-card .time-error {
+    display: block;
+    padding: 0;
+    color: #ED3124;
+}
+
+
+/* My request new Changes  */
+
+.request-wrapper {
+    border: 1px solid rgba(104, 111, 145, .2);
+}
+
+.request-wrapper .job-updates {
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+@media screen and (max-width: 1099px) {
     .quotes-view .title span {
         padding-bottom: 20px
     }

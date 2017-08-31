@@ -1,11 +1,12 @@
 .status-label {
     background: #fff;
-    font-family: CenturyGothic_bold;
+    font-family: CenturyGothic;
     text-transform: capitalize;
     display: inline-block;
     margin-left: 12px;
     letter-spacing: 0.9px;
     font-size: 15px;
+    font-weight: bold;
 }
 
 .job-right-header .waiting {
@@ -20,6 +21,7 @@
     color: #9553B5;
 }
 
+.job-right-header .inprogress,
 .job-right-header .inProgress {
     color: #1EC1DC;
 }

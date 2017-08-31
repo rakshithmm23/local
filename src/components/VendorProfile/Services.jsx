@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import { map } from 'lodash';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
 
 
 export default class Services extends Component {
@@ -192,12 +192,12 @@ export default class Services extends Component {
                 }
             ],
             vendorAddress: {
-              address: '29 Airport Road, Doha 00150, Qatar',
-              phone: '055 456876',
-              emailID: 'contact@buddyscarcare.com',
-              website: 'www.buddyscarcare.com',
-              paymentType: 'Cash & Credit Cards Accepted',
-              
+                address: '29 Airport Road, Doha 00150, Qatar',
+                phone: '055 456876',
+                emailID: 'contact@buddyscarcare.com',
+                website: 'www.buddyscarcare.com',
+                paymentType: 'Cash & Credit Cards Accepted',
+
             }
         };
         this.renderCarWash = this.renderCarWash.bind(this);
@@ -217,17 +217,19 @@ export default class Services extends Component {
             );
         });
         return (
-            <Scrollbars className="vendor-service-container">
-                <ul className="vendor-service-list">
-                    {carWashListView}
-                </ul>
-            </Scrollbars>
+            <div className="vendor-service-container">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                    <ul className="vendor-service-list">
+                        {carWashListView}
+                    </ul>
+                </CustomScroll>
+            </div>
         );
     }
     renderCarRepair() {
         const carRepairListView = map(this.state.carRepairList, (carItem, key) => {
             return (
-                 <li key={key} onClick={() => { this.setState({ 'activeCarRepair': carItem.repairId }); }}>
+                <li key={key} onClick={() => { this.setState({ 'activeCarRepair': carItem.repairId }); }}>
                     <div className={carItem.repairId == this.state.activeCarRepair ? 'img-circle active' : 'img-circle'}>
                         <img src={carItem.logo} alt="" />
                     </div>
@@ -236,11 +238,13 @@ export default class Services extends Component {
             );
         });
         return (
-            <Scrollbars className="vendor-service-container">
-                <ul className="vendor-service-list">
-                    {carRepairListView}
-                </ul>
-            </Scrollbars>
+            <div className="vendor-service-container">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                    <ul className="vendor-service-list">
+                        {carRepairListView}
+                    </ul>
+                </CustomScroll>
+            </div>
         );
     }
     renderCarService() {
@@ -255,11 +259,13 @@ export default class Services extends Component {
             );
         });
         return (
-            <Scrollbars className="vendor-service-container">
-                <ul className="vendor-service-list">
-                    {carServiceListView}
-                </ul>
-            </Scrollbars>
+            <div className="vendor-service-container">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                    <ul className="vendor-service-list">
+                        {carServiceListView}
+                    </ul>
+                </CustomScroll>
+            </div>
         );
     }
     renderSupportedManufacturers() {
@@ -274,11 +280,13 @@ export default class Services extends Component {
             );
         });
         return (
-            <Scrollbars className="vendor-service-container">
-                <ul className="vendor-service-list">
-                    {carManufacturersListView}
-                </ul>
-            </Scrollbars>
+            <div className="vendor-service-container">
+                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                    <ul className="vendor-service-list">
+                        {carManufacturersListView}
+                    </ul>
+                </CustomScroll>
+            </div>
         );
     }
     render() {

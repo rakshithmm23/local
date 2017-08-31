@@ -164,18 +164,18 @@
 
 .form-section .jd-text {
   z-index: 9;
-    cursor: pointer;
-    position: relative;
-    font-family: "CenturyGothic";
-    color: #949DA5;
-    font-size: 16px;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #C8D4DE;
-    border-radius: 0;
-    -webkit-appearance: none;
-    outline: none;
+  cursor: pointer;
+  position: relative;
+  font-family: "CenturyGothic";
+  color: #949DA5;
+  font-size: 16px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #C8D4DE;
+  border-radius: 0;
+  -webkit-appearance: none;
+  outline: none;
 }
 
 .car-wash .collapse-panel .right .img-uploads {
@@ -295,15 +295,3 @@
   line-height: 28px;
   margin-top: 14px;
 }
-
-
-/*timpicker*/
-
-.rc-time-picker-panel {
-  left: 476.5px !important;
-  top: 670px !important;
-}
-
-/*.react-datepicker__tether-element {
-  transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
-}*/

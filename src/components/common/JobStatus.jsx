@@ -9,8 +9,7 @@ class JobStatus extends Component {
             saveModal:false
         }
     }
-    openModal(){
-    }
+    
     render() {
         return (
             <div>
@@ -66,7 +65,7 @@ class JobStatus extends Component {
                 {this.props.status=="inProgress" ? <div className="col-md-7 col-sm-12 col-xs-12 pad0">
                     <div className="job-right">
                         <div className="job-right-header">
-                            <div className="status-label inProgress" style="font-size: 14px;">inProgress</div>
+                            <div className="status-label inProgress" style="font-size: 14px;">In Progress</div>
                             <div className="job-icon  notification"><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
                         </div>
                         <div>
@@ -137,7 +136,7 @@ class JobStatus extends Component {
                         <div className="job-right-header">
                             <div className="status-label expired" style="font-size: 14px;">expired</div>
                             <div className="job-icon  notification"><span className="mdi mdi-help"></span><span className="commentLabel">Help</span></div>
-                            <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Rebook</span></div>
+                            <div className="job-icon  notification"><span className="mdi mdi-refresh"></span><span className="commentLabel">Re-book</span></div>
                         </div>
                         <div>
                             <div className="jr-body">
@@ -148,11 +147,11 @@ class JobStatus extends Component {
                         </div>
                     </div>
                 </div> : ""}
-                <CustomModal onHide={() => {this.setState({saveModal: false})}} showModal={this.state.saveModal} footer="false" title="book a service" className="bookService-modal" closeIcon="true">
-                        <Modal.Body>
-                            hello
-                        </Modal.Body>
-                    </CustomModal>
+                <CustomModal hideModal={() => {this.setState({saveModal: false})}} showModal={this.state.saveModal} footer={false} title="book a service" className="bookService-modal" closeIcon="true">
+                    <Modal.Body>
+                        hello
+                    </Modal.Body>
+                </CustomModal>
 
 
             </div>

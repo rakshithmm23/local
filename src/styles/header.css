@@ -6,15 +6,17 @@
 
 .header-section .logo-section {
     display: inline-block;
-    padding: 18px 0px;
+    padding: 14px 0px;
     margin: 0 auto;
     text-align: center;
     width: 110px;
     vertical-align: top;
 }
-.header-section .logo-section img{
-    height: 43.06px;
-    width: 42.18px;
+
+.header-section .logo-section img {
+    height: 55px;
+    max-width: 55px;
+    width: 100%;
 }
 
 .header-search {
@@ -273,7 +275,7 @@
     float: left;
     color: #949DA5;
     font-size: 15px;
-    margin-top: 5px;
+    margin-top: 0;
     display: inline-block;
     border: none;
     outline: none;
@@ -327,6 +329,9 @@
     outline: none;
     padding: 3px 5px !important;
     background-color: transparent !important;
+}
+.header-search .form-group .dropdown-menu li:focus a {
+    background: red !important;
 }
 
 .header-search .form-control::-webkit-input-placeholder {
@@ -389,7 +394,7 @@
 .header-right {
     display: inline-block;
     padding: 0px;
-    width: 240px;
+    /* width: 240px; */
     vertical-align: top;
     padding: 15px;
     float: right;
@@ -578,7 +583,7 @@
 /*Auth header css*/
 
 .authNav-right {
-    margin: 16px 0px;
+    margin: 16px 15px;
 }
 
 .authNav-right ul li label {
@@ -590,13 +595,13 @@
 
 .authNav-right ul li label a {
     font-family: CenturyGothic;
-    color: #006FBA;
+    color: #006FB9;
     padding-left: 3px;
 }
-.mobile-search{
-        display: none;
-        
-    }
+
+.mobile-search {
+    display: none;
+}
 
 
 /*responsive*/
@@ -611,7 +616,7 @@
         width: 55%;
     }
     .header-right {
-        width: 230px;
+        /* width: 230px; */
     }
 }
 
@@ -633,7 +638,7 @@
     .profile-desc span {
         display: none;
     }
-    .mobile-search{
+    .mobile-search {
         display: none;
     }
     .service-data {
@@ -643,7 +648,7 @@
         width: 40px;
     }
     .header-right ul li {
-        padding: 10px 5px;
+        padding: 2px 5px;
     }
     .profile-header .btn-default span img {
         width: 30px;
@@ -678,7 +683,7 @@
         display: none;
     }
     .profile-header .mdi-chevron-down,
-    .profile-header .mdi-chevron-up{
+    .profile-header .mdi-chevron-up {
         display: none;
     }
 }
@@ -698,5 +703,22 @@
     }
     .mobile-view {
         display: inline-block !important;
+    }
+    .header-section .logo-section {
+        padding: 12px 15px;
+    }
+    .header-section .logo-section img {
+        height: 32.06px;
+        max-width: 32.18px;
+        width: 100%;
+    }
+    .header-section {
+        height: 55px;
+    }
+    .authNav-right{
+        margin: 10px 0;
+    }
+    .authNav-right ul li label a{
+        padding-left: 6px;
     }
 }

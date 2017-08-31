@@ -49,10 +49,10 @@ export default class Favourites extends Component {
                     </div>
                     <div className="inSection">
                         <div className="padwrapper">
-                            <div className="myCar-list">
+                            <div className="myCar-list request-wrapper">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RequestCard />
+                                    <RequestCard router={this.props.router}/>
                                 </div>
                             </div>
                         </div>

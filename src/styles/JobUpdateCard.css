@@ -21,6 +21,9 @@
     height: 75px;
     border-radius: 5px;
 }
+.quotes-view .jobcard .custom-rating {
+    justify-content: left;
+}
 
 .quotes-view .media {
     box-sizing: border-box;
@@ -54,7 +57,7 @@
 }
 .quotes-view .jobcard.box .notifyTag{
 	top: -6px;
-	    height: 8px;
+	height: 8px;
     width: 8px;
 }
 .quotes-view .jobcard.box .media-heading{
@@ -63,11 +66,11 @@
 	font-size: 17px;
 	display: inline-block;
 }
-.quotes-view .jobcard.box .rating {
-	/*padding: 5px 0;*/
-}
+/* .quotes-view .custom-rating {
+	
+} */
 .quotes-view .jobcard.box .rating-text{
-	padding-left: 10px;
+	padding-left: 5px;
 }
 .quotes-view .jobcard.box .rating span{
 	color: #717982;
@@ -93,6 +96,7 @@
 }
 
 .quotes-view .jobcard.box .distance {
+    padding-left: 3px;  
     color: #717982;
     font-family: CenturyGothic;
     font-size: 13px;
@@ -129,9 +133,10 @@
     height: 40px;
     font-family: CenturyGothic_bold;
     margin: 0;
-    border: 1px solid #ED3124;
     border-radius: 3px;
     background-color: #FFFFFF;
     float: right;
-    color: #ED3124 !important;
+}
+.quotes-view .jobcard.box .search-result-card .footer-container .btn-theme{
+    width: 130px;
 }

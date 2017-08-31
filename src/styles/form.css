@@ -17,9 +17,10 @@
     border-bottom: 1px solid #ddd;
     border-radius: 0;
     font-size: 14px;
-    height: 45px;
+    /* height: 45px; */
     margin: 10px 0;
-    padding: 20px 0 0;
+    /* padding: 30px 0 12px; */
+    padding: 6px 0 0;
 }
 
 .form-group.error .form-input {
@@ -47,7 +48,7 @@
     height: 20px;
 }
 
-.model-select + span.error-text {
+.model-select+span.error-text {
     color: red;
     font-size: 12px;
     font-family: CenturyGothic;
@@ -61,12 +62,37 @@
 }
 
 .input-icon {
-    padding: 10px;
+    padding: 10px 3px;
     position: absolute;
-    right: 20px;
+    right: 0;
     z-index: 999;
-    top: 5px;
+    /* top: 10px; */
+    top: 0;
     cursor: pointer;
+}
+
+.input-icon i {
+    font-size: 16px;
+}
+
+.input-icon i.mdi-eye {
+    color: #006FB9;
+}
+
+.input-icon i.mdi-eye-off {
+    color: #454B51;
+}
+
+.otp-input {
+    width: 300px;
+    display: inline-block;
+    margin-right: 30px;
+}
+.send-otpbtn-align{
+    display: inline-block;
+}
+.send-otpbtn-align .otp-input{
+    display: block;
 }
 
 .or-text {
@@ -91,12 +117,13 @@
 
 .form-group label {
     color: #717982;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
     left: 0px;
-    top: 20px;
+    /* top: 20px; */
+    top: 10px;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -109,18 +136,22 @@
     box-shadow: none;
     outline: none;
     background-position: 0 0;
-    border-color: #006FBA;
+}
+
+.form-input:focus {
+    border-color: #006FB9;
 }
 
 .form-input:focus~label,
 .form-input:valid~label {
-    top: 3px !important;
+    /* top: 3px !important; */
+    /* font-size: 11px; */
+        top: -9px !important;
     font-size: 11px;
-    color: #006FBA;
 }
 
-.form-group.error label {
-    color: #999;
+.form-input:focus~label {
+    color: #006FB9 !important;
 }
 
 .auth-footer-text {
@@ -128,7 +159,7 @@
 }
 
 .forget-input .form-input {
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .forget-panel-header.login-panel-header .note-text {
@@ -149,7 +180,17 @@
     outline: 0 !important;
 }
 
-
+/* Disabled input */
+.form-group.disabledInput{
+    opacity: 0.6;
+}
+.form-group.disabledInput label{
+    top: -8px;
+    font-size: 11px;
+}
+.form-group.disabledInput .form-control{
+    background: #fff;
+}
 /* input-button-addon */
 
 .input-button-addon .otp-input {
@@ -164,12 +205,26 @@
     padding: 20px 0 12px;
 }
 
-.input-button-addon .form-group label {
-    top: 15px;
-}
-
 .input-button-addon .form-group .error-text {
     bottom: -20px;
+}
+
+/* Safari Autofill icon removal */
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  opacity: 0 !important;
+}
+
+/* IE */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .forget-input .btn-theme.red, .otp-input .btn-theme.red, .otpbtnAlign{
+     margin-top:-8px;
+     vertical-align: top;
+  }
 }
 
 @media screen and (min-width: 1075px) and (max-width: 1175px) {
@@ -193,13 +248,17 @@
     .input-button-addon .btn-theme {
         float: right;
     }
-    .input-button-addon .note-text{
+    .input-button-addon .note-text {
         margin-top: 12px;
+    }
+    .form-group .error-text{
+        font-size: 11px;
+        bottom: -22px
     }
 }
 
 @media screen and (max-width: 640px) {
-    .or-text{
+    .or-text {
         width: 100%;
     }
     .form-group label {
@@ -207,11 +266,17 @@
     }
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 580px){
+    .otp-input {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
     .input-button-addon .btn-theme {
         float: none;
     }
-    .input-button-addon .note-text{
+    .input-button-addon .note-text {
         margin-top: 20px;
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
-import { Scrollbars } from 'react-custom-scrollbars';
+import CustomScroll from 'react-custom-scroll';
+import { map } from 'lodash';
 
 export default class ServiceDetails extends Component {
     constructor(...args) {
@@ -18,37 +19,34 @@ export default class ServiceDetails extends Component {
     render() {
         return (
             <div className="service-details">
-                <Carousel>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img width={400} height={280} alt="" src="/images/car.jpg" />
-                    </Carousel.Item>
-                </Carousel>
+                {(this.props.images && this.props.images.length) ? <Carousel>
+                    {map(this.props.images, (image, key) => {
+                        return (
+                            <Carousel.Item>
+                                <img width={400} height={280} alt="" src={image.large} />
+                            </Carousel.Item>
+                        )
+                    })}
+                </Carousel> : <div className="placeholderImg"><img src="/images/placeholder.png" alt=""/></div>}
                 <div className="service-car-info">
                     <div className="service-carPlate">
                         <h6>{this.props.plateNo} {this.props.state}</h6>
-                        <h4>{this.props.make}</h4>
+                        <h4>{this.props.name}</h4>
                         <span className="car-make">{this.props.model} - {this.props.year}</span>
                     </div>
-                    {this.props.previousService && this.props.upcomingService && <div className="service-info">
-                        <Scrollbars className="timelineScroll">
+                    <div className="service-info">
+                        <div className="service-info-content">
                             <ul>
-                                <li>
-                                    <h5>Upcoming Service</h5>
-                                    <span>{this.props.upcomingService} kms</span>
-                                </li>
-                                <li>
-                                    <h5>Previous Service</h5>
-                                    <span>Car wash: {this.props.date}, {this.props.previousService} kms</span>
-                                </li>
+                                {this.props.mileage && <li>
+                                    <h4>Previous Service</h4>
+                                    <h5>Mileage</h5>
+                                    <span>{this.props.mileage} Kms</span>
+                                    <h5>On</h5>
+                                    <span>Car Wash: 17 Mar ‘17, 1097735 Kms</span>
+                                </li>}
                             </ul>
-                        </Scrollbars>
-                    </div>}
+                        </div>
+                    </div>
                 </div>
             </div>
         );

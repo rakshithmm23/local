@@ -20,9 +20,10 @@
 }
 
 .panel-section .collapse-panel {
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: #FFFFFF;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    box-shadow: 0 0 4px 0 rgba(197,197,197,0.5);
 }
 
 .panel-head {
@@ -31,7 +32,7 @@
     padding: 11px 15px;
     border-radius: 4px 4px 0 0;
     background-color: #FFFFFF;
-    box-shadow: 0 0 4px 0 rgba(197, 197, 197, 0.5);
+    box-shadow: 0 0 4px 0 rgba(197,197,197,0.5);
 }
 
 .panel-head h4 {
@@ -40,6 +41,7 @@
     font-family: CenturyGothic;
     font-size: 18px;
     line-height: 18px;
+    font-weight: normal;
 }
 
 .panel-head i {
@@ -63,7 +65,7 @@
 
 .panel-section .collapse-panel .search-box i {
     position: absolute;
-    top: 13px;
+    top: 10px;
     right: 15px;
     font-size: 18px;
     color: #949DA5;
@@ -78,7 +80,6 @@
 }
 
 .panel-section .collapse-panel .search-box .form-group label {
-    top: 15px;
     font-size: 16px;
 }
 
@@ -112,9 +113,10 @@
     right: 10px;
 }
 
-.collapse-panel .img-container {
-    height: 500px !important;
-}
+/* .collapse-panel .img-container {
+    min-height: 200px !important;
+    max-height: 500px !important;
+} */
 
 .collapse-panel .img-circle {
     cursor: pointer;
@@ -128,6 +130,7 @@
     border-radius: 100%;
     background-color: #FFFFFF;
     margin-bottom: 13px;
+    overflow: hidden;
 }
 
 .collapse-panel .img-circle.active {
@@ -138,7 +141,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    width: 100px;
+    border-radius: 50%;
 }
 
 .panel-section .collapse-panel .btn-theme.submit {
@@ -210,7 +216,7 @@
     width: 110px;
     position: relative;
     display: inline-block;
-    margin: 15px;
+    margin: 5px 15px;
     vertical-align: top;
     border-radius: 3px;
 }
@@ -278,9 +284,13 @@
 }
 
 .upload-image {
-    padding-top: 35px;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     display: block;
+}
+.car-profile-edit-panel .upload-image{
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 .input-values {
@@ -395,17 +405,27 @@
 }
 
 .car-wash .collapse-panel .left {
-    border-right: 1px solid rgba(148, 157, 165, 0.4);
+    /* border-right: 1px solid rgba(148, 157, 165, 0.4); */
     /*margin-top: 44px;*/
     margin-top: 10px;
+    position: relative;
+}
+.car-wash .collapse-panel .left:after{
+    content:'';
+    position: absolute;
+    top: 20px;
+    right: -1px;
+    width: 1px;
+    height: 100%;
+    background: rgba(148, 157, 165, 0.4);
 }
 
 .panel-content .form-section {
-    margin-bottom: 55px;
+    margin-bottom: 45px;
 }
 
 .panel-content .form-section.uploads {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .panel-content .date-time .form-group,
@@ -428,15 +448,27 @@
     border-radius: 0;
     padding: 0;
     font-size: 14px;
-    height: 48px;
+    height: 32px;
     margin: 10px 0;
-    width: 100%
+    width: 100%;
+    font-family: CenturyGothic;
 }
 
 .car-wash .collapse-panel .right {
     /*margin-top: 53px;*/
     margin-top: 10px;
     padding-left: 20px;
+    position: relative;
+}
+
+.car-wash .collapse-panel .right:before{
+    content:'';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(148, 157, 165, 0.4);
 }
 
 .collapse-panel .panel-sub-title {
@@ -453,7 +485,7 @@
 }
 
 .collapse-panel .panel-content .wrapper .upload-image .panel-sub-title {
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 .car-wash .collapse-panel .panel-text {
@@ -461,14 +493,15 @@
     font-size: 16px;
     font-family: CenturyGothic;
     line-height: 28px;
-    margin-top: 20px;
+    margin-top: 35px;
     font-weight: normal;
-    margin-bottom: 35px;
+    margin-bottom: 0px;
 }
 
 .collapse-panel .model-select {
     margin-top: 36px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .collapse-panel .car-service-upload .model-select {
@@ -476,12 +509,13 @@
 }
 
 .car-wash .collapse-panel .model-select.upload {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .car-wash .collapse-panel .model-select .mdi-chevron-down {
-    right: 17px;
+    right: 0px;
     color: #949DA5;
+    bottom: -5px;
 }
 
 .form-section .jd-text {
@@ -642,6 +676,63 @@
     height: auto !important;
 }
 
+/*timpicker*/
+.react-datepicker__tether-element{
+    z-index: 9;
+}
+.react-datepicker{
+    width: 282px;
+    height: 240px;
+    font-family: CenturyGothic;
+}
+.react-datepicker__tether-element-attached-top .react-datepicker__triangle,
+.react-datepicker__tether-element-attached-bottom .react-datepicker__triangle,
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow{
+    left: 50%;
+}
+.react-datepicker__month-container{
+    width: 100%;
+    display: inline-block;
+}
+.react-datepicker__current-month{
+    font-size: 14px;
+    color: #454B51;
+}
+.react-datepicker__day-names{
+    font-size: 10px;
+    color: #454B51;
+}
+.react-datepicker__day-name, .react-datepicker__day {
+    color: #454B51;
+    width: 35px;
+    line-height: 30px;
+    margin: 0.166rem;
+}
+.react-datepicker__day{
+    font-size: 12px;
+}
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--keyboard-selected:hover,
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-selecting-range:hover,
+.react-datepicker__day--in-range:hover{
+    background-color: #ED3124;
+    color: #fff;
+}
+.react-datepicker__navigation{
+    border: 5px solid transparent;
+}
+.react-datepicker__navigation--next{
+    border-left-color: #454b51;
+}
+.react-datepicker__navigation--previous{
+    border-right-color: #454b51;
+}
+
 @media screen and (max-width: 991px) {
     .collapse-panel .search-box {
         width: 32%;
@@ -714,7 +805,7 @@
         width: 95px;
     }
     .filterSection .filterLabel label{
-      padding-left: 5px;
+        padding-left: 5px;
     }
 }
 
@@ -724,10 +815,10 @@
 
 /*
 .rc-time-picker-panel {
-  left: 476.5px !important;
-  top: 1188px !important;
+    left: 476.5px !important;
+    top: 1188px !important;
 }
 
 .react-datepicker__tether-element {
-  transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
+    transform: translateX(165px) translateY(1205px) translateZ(0px) !important;
 }*/

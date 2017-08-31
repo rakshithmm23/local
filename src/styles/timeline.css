@@ -1,39 +1,46 @@
-
 .btn-theme.timeline {
-  right: 70px;
+    right: 70px;
 }
 
-
-
 .timeline-card {
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
-  background: #fff;
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08); */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.text-dropdown.car-profile-header .dropdown-toggle h4 {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 28px;
+    margin: 0;
 }
 
 .service-details .carousel-indicators {
-  bottom: 0;
+    bottom: 0;
 }
 
 .service-details .carousel-indicators li {
-  width: 7px;
-  height: 7px;
-  margin: 0 1px;
+    width: 7px;
+    height: 7px;
+    margin: 0 1px;
 }
 
 .carousel-control {
-  display: none !important;
+    display: none !important;
 }
 
 .service-car-info {
-  padding: 10px 15px;
+    padding: 10px 15px 0;
 }
 
 .service-carPlate {
-  font-family: CenturyGothic_bold;
-  color: #717982;
-  border-bottom: 1px solid #EEF2F5;
-  padding-bottom: 20px;
-  line-height: 1.5;
+    font-family: CenturyGothic_bold;
+    color: #717982;
+    border-bottom: 1px solid #EEF2F5;
+    padding-bottom: 20px;
+    line-height: 1.5;
 }
 
 .service-carPlate h6 {
@@ -44,47 +51,65 @@
 }
 
 .service-carPlate h4 {
-  font-family: CenturyGothic_bold;
-  font-size: 18px;
-  color: #4C4C4C;
+    font-family: CenturyGothic_bold;
+    font-size: 18px;
+    color: #4C4C4C;
 }
+
 .service-carPlate .car-make {
-  	letter-spacing: 1px;
+    letter-spacing: 1px;
 }
 
 .service-carPlate span {
-  font-size: 14px;
-  font-weight: normal;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: CenturyGothic;
 }
 
 .service-car-info .service-info li {
-  font-size: 14px;
-  color: #454B51;
-  font-family: CenturyGothic;
-  font-weight: normal;
-  margin: 20px 0;
+    font-size: 14px;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-weight: normal;
+    margin: 20px 0 15px;
+    color: #717982;
 }
-.service-car-info .service-info li h5{
-  letter-spacing: 1px;  
+
+.service-car-info .service-info li h4 {
+    letter-spacing: 1px;
+    font-family: CenturyGothic_bold;
+    font-size: 14px;
+    color: #454B51;
+}
+
+.service-car-info .service-info li h5 {
+    font-size: 14px;
+    color: #454B51;
+    margin-top: 20px;
+}
+
+.placeholderImg img {
+    width: 100%;
 }
 
 .timeline-summary-header {
-  height: 70px;
-  border-bottom: 1px solid #DAE1E7;
-  border-left: 1px solid #EEF2F5;
-  padding: 20px 0 0;
-  text-align: center;
+    height: 70px;
+    border-bottom: 1px solid #DAE1E7;
+    border-left: 1px solid #EEF2F5;
+    padding: 20px 0 0;
+    text-align: center;
 }
 
 .timeline-summary-header .timeline-summary-tab {
-  font-size: 18px;
-  color: #454B51;
-  font-family: CenturyGothic;
-  text-align: center;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 22px;
-  font-weight: normal;
+    font-size: 16px;
+    color: #454B51;
+    font-family: CenturyGothic;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 20px;
+    font-weight: normal;
+    padding-top: 5px;
 }
 
 .timeline-summary-header .timeline-summary-tab.active {
@@ -94,172 +119,176 @@
 }
 
 .timelineScroll {
-  height: 480px !important;
+    height: 500px !important;
 }
 
 .service-info .timelineScroll {
-  height: 210px !important;
+    height: 210px !important;
 }
 
 .timeline-summary-body {
-  border-left: 1px solid #EEF2F5;
+    border-left: 1px solid #EEF2F5;
 }
 
 .timeline-log li {
-  display: block;
-  width: 100%;
-  margin-bottom: 50px;
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
-.timeline-log li:last-child{
-  margin-bottom: 0;
+.timeline-log li:last-child {
+    margin-bottom: 0;
 }
 
 .timeline-log .timeline-month {
-  color: #4C4C4C;
-  font-family: CenturyGothic;
-  font-size: 14px;
-  text-transform: uppercase;
-  display: inline-block;
-  vertical-align: middle;
-  width: 50px;
-  margin-top: 6px;
+    color: #4C4C4C;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    margin-top: 6px;
 }
 
 .timeline-log .timeline-icon {
-  height: 60px;
-  width: 60px;
-  border: 1px solid #979797;
-  background-color: #FFFFFF;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: center;
-  padding: 10px 0;
-  vertical-align: middle;
-  margin: 6px 40px 0;
-  margin-left: 20px;
-  position: relative;
+    height: 60px;
+    width: 60px;
+    border: 1px solid #979797;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    vertical-align: middle;
+    margin: 6px 40px 0;
+    margin-left: 20px;
+    position: relative;
 }
 
 .timeline-log .timeline-icon .line-joint {
-  width: 1px;
-  height: 75px;
-  border-left: 1px solid #979797;
-  position: absolute;
-  top: -75px;
-  left: 50%;
+    width: 1px;
+    height: 75px;
+    border-left: 1px solid #979797;
+    position: absolute;
+    top: -75px;
+    left: 50%;
 }
 
 .timeline-log li:first-child .line-joint {
-  display: none;
+    display: none;
 }
 
 .timeline-log .timeline-icon img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .timeline-log {
-  padding: 30px;
+    padding: 30px;
 }
 
 .timeline-content {
-  display: inline-block;
-  vertical-align: middle;
-  font-family: CenturyGothic;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: CenturyGothic;
 }
 
 .timeline-content h4 {
-  color: #717982;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: normal;
-  margin-bottom: 5px;
+    color: #717982;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 5px;
 }
 
 .timeline-content h4.due {
-  color: #EE3124;
+    color: #EE3124;
 }
 
 .timeline-content h4.upcoming {
-  color: #23AE49;
+    color: #23AE49;
 }
 
 .timeline-content h4.completed {
-  color: #EE3124;
+    color: #EE3124;
 }
 
 .timeline-content h4.current {
-  color: #23AE49;
+    color: #23AE49;
 }
 
 .timeline-content span {
-  display: block;
-  line-height: 1.9;
-  color: #454B51;
-  font-size: 14px;
+    display: block;
+    line-height: 1.9;
+    color: #454B51;
+    font-size: 14px;
 }
 
 .timeline-log li .status-label {
-  float: right;
-  margin-top: 25px;
+    float: right;
+    margin-top: 25px;
 }
-
 
 
 /*Other Details*/
 
 .otherDetails-content {
-  padding: 15px 30px;
+    padding: 15px 30px;
 }
 
 .otherDetails-content li {
-  padding: 10px 0;
-  font-family: CenturyGothic;
-  color: #454B51;
-  font-size: 14px;
+    padding: 10px 0;
+    font-family: CenturyGothic;
+    color: #454B51;
+    font-size: 14px;
 }
 
 .otherDetails-content li label {
-  font-weight: normal;
-  width: 300px;
-  letter-spacing: 1px;
+    font-weight: normal;
+    width: 300px;
+    letter-spacing: 1px;
 }
 
 .otherDetails-content li span {
-  width: 60%;
-  display: inline-block;
-  vertical-align: top;
+    /* width: 60%; */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.otherDetails-content li span.car-notes-content {
+    width: 47%;
 }
 
 .otherDetails-content li span,
 .otherDetails-content li p {
-  color: #717982;
-  line-height: 28px;
+    color: #717982;
+    line-height: 28px;
 }
 
 .otherDetails-content li span a {
-  text-decoration: none;
-  color: #006FB9 !important;
-  outline: 0;
-  box-shadow: none;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 15px;
+    text-decoration: none;
+    color: #006FB9 !important;
+    outline: 0;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 15px;
 }
 
 .otherDetails-content li p {
-  border: 1px solid transparent;
-  padding: 10px;
-  margin: -10px;
+    border: 1px solid transparent;
+    padding: 10px;
+    margin: -10px;
 }
 
 .otherDetails-content li p[contenteditable="true"],
 .otherDetails-content li p[contenteditable="true"]:active,
 .otherDetails-content li p[contenteditable="true"]:focus {
-  border: 1px solid #dadada;
-  outline: none;
-  box-shadow: none;
+    border: 1px solid #dadada;
+    outline: none;
+    box-shadow: none;
 }
-.deleteCarProfile-modal .modal-body{
-  border-bottom: 1px solid #DAE1E7;
+
+.deleteCarProfile-modal .modal-body {
+    border-bottom: 1px solid #DAE1E7;
 }
