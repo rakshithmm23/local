@@ -345,8 +345,17 @@ export default class RequestCard extends Component {
       this.setState({ filterdropdown: e })
     }
   }
+  setCenter(){
+    this.setState({ setCenter: true })
+  }
+  mapMoved(){
+    this.setState({ setCenter: false })
+  }
+  
 
   render() {
+    debugger
+    
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
     let infoClass = 'jobInfo ';
@@ -685,6 +694,7 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
+                            mapDrag={this.mapMoved.bind(this)}
                             setCenter={this.state.setCenter}
                             center={this.state.mapsCenter}
                             infoPopUp={true}
@@ -694,6 +704,7 @@ export default class RequestCard extends Component {
                             containerElement={<div style={{ height: 100 + '%' }} />}
                             mapElement={<div style={{ height: 100 + '%' }} />}
                           />
+                          <span onClick={this.setCenter.bind(this)} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
                         </div>
                       </div>
                       <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>

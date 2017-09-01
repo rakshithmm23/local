@@ -583,6 +583,12 @@ export default class RequestCard extends Component {
     this.setState({ ratingValue: rating })
 
   }
+  setCenter(){
+    this.setState({ setCenter: true })
+  }
+  mapMoved(){
+    this.setState({ setCenter: false })
+  }
 
   render() {
     if (this.props.router.params.requestType) {
@@ -935,6 +941,7 @@ export default class RequestCard extends Component {
                           {this.jobData[0].statusIndicator == "active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                             <div className="quotes-right-body">
                               <Gmaps
+                              mapDrag={this.mapMoved.bind(this)}
                                 infoPopUp={true}
                                 setCenter={this.state.setCenter}
                                 center={this.state.mapsCenter}
@@ -944,6 +951,8 @@ export default class RequestCard extends Component {
                                 containerElement={<div style={{ height: 100 + '%' }} />}
                                 mapElement={<div style={{ height: 100 + '%' }} />}
                               />
+                              <span onClick={this.setCenter.bind(this)} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
+
                             </div>
                           </div>}
                           <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>

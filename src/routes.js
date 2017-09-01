@@ -72,7 +72,7 @@ export default (
       <Route path="confirmed" onEnter={scrollToTop} component={AuthContainer(Confirmed)} />
       <Route path="reset-email-confirmation" onEnter={scrollToTop} component={AuthContainer(ResetEmailConfirmation)} />
       <Route path="verify" component={AuthContainer(EmailVerified)}  />
-      <Route path="request(/:requestType)" onEnter={isLoggedIn} component={AuthContainer(MyRequest)} />
+      <Route path="request(/:requestType)"  component={AuthContainer(MyRequest)} />
       <Route path="car-profiles/create" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
       <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
       <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />

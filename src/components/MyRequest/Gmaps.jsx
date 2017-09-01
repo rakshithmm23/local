@@ -13,6 +13,8 @@ class Gmaps extends Component {
     mouseLeave(){
         this.setState({activeInfoWindow: null})
     }
+    
+
 
     render() {
         let mapRes = null;
@@ -25,8 +27,6 @@ class Gmaps extends Component {
         }
         
         const markers =  mapRes?map(mapRes, (val, i) => {
-            debugger
-            
             const marker = {
                 position: {
                     lat: val.lat,
@@ -41,16 +41,18 @@ class Gmaps extends Component {
         }) :""
         let mapSettings = {
             defaultZoom: this.props.zoom,
-            defaultCenter: this.props.center
+            defaultCenter: this.props.center,
+            
         }
         if (this.props.setCenter) {
             mapSettings["center"] = this.props.center;
         }
+        if(this.props.mapDrag){
+            mapSettings["onDragEnd"]=this.props.mapDrag;
+        }
         return (
             <div>
-                <GoogleMap
-                    {...mapSettings}
-                >
+                <GoogleMap {...mapSettings}>
                     {markers}
                     {this.props.markers ? map(mapRes, (val, i) => {
 

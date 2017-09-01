@@ -882,6 +882,23 @@ input[type="color"][list] {
     margin: 0 !important;
     border: 0 !important;
 }
+.mapSection .current-position{
+    position: absolute;
+    bottom: 124px;
+    right: 11px;
+    height: 30px;
+    width: 27px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mapSection .current-position i{
+    color: #ED3124;
+    font-size: 20px;
+    line-height: 32px;
+}
 
 @media screen and (max-width: 1099px) {
     .quotes-view .title span {
