@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import dashboardReducer from './dashboardReducer';
 import authReducer from './authReducer';
 import carProfileReducer from './carProfileReducer';
+import bookServiceReducers from './bookServiceReducers';
 
 import {routerReducer} from 'react-router-redux';
 
@@ -9,7 +10,8 @@ import {routerReducer} from 'react-router-redux';
      dashboardReducer,
      authReducer,
      routing: routerReducer,
-     carProfileReducer
+     carProfileReducer,
+     bookServiceReducers,
 });
 const rootReducer = (state, action) => {
   if (action.type === 'LOGOUT') {

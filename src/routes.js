@@ -6,6 +6,7 @@ import axios from 'axios';
 import DashboardContainer from './containers/DashboardContainer';
 import AuthContainer from './containers/AuthContainer';
 import CarProfileContainer from './containers/CarProfileContainer';
+import BookServiceContainer from './containers/BookServiceContainer';
 
 // Auth Components
 import SignIn from './components/Auth/SignIn';
@@ -79,8 +80,8 @@ export default (
       <Route path="car-profiles/:id/edit" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
       {/* <Route path="car-list" component={AuthContainer(BookService)} /> */}
       <Route path="timeline" onEnter={isLoggedIn} component={AuthContainer(CarTimeline)} />
-      <Route path="car-repair" onEnter={isLoggedIn} component={AuthContainer(CarRepair)} />
-      <Route path="car-wash" onEnter={isLoggedIn} component={AuthContainer(CarWash)} />
+      <Route path="car-repair" onEnter={isLoggedIn} component={BookServiceContainer(CarRepair)} />
+      <Route path="car-wash" onEnter={isLoggedIn} component={BookServiceContainer(CarWash)} />
       <Route path="car-service" onEnter={isLoggedIn} component={AuthContainer(CarService)} />
       <Route path="messages" onEnter={isLoggedIn} component={AuthContainer(Messages)} />
       <Route path="search-result" onEnter={isLoggedIn} component={AuthContainer(SearchResult)} />

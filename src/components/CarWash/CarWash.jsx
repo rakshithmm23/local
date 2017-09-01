@@ -26,98 +26,110 @@ export default class CarWash extends Component {
       this.setState({ 'messageVisible': isVisible });
     }
 
+
     render() {
-        return (
-            <div className="jobUpdate">
-                {/*Header*/}
-                <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
-                <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
-                <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
-                <div className="main-wrapper">
-                    {/*Sidebar*/}
-                    <Sidebar router={this.props.router} />
-                    {/*message*/}
-                    {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
-                    <div className="page-sec-header">
-                        <div className="padwrapper">
-                            <h4>Car Wash</h4>
+      const {bookServiceReducers,carProfileReducer} = this.props;
+      const selectedCarProfile = carProfileReducer.carProfiles[bookServiceReducers.selecetedCarProfileId];
+
+      const isCoverImage = selectedCarProfile && selectedCarProfile.images.map((value,key)=>{
+        if(value.isCover){
+          return(
+            <div className="type-img car-img" key={key}>
+              <img src={value.original} alt=""/>
+            </div>
+          );
+        }
+      });
+
+      return(
+        <div className="jobUpdate">
+          {/*Header*/}
+          <Header notificationCount={2} profileName="Derrick Frank" notificationCallBack={this.toggleNotification} messageCallBack={this.toggleMessage.bind(this)} router={this.props.router} actions={this.props.actions} />
+          <MobileNotification isVisible={this.state.notificationVisible} backBtnCallBack={this.toggleNotification} />
+          <MobileMessage isVisible={this.state.messageVisible} backBtnCallBack={this.toggleMessage.bind(this)} />
+          <div className="main-wrapper">
+              {/*Sidebar*/}
+              <Sidebar router={this.props.router} />
+              {/*message*/}
+              {/*<Extra message="Your email account has been verified. We are open for service!" />*/}
+              <div className="page-sec-header">
+                <div className="padwrapper">
+                  <h4>Car Wash</h4>
+                </div>
+              </div>
+              <div className="inSection">
+                <div className="padwrapper padwrapper-align">
+                    <div className="myCar-list row">
+                        <div className="myCar-body col-md-8">
+                            <WashSteps bookServiceReducers={bookServiceReducers}/>
                         </div>
-                    </div>
-                    <div className="inSection">
-                        <div className="padwrapper padwrapper-align">
-                            <div className="myCar-list row">
-                                <div className="myCar-body col-md-8">
-                                    <WashSteps />
+                        <div className="myCar-body col-md-4">
+                            {/*Car wash Updates*/}
+                            <div className="car-summary">
+                              <h5 className="summary-heading">
+                                Summary
+                              </h5>
+                              <div className="car-wrapper">
+                                <div className="type-card">
+                                  <div className="type-img">
+                                    <img src="../images/book-service-1.png" alt=""/>
+                                  </div>
+                                  <div className="type-desc">
+                                    <h5>Service Type</h5>
+                                    <label>Car Wash</label>
+                                  </div>
                                 </div>
-                                <div className="myCar-body col-md-4">
-                                    {/*Car wash Updates*/}
-                                    <div className="car-summary">
-                                      <h5 className="summary-heading">
-                                        Summary
-                                      </h5>
-                                      <div className="car-wrapper">
-                                        <div className="type-card">
-                                          <div className="type-img">
-                                            <img src="../images/book-service-1.png" alt=""/>
-                                          </div>
-                                          <div className="type-desc">
-                                            <h5>Service Type</h5>
-                                            <label>Car Wash</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="category-wrapper">
-                                         <div className="category-heading">
-                                            <h5>Categories Selected</h5>
-                                            <label>
-                                                <a href="">Edit</a>
-                                            </label>
-                                         </div>
-                                         <div className="category-list">
-                                          <ul className="list-unstyled">
-                                            <li>
-                                                <img src="../../images/auto-service-icons-4.png" alt=""/>
-                                                <label>AC heating & Cooling</label>
-                                            </li>
-                                             <li>
-                                                <img src="../../images/auto-service-icons-4.png" alt=""/>
-                                                <label>AC heating & Cooling</label>
-                                            </li>
-                                          </ul>
-                                         </div>
-                                      </div>
-                                      <div className="car-wrapper">
-                                        <div className="type-card">
-                                          <div className="type-img car-img">
-                                            <img src="../images/car.jpg" alt=""/>
-                                          </div>
-                                          <div className="type-desc">
-                                            <h5>Car Profile</h5>
-                                            <label>My Nissan GT-R</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="car-wrapper">
-                                        <div className="type-card">
-                                          <div className="type-desc only-desc">
-                                            <h5>Vendor</h5>
-                                            <label>Request will be sent to multiple Vendors.</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                              </div>
+                              <div className="category-wrapper">
+                                  <div className="category-heading">
+                                    <h5>Categories Selected</h5>
+                                    <label>
+                                        <a href="">Edit</a>
+                                    </label>
+                                  </div>
+                                  <div className="category-list">
+                                  <ul className="list-unstyled">
+                                    <li>
+                                        <img src="../../images/auto-service-icons-4.png" alt=""/>
+                                        <label>AC heating & Cooling</label>
+                                    </li>
+                                      <li>
+                                        <img src="../../images/auto-service-icons-4.png" alt=""/>
+                                        <label>AC heating & Cooling</label>
+                                    </li>
+                                  </ul>
+                                  </div>
+                              </div>
+                              {selectedCarProfile && <div className="car-wrapper">
+                                <div className="type-card">
+                                  {isCoverImage}
+                                  <div className="type-desc">
+                                    <h5>Car Profile</h5>
+                                    <label>{selectedCarProfile.name}</label>
+                                  </div>
                                 </div>
+                              </div>}
+                              <div className="car-wrapper">
+                                <div className="type-card">
+                                  <div className="type-desc only-desc">
+                                    <h5>Vendor</h5>
+                                    <label>Request will be sent to multiple Vendors.</label>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="footerSection">
-                    {/*AppLink*/}
-                    <AppLink />
-                    {/*Footer*/}
-                    <Footer />
-                </div>
-            </div>
-        );
+              </div>
+          </div>
+          <div className="footerSection">
+              {/*AppLink*/}
+              <AppLink />
+              {/*Footer*/}
+              <Footer />
+          </div>
+        </div>
+      );
     }
 }

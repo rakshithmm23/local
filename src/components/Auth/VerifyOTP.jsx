@@ -19,7 +19,7 @@ export default class VerifyOTP extends Component {
     this.formData = {
       ...this.initialFormData
     };
-    this.errors = {
+    this.errors =  {
       'otp': false
     };
     this.onFieldChange = this.onFieldChange.bind(this);

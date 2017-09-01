@@ -22,32 +22,32 @@ export default class Sidebar extends Component {
     const {bgColor} = this.props;
     const sidebarItems = [
       {
-        icon: '../images/sidebar/dashboard.svg',
-        icon_active: '../../images/sidebar/dashboard_active.svg',
+        icon: '/images/sidebar/dashboard.svg',
+        icon_active: '..//images/sidebar/dashboard_active.svg',
         name: 'Dashboard',
         hyperLink: '/dashboard'
       },
       {
-        icon: '../images/sidebar/request.svg',
-        icon_active: '../images/sidebar/request_active.svg',
+        icon: '/images/sidebar/request.svg',
+        icon_active: '/images/sidebar/request_active.svg',
         name: 'My Requests',
         hyperLink: '/request'
       },
       {
-        icon: '../images/sidebar/car.svg',
-        icon_active: '../images/sidebar/car_active.svg',
+        icon: '/images/sidebar/car.svg',
+        icon_active: '/images/sidebar/car_active.svg',
         name: 'My Cars',
         hyperLink: '/car-profiles'
       },
       {
-        icon: '../images/sidebar/message.svg',
-        icon_active: '../images/sidebar/message_active.svg',
+        icon: '/images/sidebar/message.svg',
+        icon_active: '/images/sidebar/message_active.svg',
         name: 'Messages',
         hyperLink: '/messages'
       },
       {
-        icon: '../images/sidebar/fav.svg',
-        icon_active: '../images/sidebar/fav_active.svg',
+        icon: '/images/sidebar/fav.svg',
+        icon_active: '/images/sidebar/fav_active.svg',
         name: 'Favourites',
         hyperLink: '/favourites'
       },

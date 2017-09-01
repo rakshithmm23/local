@@ -42,7 +42,6 @@ class BookServiceBox extends Component {
                         <Button btnSize="sm" fontSize={14} label="Book Service" btnCallBack={this.props.btnCallBack} />
                     </figcaption>
                 </div>
-
             </div>
         );
     }

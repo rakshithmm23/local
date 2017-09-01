@@ -19,3 +19,6 @@ export const LIST_CAR_PROFILES = 'LIST_CAR_PROFILES';
 export const VIEW_CAR_PROFILE = 'VIEW_CAR_PROFILE';
 export const DELETE_CAR_PROFILE = 'DELETE_CAR_PROFILE';
 export const CAR_MAKE_AND_MODELS = 'CAR_MAKE_AND_MODELS';
+
+/*book service action types */
+export const GET_ALL_SERVICES = 'GET_ALL_SERVICES';

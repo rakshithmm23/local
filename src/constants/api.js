@@ -19,3 +19,6 @@ export const GET_CAR_PROFILE_DETAILS = BASE_URL + '/api/vehicles/';
 export const DELETE_CAR_PROFILE = BASE_URL + '/api/vehicles/';
 export const CAR_MAKE_AND_MODELS = BASE_URL + '/api/cars';
 export const DELETE_VEHICLE_IMAGE =BASE_URL + '/api/vehicles/image/';
+
+/*Book Service APIs*/
+export const GET_ALL_SERVICES = BASE_URL + '/api/services';

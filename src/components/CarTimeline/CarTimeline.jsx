@@ -92,7 +92,7 @@ export default class BookService extends Component {
     showBookServiceModal(e) {
         e.stopPropagation();
         e.preventDefault();
-        this.setState({ 'bookServiceModalVisible': !this.state.bookServiceModalVisible })
+        this.setState({ 'bookServiceModalVisible': !this.state.bookServiceModalVisible });
     }
 
     render() {

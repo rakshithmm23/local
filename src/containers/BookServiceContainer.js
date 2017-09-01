@@ -3,18 +3,22 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ActionCreators} from '../actions/';
 
-export default function CarProfileContainer(ComposedComponent) {
-  class CarProfileContainer extends Component {
+export default function BookServiceContainer(ComposedComponent) {
+  class BookServiceContainer extends Component {
     constructor(props) {
       super(props);
     }
+    componentWillReceiveProps(nextProps){
+console.log(nextProps)
+    }
+
     render() {
       return (<ComposedComponent {...this.props}/>);
     }
   }
 
   function mapStateToProps(state) {
-    return {carProfileReducer: state.carProfileReducer, authReducer: state.authReducer};
+    return {carProfileReducer: state.carProfileReducer, authReducer: state.authReducer, bookServiceReducers: state.bookServiceReducers};
   }
 
   function mapDispatchToProps(dispatch) {
@@ -23,9 +27,9 @@ export default function CarProfileContainer(ComposedComponent) {
     };
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(CarProfileContainer);
+  return connect(mapStateToProps, mapDispatchToProps)(BookServiceContainer);
 }
 
-CarProfileContainer.contextTypes = {
+BookServiceContainer.contextTypes = {
   router: React.PropTypes.object
 };

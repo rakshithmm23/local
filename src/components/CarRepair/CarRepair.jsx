@@ -27,6 +27,7 @@ export default class CarWash extends Component {
     }
 
     render() {
+      const {bookServiceReducers,carProfileReducer} = this.props;
         return (
             <div className="jobUpdate">
                 {/*Header*/}
@@ -48,7 +49,7 @@ export default class CarWash extends Component {
                             <div className="myCar-list">
                                 <div className="myCar-body row">
                                     {/*Job Updates*/}
-                                    <RepairSteps />
+                                    <RepairSteps bookServiceReducers={bookServiceReducers}/>
                                 </div>
                             </div>
                         </div>
