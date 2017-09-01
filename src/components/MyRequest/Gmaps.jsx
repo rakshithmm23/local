@@ -13,6 +13,8 @@ class Gmaps extends Component {
     mouseLeave(){
         this.setState({activeInfoWindow: null})
     }
+    
+
 
     render() {
         let mapRes = null;
@@ -39,19 +41,22 @@ class Gmaps extends Component {
         }) :""
         let mapSettings = {
             defaultZoom: this.props.zoom,
-            defaultCenter: this.props.center
+            defaultCenter: this.props.center,
+            
         }
         if (this.props.setCenter) {
             mapSettings["center"] = this.props.center;
         }
+        if(this.props.mapDrag){
+            mapSettings["onDragEnd"]=this.props.mapDrag;
+        }
         return (
             <div>
-                <GoogleMap
-                    {...mapSettings}
-                >
+                <GoogleMap {...mapSettings}>
                     {markers}
                     {this.props.markers ? map(mapRes, (val, i) => {
-                        if (i == this.state.activeInfoWindow) {
+
+                        if (i == this.state.activeInfoWindow && val.name) {
                             return (
                                 this.props.infoPopUp?
                                 <InfoWindow  options={{pixelOffset: new google.maps.Size(0,-40),maxWidth: 327}} defaultPosition={{ lat: val.lat, lng: val.lng }} key={i}>

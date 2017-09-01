@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -15,6 +16,7 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import Switch from 'react-toggle-switch';
 import Rating from 'react-rating';
+import TimeInput from 'time-input';
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -22,11 +24,16 @@ export default class RequestCard extends Component {
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.state = {
+      locationSearch: {
+        lat: undefined,
+        lng: undefined,
+        pinImage: ""
+      },
       filterdropdownVisible: false,
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
-      TimePickerFrom: "",
-      TimePickerTo: "",
+      TimePickerFrom: '11:30 PM',
+      TimePickerTo: "11:30 PM",
       switched: false,
       filterSort: "DistNF",
       filterdropdown: false,
@@ -144,11 +151,11 @@ export default class RequestCard extends Component {
     this.windowWidth = this.windowWidth.bind(this);
   }
   TimePickerChange(type, value) {
-    if (type == "timeFrom") {
-      this.setState({ TimePickerFrom: value });
-    } else {
-      this.setState({ TimePickerTo: value });
-    }
+    // if (type == "timeFrom") {
+    //   this.setState({ TimePickerFrom: value });
+    // } else {
+    //   this.setState({ TimePickerTo: value });
+    // }
   }
 
   jobDetail(val) {
@@ -157,22 +164,31 @@ export default class RequestCard extends Component {
 
   componentWillMount() {
     this.updateDimensions();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
+  }
+  showPosition(position) {
+    let positionVal = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      pinImage: '../../images/map_blue_pointer.png'
+    }
+    this.setState({ locationSearch: positionVal })
+
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
   }
-  componentDidUpdate() {
-    const curr = this.currentTopEle;
-    if (curr != undefined) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop;
-    }
-  }
+  
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
   bodyClick(e) {
-    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
+    if (e.target.className == "TimeInput-input") {
       this.setState({ filterdropdownVisible: true })
     } else {
       this.setState({ filterdropdownVisible: false })
@@ -225,6 +241,9 @@ export default class RequestCard extends Component {
     });
     this.setState({
       jobCardDetails: newDetails,
+    });
+    this.setState({
+      scrollTo: Object.keys(this.currentTopEle).length>0? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top: 0
     });
   }
   ClickedQuoteCard(key) {
@@ -296,6 +315,12 @@ export default class RequestCard extends Component {
 
     // console.log(this.state.TimePickerTo)
   }
+  setCenter(){
+    this.setState({ setCenter: true })
+  }
+  mapMoved(){
+    this.setState({ setCenter: false })
+  }
 
 
   render() {
@@ -344,6 +369,7 @@ export default class RequestCard extends Component {
 
       }
     })
+    const jobLocationCurrentLocation = jobCardLocation.push(this.state.locationSearch)
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
 
@@ -494,27 +520,9 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
-                                        <TimePicker
-                                          value={this.state.TimePickerFrom}
-                                          onChange={this.TimePickerChange.bind(this, "timeFrom")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatFrom}
-                                          use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-from" />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         <span className="time-to-time">to</span>
-                                        <TimePicker
-                                          value={this.state.TimePickerTo}
-                                          onChange={this.TimePickerChange.bind(this, "timeTo")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatTo}
-                                          use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-to" />
+                                        <TimeInput value={this.state.TimePickerTo} onChange={(e)=>this.setState({TimePickerTo:e})}/>
                                         <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 
@@ -615,7 +623,7 @@ export default class RequestCard extends Component {
                         </div>
                         <div className="quotes-left-body">
                           <div className="requestQuotesScroll">
-                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                            <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true} scrollTo={this.state.scrollTo}>
                               <div className="wrapper" ref={'quotesList'}>
 
                                 <div>
@@ -637,6 +645,7 @@ export default class RequestCard extends Component {
                       <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                         <div className="quotes-right-body">
                           <Gmaps
+                          mapDrag={this.mapMoved.bind(this)}
                             setCenter={this.state.setCenter}
                             center={this.state.mapsCenter}
                             infoPopUp={true}
@@ -646,6 +655,7 @@ export default class RequestCard extends Component {
                             containerElement={<div style={{ height: 100 + '%' }} />}
                             mapElement={<div style={{ height: 100 + '%' }} />}
                           />
+                          <span onClick={this.setCenter.bind(this)} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
 
 
 

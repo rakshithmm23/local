@@ -18,16 +18,9 @@ class CardType extends Component {
             ratingValue: 0,
         };
     }
-    // componentDidMount() {
-    //     debugger
-    //     let queryParam = this.props.cardDetails.statusIndicator 
-    //     if(queryParam == "completed"){
-    //         this.setState({collapseTimeline:false})
-    //     }
-    // }
+   
     ratingOnChange(rating) {
         this.setState({ ratingValue: rating })
-
     }
 
     getIcons(jobType, val) {
@@ -67,16 +60,7 @@ class CardType extends Component {
             );
         }
     }
-    stepClick(e, key) {
-        if (e.clientX > 690) {
-            this.setState({ statusPopupPosition: e.clientX - 650, statusPopupArrow: 84 + '%', activeButton: key })
-        } else if (e.clientX < 350) {
-            this.setState({ statusPopupPosition: e.clientX - 317, statusPopupArrow: 6 + '%', activeButton: key })
-        }
-        else {
-            this.setState({ statusPopupPosition: e.clientX - 360, statusPopupArrow: 16 + '%', activeButton: key })
-        }
-    }
+    
     handleChange(event) {
         // let input = null
         // input = event
@@ -180,7 +164,7 @@ class CardType extends Component {
                         <div className="col-md-12 col-sm-12 col-xs-12 pad0">
                             <div className="job-process">
                                 <h1 className="job-footer-title">Job Progress</h1>
-                                <StatusBar statusCount={cardDetails.totalTask} jobHolderDom = {this.props.parentRef}/>
+                                <StatusBar statusCount={cardDetails.statusPopup.length} jobHolderDom = {this.props.parentRef}/>
                                 <span className="job-start-point">Job started</span><span className="job-end-point">Car ready</span></div>
                         </div>
                     </div>

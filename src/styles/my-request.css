@@ -689,7 +689,7 @@ input[type="color"][list] {
     position: absolute;
     color: #717982;
     font-size: 18px;
-    bottom: 20px;
+    bottom: 6px;
     left: 110px;
     z-index: -1;
 }
@@ -698,12 +698,13 @@ input[type="color"][list] {
     position: absolute;
     color: #717982;
     font-size: 18px;
-    bottom: 20px;
+    bottom: 6px;
     right: 191px;
     z-index: -1;
 }
 
 .f-card .input-range {
+    z-index: 9;
     width: 98% !important;
     margin-left: 5px !important;
     margin-bottom: 55px;
@@ -721,11 +722,14 @@ input[type="color"][list] {
     margin-bottom: 20px;
 }
 
-.f-card .rc-time-picker {
+.f-card .TimeInput {
     padding: 0 !important;
+    display: inline-block;
+    margin-top: 20px;
 }
 
-.f-card .rc-time-picker input {
+.f-card .TimeInput input {
+    outline: none;
     font-family: CenturyGothic;
     font-size: 14px;
     height: 38px;
@@ -868,6 +872,8 @@ input[type="color"][list] {
     display: block;
     padding: 0;
     color: #ED3124;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 
@@ -880,6 +886,23 @@ input[type="color"][list] {
 .request-wrapper .job-updates {
     margin: 0 !important;
     border: 0 !important;
+}
+.mapSection .current-position{
+    position: absolute;
+    bottom: 124px;
+    right: 11px;
+    height: 30px;
+    width: 27px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mapSection .current-position i{
+    color: #ED3124;
+    font-size: 20px;
+    line-height: 32px;
 }
 
 @media screen and (max-width: 1099px) {

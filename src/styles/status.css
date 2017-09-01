@@ -134,20 +134,18 @@
   margin-bottom: 15px;
   min-width: 425px;
   display: inline-block;
-  left: 24.2%;
 }
 
-.status-popup:after {
+/* .status-popup:after {
   content: "";
   position: absolute;
-  left: 48%;
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid #e0e0e0;
   bottom: -10px;
-}
+} */
 
 .iconHolder {
   display: inline-block;
@@ -314,7 +312,7 @@
   font-family: CenturyGothic_bold;
 }
 .job-process{
-  /* mar */
+  position: relative;
 }
 
 .statusDescription h4 {
@@ -408,6 +406,7 @@
   margin-bottom: 15px;
   margin-top: 15px;
   position: relative;
+  padding-top: 86px;
 }
 
 .custom-dots .main-line {
@@ -438,7 +437,7 @@
 .custom-dots .dots:first-child {
   position: absolute;
   left: 0;
-  top: -6px;
+  top: 80px;
   margin: 0 !important;
 }
 
@@ -450,6 +449,6 @@
 .custom-dots .dots:last-child {
   position: absolute;
   right: 0;
-  top: -6px;
+  top: 80px;
   margin: 0 !important;
 }

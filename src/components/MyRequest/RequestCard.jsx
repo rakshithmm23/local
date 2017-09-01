@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { map, each, includes } from 'lodash';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
@@ -17,6 +18,7 @@ const { LatLngBounds, LatLng } = google.maps;
 import CarType from '../common/CarType';
 import Rating from 'react-rating';
 import CustomScroll from 'react-custom-scroll';
+import TimeInput from 'time-input';
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -24,12 +26,17 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
+      locationSearch: {
+        lat: undefined,
+        lng: undefined,
+        pinImage: ""
+      },
       filterdropdownVisible: false,
       dataChange: "",
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
-      TimePickerFrom: "",
-      TimePickerTo: "",
+      TimePickerFrom: '11:30 PM',
+      TimePickerTo: "11:30 PM",
       switched: false,
       filterSort: "DistNF",
       filterdropdown: false,
@@ -350,14 +357,19 @@ export default class RequestCard extends Component {
     this.setState({ jobUpdates: val });
   }
   TimePickerChange(type, value) {
-    if (type == "timeFrom") {
-      this.setState({ TimePickerFrom: value });
-    } else {
-      this.setState({ TimePickerTo: value });
-    }
+    // if (type == "timeFrom") {
+    //   this.setState({ TimePickerFrom: value });
+    // } else {
+    //   this.setState({ TimePickerTo: value });
+    // }
   }
 
   componentWillMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     if (this.props.router.params.requestType == 'waiting' || this.props.router.params.requestType == undefined) {
@@ -371,6 +383,16 @@ export default class RequestCard extends Component {
     //   jobType="waiting"
     // }
     // this.jobData[0].statusIndicator=jobType
+  }
+
+  showPosition(position) {
+    let positionVal = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      pinImage: '../../images/map_blue_pointer.png'
+    }
+    this.setState({ locationSearch: positionVal })
+
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -387,19 +409,13 @@ export default class RequestCard extends Component {
     // this.jobData[0].statusIndicator=jobType
     // this.setState({dataChange:!this.state.dataChange})
   }
-  componentDidUpdate(prevProps, prevState) {
-    const curr = this.currentTopEle
-    if (curr != undefined) {
-      this.refs.quotesList.scrollTop = curr.refs[curr.props.index].offsetTop
-    }
 
-  }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
   }
   bodyClick(e) {
-    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
+    if (e.target.className == "TimeInput-input") {
       this.setState({ filterdropdownVisible: true })
     } else {
       this.setState({ filterdropdownVisible: false })
@@ -440,6 +456,9 @@ export default class RequestCard extends Component {
     this.setState({
       jobCardDetails: newDetails,
     });
+    this.setState({
+      scrollTo: Object.keys(this.currentTopEle).length > 0 ? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top : 0
+    });
   }
   ClickedQuoteCard(key, vendorId) {
     let update, newArray = [], centerLat = undefined, centerLng = undefined
@@ -474,7 +493,7 @@ export default class RequestCard extends Component {
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
       daySelected: days
-    })
+    });
   }
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
@@ -485,7 +504,7 @@ export default class RequestCard extends Component {
       ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       }
-    })
+    });
   }
   switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
@@ -494,22 +513,22 @@ export default class RequestCard extends Component {
     } else if (val == 'byCreditcard') {
       this.toggleSwitchVal.byCash = false;
     }
-    this.setState({ switched: !this.state.switched })
+    this.setState({ switched: !this.state.switched });
   }
   filterSelect() {
     if (this.state.TimePickerFrom > this.state.TimePickerTo) {
-      this.setState({ inValidTime: true })
+      this.setState({ inValidTime: true });
     } else {
-      this.setState({ inValidTime: false })
+      this.setState({ inValidTime: false });
     }
 
     // console.log(this.state.TimePickerTo)
   }
   statusIndicatorFunc(status) {
     if (status == 'completed' || status == 'accepted' || status == 'inProgress') {
-      return "Accepted Quotes"
+      return "Accepted Quotes";
     } else {
-      return "Quotes"
+      return "Quotes";
     }
   }
 
@@ -565,6 +584,12 @@ export default class RequestCard extends Component {
     this.setState({ ratingValue: rating })
 
   }
+  setCenter(){
+    this.setState({ setCenter: true })
+  }
+  mapMoved(){
+    this.setState({ setCenter: false })
+  }
 
   render() {
     if (this.props.router.params.requestType) {
@@ -597,6 +622,7 @@ export default class RequestCard extends Component {
 
       };
     });
+    const jobLocationCurrentLocation = jobCardLocation.push(this.state.locationSearch)
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
     const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
@@ -770,27 +796,9 @@ export default class RequestCard extends Component {
                                               <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                               <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                             </ul>
-                                            <TimePicker
-                                              value={this.state.TimePickerFrom}
-                                              onChange={this.TimePickerChange.bind(this, "timeFrom")}
-                                              placeholder="Time"
-                                              showSecond={false}
-                                              className="xxx"
-                                              format={formatFrom}
-                                              use12Hours
-                                            />
-                                            <i className="mdi mdi-chevron-down time-from" />
+                                            <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                             <span className="time-to-time">to</span>
-                                            <TimePicker
-                                              value={this.state.TimePickerTo}
-                                              onChange={this.TimePickerChange.bind(this, "timeTo")}
-                                              placeholder="Time"
-                                              showSecond={false}
-                                              className="xxx"
-                                              format={formatTo}
-                                              use12Hours
-                                            />
-                                            <i className="mdi mdi-chevron-down time-to" />
+                                            <TimeInput value={this.state.TimePickerTo} onChange={(e)=>this.setState({TimePickerTo:e})}/>
                                             <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                           </div>
                                           <div className="f-card toggleBtn">
@@ -890,7 +898,7 @@ export default class RequestCard extends Component {
                             </div>}
                             <div className="quotes-left-body">
                               <div className={this.jobData[0].statusIndicator == "accepted" || this.jobData[0].statusIndicator == "inProgress" || this.jobData[0].statusIndicator == "completed" ? "requestQuotesScroll vendor-details-content" : "requestQuotesScroll"}>
-                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true} scrollTo={this.state.scrollTo}>
                                   {this.jobData[0].statusIndicator == "active" && <div className="wrapper" ref={'quotesList'}>
 
                                     <div>
@@ -916,6 +924,7 @@ export default class RequestCard extends Component {
                           {this.jobData[0].statusIndicator == "active" && <div className={this.state.mapView == true ? "mapSection" : "mapSection hide"}>
                             <div className="quotes-right-body">
                               <Gmaps
+                              mapDrag={this.mapMoved.bind(this)}
                                 infoPopUp={true}
                                 setCenter={this.state.setCenter}
                                 center={this.state.mapsCenter}
@@ -925,6 +934,8 @@ export default class RequestCard extends Component {
                                 containerElement={<div style={{ height: 100 + '%' }} />}
                                 mapElement={<div style={{ height: 100 + '%' }} />}
                               />
+                              <span onClick={this.setCenter.bind(this)} className="current-position"><i className="mdi mdi-crosshairs-gps"></i></span>
+
                             </div>
                           </div>}
                           <div className={this.state.quotationView == true ? "quotesSection" : "quotesSection hide"}>
@@ -945,9 +956,9 @@ export default class RequestCard extends Component {
                             </div>
                             <div className="quotes-right-body">
                               <div className="requestQuotesScroll">
-                                  {/*Quotation*/}
-                                  <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
-                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                {/*Quotation*/}
+                                <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                                  <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                     <div className="quotation-head">
                                       <ul>
                                         <li>
@@ -994,8 +1005,8 @@ export default class RequestCard extends Component {
                                         <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" btnCallBack={() => { this.props.router.push('/request/accepted') }} />
                                       </div> : ""}
                                     </div>
-                                </CustomScroll>
-                                  </div>
+                                  </CustomScroll>
+                                </div>
                                 {/*ChatBox*/}
                                 <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                                   <div className="quotes-chat-area">
