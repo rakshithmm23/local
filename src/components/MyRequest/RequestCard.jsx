@@ -493,7 +493,7 @@ export default class RequestCard extends Component {
     days[selDay] = !this.state.daySelected[selDay]
     this.setState({
       daySelected: days
-    })
+    });
   }
   filterOption(val) {
     this.setState({ filterSort: val, sortBydropdown: false })
@@ -504,7 +504,7 @@ export default class RequestCard extends Component {
       ratingValue: 0, inValidTime: false, TimePickerFrom: undefined, TimePickerTo: undefined, distValue: { min: 2, max: 10 }, priceValue: { min: 10, max: 70 }, daySelected: {
         "sunday": false, "monday": false, "tuesday": false, "wednesday": false, "thrusday": false, "friday": false, "saturday": false
       }
-    })
+    });
   }
   switch(val) {
     this.toggleSwitchVal[val] = !this.toggleSwitchVal[val];
@@ -513,22 +513,22 @@ export default class RequestCard extends Component {
     } else if (val == 'byCreditcard') {
       this.toggleSwitchVal.byCash = false;
     }
-    this.setState({ switched: !this.state.switched })
+    this.setState({ switched: !this.state.switched });
   }
   filterSelect() {
     if (this.state.TimePickerFrom > this.state.TimePickerTo) {
-      this.setState({ inValidTime: true })
+      this.setState({ inValidTime: true });
     } else {
-      this.setState({ inValidTime: false })
+      this.setState({ inValidTime: false });
     }
 
     // console.log(this.state.TimePickerTo)
   }
   statusIndicatorFunc(status) {
     if (status == 'completed' || status == 'accepted' || status == 'inProgress') {
-      return "Accepted Quotes"
+      return "Accepted Quotes";
     } else {
-      return "Quotes"
+      return "Quotes";
     }
   }
 
