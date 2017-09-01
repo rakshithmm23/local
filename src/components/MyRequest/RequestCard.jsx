@@ -25,6 +25,11 @@ export default class RequestCard extends Component {
     super(...args);
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.state = {
+      locationSearch: {
+        lat: undefined,
+        lng: undefined,
+        pinImage: ""
+      },
       filterdropdownVisible: false,
       dataChange: "",
       setCenter: false,
@@ -359,6 +364,11 @@ export default class RequestCard extends Component {
   }
 
   componentWillMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
     this.updateDimensions();
     window.addEventListener('mousedown', this.bodyClick.bind(this));
     if (this.props.router.params.requestType == 'waiting' || this.props.router.params.requestType == undefined) {
@@ -372,6 +382,16 @@ export default class RequestCard extends Component {
     //   jobType="waiting"
     // }
     // this.jobData[0].statusIndicator=jobType
+  }
+
+  showPosition(position) {
+    let positionVal = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      pinImage: '../../images/map_blue_pointer.png'
+    }
+    this.setState({ locationSearch: positionVal })
+
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -388,7 +408,7 @@ export default class RequestCard extends Component {
     // this.jobData[0].statusIndicator=jobType
     // this.setState({dataChange:!this.state.dataChange})
   }
-  
+
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
     window.removeEventListener('mousedown', this.bodyClick.bind(this))
@@ -436,7 +456,7 @@ export default class RequestCard extends Component {
       jobCardDetails: newDetails,
     });
     this.setState({
-      scrollTo: Object.keys(this.currentTopEle).length>0? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top: 0
+      scrollTo: Object.keys(this.currentTopEle).length > 0 ? ReactDOM.findDOMNode(this.currentTopEle).getBoundingClientRect().top : 0
     });
   }
   ClickedQuoteCard(key, vendorId) {
@@ -595,6 +615,7 @@ export default class RequestCard extends Component {
 
       };
     });
+    const jobLocationCurrentLocation = jobCardLocation.push(this.state.locationSearch)
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
     const messagesView = this.state.selectedVendorId ? this.renderMessages(this.state.messageList[this.state.selectedVendorId]) : '';
@@ -943,9 +964,9 @@ export default class RequestCard extends Component {
                             </div>
                             <div className="quotes-right-body">
                               <div className="requestQuotesScroll">
-                                  {/*Quotation*/}
-                                  <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
-                                <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
+                                {/*Quotation*/}
+                                <div className={this.state.quotation == true ? "quotes-quotation-Section" : "quotes-quotation-Section hide"}>
+                                  <CustomScroll heightRelativeToParent="calc(100%)" allowOuterScroll={true}>
                                     <div className="quotation-head">
                                       <ul>
                                         <li>
@@ -992,8 +1013,8 @@ export default class RequestCard extends Component {
                                         <Button btnSize="sm" fontSize={14} backgroundColor="#ED3124" label="Accept Quotes" btnCallBack={() => { this.props.router.push('/request/accepted') }} />
                                       </div> : ""}
                                     </div>
-                                </CustomScroll>
-                                  </div>
+                                  </CustomScroll>
+                                </div>
                                 {/*ChatBox*/}
                                 <div className={this.state.messages == true ? "quotes-message-Section" : "quotes-message-Section hide"}>
                                   <div className="quotes-chat-area">

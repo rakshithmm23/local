@@ -25,6 +25,8 @@ class Gmaps extends Component {
         }
         
         const markers =  mapRes?map(mapRes, (val, i) => {
+            debugger
+            
             const marker = {
                 position: {
                     lat: val.lat,
@@ -51,7 +53,8 @@ class Gmaps extends Component {
                 >
                     {markers}
                     {this.props.markers ? map(mapRes, (val, i) => {
-                        if (i == this.state.activeInfoWindow) {
+
+                        if (i == this.state.activeInfoWindow && val.name) {
                             return (
                                 this.props.infoPopUp?
                                 <InfoWindow  options={{pixelOffset: new google.maps.Size(0,-40),maxWidth: 327}} defaultPosition={{ lat: val.lat, lng: val.lng }} key={i}>

@@ -23,6 +23,11 @@ export default class RequestCard extends Component {
     this.toggleSwitchVal = { Open24_7: false, showFavourites: false, authorizedBusinesses: false, dealsOffers: false, byCash: true, byCreditcard: false }
     this.checkBox = { all: false, carService: false, carWash: false, carRepair: false }
     this.state = {
+      locationSearch: {
+        lat: undefined,
+        lng: undefined,
+        pinImage: ""
+      },
       filterdropdownVisible: false,
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
@@ -158,7 +163,21 @@ export default class RequestCard extends Component {
 
   componentWillMount() {
     this.updateDimensions();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
     document.body.addEventListener('mousedown', this.bodyClick.bind(this));
+  }
+  showPosition(position) {
+    let positionVal = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      pinImage: '../../images/map_blue_pointer.png'
+    }
+    this.setState({ locationSearch: positionVal })
+
   }
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -339,6 +358,7 @@ export default class RequestCard extends Component {
 
       }
     })
+    const jobLocationCurrentLocation = jobCardLocation.push(this.state.locationSearch)
     const formatFrom = 'h:mm a';
     const formatTo = 'h:mm a';
 
