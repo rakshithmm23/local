@@ -704,6 +704,7 @@ input[type="color"][list] {
 }
 
 .f-card .input-range {
+    z-index: 9;
     width: 98% !important;
     margin-left: 5px !important;
     margin-bottom: 55px;
