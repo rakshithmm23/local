@@ -38,7 +38,7 @@ export default class Sidebar extends Component {
       },
       {
         iconName: 'mdi mdi-comment-processing',
-        name: 'Messages',
+        name: 'Message',
         hyperLink: '/messages'
       },
       {

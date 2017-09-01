@@ -217,7 +217,7 @@ input[type="color"][list] {
 .filterCard li span {
     position: absolute;
     right: 20px;
-    top: 25px;
+    top: 13px;
     padding: 0px !important;
 }
 
