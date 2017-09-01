@@ -16,6 +16,7 @@ import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import Switch from 'react-toggle-switch';
 import Rating from 'react-rating';
+import TimeInput from 'time-input';
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -31,8 +32,8 @@ export default class RequestCard extends Component {
       filterdropdownVisible: false,
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
-      TimePickerFrom: "",
-      TimePickerTo: "",
+      TimePickerFrom: '11:30 PM',
+      TimePickerTo: "11:30 PM",
       switched: false,
       filterSort: "DistNF",
       filterdropdown: false,
@@ -150,11 +151,11 @@ export default class RequestCard extends Component {
     this.windowWidth = this.windowWidth.bind(this);
   }
   TimePickerChange(type, value) {
-    if (type == "timeFrom") {
-      this.setState({ TimePickerFrom: value });
-    } else {
-      this.setState({ TimePickerTo: value });
-    }
+    // if (type == "timeFrom") {
+    //   this.setState({ TimePickerFrom: value });
+    // } else {
+    //   this.setState({ TimePickerTo: value });
+    // }
   }
 
   jobDetail(val) {
@@ -187,7 +188,11 @@ export default class RequestCard extends Component {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
   bodyClick(e) {
-    
+    if (e.target.className == "TimeInput-input") {
+      this.setState({ filterdropdownVisible: true })
+    } else {
+      this.setState({ filterdropdownVisible: false })
+    }
   }
   filterDropDownFunc(e) {
     if (!this.state.filterdropdownVisible) {
@@ -515,27 +520,9 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
-                                        <TimePicker
-                                          value={this.state.TimePickerFrom}
-                                          onChange={this.TimePickerChange.bind(this, "timeFrom")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatFrom}
-                                          use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-from" />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         <span className="time-to-time">to</span>
-                                        <TimePicker
-                                          value={this.state.TimePickerTo}
-                                          onChange={this.TimePickerChange.bind(this, "timeTo")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="xxx"
-                                          format={formatTo}
-                                          use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-to" />
+                                        <TimeInput value={this.state.TimePickerTo} onChange={(e)=>this.setState({TimePickerTo:e})}/>
                                         <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 

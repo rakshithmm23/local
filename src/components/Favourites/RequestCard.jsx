@@ -16,6 +16,7 @@ import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ChatBox from './ChatBox';
 import Rating from 'react-rating';
 import CustomScroll from 'react-custom-scroll';
+import TimeInput from 'time-input';
 
 export default class RequestCard extends Component {
   constructor(...args) {
@@ -31,8 +32,8 @@ export default class RequestCard extends Component {
       },
       setCenter: false,
       mapsCenter: { lat: 12.9952672, lng: 77.5905857 },
-      TimePickerFrom: "",
-      TimePickerTo: "",
+      TimePickerFrom: '11:30 PM',
+      TimePickerTo: "11:30 PM",
       switched: false,
       filterSort: "DistNF",
       filterdropdownVisible: false,
@@ -180,19 +181,15 @@ export default class RequestCard extends Component {
   componentWillUnmount() {
     window.removeEventListener('mousedown', this.bodyClick.bind(this));
   }
-  TimePickerChange(type, value) {
-    if (type == "timeFrom") {
-      this.setState({ TimePickerFrom: value });
-    } else {
-      this.setState({ TimePickerTo: value });
-    }
+  TimePickerChange(e) {
+      
   }
 
   jobDetail(val) {
     this.setState({ jobUpdates: val });
   }
   bodyClick(e) {
-    if (e.target.className == "rc-time-picker-input" || e.target.closest('.rc-time-picker-panel-inner')) {
+    if (e.target.className == "TimeInput-input") {
       this.setState({ filterdropdownVisible: true })
     } else {
       this.setState({ filterdropdownVisible: false })
@@ -354,7 +351,6 @@ export default class RequestCard extends Component {
   
 
   render() {
-    debugger
     
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
@@ -552,18 +548,11 @@ export default class RequestCard extends Component {
                                           <li className={this.state.daySelected["friday"] ? 'active' : ''} onClick={this.day.bind(this, "friday")}>fri</li>
                                           <li className={this.state.daySelected["saturday"] ? 'active' : ''} onClick={this.day.bind(this, "saturday")}>sat</li>
                                         </ul>
-                                        <TimePicker
-                                          value={this.state.TimePickerFrom}
-                                          onChange={this.TimePickerChange.bind(this, "timeFrom")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="fav-time"
-                                          format={formatFrom}
-                                          use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-from" />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         <span className="time-to-time">to</span>
-                                        <TimePicker
+                                        <TimeInput value={this.state.TimePickerTo} onChange={(e)=>this.setState({TimePickerTo:e})}/>
+                                        
+                                        {/* <TimePicker
                                           value={this.state.TimePickerTo}
                                           onChange={this.TimePickerChange.bind(this, "timeTo")}
                                           placeholder="Time"
@@ -571,8 +560,7 @@ export default class RequestCard extends Component {
                                           className="fav-time"
                                           format={formatTo}
                                           use12Hours
-                                        />
-                                        <i className="mdi mdi-chevron-down time-to" />
+                                        /> */}
                                         <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 
