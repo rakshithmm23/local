@@ -32,13 +32,13 @@ class CardType extends Component {
         } else if (val == "active") {
             return (
                 <div>
-                    <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+                    <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Message</span></div>
                     <div className="job-icon  notification"><span className="mdi mdi-file-outline"></span><span className="notifyTag"></span><span className="commentLabel">Quotes</span></div>
                 </div>
             );
         } else if (val == "accepted" || val == "inProgress") {
             return (
-                <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Messages</span></div>
+                <div className="job-icon  notification" onClick={this.props.messageClick}><span className="mdi mdi-comment-processing-outline"></span><span className="notifyTag"></span><span className="commentLabel">Message</span></div>
             );
         } else if (val == "completed") {
             return (

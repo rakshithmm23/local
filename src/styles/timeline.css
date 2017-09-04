@@ -48,12 +48,14 @@
     font-size: 13px;
     font-family: CenturyGothic_bold;
     line-height: 16px;
+    word-break: break-word;    
 }
 
 .service-carPlate h4 {
     font-family: CenturyGothic_bold;
     font-size: 18px;
     color: #4C4C4C;
+    word-break: break-word;
 }
 
 .service-carPlate .car-make {
@@ -64,6 +66,7 @@
     font-size: 14px;
     font-weight: normal;
     font-family: CenturyGothic;
+    word-break: break-word;
 }
 
 .service-car-info .service-info li {
@@ -279,6 +282,7 @@
     border: 1px solid transparent;
     padding: 10px;
     margin: -10px;
+    word-wrap: break-word;
 }
 
 .otherDetails-content li p[contenteditable="true"],
