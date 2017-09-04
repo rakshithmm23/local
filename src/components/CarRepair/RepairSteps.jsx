@@ -26,7 +26,7 @@ class RepairSteps extends Component {
             policeReport: [],
             rationCard: [],
             drivingLicence: [],
-            PrefferedLocation: 'Select Location',
+            PreferedLocation: 'Select Location',
             startDate:"",
             step1Panel: true,
             step2Panel: false,
@@ -412,7 +412,7 @@ class RepairSteps extends Component {
     }
 
     selectedDropdownText(location) {
-        this.setState({ PrefferedLocation: location });
+        this.setState({ PreferedLocation: location });
     }
     uploadImage(e, img) {
         let files = [], fileImgSize = 0;
@@ -733,7 +733,7 @@ class RepairSteps extends Component {
                                 </div>
 
                                 <div className="form-section">
-                                    <h4 className="panel-sub-title">Preffered Time & Date</h4>
+                                    <h4 className="panel-sub-title">Prefered Time & Date</h4>
                                      <div className="toggleBtn">
                                         <span> This is an urgent request ! </span>
                                         <ToggleSwitch
@@ -767,7 +767,7 @@ class RepairSteps extends Component {
                                     </div>
                                 </div>
                                 <div className="form-section">
-                                    <h4 className="panel-sub-title">Preffered location</h4>
+                                    <h4 className="panel-sub-title">Prefered location</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
                                             <option value="select">Select Location</option>

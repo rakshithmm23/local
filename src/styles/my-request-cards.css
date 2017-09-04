@@ -1,0 +1,63 @@
+.sub-header{
+    background: white;
+    widows: 100%;
+    padding: 0 20px;
+    
+}
+.sub-header .tab{
+    display: inline-block;
+    width: 188px;
+    text-align: center;
+    font-family: CenturyGothic;
+    font-size: 16px;
+    color: #454B51;
+    cursor: pointer;
+    
+}
+.sub-header .tab .active{
+    font-family: CenturyGothic_bold;
+    display: inline-block;
+    width: 188px;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid red;
+
+}
+.filterSection.request-card .filterCard.Filterby{
+    left: auto !important;
+    right: 0px;
+}
+.filterSection.request-card .dropdown-menu {
+    width: 1070px;
+    right: -137px;
+    padding-top: 40px;
+    padding-left: 20px;
+}
+.filterSection.request-card .f-card .checkbox-style{
+    padding-bottom: 20px !important;
+}
+.filterSection.request-card  .filterby-wrapper .f-card{
+    padding-top: 0 !important;
+}
+.filterSection.request-card  .f-card h5 {
+    margin-bottom: 20px;
+}
+.filterSection.request-card .left{
+    position: relative;
+}
+.filterSection.request-card .left .filterby-wrapper:after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 1px;
+    background: rgba(151, 151, 151, 0.2);
+    right: 30px;
+    top: 0;
+}
+.filterSection .dropdown-toggle{
+    background: #fff !important;
+    border: none !important;
+}
+.filterSection.sort-request-card .filterCard li span {
+    top: 11px !important;
+}
