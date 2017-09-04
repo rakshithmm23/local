@@ -166,9 +166,11 @@
     line-height: 20px;
     margin-bottom: 25px;
 }
-.vendor-services{
+
+.vendor-services {
     margin-bottom: 30px;
 }
+
 .vendor-description {
     margin-bottom: 10px;
 }
@@ -199,7 +201,7 @@
     margin: 5px 0px;
 }
 
-.vp_left .services{
+.vp_left .services {
     clear: both;
     margin-top: 15px;
 }
@@ -359,6 +361,7 @@
     vertical-align: middle;
     margin-left: 10px;
     display: inline-block;
+    margin-top: -2px;
 }
 
 .vendor-description .filterSection .dropdown.open .filterLabel .mdi-chevron-down {
@@ -394,7 +397,8 @@
 
 
 /*Photos*/
-.photos-row{
+
+.photos-row {
     height: 54px;
     width: 86%;
     overflow: hidden;
@@ -438,7 +442,8 @@
     font-family: CenturyGothic;
     text-align: center;
 }
-.figure .upload-images.wrap-photo .more-photos{
+
+.figure .upload-images.wrap-photo .more-photos {
     display: block;
 }
 
@@ -630,7 +635,7 @@
     margin: 20px 0;
 }
 
-.load-more-comments{
+.load-more-comments {
     margin: 15px auto;
     text-align: center;
 }

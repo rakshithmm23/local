@@ -8,7 +8,7 @@ export default class IconNotification extends Component {
         return (
             <div className={iconClass + ' ' + (notifyClass ? ' ' + notifyClass : '')} onClick={this.props.viewMessaging}>
                 <span className={'mdi mdi-' + iconType}/>
-                {(iconLabel == "Messages" || iconLabel == "Quotes") && <span className="notifyTag"/>}
+                {(iconLabel == "Message" || iconLabel == "Quotes") && <span className="notifyTag"/>}
                 <span className="commentLabel">{iconLabel}</span>
             </div>
         );

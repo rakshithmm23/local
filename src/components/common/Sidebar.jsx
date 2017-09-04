@@ -23,7 +23,7 @@ export default class Sidebar extends Component {
     const sidebarItems = [
       {
         icon: '../images/sidebar/dashboard.svg',
-        icon_active: '../../images/sidebar/dashboard_active.svg',
+        icon_active: '../images/sidebar/dashboard_active.svg',
         name: 'Dashboard',
         hyperLink: '/dashboard'
       },
