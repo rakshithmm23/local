@@ -19,7 +19,7 @@ class JobDetails extends Component {
                     </div>
                     <div className="col-md-4 margin-correction">
                         <div className="wrapper">
-                            <title className="title">Preffered Location:</title>
+                            <title className="title">Prefered Location:</title>
                             <span>11:30 AM on Jan 5 2017</span>
                         </div>
                     </div>

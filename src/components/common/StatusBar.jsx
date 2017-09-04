@@ -46,7 +46,6 @@ class StatusBar extends Component {
         if (key == -10) {
             this.setState({ statusPopupPosition: statusPopupPosition, statusPopupArrow: totalTimelienWidth - 23 });
         } else if (key == 0 ){
-            debugger
             this.setState({ statusPopupPosition: 1, statusPopupArrow: -40 });
         }else if (clickPosition > statusPopupPosition) {
             this.setState({ statusPopupPosition: statusPopupPosition, statusPopupArrow: e.target.offsetLeft - 16 });
@@ -56,8 +55,6 @@ class StatusBar extends Component {
 
     }
     render() {
-        debugger
-        
         const style = {
             dotsWidth: {
                 marginLeft: this.state.margin

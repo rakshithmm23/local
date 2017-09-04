@@ -16,7 +16,7 @@ class WashSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            PrefferedLocation:'Select Location',
+            PreferedLocation:'Select Location',
             // startDate: moment(),
             heating:false,
             step1Panel: true,
@@ -368,7 +368,7 @@ class WashSteps extends Component {
     }
 
     selectedDropdownText(location) {
-        this.setState({PrefferedLocation:location});
+        this.setState({PreferedLocation:location});
     }
 
     renderCarType(carDetails, key) {
@@ -455,7 +455,7 @@ class WashSteps extends Component {
                                     </div>
                                 </div>
                                 <div className="form-section">
-                                    <h4 className="panel-sub-title">Preffered Time & Date</h4>
+                                    <h4 className="panel-sub-title">Prefered Time & Date</h4>
                                     <div className="row date-time  model-select">
                                         <div className="col-md-6 padLeft0">
                                             <DatePicker
@@ -479,7 +479,7 @@ class WashSteps extends Component {
                                     </div>
                                 </div>
                                 <div className="form-section">
-                                    <h4 className="panel-sub-title">Preffered location</h4>
+                                    <h4 className="panel-sub-title">Prefered location</h4>
                                     <div className="model-select">
                                         <select className="car-selection ">
                                             <option value="select">Select Location</option>

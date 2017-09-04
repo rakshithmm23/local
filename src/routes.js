@@ -57,6 +57,7 @@ import Favourites from './components/Favourites/Favourites';
 import VendorProfile from './components/VendorProfile/VendorProfile';
 import Terms from './components/Terms/Terms.jsx';
 import pageNotFound from './components/pageNotFound/pageNotFound.jsx';
+import MyRequestCard from './components/RequestCard/MyRequestCard.jsx'
 
 
 export default (
@@ -72,7 +73,8 @@ export default (
       <Route path="confirmed" onEnter={scrollToTop} component={AuthContainer(Confirmed)} />
       <Route path="reset-email-confirmation" onEnter={scrollToTop} component={AuthContainer(ResetEmailConfirmation)} />
       <Route path="verify" component={AuthContainer(EmailVerified)}  />
-      <Route path="request(/:requestType)" onEnter={isLoggedIn} component={AuthContainer(MyRequest)} />
+      <Route path="request/:requestType" onEnter={isLoggedIn} component={AuthContainer(MyRequest)} />
+      <Route path="request" onEnter={isLoggedIn} component={AuthContainer(MyRequestCard)} />
       <Route path="car-profiles/create" onEnter={isLoggedIn} component={CarProfileContainer(CreateCarProfile)} />
       <Route path="car-profiles" onEnter={isLoggedIn} component={CarProfileContainer(BookService)} />
       <Route path="car-profiles/:id/view" onEnter={isLoggedIn} component={CarProfileContainer(CarTimeline)} />

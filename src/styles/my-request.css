@@ -77,21 +77,21 @@ input[type="color"][list] {
     text-transform: capitalize;
 }
 
-.quotes-view .title .filterSection {
+.filterSection {
     position: relative;
     float: right;
     margin-top: 24px;
     margin-right: 10px;
 }
 
-.quotes-view .title .filterSection .dropdown-toggle {
+.filterSection .dropdown-toggle {
     padding: 0;
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;
 }
 
-.quotes-view .title .filterSection .dropdown-menu {
+.filterSection .dropdown-menu {
     border: 0;
 }
 
@@ -836,10 +836,13 @@ input[type="color"][list] {
 .filterSection .dropdown.open button {
     border-bottom: 2px solid #ed3124 !important;
     border-radius: 0;
+    box-shadow: NONE;
+    border:  NONE;
 }
 
 .filterby-wrapper {
     padding: 0px 15px 0px 0px;
+    position: relative;
 }
 
 .filterCard .right .filterby-wrapper,

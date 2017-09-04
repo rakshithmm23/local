@@ -11,7 +11,6 @@ import JobDetails from './JobDetails';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
-import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import AcceptedQuotes from './AcceptedQuotes';
 const { LatLngBounds, LatLng } = google.maps;
@@ -595,7 +594,7 @@ export default class RequestCard extends Component {
     if (this.props.router.params.requestType) {
       this.jobData[0].statusIndicator = this.props.router.params.requestType
     } else {
-      this.jobData[0].statusIndicator = "waiting"
+      this.jobData[0].statusIndicator = "waiting";
     }
     let jobLeftGridValue = "";
     let jobRightGridValue = "";
