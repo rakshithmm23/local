@@ -80,6 +80,10 @@
 .filterSection.request-card .car-profile li a{
     background: white !important;
     outline: none !important;
+    color: #454B51;
+    font-family: CenturyGothic;
+    font-size: 14px;
+    text-transform: capitalize;
 }
 .filterSection.request-card .car-profile .dropdown-menu{
     width: auto;
