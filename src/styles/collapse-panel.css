@@ -434,12 +434,12 @@
 }
 
 .panel-content .date-time .react-datepicker__input-container,
-.panel-content .date-time .rc-time-picker {
+.panel-content .date-time .TimeInput {
     width: 100%;
 }
 
 .panel-content .date-time .react-datepicker__input-container input,
-.panel-content .date-time .rc-time-picker input {
+.panel-content .date-time .TimeInput input {
     color: #868D91;
     border: 0;
     outline: 0 !important;

@@ -11,7 +11,6 @@ import JobDetails from './JobDetails';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import InputRange from 'react-input-range';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
-import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ChatBox from './ChatBox';
 import Rating from 'react-rating';
@@ -552,15 +551,7 @@ export default class RequestCard extends Component {
                                         <span className="time-to-time">to</span>
                                         <TimeInput value={this.state.TimePickerTo} onChange={(e)=>this.setState({TimePickerTo:e})}/>
                                         
-                                        {/* <TimePicker
-                                          value={this.state.TimePickerTo}
-                                          onChange={this.TimePickerChange.bind(this, "timeTo")}
-                                          placeholder="Time"
-                                          showSecond={false}
-                                          className="fav-time"
-                                          format={formatTo}
-                                          use12Hours
-                                        /> */}
+                                        
                                         <span className={this.state.inValidTime ? "time-error" : "time-error hide"} >Invalid time format</span>
                                       </div>
 

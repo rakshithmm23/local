@@ -6,16 +6,16 @@ import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import TimePicker from 'rc-time-picker';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 import { Modal } from 'react-bootstrap';
-
+import TimeInput from 'time-input';
 
 class RepairSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            TimePickerFrom: '00:00 AM',
             accidentRadioBtn:true,
             generalRadioBtn:false,
             uploadImgSize: 0,
@@ -755,13 +755,7 @@ class RepairSteps extends Component {
                                         </div>
 
                                         <div className="col-md-6 padRight0">
-                                            <TimePicker
-                                                placeholder="Time"
-                                                showSecond={false}
-                                                className="xxx"
-                                                format={format}
-                                                use12Hours
-                                            />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         </div>
 
                                     </div>
