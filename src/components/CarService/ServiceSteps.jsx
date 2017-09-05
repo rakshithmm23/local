@@ -352,8 +352,8 @@ class ServiceSteps extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-6 padLeft0">{leftBlock}</div>
-                            <div className="col-md-6 padRight0">{rightBlock}</div>
+                            <div className="col-md-12 pad0">{leftBlock}</div>
+                            <div className="col-md-12 pad0">{rightBlock}</div>
                         </div>
                         <div className="next-button">
                             <Button btnType="submit" btnSize="sm" fontSize={14} label="Next" btnCallBack={() => { this.hidePanel('step2') }} />
@@ -367,8 +367,7 @@ class ServiceSteps extends Component {
                     </div>
                     {this.state.step2Panel && <div className="panel-content">
                         <div className="row">
-                            <div className="col-md-6 left padLeft0">
-
+                            <div className="col-md-12 pad0">
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Select Car Profile</h4>
                                     <div className="model-select">
@@ -419,7 +418,7 @@ class ServiceSteps extends Component {
                                 </div>
 
                             </div>
-                            <div className="col-md-6 right padRight0">
+                            <div className="col-md-12 pad0">
                                 <div className="form-section">
                                     <h4 className="panel-sub-title">Prefered location</h4>
                                     <div className="model-select">
@@ -437,7 +436,7 @@ class ServiceSteps extends Component {
                                             center={{ lat: 12.9952672, lng: 77.5905857 }}
                                             zoom={9}
                                             containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
-                                            mapElement={<div style={{ height: 140 + 'px', width: 100 + '%' }} />}
+                                            mapElement={<div style={{ height: 192 + 'px', width: 100 + '%' }} />}
                                         />
                                     </div>
                                 </div>

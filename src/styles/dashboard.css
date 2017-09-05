@@ -164,7 +164,7 @@
 .car-summary{
   border-radius: 4px;
   background-color: #FFFFFF;
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.08);
+  border: 1px solid rgba(197, 197, 197, 0.5);
   padding:13px;
 }
 .summary-heading{

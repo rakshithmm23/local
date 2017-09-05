@@ -89,6 +89,7 @@ input[type="color"][list] {
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;
+    border: none;
 }
 
 .filterSection .dropdown-menu {
@@ -834,6 +835,7 @@ input[type="color"][list] {
 }
 .filterSection .dropdown.open .dropdown-toggle {
     border: none !important;
+    border-color: transparent;
     border-bottom: 2px solid #ED3022 !important;
     border-radius: 0;
     box-shadow: none;
