@@ -45,7 +45,7 @@
 .filterSection.request-card .left{
     position: relative;
 }
-.filterSection.request-card .left .filterby-wrapper:after{
+.filterSection.request-card .left:after{
     position: absolute;
     content: "";
     height: 100%;
