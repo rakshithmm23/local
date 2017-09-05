@@ -324,7 +324,7 @@ render() {
                   </div>
                 </DropdownButton>
               </div>
-              <div className="filterSection request-card">
+              <div className="filterSection request-card sort-request-card">
 
                 <DropdownButton bsSize="large" open={this.state.filterdropdown} onToggle={(e) => this.setState({ filterdropdown: e })} pullRight noCaret id="dropdown-size-large" title={
                   <div className="filterLabel showFilters ">
