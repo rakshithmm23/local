@@ -25,6 +25,7 @@ import './styles/status.css';
 import './styles/style.css';
 import './styles/typography.css';
 import './styles/my-request.css';
+import './styles/my-request-cards.css';
 import '../node_modules/slick-carousel/slick/slick.css';
 import '../node_modules/slick-carousel/slick/slick-theme.css';
 import '../node_modules/react-datepicker/dist/react-datepicker.css';
@@ -49,7 +50,7 @@ import './styles/pageNotFound.css';
 import '../node_modules/react-custom-scroll/dist/customScroll.css';
 import '../node_modules/react-select/dist/react-select.css';
 import './styles/scrollbar.css';
-import './styles/my-request-cards.css';
+
 
 export const store = configureStore();
 

@@ -6,7 +6,7 @@ import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import TimePicker from 'rc-time-picker';
+import TimeInput from 'time-input';
 import { DropdownButton, MenuItem,Modal } from 'react-bootstrap';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 
@@ -15,6 +15,7 @@ class ServiceSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            TimePickerFrom: '00:00 AM',
             uploadImgSize: 0,
             uploadImageErrText: false,
             imageUploaded: [],
@@ -410,13 +411,7 @@ class ServiceSteps extends Component {
                                         </div>
 
                                         <div className="col-md-6 padRight0">
-                                            <TimePicker
-                                                placeholder="Time"
-                                                showSecond={false}
-                                                className="xxx"
-                                                format={format}
-                                                use12Hours
-                                            />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         </div>
 
                                     </div>

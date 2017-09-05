@@ -6,7 +6,7 @@ import Upload from '../common/Upload';
 import Gmaps from '../MyRequest/Gmaps';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import TimePicker from 'rc-time-picker';
+import TimeInput from 'time-input';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import CustomModal from '../common/CustomModal';
 import { Modal } from 'react-bootstrap';
@@ -16,6 +16,7 @@ class WashSteps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            TimePickerFrom: '00:00 AM',
             PreferedLocation:'Select Location',
             // startDate: moment(),
             heating:false,
@@ -467,13 +468,7 @@ class WashSteps extends Component {
                                         </div>
 
                                         <div className="col-md-6 padRight0">
-                                            <TimePicker
-                                                showSecond={false}
-                                                placeholder="Time"
-                                                className="xxx"
-                                                format={format}
-                                                use12Hours
-                                            />
+                                        <TimeInput value={this.state.TimePickerFrom} onChange={(e)=>this.setState({TimePickerFrom:e})}/>
                                         </div>
 
                                     </div>

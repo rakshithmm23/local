@@ -360,10 +360,10 @@ class ProfileSteps extends Component {
                   <div className="col-md-6 padLeft0">
                     <TextInput showValidationError={this.errors['name']} label="Car Profile Name*" name="name" type="text" value={this.formData.name} validationError="Profile Name cannot be empty" onChange={this.onFieldChange.bind(this)} />
                   </div>
-                  <div className="col-md-6 padRight0">
+                  {/* <div className="col-md-6 padRight0">
                     <TextInput customClass={this.props.isEditProfile ? 'disabledInput' : undefined} showValidationError={this.errors['plate_no']} label="Plate Number*" name="plate_no" type="text" validationError="Plate Number cannot be empty" value={this.formData.plate_no}
                     onChange={this.onFieldChange.bind(this)} disabled={this.props.isEditProfile}/>
-                  </div>
+                  </div> */}
                   <div className="col-md-6 padLeft0">
                     <TextInput showValidationError={this.errors['mileage']} label="Kms Travelled*" name="mileage" type="text" validationError="Kms Travelled cannot be empty" value={this.formData.mileage}
                       onChange={this.onFieldChange.bind(this)} />

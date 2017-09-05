@@ -9,6 +9,7 @@ import CardView from './CardView';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import Button from '../common/Button';
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
+import SelectDropdown from '../common/SelectDropdown';
 
 export default class MyRequestCard extends Component {
   constructor(props, context) {
@@ -17,6 +18,8 @@ export default class MyRequestCard extends Component {
     this.serviceType = { all: false, wash: false, service: false, repair: false, emergency: false }
     this.toggleNotification = this.toggleNotification.bind(this);
     this.state = {
+      carProfileDd:false,
+      carProfile:"audi",
       notificationVisible: false,
       messageVisible: false,
       activeTab: "OpenItems",
@@ -42,7 +45,7 @@ export default class MyRequestCard extends Component {
         this.requestStatus = { all: false, waiting: false, active: false, accepted: false, inProgress: false, completed: false, cancelled: false, expired: false }
       }
     } else {
-      this.requestStatus["all"] = false
+      this.requestStatus["all"] = false;
       this.requestStatus[chkbox] = !this.requestStatus[chkbox]
     }
     this.setState({ chkbox: !this.state.chkbox })
@@ -355,18 +358,9 @@ render() {
                             </div>
                           </div>
                           <div className="f-card">
-                            <div className="form-section">
+                            <div className="form-section car-profile">
                               <h5>Car Profile</h5>
-                              <div className="model-select">
-                                <select className="car-selection ">
-                                  <option value="select">Select Car Brand</option>
-                                  <option value="volvo">Volvo</option>
-                                  <option value="saab">Saab</option>
-                                  <option value="mercedes">Mercedes</option>
-                                  <option value="audi">Audi</option>
-                                </select>
-                                <i className="mdi mdi-chevron-down" />
-                              </div>
+                              <SelectDropdown />
                             </div>
                           </div>
 

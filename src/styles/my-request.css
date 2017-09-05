@@ -832,12 +832,20 @@ input[type="color"][list] {
 .Filterby .f-card .rating {
     justify-content: left !important;
 }
-
-.filterSection .dropdown.open button {
-    border-bottom: 2px solid #ed3124 !important;
+.filterSection .dropdown.open .dropdown-toggle {
+    border: none !important;
+    border-bottom: 2px solid #ED3022 !important;
     border-radius: 0;
-    box-shadow: NONE;
-    border:  NONE;
+    box-shadow: none;
+    border:  none;
+}
+.filterSection .car-profile .dropdown .car-profile-dd {
+    font-size: 16px !important;
+    color: #717982 !important;
+    font-family: CenturyGothic;
+    border-bottom: 1px solid #c8d4de !important;
+    width: 89%;
+    text-align: left;
 }
 
 .filterby-wrapper {
