@@ -7,6 +7,7 @@ import MobileNotification from '../common/MobileNotification';
 import MobileMessage from '../common/MobileMessage';
 import Button from '../common/Button';
 import ServiceSteps from './ServiceSteps';
+import SummaryCollpasePanel from '../common/SummaryCollpasePanel';
 
 export default class CarWash extends Component {
     constructor(props, context) {
@@ -14,9 +15,12 @@ export default class CarWash extends Component {
         this.toggleNotification = this.toggleNotification.bind(this);
         this.state = {
             notificationVisible: false,
-            messageVisible: false
+            messageVisible: false,
+
         };
     }
+   
+    
     toggleNotification(isVisible) {
         this.setState({ 'notificationVisible': isVisible });
     }
@@ -25,6 +29,7 @@ export default class CarWash extends Component {
     }
 
     render() {
+        debugger
         return (
             <div className="jobUpdate">
                 {/*Header*/}
@@ -72,7 +77,7 @@ export default class CarWash extends Component {
                                                 </label>
                                             </div>
                                             <div className="category-list">
-                                                <ul className="list-unstyled">
+                                                {/*<ul className="list-unstyled">
                                                     <li>
                                                         <img src="../../images/auto-service-icons-4.png" alt="" />
                                                         <label>AC heating & Cooling</label>
@@ -81,17 +86,17 @@ export default class CarWash extends Component {
                                                         <img src="../../images/auto-service-icons-4.png" alt="" />
                                                         <label>AC heating & Cooling</label>
                                                     </li>
-                                                </ul>
+                                                </ul>*/}
+                                                <SummaryCollpasePanel />
+                                                <SummaryCollpasePanel />
+                                                
                                             </div>
                                         </div>
                                         <div className="car-wrapper">
                                             <div className="type-card">
-                                                <div className="type-img car-img">
-                                                    <img src="../images/car.jpg" alt="" />
-                                                </div>
-                                                <div className="type-desc">
+                                                <div className="type-desc only-desc">
                                                     <h5>Car Profile</h5>
-                                                    <label>My Nissan GT-R</label>
+                                                    <label>Car Profile yet to be selected</label>
                                                 </div>
                                             </div>
                                         </div>
