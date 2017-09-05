@@ -56,7 +56,44 @@
 }
 .filterSection .dropdown-toggle{
     background: #fff !important;
+}
+.filterSection.request-card .car-profile{
+    position: relative
+}
+.filterSection.request-card .car-profile .mdi-chevron-down,
+.filterSection.request-card .car-profile .mdi-chevron-up{
+    position: absolute;
+    right: 43px;
+    font-size: 26px;
+    color: #949DA5;
+    top: 31px;
+    z-index: 99;
+}
+
+.filterSection.request-card .car-profile li{
+    display: block;
     border: none !important;
+    width: 100%;
+    text-align: left;
+    background: white;
+}
+.filterSection.request-card .car-profile li a{
+    background: white !important;
+    outline: none !important;
+}
+.filterSection.request-card .car-profile .dropdown-menu{
+    width: auto;
+    padding: 10px !important;
+    margin-top: 27px;
+    width: 425px;
+    
+}
+.filterSection.request-card .car-profile .dropdown{
+    display: block !important;
+}
+.filterSection.sort-request-card .dropdown-menu li a{
+    outline: none;
+    background: white !important;
 }
 .filterSection.sort-request-card .filterCard li span {
     top: 11px !important;
