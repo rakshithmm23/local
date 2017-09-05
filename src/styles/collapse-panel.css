@@ -219,7 +219,7 @@
     width: 110px;
     position: relative;
     display: inline-block;
-    margin: 5px 15px;
+    margin: 10px 15px 5px;
     vertical-align: top;
     border-radius: 3px;
 }
@@ -228,7 +228,10 @@
     margin-left: 0;
 }
 
-.car-wash .collapse-panel .right .uploads .upload-box-wrapper {
+/* .car-wash .collapse-panel .right .uploads .upload-box-wrapper {
+    margin-left: 0;
+} */
+.upload-box-wrapper {
     margin-left: 0;
 }
 
@@ -455,6 +458,7 @@
     margin: 10px 0;
     width: 100%;
     font-family: CenturyGothic;
+    margin-bottom: 0;
 }
 
 .car-wash .collapse-panel .right {

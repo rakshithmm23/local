@@ -441,7 +441,7 @@ class ServiceSteps extends Component {
                                             center={{ lat: 12.9952672, lng: 77.5905857 }}
                                             zoom={9}
                                             containerElement={<div style={{ height: "auto", width: 100 + '%' }} />}
-                                            mapElement={<div style={{ height: 140 + 'px', width: 100 + '%' }} />}
+                                            mapElement={<div style={{ height: 192 + 'px', width: 100 + '%' }} />}
                                         />
                                     </div>
                                 </div>
